@@ -1,3 +1,5 @@
+#include "vars.txt"
+
 if (v80 == vROOM_NO) {
   if (said("climb", "beanstalk")) {
     if (f157) {

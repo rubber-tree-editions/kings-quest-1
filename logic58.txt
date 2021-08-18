@@ -1,3 +1,5 @@
+#include "vars.txt"
+
 if (fROOM_SCRIPT_EXECUTED) {
   ignore.horizon(o0);
   load.pic(vROOM_NO);

@@ -1,3 +1,5 @@
+#include "vars.txt"
+
 if (vERROR_CODE > 0) {
   call(98);
 }

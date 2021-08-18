@@ -1,3 +1,5 @@
+#include "vars.txt"
+
 prevent.input();
 status.line.off();
 text.screen();

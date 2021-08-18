@@ -1,3 +1,5 @@
+#include "vars.txt"
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   load.sound(0);
