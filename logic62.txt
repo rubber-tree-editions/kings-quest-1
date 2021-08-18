@@ -1,0 +1,105 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(45);
+  load.sound(5);
+  draw(o0);
+  show.pic();
+}
+if (said("examine", "room") || said("examine", "clouds")) {
+  print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
+}
+LABEL39:
+  if (said("examine", "trees")) {
+    if (posn(o0, 86, 101, 159, 167)) {
+      print(null);
+      goto(LABEL66);
+    }
+    print("These are strange looking trees.");
+  }
+LABEL66:
+  if (said("examine", "doorway") || said("look inside", "doorway")) {
+    if (posn(o0, 117, 100, 144, 117)) {
+      if (!f96) {
+        print("You notice a sling in the hole in the tree.");
+        goto(LABEL108);
+      }
+      print("It is empty.");
+      LABEL108:
+        goto(LABEL113);
+    }
+    print("You can't see into the hole from here.");
+  }
+LABEL113:
+  if (said("examine", "slingshot")) {
+    if (f97) {
+      print("This sling is made of very stretchy leather.");
+      goto(LABEL136);
+    }
+    print("Why?  What sling?");
+  }
+LABEL136:
+  if (f96) {
+    if (said("get", "slingshot")) {
+      if (posn(o0, 117, 100, 144, 117)) {
+        print("Why?  What sling?");
+        goto(LABEL169);
+      }
+      print();
+    }
+  }
+LABEL169:
+  if (!f96) {
+    if (said("get", "slingshot")) {
+      if (posn(o0, 117, 100, 144, 117)) {
+        print("You reach into the hole and pull out the leather sling.");
+        set(f96);
+        set(f97);
+        vSCORE += 2;
+        get("leather slingshot");
+        goto(LABEL212);
+      }
+      print();
+    }
+  }
+LABEL212:
+  if (fEGO_TOUCHED_TRIGGER_LINE) {
+    set(f95);
+    program.control();
+    stop.cycling(o0);
+    get.posn(o0, v60, v61);
+    get.priority(o0, v30);
+    set.priority.v(o0, v30);
+    v61 += 6;
+    v96 = 4;
+    move.obj.v(o0, v60, v61, 96, f21);
+    sound(5, f159);
+  }
+LABEL248:
+  if (f21) {
+    reset(f21);
+    erase(o0);
+  }
+LABEL258:
+  if (f159) {
+    reset(f159);
+    set(f20);
+  }
+LABEL268:
+  if (f20) {
+    reset(f20);
+    print("You've fallen through the clouds!  Cloud walking is for the birds.");
+    erase(o0);
+    set(f63);
+  }
+LABEL282:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(59);
+  }
+LABEL291:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(61);
+  }
+LABEL300:
+  return;

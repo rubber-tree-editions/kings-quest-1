@@ -1,0 +1,195 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(46);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 110, 103, 0, 0);
+  }
+  LABEL37:
+    random(0, 250, v62);
+    if (v62 < 185 && v81 != 3) {
+      v30 = 4;
+      step.size(o1, v30);
+      set(f20);
+      load.view(3);
+      load.view(91);
+      load.sound(1);
+      animate.obj(o1);
+      set.view(o1, 3);
+      ignore.horizon(o1);
+      ignore.blocks(o1);
+      set.loop(o1, 1);
+    }
+  LABEL78:
+    if (f20) {
+      LABEL84:
+        random(0, 250, v70);
+        if (v70 > 90) {
+          goto(LABEL84);
+        }
+    }
+  LABEL98:
+    observe.blocks(o0);
+    draw(o0);
+    show.pic();
+}
+v70--;
+if (v70 == 1) {
+  set(f21);
+  position(o1, 80, 40);
+  draw(o1);
+  set(f135);
+  sound(1, f159);
+  if (!f75) {
+    print(null);
+    follow.ego(o1, 20, f24);
+  }
+  if (f75) {
+    wander(o1);
+    set(f22);
+    print("There is a witch in the area, but since you have that menacing goat with you, she will keep her distance.");
+  }
+  LABEL150:
+    if (f79) {
+      wander(o1);
+      set(f22);
+      print("Lucky for you that you are invisible, the witch can't find you.");
+    }
+}
+LABEL162:
+  if (f159) {
+    reset(f159);
+    reset(f135);
+  }
+LABEL172:
+  if (f24) {
+    reset(f24);
+    reset(f135);
+    if (f73) {
+      print("The witch can feel your protective spell and bids a hasty retreat.");
+      wander(o1);
+      set(f22);
+      goto(LABEL271);
+    }
+    if (f79) {
+      print("Lucky for you that you are invisible, the witch can't find you.");
+      wander(o1);
+      set(f22);
+      goto(LABEL271);
+    }
+    if (f102) {
+      print("There is a witch in the area, but with the shield no harm will come to you.");
+      wander(o1);
+      set(f22);
+      goto(LABEL271);
+    }
+    if (f200) {
+      print("The witch missed you, this time.");
+      wander(o1);
+      set(f22);
+      goto(LABEL271);
+    }
+    print("The witch swoops down, grabs you by the neck, and carries you off to a fate worse than death.");
+    program.control();
+    set(f142);
+    erase(o1);
+    set.view(o0, 91);
+    ignore.blocks(o0);
+    ignore.horizon(o0);
+    get.posn(o0, v60, v61);
+    v60 = 130;
+    move.obj.v(o0, v60, v61, 30, f23);
+    set(f98);
+  }
+LABEL271:
+  if (f22 && vOBJEcT_EDGE_CODE != 0) {
+    reset(f22);
+    reset(f21);
+    erase(o1);
+  }
+LABEL287:
+  if (!f21) {
+    if (said("anyword", "witch")) {
+      print("There's no witch here.");
+    }
+  }
+LABEL306:
+  if (f21) {
+    if (said("examine", "witch")) {
+      print("This is not your friendly-type witch.");
+    }
+    if (said("murder", "witch")) {
+      print("There is no way to kill a flying witch!");
+    }
+    LABEL336:
+      if (said("talk", "witch") || said("hello") || said("say", "hello")) {
+        print("The wicked witch is not interested in chitchat.");
+      }
+    LABEL360:
+      if (said("get", "witch")) {
+        print("Are you kidding?");
+      }
+  }
+LABEL372:
+  if (said("jump") || controller(c7)) {
+    if (f79) {
+      print();
+    }
+    if (f21 && !f79) {
+      if (!f142) {
+        print("Jumping here would put you in even greater danger from that witch!");
+        goto(LABEL415);
+      }
+      print("There is no way you can now.");
+    }
+    LABEL415:
+      if (!f21 && !f79) {
+        set(f143);
+        stop.motion(o0);
+        v102 = 3;
+        cycle.time(o0, v102);
+        set.view(o0, 75);
+        set(f98);
+        end.of.loop(o0, f144);
+      }
+  }
+LABEL443:
+  if (f144) {
+    reset(f143);
+    reset(f144);
+    reset(f98);
+    start.motion(o0);
+    v103 = 1;
+    cycle.time(o0, v103);
+    set.view(o0, 0);
+  }
+LABEL466:
+  if (f23) {
+    new.room(80);
+  }
+LABEL474:
+  if (vEGO_EDGE_CODE == 1 && !f142) {
+    new.room(28);
+  }
+LABEL486:
+  if (vEGO_EDGE_CODE == 2 && !f142) {
+    new.room(20);
+  }
+LABEL498:
+  if (vEGO_EDGE_CODE == 4 && !f142) {
+    new.room(22);
+  }
+LABEL510:
+  if (vEGO_EDGE_CODE == 3 && !f142) {
+    new.room(12);
+  }
+LABEL522:
+  if (f75) {
+    call(103);
+  }
+LABEL530:
+  return;

@@ -1,0 +1,16 @@
+if (v80 == vROOM_NO) {
+  if (said("climb", "beanstalk")) {
+    if (f157) {
+      print(null);
+    }
+    if (f79) {
+      print("You can't do that when you are invisible!");
+    }
+  }
+  LABEL33:
+    if (said("examine", "beanstalk")) {
+      print();
+    }
+}
+LABEL45:
+  return;

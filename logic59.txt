@@ -1,0 +1,95 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  ignore.horizon(o0);
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  load.sound(5);
+  load.view(105);
+  if (vPREV_ROOM_NO == 62) {
+    get.posn(o0, v60, v61);
+    if (v60 > 152) {
+      position(o0, 150, 164);
+    }
+  }
+  if (vPREV_ROOM_NO == 69) {
+    position(o0, 116, 110);
+  }
+  LABEL51:
+    draw(o0);
+    show.pic();
+}
+if (said("examine", "cave")) {
+  print(null);
+}
+LABEL66:
+  if (said("climb", "mountains")) {
+    print("The mountain is too steep to climb.");
+  }
+LABEL78:
+  if (said("examine", "mountains")) {
+    print("You are near the top of a very high mountain.  It steeply descends toward a valley floor.");
+  }
+LABEL90:
+  if (said("examine", "clouds") || said("examine", "room")) {
+    print("You are in the Land of the Clouds.  It is rumored that a giant lives here.");
+  }
+LABEL110:
+  if (said("examine", "trees")) {
+    print("These are the most unusual looking trees.");
+  }
+LABEL122:
+  if (said("examine", "flowers")) {
+    print();
+  }
+LABEL134:
+  if (fEGO_TOUCHED_TRIGGER_LINE && !f95 && posn(o0, 0, 84, 159, 167)) {
+    set(f95);
+    stop.cycling(o0);
+    sound(5, f159);
+    move.obj(o0, 153, 166, 5, f21);
+  }
+LABEL162:
+  if (fEGO_TOUCHED_TRIGGER_LINE && posn(o0, 0, 0, 159, 83)) {
+    reset(fEGO_TOUCHED_TRIGGER_LINE);
+    program.control();
+    if (!f79) {
+      set.view(o0, 105);
+    }
+    start.cycling(o0);
+    set(f98);
+    sound(5, f159);
+    erase(o0);
+  }
+LABEL196:
+  if (f21) {
+    reset(f21);
+    erase(o0);
+  }
+LABEL206:
+  if (f159) {
+    reset(f159);
+    set(f20);
+  }
+LABEL216:
+  if (f20) {
+    reset(f20);
+    print("Oops, you've missed the edge and fallen through the  clouds.");
+    set(f63);
+  }
+LABEL228:
+  if (posn(o0, 135, 94, 136, 120)) {
+    new.room(69);
+  }
+LABEL240:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(58);
+  }
+LABEL249:
+  if (vEGO_EDGE_CODE == 3) {
+    get.posn(o0, v60, v61);
+    if (v60 < 153) {
+      new.room(62);
+    }
+  }
+LABEL269:
+  return;

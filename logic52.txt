@@ -1,0 +1,117 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  ignore.horizon(o0);
+  load.view(73);
+  set.view(o0, 73);
+  load.view(114);
+  set(fEGO_ON_WATER);
+  if (vPREV_ROOM_NO == 49) {
+    position(o0, 75, 26);
+    goto(LABEL41);
+  }
+  position(o0, 38, 116);
+  LABEL41:
+    if (vPREV_ROOM_NO == 51) {
+      if (!f208) {
+        set(f208);
+        vSCORE += 2;
+      }
+    }
+  LABEL60:
+    v68 = 250;
+    v69 = 3;
+    if (f81 && !f88) {
+      set(f88);
+      get("water");
+      if (!f91) {
+        set(f91);
+        vSCORE += 2;
+      }
+    }
+  LABEL91:
+    draw(o0);
+    show.pic();
+    if (f79) {
+      drop("ring");
+      vSCORE -= 3;
+      print();
+      reset(f83);
+      reset(f79);
+      reset(f133);
+      set(f115);
+      v90 = 0;
+      v91 = 0;
+    }
+}
+LABEL121:
+  v68--;
+  if (v68 == 0) {
+    v69--;
+    if (v69 > 0) {
+      v68 = 250;
+    }
+  }
+LABEL142:
+  if (v68 == 0 && v69 == 0 && !f21) {
+    set(f21);
+    set.view(o0, 114);
+    print(null);
+    ignore.blocks(o0);
+    get.posn(o0, v60, v61);
+    if (v61 < 141) {
+      move.obj(o0, 65, 140, 1, f20);
+    }
+    if (v61 > 140) {
+      set(f20);
+    }
+  }
+LABEL190:
+  if (f20) {
+    reset(f20);
+    set(f63);
+  }
+LABEL200:
+  if (said("examine", "water")) {
+    print("This looks like typical well water.");
+  }
+LABEL212:
+  if (said("examine", "bottle")) {
+    print("It looks like this bottle has been here for a very long time.");
+  }
+LABEL224:
+  if (said("get", "bottle")) {
+    print("This is just an old, junky bottle.  You don't want it.");
+  }
+LABEL236:
+  if (said("examine", "well")) {
+    print("You are at the bottom of th well.  Through the plants you spy what seems to be a hole in the side of the well.");
+  }
+LABEL248:
+  if (said("examine", "doorway")) {
+    if (posn(o0, 1, 75, 65, 166)) {
+      print("It is very difficult to tell where the hole might lead.");
+      goto(LABEL275);
+    }
+    print("You are too far away to see clearly.");
+  }
+LABEL275:
+  if (said("examine", "can")) {
+    print("The rusty old can has been here awhile.");
+  }
+LABEL287:
+  if (said("get", "can")) {
+    print("You have no use for this old can.");
+  }
+LABEL299:
+  if (posn(o0, 31, 111, 32, 130)) {
+    reset(fEGO_ON_WATER);
+    new.room(51);
+  }
+LABEL313:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(49);
+  }
+LABEL322:
+  return;

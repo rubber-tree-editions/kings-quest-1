@@ -1,0 +1,119 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  load.sound(4);
+  load.sound(5);
+  load.view(8);
+  load.view(89);
+  load.view(105);
+  load.view(103);
+  load.view(104);
+  if (vPREV_ROOM_NO == 80) {
+    set.view(o0, 89);
+    animate.obj(o1);
+    set.view(o1, 8);
+    position(o0, 2, 50);
+    move.obj(o0, 100, 50, 0, f20);
+    set.priority(o1, 14);
+    set.priority(o0, 15);
+  }
+  draw(o0);
+  show.pic();
+}
+if (f20) {
+  reset(f20);
+  erase(o0);
+  position(o0, 108, 53);
+  set.view(o0, 105);
+  set(f98);
+  position(o1, 100, 48);
+  draw(o1);
+  draw(o0);
+  move.obj(o1, 130, 48, 2, f21);
+  move.obj(o0, 108, 107, 4, f22);
+  set(f135);
+  sound(5, f198);
+}
+LABEL104:
+  if (!f22 && f198 && !f27) {
+    reset(f198);
+    sound(5, f198);
+  }
+LABEL121:
+  if (f21) {
+    reset(f21);
+    erase(o1);
+  }
+LABEL131:
+  if (f22) {
+    stop.sound();
+    set(f27);
+    reset(f22);
+    program.control();
+    release.priority(o0);
+    set.view(o0, 103);
+    shake.screen(1);
+    print();
+    sound(4, f159);
+    v30 = 18;
+  }
+LABEL158:
+  v30--;
+  if (f159) {
+    if (v30 > 0) {
+      reset(f159);
+      sound(4, f159);
+    }
+  }
+LABEL178:
+  if (v30 == 1) {
+    set.view(o0, 104);
+    end.of.loop(o0, f25);
+  }
+LABEL191:
+  if (f25) {
+    reset(f25);
+    set.view(o0, 0);
+    reset(f98);
+    player.control();
+    reset(f145);
+    reset(f209);
+  }
+LABEL209:
+  if (said("examine", "doorway") || said("look inside", "doorway")) {
+    if (posn(o0, 55, 105, 100, 142)) {
+      print(null);
+      goto(LABEL244);
+    }
+    print("Don't be afraid... get closer.");
+  }
+LABEL244:
+  if (fEGO_ON_WATER && !f199) {
+    set(f95);
+    stop.cycling(o0);
+    set(f199);
+    set.priority(o0, 5);
+    get.posn(o0, v60, v61);
+    v61 += 35;
+    v96 = 8;
+    move.obj.v(o0, v60, v61, 96, f23);
+    sound(5, f148);
+  }
+LABEL281:
+  if (f23) {
+    reset(f23);
+    reset(f95);
+    erase(o0);
+    new.room(73);
+  }
+LABEL295:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(47);
+  }
+LABEL304:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(33);
+  }
+LABEL313:
+  return;

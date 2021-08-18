@@ -1,0 +1,365 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  load.sound(0);
+  configure.screen(0, 21, 0);
+  draw.pic(vROOM_NO);
+  prevent.input();
+  v30 = 250;
+  set(fSOUND_ENABLED);
+  display(22, 1, "(c) copyright SIERRA On-Line Inc.  1986");
+  display(24, 5, "Press any key to continue.");
+  set.key(0, 59, c18);
+  set.key(0, 60, c17);
+  set.key(19, 0, c17);
+  set.key(0, 61, c13);
+  set.key(5, 0, c13);
+  set.key(0, 63, c1);
+  set.key(0, 64, c16);
+  set.key(0, 65, c2);
+  set.key(0, 67, c3);
+  set.key(0, 68, c9);
+  set.key(9, 0, c4);
+  set.key(0, 32, c10);
+  set.key(10, 0, c11);
+  set.key(3, 0, c12);
+  set.key(24, 0, c12);
+  set.key(27, 0, c14);
+  set.key(18, 0, c15);
+  set.key(0, 44, c6);
+  set.key(61, 0, c5);
+  set.key(45, 0, c8);
+  set.key(48, 0, c7);
+  if (vCOMPUTER_TYPE == 1) {
+    set.key(49, 0, c18);
+    set.key(50, 0, c17);
+    set.key(51, 0, c13);
+    set.key(53, 0, c1);
+    set.key(55, 0, c2);
+    set.key(57, 0, c3);
+  }
+  set.key(1, 1, c0);
+  set.key(1, 2, c5);
+  set.key(1, 4, c4);
+  set.menu("Info");
+  set.menu.item("About King's Quest", c19);
+  set.menu.item("Help              ", c18);
+  set.menu("File");
+  set.menu.item("Save Game      <F5>", c1);
+  set.menu.item("Restore Game   <F7>", c2);
+  set.menu("Game");
+  set.menu.item("Inventory     <Tab>", c4);
+  set.menu.item("Pause         <Esc>", c14);
+  set.menu.item("Restart Game   <F9>", c3);
+  set.menu.item("Quit               ", c6);
+  set.menu("Actions");
+  set.menu.item("Swim    =", c5);
+  set.menu.item("Jump    0", c7);
+  set.menu.item(, c8);
+  set.menu("Sound");
+  set.menu.item("Toggle Sound   <F2>", c17);
+  show.pic();
+}
+if (!f21) {
+  set(f21);
+  sound(0, f20);
+}
+LABEL216:
+  v30--;
+  if (v30 == 245) {
+    display(18, 12, "Designed and    ");
+  }
+LABEL229:
+  if (v30 == 240) {
+    display(17, 12, "Designed and    ");
+    display(18, 12, "    Written by: ");
+  }
+LABEL244:
+  if (v30 == 235) {
+    display(16, 12, "Designed and    ");
+    display(17, 12, "    Written by: ");
+    display(18, 12, "Roberta Williams");
+  }
+LABEL263:
+  if (v30 == 230) {
+    display(15, 12, "Designed and    ");
+    display(16, 12, "    Written by: ");
+    display(17, 12, "Roberta Williams");
+    display(18, 12, null);
+  }
+LABEL286:
+  if (v30 == 225) {
+    display(14, 12, "Designed and    ");
+    display(15, 12, "    Written by: ");
+    display(16, 12, "Roberta Williams");
+    display(17, 12, null);
+    display(18, 12, "Orig. Version by");
+  }
+LABEL313:
+  if (v30 == 220) {
+    display(13, 12, "Designed and    ");
+    display(14, 12, "    Written by: ");
+    display(15, 12, "Roberta Williams");
+    display(16, 12, null);
+    display(17, 12, "Orig. Version by");
+    display(18, 12, " Charles Tingley");
+  }
+LABEL344:
+  if (v30 == 215) {
+    display(12, 12, "Designed and    ");
+    display(13, 12, "    Written by: ");
+    display(14, 12, "Roberta Williams");
+    display(15, 12, null);
+    display(16, 12, "Orig. Version by");
+    display(17, 12, " Charles Tingley");
+    display(18, 12, "  Ken MacNeill  ");
+  }
+LABEL379:
+  if (v30 == 210) {
+    display(11, 12, "Designed and    ");
+    display(12, 12, "    Written by: ");
+    display(13, 12, "Roberta Williams");
+    display(14, 12, null);
+    display(15, 12, "Orig. Version by");
+    display(16, 12, " Charles Tingley");
+    display(17, 12, "  Ken MacNeill  ");
+    display(18, 12, "   Chris Iden   ");
+  }
+LABEL418:
+  if (v30 == 205) {
+    display(10, 12, "Designed and    ");
+    display(11, 12, "    Written by: ");
+    display(12, 12, "Roberta Williams");
+    display(13, 12, null);
+    display(14, 12, "Orig. Version by");
+    display(15, 12, " Charles Tingley");
+    display(16, 12, "  Ken MacNeill  ");
+    display(17, 12, "   Chris Iden   ");
+    display(18, 12, null);
+  }
+LABEL461:
+  if (v30 == 200) {
+    display(9, 12, "Designed and    ");
+    display(10, 12, "    Written by: ");
+    display(11, 12, "Roberta Williams");
+    display(12, 12, null);
+    display(13, 12, "Orig. Version by");
+    display(14, 12, " Charles Tingley");
+    display(15, 12, "  Ken MacNeill  ");
+    display(16, 12, "   Chris Iden   ");
+    display(17, 12, null);
+    display(18, 12, "Graphics by:    ");
+  }
+LABEL508:
+  if (v30 == 195) {
+    display(8, 12, "Designed and    ");
+    display(9, 12, "    Written by: ");
+    display(10, 12, "Roberta Williams");
+    display(11, 12, null);
+    display(12, 12, "Orig. Version by");
+    display(13, 12, " Charles Tingley");
+    display(14, 12, "  Ken MacNeill  ");
+    display(15, 12, "   Chris Iden   ");
+    display(16, 12, null);
+    display(17, 12, "Graphics by:    ");
+    display(18, 12, " Doug MacNeill  ");
+  }
+LABEL559:
+  if (v30 == 190) {
+    display(7, 12, "Designed and    ");
+    display(8, 12, "    Written by: ");
+    display(9, 12, "Roberta Williams");
+    display(10, 12, null);
+    display(11, 12, "Orig. Version by");
+    display(12, 12, " Charles Tingley");
+    display(13, 12, "  Ken MacNeill  ");
+    display(14, 12, "   Chris Iden   ");
+    display(15, 12, null);
+    display(16, 12, "Graphics by:    ");
+    display(17, 12, " Doug MacNeill  ");
+    display(18, 12, "  Greg Rowland  ");
+  }
+LABEL614:
+  if (v30 == 185) {
+    display(6, 12, "Designed and    ");
+    display(7, 12, "    Written by: ");
+    display(8, 12, "Roberta Williams");
+    display(9, 12, null);
+    display(10, 12, "Orig. Version by");
+    display(11, 12, " Charles Tingley");
+    display(12, 12, "  Ken MacNeill  ");
+    display(13, 12, "   Chris Iden   ");
+    display(14, 12, null);
+    display(15, 12, "Graphics by:    ");
+    display(16, 12, " Doug MacNeill  ");
+    display(17, 12, "  Greg Rowland  ");
+    display(18, 12, null);
+  }
+LABEL673:
+  if (v30 == 180) {
+    display(6, 12, "    Written by: ");
+    display(7, 12, "Roberta Williams");
+    display(8, 12, null);
+    display(9, 12, "Orig. Version by");
+    display(10, 12, " Charles Tingley");
+    display(11, 12, "  Ken MacNeill  ");
+    display(12, 12, "   Chris Iden   ");
+    display(13, 12, null);
+    display(14, 12, "Graphics by:    ");
+    display(15, 12, " Doug MacNeill  ");
+    display(16, 12, "  Greg Rowland  ");
+    display(17, 12, null);
+    display(18, 12, "New Version by: ");
+  }
+LABEL732:
+  if (v30 == 175) {
+    display(6, 12, "Roberta Williams");
+    display(7, 12, null);
+    display(8, 12, "Orig. Version by");
+    display(9, 12, " Charles Tingley");
+    display(10, 12, "  Ken MacNeill  ");
+    display(11, 12, "   Chris Iden   ");
+    display(12, 12, null);
+    display(13, 12, "Graphics by:    ");
+    display(14, 12, " Doug MacNeill  ");
+    display(15, 12, "  Greg Rowland  ");
+    display(16, 12, null);
+    display(17, 12, "New Version by: ");
+    display(18, 12, " Jeff Stephenson");
+  }
+LABEL791:
+  if (v30 == 170) {
+    display(6, 12, null);
+    display(7, 12, "Orig. Version by");
+    display(8, 12, " Charles Tingley");
+    display(9, 12, "  Ken MacNeill  ");
+    display(10, 12, "   Chris Iden   ");
+    display(11, 12, null);
+    display(12, 12, "Graphics by:    ");
+    display(13, 12, " Doug MacNeill  ");
+    display(14, 12, "  Greg Rowland  ");
+    display(15, 12, null);
+    display(16, 12, "New Version by: ");
+    display(17, 12, " Jeff Stephenson");
+    display(18, 12, "  Sol Ackerman  ");
+  }
+LABEL850:
+  if (v30 == 165) {
+    display(6, 12, "Orig. Version by");
+    display(7, 12, " Charles Tingley");
+    display(8, 12, "  Ken MacNeill  ");
+    display(9, 12, "   Chris Iden   ");
+    display(10, 12, null);
+    display(11, 12, "Graphics by:    ");
+    display(12, 12, " Doug MacNeill  ");
+    display(13, 12, "  Greg Rowland  ");
+    display(14, 12, null);
+    display(15, 12, "New Version by: ");
+    display(16, 12, " Jeff Stephenson");
+    display(17, 12, "  Sol Ackerman  ");
+    display(18, 12, "   Chris Iden   ");
+  }
+LABEL909:
+  if (v30 == 160) {
+    display(6, 12, " Charles Tingley");
+    display(7, 12, "  Ken MacNeill  ");
+    display(8, 12, "   Chris Iden   ");
+    display(9, 12, null);
+    display(10, 12, "Graphics by:    ");
+    display(11, 12, " Doug MacNeill  ");
+    display(12, 12, "  Greg Rowland  ");
+    display(13, 12, null);
+    display(14, 12, "New Version by: ");
+    display(15, 12, " Jeff Stephenson");
+    display(16, 12, "  Sol Ackerman  ");
+    display(17, 12, "   Chris Iden   ");
+    display(18, 12, null);
+  }
+LABEL968:
+  if (v30 == 155) {
+    display(6, 12, "  Ken MacNeill  ");
+    display(7, 12, "   Chris Iden   ");
+    display(8, 12, null);
+    display(9, 12, "Graphics by:    ");
+    display(10, 12, " Doug MacNeill  ");
+    display(11, 12, "  Greg Rowland  ");
+    display(12, 12, null);
+    display(13, 12, "New Version by: ");
+    display(14, 12, " Jeff Stephenson");
+    display(15, 12, "  Sol Ackerman  ");
+    display(16, 12, "   Chris Iden   ");
+    display(17, 12, null);
+    display(18, 12, "Thanks to:      ");
+  }
+LABEL1027:
+  if (v30 == 150) {
+    display(6, 12, "   Chris Iden   ");
+    display(7, 12, null);
+    display(8, 12, "Graphics by:    ");
+    display(9, 12, " Doug MacNeill  ");
+    display(10, 12, "  Greg Rowland  ");
+    display(11, 12, null);
+    display(12, 12, "New Version by: ");
+    display(13, 12, " Jeff Stephenson");
+    display(14, 12, "  Sol Ackerman  ");
+    display(15, 12, "   Chris Iden   ");
+    display(16, 12, null);
+    display(17, 12, "Thanks to:      ");
+    display(18, 12, " Linda Ackerman  ");
+  }
+LABEL1086:
+  if (v30 == 145) {
+    display(6, 12, null);
+    display(7, 12, "Graphics by:    ");
+    display(8, 12, " Doug MacNeill  ");
+    display(9, 12, "  Greg Rowland  ");
+    display(10, 12, null);
+    display(11, 12, "New Version by: ");
+    display(12, 12, " Jeff Stephenson");
+    display(13, 12, "  Sol Ackerman  ");
+    display(14, 12, "   Chris Iden   ");
+    display(15, 12, null);
+    display(16, 12, "Thanks to:      ");
+    display(17, 12, " Linda Ackerman  ");
+    display(18, 12, "  Mark Crowe     ");
+  }
+LABEL1145:
+  if (v30 == 140) {
+    display(6, 12, "Graphics by:    ");
+    display(7, 12, " Doug MacNeill  ");
+    display(8, 12, "  Greg Rowland  ");
+    display(9, 12, null);
+    display(10, 12, "New Version by: ");
+    display(11, 12, " Jeff Stephenson");
+    display(12, 12, "  Sol Ackerman  ");
+    display(13, 12, "   Chris Iden   ");
+    display(14, 12, null);
+    display(15, 12, "Thanks to:      ");
+    display(16, 12, " Linda Ackerman  ");
+    display(17, 12, "  Mark Crowe     ");
+    display(18, 12, "   Robert Heitman");
+  }
+LABEL1204:
+  if (v30 == 135) {
+    display(6, 12, " Doug MacNeill  ");
+    display(7, 12, "  Greg Rowland  ");
+    display(8, 12, null);
+    display(9, 12, "New Version by: ");
+    display(10, 12, " Jeff Stephenson");
+    display(11, 12, "  Sol Ackerman  ");
+    display(12, 12, "   Chris Iden   ");
+    display(13, 12, null);
+    display(14, 12, "Thanks to:      ");
+    display(15, 12, " Linda Ackerman  ");
+    display(16, 12, "  Mark Crowe     ");
+    display(17, 12, "   Robert Heitman");
+    display(18, 12, "    Scott Murphy ");
+  }
+LABEL1263:
+  if (have.key()) {
+    clear.lines(21, 24, 0);
+    stop.sound();
+    v30 = 0;
+    new.room(1);
+  }
+LABEL1278:
+  return;

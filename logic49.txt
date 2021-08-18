@@ -1,0 +1,405 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  load.sound(5);
+  load.logics(101);
+  call(101);
+  load.view(72);
+  load.view(16);
+  load.view(74);
+  load.view(105);
+  load.view(99);
+  if (f182) {
+    set.view(o0, 105);
+    position(o0, 81, 48);
+    ignore.objs(o0);
+    ignore.blocks(o0);
+    set.priority(o0, 15);
+    set(f98);
+    set(f20);
+    move.obj(o0, 81, 164, 3, f21);
+  }
+  if (vPREV_ROOM_NO == 12 && !f182) {
+    if (!f162) {
+      set(f162);
+      vSCORE += 1;
+    }
+    if (f180) {
+      set.view(o0, 74);
+      position(o0, 81, 48);
+      set.priority(o0, 15);
+    }
+  }
+  LABEL96:
+    if (vPREV_ROOM_NO == 52) {
+      v94 = 2;
+      set.view(o0, 70);
+      set(f23);
+      v30 = 250;
+      position(o0, 75, 163);
+    }
+  LABEL118:
+    if (f179) {
+      add.to.pic(99, 0, 0, 84, 119, 4, 4);
+      discard.view(99);
+    }
+  LABEL134:
+    if (f177) {
+      if (f181) {
+        animate.obj(o1);
+        set.view(o1, 72);
+        position(o1, 79, 150);
+        set.cel(o1, 0);
+        draw(o1);
+        add.to.pic(99, 0, 0, 84, 119, 4, 4);
+        end.of.loop(o1, f148);
+        goto(LABEL203);
+      }
+      add.to.pic(99, 0, 0, 84, 119, 4, 4);
+      animate.obj(o1);
+      set.view(o1, 16);
+      position(o1, 79, 150);
+      set.cel(o1, 0);
+      draw(o1);
+      stop.update(o1);
+    }
+  LABEL201:
+    draw(o0);
+  LABEL203:
+    show.pic();
+}
+if (fEGO_ON_WATER) {
+  observe.blocks(o0);
+  goto(LABEL217);
+}
+LABEL215:
+  ignore.blocks(o0);
+LABEL217:
+  if (f182 && !f21 && !f22 && !f24) {
+    sound(5, f159);
+    set(f24);
+  }
+LABEL237:
+  if (f159) {
+    if (!f21 && !f22) {
+      reset(f24);
+      reset(f159);
+    }
+  }
+LABEL257:
+  if (f180) {
+    get.posn(o0, v60, v61);
+    if (v61 > 115 && f177) {
+      reset(f180);
+      set(f182);
+      set.view(o0, 105);
+      v61 = 164;
+      ignore.objs(o0);
+      set.priority(o0, 15);
+      set(f98);
+      set(f20);
+      v96 = 3;
+      move.obj.v(o0, v60, v61, 96, f22);
+    }
+    if (v61 > 115 && f179) {
+      reset(f180);
+      set(f182);
+      set.view(o0, 105);
+      v61 = 164;
+      ignore.objs(o0);
+      set.priority(o0, 15);
+      set(f98);
+      set(f20);
+      v96 = 3;
+      move.obj.v(o0, v60, v61, 96, f22);
+    }
+    LABEL341:
+      if (v60 < 79 || v60 > 83) {
+        if (v61 > 70) {
+          reset(f180);
+          set(f182);
+          set.view(o0, 105);
+          v61 = 164;
+          ignore.objs(o0);
+          set.priority(o0, 15);
+          set(f98);
+          set(f20);
+          v96 = 3;
+          move.obj.v(o0, v60, v61, 96, f22);
+          goto(LABEL421);
+        }
+        reset(f180);
+        set(f182);
+        set(f25);
+        set.view(o0, 105);
+        v61 = 164;
+        ignore.objs(o0);
+        set.priority(o0, 15);
+        set(f98);
+        set(f20);
+        v96 = 3;
+        move.obj.v(o0, v60, v61, 96, f21);
+      }
+  }
+LABEL421:
+  if (f21) {
+    reset(f21);
+    stop.sound();
+    erase(o0);
+    if (f182 && !f25) {
+      print("You should be more careful before trying that next time!");
+      goto(LABEL448);
+    }
+    print(null);
+    LABEL448:
+      set(f63);
+  }
+LABEL450:
+  if (f22) {
+    reset(f20);
+    reset(f22);
+    reset(f98);
+    reset(f182);
+    release.priority(o0);
+    stop.sound();
+    set.view(o0, 93);
+  }
+LABEL470:
+  if (v94 == 2 && !f23) {
+    set(f23);
+    v30 = 250;
+  }
+LABEL485:
+  v30--;
+  if (v30 == 1 && f23) {
+    erase(o0);
+    print("Your arms are like lead... from swimming.  You find it impossible... to swim any longer.  You sink to the bottom... of the well....");
+    set(f63);
+  }
+LABEL502:
+  if (!f180 && !f20) {
+    if (said("climb", "rope") || said("gingerbread", "rope")) {
+      if (!f179 && !f177) {
+        print("The rope is out of reach.");
+      }
+      if (f179) {
+        erase(o0);
+        v94 = 0;
+        reset(f98);
+        set.view(o0, 74);
+        position(o0, 81, 113);
+        set.priority(o0, 15);
+        draw(o0);
+        move.obj(o0, 81, 113, 0, f148);
+        set(f180);
+        reset(f23);
+      }
+      LABEL577:
+        if (f177 && !f181) {
+          erase(o0);
+          v94 = 0;
+          reset(f98);
+          set.view(o0, 74);
+          position(o0, 81, 113);
+          set.priority(o0, 15);
+          draw(o0);
+          move.obj(o0, 81, 113, 0, f148);
+          set(f180);
+          reset(f23);
+        }
+      LABEL615:
+        if (f181) {
+          start.update(o1);
+          erase(o1);
+          set.view(o1, 16);
+          set.view(o0, 74);
+          position(o1, 78, 150);
+          position(o0, 81, 113);
+          set.cel(o1, 0);
+          draw(o1);
+          stop.update(o1);
+          set.priority(o0, 15);
+          draw(o0);
+          move.obj(o0, 81, 113, 0, f148);
+          set(f180);
+          reset(f181);
+        }
+    }
+    LABEL661:
+      if (f181) {
+        if (said("go", "water") || said("exit", "bucket") || said("go", "water") || said("jump", "water")) {
+          start.update(o1);
+          erase(o1);
+          set.view(o1, 16);
+          set.view(o0, 105);
+          position(o1, 79, 150);
+          position(o0, 81, 124);
+          set(f98);
+          move.obj(o0, 81, 164, 3, f22);
+          set.cel(o1, 0);
+          draw(o1);
+          stop.update(o1);
+          set.priority(o0, 15);
+          draw(o0);
+          set(f180);
+          reset(f181);
+        }
+      }
+  }
+LABEL739:
+  if (said("climb", "well") || said("gingerbread", "well")) {
+    print("You cannot climb the sides of the well.  They are too steep and slippery.");
+  }
+LABEL759:
+  if (said("examine", "well")) {
+    print("When you look upwards, you see the top of the well far, far above.");
+  }
+LABEL771:
+  if (!f81) {
+    if (said("examine", "bucket")) {
+      if (f177) {
+        print("Although you can only see the bottom of the bucket, it looks like a very nice bucket.");
+        goto(LABEL801);
+      }
+      print("The bucket is not here.");
+    }
+    LABEL801:
+      if (said("get", "bucket")) {
+        if (f177) {
+          print("How are you going to get the bucket?");
+          goto(LABEL824);
+        }
+        print("The bucket is not here.");
+      }
+    LABEL824:
+      if (said("go", "bucket") && f177 && !f181) {
+        print("I don't think that getting in the bucket right now will do you very much good.");
+      }
+  }
+LABEL841:
+  if (said("untie", "rope")) {
+    if (f180 || f181) {
+      print("The knot is tied very tightly.");
+      goto(LABEL868);
+    }
+    print("The rope is out of reach.");
+  }
+LABEL868:
+  if (said("get", "rope")) {
+    if (f180 || f181) {
+      print("The rope is secured to the well with a very tight knot.");
+      goto(LABEL895);
+    }
+    print("The rope is out of reach.");
+  }
+LABEL895:
+  if (said("break", "rope")) {
+    if (f180 || f181) {
+      print("The thick rope resists your efforts.");
+      goto(LABEL922);
+    }
+    print("The rope is out of reach.");
+  }
+LABEL922:
+  if (said("lower", "bucket") || said("raise", "bucket") || said("lower", "rope") || said("raise", "rope")) {
+    print("A person in your position is in no position to raise or lower anything.");
+  }
+LABEL954:
+  if (!f67) {
+    if (said("cut", "rope")) {
+      print("You have nothing to cut the rope with.");
+    }
+  }
+LABEL973:
+  if (f67) {
+    if (said("cut", "rope")) {
+      if (f180 && f177) {
+        print("Just before slitting the rope, you realize that it is not a very wise move at this time.");
+      }
+      if (f181) {
+        print("Just before slitting the rope, you realize that it is not a very wise move at this time.");
+      }
+      LABEL1007:
+        if (!f177) {
+          print("There is no reason to cut the rope.");
+        }
+      LABEL1016:
+        if (v94 == 2 && f177) {
+          print("You reach up out of the well water and cut the thick rope that holds the bucket.");
+          start.update(o1);
+          erase(o1);
+          set(f81);
+          set(f176);
+          reset(f177);
+          set(f179);
+          vSCORE += 2;
+          get("water bucket");
+          if (f163) {
+            set(f88);
+            get("water");
+            if (!f91) {
+              set(f91);
+              vSCORE += 2;
+            }
+          }
+        }
+      LABEL1066:
+        if (v94 == 1) {
+          print("You have other things to think about right now.");
+        }
+      LABEL1075:
+        if (!f177 && !f179) {
+          print("The rope is out of reach.");
+        }
+    }
+  }
+LABEL1087:
+  if (!f88) {
+    if (said("examine", "water")) {
+      print("This is murky well water.");
+    }
+    if (said("drink", "water")) {
+      if (v94 == 1 || v94 == 2) {
+        print("The water does not taste as good as you expected.");
+        goto(LABEL1135);
+      }
+      print("You need to be closer to the water to drink.");
+    }
+    LABEL1135:
+      if (said("get", "water")) {
+        if (f81 && (v94 == 1 || v94 == 2)) {
+          print("In the midst of your activities, you fill the bucket with well water.");
+          set(f88);
+          if (!f91) {
+            vSCORE += 2;
+            set(f91);
+          }
+          goto(LABEL1180);
+        }
+        print("There is no way for you to get water now.");
+      }
+  }
+LABEL1180:
+  if (v94 != 2) {
+    if (said("dive", "water") || said("dive", "gingerbread") || said("dive")) {
+      print();
+    }
+  }
+LABEL1212:
+  if (v94 == 2) {
+    if (said("dive", "water") || said("dive", "gingerbread") || said("dive")) {
+      if (!f164) {
+        set(f164);
+        vSCORE += 2;
+      }
+      new.room(52);
+    }
+  }
+LABEL1255:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(12);
+  }
+LABEL1264:
+  call(101);
+  return;

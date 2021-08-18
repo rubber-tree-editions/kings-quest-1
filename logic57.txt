@@ -1,0 +1,71 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  ignore.horizon(o0);
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  load.sound(5);
+  load.view(105);
+  draw(o0);
+  show.pic();
+}
+if (fEGO_TOUCHED_TRIGGER_LINE) {
+  ignore.blocks(o0);
+  set(f199);
+  reset(fEGO_TOUCHED_TRIGGER_LINE);
+  program.control();
+  if (!f79) {
+    set.view(o0, 105);
+  }
+  start.cycling(o0);
+  set(f98);
+  get.priority(o0, v30);
+  set.priority.v(o0, v30);
+  get.posn(o0, v60, v61);
+  v61 += 30;
+  v96 = 4;
+  move.obj.v(o0, v60, v61, 96, f20);
+}
+LABEL70:
+  if (!f20 && f199 && !f21) {
+    sound(5, f159);
+    set(f21);
+  }
+LABEL87:
+  if (f159) {
+    if (!f20) {
+      reset(f159);
+      reset(f21);
+    }
+  }
+LABEL104:
+  if (f20) {
+    erase(o0);
+    reset(f199);
+    reset(f20);
+    stop.sound();
+    print(null);
+    set(f63);
+  }
+LABEL121:
+  if (said("examine", "trees")) {
+    print();
+    goto(LABEL148);
+  }
+LABEL136:
+  if (said("examine", "anyword")) {
+    print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
+  }
+LABEL148:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(58);
+  }
+LABEL157:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(56);
+  }
+LABEL166:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(60);
+  }
+LABEL175:
+  return;

@@ -1,0 +1,101 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(46);
+  load.logics(101);
+  call(101);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 105, 58, 0, 0);
+  }
+  LABEL41:
+    if (vPREV_ROOM_NO == 6) {
+      position(o0, 121, 47);
+    }
+  LABEL52:
+    ignore.blocks(o0);
+    draw(o0);
+    show.pic();
+}
+if (said("examine", "lake")) {
+  print();
+}
+LABEL69:
+  if (!fEGO_ON_WATER) {
+    if (posn(o0, 96, 82, 115, 99) || posn(o0, 100, 108, 115, 120) || posn(o0, 30, 113, 67, 134) || posn(o0, 90, 121, 112, 130) || posn(o0, 30, 135, 67, 139) || posn(o0, 90, 131, 107, 142)) {
+      set(fEGO_ON_WATER);
+      set(f134);
+    }
+  }
+LABEL122:
+  if (v94 <= 0 && fEGO_ON_WATER) {
+    v76 = 255;
+    if (posn(o0, 115, 104, 125, 111) || posn(o0, 113, 112, 124, 119) || posn(o0, 100, 120, 122, 126) || posn(o0, 100, 127, 118, 136) || posn(o0, 100, 137, 115, 142)) {
+      v76 = 100;
+      v77 = 121;
+    }
+    if (posn(o0, 30, 131, 55, 146)) {
+      v76 = 25;
+      v77 = 123;
+    }
+    LABEL193:
+      if (v76 == 255) {
+        v76 = 0;
+        goto(LABEL218);
+      }
+    LABEL206:
+      get.posn(o0, v60, v61);
+      v76 -= v60;
+      v77 -= v61;
+      set(f134);
+  }
+LABEL218:
+  if (!f88) {
+    if (said("drink", "water") || said("get", "drink")) {
+      print("It tastes very refreshing to a thirsty wanderer.");
+    }
+  }
+LABEL245:
+  if (!f88 && f81 && said("get", "water")) {
+    print(null);
+    get("water");
+    set(f88);
+    if (!f91) {
+      vSCORE += 2;
+    }
+    set(f91);
+  }
+LABEL278:
+  if (vEGO_EDGE_CODE != 0) {
+    if (f66) {
+      reset(f66);
+      reset(f75);
+      set(f130);
+    }
+  }
+LABEL298:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(6);
+  }
+LABEL307:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(44);
+  }
+LABEL316:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(42);
+  }
+LABEL325:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(38);
+  }
+LABEL334:
+  if (f75) {
+    call(103);
+  }
+LABEL342:
+  call(101);
+  return;

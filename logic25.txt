@@ -1,0 +1,402 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  if (f75) {
+    load.logics(103);
+  }
+  load.logics(101);
+  call(101);
+  set(f68);
+  if (!f150 && !f151) {
+    load.view(22);
+    animate.obj(o1);
+    set.view(o1, 22);
+    position(o1, 34, 54);
+    observe.blocks(o1);
+    set(f20);
+    load.sound(1);
+    load.sound(10);
+  }
+  LABEL55:
+    draw(o0);
+    show.pic();
+}
+if (f21 && f159) {
+  if (!f31) {
+    set(f31);
+    sound(10, f32);
+  }
+  if (f32) {
+    reset(f31);
+    reset(f32);
+  }
+}
+LABEL88:
+  if (f21) {
+    if (posn(o0, 10, 71, 68, 93)) {
+      observe.blocks(o0);
+      goto(LABEL111);
+    }
+    ignore.blocks(o0);
+  }
+LABEL111:
+  if (!f21) {
+    ignore.blocks(o0);
+  }
+LABEL120:
+  if (f21 && !f25) {
+    set(f25);
+    follow.ego(o1, 1, f22);
+  }
+LABEL135:
+  if (!f21) {
+    if (said("anyword", "troll")) {
+      print("There is no troll around here.");
+    }
+    if (said("throw", "dagger") || said("murder", "goat")) {
+      if (f67) {
+        print("You throw the dagger and it lands in the river, lost for all time.");
+        drop("dagger");
+        reset(f67);
+        set(f70);
+        vSCORE -= 5;
+      }
+    }
+    LABEL189:
+      if (said("use", "dagger") && f67) {
+        print("How do you use the dagger?");
+      }
+    LABEL203:
+      if (said("give", "treasure")) {
+        print("Why?  To what?");
+      }
+    LABEL215:
+      if (said("give", "pouch of diamonds") && f106) {
+        print("Why?  To what?");
+      }
+    LABEL229:
+      if (said("give", "golden egg") && f110) {
+        print("Why?  To what?");
+      }
+    LABEL243:
+      if (said("give", "golden walnut")) {
+        if (f127 || f108) {
+          print("Why?  To what?");
+        }
+      }
+  }
+LABEL265:
+  if (f20 && fEGO_TOUCHED_TRIGGER_LINE) {
+    reset(f20);
+    set(f21);
+    v30 = 2;
+    step.size(o1, v30);
+    sound(1, f159);
+    draw(o1);
+    if (f79) {
+      print();
+      goto(LABEL301);
+    }
+    print(null);
+  }
+LABEL301:
+  if (f21 && f75 && !f26) {
+    distance(o0, o13, v31);
+    if (v31 > 25) {
+      reposition.to(o13, 41, 103);
+    }
+    print("It is a well known fact that goats hate trolls intensely. You should move aside and let the goat take care of this nasty troll.");
+    set(f26);
+    set(f76);
+    move.obj(o13, 41, 98, 0, f23);
+  }
+LABEL339:
+  if (f23) {
+    ignore.objs(o13);
+    reset(f23);
+    stop.motion(o1);
+    get.posn(o1, v60, v61);
+    v96 = 1;
+    move.obj.v(o13, v60, v61, 96, f24);
+  }
+LABEL364:
+  distance(o1, o13, v62);
+  if (v62 < 20 && !f150) {
+    print("The goat butts the troll right off the bridge, never to be seen in these parts again.");
+    set(f150);
+    reset(f21);
+    reset(f75);
+    erase(o1);
+    set(f130);
+    get.posn(o13, v60, v61);
+    v61 = 165;
+    move.obj.v(o13, v60, v61, 96, f30);
+    vSCORE += 4;
+  }
+LABEL406:
+  if (f30) {
+    reset(f30);
+    erase(o13);
+  }
+LABEL416:
+  if (f21 && !f75) {
+    if (said("examine", "troll")) {
+      if (posn(o0, 1, 78, 85, 120)) {
+        print("This is the ugliest, meanest troll I have ever seen.");
+        goto(LABEL452);
+      }
+      print("The troll appears to be upset about your attempt to cross his bridge.");
+    }
+    LABEL452:
+      if (said("murder", "troll")) {
+        if (posn(o0, 1, 78, 85, 120) && f67) {
+          print("This troll is a real fighter.  Better not even try it.");
+        }
+        if (posn(o0, 1, 78, 85, 120) && !f67) {
+          print("Fortunately for you, you have nothing to kill the  troll with.");
+        }
+        LABEL491:
+          if (!posn(o0, 1, 78, 85, 120)) {
+            print("If you want to try that, you should get a little closer.");
+          }
+      }
+    LABEL504:
+      if (said("talk", "troll") || said("hello") || said("say", "hello")) {
+        if (posn(o0, 1, 78, 85, 120)) {
+          print("The troll demands a treasure for passage across his bridge.");
+          goto(LABEL543);
+        }
+        print("Trolls have bad hearing, so you will have to get closer.");
+      }
+    LABEL543:
+      if (said("throw", "dagger") && f67) {
+        if (posn(o0, 1, 78, 85, 120)) {
+          print("You throw the dagger and the old -- but quick -- troll catches it.  Now what are your plans?");
+          drop("dagger");
+          reset(f67);
+          set(f70);
+          vSCORE -= 5;
+          goto(LABEL590);
+        }
+        print("You throw, and lose the dagger.");
+        drop("dagger");
+        reset(f67);
+        set(f70);
+        vSCORE -= 5;
+      }
+    LABEL590:
+      if (said("use", "dagger") && f67) {
+        print("How do you use the dagger?");
+      }
+    LABEL604:
+      if (said("shove", "troll")) {
+        if (posn(o0, 1, 78, 85, 120)) {
+          print("You push the troll as hard as you can but he doesn't budge an inch.");
+          goto(LABEL631);
+        }
+        print("You certainly cannot do that from here.");
+      }
+    LABEL631:
+      if (said("beg", "troll")) {
+        if (posn(o0, 1, 78, 85, 120)) {
+          print("The troll has a heart of stone.");
+          goto(LABEL658);
+        }
+        print("The troll cannot hear you from there.");
+      }
+    LABEL658:
+      if (said("attack", "troll")) {
+        print("You could never win a fight with a troll.");
+      }
+    LABEL670:
+      if (said("give", "treasure") || said("give", "troll", "treasure") || said("give", "treasure", "troll")) {
+        print("What type of treasure would you like to give the old troll?");
+      }
+    LABEL700:
+      if (said("give", "pouch of diamonds") || said("give", "troll", "pouch of diamonds") || said("give", "pouch of diamonds", "troll")) {
+        if (f106) {
+          if (posn(o0, 1, 78, 85, 120)) {
+            print("OK");
+            drop("pouch of diamonds");
+            reset(f106);
+            set(f151);
+            set(f107);
+            vSCORE -= 6;
+            set(f27);
+            goto(LABEL764);
+          }
+          print("If you want to try that, you should get a little closer.");
+        }
+      }
+    LABEL764:
+      if (said("give", "sceptre") || said("give", "troll", "sceptre") || said("give", "sceptre", "troll")) {
+        if (f113) {
+          if (posn(o0, 1, 78, 85, 120)) {
+            print("OK");
+            drop("sceptre");
+            reset(f113);
+            set(f151);
+            set(f114);
+            vSCORE -= 6;
+            set(f27);
+            goto(LABEL828);
+          }
+          print("If you want to try that, you should get a little closer.");
+        }
+      }
+    LABEL828:
+      if (said("give", "golden egg") || said("give", "troll", "golden egg") || said("give", "golden egg", "troll")) {
+        if (f110) {
+          if (posn(o0, 1, 78, 85, 120)) {
+            print("OK");
+            drop("gold egg");
+            reset(f110);
+            set(f151);
+            set(f111);
+            vSCORE -= 6;
+            set(f27);
+            goto(LABEL892);
+          }
+          print("If you want to try that, you should get a little closer.");
+        }
+      }
+    LABEL892:
+      if (said("give", "golden walnut") || said("give", "troll", "golden walnut") || said("give", "golden walnut", "troll")) {
+        if (f127) {
+          print("The troll doesn't want just a plain walnut.");
+          goto(LABEL967);
+        }
+        if (f108) {
+          if (posn(o0, 1, 78, 85, 120)) {
+            print("OK");
+            drop("gold walnut");
+            reset(f108);
+            set(f151);
+            set(f109);
+            vSCORE -= 6;
+            set(f27);
+            goto(LABEL967);
+          }
+          print("If you want to try that, you should get a little closer.");
+        }
+      }
+  }
+LABEL967:
+  if (f27) {
+    print("The troll greedily grabs the treasure and disappears  under the bridge.");
+    reset(f27);
+    move.obj(o1, 36, 60, 0, f28);
+  }
+LABEL983:
+  if (f28) {
+    reset(f28);
+    erase(o1);
+    reset(f21);
+  }
+LABEL995:
+  if (!fEGO_ON_WATER) {
+    if (posn(o0, 64, 84, 70, 90)) {
+      set(fEGO_ON_WATER);
+      set(f134);
+    }
+  }
+LABEL1016:
+  if (v94 <= 0 && fEGO_ON_WATER) {
+    v76 = 255;
+    if (posn(o0, 64, 54, 98, 88)) {
+      v76 = 78;
+      v77 = 85;
+    }
+    if (posn(o0, 99, 55, 132, 88)) {
+      v76 = 116;
+      v77 = 83;
+    }
+    LABEL1061:
+      if (posn(o0, 133, 54, 159, 89)) {
+        v76 = 138;
+        v77 = 84;
+      }
+    LABEL1077:
+      if (v76 == 255) {
+        v76 = 0;
+        goto(LABEL1102);
+      }
+    LABEL1090:
+      get.posn(o0, v60, v61);
+      v76 -= v60;
+      v77 -= v61;
+      set(f134);
+  }
+LABEL1102:
+  if (fEGO_ON_WATER && !f29) {
+    set(f29);
+    print("This placid looking stream is actually quite dangerous... the current is stronger than it looks.  You can't keep your head above water.");
+  }
+LABEL1115:
+  if (!f88 && !fEGO_ON_WATER && !f116) {
+    if (said("drink", "water") || said("get", "drink")) {
+      if (posn(o0, 1, 46, 158, 102)) {
+        print("The steep embankment prevents you from doing that.");
+        goto(LABEL1163);
+      }
+      print("You are not close enough to the river.");
+    }
+  }
+LABEL1163:
+  if (!f88 && f81 && !fEGO_ON_WATER && said("get", "water")) {
+    if (posn(o0, 1, 46, 158, 102)) {
+      print("The steep embankment prevents you from doing that.");
+      goto(LABEL1198);
+    }
+    print("You are not close enough to the river.");
+  }
+LABEL1198:
+  if (said("examine", "bridge")) {
+    print("This is an old, rickety bridge.");
+  }
+LABEL1210:
+  if (said("look under", "bridge")) {
+    print("You glance under the old bridge, but see nothing unusual.");
+  }
+LABEL1222:
+  if (said("examine", "stream")) {
+    print("The stream appears placid enough, but appearances can be deceiving.");
+  }
+LABEL1234:
+  if (said("examine", "across")) {
+    print("There is a green meadow on the other side of the river.");
+  }
+LABEL1246:
+  if (vEGO_EDGE_CODE != 0) {
+    observe.blocks(o0);
+    reset(f68);
+    if (f21 && f75) {
+      reset(f75);
+      set(f150);
+      set(f130);
+    }
+  }
+LABEL1272:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(40);
+  }
+LABEL1281:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(26);
+  }
+LABEL1290:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(32);
+  }
+LABEL1299:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(24);
+  }
+LABEL1308:
+  if (f75) {
+    call(103);
+  }
+LABEL1316:
+  call(101);
+  return;

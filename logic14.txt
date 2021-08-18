@@ -1,0 +1,133 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(40);
+  load.sound(4);
+  load.sound(5);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 21, 90, 0, 0);
+  }
+  LABEL41:
+    if (vPREV_ROOM_NO == 63) {
+      if (f131) {
+        load.view(105);
+        load.view(103);
+        load.view(104);
+        set.view(o0, 105);
+        ignore.blocks(o0);
+        position(o0, 84, 41);
+        set.priority(o0, 12);
+        program.control();
+        move.obj(o0, 84, 132, 4, f20);
+        set(f209);
+        goto(LABEL88);
+      }
+      position(o0, 84, 132);
+    }
+  LABEL88:
+    draw(o0);
+    show.pic();
+}
+if (f131 && !f22) {
+  set(f22);
+  set(f135);
+  sound(5, f198);
+}
+LABEL107:
+  if (!f20 && f198) {
+    reset(f198);
+    reset(f22);
+  }
+LABEL120:
+  v30--;
+  if (f20) {
+    reset(f20);
+    reset(f131);
+    observe.blocks(o0);
+    release.priority(o0);
+    stop.motion(o0);
+    set.view(o0, 103);
+    v30 = 20;
+    set(f98);
+    shake.screen(2);
+    print();
+    sound(4, f159);
+  }
+LABEL153:
+  if (f159) {
+    if (v30 > 0) {
+      reset(f159);
+      sound(4, f159);
+    }
+  }
+LABEL171:
+  if (v30 == 1) {
+    v30 = 0;
+    reset(f135);
+    set.view(o0, 104);
+    end.of.loop(o0, f21);
+  }
+LABEL189:
+  if (f21) {
+    reset(f21);
+    reset(f98);
+    set.view(o0, 0);
+    start.motion(o0);
+    reset(f209);
+    player.control();
+  }
+LABEL207:
+  if (said("examine", "trees")) {
+    if (posn(o0, 45, 125, 159, 167)) {
+      print("This is a very large oak tree with branches stretching to the sky.");
+      goto(LABEL234);
+    }
+    print(null);
+  }
+LABEL234:
+  if (said("climb", "trees") || said("climb", "oak", "trees") || said("climb", "oak")) {
+    if (f79) {
+      print("You can't do that when you're invisible.");
+      goto(LABEL316);
+    }
+    if (f75) {
+      print("The old goat is afraid of heights and refuses to climb the tree.");
+      goto(LABEL316);
+    }
+    if (posn(o0, 85, 131, 140, 167)) {
+      print("OK");
+      new.room(63);
+      goto(LABEL316);
+    }
+    if (posn(o0, 36, 56, 73, 90)) {
+      print("This tree is too hard to climb.");
+      goto(LABEL316);
+    }
+    print("You can't climb a tree here!");
+  }
+LABEL316:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(19);
+  }
+LABEL325:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(15);
+  }
+LABEL334:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(13);
+  }
+LABEL343:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(3);
+  }
+LABEL352:
+  if (f75) {
+    call(103);
+  }
+LABEL360:
+  return;

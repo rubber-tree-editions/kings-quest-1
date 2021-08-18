@@ -1,0 +1,154 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(40);
+  load.logics(101);
+  call(101);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 56, 127, 0, 0);
+  }
+  LABEL41:
+    if (vPREV_ROOM_NO == 32) {
+      get.posn(o0, v60, v61);
+      if (v60 > 103) {
+        position(o0, 143, 166);
+      }
+    }
+  LABEL63:
+    set(f68);
+    ignore.blocks(o0);
+    draw(o0);
+    show.pic();
+}
+if (fEGO_ON_WATER && !f20) {
+  set(f20);
+  print();
+}
+LABEL83:
+  if (said("examine", "stream")) {
+    print(null);
+  }
+LABEL95:
+  if (said("examine", "across") || said("examine", "across", "stream")) {
+    print("You see a lovely green meadow on the other side of the river.");
+    set(fSAID_ACCEPTED_USER_INPUT);
+  }
+LABEL119:
+  if (said("examine", "rocks")) {
+    print("It is a massive boulder that splits the river.");
+  }
+LABEL131:
+  if (!f88) {
+    if (said("drink", "water") || said("get", "drink")) {
+      if (posn(o0, 0, 48, 97, 128) || posn(o0, 98, 94, 159, 167) || posn(o0, 120, 44, 159, 86)) {
+        print("You drink deeply of the cold river water.");
+        goto(LABEL187);
+      }
+      print("You are not close enough to the Raging River.");
+    }
+  }
+LABEL187:
+  if (!f88 && f81 && said("get", "water")) {
+    if (posn(o0, 0, 48, 97, 128) || posn(o0, 98, 94, 159, 167) || posn(o0, 120, 44, 159, 86)) {
+      print("You carefully fill the bucket at the river's edge.");
+      get("water");
+      set(f88);
+      if (!f91) {
+        vSCORE += 2;
+      }
+      set(f91);
+      goto(LABEL249);
+    }
+    print("You are not close enough to the Raging River.");
+  }
+LABEL249:
+  if (!fEGO_ON_WATER) {
+    if (posn(o0, 14, 66, 54, 107) || posn(o0, 99, 64, 145, 82) || posn(o0, 114, 113, 133, 136)) {
+      set(fEGO_ON_WATER);
+      set(f134);
+    }
+  }
+LABEL284:
+  if (v94 <= 0 && fEGO_ON_WATER) {
+    v76 = 255;
+    if (posn(o0, 0, 64, 23, 109)) {
+      v76 = 5;
+      v77 = 90;
+    }
+    if (posn(o0, 24, 67, 47, 108)) {
+      v76 = 30;
+      v77 = 91;
+    }
+    LABEL329:
+      if (posn(o0, 47, 63, 77, 87)) {
+        v76 = 63;
+        v77 = 81;
+      }
+    LABEL345:
+      if (posn(o0, 47, 88, 77, 110)) {
+        v76 = 63;
+        v77 = 96;
+      }
+    LABEL361:
+      if (posn(o0, 78, 64, 98, 112)) {
+        v76 = 79;
+        v77 = 90;
+      }
+    LABEL377:
+      if (posn(o0, 99, 60, 131, 82)) {
+        v76 = 108;
+        v77 = 78;
+      }
+    LABEL393:
+      if (posn(o0, 132, 40, 159, 80)) {
+        v76 = 134;
+        v77 = 69;
+      }
+    LABEL409:
+      if (posn(o0, 95, 88, 145, 130)) {
+        v76 = 110;
+        v77 = 115;
+      }
+    LABEL425:
+      if (posn(o0, 98, 131, 147, 167)) {
+        v76 = 122;
+        v77 = 157;
+      }
+    LABEL441:
+      if (v76 == 255) {
+        v76 = 0;
+        goto(LABEL466);
+      }
+    LABEL454:
+      get.posn(o0, v60, v61);
+      v76 -= v60;
+      v77 -= v61;
+      set(f134);
+  }
+LABEL466:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(48);
+  }
+LABEL475:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(40);
+  }
+LABEL484:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(34);
+  }
+LABEL493:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(32);
+  }
+LABEL502:
+  if (f75) {
+    call(103);
+  }
+LABEL510:
+  call(101);
+  return;

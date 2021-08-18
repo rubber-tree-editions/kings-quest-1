@@ -1,0 +1,377 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  if (!f165) {
+    load.view(34);
+  }
+  if (v75 == 1) {
+    load.view(61);
+  }
+  LABEL30:
+    if (v75 == 0) {
+      load.view(33);
+      load.view(61);
+      load.view(82);
+      load.sound(1);
+      load.sound(7);
+    }
+  LABEL47:
+    load.view(35);
+    if (vPREV_ROOM_NO == 52) {
+      set.view(o0, 0);
+      reset(f98);
+      v94 = 0;
+      position(o0, 133, 136);
+      if (!f167) {
+        set(f167);
+        vSCORE += 1;
+      }
+    }
+  LABEL80:
+    if (vPREV_ROOM_NO == 50) {
+      position(o0, 9, 138);
+    }
+  LABEL91:
+    if (!f165) {
+      animate.obj(o1);
+      set.view(o1, 34);
+      position(o1, 38, 108);
+      draw(o1);
+      stop.update(o1);
+    }
+  LABEL111:
+    if (v75 == 2) {
+      animate.obj(o2);
+      set.view(o2, 35);
+      ignore.blocks(o2);
+      position(o2, 8, 127);
+      draw(o2);
+      stop.cycling(o2);
+    }
+  LABEL133:
+    if (v75 != 2) {
+      animate.obj(o2);
+      set.view(o2, 35);
+      ignore.blocks(o2);
+      position(o2, 3, 127);
+      draw(o2);
+      stop.cycling(o2);
+      animate.obj(o3);
+      if (v75 == 1) {
+        add.to.pic(61, 0, 0, 40, 152, 0, 0);
+      }
+      if (v75 == 0) {
+        set.view(o3, 33);
+        position(o3, 40, 120);
+        v30 = 3;
+        step.size(o3, v30);
+        draw(o3);
+        observe.blocks(o3);
+        follow.ego(o3, 20, f20);
+      }
+    }
+  LABEL201:
+    draw(o0);
+    show.pic();
+}
+get.posn(o0, v60, v61);
+if (v60 > 15) {
+  ignore.blocks(o0);
+}
+LABEL217:
+  if (v60 < 16) {
+    if (v75 == 2) {
+      ignore.blocks(o0);
+      goto(LABEL238);
+    }
+    observe.blocks(o0);
+  }
+LABEL238:
+  if (v75 == 0 && !f24) {
+    set(f24);
+    sound(1, f25);
+  }
+LABEL253:
+  if (v75 == 0 && f25) {
+    current.loop(o3, v31);
+    if (v31 == 0) {
+      sound(7, f148);
+      goto(LABEL279);
+    }
+    stop.sound();
+  }
+LABEL279:
+  if (f20 && v75 == 0) {
+    reset(f20);
+    set.view(o0, 82);
+    if (f102) {
+      print("Your shield melted from the intensity of the dragon's flames!  You should know about these fire-breathing dragons!  Maybe next time you will be a little more careful!");
+      goto(LABEL306);
+    }
+    print("You should know about these fire-breathing dragons!  Maybe next time you will be a little more careful!");
+    LABEL306:
+      set(f63);
+  }
+LABEL308:
+  if (said("examine", "room")) {
+    if (!f165 && v75 == 0) {
+      print(null);
+    }
+    if (!f165 && v75 == 1) {
+      print("There is a dead dragon, a large boulder, and a seemingly ordinary mirror in the cave.");
+    }
+    LABEL342:
+      if (!f165 && v75 == 2) {
+        print("There is a large granite boulder and a magic mirror!! in the cave.");
+      }
+  }
+LABEL354:
+  if (said("examine", "cave")) {
+    if (!f165 && v75 == 0) {
+      print("A green, scaly dragon breathing hot fire and smoke is protecting the mirror.");
+    }
+    if (f165 && v75 == 1) {
+      print("In this large cavern, there is a slimy dead dragon, an opening on one side, and a large boulder in the other.");
+    }
+    LABEL387:
+      if (!f165 && v75 == 1) {
+        print("There is a dead dragon, a large boulder, and a seemingly ordinary mirror in the cave.");
+      }
+    LABEL399:
+      if (!f165 && v75 == 2) {
+        print("There is a large granite boulder and a magic mirror!! in the cave.");
+      }
+    LABEL411:
+      if (f165 && v75 == 2) {
+        print("The cavern is empty, save for a couple of openings on either side.");
+      }
+  }
+LABEL422:
+  if (said("examine", "dragon")) {
+    if (v75 == 2) {
+      print("There is no dragon here.");
+    }
+    if (v75 == 0) {
+      print("This ferocious, fire-breathing dragon with sharp, green scales and a long tail is protecting the magic mirror. Watch out for the flames!");
+    }
+    LABEL450:
+      if (v75 == 1) {
+        print("You see the once powerful dragon lying lifeless before you.");
+      }
+  }
+LABEL459:
+  if (said("find", "dragon")) {
+    if (v75 == 2) {
+      print("There is no dragon here.");
+    }
+    if (v75 == 0 || v75 == 1) {
+      print();
+    }
+  }
+LABEL492:
+  if (said("examine", "stalactites") || said("examine", "stalactites")) {
+    print("It took millenniums for these stalagmites and stalactites to form.");
+  }
+LABEL512:
+  if (said("examine", "rocks")) {
+    print("This boulder is a huge chunk of granite.");
+  }
+LABEL524:
+  if (said("shove", "rocks") || said("shove", "rocks")) {
+    print("This boulder is far too heavy to move.");
+  }
+LABEL544:
+  if (v75 == 0) {
+    if (said("examine", "doorway") || said("look inside", "doorway")) {
+      print("A strange watery light issues from the hole.");
+    }
+    if (said("talk", "dragon") || said("hello") || said("say", "hello")) {
+      print("This dragon does not respond to reason.");
+    }
+  }
+LABEL595:
+  if (v75 != 0) {
+    if (said("examine", "doorway") || said("look inside", "doorway")) {
+      if (posn(o0, 1, 1, 75, 166)) {
+        print("The hole seems to lead further into the cave.");
+        goto(LABEL638);
+      }
+      print("A strange watery light issues from the hole.");
+    }
+  }
+LABEL638:
+  if (v75 == 1) {
+    if (said("get", "dagger")) {
+      print("The mere thought of retrieving the dagger repulses you.");
+    }
+  }
+LABEL657:
+  if (f67) {
+    if (said("use", "dagger")) {
+      print("How?");
+    }
+  }
+LABEL675:
+  if (said("murder", "dragon")) {
+    if (v75 == 2) {
+      print("How?");
+    }
+    if (v75 == 1) {
+      print("This dragon had only one life and you have taken it.");
+    }
+    LABEL703:
+      if (v75 == 0) {
+        if (posn(o0, 105, 96, 145, 166)) {
+          print("You can't do that from here.!");
+          goto(LABEL727);
+        }
+        print("How do you wish to accomplish that?");
+      }
+  }
+LABEL727:
+  if (f81) {
+    if (said("throw", "bucket")) {
+      print("You throw your bucket on the cavern floor.");
+      reset(f81);
+      drop("water bucket");
+      vSCORE -= 2;
+      if (f88) {
+        reset(f88);
+        drop("water");
+        reset(f91);
+        vSCORE -= 2;
+      }
+    }
+  }
+LABEL767:
+  if (!f100 && f165) {
+    if (said("anyword", "mirror")) {
+      print("There is no mirror here.");
+    }
+  }
+LABEL788:
+  if (!f100 && !f165) {
+    if (said("steal", "mirror") && v75 == 0) {
+      print("With that dragon here?  No way!");
+    }
+    if (posn(o0, 26, 104, 59, 127)) {
+      if (said("examine", "mirror")) {
+        if (v75 == 0) {
+          print("The dragon is protecting the magic mirror.");
+        }
+        if (v75 == 2 || v75 == 1) {
+          print("The magic mirror is framed with ornate mahogany wood, polished to a high sheen.");
+        }
+      }
+      LABEL856:
+        if (said("get", "mirror")) {
+          if (v75 == 0) {
+            print("I do not think that you can get close enough to the magic mirror with the dragon here.");
+          }
+          if (v75 == 2 || v75 == 1) {
+            start.update(o1);
+            erase(o1);
+            set(f100);
+            set(f165);
+            get("magic mirror");
+            print("Carefully, you pick up the magic mirror.");
+            v74++;
+            vSCORE += 8;
+          }
+        }
+    }
+    LABEL904:
+      if (!posn(o0, 26, 104, 59, 127)) {
+        if (said("examine", "mirror")) {
+          print("You could get a much better view if you were closer.");
+        }
+        if (said("get", "mirror")) {
+          print("You are not close enough to reach it.");
+        }
+      }
+  }
+LABEL939:
+  if (!f88) {
+    if (said("douse", "dragon") || said("throw", "water") || said("throw", "water", "dragon")) {
+      if (v75 != 2) {
+        print("You have nothing with which to douse a dragon.");
+      }
+      if (v75 == 2) {
+        print("There is no dragon here.");
+      }
+    }
+  }
+LABEL991:
+  if (posn(o0, 105, 96, 145, 166) && v75 == 0) {
+    if (f67 && said("throw", "dagger")) {
+      reset(f67);
+      print("The dagger sings through the air, but falls short of the dragon.  You should have been closer.");
+      drop("dagger");
+      vSCORE -= 5;
+    }
+    if (f88 && (said("throw", "water") || said("throw", "water", "dragon") || said("douse", "dragon"))) {
+      reset(f88);
+      print("You throw your water, but to no avail.  It lands on the floor and is quickly absorbed.");
+      drop("water");
+      vSCORE -= 2;
+      reset(f91);
+    }
+  }
+LABEL1064:
+  if (!posn(o0, 105, 96, 145, 166) && v75 == 0) {
+    if (f88 && (said("throw", "water") || said("throw", "water", "dragon") || said("douse", "dragon"))) {
+      reset(f88);
+      print("The water hits the dragon squarely in the mouth, extinguishing its roaring flames.  No fire!  How mortified and embarrassed the dragon is!  Moving a huge boulder in leaving, the dragon creeps off to sulk.");
+      drop("water");
+      vSCORE -= 2;
+      vSCORE += 7;
+      reset(f91);
+      move.obj(o3, 40, 137, 0, f21);
+      v75 = 2;
+    }
+    if (f67 && said("throw", "dagger")) {
+      ignore.blocks(o3);
+      reset(f67);
+      print("Nervously, you throw the dagger at the dragon and strike it in the heart.  Death for the dragon is instant.");
+      drop("dagger");
+      vSCORE -= 5;
+      vSCORE += 3;
+      erase(o3);
+      set.view(o3, 61);
+      v30 = 0;
+      step.size(o3, v30);
+      draw(o3);
+      stop.motion(o3);
+      stop.cycling(o3);
+      v75 = 1;
+    }
+  }
+LABEL1175:
+  if (f21) {
+    reset(f21);
+    start.cycling(o2);
+    end.of.loop(o2, f22);
+  }
+LABEL1188:
+  if (f22) {
+    ignore.blocks(o3);
+    reset(f22);
+    stop.cycling(o2);
+    move.obj(o3, 4, 137, 0, f23);
+  }
+LABEL1206:
+  if (f23) {
+    reset(f23);
+    erase(o3);
+  }
+LABEL1216:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(52);
+  }
+LABEL1225:
+  if (posn(o0, 0, 0, 1, 167)) {
+    new.room(50);
+  }
+LABEL1237:
+  return;

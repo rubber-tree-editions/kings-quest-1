@@ -1,0 +1,89 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  ignore.horizon(o0);
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  load.sound(5);
+  load.view(105);
+  if (vPREV_ROOM_NO == 57) {
+    get.posn(o0, v60, v61);
+    if (v61 > 154) {
+      position(o0, 150, 153);
+    }
+  }
+  draw(o0);
+  show.pic();
+}
+if (fEGO_TOUCHED_TRIGGER_LINE && posn(o0, 0, 0, 159, 83)) {
+  set(f199);
+  reset(fEGO_TOUCHED_TRIGGER_LINE);
+  program.control();
+  if (!f79) {
+    set.view(o0, 105);
+  }
+  start.cycling(o0);
+  set(f98);
+  get.priority(o0, v30);
+  set.priority.v(o0, v30);
+  get.posn(o0, v60, v61);
+  v61 += 40;
+  v96 = 4;
+  move.obj.v(o0, v60, v61, 96, f20);
+}
+LABEL96:
+  if (fEGO_TOUCHED_TRIGGER_LINE && posn(o0, 0, 84, 159, 167)) {
+    set(f199);
+    set(f95);
+    program.control();
+    stop.cycling(o0);
+    get.posn(o0, v60, v61);
+    get.priority(o0, v30);
+    set.priority.v(o0, v30);
+    v61 += 9;
+    v96 = 4;
+    move.obj.v(o0, v60, v61, 96, f20);
+  }
+LABEL137:
+  if (!f20 && f199 && !f21) {
+    sound(5, f159);
+    set(f21);
+  }
+LABEL154:
+  if (f159) {
+    if (!f20) {
+      reset(f159);
+      reset(f21);
+    }
+  }
+LABEL171:
+  if (f20) {
+    erase(o0);
+    reset(f199);
+    reset(f20);
+    stop.sound();
+    print(null);
+    set(f63);
+  }
+LABEL188:
+  if (said("examine", "flowers")) {
+    print();
+    goto(LABEL215);
+  }
+LABEL203:
+  if (said("examine", "anyword")) {
+    print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
+  }
+LABEL215:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(57);
+  }
+LABEL224:
+  if (vEGO_EDGE_CODE == 4) {
+    if (f94) {
+      new.room(72);
+      goto(LABEL244);
+    }
+    new.room(64);
+  }
+LABEL244:
+  return;

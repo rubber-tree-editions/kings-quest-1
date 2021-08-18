@@ -1,0 +1,40 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(46);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 107, 131, 0, 0);
+  }
+  LABEL37:
+    draw(o0);
+    show.pic();
+}
+if (said("examine", "anyword")) {
+  print();
+}
+LABEL52:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(38);
+  }
+LABEL61:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(28);
+  }
+LABEL70:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(26);
+  }
+LABEL79:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(22);
+  }
+LABEL88:
+  if (f75) {
+    call(103);
+  }
+LABEL96:
+  return;

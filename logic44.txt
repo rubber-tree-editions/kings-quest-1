@@ -1,0 +1,106 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(41);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 26, 64, 0, 0);
+  }
+  LABEL37:
+    if (vPREV_ROOM_NO == 37 && fEGO_ON_WATER) {
+      set.view(o0, 0);
+      reset(f98);
+      v94 = 0;
+    }
+  LABEL54:
+    if (vPREV_ROOM_NO == 79) {
+      position(o0, 118, 123);
+    }
+  LABEL65:
+    draw(o0);
+    show.pic();
+}
+if (said("examine", "pump")) {
+  print(null);
+}
+LABEL80:
+  if (said("examine", "axe")) {
+    print("The handle has been broken and repaired.  The head shows the signs of many sharpenings.");
+  }
+LABEL92:
+  if (said("examine", "building")) {
+    print("It was made from rough, hand-hewn logs long ago.  Lately, the upkeep has faltered.  There are even holes in the  roof.");
+  }
+LABEL104:
+  if (said("examine", "stumps")) {
+    print("The trees were cut from these stumps years ago.");
+  }
+LABEL116:
+  if (said("use", "pump") || said("pump", "water")) {
+    if (posn(o0, 24, 115, 61, 149)) {
+      print("The rusty pump doesn't work.");
+      goto(LABEL151);
+    }
+    print("You are not close enough.");
+  }
+LABEL151:
+  if (said("get", "axe")) {
+    if (posn(o0, 61, 80, 88, 118)) {
+      print("The old axe is tightly wedged in the tree stump.  You cannot remove it no matter what you do.");
+      goto(LABEL178);
+    }
+    print("You are not close enough.");
+  }
+LABEL178:
+  if (said("use", "axe")) {
+    if (posn(o0, 61, 80, 88, 118)) {
+      print();
+      goto(LABEL205);
+    }
+    print("You are not close enough.");
+  }
+LABEL205:
+  if (said("open", "doors") || said("close", "doors")) {
+    if (posn(o0, 100, 111, 133, 136)) {
+      print("Upon closer inspection you realize this poor cabin doesn't even have a door.");
+      goto(LABEL240);
+    }
+    print("You are not close enough.");
+  }
+LABEL240:
+  if (said("examine", "doors") || said("examine", "doorway") || said("look inside", "doors")) {
+    if (posn(o0, 100, 111, 133, 136)) {
+      print("When you look in the doorway, you see a poor, starving woodcutter and his wife.");
+      goto(LABEL281);
+    }
+    print("You are not close enough.");
+  }
+LABEL281:
+  if (posn(o0, 126, 119, 128, 127)) {
+    new.room(79);
+  }
+LABEL293:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(5);
+  }
+LABEL302:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(45);
+  }
+LABEL311:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(43);
+  }
+LABEL320:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(37);
+  }
+LABEL329:
+  if (f75) {
+    call(103);
+  }
+LABEL337:
+  return;

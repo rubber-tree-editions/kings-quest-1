@@ -1,0 +1,98 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(46);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 114, 71, 0, 0);
+  }
+  LABEL37:
+    if (vPREV_ROOM_NO == 17) {
+      if (fEGO_ON_WATER) {
+        set.view(o0, 0);
+        reset(f98);
+        v94 = 0;
+      }
+    }
+  LABEL58:
+    draw(o0);
+    show.pic();
+}
+if (said("examine", "garden") || said("examine", "ground") || said("examine", "plant") || said("examine", "bushes")) {
+  print(null);
+}
+LABEL93:
+  if (said("examine", "goat pen")) {
+    print("It is a relatively low, native stone and masonry fence to the right and rear of a garden.");
+  }
+LABEL105:
+  if (said("climb", "goat pen")) {
+    print("There is no reason to climb the fence.");
+  }
+LABEL117:
+  if (said("jump", "goat pen")) {
+    print("You can go around the fence.");
+  }
+LABEL129:
+  if (posn(o0, 0, 57, 97, 78) || posn(o0, 0, 79, 117, 102) || posn(o0, 0, 103, 140, 152)) {
+    set(f20);
+    goto(LABEL160);
+  }
+LABEL158:
+  reset(f20);
+LABEL160:
+  if (f20) {
+    if (!f77 && said("examine", "carrot")) {
+      print("There are many large, plump carrots in the garden.");
+    }
+    if (!f77 && said("get", "carrot")) {
+      print("You pluck a delicious looking carrot from the fertile soil.");
+      set(f77);
+      reset(f118);
+      get("carrot");
+      if (!f117) {
+        vSCORE += 2;
+        set(f117);
+      }
+    }
+  }
+LABEL214:
+  if (!f20) {
+    if (!f77 && said("examine", "carrot")) {
+      print("They are buried in the ground.  You must get closer to see them.");
+    }
+    if (!f77 && said("get", "carrot")) {
+      print("You cannot do that from here.");
+    }
+  }
+LABEL251:
+  if (!f77) {
+    if (said("eat", "carrot")) {
+      print();
+    }
+  }
+LABEL270:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(17);
+  }
+LABEL279:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(9);
+  }
+LABEL288:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(15);
+  }
+LABEL297:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(1);
+  }
+LABEL306:
+  if (f75) {
+    call(103);
+  }
+LABEL314:
+  return;

@@ -1,0 +1,164 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  if (vPREV_ROOM_NO == 75) {
+    position(o0, 113, 146);
+  }
+  if (vPREV_ROOM_NO == 77) {
+    position(o0, 73, 163);
+  }
+  LABEL34:
+    if (f171) {
+      load.view(50);
+      animate.obj(o1);
+      set.view(o1, 50);
+      position(o1, 96, 78);
+      load.sound(8);
+    }
+  LABEL53:
+    if (!f186) {
+      load.view(78);
+      load.view(79);
+      load.view(80);
+      animate.obj(o2);
+      animate.obj(o13);
+      set.view(o2, 79);
+      set.view(o13, 80);
+      position(o2, 60, 136);
+      position(o13, 45, 119);
+      stop.cycling(o13);
+      stop.motion(o13);
+    }
+  LABEL88:
+    if (!f186) {
+      draw(o13);
+      draw(o2);
+      if (f87) {
+        wander(o2);
+        goto(LABEL114);
+      }
+      follow.ego(o2, 5, f20);
+    }
+  LABEL114:
+    draw(o0);
+    show.pic();
+    if (!f186) {
+      if (!f87 && f79) {
+        print(null);
+      }
+      if (!f87 && !f79) {
+        print("The leprechauns do not like your invasion of their territory.  They may not let you get any further.");
+      }
+      LABEL147:
+        if (f87) {
+          print("The leprechauns revere the power of the fourleaf clover. With it in your possession they will leave you absolutely alone.");
+        }
+    }
+}
+LABEL155:
+  if (f20) {
+    reset(f20);
+    print("The leprechaun catches you and holds you with his small,  but strong arms.  I don't think the leprechaun will ever let go.");
+    stop.motion(o0);
+    set(f95);
+    stop.cycling(o0);
+    stop.motion(o2);
+    stop.cycling(o2);
+    set(f63);
+  }
+LABEL177:
+  if (f22) {
+    if (said("play", "fiddle")) {
+      print();
+    }
+  }
+LABEL195:
+  if (v30 > 0) {
+    v30--;
+  }
+LABEL204:
+  if (!f186 && !f22) {
+    if (f171 && said("play", "fiddle")) {
+      set(f21);
+      set(f22);
+      v30 = 45;
+      draw(o1);
+      sound(8, f23);
+      start.cycling(o13);
+      wander(o13);
+      erase(o2);
+      set.view(o2, 78);
+      draw(o2);
+      wander(o2);
+      print("Leprechauns love fiddle music!  Have you ever seen such frenzied dancing?");
+      set(f186);
+      vSCORE += 3;
+    }
+  }
+LABEL258:
+  if (v30 > 1 && f23) {
+    reset(f23);
+    sound(8, f23);
+  }
+LABEL272:
+  if (v30 == 1) {
+    v30 = 0;
+    stop.sound();
+    reset(f21);
+    reset(f22);
+    erase(o13);
+    erase(o2);
+    erase(o1);
+    print("Totally involved in the music, they dance right out of the room.");
+  }
+LABEL295:
+  if (f21) {
+    if (vOBJECT_TOUCHING_EDGE == 13) {
+      erase(o13);
+    }
+    if (vOBJECT_TOUCHING_EDGE == 2) {
+      erase(o2);
+    }
+  }
+LABEL319:
+  if (said("examine", "room")) {
+    if (!f186) {
+      print("You are in the antechamber of the Hall of the Leprechaun King.  There is a leprechaun in the room with you.");
+      goto(LABEL343);
+    }
+    print("You are in the antechamber of the Hall of the Leprechaun King.");
+  }
+LABEL343:
+  if (said("close", "doors")) {
+    print("I can think of no good reason to close the door.");
+  }
+LABEL355:
+  if (!f186) {
+    if (said("examine", "leprechauns")) {
+      print("They are tiny people dressed all in green.");
+    }
+    if (said("talk", "leprechauns") || said("hello") || said("say", "hello")) {
+      print("I would not try talking to the leprechauns.  You might say the wrong thing.");
+    }
+    LABEL398:
+      if (said("murder", "leprechauns")) {
+        print("You would not get all of them before they got you.");
+      }
+  }
+LABEL410:
+  if (f186) {
+    if (said("anyword", "leprechauns")) {
+      print("There are not any leprechauns here.");
+    }
+  }
+LABEL428:
+  if (posn(o0, 128, 133, 129, 154)) {
+    new.room(75);
+  }
+LABEL440:
+  if (posn(o0, 0, 166, 159, 167)) {
+    new.room(77);
+  }
+LABEL452:
+  return;

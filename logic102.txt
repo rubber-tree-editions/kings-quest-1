@@ -1,0 +1,435 @@
+if (!fPLAYER_ENTERED_COMMAND) {
+  goto(LABEL2108);
+}
+if (fSAID_ACCEPTED_USER_INPUT) {
+  goto(LABEL2108);
+}
+if (fPLAYER_ENTERED_COMMAND && vUNKNOWN_WORD_NO > 0) {
+  if (vUNKNOWN_WORD_NO == 1) {
+    print("I don't understand \"%w1\".");
+  }
+  if (vUNKNOWN_WORD_NO == 2) {
+    print("I don't understand \"%w2\".");
+  }
+  LABEL46:
+    if (vUNKNOWN_WORD_NO == 3) {
+      print("I don't understand \"%w3\".");
+    }
+  LABEL55:
+    reset(fPLAYER_ENTERED_COMMAND);
+    goto(LABEL2108);
+}
+if (said("look for", "anyword") || said("look for", "anyword", "anyword")) {
+  print();
+}
+if (!f67 && !f70) {
+  if (vROOM_NO != 3 && said("get", "dagger")) {
+    print("You will have to find it before you can get it.");
+  }
+  if (vROOM_NO != 3 && said("examine", "dagger")) {
+    print("You do not have it.");
+  }
+  LABEL124:
+    if (said("anyword", "dagger") && !said("get", "dagger") && !said("examine", "dagger")) {
+      print("You do not have it.");
+    }
+}
+LABEL150:
+  if (!f77 && vROOM_NO != 15 && vROOM_NO != 16) {
+    if (said("anyword", "carrot") && !said("get", "carrot")) {
+      print("You do not have a carrot.");
+    }
+    if (said("get", "carrot")) {
+      print("You will have to find it before you can get it.");
+    }
+  }
+LABEL196:
+  if (!f127 && !f108) {
+    if (vROOM_NO != 30 && said("get", "golden walnut")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 30 && said("examine", "golden walnut")) {
+      print("You do not have it.");
+    }
+    LABEL238:
+      if (said("anyword", "golden walnut") && !said("get", "golden walnut") && !said("examine", "golden walnut")) {
+        print("You do not have it.");
+      }
+  }
+LABEL264:
+  if (!f81) {
+    if (vROOM_NO != 12 && said("get", "water")) {
+      print("You have no container for water.");
+    }
+    if (vROOM_NO != 12 && said("get", "bucket")) {
+      print("You will have to find it before you can get it.");
+    }
+    LABEL303:
+      if (vROOM_NO != 12 && (said("examine", "bucket") || said("climb", "bucket") || said("go", "bucket") || said("go down", "bucket"))) {
+        print("You do not have it.");
+      }
+    LABEL339:
+      if (said("anyword", "bucket") && !said("get", "bucket") && !said("examine", "bucket") && !said("climb", "bucket") && !said("go", "bucket") && !said("go down", "bucket")) {
+        print("You do not have it.");
+      }
+  }
+LABEL386:
+  if (!f123 && vROOM_NO != 47) {
+    if (vROOM_NO != 47 && said("get", "toadstools")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 47 && said("examine", "toadstools")) {
+      print("You do not have it.");
+    }
+    LABEL429:
+      if (said("eat", "toadstools")) {
+        print("You can't eat the mushroom if you don't have it!");
+      }
+    LABEL441:
+      if (said("anyword", "toadstools") && !said("get", "toadstools") && !said("examine", "toadstools") && !said("eat", "toadstools")) {
+        print("You do not have it.");
+      }
+  }
+LABEL474:
+  if (!f83) {
+    if (said("get", "ring")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (said("anyword", "ring") && !said("get", "ring")) {
+      print("You do not have it.");
+    }
+  }
+LABEL512:
+  if (!f154) {
+    if (vROOM_NO != 40 && said("get", "magic beans")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 40 && said("examine", "magic beans")) {
+      print("You do not have it.");
+    }
+    LABEL551:
+      if (said("anyword", "magic beans") && !said("get", "magic beans") && !said("examine", "magic beans")) {
+        print("You do not have it.");
+      }
+  }
+LABEL577:
+  if (!f89) {
+    if (vROOM_NO != 31 && vROOM_NO != 79 && said("get", "bowl")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 31 && vROOM_NO != 79 && said("examine", "bowl")) {
+      print("You do not have any stew.");
+    }
+    LABEL624:
+      if (said("fill")) {
+        print("Fill what?");
+      }
+    LABEL634:
+      if (vROOM_NO != 79 && said("eat", "stew")) {
+        print("You do not have it.");
+      }
+    LABEL650:
+      if (said("anyword", "bowl") && !said("get", "bowl") && !said("examine", "bowl") && !said("fill") && !said("eat", "stew")) {
+        print("You do not have it.");
+      }
+    LABEL688:
+      if (said("anyword", "stew") && !said("eat", "stew")) {
+        print("You do not have it.");
+      }
+  }
+LABEL707:
+  if (!f93) {
+    if (vROOM_NO != 34 && said("get", "pebbles")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 34 && said("examine", "pebbles")) {
+      print("You do not have it.");
+    }
+    LABEL746:
+      if (said("anyword", "pebbles") && !said("get", "pebbles") && !said("examine", "pebbles")) {
+        print("You do not have it.");
+      }
+  }
+LABEL772:
+  if (!f104) {
+    if (vROOM_NO != 58 && (said("get", "chest") || said("get", "coins"))) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 58 && (said("examine", "chest") || said("examine", "coins"))) {
+      print("You do not have it.");
+    }
+    LABEL827:
+      if (said("anyword", "chest") && !said("examine", "chest") && !said("get", "chest")) {
+        print("You do not have it.");
+      }
+    LABEL853:
+      if (said("anyword", "coins") && !said("examine", "coins") && !said("get", "coins")) {
+        print("You do not have it.");
+      }
+  }
+LABEL879:
+  if (!f84) {
+    if (vROOM_NO != 40 && said("get", "gold key")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 40 && said("examine", "gold key")) {
+      print("You do not have it.");
+    }
+    LABEL918:
+      if (said("anyword", "gold key") && !said("get", "gold key") && !said("examine", "gold key")) {
+        print("You do not have it.");
+      }
+  }
+LABEL944:
+  if (!f170) {
+    if (vROOM_NO != 65 && said("get", "note")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 65 && said("examine", "note")) {
+      print("You do not have it.");
+    }
+    LABEL983:
+      if (said("anyword", "note") && !said("get", "note") && !said("examine", "note")) {
+        print("You do not have it.");
+      }
+  }
+LABEL1009:
+  if (!f139) {
+    if (vROOM_NO != 65 && said("get", "swiss cheese")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 65 && said("examine", "swiss cheese")) {
+      print("You do not have it.");
+    }
+    LABEL1048:
+      if (said("anyword", "swiss cheese") && !said("get", "swiss cheese") && !said("examine", "swiss cheese")) {
+        print("You do not have it.");
+      }
+  }
+LABEL1074:
+  if (!f87) {
+    if (vROOM_NO != 24 && said("get", "four leaf clover")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 24 && said("examine", "four leaf clover")) {
+      print("You do not have it.");
+    }
+    LABEL1113:
+      if (said("anyword", "four leaf clover") && !said("get", "four leaf clover") && !said("examine", "four leaf clover")) {
+        print("You do not have it.");
+      }
+  }
+LABEL1139:
+  if (!f97) {
+    if (vROOM_NO != 62 && said("get", "slingshot")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 62 && said("examine", "slingshot")) {
+      print("You do not have it.");
+    }
+    LABEL1178:
+      if (said("anyword", "slingshot") && !said("get", "slingshot") && !said("examine", "slingshot")) {
+        print("You do not have it.");
+      }
+  }
+LABEL1204:
+  if (!f102) {
+    if (vROOM_NO != 77 && said("get", "shield")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 77 && said("examine", "shield")) {
+      print("You do not have it.");
+    }
+    LABEL1243:
+      if (said("anyword", "shield") && !said("get", "shield") && !said("examine", "shield")) {
+        print("You do not have it.");
+      }
+  }
+LABEL1269:
+  if (!f113) {
+    if (vROOM_NO != 77 && said("get", "sceptre")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 77 && said("examine", "sceptre")) {
+      print("You do not have it.");
+    }
+    LABEL1308:
+      if (said("anyword", "sceptre") && !said("get", "sceptre") && !said("examine", "sceptre")) {
+        print("You do not have it.");
+      }
+  }
+LABEL1334:
+  if (!f72) {
+    if (vROOM_NO != 6 && said("get", "bag of jewels")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 6 && said("examine", "bag of jewels")) {
+      print("You do not have it.");
+    }
+    LABEL1373:
+      if (said("anyword", "bag of jewels") && !said("get", "bag of jewels") && !said("examine", "bag of jewels")) {
+        print("You do not have it.");
+      }
+  }
+LABEL1399:
+  if (!f106) {
+    if (vROOM_NO != 6 && said("get", "pouch of diamonds")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 6 && said("examine", "pouch of diamonds")) {
+      print("You do not have it.");
+    }
+    LABEL1438:
+      if (said("anyword", "pouch of diamonds") && !said("get", "pouch of diamonds") && !said("examine", "pouch of diamonds")) {
+        print("You do not have it.");
+      }
+  }
+LABEL1464:
+  if (!f110) {
+    if (vROOM_NO != 63 && said("get", "golden egg")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 63 && said("examine", "golden egg")) {
+      print("You do not have it.");
+    }
+    LABEL1503:
+      if (said("anyword", "golden egg") && !said("get", "golden egg") && !said("examine", "golden egg")) {
+        print("You do not have it.");
+      }
+  }
+LABEL1529:
+  if (!f171) {
+    if (vROOM_NO != 79 && said("get", "fiddle")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 79 && said("examine", "fiddle")) {
+      print("You do not have it.");
+    }
+    LABEL1568:
+      if (said("anyword", "fiddle") && !said("get", "fiddle") && !said("examine", "fiddle")) {
+        print("You do not have it.");
+      }
+  }
+LABEL1594:
+  if (!f100) {
+    if (vROOM_NO != 51 && said("get", "mirror")) {
+      print("You will have to find it before you can get it.");
+    }
+    if (vROOM_NO != 51 && said("examine", "mirror")) {
+      print("You do not have it.");
+    }
+    LABEL1633:
+      if (said("anyword", "mirror") && !said("get", "mirror") && !said("examine", "mirror")) {
+        print("You do not have it.");
+      }
+  }
+LABEL1659:
+  if (said("play", "anyword")) {
+    print("You have better things to do than to play all day.");
+  }
+LABEL1671:
+  if (said("use", "axe")) {
+    print("You do not have it.");
+  }
+LABEL1683:
+  if (said("use", "anyword")) {
+    print("What do you wish to do with it???");
+  }
+LABEL1695:
+  if (said("anyword", "man")) {
+    print("There is no \"%w2\" here.");
+    goto(LABEL2108);
+  }
+LABEL1710:
+  if (said("anyword", "woman")) {
+    print("There is no \"%w2\" here.");
+    goto(LABEL2108);
+  }
+  if (said("examine")) {
+    print("You need to be more specific.");
+  }
+  if (said("examine", "anyword")) {
+    print(null);
+  }
+LABEL1747:
+  if (said("get", "anyword") && !said("get")) {
+    print("You cannot get the \"%w2\". At least not now!");
+  }
+LABEL1764:
+  if (said("drop", "anyword")) {
+    print("There is no reason to do that.");
+  }
+LABEL1776:
+  if (said("eat", "anyword")) {
+    if (said("eat", "man") || said("eat", "woman")) {
+      print("You can't do that.");
+      goto(LABEL1811);
+    }
+    print("The \"%w2\" doesn't appeal just now.");
+  }
+LABEL1811:
+  if (said("get")) {
+    print("Just say what you wish to get.");
+  }
+LABEL1821:
+  if (said("climb")) {
+    print("What would you like to climb?");
+  }
+LABEL1831:
+  if (said("climb", "anyword")) {
+    print("No. That would just waste time.");
+  }
+LABEL1843:
+  if (said("go", "anyword")) {
+    print("You can try to go there.");
+  }
+LABEL1855:
+  if (said("feed", "anyword")) {
+    print("That would be inappropriate at this time.");
+  }
+LABEL1867:
+  if (said("hello", "anyword")) {
+    print("Hello.\"");
+  }
+LABEL1879:
+  if (said("say", "hello") || said("hello")) {
+    print("There is nobody here but you!");
+    goto(LABEL1912);
+  }
+LABEL1900:
+  if (said("say", "anyword")) {
+    print("OK. \"%w2\"");
+  }
+LABEL1912:
+  if (said("find", "man")) {
+    print("You will have to find him yourself.");
+    goto(LABEL1954);
+  }
+LABEL1927:
+  if (said("find", "woman")) {
+    print("You will have to find her yourself.");
+    goto(LABEL1954);
+  }
+  if (said("find", "anyword")) {
+    print("You will have to find it yourself.");
+  }
+LABEL1954:
+  if (said("get on", "anyword")) {
+    print("Not right now!");
+  }
+LABEL1966:
+  if (said("talk", "elf") || said("talk", "man") || said("talk", "man") || said("talk", "witch") || said("talk", "wolf") || said("talk", "woman") || said("talk", "bird") || said("talk", "goat") || said("talk", "troll") || said("talk", "man") || said("talk", "dragon") || said("talk", "giant") || said("talk", "rat") || said("talk", "leprechauns") || said("talk", "king edward") || said("talk", "man") || said("talk", "man") || said("talk", "woman")) {
+    print("There is no \"%w2\" here.");
+    goto(LABEL2108);
+  }
+LABEL2085:
+  if (said("talk", "anyword")) {
+    print("You get no response from the \"%w2\".");
+  }
+  if (fSAID_ACCEPTED_USER_INPUT) {
+    goto(LABEL2108);
+  }
+LABEL2106:
+  print("You can't do that--at least not now!");
+LABEL2108:
+  return;

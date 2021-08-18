@@ -1,0 +1,104 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  v32 = 4;
+  set.horizon(46);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 27, 131, 0, 0);
+  }
+  LABEL40:
+    random(0, 250, v62);
+    if (v62 < 125 && v64 == 0) {
+      load.view(6);
+      animate.obj(o1);
+      set.view(o1, 6);
+      v31 = 45;
+      load.sound(6);
+    }
+  LABEL66:
+    draw(o0);
+    show.pic();
+}
+v31--;
+if (v31 == 1) {
+  position(o1, 50, 80);
+  draw(o1);
+  print(null);
+  follow.ego(o1, 25, f21);
+  set(f20);
+  set(f73);
+  v30 = 250;
+  v63 = 100;
+  v64 = 250;
+}
+LABEL103:
+  if (f20) {
+    set(f135);
+    v30--;
+    v32--;
+    if (v32 == 1) {
+      sound(6, f22);
+    }
+    if (f22) {
+      reset(f22);
+      stop.sound();
+      v32 = 4;
+    }
+    LABEL137:
+      if (said("examine", "woman")) {
+        print("She is your fairy godmother.");
+      }
+    LABEL149:
+      if (said("get", "woman")) {
+        print("It is impossible to acquire a fairy godmother.");
+      }
+    LABEL161:
+      if (said("anyword", "woman") || said("hello") || said("say", "hello")) {
+        print();
+      }
+    LABEL185:
+      if (f21) {
+        wander(o1);
+      }
+  }
+LABEL193:
+  if (f20 && v30 == 1) {
+    print("\"I will be watching over you, Sir Graham.\"");
+    erase(o1);
+    reset(f20);
+    v32 = 0;
+    stop.sound();
+    reset(f135);
+  }
+LABEL214:
+  if (!f20) {
+    if (said("anyword", "woman")) {
+      print("There is no fairy here.");
+    }
+  }
+LABEL233:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(24);
+  }
+LABEL242:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(10);
+  }
+LABEL251:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(16);
+  }
+LABEL260:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(8);
+  }
+LABEL269:
+  if (f75) {
+    call(103);
+  }
+LABEL277:
+  return;

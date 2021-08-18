@@ -1,0 +1,233 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  load.logics(101);
+  set.horizon(50);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 95, 72, 0, 0);
+  }
+  LABEL39:
+    load.view(107);
+    load.view(97);
+    animate.obj(o11);
+    animate.obj(o12);
+    animate.obj(o1);
+    set.view(o11, 107);
+    set.view(o12, 107);
+    set.view(o1, 97);
+    position(o11, 121, 161);
+    position(o12, 73, 166);
+    ignore.horizon(o1);
+    position(o1, 5, 17);
+    set.priority(o1, 15);
+    set(f68);
+    object.on.water(o11);
+    object.on.water(o12);
+    ignore.blocks(o0);
+    draw(o11);
+    draw(o12);
+    draw(o1);
+    if (vPREV_ROOM_NO == 0 || vPREV_ROOM_NO == 83) {
+      position(o0, 110, 100);
+    }
+  LABEL105:
+    wander(o11);
+    wander(o12);
+    if (vPREV_ROOM_NO == 8) {
+      get.posn(o0, v60, v61);
+      if (v61 > 150) {
+        position(o0, 148, 150);
+      }
+    }
+  LABEL131:
+    draw(o0);
+    call(101);
+    if (vPREV_ROOM_NO == 83) {
+      submit.menu();
+    }
+  LABEL143:
+    show.pic();
+    status.line.on();
+    accept.input();
+}
+if (said("pet", "alligators")) {
+  print();
+}
+LABEL158:
+  if (said("examine", "bridge")) {
+    print("It is a very small,  wooden barrel bridge.");
+  }
+LABEL170:
+  if (said("examine", "flags")) {
+    print("King Edward's banners are waving in the strong breeze.");
+  }
+LABEL182:
+  if (said("examine", "building")) {
+    print("This is the castle of King Edward the Benevolent.");
+  }
+LABEL194:
+  if (said("examine", "moat")) {
+    print("It looks deep and dangerous.  You can see alligators  floating in the water.");
+  }
+LABEL206:
+  if (said("examine", "water")) {
+    print("The water in the moat is not conducive to swimming.");
+  }
+LABEL218:
+  if (said("examine", "flowers")) {
+    print("They are absolutely gorgeous!");
+  }
+LABEL230:
+  if (said("get", "flowers") || said("steal", "flowers")) {
+    print("King Edward does not allow anyone to take his flowers.");
+  }
+LABEL250:
+  if (said("examine", "alligators")) {
+    print("The alligators are swimming in the moat.");
+  }
+LABEL262:
+  if (said("drink", "water") && !f88 && !f116) {
+    if (posn(o0, 0, 146, 159, 167) || posn(o0, 87, 110, 117, 145)) {
+      print("There are alligators in this water.  I don't think you want to try drinking it.");
+      goto(LABEL303);
+    }
+    print("There is water nearby.");
+  }
+LABEL303:
+  if (f81 && !f88) {
+    if (said("get", "water")) {
+      if (posn(o0, 0, 146, 159, 167) || posn(o0, 87, 110, 117, 145)) {
+        reset(f116);
+        print("You fill the bucket with the murky water from the moat.");
+        get("water");
+        set(f88);
+        if (!f91) {
+          set(f91);
+          vSCORE += 2;
+        }
+        goto(LABEL365);
+      }
+      print("You need to get closer to the water.");
+    }
+  }
+LABEL365:
+  if (fEGO_TOUCHED_TRIGGER_LINE) {
+    set(fEGO_ON_WATER);
+  }
+LABEL373:
+  if (v94 <= 0 && fEGO_ON_WATER) {
+    v76 = 255;
+    ignore.objs(o0);
+    if (posn(o0, 0, 158, 28, 166)) {
+      v76 = 2;
+      v77 = 166;
+    }
+    if (posn(o0, 29, 158, 56, 166)) {
+      v76 = 30;
+      v77 = 166;
+    }
+    LABEL420:
+      if (posn(o0, 57, 158, 84, 166)) {
+        v76 = 58;
+        v77 = 166;
+      }
+    LABEL436:
+      if (posn(o0, 85, 158, 111, 166)) {
+        v76 = 86;
+        v77 = 166;
+      }
+    LABEL452:
+      if (posn(o0, 89, 117, 108, 146)) {
+        set.priority(o0, 5);
+        v76 = 90;
+        v77 = 133;
+      }
+    LABEL471:
+      if (posn(o0, 112, 136, 159, 167)) {
+        v76 = 122;
+        v77 = 166;
+      }
+    LABEL487:
+      if (v76 == 255) {
+        v76 = 0;
+        goto(LABEL512);
+      }
+    LABEL500:
+      get.posn(o0, v60, v61);
+      v76 -= v60;
+      v77 -= v61;
+      set(f134);
+  }
+LABEL512:
+  if (fEGO_ON_WATER) {
+    if (said("get out", "moat") || said("exit", "moat")) {
+      print("The moats slippery sides prevent you from getting out.");
+    }
+  }
+LABEL538:
+  if (fEGO_ON_WATER && !f23) {
+    program.control();
+    stop.motion(o0);
+    follow.ego(o11, 18, f20);
+    follow.ego(o12, 18, f21);
+    set(f23);
+  }
+LABEL560:
+  if (posn(o0, 89, 132, 91, 134) && !f22) {
+    print(null);
+    set(f22);
+    v34 = 45;
+  }
+LABEL580:
+  if (f20 && !f22) {
+    print(null);
+    set(f22);
+    v34 = 45;
+  }
+LABEL596:
+  if (f21 && !f22) {
+    print(null);
+    set(f22);
+    v34 = 45;
+  }
+LABEL612:
+  if (f22 && v34 == 1) {
+    v34 = 0;
+    erase(o0);
+    if (f20) {
+      erase(o11);
+    }
+    if (f21) {
+      erase(o12);
+    }
+    LABEL642:
+      set(f63);
+  }
+LABEL644:
+  v34--;
+  if (vEGO_EDGE_CODE != 0) {
+    reset(f68);
+  }
+LABEL656:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(16);
+  }
+LABEL665:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(8);
+  }
+LABEL674:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(2);
+  }
+LABEL683:
+  if (f75) {
+    call(103);
+  }
+LABEL691:
+  call(101);
+  return;

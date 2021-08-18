@@ -1,0 +1,148 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(46);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 83, 142, 0, 0);
+  }
+  LABEL37:
+    random(0, 250, v62);
+    if (v62 < 185) {
+      v30 = 4;
+      step.size(o1, v30);
+      set(f23);
+      load.view(4);
+      load.view(96);
+      load.sound(1);
+      animate.obj(o1);
+      set.view(o1, 4);
+    }
+  LABEL67:
+    if (f23) {
+      LABEL73:
+        random(0, 250, v70);
+        if (v70 > 90) {
+          goto(LABEL73);
+        }
+    }
+  LABEL87:
+    if (vPREV_ROOM_NO == 20 || vPREV_ROOM_NO == 4) {
+      if (fEGO_ON_WATER) {
+        set.view(o0, 0);
+        reset(f98);
+        v94 = 0;
+      }
+    }
+    draw(o0);
+    show.pic();
+}
+v70--;
+if (v70 == 1) {
+  set(f20);
+  position(o1, 7, 68);
+  set(f135);
+  sound(1, f159);
+  draw(o1);
+  if (!f75) {
+    print(null);
+    follow.ego(o1, 12, f156);
+  }
+  if (f75) {
+    wander(o1);
+    set(f22);
+    print(null);
+    print("The wolf sees that menacing goat by your side and decides to keep his distance.");
+  }
+}
+LABEL165:
+  if (f159) {
+    reset(f159);
+    reset(f135);
+  }
+LABEL175:
+  if (!f20) {
+    if (said("anyword", "wolf")) {
+      print("There's no wolf here.");
+    }
+  }
+LABEL194:
+  if (f20) {
+    if (said("examine", "wolf")) {
+      print("Yes, it's a wolf and it's very fast.  Now do something!");
+    }
+    if (said("murder", "wolf")) {
+      print("You don't have time to do that right now!");
+    }
+    LABEL224:
+      if (said("pet", "wolf") || said("talk", "wolf")) {
+        print("Are you crazy?");
+      }
+    LABEL244:
+      if (said("hello") || said("say", "hello")) {
+        print();
+      }
+  }
+LABEL262:
+  if (f156) {
+    reset(f156);
+    if (f73) {
+      print("You are very fortunate that your protective spell is still working.");
+      wander(o1);
+      set(f22);
+      goto(LABEL329);
+    }
+    if (f79) {
+      print("Fortunately, you are invisible and the wolf can't see you.");
+      wander(o1);
+      set(f22);
+      goto(LABEL329);
+    }
+    if (f102) {
+      print("You, fortunately, have the magic shield which will protect you.");
+      wander(o1);
+      set(f22);
+      goto(LABEL329);
+    }
+    program.control();
+    print("It seems the wolf caught up with you and is discussing dinner arrangements.");
+    erase(o1);
+    set.view(o0, 96);
+    start.cycling(o0);
+    set(f98);
+    set(f63);
+  }
+LABEL329:
+  if (f22 && vOBJEcT_EDGE_CODE != 0) {
+    reset(f22);
+    reset(f20);
+    erase(o1);
+  }
+LABEL345:
+  if (f63) {
+    goto(LABEL398);
+  }
+LABEL354:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(20);
+  }
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(14);
+  }
+LABEL372:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(12);
+  }
+LABEL381:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(4);
+  }
+LABEL390:
+  if (f75) {
+    call(103);
+  }
+LABEL398:
+  return;

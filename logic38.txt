@@ -1,0 +1,232 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(40);
+  load.sound(4);
+  load.sound(5);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 36, 84, 0, 0);
+  }
+  LABEL41:
+    if (f154 || v80 == 38) {
+      v92 = 84;
+      set(f155);
+      load.pic(v92);
+      load.view(114);
+      load.view(103);
+      load.view(104);
+      load.view(74);
+      load.view(105);
+      load.logics(104);
+      load.sound(12);
+    }
+  LABEL73:
+    if (vPREV_ROOM_NO == 70 && f157) {
+      set.view(o0, 74);
+      position(o0, 64, 41);
+      move.obj(o0, 64, 41, 0, f148);
+      set.priority(o0, 8);
+    }
+  LABEL98:
+    if (vPREV_ROOM_NO == 70 && f158) {
+      program.control();
+      ignore.horizon(o0);
+      set.priority(o0, 15);
+      set.view(o0, 105);
+      get.posn(o0, v60, v61);
+      if (v60 > 75) {
+        position(o0, 80, 29);
+        goto(LABEL138);
+      }
+      position(o0, 65, 29);
+      LABEL138:
+        get.posn(o0, v60, v61);
+        v61 = 106;
+        v96 = 2;
+        move.obj.v(o0, v60, v61, 96, f22);
+    }
+  LABEL154:
+    if (v80 == 38) {
+      overlay.pic(v92);
+    }
+  LABEL163:
+    draw(o0);
+    show.pic();
+}
+if (f158 && !f23) {
+  set(f23);
+  set(f135);
+  sound(5, f24);
+}
+LABEL182:
+  if (!f22 && f24) {
+    reset(f23);
+    reset(f24);
+  }
+LABEL195:
+  if (f22) {
+    stop.sound();
+    set(f23);
+    reset(f158);
+    reset(f135);
+    set.view(o0, 114);
+    shake.screen(2);
+    set(f63);
+  }
+LABEL215:
+  if (said("examine", "flowers")) {
+    print(null);
+  }
+LABEL227:
+  if (said("smell", "flowers")) {
+    if (posn(o0, 60, 61, 117, 113)) {
+      print("The flowers' fragrance is enticing.");
+      goto(LABEL254);
+    }
+    print("You will have to move closer to do that.");
+  }
+LABEL254:
+  if (said("get", "flowers")) {
+    if (posn(o0, 60, 61, 117, 113)) {
+      print("It would be a shame to pick the lovely wild flowers.");
+      goto(LABEL281);
+    }
+    print("You will have to move closer to do that.");
+  }
+LABEL281:
+  if (f154 && f155) {
+    if (said("plant", "magic beans")) {
+      reset(f154);
+      v80 = 38;
+      set(f94);
+      drop("beans");
+      vSCORE += 2;
+      print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
+      sound(12, f25);
+      overlay.pic(v92);
+      show.pic();
+    }
+  }
+LABEL319:
+  if (v80 == 38 && !f79) {
+    if (said("climb", "beanstalk") && !f157) {
+      if (posn(o0, 52, 76, 103, 97)) {
+        erase(o0);
+        set.view(o0, 74);
+        set(f157);
+        position(o0, 71, 77);
+        set.priority(o0, 8);
+        draw(o0);
+        move.obj(o0, 71, 77, 0, f148);
+        goto(LABEL379);
+      }
+      print("You can't reach the beanstalk from here.");
+    }
+  }
+LABEL379:
+  if (v80 != 38) {
+    if (said("climb", "beanstalk")) {
+      print("There is no beanstalk here to climb.");
+    }
+  }
+LABEL399:
+  if (f157) {
+    if (fEGO_TOUCHED_TRIGGER_LINE && posn(o0, 60, 78, 93, 80)) {
+      erase(o0);
+      set.view(o0, 0);
+      reset(f157);
+      position(o0, 70, 106);
+      release.priority(o0);
+      draw(o0);
+    }
+    if (fEGO_TOUCHED_TRIGGER_LINE && !posn(o0, 60, 78, 93, 80)) {
+      program.control();
+      set.priority(o0, 15);
+      get.posn(o0, v60, v61);
+      erase(o0);
+      set.view(o0, 105);
+      reset(f157);
+      position.v(o0, v60, v61);
+      draw(o0);
+      v61 = 106;
+      v96 = 2;
+      move.obj.v(o0, v60, v61, 96, f20);
+      set(f135);
+      sound(5, f198);
+    }
+  }
+LABEL483:
+  v30--;
+  if (f20) {
+    stop.sound();
+    reset(f20);
+    observe.blocks(o0);
+    release.priority(o0);
+    stop.motion(o0);
+    set.view(o0, 103);
+    v30 = 20;
+    set(f98);
+    shake.screen(2);
+    print();
+    set(f135);
+    sound(4, f159);
+  }
+LABEL517:
+  if (f159) {
+    if (v30 > 0) {
+      reset(f159);
+      sound(4, f159);
+    }
+  }
+LABEL535:
+  if (v30 == 1) {
+    set.view(o0, 104);
+    end.of.loop(o0, f21);
+  }
+LABEL548:
+  if (f21) {
+    reset(f21);
+    reset(f98);
+    start.motion(o0);
+    set.view(o0, 0);
+    release.priority(o0);
+    player.control();
+  }
+LABEL566:
+  if (vEGO_EDGE_CODE != 0) {
+    reset(f155);
+  }
+LABEL576:
+  if (vEGO_EDGE_CODE == 1 && f157) {
+    new.room(70);
+  }
+LABEL587:
+  if (vEGO_EDGE_CODE == 1 && !f157) {
+    new.room(43);
+  }
+LABEL599:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(37);
+  }
+LABEL608:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(39);
+  }
+LABEL617:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(27);
+  }
+LABEL626:
+  if (f75) {
+    call(103);
+  }
+LABEL634:
+  if (v80 == 38) {
+    call(104);
+  }
+LABEL643:
+  return;

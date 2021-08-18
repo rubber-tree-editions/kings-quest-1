@@ -1,0 +1,59 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  load.sound(5);
+  set.horizon(60);
+  draw(o0);
+  show.pic();
+}
+if (said("examine", "room") || said("examine", "clouds")) {
+  print(null);
+}
+LABEL39:
+  if (said("examine", "trees") || said("examine", "flowers")) {
+    print();
+  }
+LABEL59:
+  if (fEGO_TOUCHED_TRIGGER_LINE) {
+    set(f95);
+    program.control();
+    stop.cycling(o0);
+    get.posn(o0, v60, v61);
+    get.priority(o0, v30);
+    set.priority.v(o0, v30);
+    v61 += 8;
+    v96 = 4;
+    sound(5, f159);
+    move.obj.v(o0, v60, v61, 96, f21);
+  }
+LABEL95:
+  if (f21) {
+    reset(f21);
+    erase(o0);
+  }
+LABEL105:
+  if (f159) {
+    reset(f159);
+    set(f20);
+  }
+LABEL115:
+  if (f20) {
+    reset(f20);
+    print("Oops!  You've missed the edge and fallen through the clouds.");
+    set(f63);
+  }
+LABEL127:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(58);
+  }
+LABEL136:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(62);
+  }
+LABEL145:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(60);
+  }
+LABEL154:
+  return;

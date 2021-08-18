@@ -1,0 +1,88 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(46);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 110, 110, 0, 0);
+  }
+  LABEL37:
+    load.logics(101);
+    call(101);
+    set(f68);
+    if (vPREV_ROOM_NO == 23) {
+      if (fEGO_ON_WATER) {
+        set.view(o0, 0);
+        reset(f98);
+        v94 = 0;
+      }
+    }
+  LABEL64:
+    ignore.blocks(o0);
+    draw(o0);
+    show.pic();
+}
+if (said("examine", "doorway") || said("look inside", "doorway") || said("look inside", "stumps")) {
+  if (posn(o0, 66, 134, 159, 167)) {
+    print("It is just a hole in an empty, old stump.");
+    goto(LABEL110);
+  }
+  print();
+}
+LABEL110:
+  if (said("examine", "stumps")) {
+    print("It is old and rotted.");
+  }
+LABEL122:
+  if (said("examine", "stream")) {
+    print("The stream appears placid enough, but appearances can be deceiving.");
+  }
+LABEL134:
+  if (said("examine", "anyword")) {
+    print("There is an attractive meadow dotted with trees.");
+  }
+LABEL146:
+  if (f81 && !f88) {
+    if (said("get", "water") || said("drink", "water")) {
+      if (posn(o0, 0, 27, 95, 95)) {
+        print("The bank is too steep to allow access to the river's edge.");
+        goto(LABEL190);
+      }
+      print("You are not close enough to the river.");
+    }
+  }
+LABEL190:
+  if (fEGO_ON_WATER && !f20) {
+    set(f20);
+    print(null);
+  }
+LABEL203:
+  if (vEGO_EDGE_CODE != 0) {
+    reset(f68);
+  }
+LABEL213:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(39);
+  }
+LABEL222:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(27);
+  }
+LABEL231:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(25);
+  }
+LABEL240:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(23);
+  }
+LABEL249:
+  if (f75) {
+    call(103);
+  }
+LABEL257:
+  call(101);
+  return;

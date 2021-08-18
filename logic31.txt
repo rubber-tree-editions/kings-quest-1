@@ -1,0 +1,257 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  load.sound(4);
+  load.sound(5);
+  set.horizon(50);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 39, 96, 0, 0);
+  }
+  LABEL41:
+    if (f154 || v80 == 31) {
+      v92 = 84;
+      set(f155);
+      load.pic(v92);
+      load.view(114);
+      load.view(103);
+      load.view(104);
+      load.view(74);
+      load.view(105);
+      load.logics(104);
+      load.sound(12);
+    }
+  LABEL73:
+    if (vPREV_ROOM_NO == 70 && f157) {
+      set.view(o0, 74);
+      position(o0, 64, 51);
+      move.obj(o0, 64, 51, 0, f148);
+      set.priority(o0, 8);
+    }
+  LABEL98:
+    if (vPREV_ROOM_NO == 70 && f158) {
+      program.control();
+      ignore.horizon(o0);
+      set.priority(o0, 15);
+      set.view(o0, 105);
+      get.posn(o0, v60, v61);
+      if (v60 > 75) {
+        position(o0, 80, 29);
+        goto(LABEL138);
+      }
+      position(o0, 65, 29);
+      LABEL138:
+        get.posn(o0, v60, v61);
+        v61 = 106;
+        v96 = 2;
+        move.obj.v(o0, v60, v61, 96, f22);
+    }
+  LABEL154:
+    if (!f90) {
+      load.view(25);
+      animate.obj(o1);
+      set.view(o1, 25);
+      position(o1, 126, 138);
+    }
+  LABEL172:
+    if (!f90) {
+      draw(o1);
+    }
+  LABEL181:
+    if (v80 == 31) {
+      overlay.pic(v92);
+    }
+  LABEL190:
+    draw(o0);
+    show.pic();
+}
+if (f158 && !f23) {
+  set(f23);
+  set(f135);
+  sound(5, f24);
+}
+LABEL209:
+  if (!f22 && f24) {
+    reset(f23);
+    reset(f24);
+  }
+LABEL222:
+  if (f22) {
+    stop.sound();
+    set(f23);
+    reset(f158);
+    reset(f135);
+    set.view(o0, 114);
+    shake.screen(2);
+    set(f63);
+  }
+LABEL242:
+  if (f90 && !f89) {
+    if (said("anyword", "bowl")) {
+      print("There may have been a bowl here at one time, but it is not here now!");
+    }
+  }
+LABEL263:
+  if (!f90) {
+    if (said("examine", "bowl")) {
+      if (posn(o0, 106, 103, 159, 167)) {
+        print(null);
+        goto(LABEL297);
+      }
+      print("It looks like an interesting, colorful bowl.");
+    }
+    LABEL297:
+      if (said("examine", "ground")) {
+        print();
+      }
+  }
+LABEL309:
+  if (!f90 && said("get", "bowl")) {
+    if (posn(o0, 116, 128, 136, 148)) {
+      print("You pick up the ceramic bowl.");
+      start.update(o1);
+      erase(o1);
+      vSCORE += 3;
+      set(f89);
+      set(f90);
+      get("ceramic bowl");
+      goto(LABEL352);
+    }
+    print("That is impossible from here.");
+  }
+LABEL352:
+  if (f154 && f155) {
+    if (said("plant", "magic beans")) {
+      reset(f154);
+      v80 = 31;
+      set(f94);
+      drop("beans");
+      vSCORE += 2;
+      print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
+      sound(12, f25);
+      overlay.pic(v92);
+      show.pic();
+    }
+  }
+LABEL390:
+  if (v80 == 31 && !f79) {
+    if (said("climb", "beanstalk") && !f157) {
+      if (posn(o0, 52, 76, 103, 97)) {
+        erase(o0);
+        set.view(o0, 74);
+        set(f157);
+        position(o0, 71, 77);
+        set.priority(o0, 8);
+        draw(o0);
+        move.obj(o0, 71, 77, 0, f148);
+        goto(LABEL450);
+      }
+      print("You can't reach the beanstalk from here.");
+    }
+  }
+LABEL450:
+  if (v80 != 31) {
+    if (said("climb", "beanstalk")) {
+      print("There is no beanstalk here to climb.");
+    }
+  }
+LABEL470:
+  if (f157) {
+    if (fEGO_TOUCHED_TRIGGER_LINE && posn(o0, 60, 78, 93, 80)) {
+      erase(o0);
+      set.view(o0, 0);
+      reset(f157);
+      position(o0, 70, 106);
+      release.priority(o0);
+      draw(o0);
+    }
+    if (fEGO_TOUCHED_TRIGGER_LINE && !posn(o0, 60, 78, 93, 80)) {
+      program.control();
+      set.priority(o0, 15);
+      get.posn(o0, v60, v61);
+      erase(o0);
+      set.view(o0, 105);
+      reset(f157);
+      position.v(o0, v60, v61);
+      draw(o0);
+      v61 = 106;
+      v96 = 2;
+      move.obj.v(o0, v60, v61, 96, f20);
+      set(f135);
+      sound(5, f198);
+    }
+  }
+LABEL554:
+  v30--;
+  if (f20) {
+    stop.sound();
+    reset(f20);
+    observe.blocks(o0);
+    release.priority(o0);
+    stop.motion(o0);
+    set.view(o0, 103);
+    v30 = 20;
+    set(f98);
+    shake.screen(2);
+    print("Ouch!");
+    set(f135);
+    sound(4, f159);
+  }
+LABEL588:
+  if (f159) {
+    if (v30 > 0) {
+      reset(f159);
+      sound(4, f159);
+    }
+  }
+LABEL606:
+  if (v30 == 1) {
+    set.view(o0, 104);
+    end.of.loop(o0, f21);
+  }
+LABEL619:
+  if (f21) {
+    reset(f21);
+    reset(f98);
+    start.motion(o0);
+    set.view(o0, 0);
+    release.priority(o0);
+    player.control();
+  }
+LABEL637:
+  if (vEGO_EDGE_CODE != 0) {
+    reset(f155);
+  }
+LABEL647:
+  if (vEGO_EDGE_CODE == 1 && f157) {
+    new.room(70);
+  }
+LABEL658:
+  if (vEGO_EDGE_CODE == 1 && !f157) {
+    new.room(34);
+  }
+LABEL670:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(32);
+  }
+LABEL679:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(30);
+  }
+LABEL688:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(18);
+  }
+LABEL697:
+  if (f75) {
+    call(103);
+  }
+LABEL705:
+  if (v80 == 31) {
+    call(104);
+  }
+LABEL714:
+  return;

@@ -1,0 +1,64 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  if (vPREV_ROOM_NO == 36) {
+    set.view(o0, 60);
+    position(o0, 3, 81);
+  }
+  if (vPREV_ROOM_NO == 77) {
+    position(o0, 146, 131);
+    move.obj(o0, 146, 131, 0, f148);
+  }
+  LABEL43:
+    draw(o0);
+    show.pic();
+}
+if (f120) {
+  ignore.blocks(o0);
+  goto(LABEL59);
+}
+LABEL57:
+  observe.blocks(o0);
+LABEL59:
+  if (v82 == 1 && f120) {
+    if (posn(o0, 1, 75, 12, 82)) {
+      reset(f120);
+      print(null);
+      set(f63);
+      goto(LABEL94);
+    }
+    set.view(o0, 0);
+    print("You feel a stretching sensation... Oh, you're back to your original size.");
+    reset(f120);
+  }
+LABEL94:
+  if (said("examine", "stairway")) {
+    print("The stairs are very steep and narrow.");
+  }
+LABEL106:
+  if (said("examine", "doorway") || said("look inside", "doorway")) {
+    print("The small hole leads to the outside world.");
+  }
+LABEL126:
+  if (said("go", "doorway") || said("go", "doorway")) {
+    if (f120) {
+      print("Go ahead.  Walk right in.");
+      goto(LABEL157);
+    }
+    print("You are much too big to fit through that small hole.");
+  }
+LABEL157:
+  if (said("examine", "cave") || said("examine", "room")) {
+    print();
+  }
+LABEL177:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(77);
+  }
+LABEL186:
+  if (posn(o0, 0, 0, 1, 167)) {
+    new.room(36);
+  }
+LABEL198:
+  return;

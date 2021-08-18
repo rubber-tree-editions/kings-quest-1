@@ -1,0 +1,111 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  load.view(105);
+  load.view(74);
+  load.sound(5);
+  if (vPREV_ROOM_NO == 71 && f157) {
+    set.view(o0, 74);
+    position(o0, 69, 40);
+    move.obj(o0, 69, 40, 0, f148);
+  }
+  if (vPREV_ROOM_NO == 71 && f158) {
+    program.control();
+    set.view(o0, 105);
+    get.posn(o0, v60, v61);
+    if (v60 > 75) {
+      position(o0, 90, 29);
+      goto(LABEL75);
+    }
+    position(o0, 55, 29);
+    LABEL75:
+      v61 = 166;
+      v96 = 4;
+      set.priority(o0, 15);
+      move.obj.v(o0, v60, v61, 96, f20);
+  }
+  LABEL90:
+    if (vPREV_ROOM_NO < 50) {
+      set.view(o0, 74);
+      position(o0, 69, 160);
+      move.obj(o0, 69, 160, 0, f148);
+    }
+  LABEL110:
+    draw(o0);
+    show.pic();
+}
+if (f158 && !f20 && !f21) {
+  sound(5, f159);
+  set(f21);
+}
+LABEL130:
+  if (f159) {
+    if (!f20) {
+      reset(f21);
+      reset(f159);
+    }
+  }
+LABEL147:
+  if (f75) {
+    print();
+    reset(f75);
+    set(f130);
+    vSCORE -= 5;
+  }
+LABEL162:
+  if (said("examine", "beanstalk")) {
+    print("The beanstalk disappears up into the clouds.");
+  }
+LABEL174:
+  if (fEGO_TOUCHED_TRIGGER_LINE && !f158) {
+    program.control();
+    print("With a wrong move, you fall dizzyingly to the ground.");
+    get.posn(o0, v60, v61);
+    set(f158);
+    erase(o0);
+    set.view(o0, 105);
+    if (v60 > 75) {
+      v60 = 80;
+      position.v(o0, v60, v61);
+      draw(o0);
+    }
+    if (v60 < 76) {
+      v60 = 65;
+      position.v(o0, v60, v61);
+      draw(o0);
+    }
+    LABEL229:
+      start.cycling(o0);
+      set(f98);
+      v61 = 166;
+      v96 = 4;
+      move.obj.v(o0, v60, v61, 96, f20);
+  }
+LABEL245:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(71);
+  }
+LABEL254:
+  if (f20 || posn(o0, 0, 166, 159, 167)) {
+    if (v80 == 6) {
+      new.room(6);
+    }
+    if (v80 == 22) {
+      new.room(22);
+    }
+    LABEL286:
+      if (v80 == 31) {
+        new.room(31);
+      }
+    LABEL295:
+      if (v80 == 35) {
+        new.room(35);
+      }
+    LABEL304:
+      if (v80 == 38) {
+        new.room(38);
+      }
+  }
+LABEL313:
+  return;

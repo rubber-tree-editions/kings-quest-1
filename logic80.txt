@@ -1,0 +1,40 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  if (f142) {
+    load.view(91);
+    set.view(o0, 91);
+    position(o0, 1, 60);
+    move.obj(o0, 130, 60, 0, f20);
+    goto(LABEL51);
+  }
+  load.view(89);
+  set.view(o0, 89);
+  position(o0, 1, 60);
+  move.obj(o0, 135, 60, 0, f21);
+  LABEL51:
+    draw(o0);
+    show.pic();
+}
+if (said("examine", "view") || said("examine", "clouds") || said("examine", "room")) {
+  print(null);
+}
+LABEL80:
+  if (said("anyword", "witch")) {
+    print("Now is not the time to irritate the witch.");
+  }
+LABEL92:
+  if (said("anyword", "bird")) {
+    print();
+  }
+LABEL104:
+  if (f20) {
+    new.room(65);
+  }
+LABEL112:
+  if (f21) {
+    new.room(48);
+  }
+LABEL120:
+  return;

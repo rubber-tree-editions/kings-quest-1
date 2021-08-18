@@ -1,0 +1,226 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(46);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 26, 138, 0, 0);
+  }
+  LABEL37:
+    load.logics(101);
+    call(101);
+    random(0, 250, v62);
+    if (v62 < 85 && !f82) {
+      load.view(7);
+      animate.obj(o1);
+      set.view(o1, 7);
+      position(o1, 26, 60);
+      observe.blocks(o1);
+      object.on.land(o1);
+      set(f22);
+    }
+  LABEL72:
+    if (f22) {
+      LABEL78:
+        random(0, 250, v71);
+        if (v71 > 90) {
+          goto(LABEL78);
+        }
+    }
+  LABEL92:
+    if (vPREV_ROOM_NO == 17 && fEGO_ON_WATER) {
+      get.posn(o0, v60, v61);
+      if (v61 < 111) {
+        position(o0, 142, 122);
+      }
+    }
+    draw(o0);
+    show.pic();
+}
+v71--;
+if (v71 == 1) {
+  reset(f22);
+  draw(o1);
+  set(f20);
+  wander(o1);
+  print(null);
+}
+LABEL138:
+  if (said("examine", "lake")) {
+    print("This is a clear mountain lake with some steep cliffs surrounding it.");
+  }
+LABEL150:
+  if (!f20) {
+    if (said("anyword", "elf")) {
+      if (f21 && said("talk", "elf")) {
+        print("The elf has left since you were not very cordial to him.");
+        goto(LABEL186);
+      }
+      print("There's no elf here.");
+    }
+    LABEL186:
+      if (said("examine", "room")) {
+        print("There is a clear mountain lake and some trees here.");
+      }
+    LABEL198:
+      if (f21 && said("talk", "elf")) {
+        print("The elf has left since you were not very cordial to him.");
+      }
+  }
+LABEL212:
+  if (f20) {
+    distance(o0, o1, v70);
+    if (said("examine", "room")) {
+      print("There is a very pretty lake nearby with a small little elf running along its shore.");
+    }
+    if (said("examine", "elf")) {
+      print("This is a small elf.  He looks very friendly.");
+    }
+    LABEL246:
+      if (said("kiss", "elf") || said("hug", "elf")) {
+        print("Silly!  You can't get close enough to do that.");
+      }
+    LABEL266:
+      if (said("murder", "elf") || said("catch", "elf")) {
+        set(f21);
+        erase(o1);
+        reset(f20);
+        print("I'm surprised at you!  That is very impolite!");
+      }
+    LABEL292:
+      if (f67) {
+        if (said("throw", "dagger") || said("throw", "dagger", "elf")) {
+          set(f21);
+          erase(o1);
+          reset(f20);
+          print("I'm surprised at you!  That is very impolite!");
+        }
+      }
+    LABEL326:
+      if (!f21 && (said("talk", "elf") || said("hello") || said("say", "hello"))) {
+        if (v70 < 40) {
+          print("The elf, impressed by your friendliness, gives you a magic ring.  \"Kind person, know that once, only once, this ring will make you invisible,\" he says and then disappears.");
+          get("ring");
+          set(f83);
+          vSCORE += 3;
+          erase(o1);
+          reset(f20);
+          set(f82);
+          goto(LABEL378);
+        }
+        print();
+      }
+  }
+LABEL378:
+  if (!fEGO_ON_WATER) {
+    ignore.blocks(o0);
+    goto(LABEL392);
+  }
+LABEL390:
+  observe.blocks(o0);
+LABEL392:
+  if (!fEGO_ON_WATER) {
+    if (posn(o0, 129, 95, 159, 105) || posn(o0, 133, 80, 145, 94)) {
+      set(fEGO_ON_WATER);
+      set(f134);
+    }
+  }
+LABEL421:
+  if (v94 <= 0 && fEGO_TOUCHED_TRIGGER_LINE) {
+    set(fEGO_ON_WATER);
+    v76 = 255;
+    if (posn(o0, 128, 64, 159, 85)) {
+      v76 = 139;
+      v77 = 84;
+    }
+    if (posn(o0, 97, 88, 118, 95)) {
+      v76 = 97;
+      v77 = 104;
+    }
+    LABEL468:
+      if (v76 == 255) {
+        v76 = 0;
+        goto(LABEL493);
+      }
+    LABEL481:
+      get.posn(o0, v60, v61);
+      v76 -= v60;
+      v77 -= v61;
+      set(f134);
+  }
+LABEL493:
+  if (v94 <= 0 && fEGO_ON_WATER) {
+    v76 = 255;
+    if (posn(o0, 119, 86, 146, 95)) {
+      v76 = 120;
+      v77 = 104;
+    }
+    if (v76 == 255) {
+      v76 = 0;
+      goto(LABEL547);
+    }
+    LABEL535:
+      get.posn(o0, v60, v61);
+      v76 -= v60;
+      v77 -= v61;
+      set(f134);
+  }
+LABEL547:
+  if (!f88 && !fEGO_ON_WATER && !f116) {
+    if (said("drink", "water") || said("get", "drink")) {
+      if (posn(o0, 81, 87, 159, 167)) {
+        print("There is nothing to compare with that refreshing taste.");
+        goto(LABEL595);
+      }
+      print("You are not close enough to the water.");
+    }
+  }
+LABEL595:
+  if (!f88 && f81 && !fEGO_ON_WATER && said("get", "water")) {
+    if (posn(o0, 81, 87, 159, 167)) {
+      reset(f116);
+      print("The cold water gushes into the old bucket.");
+      get("water");
+      set(f88);
+      if (!f91) {
+        vSCORE += 2;
+      }
+      set(f91);
+      goto(LABEL648);
+    }
+    print("You are not close enough to the water.");
+  }
+LABEL648:
+  if (vEGO_EDGE_CODE != 0) {
+    if (f66) {
+      reset(f66);
+      reset(f75);
+      set(f130);
+    }
+  }
+LABEL668:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(31);
+  }
+LABEL677:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(17);
+  }
+LABEL686:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(19);
+  }
+LABEL695:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(15);
+  }
+LABEL704:
+  if (f75) {
+    call(103);
+  }
+LABEL712:
+  call(101);
+  return;

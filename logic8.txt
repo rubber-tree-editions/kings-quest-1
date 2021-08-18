@@ -1,0 +1,145 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(43);
+  load.logics(101);
+  call(101);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 47, 60, 0, 0);
+  }
+  LABEL41:
+    if (vPREV_ROOM_NO == 41) {
+      position(o0, 45, 166);
+    }
+  LABEL52:
+    ignore.blocks(o0);
+    draw(o0);
+    show.pic();
+}
+if (posn(o0, 79, 135, 132, 167) || posn(o0, 133, 146, 159, 167)) {
+  set(f68);
+  goto(LABEL82);
+}
+LABEL80:
+  reset(f68);
+LABEL82:
+  if (said("examine", "lake")) {
+    print("This is a beautiful little lake.");
+  }
+LABEL94:
+  if (!fEGO_ON_WATER) {
+    if (posn(o0, 84, 59, 113, 78) || posn(o0, 102, 79, 113, 94) || posn(o0, 100, 95, 113, 128)) {
+      set(fEGO_ON_WATER);
+      set(f134);
+    }
+  }
+LABEL129:
+  if (v94 <= 0 && fEGO_ON_WATER) {
+    v76 = 255;
+    if (posn(o0, 132, 51, 159, 59)) {
+      v76 = 132;
+      v77 = 68;
+    }
+    if (posn(o0, 98, 55, 131, 60)) {
+      v76 = 109;
+      v77 = 68;
+    }
+    LABEL174:
+      if (posn(o0, 79, 135, 159, 167)) {
+        v76 = 115;
+        v77 = 158;
+      }
+    LABEL190:
+      if (posn(o0, 83, 59, 97, 81)) {
+        v76 = 90;
+        v77 = 74;
+      }
+    LABEL206:
+      if (posn(o0, 97, 106, 105, 109) || posn(o0, 98, 110, 105, 115) || posn(o0, 100, 116, 106, 121) || posn(o0, 102, 122, 110, 124) || posn(o0, 104, 125, 111, 128)) {
+        v76 = 103;
+        v77 = 115;
+      }
+    LABEL248:
+      if (posn(o0, 102, 86, 106, 94) || posn(o0, 101, 95, 106, 98) || posn(o0, 97, 99, 105, 105)) {
+        v76 = 104;
+        v77 = 98;
+      }
+    LABEL278:
+      if (v76 == 255) {
+        v76 = 0;
+        goto(LABEL303);
+      }
+    LABEL291:
+      get.posn(o0, v60, v61);
+      v76 -= v60;
+      v77 -= v61;
+      set(f134);
+  }
+LABEL303:
+  if (v94 == 2 && f68 && !f20) {
+    set(f20);
+    v94 = 0;
+    set.view(o0, 93);
+    print();
+  }
+LABEL325:
+  if (!f88 && !fEGO_ON_WATER && !f116) {
+    if (said("drink", "water") || said("get", "drink")) {
+      if (posn(o0, 76, 43, 159, 167)) {
+        print("The water is clear and refreshing.");
+        goto(LABEL373);
+      }
+      print("You are not close enough to the lake.");
+    }
+  }
+LABEL373:
+  if (!f88 && f81 && !fEGO_ON_WATER && said("get", "water")) {
+    if (posn(o0, 76, 43, 159, 167)) {
+      reset(f116);
+      print(null);
+      get("water");
+      set(f88);
+      if (!f91) {
+        vSCORE += 2;
+      }
+      set(f91);
+      goto(LABEL426);
+    }
+    print("You are not close enough to the lake.");
+  }
+LABEL426:
+  if (vEGO_EDGE_CODE != 0) {
+    reset(f68);
+    if (f66) {
+      reset(f66);
+      reset(f75);
+      set(f130);
+    }
+  }
+LABEL448:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(9);
+  }
+LABEL457:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(7);
+  }
+LABEL466:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(1);
+  }
+LABEL475:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(41);
+  }
+LABEL484:
+  if (f75) {
+    call(103);
+  }
+LABEL492:
+  call(101);
+  return;

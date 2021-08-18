@@ -1,0 +1,119 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(46);
+  load.logics(101);
+  call(101);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 108, 64, 0, 0);
+  }
+  LABEL41:
+    if (vPREV_ROOM_NO == 26) {
+      get.posn(o0, v60, v61);
+      if (v60 < 50) {
+        position(o0, 10, 50);
+        goto(LABEL70);
+      }
+      position(o0, 116, 50);
+    }
+  LABEL70:
+    ignore.blocks(o0);
+    draw(o0);
+    show.pic();
+}
+if (said("examine", "lake")) {
+  print("You see the mountains and trees reflected in the mirror-like water.");
+}
+LABEL87:
+  if (said("examine", "cattails")) {
+    print();
+  }
+LABEL99:
+  if (!fEGO_ON_WATER) {
+    if (posn(o0, 69, 76, 103, 131) || posn(o0, 104, 96, 123, 120) || posn(o0, 120, 96, 131, 105) || posn(o0, 120, 106, 125, 111)) {
+      set(fEGO_ON_WATER);
+      set(f134);
+    }
+  }
+LABEL140:
+  if (v94 <= 0 && fEGO_ON_WATER) {
+    v76 = 255;
+    if (posn(o0, 108, 88, 140, 110) || posn(o0, 104, 111, 125, 120)) {
+      v76 = 114;
+      v77 = 102;
+    }
+    if (posn(o0, 86, 125, 106, 156)) {
+      v76 = 73;
+      v77 = 139;
+    }
+    LABEL193:
+      if (v76 == 255) {
+        v76 = 0;
+        goto(LABEL218);
+      }
+    LABEL206:
+      get.posn(o0, v60, v61);
+      v76 -= v60;
+      v77 -= v61;
+      set(f134);
+  }
+LABEL218:
+  if (!f88 && !fEGO_ON_WATER && !f116) {
+    if (said("drink", "water") || said("get", "drink")) {
+      if (posn(o0, 0, 40, 109, 167) || posn(o0, 110, 55, 151, 142)) {
+        print("Ahhh!  That water sure hit the spot!");
+        goto(LABEL274);
+      }
+      print("You are not close enough to the water.");
+    }
+  }
+LABEL274:
+  if (!f88 && f81 && !fEGO_ON_WATER && said("get", "water")) {
+    if (posn(o0, 0, 40, 109, 167) || posn(o0, 110, 55, 151, 142)) {
+      reset(f116);
+      print(null);
+      get("water");
+      set(f88);
+      if (!f91) {
+        vSCORE += 2;
+      }
+      set(f91);
+      goto(LABEL335);
+    }
+    print("You are not close enough to the water.");
+  }
+LABEL335:
+  if (vEGO_EDGE_CODE != 0) {
+    if (f66) {
+      reset(f66);
+      reset(f75);
+      set(f130);
+    }
+  }
+LABEL355:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(26);
+  }
+LABEL364:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(22);
+  }
+LABEL373:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(24);
+  }
+LABEL382:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(10);
+  }
+LABEL391:
+  if (f75) {
+    call(103);
+  }
+LABEL399:
+  call(101);
+  return;

@@ -1,0 +1,88 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  if (vPREV_ROOM_NO == 51) {
+    position(o0, 152, 133);
+    ignore.blocks(o0);
+  }
+  if (vPREV_ROOM_NO == 22) {
+    position(o0, 3, 147);
+  }
+  LABEL36:
+    if (v75 != 2) {
+      load.view(63);
+      animate.obj(o1);
+      set.view(o1, 63);
+      position(o1, 142, 136);
+      ignore.blocks(o1);
+      draw(o1);
+      observe.blocks(o0);
+    }
+  LABEL61:
+    if (v75 == 2) {
+      ignore.blocks(o0);
+    }
+  LABEL70:
+    draw(o0);
+    show.pic();
+}
+if (f75) {
+  reset(f75);
+  set(f130);
+  print(null);
+}
+LABEL85:
+  if (v75 != 2) {
+    if (said("examine", "cave")) {
+      print("It is empty except for a huge boulder opposite the opening.");
+    }
+    if (said("examine", "rocks")) {
+      print("It is a huge piece of granite.");
+    }
+    LABEL117:
+      if (said("get", "rocks")) {
+        print("It is far too heavy to carry around.");
+      }
+    LABEL129:
+      if (said("shove", "rocks")) {
+        print("It is impossible for you to move a boulder this large.");
+      }
+    LABEL141:
+      if (said("climb", "rocks")) {
+        print();
+      }
+  }
+LABEL153:
+  if (said("examine", "stalactites")) {
+    print("It took millenniums for these stalagmites and stalactites to form.");
+  }
+LABEL165:
+  if (v75 == 2) {
+    if (said("examine", "cave")) {
+      print("It is a rather large, vacant cave.");
+    }
+  }
+LABEL184:
+  if (said("examine", "doorway")) {
+    if (posn(o0, 0, 0, 80, 167)) {
+      print("Looking out the cave opening, you are able to admire the beautiful scenery outside.");
+    }
+    if (posn(o0, 81, 0, 159, 167)) {
+      if (v75 != 2) {
+        print("It is on the far side of the cave.");
+        goto(LABEL231);
+      }
+      print("It leads to another portion of the cave.");
+    }
+  }
+LABEL231:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(51);
+  }
+LABEL240:
+  if (posn(o0, 0, 0, 1, 167)) {
+    new.room(22);
+  }
+LABEL252:
+  return;

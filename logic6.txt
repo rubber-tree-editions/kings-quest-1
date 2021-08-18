@@ -1,0 +1,277 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  load.sound(4);
+  load.sound(5);
+  set.horizon(40);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 54, 67, 0, 0);
+  }
+  LABEL41:
+    if (f154 || v80 == 6) {
+      v92 = 84;
+      set(f155);
+      load.pic(v92);
+      load.view(114);
+      load.view(103);
+      load.view(104);
+      load.view(74);
+      load.view(105);
+      load.logics(104);
+      load.sound(12);
+    }
+  LABEL73:
+    if (vPREV_ROOM_NO == 70 && f157) {
+      set.view(o0, 74);
+      position(o0, 64, 41);
+      move.obj(o0, 64, 41, 0, f148);
+      set.priority(o0, 8);
+    }
+  LABEL98:
+    if (vPREV_ROOM_NO == 70 && f158) {
+      program.control();
+      ignore.horizon(o0);
+      set.priority(o0, 15);
+      set.view(o0, 105);
+      get.posn(o0, v60, v61);
+      if (v60 > 75) {
+        position(o0, 80, 29);
+        goto(LABEL138);
+      }
+      position(o0, 65, 29);
+      LABEL138:
+        get.posn(o0, v60, v61);
+        v61 = 106;
+        v96 = 2;
+        move.obj.v(o0, v60, v61, 96, f21);
+    }
+  LABEL154:
+    if (vPREV_ROOM_NO == 43 && fEGO_ON_WATER) {
+      reset(f98);
+      set.view(o0, 0);
+      v94 = 0;
+    }
+  LABEL171:
+    if (v80 == 6) {
+      overlay.pic(v92);
+    }
+  LABEL180:
+    draw(o0);
+    show.pic();
+}
+if (f158 && !f23) {
+  set(f23);
+  set(f135);
+  sound(5, f24);
+}
+LABEL199:
+  if (!f21 && f24) {
+    reset(f23);
+    reset(f24);
+  }
+LABEL212:
+  if (f21) {
+    stop.sound();
+    set(f23);
+    reset(f158);
+    reset(f135);
+    set.view(o0, 114);
+    shake.screen(2);
+    set(f63);
+  }
+LABEL232:
+  if (said("examine", "wood") || said("look inside", "wood")) {
+    if (posn(o0, 0, 92, 102, 167)) {
+      print("It is only a rotted log.");
+      goto(LABEL290);
+    }
+    if (posn(o0, 22, 135, 36, 167) || posn(o0, 75, 135, 91, 167)) {
+      print("There is nothing in the old log.");
+      goto(LABEL290);
+    }
+    print("I suggest you move closer to try that.");
+  }
+LABEL290:
+  if (said("examine", "stumps")) {
+    if (posn(o0, 0, 81, 102, 167)) {
+      print("From here you can see the stump is very old and nearly petrified.");
+      goto(LABEL317);
+    }
+    print("You can vaguely see the stump in the distance.");
+  }
+LABEL317:
+  if (said("get", "wood")) {
+    print("There is no reason to take this old log with you.");
+  }
+LABEL329:
+  if (said("look inside", "stumps")) {
+    if (posn(o0, 0, 103, 35, 146)) {
+      if (!f71) {
+        print(null);
+        if (!f61) {
+          set(f61);
+          vSCORE += 1;
+        }
+        goto(LABEL375);
+      }
+      print("Inside the decaying tree stump, you see nothing interesting.");
+      LABEL375:
+        goto(LABEL380);
+    }
+    print("I suggest you move closer to try that.");
+  }
+LABEL380:
+  if (said("get", "bag of jewels") && !f72) {
+    if (posn(o0, 0, 103, 35, 146)) {
+      if (!f71) {
+        print("You notice the pouch feels aged and tattered.");
+        get("pouch");
+        set(f71);
+        set(f72);
+        vSCORE += 3;
+        goto(LABEL426);
+      }
+      print("There's no pouch here.");
+    }
+    LABEL426:
+      if (!posn(o0, 0, 103, 35, 146)) {
+        print();
+      }
+  }
+LABEL439:
+  if (f154 && f155) {
+    if (said("plant", "magic beans")) {
+      reset(f154);
+      v80 = 6;
+      set(f94);
+      drop("beans");
+      vSCORE += 2;
+      print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
+      sound(12, f25);
+      overlay.pic(v92);
+      show.pic();
+    }
+  }
+LABEL477:
+  if (v80 == 6 && !f79) {
+    if (said("climb", "beanstalk") && !f157) {
+      if (posn(o0, 52, 76, 103, 97)) {
+        erase(o0);
+        set.view(o0, 74);
+        set(f157);
+        position(o0, 71, 77);
+        set.priority(o0, 8);
+        draw(o0);
+        move.obj(o0, 71, 77, 0, f148);
+        goto(LABEL537);
+      }
+      print("You can't reach the beanstalk from here.");
+    }
+  }
+LABEL537:
+  if (v80 != 6) {
+    if (said("climb", "beanstalk")) {
+      print("There is no beanstalk here to climb.");
+    }
+  }
+LABEL557:
+  if (f157) {
+    if (fEGO_TOUCHED_TRIGGER_LINE && posn(o0, 60, 78, 93, 80)) {
+      erase(o0);
+      set.view(o0, 0);
+      reset(f157);
+      position(o0, 70, 106);
+      release.priority(o0);
+      draw(o0);
+    }
+    if (fEGO_TOUCHED_TRIGGER_LINE && !posn(o0, 60, 78, 93, 80)) {
+      program.control();
+      set.priority(o0, 15);
+      get.posn(o0, v60, v61);
+      erase(o0);
+      set.view(o0, 105);
+      reset(f157);
+      position.v(o0, v60, v61);
+      draw(o0);
+      v61 = 106;
+      v96 = 2;
+      move.obj.v(o0, v60, v61, 96, f20);
+      set(f135);
+      sound(5, f198);
+    }
+  }
+LABEL641:
+  v30--;
+  if (f20) {
+    stop.sound();
+    reset(f20);
+    observe.blocks(o0);
+    release.priority(o0);
+    stop.motion(o0);
+    set.view(o0, 103);
+    v30 = 20;
+    set(f98);
+    shake.screen(2);
+    print("Ouch!");
+    set(f135);
+    sound(4, f159);
+  }
+LABEL675:
+  if (f159) {
+    if (v30 > 0) {
+      reset(f159);
+      sound(4, f159);
+    }
+  }
+LABEL693:
+  if (v30 == 1) {
+    set.view(o0, 104);
+    end.of.loop(o0, f22);
+  }
+LABEL706:
+  if (f22) {
+    reset(f22);
+    reset(f98);
+    start.motion(o0);
+    set.view(o0, 0);
+    release.priority(o0);
+    player.control();
+  }
+LABEL724:
+  if (vEGO_EDGE_CODE != 0) {
+    reset(f155);
+  }
+LABEL734:
+  if (vEGO_EDGE_CODE == 1 && f157) {
+    new.room(70);
+  }
+LABEL745:
+  if (vEGO_EDGE_CODE == 1 && !f157) {
+    new.room(11);
+  }
+LABEL757:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(5);
+  }
+LABEL766:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(7);
+  }
+LABEL775:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(43);
+  }
+LABEL784:
+  if (f75) {
+    call(103);
+  }
+LABEL792:
+  if (v80 == 6) {
+    call(104);
+  }
+LABEL801:
+  return;

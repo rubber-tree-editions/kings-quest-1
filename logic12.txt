@@ -1,0 +1,589 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(46);
+  load.sound(5);
+  load.sound(20);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 107, 81, 0, 0);
+  }
+  LABEL41:
+    load.view(74);
+    load.view(143);
+    load.view(18);
+    animate.obj(o1);
+    set.view(o1, 18);
+    position(o1, 66, 96);
+    ignore.objs(o1);
+    set.priority(o1, 11);
+    set.cel(o1, 4);
+    if (!f176) {
+      load.view(72);
+      load.view(16);
+      animate.obj(o2);
+      set.view(o2, 16);
+      ignore.blocks(o2);
+      position(o2, 37, 120);
+      set.priority(o2, 11);
+      if (!f177) {
+        set.cel(o2, 0);
+      }
+      if (f177) {
+        set.cel(o2, 7);
+      }
+    }
+  LABEL108:
+    if (!f178) {
+      load.view(17);
+      animate.obj(o3);
+      set.view(o3, 17);
+      ignore.blocks(o3);
+      position(o3, 43, 147);
+      set.priority(o3, 11);
+      if (!f179) {
+        set.cel(o3, 0);
+      }
+      if (f179) {
+        set.cel(o3, 2);
+      }
+    }
+  LABEL150:
+    if (vPREV_ROOM_NO == 49) {
+      if (f176) {
+        set.view(o0, 143);
+        goto(LABEL172);
+      }
+      set.view(o0, 74);
+      LABEL172:
+        set(f180);
+        position(o0, 38, 140);
+        set.priority(o0, 11);
+        ignore.blocks(o0);
+        move.obj(o0, 38, 140, 0, f148);
+    }
+  LABEL189:
+    if (vPREV_ROOM_NO == 5) {
+      if (fEGO_ON_WATER) {
+        set.view(o0, 0);
+        reset(f98);
+        v94 = 0;
+      }
+    }
+  LABEL210:
+    draw(o1);
+    stop.update(o1);
+    if (!f176) {
+      draw(o2);
+      stop.update(o2);
+    }
+  LABEL225:
+    if (f176 && !f178) {
+      draw(o3);
+      stop.cycling(o3);
+    }
+  LABEL238:
+    draw(o0);
+    show.pic();
+}
+if (said("examine", "flowers")) {
+  print("They raise their colorful faces to the sun.");
+}
+LABEL253:
+  if (!f81) {
+    if (said("get", "water")) {
+      print("All the water is at the bottom of the well.");
+    }
+  }
+LABEL272:
+  if (f81 && !f88) {
+    if (said("get", "water")) {
+      print("Somebody has cut the rope;  there's no way for you to get the bucket to the well's bottom.");
+    }
+  }
+LABEL293:
+  if (!f75 && !f79) {
+    if (posn(o0, 10, 100, 75, 150)) {
+      if (f177 || f179) {
+        if (said("climb", "rope") || said("climb", "well") || said("go", "well") || said("go down", "well") || said("slide", "rope")) {
+          erase(o0);
+          if (f176) {
+            set.view(o0, 143);
+            goto(LABEL376);
+          }
+          set.view(o0, 74);
+          LABEL376:
+            position(o0, 39, 131);
+            draw(o0);
+            set(f180);
+            set.priority(o0, 11);
+            ignore.blocks(o0);
+            move.obj(o0, 39, 132, 0, f148);
+        }
+      }
+      if (!f177 && !f179) {
+        if (said("climb", "well")) {
+          print("The sides of this well are too slippery to climb down.");
+        }
+        if (said("climb", "rope") || said("slide", "rope")) {
+          print("The rope does not go down the well very far.");
+        }
+      }
+      LABEL437:
+        if (!f176 && !f177) {
+          if (said("climb", "bucket") || said("go", "bucket") || said("go", "well") || said("go down", "well")) {
+            erase(o0);
+            set.view(o2, 72);
+            position(o2, 38, 145);
+            set.priority(o2, 11);
+            ignore.blocks(o2);
+            set.cel(o2, 0);
+            start.update(o2);
+            erase(o2);
+            stop.cycling(o2);
+            draw(o2);
+            set(f181);
+            sound(20, f30);
+            end.of.loop(o2, f25);
+            start.update(o1);
+            start.cycling(o1);
+            print("After you are in the old bucket, your weight causes it to slowly descend.");
+          }
+        }
+      LABEL516:
+        if (f177 && !f176) {
+          if (said("climb", "bucket") || said("go", "bucket")) {
+            print("The old bucket is at the bottom of the well.");
+          }
+        }
+      LABEL545:
+        if (f176) {
+          if (said("climb", "bucket") || said("go", "bucket")) {
+            print("There is no bucket here.");
+          }
+        }
+      LABEL571:
+        if (f176 && !f179) {
+          if (said("go", "well") || said("go down", "well")) {
+            set(f26);
+            set(f28);
+          }
+        }
+      LABEL602:
+        if (said("jump", "well")) {
+          set(f27);
+          set(f28);
+        }
+      LABEL616:
+        if (said("untie", "rope")) {
+          print("The knots on the rope are too tight to untie.");
+        }
+    }
+  }
+LABEL628:
+  if (!posn(o0, 10, 100, 75, 150)) {
+    if (said("climb", "rope") || said("go", "well") || said("go down", "well") || said("jump", "well") || said("slide", "rope") || said("go", "bucket")) {
+      print("You need to be closer to do that.");
+    }
+  }
+LABEL683:
+  if (f75 && !f79) {
+    if (posn(o0, 10, 100, 75, 150)) {
+      if (said("climb", "rope")) {
+        print("The goat sure doesn't want to climb the rope.");
+      }
+      if (said("climb", "well")) {
+        print("The goat sure doesn`t want to climb down the well with you.");
+      }
+      LABEL726:
+        if (said("climb", "bucket")) {
+          print("The goat refuses to do down the well.");
+        }
+      LABEL738:
+        if (said("go", "bucket")) {
+          print("That bucket isn't big enough for you and that big goat!");
+        }
+      LABEL750:
+        if (said("go", "well")) {
+          print("The goat refuses to enter the dark well.");
+        }
+      LABEL762:
+        if (said("go down", "well")) {
+          print("The goat refuses to go down into the dark well.");
+        }
+      LABEL774:
+        if (said("slide", "rope")) {
+          print("The goat doesn`t want to slide down the rope.");
+        }
+      LABEL786:
+        if (said("jump", "well")) {
+          print("The goat is afraid of heights and refuses to jump down the well.");
+        }
+    }
+  }
+LABEL798:
+  if (f79) {
+    if (posn(o0, 10, 100, 75, 150)) {
+      if (said("climb", "rope") || said("go", "bucket") || said("go", "well") || said("go down", "well") || said("slide", "rope") || said("jump", "well")) {
+        print("You can't do that when you are invisible!");
+      }
+    }
+  }
+LABEL858:
+  if (f180) {
+    get.posn(o0, v60, v61);
+    if (v61 < 131) {
+      erase(o0);
+      set.view(o0, 0);
+      position(o0, 48, 111);
+      draw(o0);
+      release.priority(o0);
+      observe.blocks(o0);
+      reset(f180);
+    }
+    if (v61 > 145) {
+      new.room(49);
+    }
+    LABEL901:
+      if (v60 < 35 || v60 > 44) {
+        get.posn(o0, v60, v61);
+        v61 = 145;
+        v96 = 3;
+        move.obj.v(o0, v60, v61, 96, f29);
+        print("You should be more careful the next time you try  climbing ropes.");
+        set(f135);
+        sound(5, f159);
+        reset(f180);
+      }
+  }
+LABEL938:
+  if (f29 || f20) {
+    reset(f29);
+    reset(f20);
+    erase(o0);
+    set(f182);
+    new.room(49);
+  }
+LABEL958:
+  if (f28) {
+    reset(f28);
+    erase(o0);
+    position(o0, 38, 125);
+    set.priority(o0, 11);
+    ignore.blocks(o0);
+    draw(o0);
+    move.obj(o0, 38, 145, 3, f20);
+    if (f26) {
+      print("Carefully... Oh no!  The sides were too slippery... you've fallen into the well!");
+    }
+    if (f27) {
+      print("What a mistake you made!  This well is too deep to jump into.");
+    }
+    LABEL1001:
+      set(f135);
+      sound(5, f159);
+  }
+LABEL1006:
+  if (f176 || f177) {
+    if (!f81 && (said("get", "bucket") || said("examine", "bucket"))) {
+      print("There is no bucket here.");
+    }
+  }
+LABEL1039:
+  if (f176) {
+    if (said("lower", "bucket") || said("raise", "bucket")) {
+      print("The bucket is not here.");
+    }
+  }
+LABEL1065:
+  if (!f176 && !f177) {
+    if (!f81 && said("get", "bucket")) {
+      if (posn(o0, 10, 109, 71, 153)) {
+        print("The old bucket is securely fastened to a strong rope.");
+        goto(LABEL1105);
+      }
+      print("You need to be closer to do that.");
+    }
+    LABEL1105:
+      if (!f81 && said("examine", "bucket")) {
+        if (posn(o0, 10, 109, 71, 153)) {
+          if (f163) {
+            print("The old bucket holds a full load of water.");
+            goto(LABEL1141);
+          }
+          print("It is large, old and weathered.  It has served the kingdom for many years.");
+          LABEL1141:
+            goto(LABEL1146);
+        }
+        print("From this distance it is difficult to see.");
+      }
+  }
+LABEL1146:
+  if (!f176 && f177) {
+    if (said("lower", "bucket")) {
+      if (posn(o0, 10, 109, 71, 153)) {
+        print("The old bucket is already at the bottom of the well.");
+        goto(LABEL1182);
+      }
+      print("You will find that very difficult to do from here.");
+    }
+  }
+LABEL1182:
+  if (!f176 && !f177) {
+    if (said("raise", "bucket") || said("raise", "rope")) {
+      if (posn(o0, 10, 109, 71, 153)) {
+        print("The bucket is already at the top of the well.");
+        goto(LABEL1227);
+      }
+      print("You will find that very difficult to do from here.");
+    }
+  }
+LABEL1227:
+  if (f21) {
+    reset(f21);
+    stop.update(o2);
+    stop.update(o1);
+  }
+LABEL1239:
+  if (f22) {
+    reset(f22);
+    stop.update(o2);
+    stop.update(o1);
+  }
+LABEL1251:
+  if (!f176 && !f177) {
+    if (said("lower", "bucket") || said("lower", "rope")) {
+      if (posn(o0, 60, 108, 77, 140)) {
+        print("The old bucket disappears into the darkness.");
+        start.update(o2);
+        start.update(o1);
+        end.of.loop(o2, f21);
+        sound(20, f30);
+        start.cycling(o1);
+        set(f177);
+        goto(LABEL1310);
+      }
+      print("You will find that very difficult to do from here.");
+    }
+  }
+LABEL1310:
+  if (!f176 && f177 && f180) {
+    if (said("raise", "bucket")) {
+      print("You will find that very difficult to do from here.");
+    }
+  }
+LABEL1333:
+  if (!f176 && f177 && !f180) {
+    if (said("raise", "bucket") || said("raise", "rope")) {
+      if (posn(o0, 60, 108, 77, 140)) {
+        print("The old bucket emerges from the depths of the well.");
+        start.update(o2);
+        start.update(o1);
+        random(0, 250, v62);
+        if (v62 < 30) {
+          set(f163);
+        }
+        reverse.loop(o2, f22);
+        start.cycling(o1);
+        sound(20, f30);
+        reset(f177);
+        goto(LABEL1407);
+      }
+      print("You will find that very difficult to do from here.");
+    }
+  }
+LABEL1407:
+  if (posn(o0, 10, 109, 71, 153)) {
+    if (said("examine", "well") || said("look inside", "well")) {
+      print("The well is deep and dark. But you can see the sky's reflection on the water.");
+    }
+  }
+LABEL1437:
+  if (!posn(o0, 10, 109, 71, 153)) {
+    if (said("examine", "well")) {
+      print("This well is one of the most ancient sites in the entire kingdom.  History and mystery seem to echo from its  every stone.");
+    }
+  }
+LABEL1460:
+  if (!f178) {
+    if (said("examine", "rope")) {
+      if (posn(o0, 10, 109, 71, 153)) {
+        print("It is thick and firmly attached.  It could easily carry heavy weights.");
+        goto(LABEL1494);
+      }
+      print("From this distance it is difficult to see.");
+    }
+  }
+LABEL1494:
+  if (said("get", "rope") && !f178) {
+    if (posn(o0, 10, 109, 71, 153)) {
+      print(null);
+      goto(LABEL1524);
+    }
+    print("You are not close enough to even try.");
+  }
+LABEL1524:
+  if (said("get", "rope") && f178) {
+    print("There is no useful rope to get.");
+  }
+LABEL1538:
+  if (said("cut", "rope") || said("cut", "rope", "dagger")) {
+    if (!f67) {
+      print("You have no way to cut the rope.");
+    }
+    if (f67 && !posn(o0, 10, 109, 71, 153)) {
+      print("You will need longer arms to cut that rope from here.");
+    }
+    LABEL1582:
+      if (f67 && posn(o0, 10, 109, 71, 153)) {
+        if (f176 && !f179) {
+          print("You cut a piece of rope and it falls into the well.");
+        }
+        if (f178) {
+          print("There is no useful rope left to cut.");
+        }
+        LABEL1613:
+          if (f176 && f179) {
+            erase(o3);
+            print("The long piece of rope falls to the bottom of the well.");
+            set(f178);
+            reset(f179);
+          }
+        LABEL1629:
+          if (!f176 && !f177) {
+            start.update(o2);
+            erase(o2);
+            draw(o3);
+            stop.cycling(o3);
+            set(f81);
+            if (f163) {
+              get("water");
+              set(f88);
+              if (!f91) {
+                vSCORE += 2;
+                set(f91);
+              }
+            }
+            set(f176);
+            get("water bucket");
+            print("With the rope cut, you are able to take the bucket.");
+            vSCORE += 2;
+          }
+        LABEL1680:
+          if (!f176 && f177) {
+            start.update(o2);
+            erase(o2);
+            reset(f177);
+            set(f176);
+            set(f178);
+            print("The bucket and rope are now at the bottom of the well.");
+          }
+      }
+  }
+LABEL1701:
+  if (f178) {
+    if (said("lower", "rope") || said("lower", "bucket")) {
+      print();
+    }
+  }
+LABEL1727:
+  if (f176 && f179) {
+    if (said("lower", "rope")) {
+      if (posn(o0, 60, 108, 77, 129)) {
+        print("The rope has already been lowered.");
+        goto(LABEL1762);
+      }
+      print("You are not close enough to do that.");
+    }
+  }
+LABEL1762:
+  if (f176 && !f179) {
+    if (said("lower", "rope")) {
+      if (posn(o0, 60, 108, 77, 129)) {
+        start.cycling(o3);
+        start.update(o1);
+        print("The rope descends into the darkness.");
+        sound(20, f30);
+        end.of.loop(o3, f24);
+        start.cycling(o1);
+        set(f179);
+        goto(LABEL1812);
+      }
+      print("You are not close enough to do that.");
+    }
+  }
+LABEL1812:
+  if (f24) {
+    reset(f24);
+    stop.update(o1);
+    stop.cycling(o3);
+  }
+LABEL1824:
+  if (f176 && !f179) {
+    if (said("raise", "rope")) {
+      if (posn(o0, 10, 109, 71, 153)) {
+        print("The rope is already at the top of the well.");
+        goto(LABEL1860);
+      }
+      print("You are not close enough to do that.");
+    }
+  }
+LABEL1860:
+  if (f176 && f179 && !f180) {
+    if (said("raise", "rope")) {
+      if (posn(o0, 10, 109, 71, 153)) {
+        start.cycling(o3);
+        start.update(o1);
+        print("The rope emerges from the well.");
+        reverse.loop(o3, f23);
+        sound(20, f30);
+        start.cycling(o1);
+        reset(f179);
+        goto(LABEL1912);
+      }
+      print("You are not close enough to do that.");
+    }
+  }
+LABEL1912:
+  if (f23) {
+    reset(f23);
+    stop.update(o1);
+    stop.cycling(o3);
+  }
+LABEL1924:
+  if (f176 && f179 && f180) {
+    if (said("raise", "rope")) {
+      print("You can't raise the rope from here!");
+    }
+  }
+LABEL1946:
+  if (f25) {
+    reset(f25);
+    set(f177);
+    new.room(49);
+  }
+LABEL1958:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(21);
+  }
+LABEL1967:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(13);
+  }
+LABEL1976:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(11);
+  }
+LABEL1985:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(5);
+  }
+LABEL1994:
+  if (f75) {
+    call(103);
+  }
+LABEL2002:
+  return;

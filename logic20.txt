@@ -1,0 +1,122 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  set.horizon(53);
+  load.logics(101);
+  call(101);
+  if (f75) {
+    load.logics(103);
+  }
+  if (v65 == vROOM_NO) {
+    add.to.pic(62, 0, 0, 123, 64, 0, 0);
+  }
+  LABEL41:
+    if (vPREV_ROOM_NO == 29) {
+      get.posn(o0, v60, v61);
+      if (v60 < 50) {
+        position(o0, 12, 54);
+        goto(LABEL70);
+      }
+      position(o0, 122, 54);
+    }
+  LABEL70:
+    if (vPREV_ROOM_NO == 13) {
+      if (posn(o0, 0, 164, 75, 167)) {
+        position(o0, 37, 165);
+        goto(LABEL98);
+      }
+      position(o0, 120, 165);
+    }
+  LABEL98:
+    ignore.blocks(o0);
+    draw(o0);
+    show.pic();
+}
+if (said("examine", "lake")) {
+  print();
+}
+LABEL115:
+  if (said("examine", "stumps")) {
+    print("There seem to be beavers around here.");
+  }
+LABEL127:
+  if (!fEGO_ON_WATER) {
+    if (posn(o0, 100, 109, 115, 135)) {
+      set(fEGO_ON_WATER);
+      set(f134);
+    }
+  }
+LABEL148:
+  if (!f88 && !fEGO_ON_WATER && !f116) {
+    if (said("drink", "water") || said("get", "drink")) {
+      if (posn(o0, 15, 40, 138, 167)) {
+        print("The clear water quenches your thirst.");
+        goto(LABEL196);
+      }
+      print("You are not close enough to the water.");
+    }
+  }
+LABEL196:
+  if (v94 <= 0 && fEGO_ON_WATER) {
+    v76 = 255;
+    if (posn(o0, 100, 100, 115, 135)) {
+      v76 = 100;
+      v77 = 130;
+    }
+    if (v76 == 255) {
+      v76 = 0;
+      goto(LABEL250);
+    }
+    LABEL238:
+      get.posn(o0, v60, v61);
+      v76 -= v60;
+      v77 -= v61;
+      set(f134);
+  }
+LABEL250:
+  if (!f88 && f81 && !fEGO_ON_WATER && said("get", "water")) {
+    if (posn(o0, 15, 40, 138, 167)) {
+      reset(f116);
+      print(null);
+      get("water");
+      set(f88);
+      if (!f91) {
+        vSCORE += 2;
+      }
+      set(f91);
+      goto(LABEL303);
+    }
+    print("You are not close enough to the water.");
+  }
+LABEL303:
+  if (vEGO_EDGE_CODE != 0) {
+    if (f66) {
+      reset(f66);
+      reset(f75);
+      set(f130);
+    }
+  }
+LABEL323:
+  if (vEGO_EDGE_CODE == 1) {
+    new.room(29);
+  }
+LABEL332:
+  if (vEGO_EDGE_CODE == 2) {
+    new.room(19);
+  }
+LABEL341:
+  if (vEGO_EDGE_CODE == 4) {
+    new.room(21);
+  }
+LABEL350:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(13);
+  }
+LABEL359:
+  if (f75) {
+    call(103);
+  }
+LABEL367:
+  call(101);
+  return;

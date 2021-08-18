@@ -1,0 +1,123 @@
+if (fROOM_SCRIPT_EXECUTED) {
+  load.pic(vROOM_NO);
+  draw.pic(vROOM_NO);
+  discard.pic(vROOM_NO);
+  load.sound(5);
+  load.view(105);
+  if (!f132) {
+    set(f132);
+    vSCORE += 2;
+  }
+  if (!f137) {
+    set(f20);
+    load.view(39);
+    animate.obj(o1);
+    set.view(o1, 39);
+    position(o1, 70, 85);
+    set.priority(o1, 6);
+  }
+  LABEL51:
+    set.priority(o0, 6);
+    position(o0, 35, 164);
+    observe.blocks(o0);
+    if (f20) {
+      draw(o1);
+      stop.update(o1);
+    }
+  LABEL70:
+    draw(o0);
+    show.pic();
+}
+if (said("examine", "trees")) {
+  print(null);
+}
+LABEL85:
+  if (f137) {
+    if (said("examine", "birds nest") || said("look inside", "birds nest")) {
+      print("The nest is empty.");
+    }
+    if (f110 && said("get", "golden egg")) {
+      print("You already have the golden egg from the nest.");
+    }
+    LABEL125:
+      if (!f110 && said("get", "golden egg")) {
+        print("There is no egg here to get.");
+      }
+  }
+LABEL140:
+  distance(o0, o1, v62);
+  if (!f137) {
+    if (said("examine", "birds nest") || said("look inside", "birds nest")) {
+      print("There is a pure golden egg lying in the nest!");
+    }
+    if (said("examine", "golden egg")) {
+      print("The golden egg is smooth and shiny.");
+    }
+    LABEL183:
+      if (said("get", "golden egg")) {
+        if (v62 < 24) {
+          start.update(o1);
+          erase(o1);
+          set(f110);
+          get("gold egg");
+          set(f137);
+          vSCORE += 6;
+          print("The golden egg is so heavy you almost drop it.");
+          goto(LABEL220);
+        }
+        print("You can't get the egg from here!");
+      }
+  }
+LABEL220:
+  if (fEGO_ON_WATER && !posn(o0, 12, 106, 57, 166) && !f21) {
+    set(f21);
+    set(f131);
+    ignore.blocks(o0);
+    set.view(o0, 105);
+    print();
+    get.posn(o0, v60, v61);
+    v61 = 166;
+    v96 = 3;
+    sound(5, f159);
+    move.obj.v(o0, v60, v61, 96, f148);
+  }
+LABEL266:
+  if (fEGO_TOUCHED_TRIGGER_LINE && !posn(o0, 12, 106, 57, 166) && !f21) {
+    set(f21);
+    set(f131);
+    ignore.blocks(o0);
+    set.priority(o0, 4);
+    set.view(o0, 105);
+    print();
+    get.posn(o0, v60, v61);
+    v61 = 166;
+    v96 = 3;
+    sound(5, f159);
+    move.obj.v(o0, v60, v61, 96, f148);
+  }
+LABEL315:
+  if (posn(o0, 12, 106, 57, 166) && !f21) {
+    if (fEGO_TOUCHED_TRIGGER_LINE || fEGO_ON_WATER) {
+      set(f21);
+      set(f131);
+      ignore.blocks(o0);
+      set.priority(o0, 5);
+      set.view(o0, 105);
+      print();
+      get.posn(o0, v60, v61);
+      v61 = 166;
+      v96 = 3;
+      sound(5, f159);
+      move.obj.v(o0, v60, v61, 96, f148);
+    }
+  }
+LABEL371:
+  if (f148) {
+    new.room(14);
+  }
+LABEL379:
+  if (vEGO_EDGE_CODE == 3) {
+    new.room(14);
+  }
+LABEL388:
+  return;
