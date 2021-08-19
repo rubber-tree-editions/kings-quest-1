@@ -1,5 +1,7 @@
 #include "vars.txt"
 
+LOGIC__HEADER
+
 if (!fPLAYER_ENTERED_COMMAND) {
   goto(LABEL2108);
 }
@@ -435,3 +437,6 @@ LABEL2106:
   print("You can't do that--at least not now!");
 LABEL2108:
   return;
+
+LOGIC__FOOTER
+

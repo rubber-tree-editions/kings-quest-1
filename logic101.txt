@@ -1,5 +1,9 @@
 #include "vars.txt"
 
+LOGIC__HEADER
+
+
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.view(93);
   load.view(70);
@@ -156,3 +160,6 @@ LABEL450:
   }
 LABEL474:
   return;
+
+LOGIC__FOOTER
+

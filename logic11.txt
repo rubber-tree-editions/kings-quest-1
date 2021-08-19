@@ -1,5 +1,9 @@
 #include "vars.txt"
 
+LOGIC__HEADER
+
+
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -306,7 +310,7 @@ LABEL1020:
     }
   }
 LABEL1040:
-  if (vOBJEcT_EDGE_CODE == 2 || vOBJEcT_EDGE_CODE == 3) {
+  if (vOBJECT_EDGE_CODE == 2 || vOBJECT_EDGE_CODE == 3) {
     if (!f75) {
       erase(o13);
       reset(f21);
@@ -338,3 +342,6 @@ LABEL1120:
   }
 LABEL1129:
   return;
+
+LOGIC__FOOTER
+

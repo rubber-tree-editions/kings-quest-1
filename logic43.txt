@@ -1,5 +1,9 @@
 #include "vars.txt"
 
+LOGIC__HEADER
+
+
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -101,3 +105,6 @@ LABEL334:
 LABEL342:
   call(101);
   return;
+
+LOGIC__FOOTER
+

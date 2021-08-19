@@ -1,5 +1,9 @@
 #include "vars.txt"
 
+LOGIC__HEADER
+
+
+
 if (fROOM_SCRIPT_EXECUTED) {
   set.horizon(58);
   load.pic(vROOM_NO);
@@ -362,3 +366,6 @@ LABEL1186:
   }
 LABEL1198:
   return;
+
+LOGIC__FOOTER
+

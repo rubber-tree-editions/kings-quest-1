@@ -1,5 +1,9 @@
 #include "vars.txt"
 
+LOGIC__HEADER
+
+
+
 if (said("quit")) {
   stop.sound();
   quit(0);
@@ -99,3 +103,6 @@ LABEL222:
 #message 13 "%m12%w1"
 #message 14 "%m12%w2"
 #message 15 "%m12%w3"
+
+LOGIC__FOOTER
+

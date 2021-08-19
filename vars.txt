@@ -1,4 +1,17 @@
 
+#ifdef LOGIC_AS_C
+
+  #define LOGIC__HEADER void func() {
+  #define LOGIC__FOOTER }
+  #include "logic_as_c.h"
+
+#else
+
+  #define LOGIC__HEADER
+  #define LOGIC__FOOTER
+
+#endif
+
 // built-in vars
 #define vROOM_NO v0
 #define vPREV_ROOM_NO v1
@@ -65,8 +78,8 @@
 #define fPLAYER_ENTERED_COMMAND f2
 #define fEGO_TOUCHED_TRIGGER_LINE f3
 #define fSAID_ACCEPTED_USER_INPUT f4
-#define fON_LOAD_ROOM f5
-#define fON_RESTART_GAME f6
+#define fROOM_SCRIPT_EXECUTED f5
+#define fRESTART_GAME_EXECUTED f6
 #define fWRITING_SCRIPT_BUFFER_BLOCKED f7
 #define fJOYSTICK_SENSITIVITY_ENABLED f8
 #define fSOUND_ENABLED f9
@@ -120,3 +133,6 @@
 #define cRESTART c3
 #define cSWIM c5
 #define cDUCK c8
+
+LOGIC__FOOTER
+

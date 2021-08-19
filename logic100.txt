@@ -1,5 +1,9 @@
 #include "vars.txt"
 
+LOGIC__HEADER
+
+
+
 v97--;
 if (v97 == 1) {
   v97 = 0;
@@ -77,3 +81,6 @@ LABEL153:
   }
 LABEL199:
   return;
+
+LOGIC__FOOTER
+

@@ -1,5 +1,9 @@
 #include "vars.txt"
 
+LOGIC__HEADER
+
+
+
 prevent.input();
 status.line.off();
 text.screen();
@@ -32,7 +36,7 @@ LABEL82:
   }
 LABEL101:
   if (vCOMPUTER_TYPE == 4 || vCOMPUTER_TYPE == 5) {
-    display(17, 1, );
+    display(17, 1, "");
   }
 LABEL117:
   display(20, 1, "0 for jumping");
@@ -48,3 +52,6 @@ LABEL138:
   graphics();
   set(fSAID_ACCEPTED_USER_INPUT);
   return;
+
+LOGIC__FOOTER
+

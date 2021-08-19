@@ -1,5 +1,9 @@
 #include "vars.txt"
 
+LOGIC__HEADER
+
+
+
 print.v(vERROR_CODE);
 quit(0);
 return;
@@ -35,3 +39,6 @@ return;
 #message 29 "\nView not "
 #message 30 "%m29loaded.%m25"
 #message 31 "%m29set.%m25"
+
+LOGIC__FOOTER
+

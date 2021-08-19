@@ -1,5 +1,9 @@
 #include "vars.txt"
 
+LOGIC__HEADER
+
+
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   load.sound(0);
@@ -56,7 +60,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.menu("Actions");
   set.menu.item("Swim    =", c5);
   set.menu.item("Jump    0", c7);
-  set.menu.item(, c8);
+  set.menu.item("", c8);
   set.menu("Sound");
   set.menu.item("Toggle Sound   <F2>", c17);
   show.pic();
@@ -365,3 +369,6 @@ LABEL1263:
   }
 LABEL1278:
   return;
+
+LOGIC__FOOTER
+

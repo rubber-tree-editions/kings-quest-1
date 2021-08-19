@@ -1,5 +1,9 @@
 #include "vars.txt"
 
+LOGIC__HEADER
+
+
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.view(14);
   animate.obj(o13);
@@ -117,7 +121,7 @@ LABEL367:
     print();
     reset(f75);
     wander(o13);
-    if (vOBJEcT_EDGE_CODE != 0) {
+    if (vOBJECT_EDGE_CODE != 0) {
       erase(o13);
     }
   }
@@ -134,3 +138,6 @@ LABEL397:
   }
 LABEL434:
   return;
+
+LOGIC__FOOTER
+

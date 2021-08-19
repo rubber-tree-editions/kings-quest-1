@@ -1,5 +1,7 @@
 #include "vars.txt"
 
+LOGIC__HEADER
+
 if (vERROR_CODE > 0) {
   call(98);
 }
@@ -817,3 +819,6 @@ if (f190) {
 call.v(vROOM_NO);
 call(102);
 return;
+
+LOGIC__FOOTER
+
