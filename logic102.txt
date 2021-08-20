@@ -172,7 +172,7 @@ LABEL772:
       }
   }
 LABEL879:
-  if (!f84) {
+  if (!fCARRYING_GOLD_KEY) {
     if (vROOM_NO != 40 && said("get", "gold key")) {
       print("You will have to find it before you can get it.");
     }

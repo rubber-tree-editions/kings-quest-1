@@ -677,7 +677,7 @@ if (f75) {
     print("The goat is not much for conversation.");
   }
 }
-if (f84) {
+if (fCARRYING_GOLD_KEY) {
   if (said("examine", "gold key")) {
     show.obj(121);
   }

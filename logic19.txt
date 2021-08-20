@@ -75,7 +75,7 @@ LABEL189:
     if (said("open", "doors") || said("close", "doors") || said("turn", "knob") || said("open", "doors", "gold key") || said("open", "doors", "golden", "gold key")) {
       print("It will be difficult to do that from here.");
     }
-    if (f84) {
+    if (fCARRYING_GOLD_KEY) {
       if (said("use", "gold key") || said("lock", "doors") || said("unlock", "doors")) {
         print("It will be difficult to do that from here.");
       }
@@ -83,7 +83,7 @@ LABEL189:
   }
 LABEL276:
   if (posn(oEGO, 90, 93, 125, 114)) {
-    if (f84) {
+    if (fCARRYING_GOLD_KEY) {
       if (said("use", "gold key")) {
         print("How do you want to use the key?");
       }
@@ -98,8 +98,8 @@ LABEL276:
           if (vDOOR_STATE == DOORSTATE_LOCKED) {
             print("Using the gold key, you unlock the huge door.");
             vDOOR_STATE = DOORSTATE_CLOSED;
-            if (!f85) {
-              set(f85);
+            if (!fPOINTS_FOR_UNLOCKING_DOOR) {
+              set(fPOINTS_FOR_UNLOCKING_DOOR);
               vSCORE += 2;
             }
           }
@@ -167,7 +167,7 @@ LABEL577:
     stop.update(oDOOR);
   }
 LABEL591:
-  if (!f84) {
+  if (!fCARRYING_GOLD_KEY) {
     if (said("use", "gold key")) {
       print("You can't fool me!  You don't have a key.");
     }

@@ -231,7 +231,7 @@ LABEL333:
             reset(f21);
             start.update(o3);
             erase(o3);
-            set(f84);
+            set(fCARRYING_GOLD_KEY);
             get("key");
             v85 = 1;
             vSCORE += 3;
@@ -245,7 +245,7 @@ LABEL734:
     }
   }
 LABEL756:
-  if (!f21 && !f84) {
+  if (!f21 && !fCARRYING_GOLD_KEY) {
     if (said("anyword", "gold key")) {
       print("The key to your problems is elsewhere.");
     }
