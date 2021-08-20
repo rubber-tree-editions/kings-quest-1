@@ -49,6 +49,9 @@
 #define vSPELL_STATE_HI v63
 #define vSPELL_STATE_LO v64
 #define vDOOR_STATE v66
+  #define DOORSTATE_LOCKED 0
+  #define DOORSTATE_CLOSED 1
+  #define DOORSTATE_OPEN 2
 #define vTREASURE_COUNT v74
 #define vDRAGON_STATE v75
 #define vTEMP_INPUT_NUM1 v78
