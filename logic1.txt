@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define oGATOR1 o11
+#define oGATOR2 o12
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -17,30 +20,30 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL39:
     load.view(107);
     load.view(97);
-    animate.obj(o11);
-    animate.obj(o12);
+    animate.obj(oGATOR1);
+    animate.obj(oGATOR2);
     animate.obj(o1);
-    set.view(o11, 107);
-    set.view(o12, 107);
+    set.view(oGATOR1, 107);
+    set.view(oGATOR2, 107);
     set.view(o1, 97);
-    position(o11, 121, 161);
-    position(o12, 73, 166);
+    position(oGATOR1, 121, 161);
+    position(oGATOR2, 73, 166);
     ignore.horizon(o1);
     position(o1, 5, 17);
     set.priority(o1, 15);
     set(f68);
-    object.on.water(o11);
-    object.on.water(o12);
+    object.on.water(oGATOR1);
+    object.on.water(oGATOR2);
     ignore.blocks(oEGO);
-    draw(o11);
-    draw(o12);
+    draw(oGATOR1);
+    draw(oGATOR2);
     draw(o1);
     if (vPREV_ROOM_NO == 0 || vPREV_ROOM_NO == 83) {
       position(oEGO, 110, 100);
     }
   LABEL105:
-    wander(o11);
-    wander(o12);
+    wander(oGATOR1);
+    wander(oGATOR2);
     if (vPREV_ROOM_NO == 8) {
       get.posn(oEGO, v60, v61);
       if (v61 > 150) {
@@ -176,8 +179,8 @@ LABEL538:
   if (fEGO_ON_WATER && !f23) {
     program.control();
     stop.motion(oEGO);
-    follow.ego(o11, 18, f20);
-    follow.ego(o12, 18, f21);
+    follow.ego(oGATOR1, 18, f20);
+    follow.ego(oGATOR2, 18, f21);
     set(f23);
   }
 LABEL560:
@@ -203,10 +206,10 @@ LABEL612:
     v34 = 0;
     erase(oEGO);
     if (f20) {
-      erase(o11);
+      erase(oGATOR1);
     }
     if (f21) {
-      erase(o12);
+      erase(oGATOR2);
     }
     LABEL642:
       set(fGAME_OVER);
