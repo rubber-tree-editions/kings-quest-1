@@ -95,7 +95,7 @@
 #define fFINISHED1 f30
 #define fSPOKEN_TO_KING f60
 #define fPOINTS_FOR_FINDING_POUCH f61
-#define fEGO_DEAD f63
+#define fGAME_OVER f63
 #define fCARRYING_DAGGER f67
 #define fDAGGER_LOST f70
 #define fPOUCH_TAKEN f71
