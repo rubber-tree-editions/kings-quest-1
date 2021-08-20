@@ -23,19 +23,19 @@ if (fROOM_SCRIPT_EXECUTED) {
         load.view(105);
         load.view(103);
         load.view(104);
-        set.view(o0, 105);
-        ignore.blocks(o0);
-        position(o0, 84, 41);
-        set.priority(o0, 12);
+        set.view(oEGO, 105);
+        ignore.blocks(oEGO);
+        position(oEGO, 84, 41);
+        set.priority(oEGO, 12);
         program.control();
-        move.obj(o0, 84, 132, 4, f20);
+        move.obj(oEGO, 84, 132, 4, f20);
         set(f209);
         goto(LABEL88);
       }
-      position(o0, 84, 132);
+      position(oEGO, 84, 132);
     }
   LABEL88:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (f131 && !f22) {
@@ -53,10 +53,10 @@ LABEL120:
   if (f20) {
     reset(f20);
     reset(f131);
-    observe.blocks(o0);
-    release.priority(o0);
-    stop.motion(o0);
-    set.view(o0, 103);
+    observe.blocks(oEGO);
+    release.priority(oEGO);
+    stop.motion(oEGO);
+    set.view(oEGO, 103);
     v30 = 20;
     set(f98);
     shake.screen(2);
@@ -74,21 +74,21 @@ LABEL171:
   if (v30 == 1) {
     v30 = 0;
     reset(f135);
-    set.view(o0, 104);
-    end.of.loop(o0, f21);
+    set.view(oEGO, 104);
+    end.of.loop(oEGO, f21);
   }
 LABEL189:
   if (f21) {
     reset(f21);
     reset(f98);
-    set.view(o0, 0);
-    start.motion(o0);
+    set.view(oEGO, 0);
+    start.motion(oEGO);
     reset(f209);
     player.control();
   }
 LABEL207:
   if (said("examine", "trees")) {
-    if (posn(o0, 45, 125, 159, 167)) {
+    if (posn(oEGO, 45, 125, 159, 167)) {
       print("This is a very large oak tree with branches stretching to the sky.");
       goto(LABEL234);
     }
@@ -104,12 +104,12 @@ LABEL234:
       print("The old goat is afraid of heights and refuses to climb the tree.");
       goto(LABEL316);
     }
-    if (posn(o0, 85, 131, 140, 167)) {
+    if (posn(oEGO, 85, 131, 140, 167)) {
       print("OK");
       new.room(63);
       goto(LABEL316);
     }
-    if (posn(o0, 36, 56, 73, 90)) {
+    if (posn(oEGO, 36, 56, 73, 90)) {
       print("This tree is too hard to climb.");
       goto(LABEL316);
     }

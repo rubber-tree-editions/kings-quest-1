@@ -16,28 +16,28 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(103);
   load.view(104);
   if (vPREV_ROOM_NO == 80) {
-    set.view(o0, 89);
+    set.view(oEGO, 89);
     animate.obj(o1);
     set.view(o1, 8);
-    position(o0, 2, 50);
-    move.obj(o0, 100, 50, 0, f20);
+    position(oEGO, 2, 50);
+    move.obj(oEGO, 100, 50, 0, f20);
     set.priority(o1, 14);
-    set.priority(o0, 15);
+    set.priority(oEGO, 15);
   }
-  draw(o0);
+  draw(oEGO);
   show.pic();
 }
 if (f20) {
   reset(f20);
-  erase(o0);
-  position(o0, 108, 53);
-  set.view(o0, 105);
+  erase(oEGO);
+  position(oEGO, 108, 53);
+  set.view(oEGO, 105);
   set(f98);
   position(o1, 100, 48);
   draw(o1);
-  draw(o0);
+  draw(oEGO);
   move.obj(o1, 130, 48, 2, f21);
-  move.obj(o0, 108, 107, 4, f22);
+  move.obj(oEGO, 108, 107, 4, f22);
   set(f135);
   sound(5, f198);
 }
@@ -57,8 +57,8 @@ LABEL131:
     set(f27);
     reset(f22);
     program.control();
-    release.priority(o0);
-    set.view(o0, 103);
+    release.priority(oEGO);
+    set.view(oEGO, 103);
     shake.screen(1);
     print();
     sound(4, fSOUND_END_MARKER);
@@ -74,13 +74,13 @@ LABEL158:
   }
 LABEL178:
   if (v30 == 1) {
-    set.view(o0, 104);
-    end.of.loop(o0, f25);
+    set.view(oEGO, 104);
+    end.of.loop(oEGO, f25);
   }
 LABEL191:
   if (f25) {
     reset(f25);
-    set.view(o0, 0);
+    set.view(oEGO, 0);
     reset(f98);
     player.control();
     reset(f145);
@@ -88,7 +88,7 @@ LABEL191:
   }
 LABEL209:
   if (said("examine", "doorway") || said("look inside", "doorway")) {
-    if (posn(o0, 55, 105, 100, 142)) {
+    if (posn(oEGO, 55, 105, 100, 142)) {
       print(null);
       goto(LABEL244);
     }
@@ -97,20 +97,20 @@ LABEL209:
 LABEL244:
   if (fEGO_ON_WATER && !f199) {
     set(f95);
-    stop.cycling(o0);
+    stop.cycling(oEGO);
     set(f199);
-    set.priority(o0, 5);
-    get.posn(o0, v60, v61);
+    set.priority(oEGO, 5);
+    get.posn(oEGO, v60, v61);
     v61 += 35;
     v96 = 8;
-    move.obj.v(o0, v60, v61, 96, f23);
+    move.obj.v(oEGO, v60, v61, 96, f23);
     sound(5, f148);
   }
 LABEL281:
   if (f23) {
     reset(f23);
     reset(f95);
-    erase(o0);
+    erase(oEGO);
     new.room(73);
   }
 LABEL295:

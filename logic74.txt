@@ -9,26 +9,26 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   if (vPREV_ROOM_NO == 75) {
-    get.posn(o0, v60, v61);
+    get.posn(oEGO, v60, v61);
     v60 += 2;
-    position.v(o0, v60, v61);
+    position.v(oEGO, v60, v61);
   }
   if (vPREV_ROOM_NO == 73) {
-    position(o0, 80, 70);
+    position(oEGO, 80, 70);
   }
   LABEL41:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "cave")) {
   print();
 }
 LABEL56:
-  if (posn(o0, 65, 51, 100, 52)) {
+  if (posn(oEGO, 65, 51, 100, 52)) {
     new.room(73);
   }
 LABEL68:
-  if (posn(o0, 0, 0, 1, 167)) {
+  if (posn(oEGO, 0, 0, 1, 167)) {
     new.room(75);
   }
 LABEL80:

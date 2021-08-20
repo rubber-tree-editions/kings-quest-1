@@ -25,7 +25,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.sound(10);
   }
   LABEL55:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (f21 && fSOUND_END_MARKER) {
@@ -40,15 +40,15 @@ if (f21 && fSOUND_END_MARKER) {
 }
 LABEL88:
   if (f21) {
-    if (posn(o0, 10, 71, 68, 93)) {
-      observe.blocks(o0);
+    if (posn(oEGO, 10, 71, 68, 93)) {
+      observe.blocks(oEGO);
       goto(LABEL111);
     }
-    ignore.blocks(o0);
+    ignore.blocks(oEGO);
   }
 LABEL111:
   if (!f21) {
-    ignore.blocks(o0);
+    ignore.blocks(oEGO);
   }
 LABEL120:
   if (f21 && !f25) {
@@ -108,7 +108,7 @@ LABEL265:
   }
 LABEL301:
   if (f21 && f75 && !f26) {
-    distance(o0, o13, v31);
+    distance(oEGO, o13, v31);
     if (v31 > 25) {
       reposition.to(o13, 41, 103);
     }
@@ -148,7 +148,7 @@ LABEL406:
 LABEL416:
   if (f21 && !f75) {
     if (said("examine", "troll")) {
-      if (posn(o0, 1, 78, 85, 120)) {
+      if (posn(oEGO, 1, 78, 85, 120)) {
         print("This is the ugliest, meanest troll I have ever seen.");
         goto(LABEL452);
       }
@@ -156,20 +156,20 @@ LABEL416:
     }
     LABEL452:
       if (said("murder", "troll")) {
-        if (posn(o0, 1, 78, 85, 120) && fCARRYING_DAGGER) {
+        if (posn(oEGO, 1, 78, 85, 120) && fCARRYING_DAGGER) {
           print("This troll is a real fighter.  Better not even try it.");
         }
-        if (posn(o0, 1, 78, 85, 120) && !fCARRYING_DAGGER) {
+        if (posn(oEGO, 1, 78, 85, 120) && !fCARRYING_DAGGER) {
           print("Fortunately for you, you have nothing to kill the  troll with.");
         }
         LABEL491:
-          if (!posn(o0, 1, 78, 85, 120)) {
+          if (!posn(oEGO, 1, 78, 85, 120)) {
             print("If you want to try that, you should get a little closer.");
           }
       }
     LABEL504:
       if (said("talk", "troll") || said("hello") || said("say", "hello")) {
-        if (posn(o0, 1, 78, 85, 120)) {
+        if (posn(oEGO, 1, 78, 85, 120)) {
           print("The troll demands a treasure for passage across his bridge.");
           goto(LABEL543);
         }
@@ -177,7 +177,7 @@ LABEL416:
       }
     LABEL543:
       if (said("throw", "dagger") && fCARRYING_DAGGER) {
-        if (posn(o0, 1, 78, 85, 120)) {
+        if (posn(oEGO, 1, 78, 85, 120)) {
           print("You throw the dagger and the old -- but quick -- troll catches it.  Now what are your plans?");
           drop("dagger");
           reset(fCARRYING_DAGGER);
@@ -197,7 +197,7 @@ LABEL416:
       }
     LABEL604:
       if (said("shove", "troll")) {
-        if (posn(o0, 1, 78, 85, 120)) {
+        if (posn(oEGO, 1, 78, 85, 120)) {
           print("You push the troll as hard as you can but he doesn't budge an inch.");
           goto(LABEL631);
         }
@@ -205,7 +205,7 @@ LABEL416:
       }
     LABEL631:
       if (said("beg", "troll")) {
-        if (posn(o0, 1, 78, 85, 120)) {
+        if (posn(oEGO, 1, 78, 85, 120)) {
           print("The troll has a heart of stone.");
           goto(LABEL658);
         }
@@ -222,7 +222,7 @@ LABEL416:
     LABEL700:
       if (said("give", "pouch of diamonds") || said("give", "troll", "pouch of diamonds") || said("give", "pouch of diamonds", "troll")) {
         if (fCARRYING_DIAMONDS) {
-          if (posn(o0, 1, 78, 85, 120)) {
+          if (posn(oEGO, 1, 78, 85, 120)) {
             print("OK");
             drop("pouch of diamonds");
             reset(fCARRYING_DIAMONDS);
@@ -238,7 +238,7 @@ LABEL416:
     LABEL764:
       if (said("give", "sceptre") || said("give", "troll", "sceptre") || said("give", "sceptre", "troll")) {
         if (fCARRYING_SCEPTRE) {
-          if (posn(o0, 1, 78, 85, 120)) {
+          if (posn(oEGO, 1, 78, 85, 120)) {
             print("OK");
             drop("sceptre");
             reset(fCARRYING_SCEPTRE);
@@ -254,7 +254,7 @@ LABEL416:
     LABEL828:
       if (said("give", "golden egg") || said("give", "troll", "golden egg") || said("give", "golden egg", "troll")) {
         if (fCARRYING_GOLDEN_EGG) {
-          if (posn(o0, 1, 78, 85, 120)) {
+          if (posn(oEGO, 1, 78, 85, 120)) {
             print("OK");
             drop("gold egg");
             reset(fCARRYING_GOLDEN_EGG);
@@ -274,7 +274,7 @@ LABEL416:
           goto(LABEL967);
         }
         if (fCARRYING_GOLD_WALNUT) {
-          if (posn(o0, 1, 78, 85, 120)) {
+          if (posn(oEGO, 1, 78, 85, 120)) {
             print("OK");
             drop("gold walnut");
             reset(fCARRYING_GOLD_WALNUT);
@@ -302,7 +302,7 @@ LABEL983:
   }
 LABEL995:
   if (!fEGO_ON_WATER) {
-    if (posn(o0, 64, 84, 70, 90)) {
+    if (posn(oEGO, 64, 84, 70, 90)) {
       set(fEGO_ON_WATER);
       set(f134);
     }
@@ -310,16 +310,16 @@ LABEL995:
 LABEL1016:
   if (v94 <= 0 && fEGO_ON_WATER) {
     v76 = 255;
-    if (posn(o0, 64, 54, 98, 88)) {
+    if (posn(oEGO, 64, 54, 98, 88)) {
       v76 = 78;
       v77 = 85;
     }
-    if (posn(o0, 99, 55, 132, 88)) {
+    if (posn(oEGO, 99, 55, 132, 88)) {
       v76 = 116;
       v77 = 83;
     }
     LABEL1061:
-      if (posn(o0, 133, 54, 159, 89)) {
+      if (posn(oEGO, 133, 54, 159, 89)) {
         v76 = 138;
         v77 = 84;
       }
@@ -329,7 +329,7 @@ LABEL1016:
         goto(LABEL1102);
       }
     LABEL1090:
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       v76 -= v60;
       v77 -= v61;
       set(f134);
@@ -342,7 +342,7 @@ LABEL1102:
 LABEL1115:
   if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
     if (said("drink", "water") || said("get", "drink")) {
-      if (posn(o0, 1, 46, 158, 102)) {
+      if (posn(oEGO, 1, 46, 158, 102)) {
         print("The steep embankment prevents you from doing that.");
         goto(LABEL1163);
       }
@@ -351,7 +351,7 @@ LABEL1115:
   }
 LABEL1163:
   if (!fBUCKET_FILLED && f81 && !fEGO_ON_WATER && said("get", "water")) {
-    if (posn(o0, 1, 46, 158, 102)) {
+    if (posn(oEGO, 1, 46, 158, 102)) {
       print("The steep embankment prevents you from doing that.");
       goto(LABEL1198);
     }
@@ -375,7 +375,7 @@ LABEL1234:
   }
 LABEL1246:
   if (vEGO_EDGE_CODE != 0) {
-    observe.blocks(o0);
+    observe.blocks(oEGO);
     reset(f68);
     if (f21 && f75) {
       reset(f75);

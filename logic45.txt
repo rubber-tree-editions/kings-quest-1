@@ -16,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 77, 83, 0, 0);
   }
   LABEL37:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "building")) {
@@ -28,7 +28,7 @@ LABEL52:
   }
 LABEL64:
   if (said("talk", "man") || said("talk", "woman")) {
-    if (posn(o0, 11, 119, 45, 146)) {
+    if (posn(oEGO, 11, 119, 45, 146)) {
       print("You need to go inside to do that.");
       goto(LABEL99);
     }
@@ -36,7 +36,7 @@ LABEL64:
   }
 LABEL99:
   if (said("examine", "window") || said("look inside", "window")) {
-    if (posn(o0, 11, 119, 45, 146)) {
+    if (posn(oEGO, 11, 119, 45, 146)) {
       print("When you look in the window, you see a poor, starving woodcutter and his wife.");
       goto(LABEL134);
     }
@@ -44,7 +44,7 @@ LABEL99:
   }
 LABEL134:
   if (said("break", "window")) {
-    if (posn(o0, 11, 119, 45, 146)) {
+    if (posn(oEGO, 11, 119, 45, 146)) {
       print("There isn't a glass pane in this window.");
       goto(LABEL161);
     }
@@ -52,7 +52,7 @@ LABEL134:
   }
 LABEL161:
   if (said("climb", "window")) {
-    if (posn(o0, 11, 119, 45, 146)) {
+    if (posn(oEGO, 11, 119, 45, 146)) {
       print("You should really try to find the door.");
       goto(LABEL188);
     }

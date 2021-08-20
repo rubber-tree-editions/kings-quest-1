@@ -21,18 +21,18 @@ if (fROOM_SCRIPT_EXECUTED) {
     set(f68);
     if (vPREV_ROOM_NO == 23) {
       if (fEGO_ON_WATER) {
-        set.view(o0, 0);
+        set.view(oEGO, 0);
         reset(f98);
         v94 = 0;
       }
     }
   LABEL64:
-    ignore.blocks(o0);
-    draw(o0);
+    ignore.blocks(oEGO);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "doorway") || said("look inside", "doorway") || said("look inside", "stumps")) {
-  if (posn(o0, 66, 134, 159, 167)) {
+  if (posn(oEGO, 66, 134, 159, 167)) {
     print("It is just a hole in an empty, old stump.");
     goto(LABEL110);
   }
@@ -53,7 +53,7 @@ LABEL134:
 LABEL146:
   if (f81 && !fBUCKET_FILLED) {
     if (said("get", "water") || said("drink", "water")) {
-      if (posn(o0, 0, 27, 95, 95)) {
+      if (posn(oEGO, 0, 27, 95, 95)) {
         print("The bank is too steep to allow access to the river's edge.");
         goto(LABEL190);
       }

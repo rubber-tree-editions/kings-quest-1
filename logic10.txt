@@ -23,17 +23,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL59:
     if (vPREV_ROOM_NO == 11 && f74) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v61 > 125) {
-        position(o0, 150, 128);
+        position(oEGO, 150, 128);
       }
     }
   LABEL83:
     if (f75) {
-      set.view(o0, 67);
+      set.view(oEGO, 67);
     }
   LABEL92:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (f20 && !f75) {
@@ -175,7 +175,7 @@ LABEL514:
     print("There should be a gate around here somewhere.");
   }
 LABEL526:
-  distance(o0, o13, v70);
+  distance(oEGO, o13, v70);
   if (f74 && f20) {
     if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
       if (fCARRYING_CARROT) {
@@ -204,7 +204,7 @@ LABEL624:
             print("When you tempt the old goat with the carrot, he starts to follow you.");
             set(f75);
             erase(o13);
-            set.view(o0, 67);
+            set.view(oEGO, 67);
             vSCORE += 5;
           }
           if (f151) {

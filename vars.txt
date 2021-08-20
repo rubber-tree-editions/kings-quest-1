@@ -134,3 +134,5 @@
 #define cRESTART c3
 #define cSWIM c5
 #define cDUCK c8
+
+#define oEGO o0

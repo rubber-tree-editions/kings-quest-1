@@ -37,7 +37,7 @@ if (fROOM_SCRIPT_EXECUTED) {
         }
     }
   LABEL89:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 v70--;
@@ -110,9 +110,9 @@ LABEL201:
     set(f24);
     v30 = 10;
     program.control();
-    stop.motion(o0);
+    stop.motion(oEGO);
     erase(o1);
-    set.view(o0, 94);
+    set.view(oEGO, 94);
   }
 LABEL282:
   v30--;
@@ -125,14 +125,14 @@ LABEL284:
 LABEL300:
   if (v30 == 1) {
     print("You were warned to be careful around this fierce creature!  Maybe next time you will be able to elude the beast.");
-    get.posn(o0, v60, v61);
-    erase(o0);
-    set.view(o0, 95);
+    get.posn(oEGO, v60, v61);
+    erase(oEGO);
+    set.view(oEGO, 95);
     set.view(o1, 2);
-    position.v(o0, v60, v61);
+    position.v(oEGO, v60, v61);
     position.v(o1, v60, v61);
     draw(o1);
-    draw(o0);
+    draw(oEGO);
     stop.motion(o1);
     stop.cycling(o1);
     set(fGAME_OVER);
@@ -159,7 +159,7 @@ LABEL339:
       }
     LABEL405:
       if (said("smell", "flowers")) {
-        if (posn(o0, 22, 86, 114, 167)) {
+        if (posn(oEGO, 22, 86, 114, 167)) {
           print("Their perfume is joyful, sweet, and light.");
           goto(LABEL432);
         }

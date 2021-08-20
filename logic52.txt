@@ -8,16 +8,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  ignore.horizon(o0);
+  ignore.horizon(oEGO);
   load.view(73);
-  set.view(o0, 73);
+  set.view(oEGO, 73);
   load.view(114);
   set(fEGO_ON_WATER);
   if (vPREV_ROOM_NO == 49) {
-    position(o0, 75, 26);
+    position(oEGO, 75, 26);
     goto(LABEL41);
   }
-  position(o0, 38, 116);
+  position(oEGO, 38, 116);
   LABEL41:
     if (vPREV_ROOM_NO == 51) {
       if (!f208) {
@@ -37,7 +37,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       }
     }
   LABEL91:
-    draw(o0);
+    draw(oEGO);
     show.pic();
     if (fEGO_INVISIBLE) {
       drop("ring");
@@ -62,12 +62,12 @@ LABEL121:
 LABEL142:
   if (v68 == 0 && v69 == 0 && !f21) {
     set(f21);
-    set.view(o0, 114);
+    set.view(oEGO, 114);
     print(null);
-    ignore.blocks(o0);
-    get.posn(o0, v60, v61);
+    ignore.blocks(oEGO);
+    get.posn(oEGO, v60, v61);
     if (v61 < 141) {
-      move.obj(o0, 65, 140, 1, f20);
+      move.obj(oEGO, 65, 140, 1, f20);
     }
     if (v61 > 140) {
       set(f20);
@@ -96,7 +96,7 @@ LABEL236:
   }
 LABEL248:
   if (said("examine", "doorway")) {
-    if (posn(o0, 1, 75, 65, 166)) {
+    if (posn(oEGO, 1, 75, 65, 166)) {
       print("It is very difficult to tell where the hole might lead.");
       goto(LABEL275);
     }
@@ -111,7 +111,7 @@ LABEL287:
     print("You have no use for this old can.");
   }
 LABEL299:
-  if (posn(o0, 31, 111, 32, 130)) {
+  if (posn(oEGO, 31, 111, 32, 130)) {
     reset(fEGO_ON_WATER);
     new.room(51);
   }

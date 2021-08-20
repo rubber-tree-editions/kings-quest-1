@@ -49,23 +49,23 @@ if (fROOM_SCRIPT_EXECUTED) {
     set(f68);
     object.on.water(o11);
     object.on.water(o12);
-    ignore.blocks(o0);
+    ignore.blocks(oEGO);
     draw(o11);
     draw(o12);
     draw(o1);
     if (vPREV_ROOM_NO == 55) {
-      position(o0, 110, 122);
+      position(oEGO, 110, 122);
       set(f26);
     }
   LABEL152:
     if (vPREV_ROOM_NO == 3) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v61 > 150) {
-        position(o0, 2, 150);
+        position(oEGO, 2, 150);
       }
     }
   LABEL174:
-    draw(o0);
+    draw(oEGO);
     call(101);
     wander(o11);
     wander(o12);
@@ -128,7 +128,7 @@ LABEL341:
   }
 LABEL353:
   if (said("examine", "doors")) {
-    if (posn(o0, 0, 120, 159, 167)) {
+    if (posn(oEGO, 0, 120, 159, 167)) {
       print("These doors are strongly built to keep out unwanted visitors.");
       goto(LABEL380);
     }
@@ -136,7 +136,7 @@ LABEL353:
   }
 LABEL380:
   if (said("anyword", "lions")) {
-    if (posn(o0, 0, 128, 159, 167)) {
+    if (posn(oEGO, 0, 128, 159, 167)) {
       print("They pose as immovable guards for King Edward's castle, and have frightened off numerous intruders.");
       goto(LABEL407);
     }
@@ -145,7 +145,7 @@ LABEL380:
 LABEL407:
   if (f75) {
     if (said("open", "doors")) {
-      if (posn(o0, 105, 120, 121, 128)) {
+      if (posn(oEGO, 105, 120, 121, 128)) {
         print("Since the goat is with you, permission to enter the  castle is denied.");
         goto(LABEL440);
       }
@@ -157,7 +157,7 @@ LABEL407:
 LABEL443:
   if (f125) {
     if (said("open", "doors")) {
-      if (posn(o0, 105, 120, 121, 128)) {
+      if (posn(oEGO, 105, 120, 121, 128)) {
         if (vTREASURE_COUNT == 3) {
           print("You have been to the castle once since your quest and  are not allowed to return again.");
           goto(LABEL483);
@@ -172,7 +172,7 @@ LABEL443:
     }
   }
   if (said("knock", "doors")) {
-    if (posn(o0, 105, 120, 121, 128)) {
+    if (posn(oEGO, 105, 120, 121, 128)) {
       print();
       goto(LABEL518);
     }
@@ -181,12 +181,12 @@ LABEL443:
 LABEL518:
   if (!f75 && !f125) {
     if (said("open", "doors")) {
-      if (posn(o0, 105, 120, 121, 128)) {
+      if (posn(oEGO, 105, 120, 121, 128)) {
         set(f27);
         start.update(o2);
         sound(15, f28);
         end.of.loop(o2, f24);
-        set.priority(o0, 15);
+        set.priority(oEGO, 15);
         print("The huge doors swing open slowly.");
         if (!f193) {
           set(f193);
@@ -208,7 +208,7 @@ LABEL595:
   }
 LABEL605:
   if (said("drink", "water") && !fBUCKET_FILLED && !f116) {
-    if (posn(o0, 0, 143, 159, 167) || posn(o0, 40, 108, 74, 142)) {
+    if (posn(oEGO, 0, 143, 159, 167) || posn(oEGO, 40, 108, 74, 142)) {
       print("As you kneel by the edge of the moat and see just how filthy the water is, your thirst strangely leaves you.");
       goto(LABEL646);
     }
@@ -217,7 +217,7 @@ LABEL605:
 LABEL646:
   if (f81 && !fBUCKET_FILLED) {
     if (said("get", "water")) {
-      if (posn(o0, 0, 143, 159, 167) || posn(o0, 40, 108, 74, 142)) {
+      if (posn(oEGO, 0, 143, 159, 167) || posn(oEGO, 40, 108, 74, 142)) {
         reset(f116);
         print("Although you notice the water is unclean, you fill the bucket.");
         get("water");
@@ -238,33 +238,33 @@ LABEL708:
 LABEL716:
   if (v94 <= 0 && fEGO_ON_WATER) {
     v76 = 255;
-    ignore.objs(o0);
-    if (posn(o0, 9, 145, 44, 167)) {
+    ignore.objs(oEGO);
+    if (posn(oEGO, 9, 145, 44, 167)) {
       v76 = 27;
       v77 = 166;
     }
-    if (posn(o0, 45, 159, 69, 167)) {
+    if (posn(oEGO, 45, 159, 69, 167)) {
       v76 = 50;
       v77 = 166;
     }
     LABEL763:
-      if (posn(o0, 70, 159, 94, 167)) {
+      if (posn(oEGO, 70, 159, 94, 167)) {
         v76 = 75;
         v77 = 166;
       }
     LABEL779:
-      if (posn(o0, 95, 159, 122, 167)) {
+      if (posn(oEGO, 95, 159, 122, 167)) {
         v76 = 103;
         v77 = 166;
       }
     LABEL795:
-      if (posn(o0, 123, 159, 159, 167)) {
+      if (posn(oEGO, 123, 159, 159, 167)) {
         v76 = 133;
         v77 = 166;
       }
     LABEL811:
-      if (posn(o0, 50, 110, 70, 144)) {
-        set.priority(o0, 5);
+      if (posn(oEGO, 50, 110, 70, 144)) {
+        set.priority(oEGO, 5);
         v76 = 56;
         v77 = 130;
       }
@@ -274,7 +274,7 @@ LABEL716:
         goto(LABEL855);
       }
     LABEL843:
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       v76 -= v60;
       v77 -= v61;
       set(f134);
@@ -288,13 +288,13 @@ LABEL855:
 LABEL881:
   if (fEGO_ON_WATER && !f23) {
     program.control();
-    stop.motion(o0);
+    stop.motion(oEGO);
     follow.ego(o11, 18, f20);
     follow.ego(o12, 18, f21);
     set(f23);
   }
 LABEL903:
-  if (posn(o0, 61, 135, 63, 137) && !f22) {
+  if (posn(oEGO, 61, 135, 63, 137) && !f22) {
     print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
     set(f22);
     v31 = 45;
@@ -313,7 +313,7 @@ LABEL939:
   }
 LABEL955:
   if (f22 && v31 < 1) {
-    erase(o0);
+    erase(oEGO);
     if (f20) {
       erase(o11);
     }

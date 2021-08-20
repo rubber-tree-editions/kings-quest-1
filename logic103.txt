@@ -8,7 +8,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(14);
   animate.obj(o13);
   set.view(o13, 14);
-  get.posn(o0, v60, v61);
+  get.posn(oEGO, v60, v61);
   object.on.land(o13);
   if (vROOM_NO == 7 && vPREV_ROOM_NO == 8 && v61 < 65) {
     position(o13, 1, 42);
@@ -52,7 +52,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(o13);
   follow.ego(o13, 10, f207);
 }
-distance(o0, o13, v40);
+distance(oEGO, o13, v40);
 if (v40 > 35) {
   v107 = 2;
   step.size(o13, v107);
@@ -120,7 +120,7 @@ if (fEGO_INVISIBLE && !f42) {
 }
 return;
 LABEL397:
-  distance(o0, o13, v40);
+  distance(oEGO, o13, v40);
   if (f43 && v94 > 0 && !f210) {
     set(f210);
     print(null);

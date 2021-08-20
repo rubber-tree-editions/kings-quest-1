@@ -19,37 +19,37 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL41:
     if (vPREV_ROOM_NO == 7) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v60 > 99) {
-        position(o0, 99, 52);
+        position(oEGO, 99, 52);
       }
     }
   LABEL63:
     if (vPREV_ROOM_NO == 39) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v60 < 56) {
-        position(o0, 6, 165);
+        position(oEGO, 6, 165);
       }
       if (v60 > 74) {
-        position(o0, 109, 165);
+        position(oEGO, 109, 165);
       }
     }
   LABEL96:
     if (vPREV_ROOM_NO == 43) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v61 < 123) {
-        position(o0, 140, 58);
+        position(oEGO, 140, 58);
       }
       if (v61 > 122) {
-        position(o0, 147, 150);
+        position(oEGO, 147, 150);
       }
     }
   LABEL129:
-    ignore.blocks(o0);
-    draw(o0);
+    ignore.blocks(oEGO);
+    draw(oEGO);
     show.pic();
 }
-if (posn(o0, 0, 83, 159, 167)) {
+if (posn(oEGO, 0, 83, 159, 167)) {
   set(f68);
   goto(LABEL151);
 }
@@ -62,7 +62,7 @@ LABEL151:
   }
 LABEL166:
   if (said("examine", "water")) {
-    if (posn(o0, 93, 40, 159, 82)) {
+    if (posn(oEGO, 93, 40, 159, 82)) {
       print("The clear blue lake is surrounded by a pretty meadow.");
       goto(LABEL193);
     }
@@ -79,36 +79,36 @@ LABEL205:
 LABEL217:
   if (v94 <= 0 && fEGO_ON_WATER) {
     v76 = 255;
-    if (posn(o0, 126, 84, 159, 99)) {
+    if (posn(oEGO, 126, 84, 159, 99)) {
       v76 = 135;
       v77 = 99;
     }
-    if (posn(o0, 144, 118, 159, 131)) {
+    if (posn(oEGO, 144, 118, 159, 131)) {
       v76 = 139;
       v77 = 113;
     }
     LABEL262:
-      if (posn(o0, 0, 145, 16, 157)) {
+      if (posn(oEGO, 0, 145, 16, 157)) {
         v76 = 2;
         v77 = 139;
       }
     LABEL278:
-      if (posn(o0, 18, 143, 54, 167) || posn(o0, 66, 143, 83, 167)) {
+      if (posn(oEGO, 18, 143, 54, 167) || posn(oEGO, 66, 143, 83, 167)) {
         v76 = 45;
         v77 = 163;
       }
     LABEL302:
-      if (posn(o0, 70, 129, 102, 142) || posn(o0, 57, 97, 83, 116)) {
+      if (posn(oEGO, 70, 129, 102, 142) || posn(oEGO, 57, 97, 83, 116)) {
         v76 = 72;
         v77 = 126;
       }
     LABEL326:
-      if (posn(o0, 34, 103, 56, 116)) {
+      if (posn(oEGO, 34, 103, 56, 116)) {
         v76 = 38;
         v77 = 127;
       }
     LABEL342:
-      if (posn(o0, 0, 103, 33, 126)) {
+      if (posn(oEGO, 0, 103, 33, 126)) {
         v76 = 5;
         v77 = 133;
       }
@@ -118,18 +118,18 @@ LABEL217:
         goto(LABEL383);
       }
     LABEL371:
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       v76 -= v60;
       v77 -= v61;
       set(f134);
   }
 LABEL383:
   if (!fBUCKET_FILLED && (said("drink", "water") || said("get", "drink"))) {
-    if (posn(o0, 121, 40, 159, 81)) {
+    if (posn(oEGO, 121, 40, 159, 81)) {
       print("It tastes very refreshing to a thirsty wanderer.");
       goto(LABEL462);
     }
-    if (posn(o0, 127, 79, 159, 92) || posn(o0, 145, 125, 159, 140) || posn(o0, 73, 130, 103, 167) || posn(o0, 0, 136, 49, 167) || posn(o0, 0, 88, 84, 112)) {
+    if (posn(oEGO, 127, 79, 159, 92) || posn(oEGO, 145, 125, 159, 140) || posn(oEGO, 73, 130, 103, 167) || posn(oEGO, 0, 136, 49, 167) || posn(oEGO, 0, 88, 84, 112)) {
       print("Being careful not to slip in, you drink deeply of the cool water.");
       goto(LABEL462);
     }
@@ -138,7 +138,7 @@ LABEL383:
 LABEL462:
   if (!fBUCKET_FILLED && f81) {
     if (said("get", "water") || said("fill", "bucket")) {
-      if (posn(o0, 121, 40, 159, 78)) {
+      if (posn(oEGO, 121, 40, 159, 78)) {
         print("The crystal clear water fills up the bucket.");
         get("water");
         set(fBUCKET_FILLED);
@@ -148,7 +148,7 @@ LABEL462:
         set(fFILL_BUCKET_POINTS);
         goto(LABEL579);
       }
-      if (posn(o0, 127, 79, 159, 92) || posn(o0, 145, 125, 159, 140) || posn(o0, 73, 130, 103, 167) || posn(o0, 0, 136, 49, 167) || posn(o0, 0, 88, 84, 112)) {
+      if (posn(oEGO, 127, 79, 159, 92) || posn(oEGO, 145, 125, 159, 140) || posn(oEGO, 73, 130, 103, 167) || posn(oEGO, 0, 136, 49, 167) || posn(oEGO, 0, 88, 84, 112)) {
         print("Very carefully, the bucket fills with water from the  rapid river.");
         get("water");
         set(fBUCKET_FILLED);

@@ -19,24 +19,24 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL41:
     if (vPREV_ROOM_NO == 29) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v60 < 50) {
-        position(o0, 12, 54);
+        position(oEGO, 12, 54);
         goto(LABEL70);
       }
-      position(o0, 122, 54);
+      position(oEGO, 122, 54);
     }
   LABEL70:
     if (vPREV_ROOM_NO == 13) {
-      if (posn(o0, 0, 164, 75, 167)) {
-        position(o0, 37, 165);
+      if (posn(oEGO, 0, 164, 75, 167)) {
+        position(oEGO, 37, 165);
         goto(LABEL98);
       }
-      position(o0, 120, 165);
+      position(oEGO, 120, 165);
     }
   LABEL98:
-    ignore.blocks(o0);
-    draw(o0);
+    ignore.blocks(oEGO);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "lake")) {
@@ -48,7 +48,7 @@ LABEL115:
   }
 LABEL127:
   if (!fEGO_ON_WATER) {
-    if (posn(o0, 100, 109, 115, 135)) {
+    if (posn(oEGO, 100, 109, 115, 135)) {
       set(fEGO_ON_WATER);
       set(f134);
     }
@@ -56,7 +56,7 @@ LABEL127:
 LABEL148:
   if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
     if (said("drink", "water") || said("get", "drink")) {
-      if (posn(o0, 15, 40, 138, 167)) {
+      if (posn(oEGO, 15, 40, 138, 167)) {
         print("The clear water quenches your thirst.");
         goto(LABEL196);
       }
@@ -66,7 +66,7 @@ LABEL148:
 LABEL196:
   if (v94 <= 0 && fEGO_ON_WATER) {
     v76 = 255;
-    if (posn(o0, 100, 100, 115, 135)) {
+    if (posn(oEGO, 100, 100, 115, 135)) {
       v76 = 100;
       v77 = 130;
     }
@@ -75,14 +75,14 @@ LABEL196:
       goto(LABEL250);
     }
     LABEL238:
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       v76 -= v60;
       v77 -= v61;
       set(f134);
   }
 LABEL250:
   if (!fBUCKET_FILLED && f81 && !fEGO_ON_WATER && said("get", "water")) {
-    if (posn(o0, 15, 40, 138, 167)) {
+    if (posn(oEGO, 15, 40, 138, 167)) {
       reset(f116);
       print(null);
       get("water");

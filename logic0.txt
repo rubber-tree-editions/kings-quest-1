@@ -24,7 +24,7 @@ if (vROOM_NO == 52) {
   set(fEGO_ON_WATER);
 }
 if (fROOM_SCRIPT_EXECUTED) {
-  animate.obj(o0);
+  animate.obj(oEGO);
   load.view(0);
   if (vROOM_NO == 52) {
     vEGO_VIEW_NO = 0;
@@ -49,7 +49,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   }
   load.view.v(vEGO_VIEW_NO);
-  set.view.v(o0, vEGO_VIEW_NO);
+  set.view.v(oEGO, vEGO_VIEW_NO);
   load.logics(102);
   if (vROOM_NO != 53 && vROOM_NO != 58 && vROOM_NO != 49 && vROOM_NO != 51 && vROOM_NO != 52 && vROOM_NO != 12 && vROOM_NO != 10 && vROOM_NO != 11) {
     load.view(75);
@@ -66,8 +66,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(62);
   }
   reset(f190);
-  observe.objs(o0);
-  observe.blocks(o0);
+  observe.objs(oEGO);
+  observe.blocks(oEGO);
   reset(f122);
   reset(f68);
   reset(f148);
@@ -104,7 +104,7 @@ if (fGAME_OVER) {
     set(f197);
   }
   program.control();
-  stop.motion(o0);
+  stop.motion(oEGO);
   call(100);
   return;
 }
@@ -128,21 +128,21 @@ if (vROOM_NO > 52 || vROOM_NO == 3 || vROOM_NO == 6 || vROOM_NO == 9 || vROOM_NO
     print("You need to be in water to swim.");
   }
 }
-get.posn(o0, v100, v101);
+get.posn(oEGO, v100, v101);
 if (vEGO_DIR == v110 && v100 == v108 && v101 == v109) {
-  stop.cycling(o0);
+  stop.cycling(oEGO);
 }
 else {
-  start.cycling(o0);
+  start.cycling(oEGO);
 }
 v108 = v100;
 v109 = v101;
 v110 = vEGO_DIR;
 if (f98) {
-  start.cycling(o0);
+  start.cycling(oEGO);
 }
 else if (vEGO_DIR <= 0) {
-  stop.cycling(o0);
+  stop.cycling(oEGO);
 }
 if (controller(c10)) {
   load.logics(99);
@@ -187,13 +187,13 @@ if (vROOM_NO != 21) {
   if (said("jump") || controller(c7)) {
     if (!f143 && !f157 && !f158 && !fEGO_INVISIBLE && !fEGO_TINY && vROOM_NO != 79 && !fEGO_ON_WATER && !f145 && !fEGO_DUCKING && v94 <= 0 && vROOM_NO != 29 && vROOM_NO != 13 && vROOM_NO != 53 && vROOM_NO != 58 && vROOM_NO != 49 && vROOM_NO != 52 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 48 && vROOM_NO != 73 && vROOM_NO != 65 && vROOM_NO != 12 && vROOM_NO != 14 && vROOM_NO != 10 && vROOM_NO != 11 && vROOM_NO != 51) {
       set(f143);
-      stop.motion(o0);
-      set.cel(o0, 0);
+      stop.motion(oEGO);
+      set.cel(oEGO, 0);
       v102 = 2;
-      cycle.time(o0, v102);
-      set.view(o0, 75);
+      cycle.time(oEGO, v102);
+      set.view(oEGO, 75);
       set(f98);
-      end.of.loop(o0, f144);
+      end.of.loop(oEGO, f144);
     }
     else {
       print("There is no reason to do that now.");
@@ -204,25 +204,25 @@ if (vROOM_NO != 21) {
     reset(f144);
     reset(f98);
     v103 = 1;
-    cycle.time(o0, v103);
-    start.motion(o0);
-    set.view(o0, 0);
+    cycle.time(oEGO, v103);
+    start.motion(oEGO);
+    set.view(oEGO, 0);
   }
 }
 if (said("duck") || controller(cDUCK)) {
   if (!fEGO_DUCKING && !f157 && !f158 && !fEGO_INVISIBLE && !fEGO_TINY && !fEGO_ON_WATER && !f145 && v94 <= 0 && !f143 && !f146 && vROOM_NO != 29 && vROOM_NO != 12 && vROOM_NO != 53 && vROOM_NO != 58 && vROOM_NO != 49 && vROOM_NO != 52 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 48 && vROOM_NO != 73 && vROOM_NO != 65 && vROOM_NO != 79 && vROOM_NO != 14 && vROOM_NO != 10 && vROOM_NO != 11 && vROOM_NO != 13 && !f142) {
     set(fEGO_DUCKING);
-    set.view(o0, 87);
+    set.view(oEGO, 87);
     set(f98);
-    end.of.loop(o0, f201);
+    end.of.loop(oEGO, f201);
   }
   else if (!f202) {
     print("There is no reason to do that now.");
   }
 }
 if (f201) {
-  stop.cycling(o0);
-  stop.motion(o0);
+  stop.cycling(oEGO);
+  stop.motion(oEGO);
   set(f202);
   reset(f201);
   reset(f98);
@@ -231,9 +231,9 @@ if (f202) {
   if (said("stand up") || controller(cDUCK)) {
     reset(fEGO_DUCKING);
     reset(f202);
-    start.motion(o0);
-    set.view(o0, 0);
-    start.cycling(o0);
+    start.motion(oEGO);
+    set.view(oEGO, 0);
+    start.cycling(oEGO);
   }
 }
 if (said("thank", "anyword")) {
@@ -296,7 +296,7 @@ if (fCARRYING_CARROT) {
       reset(fPOINTS_FOR_CARROT);
       vSCORE -= 2;
       if (vROOM_NO == 10 || vROOM_NO == 11) {
-        set.view(o0, 0);
+        set.view(oEGO, 0);
       }
       erase(o13);
       set(f130);
@@ -407,7 +407,7 @@ if (fCARRYING_MUSHROOM) {
     }
     if (!f157 && !f158 && !fEGO_INVISIBLE && !f180 && !f181 && !f175 && vROOM_NO != 21 && vROOM_NO != 22 && vROOM_NO != 80 && vROOM_NO != 65 && vROOM_NO != 14 && vROOM_NO != 63 && v94 <= 0 && vROOM_NO != 12 && vROOM_NO != 73 && vROOM_NO != 74 && vROOM_NO != 75) {
       print("As soon as you swallow the first bite, you have this strange shrinking feeling...  It's true!  You are now no bigger than a mouse!");
-      set.view(o0, 60);
+      set.view(oEGO, 60);
       v82 = 200;
       drop("mushroom");
       reset(fCARRYING_MUSHROOM);
@@ -426,7 +426,7 @@ if (fCARRYING_MUSHROOM) {
 if (fEGO_TINY && v82 > 0) {
   v82--;
   if (v82 == 1 && vROOM_NO != 36 && vROOM_NO != 78) {
-    set.view(o0, 0);
+    set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
     reset(fEGO_TINY);
   }
@@ -463,7 +463,7 @@ if (f83) {
       drop("ring");
       vSCORE -= 3;
       print("When the ring disappears, you reappear!");
-      set.view(o0, 0);
+      set.view(oEGO, 0);
       reset(f83);
       reset(fEGO_INVISIBLE);
       reset(f133);
@@ -484,7 +484,7 @@ if (f83) {
     }
     if (f133 && !f75 && !fEGO_INVISIBLE) {
       if (vROOM_NO != 65 && !f157 && !f158 && v94 <= 0 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 49 && vROOM_NO != 51 && vROOM_NO != 52 && vROOM_NO != 12 && vROOM_NO != 79 && !f209 && !f142 && !fEGO_TINY) {
-        set.view(o0, 110);
+        set.view(oEGO, 110);
         print("When you rub the magic ring, you mysteriously disappear, except for your footprints.");
         set(fEGO_INVISIBLE);
         v90 = 250;
@@ -507,7 +507,7 @@ if (fEGO_INVISIBLE) {
 }
 if (v90 == 1 && v91 == 0) {
   v90 = 0;
-  set.view(o0, 0);
+  set.view(oEGO, 0);
   reset(f83);
   drop("ring");
   reset(f133);
@@ -639,9 +639,9 @@ if (f75) {
   if (fCARRYING_DAGGER && said("murder", "goat")) {
     if (vROOM_NO != 25 && vROOM_NO != 39 && vROOM_NO != 41) {
       if (vROOM_NO == 10 || vROOM_NO == 11) {
-        get.posn(o0, v60, v61);
+        get.posn(oEGO, v60, v61);
         print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.");
-        set.view(o0, 0);
+        set.view(oEGO, 0);
         set.view(o13, 62);
         position.v(o13, v60, v61);
         draw(o13);

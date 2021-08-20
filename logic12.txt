@@ -60,21 +60,21 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL150:
     if (vPREV_ROOM_NO == 49) {
       if (f176) {
-        set.view(o0, 143);
+        set.view(oEGO, 143);
         goto(LABEL172);
       }
-      set.view(o0, 74);
+      set.view(oEGO, 74);
       LABEL172:
         set(f180);
-        position(o0, 38, 140);
-        set.priority(o0, 11);
-        ignore.blocks(o0);
-        move.obj(o0, 38, 140, 0, f148);
+        position(oEGO, 38, 140);
+        set.priority(oEGO, 11);
+        ignore.blocks(oEGO);
+        move.obj(oEGO, 38, 140, 0, f148);
     }
   LABEL189:
     if (vPREV_ROOM_NO == 5) {
       if (fEGO_ON_WATER) {
-        set.view(o0, 0);
+        set.view(oEGO, 0);
         reset(f98);
         v94 = 0;
       }
@@ -92,7 +92,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       stop.cycling(o3);
     }
   LABEL238:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "flowers")) {
@@ -112,22 +112,22 @@ LABEL272:
   }
 LABEL293:
   if (!f75 && !fEGO_INVISIBLE) {
-    if (posn(o0, 10, 100, 75, 150)) {
+    if (posn(oEGO, 10, 100, 75, 150)) {
       if (f177 || f179) {
         if (said("climb", "rope") || said("climb", "well") || said("go", "well") || said("go down", "well") || said("slide", "rope")) {
-          erase(o0);
+          erase(oEGO);
           if (f176) {
-            set.view(o0, 143);
+            set.view(oEGO, 143);
             goto(LABEL376);
           }
-          set.view(o0, 74);
+          set.view(oEGO, 74);
           LABEL376:
-            position(o0, 39, 131);
-            draw(o0);
+            position(oEGO, 39, 131);
+            draw(oEGO);
             set(f180);
-            set.priority(o0, 11);
-            ignore.blocks(o0);
-            move.obj(o0, 39, 132, 0, f148);
+            set.priority(oEGO, 11);
+            ignore.blocks(oEGO);
+            move.obj(oEGO, 39, 132, 0, f148);
         }
       }
       if (!f177 && !f179) {
@@ -141,7 +141,7 @@ LABEL293:
       LABEL437:
         if (!f176 && !f177) {
           if (said("climb", "bucket") || said("go", "bucket") || said("go", "well") || said("go down", "well")) {
-            erase(o0);
+            erase(oEGO);
             set.view(o2, 72);
             position(o2, 38, 145);
             set.priority(o2, 11);
@@ -190,14 +190,14 @@ LABEL293:
     }
   }
 LABEL628:
-  if (!posn(o0, 10, 100, 75, 150)) {
+  if (!posn(oEGO, 10, 100, 75, 150)) {
     if (said("climb", "rope") || said("go", "well") || said("go down", "well") || said("jump", "well") || said("slide", "rope") || said("go", "bucket")) {
       print("You need to be closer to do that.");
     }
   }
 LABEL683:
   if (f75 && !fEGO_INVISIBLE) {
-    if (posn(o0, 10, 100, 75, 150)) {
+    if (posn(oEGO, 10, 100, 75, 150)) {
       if (said("climb", "rope")) {
         print("The goat sure doesn't want to climb the rope.");
       }
@@ -232,7 +232,7 @@ LABEL683:
   }
 LABEL798:
   if (fEGO_INVISIBLE) {
-    if (posn(o0, 10, 100, 75, 150)) {
+    if (posn(oEGO, 10, 100, 75, 150)) {
       if (said("climb", "rope") || said("go", "bucket") || said("go", "well") || said("go down", "well") || said("slide", "rope") || said("jump", "well")) {
         print("You can't do that when you are invisible!");
       }
@@ -240,14 +240,14 @@ LABEL798:
   }
 LABEL858:
   if (f180) {
-    get.posn(o0, v60, v61);
+    get.posn(oEGO, v60, v61);
     if (v61 < 131) {
-      erase(o0);
-      set.view(o0, 0);
-      position(o0, 48, 111);
-      draw(o0);
-      release.priority(o0);
-      observe.blocks(o0);
+      erase(oEGO);
+      set.view(oEGO, 0);
+      position(oEGO, 48, 111);
+      draw(oEGO);
+      release.priority(oEGO);
+      observe.blocks(oEGO);
       reset(f180);
     }
     if (v61 > 145) {
@@ -255,10 +255,10 @@ LABEL858:
     }
     LABEL901:
       if (v60 < 35 || v60 > 44) {
-        get.posn(o0, v60, v61);
+        get.posn(oEGO, v60, v61);
         v61 = 145;
         v96 = 3;
-        move.obj.v(o0, v60, v61, 96, f29);
+        move.obj.v(oEGO, v60, v61, 96, f29);
         print("You should be more careful the next time you try  climbing ropes.");
         set(f135);
         sound(5, fSOUND_END_MARKER);
@@ -269,19 +269,19 @@ LABEL938:
   if (f29 || f20) {
     reset(f29);
     reset(f20);
-    erase(o0);
+    erase(oEGO);
     set(f182);
     new.room(49);
   }
 LABEL958:
   if (f28) {
     reset(f28);
-    erase(o0);
-    position(o0, 38, 125);
-    set.priority(o0, 11);
-    ignore.blocks(o0);
-    draw(o0);
-    move.obj(o0, 38, 145, 3, f20);
+    erase(oEGO);
+    position(oEGO, 38, 125);
+    set.priority(oEGO, 11);
+    ignore.blocks(oEGO);
+    draw(oEGO);
+    move.obj(oEGO, 38, 145, 3, f20);
     if (f26) {
       print("Carefully... Oh no!  The sides were too slippery... you've fallen into the well!");
     }
@@ -307,7 +307,7 @@ LABEL1039:
 LABEL1065:
   if (!f176 && !f177) {
     if (!f81 && said("get", "bucket")) {
-      if (posn(o0, 10, 109, 71, 153)) {
+      if (posn(oEGO, 10, 109, 71, 153)) {
         print("The old bucket is securely fastened to a strong rope.");
         goto(LABEL1105);
       }
@@ -315,7 +315,7 @@ LABEL1065:
     }
     LABEL1105:
       if (!f81 && said("examine", "bucket")) {
-        if (posn(o0, 10, 109, 71, 153)) {
+        if (posn(oEGO, 10, 109, 71, 153)) {
           if (f163) {
             print("The old bucket holds a full load of water.");
             goto(LABEL1141);
@@ -330,7 +330,7 @@ LABEL1065:
 LABEL1146:
   if (!f176 && f177) {
     if (said("lower", "bucket")) {
-      if (posn(o0, 10, 109, 71, 153)) {
+      if (posn(oEGO, 10, 109, 71, 153)) {
         print("The old bucket is already at the bottom of the well.");
         goto(LABEL1182);
       }
@@ -340,7 +340,7 @@ LABEL1146:
 LABEL1182:
   if (!f176 && !f177) {
     if (said("raise", "bucket") || said("raise", "rope")) {
-      if (posn(o0, 10, 109, 71, 153)) {
+      if (posn(oEGO, 10, 109, 71, 153)) {
         print("The bucket is already at the top of the well.");
         goto(LABEL1227);
       }
@@ -362,7 +362,7 @@ LABEL1239:
 LABEL1251:
   if (!f176 && !f177) {
     if (said("lower", "bucket") || said("lower", "rope")) {
-      if (posn(o0, 60, 108, 77, 140)) {
+      if (posn(oEGO, 60, 108, 77, 140)) {
         print("The old bucket disappears into the darkness.");
         start.update(o2);
         start.update(o1);
@@ -384,7 +384,7 @@ LABEL1310:
 LABEL1333:
   if (!f176 && f177 && !f180) {
     if (said("raise", "bucket") || said("raise", "rope")) {
-      if (posn(o0, 60, 108, 77, 140)) {
+      if (posn(oEGO, 60, 108, 77, 140)) {
         print("The old bucket emerges from the depths of the well.");
         start.update(o2);
         start.update(o1);
@@ -402,13 +402,13 @@ LABEL1333:
     }
   }
 LABEL1407:
-  if (posn(o0, 10, 109, 71, 153)) {
+  if (posn(oEGO, 10, 109, 71, 153)) {
     if (said("examine", "well") || said("look inside", "well")) {
       print("The well is deep and dark. But you can see the sky's reflection on the water.");
     }
   }
 LABEL1437:
-  if (!posn(o0, 10, 109, 71, 153)) {
+  if (!posn(oEGO, 10, 109, 71, 153)) {
     if (said("examine", "well")) {
       print("This well is one of the most ancient sites in the entire kingdom.  History and mystery seem to echo from its  every stone.");
     }
@@ -416,7 +416,7 @@ LABEL1437:
 LABEL1460:
   if (!f178) {
     if (said("examine", "rope")) {
-      if (posn(o0, 10, 109, 71, 153)) {
+      if (posn(oEGO, 10, 109, 71, 153)) {
         print("It is thick and firmly attached.  It could easily carry heavy weights.");
         goto(LABEL1494);
       }
@@ -425,7 +425,7 @@ LABEL1460:
   }
 LABEL1494:
   if (said("get", "rope") && !f178) {
-    if (posn(o0, 10, 109, 71, 153)) {
+    if (posn(oEGO, 10, 109, 71, 153)) {
       print(null);
       goto(LABEL1524);
     }
@@ -440,11 +440,11 @@ LABEL1538:
     if (!fCARRYING_DAGGER) {
       print("You have no way to cut the rope.");
     }
-    if (fCARRYING_DAGGER && !posn(o0, 10, 109, 71, 153)) {
+    if (fCARRYING_DAGGER && !posn(oEGO, 10, 109, 71, 153)) {
       print("You will need longer arms to cut that rope from here.");
     }
     LABEL1582:
-      if (fCARRYING_DAGGER && posn(o0, 10, 109, 71, 153)) {
+      if (fCARRYING_DAGGER && posn(oEGO, 10, 109, 71, 153)) {
         if (f176 && !f179) {
           print("You cut a piece of rope and it falls into the well.");
         }
@@ -498,7 +498,7 @@ LABEL1701:
 LABEL1727:
   if (f176 && f179) {
     if (said("lower", "rope")) {
-      if (posn(o0, 60, 108, 77, 129)) {
+      if (posn(oEGO, 60, 108, 77, 129)) {
         print("The rope has already been lowered.");
         goto(LABEL1762);
       }
@@ -508,7 +508,7 @@ LABEL1727:
 LABEL1762:
   if (f176 && !f179) {
     if (said("lower", "rope")) {
-      if (posn(o0, 60, 108, 77, 129)) {
+      if (posn(oEGO, 60, 108, 77, 129)) {
         start.cycling(o3);
         start.update(o1);
         print("The rope descends into the darkness.");
@@ -530,7 +530,7 @@ LABEL1812:
 LABEL1824:
   if (f176 && !f179) {
     if (said("raise", "rope")) {
-      if (posn(o0, 10, 109, 71, 153)) {
+      if (posn(oEGO, 10, 109, 71, 153)) {
         print("The rope is already at the top of the well.");
         goto(LABEL1860);
       }
@@ -540,7 +540,7 @@ LABEL1824:
 LABEL1860:
   if (f176 && f179 && !f180) {
     if (said("raise", "rope")) {
-      if (posn(o0, 10, 109, 71, 153)) {
+      if (posn(oEGO, 10, 109, 71, 153)) {
         start.cycling(o3);
         start.update(o1);
         print("The rope emerges from the well.");

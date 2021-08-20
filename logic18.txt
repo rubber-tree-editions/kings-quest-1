@@ -38,12 +38,12 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   LABEL92:
     if (vPREV_ROOM_NO == 17 && fEGO_ON_WATER) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v61 < 111) {
-        position(o0, 142, 122);
+        position(oEGO, 142, 122);
       }
     }
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 v71--;
@@ -78,7 +78,7 @@ LABEL150:
   }
 LABEL212:
   if (f20) {
-    distance(o0, o1, v70);
+    distance(oEGO, o1, v70);
     if (said("examine", "room")) {
       print("There is a very pretty lake nearby with a small little elf running along its shore.");
     }
@@ -122,14 +122,14 @@ LABEL212:
   }
 LABEL378:
   if (!fEGO_ON_WATER) {
-    ignore.blocks(o0);
+    ignore.blocks(oEGO);
     goto(LABEL392);
   }
 LABEL390:
-  observe.blocks(o0);
+  observe.blocks(oEGO);
 LABEL392:
   if (!fEGO_ON_WATER) {
-    if (posn(o0, 129, 95, 159, 105) || posn(o0, 133, 80, 145, 94)) {
+    if (posn(oEGO, 129, 95, 159, 105) || posn(oEGO, 133, 80, 145, 94)) {
       set(fEGO_ON_WATER);
       set(f134);
     }
@@ -138,11 +138,11 @@ LABEL421:
   if (v94 <= 0 && fEGO_TOUCHED_TRIGGER_LINE) {
     set(fEGO_ON_WATER);
     v76 = 255;
-    if (posn(o0, 128, 64, 159, 85)) {
+    if (posn(oEGO, 128, 64, 159, 85)) {
       v76 = 139;
       v77 = 84;
     }
-    if (posn(o0, 97, 88, 118, 95)) {
+    if (posn(oEGO, 97, 88, 118, 95)) {
       v76 = 97;
       v77 = 104;
     }
@@ -152,7 +152,7 @@ LABEL421:
         goto(LABEL493);
       }
     LABEL481:
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       v76 -= v60;
       v77 -= v61;
       set(f134);
@@ -160,7 +160,7 @@ LABEL421:
 LABEL493:
   if (v94 <= 0 && fEGO_ON_WATER) {
     v76 = 255;
-    if (posn(o0, 119, 86, 146, 95)) {
+    if (posn(oEGO, 119, 86, 146, 95)) {
       v76 = 120;
       v77 = 104;
     }
@@ -169,7 +169,7 @@ LABEL493:
       goto(LABEL547);
     }
     LABEL535:
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       v76 -= v60;
       v77 -= v61;
       set(f134);
@@ -177,7 +177,7 @@ LABEL493:
 LABEL547:
   if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
     if (said("drink", "water") || said("get", "drink")) {
-      if (posn(o0, 81, 87, 159, 167)) {
+      if (posn(oEGO, 81, 87, 159, 167)) {
         print("There is nothing to compare with that refreshing taste.");
         goto(LABEL595);
       }
@@ -186,7 +186,7 @@ LABEL547:
   }
 LABEL595:
   if (!fBUCKET_FILLED && f81 && !fEGO_ON_WATER && said("get", "water")) {
-    if (posn(o0, 81, 87, 159, 167)) {
+    if (posn(oEGO, 81, 87, 159, 167)) {
       reset(f116);
       print("The cold water gushes into the old bucket.");
       get("water");

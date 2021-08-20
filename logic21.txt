@@ -39,8 +39,8 @@ if (fROOM_SCRIPT_EXECUTED) {
         }
     }
   LABEL98:
-    observe.blocks(o0);
-    draw(o0);
+    observe.blocks(oEGO);
+    draw(oEGO);
     show.pic();
 }
 v70--;
@@ -103,12 +103,12 @@ LABEL172:
     program.control();
     set(f142);
     erase(o1);
-    set.view(o0, 91);
-    ignore.blocks(o0);
-    ignore.horizon(o0);
-    get.posn(o0, v60, v61);
+    set.view(oEGO, 91);
+    ignore.blocks(oEGO);
+    ignore.horizon(oEGO);
+    get.posn(oEGO, v60, v61);
     v60 = 130;
-    move.obj.v(o0, v60, v61, 30, f23);
+    move.obj.v(oEGO, v60, v61, 30, f23);
     set(f98);
   }
 LABEL271:
@@ -155,12 +155,12 @@ LABEL372:
     LABEL415:
       if (!f21 && !fEGO_INVISIBLE) {
         set(f143);
-        stop.motion(o0);
+        stop.motion(oEGO);
         v102 = 3;
-        cycle.time(o0, v102);
-        set.view(o0, 75);
+        cycle.time(oEGO, v102);
+        set.view(oEGO, 75);
         set(f98);
-        end.of.loop(o0, f144);
+        end.of.loop(oEGO, f144);
       }
   }
 LABEL443:
@@ -168,10 +168,10 @@ LABEL443:
     reset(f143);
     reset(f144);
     reset(f98);
-    start.motion(o0);
+    start.motion(oEGO);
     v103 = 1;
-    cycle.time(o0, v103);
-    set.view(o0, 0);
+    cycle.time(oEGO, v103);
+    set.view(oEGO, 0);
   }
 LABEL466:
   if (f23) {

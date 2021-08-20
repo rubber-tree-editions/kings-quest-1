@@ -40,20 +40,20 @@ LABEL112:
   if (fEGO_ON_WATER) {
     if (v94 == 0) {
       set(f98);
-      stop.motion(o0);
+      stop.motion(oEGO);
       v93 = 250;
       v94 = 1;
       if (f134) {
-        reposition(o0, v76, v77);
+        reposition(oEGO, v76, v77);
         goto(LABEL150);
       }
-      object.on.water(o0);
+      object.on.water(oEGO);
       LABEL150:
-        get.posn(o0, v76, v77);
+        get.posn(oEGO, v76, v77);
         if (v76 > 139) {
-          erase(o0);
-          set.view(o0, 93);
-          draw(o0);
+          erase(oEGO);
+          set.view(oEGO, 93);
+          draw(oEGO);
           if (fEGO_TINY) {
             reset(fEGO_TINY);
             v82 = 0;
@@ -74,7 +74,7 @@ LABEL112:
             goto(LABEL254);
         }
       LABEL211:
-        set.view(o0, 93);
+        set.view(oEGO, 93);
         if (fEGO_TINY) {
           reset(fEGO_TINY);
           v82 = 0;
@@ -100,8 +100,8 @@ LABEL112:
     }
     if (!f68 && v94 != 2 && !f44) {
       if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
-        set.view(o0, 70);
-        start.motion(o0);
+        set.view(oEGO, 70);
+        start.motion(oEGO);
         stop.sound();
         v94 = 2;
         goto(LABEL474);
@@ -140,12 +140,12 @@ LABEL417:
   if (!fEGO_ON_WATER && v94 == 2) {
     reset(f98);
     v94 = 0;
-    set.view(o0, 0);
+    set.view(oEGO, 0);
     if (f136) {
-      reposition(o0, v76, v77);
+      reposition(oEGO, v76, v77);
       goto(LABEL450);
     }
-    object.on.land(o0);
+    object.on.land(oEGO);
   }
 LABEL450:
   reset(f134);
@@ -154,7 +154,7 @@ LABEL450:
   v77 = 0;
   v95--;
   if (v95 == 1) {
-    erase(o0);
+    erase(oEGO);
     stop.sound();
     set(fGAME_OVER);
   }

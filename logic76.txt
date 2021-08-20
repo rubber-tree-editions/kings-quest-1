@@ -9,10 +9,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   if (vPREV_ROOM_NO == 75) {
-    position(o0, 113, 146);
+    position(oEGO, 113, 146);
   }
   if (vPREV_ROOM_NO == 77) {
-    position(o0, 73, 163);
+    position(oEGO, 73, 163);
   }
   LABEL34:
     if (fCARRYING_FIDDLE) {
@@ -47,7 +47,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       follow.ego(o2, 5, f20);
     }
   LABEL114:
-    draw(o0);
+    draw(oEGO);
     show.pic();
     if (!f186) {
       if (!fCARRYING_CLOVER && fEGO_INVISIBLE) {
@@ -66,9 +66,9 @@ LABEL155:
   if (f20) {
     reset(f20);
     print("The leprechaun catches you and holds you with his small,  but strong arms.  I don't think the leprechaun will ever let go.");
-    stop.motion(o0);
+    stop.motion(oEGO);
     set(f95);
-    stop.cycling(o0);
+    stop.cycling(oEGO);
     stop.motion(o2);
     stop.cycling(o2);
     set(fGAME_OVER);
@@ -159,11 +159,11 @@ LABEL410:
     }
   }
 LABEL428:
-  if (posn(o0, 128, 133, 129, 154)) {
+  if (posn(oEGO, 128, 133, 129, 154)) {
     new.room(75);
   }
 LABEL440:
-  if (posn(o0, 0, 166, 159, 167)) {
+  if (posn(oEGO, 0, 166, 159, 167)) {
     new.room(77);
   }
 LABEL452:

@@ -16,9 +16,9 @@ LABEL24:
   if (said("position")) {
     get.num("x: ", v78);
     get.num("y: ", v79);
-    erase(o0);
-    position.v(o0, v78, v79);
-    draw(o0);
+    erase(oEGO);
+    position.v(oEGO, v78, v79);
+    draw(oEGO);
   }
 LABEL46:
   if (said("get", "object")) {

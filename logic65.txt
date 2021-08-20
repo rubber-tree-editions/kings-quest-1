@@ -68,18 +68,18 @@ if (fROOM_SCRIPT_EXECUTED) {
       load.view(105);
       load.view(103);
       load.view(104);
-      set.view(o0, 105);
-      ignore.blocks(o0);
-      position(o0, 80, 45);
+      set.view(oEGO, 105);
+      ignore.blocks(oEGO);
+      position(oEGO, 80, 45);
       set(f98);
       set(f25);
       program.control();
-      move.obj(o0, 80, 84, 6, f20);
+      move.obj(oEGO, 80, 84, 6, f20);
       v81 = 2;
     }
   LABEL195:
     if (vPREV_ROOM_NO == 28) {
-      position(o0, 49, 163);
+      position(oEGO, 49, 163);
     }
   LABEL206:
     if (!fPROTECTED_BY_SPELL && v81 != 3 && vPREV_ROOM_NO != 80 && !fEGO_INVISIBLE) {
@@ -115,9 +115,9 @@ if (fROOM_SCRIPT_EXECUTED) {
       draw(o3);
     }
   LABEL307:
-    ignore.blocks(o0);
+    ignore.blocks(oEGO);
     observe.blocks(o4);
-    draw(o0);
+    draw(oEGO);
     show.pic();
     if (fPROTECTED_BY_SPELL) {
       print("Be thankful that you have a protective spell or the witch may have stuck around to try and catch you!");
@@ -171,8 +171,8 @@ LABEL437:
     stop.sound();
     set(f34);
     reset(f20);
-    observe.blocks(o0);
-    set.view(o0, 103);
+    observe.blocks(oEGO);
+    set.view(oEGO, 103);
     shake.screen(1);
     print("OUCH!");
     v32 = 20;
@@ -188,8 +188,8 @@ LABEL467:
   }
 LABEL485:
   if (v32 == 1) {
-    set.view(o0, 104);
-    end.of.loop(o0, f22);
+    set.view(oEGO, 104);
+    end.of.loop(oEGO, f22);
     print(null);
     player.control();
   }
@@ -198,7 +198,7 @@ LABEL501:
   if (f22) {
     reset(f22);
     reset(f98);
-    set.view(o0, 0);
+    set.view(oEGO, 0);
     v33 = 100;
   }
 LABEL519:
@@ -212,24 +212,24 @@ LABEL519:
     print("Try as you will to escape, your labor will be in vain.");
     LABEL547:
       set(f95);
-      stop.cycling(o0);
+      stop.cycling(oEGO);
       set(fGAME_OVER);
   }
 LABEL553:
   if (f27) {
-    distance(o0, o4, v34);
+    distance(oEGO, o4, v34);
     if (v34 == 30 && !f30) {
       set(f30);
-      stop.motion(o0);
+      stop.motion(oEGO);
       print("Rats!  She has cast some spell to keep you from escaping!. The witch remarks, \"Oh, how nice of you to come for dinner (cackle, cackle)\"");
     }
     if (f26) {
       reset(f26);
       print("She pokes and pinches you, then states, \"This one is too scrawny, so it's into the cage until you fatten up (smack, yum)!\"");
-      erase(o0);
-      position(o0, 80, 80);
-      draw(o0);
-      start.motion(o0);
+      erase(oEGO);
+      position(oEGO, 80, 80);
+      draw(oEGO);
+      start.motion(oEGO);
       set(f22);
       set(f25);
     }
@@ -252,7 +252,7 @@ LABEL636:
     draw(o4);
     sound(1, f148);
     set(f29);
-    if (posn(o0, 105, 1, 158, 166)) {
+    if (posn(oEGO, 105, 1, 158, 166)) {
       move.obj(o4, 26, 120, 2, f21);
       set(f31);
       print("The witch mutters, \"I am going to get my oven ready to cook someone for dinner (yum).\"");
@@ -262,7 +262,7 @@ LABEL677:
   if (f29 && !f21 && !f31) {
     v30 = 0;
     v31 = 0;
-    if (posn(o0, 105, 1, 158, 166) && !f23) {
+    if (posn(oEGO, 105, 1, 158, 166) && !f23) {
       wander(o4);
       goto(LABEL775);
     }
@@ -271,18 +271,18 @@ LABEL677:
       ignore.blocks(o4);
       follow.ego(o4, 10, f26);
     }
-    distance(o0, o4, v34);
-    if (v34 < 30 && !f30 && !posn(o0, 105, 132, 158, 166)) {
+    distance(oEGO, o4, v34);
+    if (v34 < 30 && !f30 && !posn(oEGO, 105, 132, 158, 166)) {
       set(f30);
-      stop.motion(o0);
+      stop.motion(oEGO);
       print("Rats!  She has cast some spell to keep you from escaping!. The witch remarks, \"Oh, how nice of you to come for dinner (cackle, cackle)\"");
     }
     LABEL755:
       if (f26) {
         reset(f26);
         print("She pokes and pinches you, then states, \"This one is too scrawny, so it's into the cage until you fatten up (smack, yum)!\"");
-        reposition.to(o0, 80, 80);
-        start.motion(o0);
+        reposition.to(oEGO, 80, 80);
+        start.motion(oEGO);
         set(f22);
         set(f25);
       }
@@ -292,7 +292,7 @@ LABEL775:
     if (said("examine", "witch")) {
       print("This ugly old witch is one of the most hideous sights you have ever seen.  I would never trust her.");
     }
-    distance(o0, o4, v70);
+    distance(oEGO, o4, v70);
     if (v70 < 15) {
       if (said("shove", "witch") || said("murder", "witch")) {
         erase(o4);
@@ -326,7 +326,7 @@ LABEL775:
         print("The witch says, \"My oven is now the perfect temperature. It is time to invite someone for dinner (cackle, cackle)!\"");
         reset(f21);
         reset(f31);
-        if (posn(o0, 100, 1, 158, 166)) {
+        if (posn(oEGO, 100, 1, 158, 166)) {
           wander(o4);
         }
       }
@@ -372,7 +372,7 @@ LABEL1062:
     print("The little house is surprisingly neat considering a wicked witch lives here.");
   }
 LABEL1074:
-  if (posn(o0, 23, 89, 55, 100)) {
+  if (posn(oEGO, 23, 89, 55, 100)) {
     if (said("examine", "cupboard") || said("look inside", "cupboard")) {
       if (v87 == 3) {
         print("There is nothing but a bare shelf here.");
@@ -453,7 +453,7 @@ LABEL1074:
       }
   }
 LABEL1346:
-  if (!posn(o0, 23, 89, 55, 100)) {
+  if (!posn(oEGO, 23, 89, 55, 100)) {
     if (said("examine", "cupboard")) {
       print("You need to be a little closer for a good look.");
     }
@@ -477,7 +477,7 @@ LABEL1420:
   }
 LABEL1430:
   if (said("examine", "stove")) {
-    if (posn(o0, 4, 88, 106, 160)) {
+    if (posn(oEGO, 4, 88, 106, 160)) {
       print("It is an old wood stove, and very hot.  The fire must have been burning for some time.");
       goto(LABEL1457);
     }
@@ -495,7 +495,7 @@ LABEL1457:
     }
     LABEL1491:
       if (!f25) {
-        if (posn(o0, 4, 88, 106, 160)) {
+        if (posn(oEGO, 4, 88, 106, 160)) {
           print("It is made from rusty, but strong, iron bars.");
           goto(LABEL1515);
         }
@@ -504,7 +504,7 @@ LABEL1457:
   }
 LABEL1515:
   if (said("feel", "stove")) {
-    if (posn(o0, 8, 88, 40, 144)) {
+    if (posn(oEGO, 8, 88, 40, 144)) {
       print("The oven is very, very hot.  Someone must have just put some wood in it.");
       goto(LABEL1542);
     }
@@ -512,14 +512,14 @@ LABEL1515:
   }
 LABEL1542:
   if (said("open", "stove")) {
-    if (posn(o0, 8, 88, 40, 144)) {
+    if (posn(oEGO, 8, 88, 40, 144)) {
       print("You open the door and see a roaring fire burning in the oven.");
       goto(LABEL1569);
     }
     print("From here it would be rather difficult to open the oven.");
   }
 LABEL1569:
-  if (posn(o0, 105, 88, 158, 160)) {
+  if (posn(oEGO, 105, 88, 158, 160)) {
     if (said("examine", "table")) {
       if (f170) {
         print("It is just a plain, wooden bedside table.");
@@ -537,7 +537,7 @@ LABEL1569:
       }
   }
 LABEL1638:
-  if (!posn(o0, 105, 88, 158, 160)) {
+  if (!posn(oEGO, 105, 88, 158, 160)) {
     if (said("examine", "table")) {
       print("That is the table where she eats her (gulp) food.");
     }
@@ -551,7 +551,7 @@ LABEL1638:
   }
 LABEL1697:
   if (said("examine", "window")) {
-    if (posn(o0, 115, 88, 140, 108)) {
+    if (posn(oEGO, 115, 88, 140, 108)) {
       print("You see the forest outside.");
       goto(LABEL1724);
     }
@@ -560,7 +560,7 @@ LABEL1697:
 LABEL1724:
   if (!f170) {
     if (said("examine", "note")) {
-      if (posn(o0, 114, 132, 140, 160)) {
+      if (posn(oEGO, 114, 132, 140, 160)) {
         print("It is written in a familiar language.");
         goto(LABEL1758);
       }
@@ -568,7 +568,7 @@ LABEL1724:
     }
     LABEL1758:
       if (said("get", "note")) {
-        if (posn(o0, 114, 132, 140, 160)) {
+        if (posn(oEGO, 114, 132, 140, 160)) {
           start.update(o1);
           erase(o1);
           set(f170);
@@ -581,7 +581,7 @@ LABEL1724:
       }
   }
 LABEL1796:
-  if (posn(o0, 39, 164, 56, 166)) {
+  if (posn(oEGO, 39, 164, 56, 166)) {
     new.room(28);
   }
 LABEL1808:

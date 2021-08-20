@@ -19,14 +19,14 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL41:
     if (vPREV_ROOM_NO == 13) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v60 < 70) {
-        position(o0, 70, 56);
+        position(oEGO, 70, 56);
       }
     }
   LABEL63:
-    ignore.blocks(o0);
-    draw(o0);
+    ignore.blocks(oEGO);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "lake")) {
@@ -39,7 +39,7 @@ LABEL80:
 LABEL92:
   if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
     if (said("drink", "water") || said("get", "drink")) {
-      if (posn(o0, 0, 40, 57, 56) || posn(o0, 0, 57, 76, 70) || posn(o0, 0, 90, 109, 167) || posn(o0, 0, 71, 97, 89)) {
+      if (posn(oEGO, 0, 40, 57, 56) || posn(oEGO, 0, 57, 76, 70) || posn(oEGO, 0, 90, 109, 167) || posn(oEGO, 0, 71, 97, 89)) {
         print("The lake's water is very refreshing.");
         goto(LABEL160);
       }
@@ -48,7 +48,7 @@ LABEL92:
   }
 LABEL160:
   if (!fBUCKET_FILLED && f81 && !fEGO_ON_WATER && said("get", "water")) {
-    if (posn(o0, 0, 40, 57, 56) || posn(o0, 0, 57, 76, 70) || posn(o0, 0, 90, 106, 133) || posn(o0, 0, 134, 106, 167)) {
+    if (posn(oEGO, 0, 40, 57, 56) || posn(oEGO, 0, 57, 76, 70) || posn(oEGO, 0, 90, 106, 133) || posn(oEGO, 0, 134, 106, 167)) {
       reset(f116);
       print(null);
       get("water");
@@ -63,7 +63,7 @@ LABEL160:
   }
 LABEL233:
   if (!fEGO_ON_WATER) {
-    if (posn(o0, 0, 78, 22, 158) || posn(o0, 23, 151, 25, 162) || posn(o0, 26, 147, 42, 152) || posn(o0, 43, 141, 60, 149) || posn(o0, 16, 129, 38, 146)) {
+    if (posn(oEGO, 0, 78, 22, 158) || posn(oEGO, 23, 151, 25, 162) || posn(oEGO, 26, 147, 42, 152) || posn(oEGO, 43, 141, 60, 149) || posn(oEGO, 16, 129, 38, 146)) {
       set(fEGO_ON_WATER);
       set(f134);
     }
@@ -71,21 +71,21 @@ LABEL233:
 LABEL280:
   if (v94 <= 0 && fEGO_ON_WATER) {
     v76 = 255;
-    if (posn(o0, 0, 147, 25, 163)) {
+    if (posn(oEGO, 0, 147, 25, 163)) {
       v76 = 3;
       v77 = 148;
     }
-    if (posn(o0, 26, 148, 49, 157)) {
+    if (posn(oEGO, 26, 148, 49, 157)) {
       v76 = 27;
       v77 = 148;
     }
     LABEL325:
-      if (posn(o0, 50, 142, 76, 150)) {
+      if (posn(oEGO, 50, 142, 76, 150)) {
         v76 = 50;
         v77 = 143;
       }
     LABEL341:
-      if (posn(o0, 77, 143, 96, 145)) {
+      if (posn(oEGO, 77, 143, 96, 145)) {
         v76 = 74;
         v77 = 142;
       }
@@ -95,7 +95,7 @@ LABEL280:
         goto(LABEL382);
       }
     LABEL370:
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       v76 -= v60;
       v77 -= v61;
       set(f134);

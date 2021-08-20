@@ -18,13 +18,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL37:
     if (vPREV_ROOM_NO == 17) {
       if (fEGO_ON_WATER) {
-        set.view(o0, 0);
+        set.view(oEGO, 0);
         reset(f98);
         v94 = 0;
       }
     }
   LABEL58:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "garden") || said("examine", "ground") || said("examine", "plant") || said("examine", "bushes")) {
@@ -43,7 +43,7 @@ LABEL117:
     print("You can go around the fence.");
   }
 LABEL129:
-  if (posn(o0, 0, 57, 97, 78) || posn(o0, 0, 79, 117, 102) || posn(o0, 0, 103, 140, 152)) {
+  if (posn(oEGO, 0, 57, 97, 78) || posn(oEGO, 0, 79, 117, 102) || posn(oEGO, 0, 103, 140, 152)) {
     set(f20);
     goto(LABEL160);
   }

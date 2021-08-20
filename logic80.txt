@@ -10,17 +10,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   if (f142) {
     load.view(91);
-    set.view(o0, 91);
-    position(o0, 1, 60);
-    move.obj(o0, 130, 60, 0, f20);
+    set.view(oEGO, 91);
+    position(oEGO, 1, 60);
+    move.obj(oEGO, 130, 60, 0, f20);
     goto(LABEL51);
   }
   load.view(89);
-  set.view(o0, 89);
-  position(o0, 1, 60);
-  move.obj(o0, 135, 60, 0, f21);
+  set.view(oEGO, 89);
+  position(oEGO, 1, 60);
+  move.obj(oEGO, 135, 60, 0, f21);
   LABEL51:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "view") || said("examine", "clouds") || said("examine", "room")) {

@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 79, 68, 0, 0);
   }
   LABEL39:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) {
@@ -28,7 +28,7 @@ if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) {
 LABEL64:
   if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
     if (said("examine", "golden walnut")) {
-      if (posn(o0, 9, 112, 98, 167)) {
+      if (posn(oEGO, 9, 112, 98, 167)) {
         print("These are some of the finest walnuts you have ever seen.");
         goto(LABEL101);
       }
@@ -40,7 +40,7 @@ LABEL64:
           print("You look around and decide these plain walnuts won't do. You want a gold walnut!");
         }
         if (!f129) {
-          if (posn(o0, 9, 112, 98, 167)) {
+          if (posn(oEGO, 9, 112, 98, 167)) {
             print("You pluck a nice walnut from the tree.");
             set(fCARRYING_WALNUT);
             set(f129);
@@ -54,7 +54,7 @@ LABEL64:
   }
 LABEL152:
   if (said("examine", "trees") || said("examine", "walnut tree")) {
-    if (posn(o0, 0, 75, 159, 167)) {
+    if (posn(oEGO, 0, 75, 159, 167)) {
       print(null);
       goto(LABEL187);
     }

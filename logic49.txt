@@ -17,14 +17,14 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.view(99);
   if (f182) {
-    set.view(o0, 105);
-    position(o0, 81, 48);
-    ignore.objs(o0);
-    ignore.blocks(o0);
-    set.priority(o0, 15);
+    set.view(oEGO, 105);
+    position(oEGO, 81, 48);
+    ignore.objs(oEGO);
+    ignore.blocks(oEGO);
+    set.priority(oEGO, 15);
     set(f98);
     set(f20);
-    move.obj(o0, 81, 164, 3, f21);
+    move.obj(oEGO, 81, 164, 3, f21);
   }
   if (vPREV_ROOM_NO == 12 && !f182) {
     if (!f162) {
@@ -32,18 +32,18 @@ if (fROOM_SCRIPT_EXECUTED) {
       vSCORE += 1;
     }
     if (f180) {
-      set.view(o0, 74);
-      position(o0, 81, 48);
-      set.priority(o0, 15);
+      set.view(oEGO, 74);
+      position(oEGO, 81, 48);
+      set.priority(oEGO, 15);
     }
   }
   LABEL96:
     if (vPREV_ROOM_NO == 52) {
       v94 = 2;
-      set.view(o0, 70);
+      set.view(oEGO, 70);
       set(f23);
       v30 = 250;
-      position(o0, 75, 163);
+      position(oEGO, 75, 163);
     }
   LABEL118:
     if (f179) {
@@ -71,16 +71,16 @@ if (fROOM_SCRIPT_EXECUTED) {
       stop.update(o1);
     }
   LABEL201:
-    draw(o0);
+    draw(oEGO);
   LABEL203:
     show.pic();
 }
 if (fEGO_ON_WATER) {
-  observe.blocks(o0);
+  observe.blocks(oEGO);
   goto(LABEL217);
 }
 LABEL215:
-  ignore.blocks(o0);
+  ignore.blocks(oEGO);
 LABEL217:
   if (f182 && !f21 && !f22 && !f24) {
     sound(5, fSOUND_END_MARKER);
@@ -95,64 +95,64 @@ LABEL237:
   }
 LABEL257:
   if (f180) {
-    get.posn(o0, v60, v61);
+    get.posn(oEGO, v60, v61);
     if (v61 > 115 && f177) {
       reset(f180);
       set(f182);
-      set.view(o0, 105);
+      set.view(oEGO, 105);
       v61 = 164;
-      ignore.objs(o0);
-      set.priority(o0, 15);
+      ignore.objs(oEGO);
+      set.priority(oEGO, 15);
       set(f98);
       set(f20);
       v96 = 3;
-      move.obj.v(o0, v60, v61, 96, f22);
+      move.obj.v(oEGO, v60, v61, 96, f22);
     }
     if (v61 > 115 && f179) {
       reset(f180);
       set(f182);
-      set.view(o0, 105);
+      set.view(oEGO, 105);
       v61 = 164;
-      ignore.objs(o0);
-      set.priority(o0, 15);
+      ignore.objs(oEGO);
+      set.priority(oEGO, 15);
       set(f98);
       set(f20);
       v96 = 3;
-      move.obj.v(o0, v60, v61, 96, f22);
+      move.obj.v(oEGO, v60, v61, 96, f22);
     }
     LABEL341:
       if (v60 < 79 || v60 > 83) {
         if (v61 > 70) {
           reset(f180);
           set(f182);
-          set.view(o0, 105);
+          set.view(oEGO, 105);
           v61 = 164;
-          ignore.objs(o0);
-          set.priority(o0, 15);
+          ignore.objs(oEGO);
+          set.priority(oEGO, 15);
           set(f98);
           set(f20);
           v96 = 3;
-          move.obj.v(o0, v60, v61, 96, f22);
+          move.obj.v(oEGO, v60, v61, 96, f22);
           goto(LABEL421);
         }
         reset(f180);
         set(f182);
         set(f25);
-        set.view(o0, 105);
+        set.view(oEGO, 105);
         v61 = 164;
-        ignore.objs(o0);
-        set.priority(o0, 15);
+        ignore.objs(oEGO);
+        set.priority(oEGO, 15);
         set(f98);
         set(f20);
         v96 = 3;
-        move.obj.v(o0, v60, v61, 96, f21);
+        move.obj.v(oEGO, v60, v61, 96, f21);
       }
   }
 LABEL421:
   if (f21) {
     reset(f21);
     stop.sound();
-    erase(o0);
+    erase(oEGO);
     if (f182 && !f25) {
       print("You should be more careful before trying that next time!");
       goto(LABEL448);
@@ -167,9 +167,9 @@ LABEL450:
     reset(f22);
     reset(f98);
     reset(f182);
-    release.priority(o0);
+    release.priority(oEGO);
     stop.sound();
-    set.view(o0, 93);
+    set.view(oEGO, 93);
   }
 LABEL470:
   if (v94 == 2 && !f23) {
@@ -179,7 +179,7 @@ LABEL470:
 LABEL485:
   v30--;
   if (v30 == 1 && f23) {
-    erase(o0);
+    erase(oEGO);
     print("Your arms are like lead... from swimming.  You find it impossible... to swim any longer.  You sink to the bottom... of the well....");
     set(fGAME_OVER);
   }
@@ -190,27 +190,27 @@ LABEL502:
         print("The rope is out of reach.");
       }
       if (f179) {
-        erase(o0);
+        erase(oEGO);
         v94 = 0;
         reset(f98);
-        set.view(o0, 74);
-        position(o0, 81, 113);
-        set.priority(o0, 15);
-        draw(o0);
-        move.obj(o0, 81, 113, 0, f148);
+        set.view(oEGO, 74);
+        position(oEGO, 81, 113);
+        set.priority(oEGO, 15);
+        draw(oEGO);
+        move.obj(oEGO, 81, 113, 0, f148);
         set(f180);
         reset(f23);
       }
       LABEL577:
         if (f177 && !f181) {
-          erase(o0);
+          erase(oEGO);
           v94 = 0;
           reset(f98);
-          set.view(o0, 74);
-          position(o0, 81, 113);
-          set.priority(o0, 15);
-          draw(o0);
-          move.obj(o0, 81, 113, 0, f148);
+          set.view(oEGO, 74);
+          position(oEGO, 81, 113);
+          set.priority(oEGO, 15);
+          draw(oEGO);
+          move.obj(oEGO, 81, 113, 0, f148);
           set(f180);
           reset(f23);
         }
@@ -219,15 +219,15 @@ LABEL502:
           start.update(o1);
           erase(o1);
           set.view(o1, 16);
-          set.view(o0, 74);
+          set.view(oEGO, 74);
           position(o1, 78, 150);
-          position(o0, 81, 113);
+          position(oEGO, 81, 113);
           set.cel(o1, 0);
           draw(o1);
           stop.update(o1);
-          set.priority(o0, 15);
-          draw(o0);
-          move.obj(o0, 81, 113, 0, f148);
+          set.priority(oEGO, 15);
+          draw(oEGO);
+          move.obj(oEGO, 81, 113, 0, f148);
           set(f180);
           reset(f181);
         }
@@ -238,16 +238,16 @@ LABEL502:
           start.update(o1);
           erase(o1);
           set.view(o1, 16);
-          set.view(o0, 105);
+          set.view(oEGO, 105);
           position(o1, 79, 150);
-          position(o0, 81, 124);
+          position(oEGO, 81, 124);
           set(f98);
-          move.obj(o0, 81, 164, 3, f22);
+          move.obj(oEGO, 81, 164, 3, f22);
           set.cel(o1, 0);
           draw(o1);
           stop.update(o1);
-          set.priority(o0, 15);
-          draw(o0);
+          set.priority(oEGO, 15);
+          draw(oEGO);
           set(f180);
           reset(f181);
         }

@@ -9,17 +9,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   if (vPREV_ROOM_NO == 53) {
-    get.posn(o0, v60, v61);
+    get.posn(oEGO, v60, v61);
     v60 += 2;
-    position.v(o0, v60, v61);
+    position.v(oEGO, v60, v61);
   }
   if (vPREV_ROOM_NO == 55) {
-    get.posn(o0, v60, v61);
+    get.posn(oEGO, v60, v61);
     v61 -= 2;
-    position.v(o0, v60, v61);
+    position.v(oEGO, v60, v61);
   }
   LABEL48:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "chandelier")) {
@@ -30,11 +30,11 @@ LABEL63:
     print();
   }
 LABEL89:
-  if (posn(o0, 0, 0, 1, 167)) {
+  if (posn(oEGO, 0, 0, 1, 167)) {
     new.room(53);
   }
 LABEL101:
-  if (posn(o0, 0, 166, 159, 167)) {
+  if (posn(oEGO, 0, 166, 159, 167)) {
     new.room(55);
   }
 LABEL113:

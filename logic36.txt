@@ -18,38 +18,38 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL37:
     if (vPREV_ROOM_NO == 78) {
       vSCORE += 1;
-      set.view(o0, 60);
-      position(o0, 110, 131);
+      set.view(oEGO, 60);
+      position(oEGO, 110, 131);
     }
   LABEL54:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (fEGO_TINY) {
-  ignore.blocks(o0);
+  ignore.blocks(oEGO);
   goto(LABEL70);
 }
 LABEL68:
-  observe.blocks(o0);
+  observe.blocks(oEGO);
 LABEL70:
   if (v82 == 1 && fEGO_TINY) {
-    if (posn(o0, 104, 127, 110, 132)) {
+    if (posn(oEGO, 104, 127, 110, 132)) {
       reset(fEGO_TINY);
       print("You feel a stretching sensation... Oh, you're back to your original size.  You can't get out of the small  cave!");
       set(fGAME_OVER);
       goto(LABEL105);
     }
-    set.view(o0, 0);
+    set.view(oEGO, 0);
     print();
     reset(fEGO_TINY);
   }
 LABEL105:
   if (said("examine", "doorway") || said("look inside", "doorway")) {
-    if (posn(o0, 90, 124, 106, 140)) {
+    if (posn(oEGO, 90, 124, 106, 140)) {
       print(null);
       goto(LABEL343);
     }
-    if (posn(o0, 75, 125, 109, 158)) {
+    if (posn(oEGO, 75, 125, 109, 158)) {
       print("One rock has a small hole in its base.");
       goto(LABEL155);
     }
@@ -57,7 +57,7 @@ LABEL105:
   }
 LABEL155:
   if (said("reach", "doorway")) {
-    if (posn(o0, 90, 124, 106, 140)) {
+    if (posn(oEGO, 90, 124, 106, 140)) {
       print("Very cautiously, you reach into the hole, and to your dismay, find nothing.");
       goto(LABEL182);
     }
@@ -66,7 +66,7 @@ LABEL155:
 LABEL182:
   if (!fEGO_TINY) {
     if (said("go", "doorway") || said("go", "doorway")) {
-      if (posn(o0, 75, 125, 109, 158)) {
+      if (posn(oEGO, 75, 125, 109, 158)) {
         print("You would need to be much smaller to fit through that hole.");
         goto(LABEL224);
       }
@@ -81,7 +81,7 @@ LABEL224:
   }
 LABEL250:
   if (said("get", "rocks")) {
-    if (posn(o0, 75, 125, 109, 158)) {
+    if (posn(oEGO, 75, 125, 109, 158)) {
       print("This rock is firmly stuck in the ground.");
       goto(LABEL277);
     }
@@ -89,7 +89,7 @@ LABEL250:
   }
 LABEL277:
   if (said("shove", "rocks")) {
-    if (posn(o0, 75, 125, 109, 158)) {
+    if (posn(oEGO, 75, 125, 109, 158)) {
       print("Although you are very strong and healthy, this rock is too much even for you.");
       goto(LABEL304);
     }
@@ -97,7 +97,7 @@ LABEL277:
   }
 LABEL304:
   if (said("examine", "rocks")) {
-    if (posn(o0, 50, 80, 158, 166)) {
+    if (posn(oEGO, 50, 80, 158, 166)) {
       print("The ancient, mossy rock has seen many winters.  There is a small hole at its base.");
       goto(LABEL331);
     }
@@ -108,7 +108,7 @@ LABEL331:
     print("There are several pretty trees in the area and a few rocks.  One rock has a small hole in its base.");
   }
 LABEL343:
-  if (posn(o0, 111, 127, 119, 132)) {
+  if (posn(oEGO, 111, 127, 119, 132)) {
     new.room(78);
   }
 LABEL355:

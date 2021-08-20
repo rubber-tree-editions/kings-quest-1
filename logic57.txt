@@ -5,31 +5,31 @@ LOGIC__HEADER
 
 
 if (fROOM_SCRIPT_EXECUTED) {
-  ignore.horizon(o0);
+  ignore.horizon(oEGO);
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   load.sound(5);
   load.view(105);
-  draw(o0);
+  draw(oEGO);
   show.pic();
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {
-  ignore.blocks(o0);
+  ignore.blocks(oEGO);
   set(f199);
   reset(fEGO_TOUCHED_TRIGGER_LINE);
   program.control();
   if (!fEGO_INVISIBLE) {
-    set.view(o0, 105);
+    set.view(oEGO, 105);
   }
-  start.cycling(o0);
+  start.cycling(oEGO);
   set(f98);
-  get.priority(o0, v30);
-  set.priority.v(o0, v30);
-  get.posn(o0, v60, v61);
+  get.priority(oEGO, v30);
+  set.priority.v(oEGO, v30);
+  get.posn(oEGO, v60, v61);
   v61 += 30;
   v96 = 4;
-  move.obj.v(o0, v60, v61, 96, f20);
+  move.obj.v(oEGO, v60, v61, 96, f20);
 }
 LABEL70:
   if (!f20 && f199 && !f21) {
@@ -45,7 +45,7 @@ LABEL87:
   }
 LABEL104:
   if (f20) {
-    erase(o0);
+    erase(oEGO);
     reset(f199);
     reset(f20);
     stop.sound();

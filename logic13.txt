@@ -38,12 +38,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL87:
     if (vPREV_ROOM_NO == 20 || vPREV_ROOM_NO == 4) {
       if (fEGO_ON_WATER) {
-        set.view(o0, 0);
+        set.view(oEGO, 0);
         reset(f98);
         v94 = 0;
       }
     }
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 v70--;
@@ -116,8 +116,8 @@ LABEL262:
     program.control();
     print("It seems the wolf caught up with you and is discussing dinner arrangements.");
     erase(o1);
-    set.view(o0, 96);
-    start.cycling(o0);
+    set.view(oEGO, 96);
+    start.cycling(oEGO);
     set(f98);
     set(fGAME_OVER);
   }

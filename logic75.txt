@@ -9,15 +9,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   if (vPREV_ROOM_NO == 74) {
-    get.posn(o0, v60, v61);
+    get.posn(oEGO, v60, v61);
     v60 += 150;
-    position.v(o0, v60, v61);
+    position.v(oEGO, v60, v61);
   }
   if (vPREV_ROOM_NO == 76) {
-    position(o0, 34, 125);
+    position(oEGO, 34, 125);
   }
   LABEL41:
-    ignore.objs(o0);
+    ignore.objs(oEGO);
     load.view(95);
     if (!f138) {
       load.sound(1);
@@ -51,7 +51,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       draw(o1);
     }
   LABEL123:
-    draw(o0);
+    draw(oEGO);
     show.pic();
     if (vPREV_ROOM_NO == 76) {
       reverse.loop(o2, f203);
@@ -72,12 +72,12 @@ LABEL154:
     sound(1, f148);
   }
 LABEL165:
-  if (posn(o0, 0, 0, 54, 167)) {
-    observe.blocks(o0);
+  if (posn(oEGO, 0, 0, 54, 167)) {
+    observe.blocks(oEGO);
     goto(LABEL182);
   }
 LABEL180:
-  ignore.blocks(o0);
+  ignore.blocks(oEGO);
 LABEL182:
   if (fEGO_INVISIBLE && !f22) {
     set(f22);
@@ -94,7 +94,7 @@ LABEL195:
   }
 LABEL241:
   if (!f138) {
-    distance(o0, o1, v70);
+    distance(oEGO, o1, v70);
     if (said("examine", "rat")) {
       print("It is a big rat with dripping teeth and small, greedy eyes.");
     }
@@ -228,13 +228,13 @@ LABEL824:
   }
 LABEL844:
   if (f21) {
-    set.view(o0, 95);
+    set.view(oEGO, 95);
     print("Be careful around this rat next time!  He's dangerous!!");
     wander(o1);
     set(fGAME_OVER);
   }
 LABEL859:
-  distance(o0, o2, v71);
+  distance(oEGO, o2, v71);
   if (said("open", "doors")) {
     if (v71 < 25) {
       start.update(o2);

@@ -34,28 +34,28 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   LABEL79:
     if (vPREV_ROOM_NO == 70 && f157) {
-      set.view(o0, 74);
-      position(o0, 64, 41);
-      move.obj(o0, 64, 41, 0, f148);
-      set.priority(o0, 8);
+      set.view(oEGO, 74);
+      position(oEGO, 64, 41);
+      move.obj(oEGO, 64, 41, 0, f148);
+      set.priority(oEGO, 8);
     }
   LABEL104:
     if (vPREV_ROOM_NO == 70 && f158) {
       program.control();
-      ignore.horizon(o0);
-      set.priority(o0, 15);
-      set.view(o0, 105);
-      get.posn(o0, v60, v61);
+      ignore.horizon(oEGO);
+      set.priority(oEGO, 15);
+      set.view(oEGO, 105);
+      get.posn(oEGO, v60, v61);
       if (v60 > 75) {
-        position(o0, 80, 29);
+        position(oEGO, 80, 29);
         goto(LABEL144);
       }
-      position(o0, 65, 29);
+      position(oEGO, 65, 29);
       LABEL144:
-        get.posn(o0, v60, v61);
+        get.posn(oEGO, v60, v61);
         v61 = 106;
         v96 = 2;
-        move.obj.v(o0, v60, v61, 96, f28);
+        move.obj.v(oEGO, v60, v61, 96, f28);
     }
   LABEL160:
     random(0, 250, v62);
@@ -79,13 +79,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   LABEL214:
     if (vPREV_ROOM_NO == 50) {
-      position(o0, 142, 83);
+      position(oEGO, 142, 83);
     }
     if (v80 == 22) {
       overlay.pic(v92);
     }
   LABEL234:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (f158 && !f29) {
@@ -104,12 +104,12 @@ LABEL266:
     set(f29);
     reset(f158);
     reset(f135);
-    set.view(o0, 114);
+    set.view(oEGO, 114);
     shake.screen(2);
     set(fGAME_OVER);
   }
 LABEL286:
-  if (posn(o0, 141, 71, 159, 89) || f209 || f157 || f158 || fEGO_INVISIBLE) {
+  if (posn(oEGO, 141, 71, 159, 89) || f209 || f157 || f158 || fEGO_INVISIBLE) {
     set(f145);
     goto(LABEL313);
   }
@@ -160,8 +160,8 @@ LABEL424:
     erase(o1);
   }
 LABEL440:
-  distance(o0, o1, v71);
-  get.posn(o0, v100, v101);
+  distance(oEGO, o1, v71);
+  get.posn(oEGO, v100, v101);
   get.posn(o1, v32, v33);
   v33 += 20;
   if (v71 > 20 && v71 < 30 && v101 > v33 && f143 && !f22) {
@@ -169,13 +169,13 @@ LABEL440:
     set(f145);
     program.control();
     erase(o1);
-    set.view(o0, 89);
+    set.view(oEGO, 89);
     set(f209);
-    ignore.horizon(o0);
-    get.posn(o0, v60, v61);
+    ignore.horizon(oEGO);
+    get.posn(oEGO, v60, v61);
     v60 = 130;
-    set.priority(o0, 15);
-    move.obj.v(o0, v60, v61, 31, f25);
+    set.priority(oEGO, 15);
+    move.obj.v(oEGO, v60, v61, 31, f25);
     set(f98);
     if (!f204) {
       set(f204);
@@ -188,7 +188,7 @@ LABEL517:
   }
 LABEL532:
   if (said("examine", "cave")) {
-    if (posn(o0, 125, 72, 150, 87)) {
+    if (posn(oEGO, 125, 72, 150, 87)) {
       print("The opening to the cave is dark and ominous.");
       goto(LABEL559);
     }
@@ -228,14 +228,14 @@ LABEL633:
 LABEL671:
   if (v80 == 22 && !fEGO_INVISIBLE) {
     if (said("climb", "beanstalk") && !f157) {
-      if (posn(o0, 52, 76, 103, 97)) {
-        erase(o0);
-        set.view(o0, 74);
+      if (posn(oEGO, 52, 76, 103, 97)) {
+        erase(oEGO);
+        set.view(oEGO, 74);
         set(f157);
-        position(o0, 71, 77);
-        set.priority(o0, 8);
-        draw(o0);
-        move.obj(o0, 71, 77, 0, f148);
+        position(oEGO, 71, 77);
+        set.priority(oEGO, 8);
+        draw(oEGO);
+        move.obj(oEGO, 71, 77, 0, f148);
         goto(LABEL731);
       }
       print("You can't reach the beanstalk from here.");
@@ -249,26 +249,26 @@ LABEL731:
   }
 LABEL751:
   if (f157) {
-    if (fEGO_TOUCHED_TRIGGER_LINE && posn(o0, 60, 78, 93, 80)) {
-      erase(o0);
-      set.view(o0, 0);
+    if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 60, 78, 93, 80)) {
+      erase(oEGO);
+      set.view(oEGO, 0);
       reset(f157);
-      position(o0, 70, 106);
-      release.priority(o0);
-      draw(o0);
+      position(oEGO, 70, 106);
+      release.priority(oEGO);
+      draw(oEGO);
     }
-    if (fEGO_TOUCHED_TRIGGER_LINE && !posn(o0, 60, 78, 93, 80)) {
+    if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 60, 78, 93, 80)) {
       program.control();
-      set.priority(o0, 15);
-      get.posn(o0, v60, v61);
-      erase(o0);
-      set.view(o0, 105);
+      set.priority(oEGO, 15);
+      get.posn(oEGO, v60, v61);
+      erase(oEGO);
+      set.view(oEGO, 105);
       reset(f157);
-      position.v(o0, v60, v61);
-      draw(o0);
+      position.v(oEGO, v60, v61);
+      draw(oEGO);
       v61 = 106;
       v96 = 2;
-      move.obj.v(o0, v60, v61, 96, f26);
+      move.obj.v(oEGO, v60, v61, 96, f26);
       set(f135);
       sound(5, f198);
     }
@@ -278,10 +278,10 @@ LABEL835:
   if (f26) {
     stop.sound();
     reset(f26);
-    observe.blocks(o0);
-    release.priority(o0);
-    stop.motion(o0);
-    set.view(o0, 103);
+    observe.blocks(oEGO);
+    release.priority(oEGO);
+    stop.motion(oEGO);
+    set.view(oEGO, 103);
     v30 = 20;
     set(f98);
     shake.screen(2);
@@ -298,16 +298,16 @@ LABEL869:
   }
 LABEL887:
   if (v30 == 1) {
-    set.view(o0, 104);
-    end.of.loop(o0, f27);
+    set.view(oEGO, 104);
+    end.of.loop(oEGO, f27);
   }
 LABEL900:
   if (f27) {
     reset(f27);
     reset(f98);
-    start.motion(o0);
-    set.view(o0, 0);
-    release.priority(o0);
+    start.motion(oEGO);
+    set.view(oEGO, 0);
+    release.priority(oEGO);
     player.control();
   }
 LABEL918:
@@ -341,7 +341,7 @@ LABEL981:
     new.room(11);
   }
 LABEL990:
-  if (posn(o0, 148, 71, 149, 88)) {
+  if (posn(oEGO, 148, 71, 149, 88)) {
     new.room(50);
   }
 LABEL1002:

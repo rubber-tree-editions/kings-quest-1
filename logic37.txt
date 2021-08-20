@@ -19,28 +19,28 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL41:
     if (vPREV_ROOM_NO == 44) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v60 < 75) {
-        position(o0, 10, 57);
+        position(oEGO, 10, 57);
       }
       if (v60 > 74) {
-        position(o0, 140, 57);
+        position(oEGO, 140, 57);
       }
     }
   LABEL74:
     if (vPREV_ROOM_NO == 28) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v60 < 75) {
-        position(o0, 5, 164);
+        position(oEGO, 5, 164);
       }
       if (v60 > 74) {
-        position(o0, 144, 164);
+        position(oEGO, 144, 164);
       }
     }
   LABEL107:
     block(27, 59, 127, 167);
-    ignore.blocks(o0);
-    draw(o0);
+    ignore.blocks(oEGO);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "lake")) {
@@ -52,7 +52,7 @@ LABEL129:
   }
 LABEL141:
   if (!fEGO_ON_WATER) {
-    if (posn(o0, 83, 108, 131, 143) || posn(o0, 37, 101, 82, 145) || posn(o0, 48, 37, 94, 100) || posn(o0, 39, 54, 100, 80) || posn(o0, 85, 146, 108, 155)) {
+    if (posn(oEGO, 83, 108, 131, 143) || posn(oEGO, 37, 101, 82, 145) || posn(oEGO, 48, 37, 94, 100) || posn(oEGO, 39, 54, 100, 80) || posn(oEGO, 85, 146, 108, 155)) {
       set(fEGO_ON_WATER);
       set(f134);
     }
@@ -60,11 +60,11 @@ LABEL141:
 LABEL188:
   if (v94 <= 0 && fEGO_ON_WATER) {
     v76 = 255;
-    if (posn(o0, 124, 119, 131, 141)) {
+    if (posn(oEGO, 124, 119, 131, 141)) {
       v76 = 112;
       v77 = 139;
     }
-    if (posn(o0, 19, 56, 33, 74)) {
+    if (posn(oEGO, 19, 56, 33, 74)) {
       v76 = 30;
       v77 = 67;
     }
@@ -74,7 +74,7 @@ LABEL188:
         goto(LABEL258);
       }
     LABEL246:
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       v76 -= v60;
       v77 -= v61;
       set(f134);

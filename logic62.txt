@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   set.horizon(45);
   load.sound(5);
-  draw(o0);
+  draw(oEGO);
   show.pic();
 }
 if (said("examine", "room") || said("examine", "clouds")) {
@@ -18,7 +18,7 @@ if (said("examine", "room") || said("examine", "clouds")) {
 }
 LABEL39:
   if (said("examine", "trees")) {
-    if (posn(o0, 86, 101, 159, 167)) {
+    if (posn(oEGO, 86, 101, 159, 167)) {
       print(null);
       goto(LABEL66);
     }
@@ -26,7 +26,7 @@ LABEL39:
   }
 LABEL66:
   if (said("examine", "doorway") || said("look inside", "doorway")) {
-    if (posn(o0, 117, 100, 144, 117)) {
+    if (posn(oEGO, 117, 100, 144, 117)) {
       if (!f96) {
         print("You notice a sling in the hole in the tree.");
         goto(LABEL108);
@@ -48,7 +48,7 @@ LABEL113:
 LABEL136:
   if (f96) {
     if (said("get", "slingshot")) {
-      if (posn(o0, 117, 100, 144, 117)) {
+      if (posn(oEGO, 117, 100, 144, 117)) {
         print("Why?  What sling?");
         goto(LABEL169);
       }
@@ -58,7 +58,7 @@ LABEL136:
 LABEL169:
   if (!f96) {
     if (said("get", "slingshot")) {
-      if (posn(o0, 117, 100, 144, 117)) {
+      if (posn(oEGO, 117, 100, 144, 117)) {
         print("You reach into the hole and pull out the leather sling.");
         set(f96);
         set(fCARRYING_SLINGSHOT);
@@ -73,19 +73,19 @@ LABEL212:
   if (fEGO_TOUCHED_TRIGGER_LINE) {
     set(f95);
     program.control();
-    stop.cycling(o0);
-    get.posn(o0, v60, v61);
-    get.priority(o0, v30);
-    set.priority.v(o0, v30);
+    stop.cycling(oEGO);
+    get.posn(oEGO, v60, v61);
+    get.priority(oEGO, v30);
+    set.priority.v(oEGO, v30);
     v61 += 6;
     v96 = 4;
-    move.obj.v(o0, v60, v61, 96, f21);
+    move.obj.v(oEGO, v60, v61, 96, f21);
     sound(5, fSOUND_END_MARKER);
   }
 LABEL248:
   if (f21) {
     reset(f21);
-    erase(o0);
+    erase(oEGO);
   }
 LABEL258:
   if (fSOUND_END_MARKER) {
@@ -96,7 +96,7 @@ LABEL268:
   if (f20) {
     reset(f20);
     print("You've fallen through the clouds!  Cloud walking is for the birds.");
-    erase(o0);
+    erase(oEGO);
     set(fGAME_OVER);
   }
 LABEL282:

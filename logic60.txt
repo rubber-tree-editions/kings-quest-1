@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.sound(5);
   set.horizon(45);
-  draw(o0);
+  draw(oEGO);
   show.pic();
 }
 if (said("examine", "room") || said("examine", "clouds")) {
@@ -24,19 +24,19 @@ LABEL59:
   if (fEGO_TOUCHED_TRIGGER_LINE) {
     set(f95);
     program.control();
-    stop.cycling(o0);
-    get.posn(o0, v60, v61);
-    get.priority(o0, v30);
-    set.priority.v(o0, v30);
+    stop.cycling(oEGO);
+    get.posn(oEGO, v60, v61);
+    get.priority(oEGO, v30);
+    set.priority.v(oEGO, v30);
     v61 += 8;
     v96 = 4;
     sound(5, fSOUND_END_MARKER);
-    move.obj.v(o0, v60, v61, 96, f21);
+    move.obj.v(oEGO, v60, v61, 96, f21);
   }
 LABEL95:
   if (f21) {
     reset(f21);
-    erase(o0);
+    erase(oEGO);
   }
 LABEL105:
   if (fSOUND_END_MARKER) {

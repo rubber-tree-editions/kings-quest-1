@@ -12,17 +12,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.sound(5);
   set.horizon(40);
   if (vPREV_ROOM_NO == 66) {
-    position(o0, 9, 152);
-    set.loop(o0, 0);
-    move.obj(o0, 9, 152, 0, f148);
+    position(oEGO, 9, 152);
+    set.loop(oEGO, 0);
+    move.obj(oEGO, 9, 152, 0, f148);
   }
   if (vPREV_ROOM_NO == 68) {
-    position(o0, 120, 41);
-    set.loop(o0, 1);
-    move.obj(o0, 120, 41, 0, f148);
+    position(oEGO, 120, 41);
+    set.loop(oEGO, 1);
+    move.obj(oEGO, 120, 41, 0, f148);
   }
   LABEL58:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "stairway") || said("examine", "room")) {
@@ -32,23 +32,23 @@ LABEL81:
   if (fEGO_TOUCHED_TRIGGER_LINE && !f21) {
     set(f21);
     if (!fEGO_INVISIBLE) {
-      set.view(o0, 105);
+      set.view(oEGO, 105);
     }
-    start.cycling(o0);
+    start.cycling(oEGO);
     set(f98);
-    get.posn(o0, v60, v61);
-    get.priority(o0, v30);
-    set.priority.v(o0, v30);
+    get.posn(oEGO, v60, v61);
+    get.priority(oEGO, v30);
+    set.priority.v(oEGO, v30);
     print();
     v61 = 165;
     v96 = 4;
-    move.obj.v(o0, v60, v61, 96, f20);
+    move.obj.v(oEGO, v60, v61, 96, f20);
     sound(5, fSOUND_END_MARKER);
   }
 LABEL133:
   if (f20) {
     reset(f20);
-    erase(o0);
+    erase(oEGO);
     set(fGAME_OVER);
   }
 LABEL145:
@@ -56,7 +56,7 @@ LABEL145:
     new.room(68);
   }
 LABEL154:
-  if (posn(o0, 5, 150, 6, 167)) {
+  if (posn(oEGO, 5, 150, 6, 167)) {
     new.room(66);
   }
 LABEL166:

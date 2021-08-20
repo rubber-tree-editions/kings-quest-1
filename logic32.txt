@@ -19,8 +19,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(101);
     call(101);
     set(f68);
-    ignore.blocks(o0);
-    draw(o0);
+    ignore.blocks(oEGO);
+    draw(oEGO);
     show.pic();
 }
 if (fEGO_ON_WATER && !f20) {
@@ -50,7 +50,7 @@ LABEL118:
   }
 LABEL145:
   if (!fEGO_ON_WATER) {
-    if (posn(o0, 110, 53, 133, 83) || posn(o0, 100, 39, 106, 57)) {
+    if (posn(oEGO, 110, 53, 133, 83) || posn(oEGO, 100, 39, 106, 57)) {
       set(fEGO_ON_WATER);
       set(f134);
     }
@@ -58,16 +58,16 @@ LABEL145:
 LABEL174:
   if (v94 <= 0 && fEGO_ON_WATER) {
     v76 = 255;
-    if (posn(o0, 100, 32, 138, 59)) {
+    if (posn(oEGO, 100, 32, 138, 59)) {
       v76 = 112;
       v77 = 52;
     }
-    if (posn(o0, 101, 60, 132, 90)) {
+    if (posn(oEGO, 101, 60, 132, 90)) {
       v76 = 117;
       v77 = 76;
     }
     LABEL219:
-      if (posn(o0, 133, 54, 159, 89)) {
+      if (posn(oEGO, 133, 54, 159, 89)) {
         v76 = 140;
         v77 = 86;
       }
@@ -77,7 +77,7 @@ LABEL174:
         goto(LABEL260);
       }
     LABEL248:
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       v76 -= v60;
       v77 -= v61;
       set(f134);

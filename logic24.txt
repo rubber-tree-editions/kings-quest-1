@@ -29,12 +29,12 @@ if (fROOM_SCRIPT_EXECUTED) {
       stop.update(o1);
     }
   LABEL67:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (!fCARRYING_CLOVER) {
   if (said("examine", "four leaf clover") || said("examine", "ground")) {
-    if (posn(o0, 0, 77, 118, 167)) {
+    if (posn(oEGO, 0, 77, 118, 167)) {
       print(null);
       goto(LABEL112);
     }
@@ -42,7 +42,7 @@ if (!fCARRYING_CLOVER) {
   }
 }
 LABEL112:
-  distance(o0, o1, v62);
+  distance(oEGO, o1, v62);
   if (said("get", "four leaf clover")) {
     if (fCLOVER_TAKEN) {
       if (fCARRYING_CLOVER) {

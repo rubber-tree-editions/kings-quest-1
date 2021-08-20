@@ -12,15 +12,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(74);
   load.sound(5);
   if (vPREV_ROOM_NO == 56) {
-    position(o0, 145, 109);
+    position(oEGO, 145, 109);
   }
   if (vPREV_ROOM_NO == 71) {
-    set.view(o0, 74);
-    position(o0, 66, 165);
-    move.obj(o0, 66, 165, 0, f148);
+    set.view(oEGO, 74);
+    position(oEGO, 66, 165);
+    move.obj(oEGO, 66, 165, 0, f148);
   }
   LABEL49:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (f158 && !f22 && !f23) {
@@ -35,7 +35,7 @@ LABEL69:
     }
   }
 LABEL86:
-  if (!posn(o0, 65, 100, 84, 120) && !f157 && !fEGO_INVISIBLE) {
+  if (!posn(oEGO, 65, 100, 84, 120) && !f157 && !fEGO_INVISIBLE) {
     if (said("climb", "beanstalk")) {
       print("You need to be closer to do that.");
     }
@@ -49,7 +49,7 @@ LABEL115:
 LABEL133:
   if (f157) {
     if (said("examine", "beanstalk")) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v61 > 140) {
         print("Your heart thuds.  Dare you climb into the clouds?");
       }
@@ -61,7 +61,7 @@ LABEL133:
 LABEL171:
   if (!f157) {
     if (said("examine", "beanstalk")) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v60 > 89) {
         print("It is hard to believe those seeds you planted grew this high.");
       }
@@ -75,92 +75,92 @@ LABEL210:
     print();
   }
 LABEL230:
-  if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && !posn(o0, 65, 100, 82, 120) && !f157) {
+  if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && !posn(oEGO, 65, 100, 82, 120) && !f157) {
     set(f21);
     if (!fEGO_INVISIBLE) {
-      set.view(o0, 105);
+      set.view(oEGO, 105);
     }
-    start.cycling(o0);
+    start.cycling(oEGO);
     set(f98);
-    get.posn(o0, v60, v61);
-    get.priority(o0, v30);
-    set.priority.v(o0, v30);
+    get.posn(oEGO, v60, v61);
+    get.priority(oEGO, v30);
+    set.priority.v(oEGO, v30);
     v61 = 165;
     v96 = 4;
-    move.obj.v(o0, v60, v61, 96, f20);
+    move.obj.v(oEGO, v60, v61, 96, f20);
     sound(5, f198);
   }
 LABEL290:
-  if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && posn(o0, 65, 100, 82, 120) && fEGO_INVISIBLE) {
+  if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && posn(oEGO, 65, 100, 82, 120) && fEGO_INVISIBLE) {
     set(f21);
     if (!fEGO_INVISIBLE) {
-      set.view(o0, 105);
+      set.view(oEGO, 105);
     }
-    start.cycling(o0);
+    start.cycling(oEGO);
     set(f98);
-    get.posn(o0, v60, v61);
-    get.priority(o0, v30);
-    set.priority.v(o0, v30);
+    get.posn(oEGO, v60, v61);
+    get.priority(oEGO, v30);
+    set.priority.v(oEGO, v30);
     v61 = 165;
     v96 = 4;
-    move.obj.v(o0, v60, v61, 96, f20);
+    move.obj.v(oEGO, v60, v61, 96, f20);
     sound(5, f198);
   }
 LABEL348:
   if (f20) {
     reset(f20);
-    erase(o0);
+    erase(oEGO);
     print("Whoops!  You fall toward a distant earth.");
     set(fGAME_OVER);
   }
 LABEL362:
-  if (fEGO_TOUCHED_TRIGGER_LINE && posn(o0, 65, 100, 82, 120) && !fEGO_INVISIBLE) {
+  if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 65, 100, 82, 120) && !fEGO_INVISIBLE) {
     if (f157) {
       reset(f157);
-      erase(o0);
-      set.view(o0, 0);
-      position(o0, 85, 112);
-      draw(o0);
-      move.obj(o0, 85, 112, 0, f148);
+      erase(oEGO);
+      set.view(oEGO, 0);
+      position(oEGO, 85, 112);
+      draw(oEGO);
+      move.obj(oEGO, 85, 112, 0, f148);
       goto(LABEL503);
     }
     if (!f157) {
       set(f157);
-      erase(o0);
-      set.view(o0, 74);
-      position(o0, 70, 123);
-      draw(o0);
-      move.obj(o0, 70, 123, 0, f148);
+      erase(oEGO);
+      set.view(oEGO, 74);
+      position(oEGO, 70, 123);
+      draw(oEGO);
+      move.obj(oEGO, 70, 123, 0, f148);
     }
   }
 LABEL431:
   if (fEGO_TOUCHED_TRIGGER_LINE && f157) {
     program.control();
     print("Whoops!  You fall toward a distant earth.");
-    get.posn(o0, v60, v61);
+    get.posn(oEGO, v60, v61);
     reset(f157);
     set(f158);
-    erase(o0);
-    set.view(o0, 105);
+    erase(oEGO);
+    set.view(oEGO, 105);
     if (v60 > 75) {
       v60 = 80;
-      position.v(o0, v60, v61);
-      draw(o0);
+      position.v(oEGO, v60, v61);
+      draw(oEGO);
     }
     if (v60 < 76) {
       v60 = 65;
-      position.v(o0, v60, v61);
-      draw(o0);
+      position.v(oEGO, v60, v61);
+      draw(oEGO);
     }
     LABEL487:
-      start.cycling(o0);
+      start.cycling(oEGO);
       set(f98);
       v61 = 166;
       v96 = 4;
-      move.obj.v(o0, v60, v61, 96, f22);
+      move.obj.v(oEGO, v60, v61, 96, f22);
   }
 LABEL503:
-  if (f22 || posn(o0, 0, 166, 159, 167)) {
+  if (f22 || posn(oEGO, 0, 166, 159, 167)) {
     new.room(71);
   }
 LABEL519:

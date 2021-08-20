@@ -5,7 +5,7 @@ LOGIC__HEADER
 
 
 if (fROOM_SCRIPT_EXECUTED) {
-  ignore.horizon(o0);
+  ignore.horizon(oEGO);
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
@@ -78,7 +78,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   LABEL192:
     draw(o1);
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (v86 == 0 || v86 == 2) {
@@ -114,7 +114,7 @@ LABEL221:
       if (v86 == 0 || v86 == 2) {
         reset(f22);
         reset(f23);
-        set.view(o0, 114);
+        set.view(oEGO, 114);
         print("Be a little more careful next time.  This giant is mean!");
         wander(o1);
         set(fGAME_OVER);
@@ -127,12 +127,12 @@ LABEL318:
     reset(fEGO_TOUCHED_TRIGGER_LINE);
     program.control();
     if (!fEGO_INVISIBLE) {
-      set.view(o0, 105);
+      set.view(oEGO, 105);
     }
-    start.cycling(o0);
+    start.cycling(oEGO);
     set(f98);
     sound(5, fSOUND_END_MARKER);
-    erase(o0);
+    erase(oEGO);
   }
 LABEL348:
   if (fSOUND_END_MARKER) {
@@ -199,7 +199,7 @@ LABEL520:
         print("There is no chest around here to get.");
       }
       LABEL564:
-        distance(o0, o1, v70);
+        distance(oEGO, o1, v70);
         if (v86 == 1) {
           if (v70 > 30) {
             print("There is no way you can get the chest from here!");
@@ -218,7 +218,7 @@ LABEL520:
           v86 = 3;
         }
       LABEL612:
-        distance(o0, o2, v62);
+        distance(oEGO, o2, v62);
         if (v86 == 4) {
           if (v62 > 30) {
             print("There is no way you can get the chest from here!");
@@ -237,7 +237,7 @@ LABEL520:
   }
 LABEL653:
   if (fCARRYING_SLINGSHOT) {
-    distance(o0, o1, v71);
+    distance(oEGO, o1, v71);
     if (said("use", "slingshot") || said("gingerbread", "slingshot")) {
       if (!f93) {
         print("You need some kind of small rock to use the sling.");
@@ -248,9 +248,9 @@ LABEL653:
       LABEL701:
         if (f93 && !f169 && !fEGO_INVISIBLE && v86 == 0 && v71 > 19 && !f199) {
           reset(f23);
-          get.posn(o0, v100, v101);
+          get.posn(oEGO, v100, v101);
           position.v(o15, v100, v101);
-          erase(o0);
+          erase(oEGO);
           draw(o15);
           sound(18, f148);
           end.of.loop(o15, f24);
@@ -262,9 +262,9 @@ LABEL653:
       LABEL751:
         if (f93 && f169 && !fEGO_INVISIBLE && v86 == 2 && v71 > 19) {
           reset(f23);
-          get.posn(o0, v100, v101);
+          get.posn(oEGO, v100, v101);
           position.v(o15, v100, v101);
-          erase(o0);
+          erase(oEGO);
           draw(o15);
           sound(18, f148);
           end.of.loop(o15, f25);
@@ -291,9 +291,9 @@ LABEL842:
   if (f24) {
     reset(f24);
     erase(o15);
-    set.view(o0, 0);
-    position.v(o0, v100, v101);
-    draw(o0);
+    set.view(oEGO, 0);
+    position.v(oEGO, v100, v101);
+    draw(oEGO);
     erase(o1);
     set.view(o1, 77);
     step.size(o1, v33);
@@ -309,9 +309,9 @@ LABEL890:
   if (f25) {
     reset(f25);
     erase(o15);
-    set.view(o0, 0);
-    position.v(o0, v100, v101);
-    draw(o0);
+    set.view(oEGO, 0);
+    position.v(oEGO, v100, v101);
+    draw(oEGO);
     erase(o1);
     set.view(o1, 77);
     step.size(o1, v33);

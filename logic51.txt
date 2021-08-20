@@ -25,10 +25,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL47:
     load.view(35);
     if (vPREV_ROOM_NO == 52) {
-      set.view(o0, 0);
+      set.view(oEGO, 0);
       reset(f98);
       v94 = 0;
-      position(o0, 133, 136);
+      position(oEGO, 133, 136);
       if (!f167) {
         set(f167);
         vSCORE += 1;
@@ -36,7 +36,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   LABEL80:
     if (vPREV_ROOM_NO == 50) {
-      position(o0, 9, 138);
+      position(oEGO, 9, 138);
     }
   LABEL91:
     if (!f165) {
@@ -78,20 +78,20 @@ if (fROOM_SCRIPT_EXECUTED) {
       }
     }
   LABEL201:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
-get.posn(o0, v60, v61);
+get.posn(oEGO, v60, v61);
 if (v60 > 15) {
-  ignore.blocks(o0);
+  ignore.blocks(oEGO);
 }
 LABEL217:
   if (v60 < 16) {
     if (v75 == 2) {
-      ignore.blocks(o0);
+      ignore.blocks(oEGO);
       goto(LABEL238);
     }
-    observe.blocks(o0);
+    observe.blocks(oEGO);
   }
 LABEL238:
   if (v75 == 0 && !f24) {
@@ -110,7 +110,7 @@ LABEL253:
 LABEL279:
   if (f20 && v75 == 0) {
     reset(f20);
-    set.view(o0, 82);
+    set.view(oEGO, 82);
     if (fCARRYING_SHIELD) {
       print("Your shield melted from the intensity of the dragon's flames!  You should know about these fire-breathing dragons!  Maybe next time you will be a little more careful!");
       goto(LABEL306);
@@ -199,7 +199,7 @@ LABEL544:
 LABEL595:
   if (v75 != 0) {
     if (said("examine", "doorway") || said("look inside", "doorway")) {
-      if (posn(o0, 1, 1, 75, 166)) {
+      if (posn(oEGO, 1, 1, 75, 166)) {
         print("The hole seems to lead further into the cave.");
         goto(LABEL638);
       }
@@ -228,7 +228,7 @@ LABEL675:
     }
     LABEL703:
       if (v75 == 0) {
-        if (posn(o0, 105, 96, 145, 166)) {
+        if (posn(oEGO, 105, 96, 145, 166)) {
           print("You can't do that from here.!");
           goto(LABEL727);
         }
@@ -261,7 +261,7 @@ LABEL788:
     if (said("steal", "mirror") && v75 == 0) {
       print("With that dragon here?  No way!");
     }
-    if (posn(o0, 26, 104, 59, 127)) {
+    if (posn(oEGO, 26, 104, 59, 127)) {
       if (said("examine", "mirror")) {
         if (v75 == 0) {
           print("The dragon is protecting the magic mirror.");
@@ -288,7 +288,7 @@ LABEL788:
         }
     }
     LABEL904:
-      if (!posn(o0, 26, 104, 59, 127)) {
+      if (!posn(oEGO, 26, 104, 59, 127)) {
         if (said("examine", "mirror")) {
           print("You could get a much better view if you were closer.");
         }
@@ -309,7 +309,7 @@ LABEL939:
     }
   }
 LABEL991:
-  if (posn(o0, 105, 96, 145, 166) && v75 == 0) {
+  if (posn(oEGO, 105, 96, 145, 166) && v75 == 0) {
     if (fCARRYING_DAGGER && said("throw", "dagger")) {
       reset(fCARRYING_DAGGER);
       print("The dagger sings through the air, but falls short of the dragon.  You should have been closer.");
@@ -325,7 +325,7 @@ LABEL991:
     }
   }
 LABEL1064:
-  if (!posn(o0, 105, 96, 145, 166) && v75 == 0) {
+  if (!posn(oEGO, 105, 96, 145, 166) && v75 == 0) {
     if (fBUCKET_FILLED && (said("throw", "water") || said("throw", "water", "dragon") || said("douse", "dragon"))) {
       reset(fBUCKET_FILLED);
       print("The water hits the dragon squarely in the mouth, extinguishing its roaring flames.  No fire!  How mortified and embarrassed the dragon is!  Moving a huge boulder in leaving, the dragon creeps off to sulk.");
@@ -376,7 +376,7 @@ LABEL1216:
     new.room(52);
   }
 LABEL1225:
-  if (posn(o0, 0, 0, 1, 167)) {
+  if (posn(oEGO, 0, 0, 1, 167)) {
     new.room(50);
   }
 LABEL1237:

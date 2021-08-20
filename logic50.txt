@@ -9,11 +9,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   if (vPREV_ROOM_NO == 51) {
-    position(o0, 152, 133);
-    ignore.blocks(o0);
+    position(oEGO, 152, 133);
+    ignore.blocks(oEGO);
   }
   if (vPREV_ROOM_NO == 22) {
-    position(o0, 3, 147);
+    position(oEGO, 3, 147);
   }
   LABEL36:
     if (v75 != 2) {
@@ -23,14 +23,14 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(o1, 142, 136);
       ignore.blocks(o1);
       draw(o1);
-      observe.blocks(o0);
+      observe.blocks(oEGO);
     }
   LABEL61:
     if (v75 == 2) {
-      ignore.blocks(o0);
+      ignore.blocks(oEGO);
     }
   LABEL70:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (f75) {
@@ -71,10 +71,10 @@ LABEL165:
   }
 LABEL184:
   if (said("examine", "doorway")) {
-    if (posn(o0, 0, 0, 80, 167)) {
+    if (posn(oEGO, 0, 0, 80, 167)) {
       print("Looking out the cave opening, you are able to admire the beautiful scenery outside.");
     }
-    if (posn(o0, 81, 0, 159, 167)) {
+    if (posn(oEGO, 81, 0, 159, 167)) {
       if (v75 != 2) {
         print("It is on the far side of the cave.");
         goto(LABEL231);
@@ -87,7 +87,7 @@ LABEL231:
     new.room(51);
   }
 LABEL240:
-  if (posn(o0, 0, 0, 1, 167)) {
+  if (posn(oEGO, 0, 0, 1, 167)) {
     new.room(22);
   }
 LABEL252:

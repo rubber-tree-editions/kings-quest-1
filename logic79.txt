@@ -54,10 +54,10 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   LABEL128:
     if (vPREV_ROOM_NO == 44) {
-      position(o0, 24, 113);
+      position(oEGO, 24, 113);
     }
   LABEL139:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (f75) {
@@ -367,7 +367,7 @@ LABEL1196:
 LABEL1208:
   if (!fFIDDLE_TAKEN) {
     if (said("examine", "fiddle")) {
-      if (posn(o0, 120, 140, 158, 166)) {
+      if (posn(oEGO, 120, 140, 158, 166)) {
         print("The fiddle is a beautiful instrument made of polished wood.");
         goto(LABEL1242);
       }
@@ -375,7 +375,7 @@ LABEL1208:
     }
     LABEL1242:
       if (said("steal", "fiddle")) {
-        if (posn(o0, 120, 140, 158, 166)) {
+        if (posn(oEGO, 120, 140, 158, 166)) {
           print("What a terrible suggestion!  These people are poor and starving and you want to steal one of their last earthly possessions.");
           goto(LABEL1269);
         }
@@ -383,10 +383,10 @@ LABEL1208:
       }
     LABEL1269:
       if (said("get", "fiddle")) {
-        if (posn(o0, 120, 140, 158, 166) && !f185) {
+        if (posn(oEGO, 120, 140, 158, 166) && !f185) {
           print("You cannot take their last precious possession!");
         }
-        if (posn(o0, 120, 140, 158, 166) && f185) {
+        if (posn(oEGO, 120, 140, 158, 166) && f185) {
           erase(o3);
           set(fCARRYING_FIDDLE);
           set(fFIDDLE_TAKEN);
@@ -395,28 +395,28 @@ LABEL1208:
           vSCORE += 3;
         }
         LABEL1319:
-          if (!posn(o0, 120, 140, 158, 166)) {
+          if (!posn(oEGO, 120, 140, 158, 166)) {
             print("You are not close enough to reach it.");
           }
       }
   }
 LABEL1332:
   if (fEGO_ON_WATER && !f199) {
-    ignore.blocks(o0);
+    ignore.blocks(oEGO);
     set(f95);
-    stop.cycling(o0);
+    stop.cycling(oEGO);
     set(f199);
-    set.priority(o0, 5);
-    get.posn(o0, v60, v61);
+    set.priority(oEGO, 5);
+    get.posn(oEGO, v60, v61);
     v61 = 166;
     v96 = 6;
-    move.obj.v(o0, v60, v61, 96, f23);
+    move.obj.v(oEGO, v60, v61, 96, f23);
     sound(5, fSOUND_END_MARKER);
   }
 LABEL1371:
   if (f23) {
     reset(f23);
-    erase(o0);
+    erase(oEGO);
     print("These poor people can't even afford to repair the floor!  Sorry about that.");
     set(fGAME_OVER);
   }

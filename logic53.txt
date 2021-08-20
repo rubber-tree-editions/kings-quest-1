@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   v70 = 0;
   v71 = 0;
   if (vPREV_ROOM_NO == 54) {
-    position(o0, 154, 120);
+    position(oEGO, 154, 120);
   }
   load.view(1);
   load.view(71);
@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   position(o14, 30, 90);
   draw(o14);
   stop.cycling(o14);
-  draw(o0);
+  draw(oEGO);
   show.pic();
   if (vTREASURE_COUNT == 3) {
     v70 = 250;
@@ -59,7 +59,7 @@ LABEL142:
   if (v30 > 0) {
     v30--;
     if (v30 == 245) {
-      set.view(o0, 0);
+      set.view(oEGO, 0);
       if (fEGO_INVISIBLE) {
         print();
         v90 = 0;
@@ -69,28 +69,28 @@ LABEL142:
         vSCORE -= 3;
         reset(f83);
       }
-      ignore.blocks(o0);
-      get.posn(o0, v100, v101);
+      ignore.blocks(oEGO);
+      get.posn(oEGO, v100, v101);
       if (v100 < 60 && v101 < 88) {
-        move.obj(o0, 67, 82, 0, f28);
+        move.obj(oEGO, 67, 82, 0, f28);
         goto(LABEL215);
       }
       LABEL209:
-        move.obj(o0, 60, 105, 0, f20);
+        move.obj(oEGO, 60, 105, 0, f20);
       LABEL215:
         print("You move aside as the King steps from his throne.");
     }
     if (f28) {
       reset(f28);
-      move.obj(o0, 60, 105, 0, f20);
+      move.obj(oEGO, 60, 105, 0, f20);
     }
     LABEL231:
       if (f20) {
         reset(f20);
         set(f95);
-        set.loop(o0, 3);
-        stop.motion(o0);
-        stop.cycling(o0);
+        set.loop(oEGO, 3);
+        stop.motion(oEGO);
+        stop.cycling(oEGO);
         v30 = 200;
       }
     LABEL251:
@@ -129,7 +129,7 @@ LABEL142:
           }
         LABEL357:
           if (v30 == 115) {
-            set.view(o0, 1);
+            set.view(oEGO, 1);
             print("With those words, King Edward the Benevolent dies.");
           }
         LABEL369:
@@ -137,34 +137,34 @@ LABEL142:
             program.control();
             print("The experiences of your quest will be invaluable to you as you begin your reign as King of Daventry!!");
             reset(f95);
-            start.cycling(o0);
-            ignore.objs(o0);
-            ignore.blocks(o0);
-            move.obj(o0, 40, 90, 0, f27);
+            start.cycling(oEGO);
+            ignore.objs(oEGO);
+            ignore.blocks(oEGO);
+            move.obj(oEGO, 40, 90, 0, f27);
           }
       }
   }
 LABEL393:
   if (f27) {
     reset(f27);
-    erase(o0);
-    position(o0, 30, 85);
-    set.view(o0, 142);
-    draw(o0);
-    stop.motion(o0);
+    erase(oEGO);
+    position(oEGO, 30, 85);
+    set.view(oEGO, 142);
+    draw(oEGO);
+    stop.motion(oEGO);
     prevent.input();
     print("    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stevenson                 Mark Crowe            Bob Ballew   Mikel Knight             Susan Lee          ");
     set(f195);
   }
 LABEL419:
-  if (posn(o0, 18, 80, 67, 107)) {
+  if (posn(oEGO, 18, 80, 67, 107)) {
     set(f21);
     goto(LABEL436);
   }
 LABEL434:
   reset(f21);
 LABEL436:
-  if (posn(o0, 18, 80, 86, 113)) {
+  if (posn(oEGO, 18, 80, 86, 113)) {
     if (said("examine", "king edward")) {
       if (v30 <= 0 && vTREASURE_COUNT != 3 && !f126) {
         print("King Edward the Benevolent is a very wise, but elderly monarch.  His frail body is almost lost in the large throne.");
@@ -189,17 +189,17 @@ LABEL436:
         }
         if (!f21 && !fEGO_INVISIBLE && v30 <= 0 && vTREASURE_COUNT != 3 && !f24) {
           set(f24);
-          get.posn(o0, v60, v61);
+          get.posn(oEGO, v60, v61);
           v60 -= 7;
-          erase(o0);
-          stop.motion(o0);
-          set.view(o0, 71);
-          set.cel(o0, 0);
-          position.v(o0, v60, v61);
+          erase(oEGO);
+          stop.motion(oEGO);
+          set.view(oEGO, 71);
+          set.cel(oEGO, 0);
+          position.v(oEGO, v60, v61);
           v31 = 2;
-          cycle.time(o0, v31);
-          draw(o0);
-          end.of.loop(o0, f22);
+          cycle.time(oEGO, v31);
+          draw(oEGO);
+          end.of.loop(oEGO, f22);
           set(f98);
           if (!f168) {
             set(f168);
@@ -209,17 +209,17 @@ LABEL436:
         }
         if (!f21 && !fEGO_INVISIBLE && v30 <= 0 && vTREASURE_COUNT == 3 && !f25) {
           set(f25);
-          get.posn(o0, v60, v61);
+          get.posn(oEGO, v60, v61);
           v60 -= 7;
-          erase(o0);
-          stop.motion(o0);
-          set.view(o0, 71);
-          set.cel(o0, 0);
-          position.v(o0, v60, v61);
+          erase(oEGO);
+          stop.motion(oEGO);
+          set.view(oEGO, 71);
+          set.cel(oEGO, 0);
+          position.v(oEGO, v60, v61);
           v31 = 2;
-          cycle.time(o0, v31);
-          draw(o0);
-          end.of.loop(o0, f22);
+          cycle.time(oEGO, v31);
+          draw(oEGO);
+          end.of.loop(oEGO, f22);
           set(f98);
           if (!fPOINTS_FOR_BOWING_TO_KING) {
             set(fPOINTS_FOR_BOWING_TO_KING);
@@ -277,7 +277,7 @@ LABEL436:
       }
   }
 LABEL863:
-  if (!posn(o0, 60, 85, 86, 113) && !f21) {
+  if (!posn(oEGO, 60, 85, 86, 113) && !f21) {
     if (v30 <= 0) {
       if (said("examine", "king edward")) {
         print("You are not close enough to see him clearly.");
@@ -328,16 +328,16 @@ LABEL1043:
   if (f22) {
     reset(f22);
     reset(f98);
-    get.posn(o0, v60, v61);
+    get.posn(oEGO, v60, v61);
     v60 += 7;
-    erase(o0);
-    set.loop(o0, 1);
-    set.view(o0, 0);
-    position.v(o0, v60, v61);
+    erase(oEGO);
+    set.loop(oEGO, 1);
+    set.view(oEGO, 0);
+    position.v(oEGO, v60, v61);
     v31 = 1;
-    cycle.time(o0, v31);
-    draw(o0);
-    start.motion(o0);
+    cycle.time(oEGO, v31);
+    draw(oEGO);
+    start.motion(oEGO);
     print("When you bow to King Edward, his pleased smile warms you.");
     if (fPOINTS_FOR_BOWING_TO_KING) {
       v30 = 250;

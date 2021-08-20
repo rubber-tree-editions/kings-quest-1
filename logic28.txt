@@ -33,27 +33,27 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.blocks(o1);
     position(o1, 45, 128);
     load.sound(19);
-    observe.blocks(o0);
+    observe.blocks(oEGO);
     if (vPREV_ROOM_NO == 65) {
-      position(o0, 48, 132);
+      position(oEGO, 48, 132);
     }
   LABEL96:
     if (vPREV_ROOM_NO == 27) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v61 > 94) {
-        position(o0, 1, 155);
+        position(oEGO, 1, 155);
       }
     }
   LABEL118:
     if (vPREV_ROOM_NO == 37 && fEGO_ON_WATER) {
-      set.view(o0, 0);
+      set.view(oEGO, 0);
       reset(f98);
       v94 = 0;
     }
   LABEL135:
     draw(o1);
     stop.update(o1);
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "witch")) {
@@ -61,7 +61,7 @@ if (said("examine", "witch")) {
 }
 LABEL154:
   if (said("examine", "window") || said("look inside", "window")) {
-    if (posn(o0, 66, 120, 92, 134)) {
+    if (posn(oEGO, 66, 120, 92, 134)) {
       print("The windows are made from translucent, hardened sugar.  It's difficult to see through them.");
       goto(LABEL189);
     }
@@ -69,7 +69,7 @@ LABEL154:
   }
 LABEL189:
   if (said("break", "window")) {
-    if (posn(o0, 66, 120, 92, 134)) {
+    if (posn(oEGO, 66, 120, 92, 134)) {
       print("The windows are hard to break.");
       goto(LABEL216);
     }
@@ -77,20 +77,20 @@ LABEL189:
   }
 LABEL216:
   if (said("examine", "building")) {
-    if (posn(o0, 1, 105, 158, 166)) {
+    if (posn(oEGO, 1, 105, 158, 166)) {
       print("This is the sweetest little gingerbread house you ever saw.  The walls are cake, the roof is frosting, the chimney looks delicious, and the candy path and cookie fence are unbearably tempting!");
       goto(LABEL243);
     }
     print("You can't see much from here.");
   }
 LABEL243:
-  if (!posn(o0, 20, 120, 110, 135)) {
+  if (!posn(oEGO, 20, 120, 110, 135)) {
     if (said("eat", "building") || said("eat", "candy")) {
       print("The house looks tempting, but you need to get closer.");
     }
   }
 LABEL274:
-  if (posn(o0, 20, 120, 110, 135)) {
+  if (posn(oEGO, 20, 120, 110, 135)) {
     if (v81 == 2 || v81 == 3) {
       if (said("eat", "building")) {
         print("Yum!  The house tastes even better than it looks!");
@@ -118,7 +118,7 @@ LABEL274:
       }
   }
 LABEL375:
-  if (posn(o0, 40, 127, 70, 135)) {
+  if (posn(oEGO, 40, 127, 70, 135)) {
     if (said("close", "doors")) {
       print("The door is already closed.");
     }
@@ -133,7 +133,7 @@ LABEL375:
       }
   }
 LABEL427:
-  if (!posn(o0, 40, 127, 70, 135)) {
+  if (!posn(oEGO, 40, 127, 70, 135)) {
     if (said("open", "doors") || said("close", "doors") || said("knock", "doors")) {
       print("You will have to move closer to do that.");
     }
@@ -144,7 +144,7 @@ LABEL464:
   }
 LABEL472:
   if (said("examine", "doors")) {
-    if (posn(o0, 1, 106, 158, 166)) {
+    if (posn(oEGO, 1, 106, 158, 166)) {
       print("The door is made from graham crackers held together  with chocolate drop nails.");
       goto(LABEL499);
     }
@@ -152,7 +152,7 @@ LABEL472:
   }
 LABEL499:
   if (said("break", "doors")) {
-    if (posn(o0, 1, 106, 158, 166)) {
+    if (posn(oEGO, 1, 106, 158, 166)) {
       print("You don't need to do that; opening the door would suffice.");
       goto(LABEL526);
     }
@@ -164,7 +164,7 @@ LABEL526:
   }
 LABEL538:
   if (said("eat", "goat pen")) {
-    if (posn(o0, 1, 95, 134, 159)) {
+    if (posn(oEGO, 1, 95, 134, 159)) {
       print("Yummy!");
       goto(LABEL565);
     }

@@ -19,16 +19,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL41:
     if (vPREV_ROOM_NO == 26) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v60 < 50) {
-        position(o0, 10, 50);
+        position(oEGO, 10, 50);
         goto(LABEL70);
       }
-      position(o0, 116, 50);
+      position(oEGO, 116, 50);
     }
   LABEL70:
-    ignore.blocks(o0);
-    draw(o0);
+    ignore.blocks(oEGO);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "lake")) {
@@ -40,7 +40,7 @@ LABEL87:
   }
 LABEL99:
   if (!fEGO_ON_WATER) {
-    if (posn(o0, 69, 76, 103, 131) || posn(o0, 104, 96, 123, 120) || posn(o0, 120, 96, 131, 105) || posn(o0, 120, 106, 125, 111)) {
+    if (posn(oEGO, 69, 76, 103, 131) || posn(oEGO, 104, 96, 123, 120) || posn(oEGO, 120, 96, 131, 105) || posn(oEGO, 120, 106, 125, 111)) {
       set(fEGO_ON_WATER);
       set(f134);
     }
@@ -48,11 +48,11 @@ LABEL99:
 LABEL140:
   if (v94 <= 0 && fEGO_ON_WATER) {
     v76 = 255;
-    if (posn(o0, 108, 88, 140, 110) || posn(o0, 104, 111, 125, 120)) {
+    if (posn(oEGO, 108, 88, 140, 110) || posn(oEGO, 104, 111, 125, 120)) {
       v76 = 114;
       v77 = 102;
     }
-    if (posn(o0, 86, 125, 106, 156)) {
+    if (posn(oEGO, 86, 125, 106, 156)) {
       v76 = 73;
       v77 = 139;
     }
@@ -62,7 +62,7 @@ LABEL140:
         goto(LABEL218);
       }
     LABEL206:
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       v76 -= v60;
       v77 -= v61;
       set(f134);
@@ -70,7 +70,7 @@ LABEL140:
 LABEL218:
   if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
     if (said("drink", "water") || said("get", "drink")) {
-      if (posn(o0, 0, 40, 109, 167) || posn(o0, 110, 55, 151, 142)) {
+      if (posn(oEGO, 0, 40, 109, 167) || posn(oEGO, 110, 55, 151, 142)) {
         print("Ahhh!  That water sure hit the spot!");
         goto(LABEL274);
       }
@@ -79,7 +79,7 @@ LABEL218:
   }
 LABEL274:
   if (!fBUCKET_FILLED && f81 && !fEGO_ON_WATER && said("get", "water")) {
-    if (posn(o0, 0, 40, 109, 167) || posn(o0, 110, 55, 151, 142)) {
+    if (posn(oEGO, 0, 40, 109, 167) || posn(oEGO, 110, 55, 151, 142)) {
       reset(f116);
       print(null);
       get("water");

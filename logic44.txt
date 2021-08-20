@@ -17,16 +17,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL37:
     if (vPREV_ROOM_NO == 37 && fEGO_ON_WATER) {
-      set.view(o0, 0);
+      set.view(oEGO, 0);
       reset(f98);
       v94 = 0;
     }
   LABEL54:
     if (vPREV_ROOM_NO == 79) {
-      position(o0, 118, 123);
+      position(oEGO, 118, 123);
     }
   LABEL65:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "pump")) {
@@ -46,7 +46,7 @@ LABEL104:
   }
 LABEL116:
   if (said("use", "pump") || said("pump", "water")) {
-    if (posn(o0, 24, 115, 61, 149)) {
+    if (posn(oEGO, 24, 115, 61, 149)) {
       print("The rusty pump doesn't work.");
       goto(LABEL151);
     }
@@ -54,7 +54,7 @@ LABEL116:
   }
 LABEL151:
   if (said("get", "axe")) {
-    if (posn(o0, 61, 80, 88, 118)) {
+    if (posn(oEGO, 61, 80, 88, 118)) {
       print("The old axe is tightly wedged in the tree stump.  You cannot remove it no matter what you do.");
       goto(LABEL178);
     }
@@ -62,7 +62,7 @@ LABEL151:
   }
 LABEL178:
   if (said("use", "axe")) {
-    if (posn(o0, 61, 80, 88, 118)) {
+    if (posn(oEGO, 61, 80, 88, 118)) {
       print();
       goto(LABEL205);
     }
@@ -70,7 +70,7 @@ LABEL178:
   }
 LABEL205:
   if (said("open", "doors") || said("close", "doors")) {
-    if (posn(o0, 100, 111, 133, 136)) {
+    if (posn(oEGO, 100, 111, 133, 136)) {
       print("Upon closer inspection you realize this poor cabin doesn't even have a door.");
       goto(LABEL240);
     }
@@ -78,14 +78,14 @@ LABEL205:
   }
 LABEL240:
   if (said("examine", "doors") || said("examine", "doorway") || said("look inside", "doors")) {
-    if (posn(o0, 100, 111, 133, 136)) {
+    if (posn(oEGO, 100, 111, 133, 136)) {
       print("When you look in the doorway, you see a poor, starving woodcutter and his wife.");
       goto(LABEL281);
     }
     print("You are not close enough.");
   }
 LABEL281:
-  if (posn(o0, 126, 119, 128, 127)) {
+  if (posn(oEGO, 126, 119, 128, 127)) {
     new.room(79);
   }
 LABEL293:

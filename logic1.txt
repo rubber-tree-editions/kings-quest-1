@@ -31,24 +31,24 @@ if (fROOM_SCRIPT_EXECUTED) {
     set(f68);
     object.on.water(o11);
     object.on.water(o12);
-    ignore.blocks(o0);
+    ignore.blocks(oEGO);
     draw(o11);
     draw(o12);
     draw(o1);
     if (vPREV_ROOM_NO == 0 || vPREV_ROOM_NO == 83) {
-      position(o0, 110, 100);
+      position(oEGO, 110, 100);
     }
   LABEL105:
     wander(o11);
     wander(o12);
     if (vPREV_ROOM_NO == 8) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v61 > 150) {
-        position(o0, 148, 150);
+        position(oEGO, 148, 150);
       }
     }
   LABEL131:
-    draw(o0);
+    draw(oEGO);
     call(101);
     if (vPREV_ROOM_NO == 83) {
       submit.menu();
@@ -95,7 +95,7 @@ LABEL250:
   }
 LABEL262:
   if (said("drink", "water") && !fBUCKET_FILLED && !f116) {
-    if (posn(o0, 0, 146, 159, 167) || posn(o0, 87, 110, 117, 145)) {
+    if (posn(oEGO, 0, 146, 159, 167) || posn(oEGO, 87, 110, 117, 145)) {
       print("There are alligators in this water.  I don't think you want to try drinking it.");
       goto(LABEL303);
     }
@@ -104,7 +104,7 @@ LABEL262:
 LABEL303:
   if (f81 && !fBUCKET_FILLED) {
     if (said("get", "water")) {
-      if (posn(o0, 0, 146, 159, 167) || posn(o0, 87, 110, 117, 145)) {
+      if (posn(oEGO, 0, 146, 159, 167) || posn(oEGO, 87, 110, 117, 145)) {
         reset(f116);
         print("You fill the bucket with the murky water from the moat.");
         get("water");
@@ -125,33 +125,33 @@ LABEL365:
 LABEL373:
   if (v94 <= 0 && fEGO_ON_WATER) {
     v76 = 255;
-    ignore.objs(o0);
-    if (posn(o0, 0, 158, 28, 166)) {
+    ignore.objs(oEGO);
+    if (posn(oEGO, 0, 158, 28, 166)) {
       v76 = 2;
       v77 = 166;
     }
-    if (posn(o0, 29, 158, 56, 166)) {
+    if (posn(oEGO, 29, 158, 56, 166)) {
       v76 = 30;
       v77 = 166;
     }
     LABEL420:
-      if (posn(o0, 57, 158, 84, 166)) {
+      if (posn(oEGO, 57, 158, 84, 166)) {
         v76 = 58;
         v77 = 166;
       }
     LABEL436:
-      if (posn(o0, 85, 158, 111, 166)) {
+      if (posn(oEGO, 85, 158, 111, 166)) {
         v76 = 86;
         v77 = 166;
       }
     LABEL452:
-      if (posn(o0, 89, 117, 108, 146)) {
-        set.priority(o0, 5);
+      if (posn(oEGO, 89, 117, 108, 146)) {
+        set.priority(oEGO, 5);
         v76 = 90;
         v77 = 133;
       }
     LABEL471:
-      if (posn(o0, 112, 136, 159, 167)) {
+      if (posn(oEGO, 112, 136, 159, 167)) {
         v76 = 122;
         v77 = 166;
       }
@@ -161,7 +161,7 @@ LABEL373:
         goto(LABEL512);
       }
     LABEL500:
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       v76 -= v60;
       v77 -= v61;
       set(f134);
@@ -175,13 +175,13 @@ LABEL512:
 LABEL538:
   if (fEGO_ON_WATER && !f23) {
     program.control();
-    stop.motion(o0);
+    stop.motion(oEGO);
     follow.ego(o11, 18, f20);
     follow.ego(o12, 18, f21);
     set(f23);
   }
 LABEL560:
-  if (posn(o0, 89, 132, 91, 134) && !f22) {
+  if (posn(oEGO, 89, 132, 91, 134) && !f22) {
     print(null);
     set(f22);
     v34 = 45;
@@ -201,7 +201,7 @@ LABEL596:
 LABEL612:
   if (f22 && v34 == 1) {
     v34 = 0;
-    erase(o0);
+    erase(oEGO);
     if (f20) {
       erase(o11);
     }

@@ -16,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 107, 131, 0, 0);
   }
   LABEL37:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "anyword")) {

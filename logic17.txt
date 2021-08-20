@@ -19,33 +19,33 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL41:
     if (vPREV_ROOM_NO == 18 && fEGO_ON_WATER) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v61 < 111) {
-        position(o0, 4, 121);
+        position(oEGO, 4, 121);
       }
     }
   LABEL65:
     if (vPREV_ROOM_NO == 32) {
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       if (v60 < 50) {
-        position(o0, 2, 59);
+        position(oEGO, 2, 59);
         goto(LABEL94);
       }
-      position(o0, 109, 66);
+      position(oEGO, 109, 66);
     }
   LABEL94:
     if (vPREV_ROOM_NO == 16) {
-      if (posn(o0, 0, 164, 88, 167)) {
-        position(o0, 88, 165);
+      if (posn(oEGO, 0, 164, 88, 167)) {
+        position(oEGO, 88, 165);
       }
     }
   LABEL115:
-    ignore.blocks(o0);
-    draw(o0);
+    ignore.blocks(oEGO);
+    draw(oEGO);
     show.pic();
 }
 if (!fEGO_ON_WATER) {
-  if (posn(o0, 32, 103, 102, 123) || posn(o0, 0, 96, 58, 108) || posn(o0, 34, 87, 68, 97) || posn(o0, 13, 88, 37, 97)) {
+  if (posn(oEGO, 32, 103, 102, 123) || posn(oEGO, 0, 96, 58, 108) || posn(oEGO, 34, 87, 68, 97) || posn(oEGO, 13, 88, 37, 97)) {
     set(fEGO_ON_WATER);
     set(f134);
   }
@@ -57,21 +57,21 @@ LABEL161:
 LABEL173:
   if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
     if (said("drink", "water") || said("get", "drink")) {
-      if (posn(o0, 64, 106, 116, 167)) {
+      if (posn(oEGO, 64, 106, 116, 167)) {
         print("You have to scoop the water with your hands, but you manage to satisfy your thirst.");
       }
-      if (posn(o0, 0, 0, 115, 105)) {
+      if (posn(oEGO, 0, 0, 115, 105)) {
         print("That's a dangerous proposition from here.");
       }
       LABEL228:
-        if (!posn(o0, 64, 106, 116, 167) && !posn(o0, 0, 0, 115, 105)) {
+        if (!posn(oEGO, 64, 106, 116, 167) && !posn(oEGO, 0, 0, 115, 105)) {
           print();
         }
     }
   }
 LABEL248:
   if (!fBUCKET_FILLED && f81 && !fEGO_ON_WATER && said("get", "water")) {
-    if (posn(o0, 64, 106, 116, 167)) {
+    if (posn(oEGO, 64, 106, 116, 167)) {
       reset(f116);
       print(null);
       get("water");
@@ -81,11 +81,11 @@ LABEL248:
       }
       set(fFILL_BUCKET_POINTS);
     }
-    if (posn(o0, 0, 0, 115, 105)) {
+    if (posn(oEGO, 0, 0, 115, 105)) {
       print("That's a dangerous proposition from here.");
     }
     LABEL308:
-      if (!posn(o0, 64, 106, 116, 167) && !posn(o0, 0, 0, 115, 105)) {
+      if (!posn(oEGO, 64, 106, 116, 167) && !posn(oEGO, 0, 0, 115, 105)) {
         print();
       }
   }
@@ -93,16 +93,16 @@ LABEL328:
   if (v94 <= 0 && fEGO_TOUCHED_TRIGGER_LINE) {
     set(fEGO_ON_WATER);
     v76 = 255;
-    if (posn(o0, 93, 78, 112, 108)) {
+    if (posn(oEGO, 93, 78, 112, 108)) {
       v76 = 84;
       v77 = 111;
     }
-    if (posn(o0, 86, 55, 98, 77)) {
+    if (posn(oEGO, 86, 55, 98, 77)) {
       v76 = 71;
       v77 = 106;
     }
     LABEL375:
-      if (posn(o0, 0, 40, 25, 70)) {
+      if (posn(oEGO, 0, 40, 25, 70)) {
         v76 = 6;
         v77 = 87;
       }
@@ -112,7 +112,7 @@ LABEL328:
         goto(LABEL416);
       }
     LABEL404:
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       v76 -= v60;
       v77 -= v61;
       set(f134);
@@ -120,16 +120,16 @@ LABEL328:
 LABEL416:
   if (v94 <= 0 && fEGO_ON_WATER && !fEGO_TOUCHED_TRIGGER_LINE) {
     v76 = 255;
-    if (posn(o0, 89, 109, 110, 121)) {
+    if (posn(oEGO, 89, 109, 110, 121)) {
       v76 = 89;
       v77 = 116;
     }
-    if (posn(o0, 80, 122, 109, 146)) {
+    if (posn(oEGO, 80, 122, 109, 146)) {
       v76 = 70;
       v77 = 146;
     }
     LABEL464:
-      if (posn(o0, 70, 147, 93, 167)) {
+      if (posn(oEGO, 70, 147, 93, 167)) {
         v76 = 57;
         v77 = 160;
       }
@@ -139,7 +139,7 @@ LABEL416:
         goto(LABEL505);
       }
     LABEL493:
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       v76 -= v60;
       v77 -= v61;
       set(f134);

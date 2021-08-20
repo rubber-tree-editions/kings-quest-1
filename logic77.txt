@@ -10,10 +10,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   if (vPREV_ROOM_NO == 76) {
-    position(o0, 87, 67);
+    position(oEGO, 87, 67);
   }
   if (vPREV_ROOM_NO == 78) {
-    position(o0, 9, 95);
+    position(oEGO, 9, 95);
   }
   LABEL36:
     if (!f188) {
@@ -90,7 +90,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       draw(o3);
     }
   LABEL275:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (!f186) {
@@ -105,8 +105,8 @@ if (!f186) {
 }
 LABEL307:
   if (!f186 && fCARRYING_CLOVER) {
-    observe.blocks(o0);
-    if (posn(o0, 80, 110, 139, 141)) {
+    observe.blocks(oEGO);
+    if (posn(oEGO, 80, 110, 139, 141)) {
       if (!f25) {
         print("The King's magic prevents you from getting close enough to harm him.");
         set(f25);
@@ -115,8 +115,8 @@ LABEL307:
   }
 LABEL339:
   if (f186 && !f187) {
-    ignore.blocks(o0);
-    if (posn(o0, 31, 110, 158, 98)) {
+    ignore.blocks(oEGO);
+    if (posn(oEGO, 31, 110, 158, 98)) {
       if (!f25) {
         print("The King's magic prevents you from getting close enough to harm him.");
         set(f25);
@@ -125,7 +125,7 @@ LABEL339:
   }
 LABEL371:
   if (f186 && f187) {
-    ignore.blocks(o0);
+    ignore.blocks(oEGO);
   }
 LABEL381:
   v30--;
@@ -164,9 +164,9 @@ LABEL466:
   if (f22) {
     reset(f22);
     print("The leprechaun, with much support from his peers, catches you and refuses to let go.  I think you will be here for a long, long time.");
-    stop.motion(o0);
+    stop.motion(oEGO);
     set(f95);
-    stop.cycling(o0);
+    stop.cycling(oEGO);
     stop.motion(o2);
     stop.cycling(o2);
     set(fGAME_OVER);
@@ -264,7 +264,7 @@ LABEL776:
   }
 LABEL856:
   if (said("examine", "stairway")) {
-    if (posn(o0, 56, 10, 60, 156)) {
+    if (posn(oEGO, 56, 10, 60, 156)) {
       print("The stairs go up a narrow tunnel.");
       goto(LABEL883);
     }
@@ -282,7 +282,7 @@ LABEL883:
 LABEL916:
   if (!f188) {
     if (said("examine", "shield")) {
-      if (posn(o0, 121, 118, 144, 138)) {
+      if (posn(oEGO, 121, 118, 144, 138)) {
         print("It is made of titanium and is rimmed with jewels.");
         goto(LABEL950);
       }
@@ -290,7 +290,7 @@ LABEL916:
     }
     LABEL950:
       if (said("get", "shield")) {
-        if (posn(o0, 121, 118, 144, 138)) {
+        if (posn(oEGO, 121, 118, 144, 138)) {
           erase(o1);
           if (f186) {
             print("You take the magic shield and carefully put it in your pocket.");
@@ -319,7 +319,7 @@ LABEL1001:
   }
 LABEL1034:
   if (!f189) {
-    if (posn(o0, 103, 100, 142, 142)) {
+    if (posn(oEGO, 103, 100, 142, 142)) {
       if (f187 || f20) {
         if (said("examine", "sceptre")) {
           print("The sceptre is fashioned from gold and silver, and accented with emeralds.");
@@ -344,7 +344,7 @@ LABEL1034:
         }
     }
     LABEL1130:
-      if (!posn(o0, 103, 100, 142, 142)) {
+      if (!posn(oEGO, 103, 100, 142, 142)) {
         if (said("examine", "sceptre") || said("get", "sceptre")) {
           print("You must be closer to do that.");
         }
@@ -361,7 +361,7 @@ LABEL1177:
     new.room(76);
   }
 LABEL1186:
-  if (posn(o0, 0, 0, 1, 167)) {
+  if (posn(oEGO, 0, 0, 1, 167)) {
     new.room(78);
   }
 LABEL1198:

@@ -12,33 +12,33 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(74);
   load.sound(5);
   if (vPREV_ROOM_NO == 71 && f157) {
-    set.view(o0, 74);
-    position(o0, 69, 40);
-    move.obj(o0, 69, 40, 0, f148);
+    set.view(oEGO, 74);
+    position(oEGO, 69, 40);
+    move.obj(oEGO, 69, 40, 0, f148);
   }
   if (vPREV_ROOM_NO == 71 && f158) {
     program.control();
-    set.view(o0, 105);
-    get.posn(o0, v60, v61);
+    set.view(oEGO, 105);
+    get.posn(oEGO, v60, v61);
     if (v60 > 75) {
-      position(o0, 90, 29);
+      position(oEGO, 90, 29);
       goto(LABEL75);
     }
-    position(o0, 55, 29);
+    position(oEGO, 55, 29);
     LABEL75:
       v61 = 166;
       v96 = 4;
-      set.priority(o0, 15);
-      move.obj.v(o0, v60, v61, 96, f20);
+      set.priority(oEGO, 15);
+      move.obj.v(oEGO, v60, v61, 96, f20);
   }
   LABEL90:
     if (vPREV_ROOM_NO < 50) {
-      set.view(o0, 74);
-      position(o0, 69, 160);
-      move.obj(o0, 69, 160, 0, f148);
+      set.view(oEGO, 74);
+      position(oEGO, 69, 160);
+      move.obj(oEGO, 69, 160, 0, f148);
     }
   LABEL110:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (f158 && !f20 && !f21) {
@@ -67,33 +67,33 @@ LABEL174:
   if (fEGO_TOUCHED_TRIGGER_LINE && !f158) {
     program.control();
     print("With a wrong move, you fall dizzyingly to the ground.");
-    get.posn(o0, v60, v61);
+    get.posn(oEGO, v60, v61);
     set(f158);
-    erase(o0);
-    set.view(o0, 105);
+    erase(oEGO);
+    set.view(oEGO, 105);
     if (v60 > 75) {
       v60 = 80;
-      position.v(o0, v60, v61);
-      draw(o0);
+      position.v(oEGO, v60, v61);
+      draw(oEGO);
     }
     if (v60 < 76) {
       v60 = 65;
-      position.v(o0, v60, v61);
-      draw(o0);
+      position.v(oEGO, v60, v61);
+      draw(oEGO);
     }
     LABEL229:
-      start.cycling(o0);
+      start.cycling(oEGO);
       set(f98);
       v61 = 166;
       v96 = 4;
-      move.obj.v(o0, v60, v61, 96, f20);
+      move.obj.v(oEGO, v60, v61, 96, f20);
   }
 LABEL245:
   if (vEGO_EDGE_CODE == 1) {
     new.room(71);
   }
 LABEL254:
-  if (f20 || posn(o0, 0, 166, 159, 167)) {
+  if (f20 || posn(oEGO, 0, 166, 159, 167)) {
     if (v80 == 6) {
       new.room(6);
     }

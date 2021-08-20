@@ -31,17 +31,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL64:
     set.horizon(40);
     if (vPREV_ROOM_NO == 67) {
-      position(o0, 94, 160);
-      set.loop(o0, 0);
-      move.obj(o0, 94, 160, 0, f148);
+      position(oEGO, 94, 160);
+      set.loop(oEGO, 0);
+      move.obj(oEGO, 94, 160, 0, f148);
     }
     if (vPREV_ROOM_NO == 69) {
-      position(o0, 43, 41);
-      set.loop(o0, 0);
-      move.obj(o0, 43, 41, 0, f148);
+      position(oEGO, 43, 41);
+      set.loop(oEGO, 0);
+      move.obj(oEGO, 43, 41, 0, f148);
     }
   LABEL106:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (f24) {
@@ -57,7 +57,7 @@ if (f24) {
 LABEL137:
   v70--;
   if (v70 == 1) {
-    if (posn(o0, 0, 0, 159, 83)) {
+    if (posn(oEGO, 0, 0, 159, 83)) {
       position(o1, 96, 162);
       goto(LABEL167);
     }
@@ -69,7 +69,7 @@ LABEL137:
   }
 LABEL177:
   if (!f26) {
-    distance(o0, o1, v71);
+    distance(oEGO, o1, v71);
   }
 LABEL188:
   if (f25) {
@@ -100,14 +100,14 @@ LABEL245:
 LABEL280:
   if (fEGO_TOUCHED_TRIGGER_LINE && !f22) {
     set(f22);
-    ignore.blocks(o0);
-    start.cycling(o0);
+    ignore.blocks(oEGO);
+    start.cycling(oEGO);
     set(f98);
-    get.posn(o0, v60, v61);
-    get.priority(o0, v30);
-    set.priority.v(o0, v30);
+    get.posn(oEGO, v60, v61);
+    get.priority(oEGO, v30);
+    set.priority.v(oEGO, v30);
     if (!fEGO_INVISIBLE) {
-      set.view(o0, 105);
+      set.view(oEGO, 105);
     }
     print("Look out!  You are too close to the edge!  Oh, oh, you fell!");
     if (v61 < 130) {
@@ -118,13 +118,13 @@ LABEL280:
       v61 = 165;
     LABEL335:
       v96 = 4;
-      move.obj.v(o0, v60, v61, 96, f20);
+      move.obj.v(oEGO, v60, v61, 96, f20);
       sound(5, fSOUND_END_MARKER);
   }
 LABEL347:
   if (f20) {
     reset(f20);
-    erase(o0);
+    erase(oEGO);
     set(fGAME_OVER);
   }
 LABEL359:
@@ -239,7 +239,7 @@ LABEL624:
     new.room(69);
   }
 LABEL633:
-  if (posn(o0, 0, 166, 159, 167)) {
+  if (posn(oEGO, 0, 166, 159, 167)) {
     new.room(67);
   }
 LABEL645:

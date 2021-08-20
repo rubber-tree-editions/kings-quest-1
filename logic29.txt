@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL35:
     if (vPREV_ROOM_NO == 20) {
       if (!fEGO_INVISIBLE) {
-        set.view(o0, 0);
+        set.view(oEGO, 0);
         reset(f98);
       }
     }
@@ -43,7 +43,7 @@ if (fROOM_SCRIPT_EXECUTED) {
         }
     }
   LABEL106:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (f21 && fSOUND_END_MARKER) {
@@ -120,7 +120,7 @@ LABEL273:
     v30 = 250;
     v31 = 2;
     program.control();
-    stop.motion(o0);
+    stop.motion(oEGO);
     set.view(o1, 116);
     end.of.loop(o1, f23);
     print("The sorcerer casts a spell, freezing you to the spot. I hope no dangerous creatures drop by!");
@@ -157,7 +157,7 @@ LABEL409:
   if (v30 == 1 && v31 == 0) {
     reset(f24);
     print("The sorcerer's spell has expired; now you can move  again.  Whew!");
-    start.motion(o0);
+    start.motion(oEGO);
     player.control();
   }
 LABEL426:

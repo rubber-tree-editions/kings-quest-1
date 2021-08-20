@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(o1, 101, 92);
     load.sound(19);
     if (vPREV_ROOM_NO == 66) {
-      position(o0, 102, 98);
+      position(oEGO, 102, 98);
       vDOOR_STATE = 2;
     }
   LABEL67:
@@ -31,7 +31,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       set.cel(o1, 3);
       draw(o1);
       ignore.objs(o1);
-      ignore.blocks(o0);
+      ignore.blocks(oEGO);
       stop.update(o1);
     }
   LABEL85:
@@ -39,11 +39,11 @@ if (fROOM_SCRIPT_EXECUTED) {
       set.cel(o1, 0);
       draw(o1);
       observe.objs(o1);
-      observe.blocks(o0);
+      observe.blocks(oEGO);
       stop.update(o1);
     }
   LABEL108:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "mountains")) {
@@ -55,7 +55,7 @@ LABEL123:
   }
 LABEL135:
   if (said("examine", "doors")) {
-    if (posn(o0, 90, 93, 125, 114)) {
+    if (posn(oEGO, 90, 93, 125, 114)) {
       print("It is a huge wooden door built right into the bottom of a small mountain!  It has a large keyhole.");
       goto(LABEL162);
     }
@@ -63,14 +63,14 @@ LABEL135:
   }
 LABEL162:
   if (said("break", "doors")) {
-    if (posn(o0, 90, 93, 125, 114)) {
+    if (posn(oEGO, 90, 93, 125, 114)) {
       print("You strike the door with all your might!  To no avail.");
       goto(LABEL189);
     }
     print("It will be difficult to do that from here.");
   }
 LABEL189:
-  if (!posn(o0, 90, 93, 125, 114)) {
+  if (!posn(oEGO, 90, 93, 125, 114)) {
     if (said("open", "doors") || said("close", "doors") || said("turn", "knob") || said("open", "doors", "gold key") || said("open", "doors", "golden", "gold key")) {
       print("It will be difficult to do that from here.");
     }
@@ -81,7 +81,7 @@ LABEL189:
     }
   }
 LABEL276:
-  if (posn(o0, 90, 93, 125, 114)) {
+  if (posn(oEGO, 90, 93, 125, 114)) {
     if (f84) {
       if (said("use", "gold key")) {
         print("How do you want to use the key?");
@@ -155,14 +155,14 @@ LABEL563:
   if (f20) {
     reset(f20);
     ignore.objs(o1);
-    ignore.blocks(o0);
+    ignore.blocks(oEGO);
     stop.update(o1);
   }
 LABEL577:
   if (f21) {
     reset(f21);
     observe.objs(o1);
-    observe.blocks(o0);
+    observe.blocks(oEGO);
     stop.update(o1);
   }
 LABEL591:
@@ -180,14 +180,14 @@ LABEL591:
   }
 LABEL634:
   if (said("examine", "key hole")) {
-    if (posn(o0, 90, 93, 125, 114)) {
+    if (posn(oEGO, 90, 93, 125, 114)) {
       print("Through the keyhole you can dimly see a staircase. It looks like it might go up into the mountain.");
       goto(LABEL661);
     }
     print("There aren't many keyholes in the ground here.");
   }
 LABEL661:
-  if (posn(o0, 99, 93, 114, 94)) {
+  if (posn(oEGO, 99, 93, 114, 94)) {
     new.room(66);
   }
 LABEL673:

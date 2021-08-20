@@ -10,13 +10,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   set.horizon(70);
   if (vPREV_ROOM_NO == 54) {
-    position(o0, 79, 71);
+    position(oEGO, 79, 71);
   }
   if (vPREV_ROOM_NO == 2) {
-    position(o0, 75, 164);
+    position(oEGO, 75, 164);
   }
   LABEL36:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "chandelier") || said("examine", "hall") || said("examine", "building")) {
@@ -39,7 +39,7 @@ LABEL101:
     new.room(54);
   }
 LABEL110:
-  if (posn(o0, 0, 166, 159, 167)) {
+  if (posn(oEGO, 0, 166, 159, 167)) {
     new.room(2);
   }
 LABEL122:

@@ -40,10 +40,10 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   LABEL99:
     if (f75) {
-      set.view(o0, 67);
+      set.view(oEGO, 67);
     }
   LABEL108:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (f21 && !f75) {
@@ -57,11 +57,11 @@ if (f21 && !f75) {
   }
 }
 LABEL142:
-  if (posn(o0, 16, 153, 44, 155)) {
+  if (posn(oEGO, 16, 153, 44, 155)) {
     set(f74);
   }
 LABEL154:
-  if (posn(o0, 16, 156, 44, 158)) {
+  if (posn(oEGO, 16, 156, 44, 158)) {
     reset(f74);
   }
 LABEL166:
@@ -75,7 +75,7 @@ LABEL166:
 LABEL189:
   if (said("open", "gate")) {
     if (f20) {
-      if (posn(o0, 6, 139, 55, 167)) {
+      if (posn(oEGO, 6, 139, 55, 167)) {
         move.obj(o1, 43, 156, 0, f78);
         reset(f20);
         print("The gate is rather heavy, but you manage to open it.");
@@ -91,8 +91,8 @@ LABEL189:
 LABEL238:
   if (said("close", "gate")) {
     if (f78 && !f75) {
-      if (posn(o0, 33, 139, 75, 167)) {
-        get.posn(o0, v60, v61);
+      if (posn(oEGO, 33, 139, 75, 167)) {
+        get.posn(oEGO, v60, v61);
         if (v61 == 156) {
           print("You will have to move out of the way so the gate can close all the way.");
           goto(LABEL285);
@@ -232,7 +232,7 @@ LABEL671:
     print("The fence is too high for you to jump over.");
   }
 LABEL683:
-  distance(o0, o13, v70);
+  distance(oEGO, o13, v70);
   if (f74 && f21) {
     if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
       if (fCARRYING_CARROT) {
@@ -261,7 +261,7 @@ LABEL781:
             print("When you tempt the old goat with the carrot, he starts to follow you.");
             set(f75);
             erase(o13);
-            set.view(o0, 67);
+            set.view(oEGO, 67);
             vSCORE += 5;
           }
           if (f151) {

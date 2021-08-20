@@ -9,32 +9,32 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   if (vPREV_ROOM_NO == 36) {
-    set.view(o0, 60);
-    position(o0, 3, 81);
+    set.view(oEGO, 60);
+    position(oEGO, 3, 81);
   }
   if (vPREV_ROOM_NO == 77) {
-    position(o0, 146, 131);
-    move.obj(o0, 146, 131, 0, f148);
+    position(oEGO, 146, 131);
+    move.obj(oEGO, 146, 131, 0, f148);
   }
   LABEL43:
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (fEGO_TINY) {
-  ignore.blocks(o0);
+  ignore.blocks(oEGO);
   goto(LABEL59);
 }
 LABEL57:
-  observe.blocks(o0);
+  observe.blocks(oEGO);
 LABEL59:
   if (v82 == 1 && fEGO_TINY) {
-    if (posn(o0, 1, 75, 12, 82)) {
+    if (posn(oEGO, 1, 75, 12, 82)) {
       reset(fEGO_TINY);
       print(null);
       set(fGAME_OVER);
       goto(LABEL94);
     }
-    set.view(o0, 0);
+    set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
     reset(fEGO_TINY);
   }
@@ -63,7 +63,7 @@ LABEL177:
     new.room(77);
   }
 LABEL186:
-  if (posn(o0, 0, 0, 1, 167)) {
+  if (posn(oEGO, 0, 0, 1, 167)) {
     new.room(36);
   }
 LABEL198:

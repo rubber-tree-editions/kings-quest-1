@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.horizon(42);
   load.logics(101);
   call(101);
-  ignore.blocks(o0);
+  ignore.blocks(oEGO);
   if (v83 <= 0) {
     load.view(27);
     animate.obj(o1);
@@ -62,7 +62,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   LABEL149:
     set(f68);
-    draw(o0);
+    draw(oEGO);
     show.pic();
 }
 if (said("examine", "building")) {
@@ -75,7 +75,7 @@ LABEL166:
   }
 LABEL179:
   if (f23) {
-    distance(o0, o1, v62);
+    distance(oEGO, o1, v62);
     if (f22) {
       if (said("talk", "man") || said("hello") || said("say", "hello")) {
         if (v62 < 50) {
@@ -187,7 +187,7 @@ LABEL333:
       print("There is no gnome here.");
     }
     if (f20) {
-      distance(o0, o2, v70);
+      distance(oEGO, o2, v70);
       if (said("examine", "magic beans")) {
         if (v70 > 40) {
           print("That's too far away.");
@@ -213,7 +213,7 @@ LABEL333:
     }
     LABEL660:
       if (f21) {
-        distance(o0, o3, v71);
+        distance(oEGO, o3, v71);
         if (said("examine", "gold key")) {
           if (v71 > 40) {
             print("That's too far away.");
@@ -258,7 +258,7 @@ LABEL778:
 LABEL791:
   if (v94 <= 0 && fEGO_ON_WATER) {
     v76 = 255;
-    if (posn(o0, 0, 34, 34, 67)) {
+    if (posn(oEGO, 0, 34, 34, 67)) {
       v76 = 6;
       v77 = 54;
     }
@@ -267,7 +267,7 @@ LABEL791:
       goto(LABEL845);
     }
     LABEL833:
-      get.posn(o0, v60, v61);
+      get.posn(oEGO, v60, v61);
       v76 -= v60;
       v77 -= v61;
       set(f134);
