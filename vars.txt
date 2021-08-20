@@ -136,3 +136,5 @@
 #define cDUCK c8
 
 #define oEGO o0
+
+#define sPROMPT s0

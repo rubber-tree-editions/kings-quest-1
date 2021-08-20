@@ -89,7 +89,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     *v45 = 0;
     v45++;
   } while (v45 < 45);
-  set.string(s0, ">");
+  set.string(sPROMPT, ">");
   set.cursor.char("_");
 }
 if (fGAME_OVER) {
