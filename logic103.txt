@@ -42,91 +42,83 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (v61 > 100) {
     v61 += 1;
-    goto(LABEL131);
   }
-  v61 -= 1;
-  LABEL131:
-    position.v(o13, v60, v61);
-    v107 = 1;
-    step.size(o13, v107);
-    draw(o13);
-    follow.ego(o13, 10, f207);
+  else {
+    v61 -= 1;
+  }
+  position.v(o13, v60, v61);
+  v107 = 1;
+  step.size(o13, v107);
+  draw(o13);
+  follow.ego(o13, 10, f207);
 }
 distance(o0, o13, v40);
 if (v40 > 35) {
   v107 = 2;
   step.size(o13, v107);
-  goto(LABEL173);
 }
-LABEL167:
+else {
   v107 = 1;
   step.size(o13, v107);
-LABEL173:
-  if (!f75) {
-    goto(LABEL434);
+}
+if (!f75) {
+  return;
+}
+if (f63) {
+  normal.motion(o13);
+  stop.motion(o13);
+  stop.cycling(o13);
+  return;
+}
+if (f40 || f43) {
+  goto(LABEL397);
+}
+if (f76) {
+  ignore.blocks(o13);
+  return;
+}
+observe.blocks(o13);
+v41--;
+if (v41 == 1) {
+  if (v40 < 21) {
+    set(f207);
   }
-LABEL183:
-  if (f63) {
-    normal.motion(o13);
-    stop.motion(o13);
-    stop.cycling(o13);
-    goto(LABEL434);
-  }
-  if (f40 || f43) {
-    goto(LABEL397);
-  }
-  if (f76) {
-    ignore.blocks(o13);
-    goto(LABEL434);
-  }
-  observe.blocks(o13);
-  v41--;
-  if (v41 == 1) {
-    if (v40 < 21) {
-      set(f207);
-      goto(LABEL270);
-    }
-    if (!f207 && v94 <= 0) {
-      v41 = 0;
-      start.cycling(o13);
-      start.motion(o13);
-      follow.ego(o13, 10, f207);
-    }
-  }
-LABEL270:
-  if (f207) {
-    reset(f207);
-    v41 = 9;
-    normal.motion(o13);
-    stop.motion(o13);
-    stop.cycling(o13);
-  }
-LABEL287:
-  if (v40 > 20 && v94 > 0 && !f210) {
-    if (vROOM_NO != 1 && vROOM_NO != 2 && vROOM_NO != 41 && vROOM_NO != 33 && vROOM_NO != 34 && vROOM_NO != 32 && vROOM_NO != 25 && vROOM_NO != 26 && vROOM_NO != 39) {
-      print(null);
-    }
-    set(f210);
+  else if (!f207 && v94 <= 0) {
+    v41 = 0;
     start.cycling(o13);
-    wander(o13);
-  }
-LABEL348:
-  if (f210 && v40 < 25 && v94 <= 0) {
-    reset(f210);
+    start.motion(o13);
     follow.ego(o13, 10, f207);
   }
-LABEL367:
-  if (f79 && !f42) {
-    set(f42);
-    print();
-    reset(f75);
-    wander(o13);
-    if (vOBJECT_EDGE_CODE != 0) {
-      erase(o13);
-    }
+}
+if (f207) {
+  reset(f207);
+  v41 = 9;
+  normal.motion(o13);
+  stop.motion(o13);
+  stop.cycling(o13);
+}
+if (v40 > 20 && v94 > 0 && !f210) {
+  if (vROOM_NO != 1 && vROOM_NO != 2 && vROOM_NO != 41 && vROOM_NO != 33 && vROOM_NO != 34 && vROOM_NO != 32 && vROOM_NO != 25 && vROOM_NO != 26 && vROOM_NO != 39) {
+    print(null);
   }
-LABEL394:
-  goto(LABEL434);
+  set(f210);
+  start.cycling(o13);
+  wander(o13);
+}
+if (f210 && v40 < 25 && v94 <= 0) {
+  reset(f210);
+  follow.ego(o13, 10, f207);
+}
+if (f79 && !f42) {
+  set(f42);
+  print();
+  reset(f75);
+  wander(o13);
+  if (vOBJECT_EDGE_CODE != 0) {
+    erase(o13);
+  }
+}
+return;
 LABEL397:
   distance(o0, o13, v40);
   if (f43 && v94 > 0 && !f210) {
@@ -136,7 +128,6 @@ LABEL397:
   if (f43 && f210 && v40 < 25 && v94 <= 0) {
     reset(f210);
   }
-LABEL434:
   return;
 
 LOGIC__FOOTER
