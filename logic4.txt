@@ -37,7 +37,7 @@ LABEL80:
     print("These cattails are soft and fuzzy.");
   }
 LABEL92:
-  if (!f88 && !fEGO_ON_WATER && !f116) {
+  if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
     if (said("drink", "water") || said("get", "drink")) {
       if (posn(o0, 0, 40, 57, 56) || posn(o0, 0, 57, 76, 70) || posn(o0, 0, 90, 109, 167) || posn(o0, 0, 71, 97, 89)) {
         print("The lake's water is very refreshing.");
@@ -47,16 +47,16 @@ LABEL92:
     }
   }
 LABEL160:
-  if (!f88 && f81 && !fEGO_ON_WATER && said("get", "water")) {
+  if (!fBUCKET_FILLED && f81 && !fEGO_ON_WATER && said("get", "water")) {
     if (posn(o0, 0, 40, 57, 56) || posn(o0, 0, 57, 76, 70) || posn(o0, 0, 90, 106, 133) || posn(o0, 0, 134, 106, 167)) {
       reset(f116);
       print(null);
       get("water");
-      set(f88);
-      if (!f91) {
+      set(fBUCKET_FILLED);
+      if (!fFILL_BUCKET_POINTS) {
         vSCORE += 2;
       }
-      set(f91);
+      set(fFILL_BUCKET_POINTS);
       goto(LABEL233);
     }
     print("You are not close enough to the water.");

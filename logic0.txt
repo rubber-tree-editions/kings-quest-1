@@ -32,8 +32,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_NO == 65 && vPREV_ROOM_NO == 80) {
     vEGO_VIEW_NO = 105;
   }
-  if (f200 || f143) {
-    reset(f200);
+  if (fEGO_DUCKING || f143) {
+    reset(fEGO_DUCKING);
     reset(f143);
     reset(f98);
     vEGO_VIEW_NO = 0;
@@ -59,7 +59,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_NO != 83) {
     configure.screen(1, 22, 0);
   }
-  if (f123 || f120) {
+  if (fCARRYING_MUSHROOM || fEGO_TINY) {
     load.view(60);
   }
   if (f75 || v65 > 0) {
@@ -71,7 +71,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   reset(f122);
   reset(f68);
   reset(f148);
-  reset(f159);
+  reset(fSOUND_END_MARKER);
   reset(f198);
   reset(f199);
   reset(f156);
@@ -92,12 +92,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.string(s0, ">");
   set.cursor.char("_");
 }
-if (f63) {
+if (fGAME_OVER) {
   if (!f197) {
-    disable.item(c1);
+    disable.item(cSAVE);
     disable.item(c7);
-    disable.item(c5);
-    disable.item(c8);
+    disable.item(cSWIM);
+    disable.item(cDUCK);
     load.logics(100);
     load.sound(2);
     v97 = 40;
@@ -124,7 +124,7 @@ if (controller(c19)) {
   print();
 }
 if (vROOM_NO > 52 || vROOM_NO == 3 || vROOM_NO == 6 || vROOM_NO == 9 || vROOM_NO == 10 || vROOM_NO == 11 || vROOM_NO == 12 || vROOM_NO == 13 || vROOM_NO == 14 || vROOM_NO == 15 || vROOM_NO == 16 || vROOM_NO == 19 || vROOM_NO == 21 || vROOM_NO == 22 || vROOM_NO == 24 || vROOM_NO == 27 || vROOM_NO == 28 || vROOM_NO == 29 || vROOM_NO == 30 || vROOM_NO == 31 || vROOM_NO == 35 || vROOM_NO == 36 || vROOM_NO == 38 || vROOM_NO == 44 || vROOM_NO == 45 || vROOM_NO == 46 || vROOM_NO == 48 || vROOM_NO == 50 || vROOM_NO == 51) {
-  if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(c5)) {
+  if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
     print("You need to be in water to swim.");
   }
 }
@@ -165,13 +165,13 @@ if (said("slow")) {
 if ((said("quit") || controller(c6)) && vROOM_NO != 83) {
   quit(0);
 }
-if ((said("save", "game") || controller(c1)) && vROOM_NO != 83) {
+if ((said("save", "game") || controller(cSAVE)) && vROOM_NO != 83) {
   save.game();
 }
-if ((said("restore", "game") || controller(c2)) && vROOM_NO != 83) {
+if ((said("restore", "game") || controller(cRESTORE)) && vROOM_NO != 83) {
   restore.game();
 }
-if ((said("restart", "game") || controller(c3)) && vROOM_NO != 83) {
+if ((said("restart", "game") || controller(cRESTART)) && vROOM_NO != 83) {
   restart.game();
 }
 if (controller(c4) && vROOM_NO != 83) {
@@ -185,7 +185,7 @@ if (controller(c14)) {
 }
 if (vROOM_NO != 21) {
   if (said("jump") || controller(c7)) {
-    if (!f143 && !f157 && !f158 && !f79 && !f120 && vROOM_NO != 79 && !fEGO_ON_WATER && !f145 && !f200 && v94 <= 0 && vROOM_NO != 29 && vROOM_NO != 13 && vROOM_NO != 53 && vROOM_NO != 58 && vROOM_NO != 49 && vROOM_NO != 52 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 48 && vROOM_NO != 73 && vROOM_NO != 65 && vROOM_NO != 12 && vROOM_NO != 14 && vROOM_NO != 10 && vROOM_NO != 11 && vROOM_NO != 51) {
+    if (!f143 && !f157 && !f158 && !fEGO_INVISIBLE && !fEGO_TINY && vROOM_NO != 79 && !fEGO_ON_WATER && !f145 && !fEGO_DUCKING && v94 <= 0 && vROOM_NO != 29 && vROOM_NO != 13 && vROOM_NO != 53 && vROOM_NO != 58 && vROOM_NO != 49 && vROOM_NO != 52 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 48 && vROOM_NO != 73 && vROOM_NO != 65 && vROOM_NO != 12 && vROOM_NO != 14 && vROOM_NO != 10 && vROOM_NO != 11 && vROOM_NO != 51) {
       set(f143);
       stop.motion(o0);
       set.cel(o0, 0);
@@ -209,9 +209,9 @@ if (vROOM_NO != 21) {
     set.view(o0, 0);
   }
 }
-if (said("duck") || controller(c8)) {
-  if (!f200 && !f157 && !f158 && !f79 && !f120 && !fEGO_ON_WATER && !f145 && v94 <= 0 && !f143 && !f146 && vROOM_NO != 29 && vROOM_NO != 12 && vROOM_NO != 53 && vROOM_NO != 58 && vROOM_NO != 49 && vROOM_NO != 52 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 48 && vROOM_NO != 73 && vROOM_NO != 65 && vROOM_NO != 79 && vROOM_NO != 14 && vROOM_NO != 10 && vROOM_NO != 11 && vROOM_NO != 13 && !f142) {
-    set(f200);
+if (said("duck") || controller(cDUCK)) {
+  if (!fEGO_DUCKING && !f157 && !f158 && !fEGO_INVISIBLE && !fEGO_TINY && !fEGO_ON_WATER && !f145 && v94 <= 0 && !f143 && !f146 && vROOM_NO != 29 && vROOM_NO != 12 && vROOM_NO != 53 && vROOM_NO != 58 && vROOM_NO != 49 && vROOM_NO != 52 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 48 && vROOM_NO != 73 && vROOM_NO != 65 && vROOM_NO != 79 && vROOM_NO != 14 && vROOM_NO != 10 && vROOM_NO != 11 && vROOM_NO != 13 && !f142) {
+    set(fEGO_DUCKING);
     set.view(o0, 87);
     set(f98);
     end.of.loop(o0, f201);
@@ -228,8 +228,8 @@ if (f201) {
   reset(f98);
 }
 if (f202) {
-  if (said("stand up") || controller(c8)) {
-    reset(f200);
+  if (said("stand up") || controller(cDUCK)) {
+    reset(fEGO_DUCKING);
     reset(f202);
     start.motion(o0);
     set.view(o0, 0);
@@ -239,7 +239,7 @@ if (f202) {
 if (said("thank", "anyword")) {
   print("You're welcome!");
 }
-if (f67) {
+if (fCARRYING_DAGGER) {
   if (said("examine", "dagger")) {
     show.obj(117);
   }
@@ -255,28 +255,28 @@ if (f67) {
     }
   }
 }
-if (f70 && v65 != vROOM_NO) {
+if (fDAGGER_LOST && v65 != vROOM_NO) {
   if (said("anyword", "dagger")) {
     print("You had the dagger and lost it.  Sorry.");
   }
 }
-if (f70 && v65 == vROOM_NO) {
+if (fDAGGER_LOST && v65 == vROOM_NO) {
   if (said("anyword", "dagger")) {
     print("You don't want the dagger anymore.");
   }
 }
-if (f118 && said("eat", "carrot")) {
+if (fCARROT_EATEN && said("eat", "carrot")) {
   print("You already ate the carrot.");
 }
-if (f77) {
+if (fCARRYING_CARROT) {
   if (said("eat", "carrot")) {
     if (!f75) {
       print("Mmmm!  There's nothing like a crisp, fresh carrot.");
       drop("carrot");
-      reset(f77);
-      reset(f117);
+      reset(fCARRYING_CARROT);
+      reset(fPOINTS_FOR_CARROT);
       vSCORE -= 2;
-      set(f118);
+      set(fCARROT_EATEN);
     }
     if (f75) {
       print("Seeing how much the goat likes that carrot, eating it may be hazardous to your health.");
@@ -292,8 +292,8 @@ if (f77) {
     if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
       print("The goat quickly eats the carrot and disappears.");
       drop("carrot");
-      reset(f77);
-      reset(f117);
+      reset(fCARRYING_CARROT);
+      reset(fPOINTS_FOR_CARROT);
       vSCORE -= 2;
       if (vROOM_NO == 10 || vROOM_NO == 11) {
         set.view(o0, 0);
@@ -307,7 +307,7 @@ if (f77) {
     }
   }
 }
-if (f108) {
+if (fCARRYING_GOLD_WALNUT) {
   if (said("open", "golden walnut") || said("crack", "golden walnut")) {
     print("You have already opened the walnut.");
   }
@@ -318,7 +318,7 @@ if (f108) {
     show.obj(120);
   }
 }
-if (f127) {
+if (fCARRYING_WALNUT) {
   if (said("eat", "golden walnut")) {
     print("Ouch!  It would be much easier if you opened the walnut first.");
   }
@@ -330,8 +330,8 @@ if (f127) {
       sound(14, f148);
     }
     print("When you open the walnut, you discover the nut inside is pure gold!");
-    reset(f127);
-    set(f108);
+    reset(fCARRYING_WALNUT);
+    set(fCARRYING_GOLD_WALNUT);
     drop("walnut");
     get("gold walnut");
     vSCORE += 3;
@@ -345,9 +345,9 @@ if (vROOM_NO != 49 && said("dive", "anyword")) {
     print("You need to be in the water to try that.");
   }
 }
-if (v63 == 0 && v64 == 0 && f73) {
+if (v63 == 0 && v64 == 0 && fPROTECTED_BY_SPELL) {
   print("\"Ye best be careful, young Graham.  The mystic protective spell of mine has weakened and departed.\"");
-  reset(f73);
+  reset(fPROTECTED_BY_SPELL);
 }
 else {
   v64--;
@@ -358,7 +358,7 @@ else {
     }
   }
 }
-if (f81 && f88 && !fEGO_ON_WATER) {
+if (f81 && fBUCKET_FILLED && !fEGO_ON_WATER) {
   if (said("get", "bucket") || said("get", "water")) {
     print("You already have it.");
   }
@@ -368,33 +368,33 @@ if (f81 && f88 && !fEGO_ON_WATER) {
   if (said("drink", "water") || said("get", "drink")) {
     set(f116);
     print("You drain the bucket of water to quench your thirst.");
-    reset(f88);
+    reset(fBUCKET_FILLED);
     drop("water");
     vSCORE -= 2;
-    reset(f91);
+    reset(fFILL_BUCKET_POINTS);
   }
 }
 if (fEGO_ON_WATER && (said("drink", "water") || said("get", "drink"))) {
   print("You open your mouth while swimming and quench your thirst.");
 }
-if (f81 && !f88) {
+if (f81 && !fBUCKET_FILLED) {
   if (fEGO_ON_WATER) {
     if (said("get", "water") || said("fill", "bucket")) {
       reset(f116);
       print("With difficulty, you fill the bucket while swimming.");
       get("water");
-      set(f88);
-      if (!f91) {
+      set(fBUCKET_FILLED);
+      if (!fFILL_BUCKET_POINTS) {
         vSCORE += 2;
       }
-      set(f91);
+      set(fFILL_BUCKET_POINTS);
     }
   }
   if (said("examine", "bucket")) {
     show.obj(127);
   }
 }
-if (f123) {
+if (fCARRYING_MUSHROOM) {
   if (said("get", "toadstools")) {
     print("You already have it.");
   }
@@ -402,17 +402,17 @@ if (f123) {
     show.obj(140);
   }
   if (said("eat", "toadstools")) {
-    if (f79) {
+    if (fEGO_INVISIBLE) {
       print("You try, but being invisible makes it impossible.");
     }
-    if (!f157 && !f158 && !f79 && !f180 && !f181 && !f175 && vROOM_NO != 21 && vROOM_NO != 22 && vROOM_NO != 80 && vROOM_NO != 65 && vROOM_NO != 14 && vROOM_NO != 63 && v94 <= 0 && vROOM_NO != 12 && vROOM_NO != 73 && vROOM_NO != 74 && vROOM_NO != 75) {
+    if (!f157 && !f158 && !fEGO_INVISIBLE && !f180 && !f181 && !f175 && vROOM_NO != 21 && vROOM_NO != 22 && vROOM_NO != 80 && vROOM_NO != 65 && vROOM_NO != 14 && vROOM_NO != 63 && v94 <= 0 && vROOM_NO != 12 && vROOM_NO != 73 && vROOM_NO != 74 && vROOM_NO != 75) {
       print("As soon as you swallow the first bite, you have this strange shrinking feeling...  It's true!  You are now no bigger than a mouse!");
       set.view(o0, 60);
       v82 = 200;
       drop("mushroom");
-      reset(f123);
+      reset(fCARRYING_MUSHROOM);
       set(f124);
-      set(f120);
+      set(fEGO_TINY);
       vSCORE -= 1;
       if (vROOM_NO == 78) {
         vSCORE += 3;
@@ -423,12 +423,12 @@ if (f123) {
     }
   }
 }
-if (f120 && v82 > 0) {
+if (fEGO_TINY && v82 > 0) {
   v82--;
   if (v82 == 1 && vROOM_NO != 36 && vROOM_NO != 78) {
     set.view(o0, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
-    reset(f120);
+    reset(fEGO_TINY);
   }
 }
 if (f83) {
@@ -451,7 +451,7 @@ if (f83) {
     if (!f133) {
       print("You are not wearing the ring.");
     }
-    if (f133 && !f79) {
+    if (f133 && !fEGO_INVISIBLE) {
       drop("ring");
       vSCORE -= 3;
       print("I don't know why, but you drop the magic ring.");
@@ -459,13 +459,13 @@ if (f83) {
       reset(f133);
       set(f115);
     }
-    if (f133 && f79) {
+    if (f133 && fEGO_INVISIBLE) {
       drop("ring");
       vSCORE -= 3;
       print("When the ring disappears, you reappear!");
       set.view(o0, 0);
       reset(f83);
-      reset(f79);
+      reset(fEGO_INVISIBLE);
       reset(f133);
       set(f115);
       v90 = 0;
@@ -479,24 +479,24 @@ if (f83) {
     if (f133 && f75) {
       print("You rub the magic ring but the goat seems to have a strange effect on it.");
     }
-    if (f133 && f79) {
+    if (f133 && fEGO_INVISIBLE) {
       print("There is no need to rub the ring as you are already invisible.");
     }
-    if (f133 && !f75 && !f79) {
-      if (vROOM_NO != 65 && !f157 && !f158 && v94 <= 0 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 49 && vROOM_NO != 51 && vROOM_NO != 52 && vROOM_NO != 12 && vROOM_NO != 79 && !f209 && !f142 && !f120) {
+    if (f133 && !f75 && !fEGO_INVISIBLE) {
+      if (vROOM_NO != 65 && !f157 && !f158 && v94 <= 0 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 49 && vROOM_NO != 51 && vROOM_NO != 52 && vROOM_NO != 12 && vROOM_NO != 79 && !f209 && !f142 && !fEGO_TINY) {
         set.view(o0, 110);
         print("When you rub the magic ring, you mysteriously disappear, except for your footprints.");
-        set(f79);
+        set(fEGO_INVISIBLE);
         v90 = 250;
         v91 = 10;
       }
-      if (vROOM_NO == 65 || f157 || f158 || v94 > 0 || vROOM_NO == 63 || vROOM_NO == 80 || vROOM_NO == 49 || vROOM_NO == 51 || vROOM_NO == 52 || vROOM_NO == 12 || vROOM_NO == 79 || f209 || f142 || f120) {
+      if (vROOM_NO == 65 || f157 || f158 || v94 > 0 || vROOM_NO == 63 || vROOM_NO == 80 || vROOM_NO == 49 || vROOM_NO == 51 || vROOM_NO == 52 || vROOM_NO == 12 || vROOM_NO == 79 || f209 || f142 || fEGO_TINY) {
         print("You're too busy right now to rub the ring.");
       }
     }
   }
 }
-if (f79) {
+if (fEGO_INVISIBLE) {
   v90--;
   if (v90 == 0) {
     if (v91 > 0) {
@@ -512,7 +512,7 @@ if (v90 == 1 && v91 == 0) {
   drop("ring");
   reset(f133);
   set(f115);
-  reset(f79);
+  reset(fEGO_INVISIBLE);
   print("The spell to make you invisible has expired and you are once again visible to dangerous creatures, but, the ring has now disappeared.");
   vSCORE -= 3;
 }
@@ -545,7 +545,7 @@ if (f89) {
         print("You eat every bite of the delicious stew.");
       }
       v89 = 0;
-      reset(f184);
+      reset(fPOINTS_FOR_STEW);
       vSCORE -= 2;
     }
     else {
@@ -569,8 +569,8 @@ if (f89) {
     }
     if (said("read", "bowl") || said("read", "word") || said("examine", "word") || said("read", "bottom", "bowl") || said("examine", "bottom", "bowl")) {
       print("The word on the bottom of the bowl says \"fill\".");
-      if (!f184) {
-        set(f184);
+      if (!fPOINTS_FOR_STEW) {
+        set(fPOINTS_FOR_STEW);
         vSCORE += 1;
       }
     }
@@ -582,8 +582,8 @@ if (f89) {
         print("After uttering that strange word, the bowl starts quivering and immediately fills up with a delicious, hot stew.");
       }
       v89 = 1;
-      if (!f184) {
-        set(f184);
+      if (!fPOINTS_FOR_STEW) {
+        set(fPOINTS_FOR_STEW);
         vSCORE += 2;
       }
     }
@@ -603,7 +603,7 @@ if (f93) {
     print("You already have it.");
   }
 }
-if (f104) {
+if (fCARRYING_CHEST) {
   if (said("get", "chest")) {
     print("You already have it.");
   }
@@ -633,10 +633,10 @@ if (!f75) {
   }
 }
 if (f75) {
-  if (!f67 && said("murder", "goat")) {
+  if (!fCARRYING_DAGGER && said("murder", "goat")) {
     print("You don't have any way to kill the old goat.");
   }
-  if (f67 && said("murder", "goat")) {
+  if (fCARRYING_DAGGER && said("murder", "goat")) {
     if (vROOM_NO != 25 && vROOM_NO != 39 && vROOM_NO != 41) {
       if (vROOM_NO == 10 || vROOM_NO == 11) {
         get.posn(o0, v60, v61);
@@ -650,9 +650,9 @@ if (f75) {
         step.size(o13, v98);
         drop("dagger");
         vSCORE -= 5;
-        reset(f67);
+        reset(fCARRYING_DAGGER);
         reset(f75);
-        set(f70);
+        set(fDAGGER_LOST);
       }
       else {
         print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.");
@@ -664,9 +664,9 @@ if (f75) {
         step.size(o13, v98);
         drop("dagger");
         vSCORE -= 5;
-        reset(f67);
+        reset(fCARRYING_DAGGER);
         reset(f75);
-        set(f70);
+        set(fDAGGER_LOST);
       }
     }
   }
@@ -700,7 +700,7 @@ if (f170) {
     print("You already have it.");
   }
 }
-if (f139) {
+if (fCARRYING_SWISS_CHEESE) {
   if (said("get", "swiss cheese")) {
     print("You already have it.");
   }
@@ -710,11 +710,11 @@ if (f139) {
   if (said("eat", "swiss cheese")) {
     print("Mmmm!  That Swiss cheese was as delicious as it looked.");
     drop("cheese");
-    reset(f139);
+    reset(fCARRYING_SWISS_CHEESE);
     vSCORE -= 2;
   }
 }
-if (f87) {
+if (fCARRYING_CLOVER) {
   if (said("examine", "four leaf clover")) {
     show.obj(124);
   }
@@ -722,7 +722,7 @@ if (f87) {
     print("You already have it.");
   }
 }
-if (f97) {
+if (fCARRYING_SLINGSHOT) {
   if (said("get", "slingshot")) {
     print("You already have it.");
   }
@@ -730,7 +730,7 @@ if (f97) {
     show.obj(130);
   }
 }
-if (f102) {
+if (fCARRYING_SHIELD) {
   if (said("get", "shield")) {
     print("You already have it.");
   }
@@ -738,7 +738,7 @@ if (f102) {
     show.obj(137);
   }
 }
-if (f113) {
+if (fCARRYING_SCEPTRE) {
   if (said("get", "sceptre")) {
     print("You already have it.");
   }
@@ -746,7 +746,7 @@ if (f113) {
     show.obj(133);
   }
 }
-if (f106) {
+if (fCARRYING_DIAMONDS) {
   if (said("get", "pouch of diamonds")) {
     print("You already have it.");
   }
@@ -757,25 +757,25 @@ if (f106) {
     print("You have already opened the pouch.");
   }
 }
-if (f72) {
+if (fCARRYING_POUCH) {
   if (said("get", "bag of jewels")) {
     print("You already have it.");
   }
   if (said("examine", "bag of jewels")) {
     show.obj(132);
   }
-  if (!f106) {
+  if (!fCARRYING_DIAMONDS) {
     if (said("open", "bag of jewels") || said("look inside", "bag of jewels")) {
       print("Cautiously, you open the pouch and see many sparkling and flashing diamonds!  Quickly, you close it again so as not to lose any.");
       get("pouch of diamonds");
       drop("pouch");
       vSCORE += 3;
-      set(f106);
-      reset(f72);
+      set(fCARRYING_DIAMONDS);
+      reset(fCARRYING_POUCH);
     }
   }
 }
-if (f110) {
+if (fCARRYING_GOLDEN_EGG) {
   if (said("get", "golden egg")) {
     print("You already have it.");
   }
@@ -786,7 +786,7 @@ if (f110) {
     print("This egg will be tough to crack.");
   }
 }
-if (f171) {
+if (fCARRYING_FIDDLE) {
   if (said("get", "fiddle")) {
     print("You already have it.");
   }
@@ -810,7 +810,7 @@ if (f100) {
     show.obj(135);
   }
 }
-if (v74 == 3) {
+if (vTREASURE_COUNT == 3) {
   reset(f125);
 }
 if (f190) {

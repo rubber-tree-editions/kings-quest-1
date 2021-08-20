@@ -68,7 +68,7 @@ LABEL140:
       set(f134);
   }
 LABEL218:
-  if (!f88 && !fEGO_ON_WATER && !f116) {
+  if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
     if (said("drink", "water") || said("get", "drink")) {
       if (posn(o0, 0, 40, 109, 167) || posn(o0, 110, 55, 151, 142)) {
         print("Ahhh!  That water sure hit the spot!");
@@ -78,16 +78,16 @@ LABEL218:
     }
   }
 LABEL274:
-  if (!f88 && f81 && !fEGO_ON_WATER && said("get", "water")) {
+  if (!fBUCKET_FILLED && f81 && !fEGO_ON_WATER && said("get", "water")) {
     if (posn(o0, 0, 40, 109, 167) || posn(o0, 110, 55, 151, 142)) {
       reset(f116);
       print(null);
       get("water");
-      set(f88);
-      if (!f91) {
+      set(fBUCKET_FILLED);
+      if (!fFILL_BUCKET_POINTS) {
         vSCORE += 2;
       }
-      set(f91);
+      set(fFILL_BUCKET_POINTS);
       goto(LABEL335);
     }
     print("You are not close enough to the water.");

@@ -19,7 +19,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
   set(f199);
   reset(fEGO_TOUCHED_TRIGGER_LINE);
   program.control();
-  if (!f79) {
+  if (!fEGO_INVISIBLE) {
     set.view(o0, 105);
   }
   start.cycling(o0);
@@ -33,13 +33,13 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
 }
 LABEL70:
   if (!f20 && f199 && !f21) {
-    sound(5, f159);
+    sound(5, fSOUND_END_MARKER);
     set(f21);
   }
 LABEL87:
-  if (f159) {
+  if (fSOUND_END_MARKER) {
     if (!f20) {
-      reset(f159);
+      reset(fSOUND_END_MARKER);
       reset(f21);
     }
   }
@@ -50,7 +50,7 @@ LABEL104:
     reset(f20);
     stop.sound();
     print(null);
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL121:
   if (said("examine", "trees")) {

@@ -24,10 +24,10 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.sound(19);
     if (vPREV_ROOM_NO == 66) {
       position(o0, 102, 98);
-      v66 = 2;
+      vDOOR_STATE = 2;
     }
   LABEL67:
-    if (v66 == 2) {
+    if (vDOOR_STATE == 2) {
       set.cel(o1, 3);
       draw(o1);
       ignore.objs(o1);
@@ -35,7 +35,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       stop.update(o1);
     }
   LABEL85:
-    if (v66 == 0 || v66 == 1) {
+    if (vDOOR_STATE == 0 || vDOOR_STATE == 1) {
       set.cel(o1, 0);
       draw(o1);
       observe.objs(o1);
@@ -87,16 +87,16 @@ LABEL276:
         print("How do you want to use the key?");
       }
       if (said("unlock", "doors") || said("unlock", "doors", "gold key") || said("unlock", "doors", "golden", "gold key") || said("open", "doors", "gold key") || said("open", "doors", "golden", "gold key")) {
-        if (v66 == 1) {
+        if (vDOOR_STATE == 1) {
           print("The door is already unlocked.");
         }
-        if (v66 == 2) {
+        if (vDOOR_STATE == 2) {
           print("There is no need to unlock an already open door.");
         }
         LABEL370:
-          if (v66 == 0) {
+          if (vDOOR_STATE == 0) {
             print("Using the gold key, you unlock the huge door.");
-            v66 = 1;
+            vDOOR_STATE = 1;
             if (!f85) {
               set(f85);
               vSCORE += 2;
@@ -105,49 +105,49 @@ LABEL276:
       }
       LABEL394:
         if (said("lock", "doors")) {
-          if (v66 == 0) {
+          if (vDOOR_STATE == 0) {
             print("The door is already locked.");
           }
-          if (v66 == 1) {
+          if (vDOOR_STATE == 1) {
             print("You lock the massive door with the heavy gold key.");
-            v66 = 0;
+            vDOOR_STATE = 0;
           }
           LABEL425:
-            if (v66 == 2) {
+            if (vDOOR_STATE == 2) {
               print("You need to close the door before you can lock it.");
             }
         }
     }
     LABEL434:
-      if (v66 == 0) {
+      if (vDOOR_STATE == 0) {
         if (said("open", "doors") || said("turn", "knob")) {
           print("This massive door is securely locked.");
         }
       }
     LABEL461:
-      if (v66 == 2) {
+      if (vDOOR_STATE == 2) {
         if (said("open", "doors") || said("turn", "knob")) {
           print("The door is already open.");
         }
       }
     LABEL488:
-      if (v66 == 1) {
+      if (vDOOR_STATE == 1) {
         if (said("open", "doors") || said("turn", "knob")) {
           start.update(o1);
           sound(19, f148);
           end.of.loop(o1, f20);
-          v66 = 2;
+          vDOOR_STATE = 2;
         }
       }
     LABEL524:
       if (said("close", "doors")) {
-        if (v66 == 0 || v66 == 1) {
+        if (vDOOR_STATE == 0 || vDOOR_STATE == 1) {
           print();
         }
-        if (v66 == 2) {
+        if (vDOOR_STATE == 2) {
           start.update(o1);
           reverse.loop(o1, f21);
-          v66 = 1;
+          vDOOR_STATE = 1;
         }
       }
   }

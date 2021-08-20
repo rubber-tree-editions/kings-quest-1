@@ -65,7 +65,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       animate.obj(o2);
       set.view(o2, 47);
       position(o2, 56, 108);
-      if (!f87) {
+      if (!fCARRYING_CLOVER) {
         set(f21);
         follow.ego(o2, 5, f22);
         goto(LABEL233);
@@ -104,7 +104,7 @@ if (!f186) {
   }
 }
 LABEL307:
-  if (!f186 && f87) {
+  if (!f186 && fCARRYING_CLOVER) {
     observe.blocks(o0);
     if (posn(o0, 80, 110, 139, 141)) {
       if (!f25) {
@@ -169,10 +169,10 @@ LABEL466:
     stop.cycling(o0);
     stop.motion(o2);
     stop.cycling(o2);
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL488:
-  if (f171) {
+  if (fCARRYING_FIDDLE) {
     if (said("play", "fiddle")) {
       if (!f186) {
         print(null);
@@ -190,7 +190,7 @@ LABEL518:
     print("This is a rather simple stone throne, compared to King Edward's.");
   }
 LABEL545:
-  if (!f186 && f87) {
+  if (!f186 && fCARRYING_CLOVER) {
     if (said("examine", "leprechauns")) {
       print("The little green men do not seem to be noticing you; perhaps because of the fourleaf clover.");
     }
@@ -203,7 +203,7 @@ LABEL545:
       }
   }
 LABEL602:
-  if (!f186 && !f87) {
+  if (!f186 && !fCARRYING_CLOVER) {
     if (said("anyword", "leprechauns")) {
       print("The leprechauns seem irritated by your invasion of their territory.  I would be real careful about what I say and do right now!");
     }
@@ -271,7 +271,7 @@ LABEL856:
     print("To see the stairs, you have to get closer.");
   }
 LABEL883:
-  if (!f102 && f188) {
+  if (!fCARRYING_SHIELD && f188) {
     if (said("examine", "shield")) {
       print("I think there might have been a shield here once, but someone has since taken it.");
     }
@@ -299,17 +299,17 @@ LABEL916:
           print("As inconspicuously as possible, you add the shield to what you are carrying.");
           LABEL985:
             set(f188);
-            set(f102);
+            set(fCARRYING_SHIELD);
             get("shield");
             vSCORE += 8;
-            v74++;
+            vTREASURE_COUNT++;
             goto(LABEL1001);
         }
         print("You must be closer to do that.");
       }
   }
 LABEL1001:
-  if (f189 && !f113) {
+  if (f189 && !fCARRYING_SCEPTRE) {
     if (said("examine", "sceptre")) {
       print("I see no sceptre in the vicinity.");
     }
@@ -327,7 +327,7 @@ LABEL1034:
         if (said("get", "sceptre")) {
           erase(o3);
           set(f189);
-          set(f113);
+          set(fCARRYING_SCEPTRE);
           print("Eagerly, you pick up the sceptre.");
           get("sceptre");
           vSCORE += 6;

@@ -38,12 +38,12 @@ LABEL73:
   }
 LABEL97:
   if (said("get", "water")) {
-    if (f81 && !f88) {
+    if (f81 && !fBUCKET_FILLED) {
       print();
     }
   }
 LABEL118:
-  if (!f88) {
+  if (!fBUCKET_FILLED) {
     if (said("drink", "water") || said("get", "drink")) {
       print();
     }

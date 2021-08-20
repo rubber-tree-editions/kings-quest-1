@@ -87,7 +87,7 @@ LABEL212:
     reset(f135);
     set.view(o0, 114);
     shake.screen(2);
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL232:
   if (said("examine", "wood") || said("look inside", "wood")) {
@@ -116,10 +116,10 @@ LABEL317:
 LABEL329:
   if (said("look inside", "stumps")) {
     if (posn(o0, 0, 103, 35, 146)) {
-      if (!f71) {
+      if (!fPOUCH_TAKEN) {
         print(null);
-        if (!f61) {
-          set(f61);
+        if (!fPOINTS_FOR_FINDING_POUCH) {
+          set(fPOINTS_FOR_FINDING_POUCH);
           vSCORE += 1;
         }
         goto(LABEL375);
@@ -131,13 +131,13 @@ LABEL329:
     print("I suggest you move closer to try that.");
   }
 LABEL380:
-  if (said("get", "bag of jewels") && !f72) {
+  if (said("get", "bag of jewels") && !fCARRYING_POUCH) {
     if (posn(o0, 0, 103, 35, 146)) {
-      if (!f71) {
+      if (!fPOUCH_TAKEN) {
         print("You notice the pouch feels aged and tattered.");
         get("pouch");
-        set(f71);
-        set(f72);
+        set(fPOUCH_TAKEN);
+        set(fCARRYING_POUCH);
         vSCORE += 3;
         goto(LABEL426);
       }
@@ -163,7 +163,7 @@ LABEL439:
     }
   }
 LABEL477:
-  if (v80 == 6 && !f79) {
+  if (v80 == 6 && !fEGO_INVISIBLE) {
     if (said("climb", "beanstalk") && !f157) {
       if (posn(o0, 52, 76, 103, 97)) {
         erase(o0);
@@ -224,13 +224,13 @@ LABEL641:
     shake.screen(2);
     print("Ouch!");
     set(f135);
-    sound(4, f159);
+    sound(4, fSOUND_END_MARKER);
   }
 LABEL675:
-  if (f159) {
+  if (fSOUND_END_MARKER) {
     if (v30 > 0) {
-      reset(f159);
-      sound(4, f159);
+      reset(fSOUND_END_MARKER);
+      sound(4, fSOUND_END_MARKER);
     }
   }
 LABEL693:

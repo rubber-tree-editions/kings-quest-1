@@ -160,13 +160,13 @@ LABEL359:
         set(fSAID_ACCEPTED_USER_INPUT);
       }
     LABEL473:
-      if (!f67) {
+      if (!fCARRYING_DAGGER) {
         if (said("murder", "goat")) {
           print("You have no way to accomplish this terrible deed.");
         }
       }
     LABEL492:
-      if (f67) {
+      if (fCARRYING_DAGGER) {
         if (said("murder", "goat")) {
           if (!f74) {
             print("From here it will be very difficult to do such a  terrible thing.");
@@ -180,8 +180,8 @@ LABEL359:
           print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.");
           drop("dagger");
           vSCORE -= 5;
-          reset(f67);
-          set(f70);
+          reset(fCARRYING_DAGGER);
+          set(fDAGGER_LOST);
           v65 = vROOM_NO;
         }
       }
@@ -235,13 +235,13 @@ LABEL683:
   distance(o0, o13, v70);
   if (f74 && f21) {
     if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
-      if (f77) {
+      if (fCARRYING_CARROT) {
         if (v70 < 25) {
           print("Goats love carrots!  The goat quickly devours yours.");
           vSCORE -= 2;
           drop("carrot");
-          reset(f77);
-          reset(f117);
+          reset(fCARRYING_CARROT);
+          reset(fPOINTS_FOR_CARROT);
           goto(LABEL774);
         }
         print("You are too far away.");
@@ -254,7 +254,7 @@ LABEL683:
   }
 LABEL781:
   if (f74 && f21) {
-    if (f77 && !f75 && !f79) {
+    if (fCARRYING_CARROT && !f75 && !fEGO_INVISIBLE) {
       if (said("show", "carrot") || said("show", "carrot", "goat") || said("show", "goat", "carrot")) {
         if (v70 < 50) {
           if (!f151) {
@@ -276,19 +276,19 @@ LABEL781:
   }
 LABEL868:
   if (!f74 && f21) {
-    if (!f77) {
+    if (!fCARRYING_CARROT) {
       if (said("anyword", "carrot")) {
         print("You do not have a carrot.");
       }
     }
-    if (f77 && !f79) {
+    if (fCARRYING_CARROT && !fEGO_INVISIBLE) {
       if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
         if (v70 < 25) {
           print("Goats love carrots!  The goat quickly devours yours.");
           vSCORE -= 2;
           drop("carrot");
-          reset(f77);
-          reset(f117);
+          reset(fCARRYING_CARROT);
+          reset(fPOINTS_FOR_CARROT);
           goto(LABEL978);
         }
         print("You are too far away.");
@@ -304,8 +304,8 @@ LABEL868:
     }
   }
 LABEL1020:
-  if (f79) {
-    if (f77 && said("anyword", "carrot")) {
+  if (fEGO_INVISIBLE) {
+    if (fCARRYING_CARROT && said("anyword", "carrot")) {
       print("Since you are invisible, everything you own is invisible.  The goat cannot see the carrot.");
     }
   }

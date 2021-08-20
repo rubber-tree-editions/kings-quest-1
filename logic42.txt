@@ -124,7 +124,7 @@ LABEL217:
       set(f134);
   }
 LABEL383:
-  if (!f88 && (said("drink", "water") || said("get", "drink"))) {
+  if (!fBUCKET_FILLED && (said("drink", "water") || said("get", "drink"))) {
     if (posn(o0, 121, 40, 159, 81)) {
       print("It tastes very refreshing to a thirsty wanderer.");
       goto(LABEL462);
@@ -136,26 +136,26 @@ LABEL383:
     print("You are too far from the water.");
   }
 LABEL462:
-  if (!f88 && f81) {
+  if (!fBUCKET_FILLED && f81) {
     if (said("get", "water") || said("fill", "bucket")) {
       if (posn(o0, 121, 40, 159, 78)) {
         print("The crystal clear water fills up the bucket.");
         get("water");
-        set(f88);
-        if (!f91) {
+        set(fBUCKET_FILLED);
+        if (!fFILL_BUCKET_POINTS) {
           vSCORE += 2;
         }
-        set(f91);
+        set(fFILL_BUCKET_POINTS);
         goto(LABEL579);
       }
       if (posn(o0, 127, 79, 159, 92) || posn(o0, 145, 125, 159, 140) || posn(o0, 73, 130, 103, 167) || posn(o0, 0, 136, 49, 167) || posn(o0, 0, 88, 84, 112)) {
         print("Very carefully, the bucket fills with water from the  rapid river.");
         get("water");
-        set(f88);
-        if (!f91) {
+        set(fBUCKET_FILLED);
+        if (!fFILL_BUCKET_POINTS) {
           vSCORE += 2;
         }
-        set(f91);
+        set(fFILL_BUCKET_POINTS);
         goto(LABEL579);
       }
       print("You are too far from the water.");

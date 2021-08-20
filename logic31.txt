@@ -92,7 +92,7 @@ LABEL222:
     reset(f135);
     set.view(o0, 114);
     shake.screen(2);
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL242:
   if (f90 && !f89) {
@@ -143,7 +143,7 @@ LABEL352:
     }
   }
 LABEL390:
-  if (v80 == 31 && !f79) {
+  if (v80 == 31 && !fEGO_INVISIBLE) {
     if (said("climb", "beanstalk") && !f157) {
       if (posn(o0, 52, 76, 103, 97)) {
         erase(o0);
@@ -204,13 +204,13 @@ LABEL554:
     shake.screen(2);
     print("Ouch!");
     set(f135);
-    sound(4, f159);
+    sound(4, fSOUND_END_MARKER);
   }
 LABEL588:
-  if (f159) {
+  if (fSOUND_END_MARKER) {
     if (v30 > 0) {
-      reset(f159);
-      sound(4, f159);
+      reset(fSOUND_END_MARKER);
+      sound(4, fSOUND_END_MARKER);
     }
   }
 LABEL606:

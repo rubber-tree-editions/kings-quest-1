@@ -55,7 +55,7 @@ LABEL161:
     print("This is a clear mountain lake with some steep cliffs surrounding it.");
   }
 LABEL173:
-  if (!f88 && !fEGO_ON_WATER && !f116) {
+  if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
     if (said("drink", "water") || said("get", "drink")) {
       if (posn(o0, 64, 106, 116, 167)) {
         print("You have to scoop the water with your hands, but you manage to satisfy your thirst.");
@@ -70,16 +70,16 @@ LABEL173:
     }
   }
 LABEL248:
-  if (!f88 && f81 && !fEGO_ON_WATER && said("get", "water")) {
+  if (!fBUCKET_FILLED && f81 && !fEGO_ON_WATER && said("get", "water")) {
     if (posn(o0, 64, 106, 116, 167)) {
       reset(f116);
       print(null);
       get("water");
-      set(f88);
-      if (!f91) {
+      set(fBUCKET_FILLED);
+      if (!fFILL_BUCKET_POINTS) {
         vSCORE += 2;
       }
-      set(f91);
+      set(fFILL_BUCKET_POINTS);
     }
     if (posn(o0, 0, 0, 115, 105)) {
       print("That's a dangerous proposition from here.");

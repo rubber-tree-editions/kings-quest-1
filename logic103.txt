@@ -64,7 +64,7 @@ else {
 if (!f75) {
   return;
 }
-if (f63) {
+if (fGAME_OVER) {
   normal.motion(o13);
   stop.motion(o13);
   stop.cycling(o13);
@@ -109,7 +109,7 @@ if (f210 && v40 < 25 && v94 <= 0) {
   reset(f210);
   follow.ego(o13, 10, f207);
 }
-if (f79 && !f42) {
+if (fEGO_INVISIBLE && !f42) {
   set(f42);
   print();
   reset(f75);

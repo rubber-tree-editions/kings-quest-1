@@ -16,12 +16,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.sound(9);
   load.sound(18);
   v33 = 0;
-  if (f97) {
+  if (fCARRYING_SLINGSHOT) {
     load.view(102);
     animate.obj(o15);
     set.view(o15, 102);
   }
-  if (!f104 && !f169) {
+  if (!fCARRYING_CHEST && !f169) {
     load.view(37);
     animate.obj(o2);
     set.view(o2, 37);
@@ -31,7 +31,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(77);
   }
   LABEL67:
-    if (f104 || f169) {
+    if (fCARRYING_CHEST || f169) {
       load.view(68);
       load.view(66);
       load.view(77);
@@ -89,35 +89,35 @@ if (v86 == 0 || v86 == 2) {
 }
 LABEL221:
   if (f22 && f23) {
-    if (f79) {
+    if (fEGO_INVISIBLE) {
       reset(f22);
       reset(f23);
       print("The giant cannot see you since you are invisible.");
       wander(o1);
       goto(LABEL318);
     }
-    if (f102) {
+    if (fCARRYING_SHIELD) {
       reset(f22);
       reset(f23);
       print(null);
       wander(o1);
       goto(LABEL318);
     }
-    if (f73) {
+    if (fPROTECTED_BY_SPELL) {
       reset(f22);
       reset(f23);
       print("The fairy godmother's spell is protecting you.");
       wander(o1);
       goto(LABEL318);
     }
-    if (!f102 && !f79 && !f73) {
+    if (!fCARRYING_SHIELD && !fEGO_INVISIBLE && !fPROTECTED_BY_SPELL) {
       if (v86 == 0 || v86 == 2) {
         reset(f22);
         reset(f23);
         set.view(o0, 114);
         print("Be a little more careful next time.  This giant is mean!");
         wander(o1);
-        set(f63);
+        set(fGAME_OVER);
       }
     }
   }
@@ -126,24 +126,24 @@ LABEL318:
     set(f199);
     reset(fEGO_TOUCHED_TRIGGER_LINE);
     program.control();
-    if (!f79) {
+    if (!fEGO_INVISIBLE) {
       set.view(o0, 105);
     }
     start.cycling(o0);
     set(f98);
-    sound(5, f159);
+    sound(5, fSOUND_END_MARKER);
     erase(o0);
   }
 LABEL348:
-  if (f159) {
-    reset(f159);
+  if (fSOUND_END_MARKER) {
+    reset(fSOUND_END_MARKER);
     set(f20);
   }
 LABEL358:
   if (f20) {
     reset(f20);
     print("You know you can't walk on clouds.");
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL370:
   if (said("examine", "giant")) {
@@ -184,13 +184,13 @@ LABEL434:
       }
   }
 LABEL498:
-  if (!f104 && !f169) {
+  if (!fCARRYING_CHEST && !f169) {
     if (said("examine", "chest")) {
       print("The magic chest appears to have been fashioned from ebony and rimmed on the edges with gold.");
     }
   }
 LABEL520:
-  if (!f104) {
+  if (!fCARRYING_CHEST) {
     if (said("get", "chest") || said("get", "chest", "giant")) {
       if (v86 == 0) {
         print("The giant is protecting the magic chest.");
@@ -210,11 +210,11 @@ LABEL520:
           stop.motion(o1);
           draw(o1);
           print("Very carefully, you slip the magic chest from the sleeping giant's arms.");
-          set(f104);
+          set(fCARRYING_CHEST);
           set(f169);
           vSCORE += 8;
           get("chest");
-          v74++;
+          vTREASURE_COUNT++;
           v86 = 3;
         }
       LABEL612:
@@ -226,17 +226,17 @@ LABEL520:
           }
           erase(o2);
           print("It's easy to take a magic chest from a dead giant.");
-          set(f104);
+          set(fCARRYING_CHEST);
           set(f169);
           vSCORE += 8;
           get("chest");
-          v74++;
+          vTREASURE_COUNT++;
           v86 = 5;
         }
     }
   }
 LABEL653:
-  if (f97) {
+  if (fCARRYING_SLINGSHOT) {
     distance(o0, o1, v71);
     if (said("use", "slingshot") || said("gingerbread", "slingshot")) {
       if (!f93) {
@@ -246,7 +246,7 @@ LABEL653:
         print();
       }
       LABEL701:
-        if (f93 && !f169 && !f79 && v86 == 0 && v71 > 19 && !f199) {
+        if (f93 && !f169 && !fEGO_INVISIBLE && v86 == 0 && v71 > 19 && !f199) {
           reset(f23);
           get.posn(o0, v100, v101);
           position.v(o15, v100, v101);
@@ -260,7 +260,7 @@ LABEL653:
           vSCORE -= 1;
         }
       LABEL751:
-        if (f93 && f169 && !f79 && v86 == 2 && v71 > 19) {
+        if (f93 && f169 && !fEGO_INVISIBLE && v86 == 2 && v71 > 19) {
           reset(f23);
           get.posn(o0, v100, v101);
           position.v(o15, v100, v101);
@@ -274,7 +274,7 @@ LABEL653:
           vSCORE -= 1;
         }
       LABEL797:
-        if (f93 && !f169 && f79) {
+        if (f93 && !f169 && fEGO_INVISIBLE) {
           if (v86 == 0 || v86 == 2) {
             print("Not when you're invisible!");
           }
@@ -320,9 +320,9 @@ LABEL890:
     v86 = 5;
   }
 LABEL925:
-  if (f67) {
+  if (fCARRYING_DAGGER) {
     if (said("use", "dagger") || said("throw", "dagger")) {
-      reset(f67);
+      reset(fCARRYING_DAGGER);
       drop("dagger");
       print("I don't believe it!  How could you miss something so big?");
       vSCORE -= 5;
@@ -387,7 +387,7 @@ LABEL1106:
     }
   }
 LABEL1140:
-  if (f63) {
+  if (fGAME_OVER) {
     goto(LABEL1204);
   }
 LABEL1149:

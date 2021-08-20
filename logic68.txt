@@ -106,7 +106,7 @@ LABEL280:
     get.posn(o0, v60, v61);
     get.priority(o0, v30);
     set.priority.v(o0, v30);
-    if (!f79) {
+    if (!fEGO_INVISIBLE) {
       set.view(o0, 105);
     }
     print("Look out!  You are too close to the edge!  Oh, oh, you fell!");
@@ -119,13 +119,13 @@ LABEL280:
     LABEL335:
       v96 = 4;
       move.obj.v(o0, v60, v61, 96, f20);
-      sound(5, f159);
+      sound(5, fSOUND_END_MARKER);
   }
 LABEL347:
   if (f20) {
     reset(f20);
     erase(o0);
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL359:
   if (v71 > 0 && v71 < 11) {
@@ -140,14 +140,14 @@ LABEL376:
     set(f26);
     normal.motion(o1);
     ignore.blocks(o1);
-    if (f73) {
+    if (fPROTECTED_BY_SPELL) {
       print("It's a good thing you are protected by a spell.  That little dwarf likes to steal treasures.");
       set.view(o1, 115);
       reset(f24);
       end.of.loop(o1, f21);
       goto(LABEL616);
     }
-    if (f79) {
+    if (fEGO_INVISIBLE) {
       print();
       set.view(o1, 115);
       reset(f24);
@@ -161,59 +161,59 @@ LABEL376:
       drop("magic mirror");
       set(f126);
       reset(f125);
-      v74--;
+      vTREASURE_COUNT--;
       goto(LABEL606);
     }
-    if (f102) {
-      reset(f102);
+    if (fCARRYING_SHIELD) {
+      reset(fCARRYING_SHIELD);
       set(f103);
       vSCORE -= 8;
       drop("shield");
       set(f126);
       reset(f125);
-      v74--;
+      vTREASURE_COUNT--;
       goto(LABEL606);
     }
-    if (f104) {
-      reset(f104);
+    if (fCARRYING_CHEST) {
+      reset(fCARRYING_CHEST);
       set(f105);
       vSCORE -= 8;
       drop("chest");
       set(f126);
       reset(f125);
-      v74--;
+      vTREASURE_COUNT--;
       goto(LABEL606);
     }
-    if (f106) {
-      reset(f106);
+    if (fCARRYING_DIAMONDS) {
+      reset(fCARRYING_DIAMONDS);
       set(f107);
       vSCORE -= 6;
       drop("pouch of diamonds");
       goto(LABEL606);
     }
-    if (f108) {
-      reset(f108);
+    if (fCARRYING_GOLD_WALNUT) {
+      reset(fCARRYING_GOLD_WALNUT);
       set(f109);
       vSCORE -= 6;
       drop("gold walnut");
       goto(LABEL606);
     }
-    if (f110) {
-      reset(f110);
+    if (fCARRYING_GOLDEN_EGG) {
+      reset(fCARRYING_GOLDEN_EGG);
       set(f111);
       vSCORE -= 6;
       drop("gold egg");
       goto(LABEL606);
     }
-    if (f72) {
-      reset(f72);
+    if (fCARRYING_POUCH) {
+      reset(fCARRYING_POUCH);
       set(f112);
       vSCORE -= 3;
       drop("pouch");
       goto(LABEL606);
     }
-    if (f113) {
-      reset(f113);
+    if (fCARRYING_SCEPTRE) {
+      reset(fCARRYING_SCEPTRE);
       set(f114);
       vSCORE -= 6;
       drop("sceptre");

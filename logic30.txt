@@ -20,13 +20,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(o0);
     show.pic();
 }
-if (f127 || f108) {
+if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) {
   if (said("get", "golden walnut")) {
     print("You already have one walnut, let's not be greedy.");
   }
 }
 LABEL64:
-  if (!f127 && !f108) {
+  if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
     if (said("examine", "golden walnut")) {
       if (posn(o0, 9, 112, 98, 167)) {
         print("These are some of the finest walnuts you have ever seen.");
@@ -42,7 +42,7 @@ LABEL64:
         if (!f129) {
           if (posn(o0, 9, 112, 98, 167)) {
             print("You pluck a nice walnut from the tree.");
-            set(f127);
+            set(fCARRYING_WALNUT);
             set(f129);
             vSCORE += 3;
             get("walnut");

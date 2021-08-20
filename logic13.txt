@@ -51,7 +51,7 @@ if (v70 == 1) {
   set(f20);
   position(o1, 7, 68);
   set(f135);
-  sound(1, f159);
+  sound(1, fSOUND_END_MARKER);
   draw(o1);
   if (!f75) {
     print(null);
@@ -65,8 +65,8 @@ if (v70 == 1) {
   }
 }
 LABEL165:
-  if (f159) {
-    reset(f159);
+  if (fSOUND_END_MARKER) {
+    reset(fSOUND_END_MARKER);
     reset(f135);
   }
 LABEL175:
@@ -95,19 +95,19 @@ LABEL194:
 LABEL262:
   if (f156) {
     reset(f156);
-    if (f73) {
+    if (fPROTECTED_BY_SPELL) {
       print("You are very fortunate that your protective spell is still working.");
       wander(o1);
       set(f22);
       goto(LABEL329);
     }
-    if (f79) {
+    if (fEGO_INVISIBLE) {
       print("Fortunately, you are invisible and the wolf can't see you.");
       wander(o1);
       set(f22);
       goto(LABEL329);
     }
-    if (f102) {
+    if (fCARRYING_SHIELD) {
       print("You, fortunately, have the magic shield which will protect you.");
       wander(o1);
       set(f22);
@@ -119,7 +119,7 @@ LABEL262:
     set.view(o0, 96);
     start.cycling(o0);
     set(f98);
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL329:
   if (f22 && vOBJECT_EDGE_CODE != 0) {
@@ -128,7 +128,7 @@ LABEL329:
     erase(o1);
   }
 LABEL345:
-  if (f63) {
+  if (fGAME_OVER) {
     goto(LABEL398);
   }
 LABEL354:

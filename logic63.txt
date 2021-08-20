@@ -42,11 +42,11 @@ LABEL85:
     if (said("examine", "birds nest") || said("look inside", "birds nest")) {
       print("The nest is empty.");
     }
-    if (f110 && said("get", "golden egg")) {
+    if (fCARRYING_GOLDEN_EGG && said("get", "golden egg")) {
       print("You already have the golden egg from the nest.");
     }
     LABEL125:
-      if (!f110 && said("get", "golden egg")) {
+      if (!fCARRYING_GOLDEN_EGG && said("get", "golden egg")) {
         print("There is no egg here to get.");
       }
   }
@@ -64,7 +64,7 @@ LABEL140:
         if (v62 < 24) {
           start.update(o1);
           erase(o1);
-          set(f110);
+          set(fCARRYING_GOLDEN_EGG);
           get("gold egg");
           set(f137);
           vSCORE += 6;
@@ -84,7 +84,7 @@ LABEL220:
     get.posn(o0, v60, v61);
     v61 = 166;
     v96 = 3;
-    sound(5, f159);
+    sound(5, fSOUND_END_MARKER);
     move.obj.v(o0, v60, v61, 96, f148);
   }
 LABEL266:
@@ -98,7 +98,7 @@ LABEL266:
     get.posn(o0, v60, v61);
     v61 = 166;
     v96 = 3;
-    sound(5, f159);
+    sound(5, fSOUND_END_MARKER);
     move.obj.v(o0, v60, v61, 96, f148);
   }
 LABEL315:
@@ -113,7 +113,7 @@ LABEL315:
       get.posn(o0, v60, v61);
       v61 = 166;
       v96 = 3;
-      sound(5, f159);
+      sound(5, fSOUND_END_MARKER);
       move.obj.v(o0, v60, v61, 96, f148);
     }
   }

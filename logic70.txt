@@ -42,14 +42,14 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (f158 && !f20 && !f21) {
-  sound(5, f159);
+  sound(5, fSOUND_END_MARKER);
   set(f21);
 }
 LABEL130:
-  if (f159) {
+  if (fSOUND_END_MARKER) {
     if (!f20) {
       reset(f21);
-      reset(f159);
+      reset(fSOUND_END_MARKER);
     }
   }
 LABEL147:

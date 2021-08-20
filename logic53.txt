@@ -26,7 +26,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   stop.cycling(o14);
   draw(o0);
   show.pic();
-  if (v74 == 3) {
+  if (vTREASURE_COUNT == 3) {
     v70 = 250;
     v71 = 1;
   }
@@ -60,11 +60,11 @@ LABEL142:
     v30--;
     if (v30 == 245) {
       set.view(o0, 0);
-      if (f79) {
+      if (fEGO_INVISIBLE) {
         print();
         v90 = 0;
         v91 = 0;
-        reset(f79);
+        reset(fEGO_INVISIBLE);
         drop("ring");
         vSCORE -= 3;
         reset(f83);
@@ -166,10 +166,10 @@ LABEL434:
 LABEL436:
   if (posn(o0, 18, 80, 86, 113)) {
     if (said("examine", "king edward")) {
-      if (v30 <= 0 && v74 != 3 && !f126) {
+      if (v30 <= 0 && vTREASURE_COUNT != 3 && !f126) {
         print("King Edward the Benevolent is a very wise, but elderly monarch.  His frail body is almost lost in the large throne.");
       }
-      if (!f21 && !f79 && v74 == 3 && v30 <= 0) {
+      if (!f21 && !fEGO_INVISIBLE && vTREASURE_COUNT == 3 && v30 <= 0) {
         print("The King, though very ill, seems happy to see you.");
       }
     }
@@ -179,15 +179,15 @@ LABEL436:
       }
     LABEL504:
       if (said("bow", "king edward") || said("bow")) {
-        if (f79) {
+        if (fEGO_INVISIBLE) {
           print("You bow, but you are the only one who knows it.");
           goto(LABEL690);
         }
-        if (!f79 && f21) {
+        if (!fEGO_INVISIBLE && f21) {
           print("It is proper to stand directly in front of, and a few paces back from King Edward when addressing His Eminence.");
           goto(LABEL690);
         }
-        if (!f21 && !f79 && v30 <= 0 && v74 != 3 && !f24) {
+        if (!f21 && !fEGO_INVISIBLE && v30 <= 0 && vTREASURE_COUNT != 3 && !f24) {
           set(f24);
           get.posn(o0, v60, v61);
           v60 -= 7;
@@ -207,7 +207,7 @@ LABEL436:
           }
           goto(LABEL690);
         }
-        if (!f21 && !f79 && v30 <= 0 && v74 == 3 && !f25) {
+        if (!f21 && !fEGO_INVISIBLE && v30 <= 0 && vTREASURE_COUNT == 3 && !f25) {
           set(f25);
           get.posn(o0, v60, v61);
           v60 -= 7;
@@ -221,8 +221,8 @@ LABEL436:
           draw(o0);
           end.of.loop(o0, f22);
           set(f98);
-          if (!f194) {
-            set(f194);
+          if (!fPOINTS_FOR_BOWING_TO_KING) {
+            set(fPOINTS_FOR_BOWING_TO_KING);
             vSCORE += 3;
           }
           goto(LABEL690);
@@ -231,10 +231,10 @@ LABEL436:
       }
     LABEL690:
       if (said("talk", "king edward")) {
-        if (f60 && v30 <= 0 && !f126 && v74 != 3) {
+        if (fSPOKEN_TO_KING && v30 <= 0 && !f126 && vTREASURE_COUNT != 3) {
           print("Go, Sir Graham!  Go and bring me back these treasures!");
         }
-        if (v30 <= 0 && v74 == 3) {
+        if (v30 <= 0 && vTREASURE_COUNT == 3) {
           print("Welcome back from your quest, Sir Graham.");
         }
         LABEL732:
@@ -247,8 +247,8 @@ LABEL436:
             print("The king cannot talk right now.");
           }
         LABEL755:
-          if (!f60 && v30 <= 0 && !f126 && v74 != 3) {
-            set(f60);
+          if (!fSPOKEN_TO_KING && v30 <= 0 && !f126 && vTREASURE_COUNT != 3) {
+            set(fSPOKEN_TO_KING);
             set(f23);
             set(f125);
             set.text.attribute(15, 0);
@@ -339,7 +339,7 @@ LABEL1043:
     draw(o0);
     start.motion(o0);
     print("When you bow to King Edward, his pleased smile warms you.");
-    if (f194) {
+    if (fPOINTS_FOR_BOWING_TO_KING) {
       v30 = 250;
       v70 = 0;
       v71 = 0;

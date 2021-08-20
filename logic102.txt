@@ -26,7 +26,7 @@ if (fPLAYER_ENTERED_COMMAND && vUNKNOWN_WORD_NO > 0) {
 if (said("look for", "anyword") || said("look for", "anyword", "anyword")) {
   print();
 }
-if (!f67 && !f70) {
+if (!fCARRYING_DAGGER && !fDAGGER_LOST) {
   if (vROOM_NO != 3 && said("get", "dagger")) {
     print("You will have to find it before you can get it.");
   }
@@ -39,7 +39,7 @@ if (!f67 && !f70) {
     }
 }
 LABEL150:
-  if (!f77 && vROOM_NO != 15 && vROOM_NO != 16) {
+  if (!fCARRYING_CARROT && vROOM_NO != 15 && vROOM_NO != 16) {
     if (said("anyword", "carrot") && !said("get", "carrot")) {
       print("You do not have a carrot.");
     }
@@ -48,7 +48,7 @@ LABEL150:
     }
   }
 LABEL196:
-  if (!f127 && !f108) {
+  if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
     if (vROOM_NO != 30 && said("get", "golden walnut")) {
       print("You will have to find it before you can get it.");
     }
@@ -78,7 +78,7 @@ LABEL264:
       }
   }
 LABEL386:
-  if (!f123 && vROOM_NO != 47) {
+  if (!fCARRYING_MUSHROOM && vROOM_NO != 47) {
     if (vROOM_NO != 47 && said("get", "toadstools")) {
       print("You will have to find it before you can get it.");
     }
@@ -155,7 +155,7 @@ LABEL707:
       }
   }
 LABEL772:
-  if (!f104) {
+  if (!fCARRYING_CHEST) {
     if (vROOM_NO != 58 && (said("get", "chest") || said("get", "coins"))) {
       print("You will have to find it before you can get it.");
     }
@@ -198,7 +198,7 @@ LABEL944:
       }
   }
 LABEL1009:
-  if (!f139) {
+  if (!fCARRYING_SWISS_CHEESE) {
     if (vROOM_NO != 65 && said("get", "swiss cheese")) {
       print("You will have to find it before you can get it.");
     }
@@ -211,7 +211,7 @@ LABEL1009:
       }
   }
 LABEL1074:
-  if (!f87) {
+  if (!fCARRYING_CLOVER) {
     if (vROOM_NO != 24 && said("get", "four leaf clover")) {
       print("You will have to find it before you can get it.");
     }
@@ -224,7 +224,7 @@ LABEL1074:
       }
   }
 LABEL1139:
-  if (!f97) {
+  if (!fCARRYING_SLINGSHOT) {
     if (vROOM_NO != 62 && said("get", "slingshot")) {
       print("You will have to find it before you can get it.");
     }
@@ -237,7 +237,7 @@ LABEL1139:
       }
   }
 LABEL1204:
-  if (!f102) {
+  if (!fCARRYING_SHIELD) {
     if (vROOM_NO != 77 && said("get", "shield")) {
       print("You will have to find it before you can get it.");
     }
@@ -250,7 +250,7 @@ LABEL1204:
       }
   }
 LABEL1269:
-  if (!f113) {
+  if (!fCARRYING_SCEPTRE) {
     if (vROOM_NO != 77 && said("get", "sceptre")) {
       print("You will have to find it before you can get it.");
     }
@@ -263,7 +263,7 @@ LABEL1269:
       }
   }
 LABEL1334:
-  if (!f72) {
+  if (!fCARRYING_POUCH) {
     if (vROOM_NO != 6 && said("get", "bag of jewels")) {
       print("You will have to find it before you can get it.");
     }
@@ -276,7 +276,7 @@ LABEL1334:
       }
   }
 LABEL1399:
-  if (!f106) {
+  if (!fCARRYING_DIAMONDS) {
     if (vROOM_NO != 6 && said("get", "pouch of diamonds")) {
       print("You will have to find it before you can get it.");
     }
@@ -289,7 +289,7 @@ LABEL1399:
       }
   }
 LABEL1464:
-  if (!f110) {
+  if (!fCARRYING_GOLDEN_EGG) {
     if (vROOM_NO != 63 && said("get", "golden egg")) {
       print("You will have to find it before you can get it.");
     }
@@ -302,7 +302,7 @@ LABEL1464:
       }
   }
 LABEL1529:
-  if (!f171) {
+  if (!fCARRYING_FIDDLE) {
     if (vROOM_NO != 79 && said("get", "fiddle")) {
       print("You will have to find it before you can get it.");
     }

@@ -79,7 +79,7 @@ LABEL165:
 LABEL180:
   ignore.blocks(o0);
 LABEL182:
-  if (f79 && !f22) {
+  if (fEGO_INVISIBLE && !f22) {
     set(f22);
     print(null);
   }
@@ -122,9 +122,9 @@ LABEL241:
         print("What kind of treasure would you like to give the  greedy rat?");
       }
     LABEL374:
-      if (!f106) {
+      if (!fCARRYING_DIAMONDS) {
         if (said("give", "bag of jewels") || said("give", "rat", "bag of jewels") || said("give", "bag of jewels", "rat")) {
-          if (f72 && v70 < 35) {
+          if (fCARRYING_POUCH && v70 < 35) {
             print("The rat doesn't want a tattered pouch.");
             goto(LABEL425);
           }
@@ -132,13 +132,13 @@ LABEL241:
         }
       }
     LABEL425:
-      if (f106) {
+      if (fCARRYING_DIAMONDS) {
         if (said("give", "pouch of diamonds") || said("give", "rat", "pouch of diamonds") || said("give", "pouch of diamonds", "rat") || said("give", "bag of jewels") || said("give", "rat", "bag of jewels") || said("give", "bag of jewels", "rat")) {
-          if (f106 && v70 < 35) {
+          if (fCARRYING_DIAMONDS && v70 < 35) {
             print("The huge rat takes the treasure you have offered and scuttles away.");
             move.obj(o1, 46, 105, 0, f24);
             drop("pouch of diamonds");
-            reset(f106);
+            reset(fCARRYING_DIAMONDS);
             set(f107);
             vSCORE -= 6;
             goto(LABEL512);
@@ -148,11 +148,11 @@ LABEL241:
       }
     LABEL512:
       if (said("give", "golden egg") || said("give", "rat", "golden egg") || said("give", "golden egg", "rat")) {
-        if (f110 && v70 < 35) {
+        if (fCARRYING_GOLDEN_EGG && v70 < 35) {
           print("The huge rat takes the treasure you have offered and scuttles away.");
           move.obj(o1, 46, 105, 0, f24);
           drop("gold egg");
-          reset(f110);
+          reset(fCARRYING_GOLDEN_EGG);
           set(f111);
           vSCORE -= 6;
           goto(LABEL571);
@@ -161,7 +161,7 @@ LABEL241:
       }
     LABEL571:
       if (said("give", "golden walnut") || said("give", "rat", "golden walnut") || said("give", "golden walnut", "rat")) {
-        if (f127) {
+        if (fCARRYING_WALNUT) {
           if (v70 < 35) {
             print("The rat doesn't want an ordinary walnut.");
             goto(LABEL619);
@@ -169,12 +169,12 @@ LABEL241:
           print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
         }
         LABEL619:
-          if (f108) {
+          if (fCARRYING_GOLD_WALNUT) {
             if (v70 < 35) {
               print("The huge rat takes the treasure you have offered and scuttles away.");
               move.obj(o1, 46, 105, 0, f24);
               drop("gold walnut");
-              reset(f108);
+              reset(fCARRYING_GOLD_WALNUT);
               set(f109);
               vSCORE -= 6;
               goto(LABEL654);
@@ -184,11 +184,11 @@ LABEL241:
       }
     LABEL654:
       if (said("give", "sceptre") || said("give", "rat", "sceptre") || said("give", "sceptre", "rat")) {
-        if (f113 && v70 < 35) {
+        if (fCARRYING_SCEPTRE && v70 < 35) {
           print("The huge rat takes the treasure you have offered and scuttles away.");
           move.obj(o1, 46, 105, 0, f24);
           drop("sceptre");
-          reset(f113);
+          reset(fCARRYING_SCEPTRE);
           set(f114);
           vSCORE -= 6;
           goto(LABEL713);
@@ -197,15 +197,15 @@ LABEL241:
       }
     LABEL713:
       if (said("give", "swiss cheese") || said("give", "rat", "swiss cheese") || said("give", "swiss cheese", "rat") || said("feed", "swiss cheese") || said("feed", "rat", "swiss cheese") || said("feed", "swiss cheese", "rat")) {
-        if (!f139) {
+        if (!fCARRYING_SWISS_CHEESE) {
           print("That is a good idea, but you do not have any cheese.");
         }
-        if (f139) {
+        if (fCARRYING_SWISS_CHEESE) {
           if (v70 < 35) {
             print("The rat drools at the sight of the cheese... and snatches it from your hand.  You might want to count your fingers.");
             move.obj(o1, 46, 105, 0, f24);
             drop("cheese");
-            reset(f139);
+            reset(fCARRYING_SWISS_CHEESE);
             set(f140);
             vSCORE -= 2;
             vSCORE += 4;
@@ -231,7 +231,7 @@ LABEL844:
     set.view(o0, 95);
     print("Be careful around this rat next time!  He's dangerous!!");
     wander(o1);
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL859:
   distance(o0, o2, v71);

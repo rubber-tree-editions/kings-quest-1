@@ -83,14 +83,14 @@ LABEL215:
   ignore.blocks(o0);
 LABEL217:
   if (f182 && !f21 && !f22 && !f24) {
-    sound(5, f159);
+    sound(5, fSOUND_END_MARKER);
     set(f24);
   }
 LABEL237:
-  if (f159) {
+  if (fSOUND_END_MARKER) {
     if (!f21 && !f22) {
       reset(f24);
-      reset(f159);
+      reset(fSOUND_END_MARKER);
     }
   }
 LABEL257:
@@ -159,7 +159,7 @@ LABEL421:
     }
     print(null);
     LABEL448:
-      set(f63);
+      set(fGAME_OVER);
   }
 LABEL450:
   if (f22) {
@@ -181,7 +181,7 @@ LABEL485:
   if (v30 == 1 && f23) {
     erase(o0);
     print("Your arms are like lead... from swimming.  You find it impossible... to swim any longer.  You sink to the bottom... of the well....");
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL502:
   if (!f180 && !f20) {
@@ -312,13 +312,13 @@ LABEL922:
     print("A person in your position is in no position to raise or lower anything.");
   }
 LABEL954:
-  if (!f67) {
+  if (!fCARRYING_DAGGER) {
     if (said("cut", "rope")) {
       print("You have nothing to cut the rope with.");
     }
   }
 LABEL973:
-  if (f67) {
+  if (fCARRYING_DAGGER) {
     if (said("cut", "rope")) {
       if (f180 && f177) {
         print("Just before slitting the rope, you realize that it is not a very wise move at this time.");
@@ -342,10 +342,10 @@ LABEL973:
           vSCORE += 2;
           get("water bucket");
           if (f163) {
-            set(f88);
+            set(fBUCKET_FILLED);
             get("water");
-            if (!f91) {
-              set(f91);
+            if (!fFILL_BUCKET_POINTS) {
+              set(fFILL_BUCKET_POINTS);
               vSCORE += 2;
             }
           }
@@ -361,7 +361,7 @@ LABEL973:
     }
   }
 LABEL1087:
-  if (!f88) {
+  if (!fBUCKET_FILLED) {
     if (said("examine", "water")) {
       print("This is murky well water.");
     }
@@ -376,10 +376,10 @@ LABEL1087:
       if (said("get", "water")) {
         if (f81 && (v94 == 1 || v94 == 2)) {
           print("In the midst of your activities, you fill the bucket with well water.");
-          set(f88);
-          if (!f91) {
+          set(fBUCKET_FILLED);
+          if (!fFILL_BUCKET_POINTS) {
             vSCORE += 2;
-            set(f91);
+            set(fFILL_BUCKET_POINTS);
           }
           goto(LABEL1180);
         }

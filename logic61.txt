@@ -30,7 +30,7 @@ LABEL59:
     set.priority.v(o0, v30);
     v61 += 8;
     v96 = 4;
-    sound(5, f159);
+    sound(5, fSOUND_END_MARKER);
     move.obj.v(o0, v60, v61, 96, f21);
   }
 LABEL95:
@@ -39,15 +39,15 @@ LABEL95:
     erase(o0);
   }
 LABEL105:
-  if (f159) {
-    reset(f159);
+  if (fSOUND_END_MARKER) {
+    reset(fSOUND_END_MARKER);
     set(f20);
   }
 LABEL115:
   if (f20) {
     reset(f20);
     print("Oops!  You've missed the edge and fallen through the clouds.");
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL127:
   if (vEGO_EDGE_CODE == 1) {

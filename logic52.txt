@@ -28,23 +28,23 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL60:
     v68 = 250;
     v69 = 3;
-    if (f81 && !f88) {
-      set(f88);
+    if (f81 && !fBUCKET_FILLED) {
+      set(fBUCKET_FILLED);
       get("water");
-      if (!f91) {
-        set(f91);
+      if (!fFILL_BUCKET_POINTS) {
+        set(fFILL_BUCKET_POINTS);
         vSCORE += 2;
       }
     }
   LABEL91:
     draw(o0);
     show.pic();
-    if (f79) {
+    if (fEGO_INVISIBLE) {
       drop("ring");
       vSCORE -= 3;
       print();
       reset(f83);
-      reset(f79);
+      reset(fEGO_INVISIBLE);
       reset(f133);
       set(f115);
       v90 = 0;
@@ -76,7 +76,7 @@ LABEL142:
 LABEL190:
   if (f20) {
     reset(f20);
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL200:
   if (said("examine", "water")) {

@@ -82,7 +82,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(o0, 49, 163);
     }
   LABEL206:
-    if (!f73 && v81 != 3 && vPREV_ROOM_NO != 80 && !f79) {
+    if (!fPROTECTED_BY_SPELL && v81 != 3 && vPREV_ROOM_NO != 80 && !fEGO_INVISIBLE) {
       if (v81 == 2) {
         random(0, 250, v62);
         if (v62 < 180) {
@@ -96,7 +96,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   LABEL255:
     if (v81 == 1) {
-      if (!f73 && !f79) {
+      if (!fPROTECTED_BY_SPELL && !fEGO_INVISIBLE) {
         set(f27);
         load.view(43);
         animate.obj(o4);
@@ -119,11 +119,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     observe.blocks(o4);
     draw(o0);
     show.pic();
-    if (f73) {
+    if (fPROTECTED_BY_SPELL) {
       print("Be thankful that you have a protective spell or the witch may have stuck around to try and catch you!");
     }
   LABEL322:
-    if (f79) {
+    if (fEGO_INVISIBLE) {
       print();
     }
   LABEL330:
@@ -177,13 +177,13 @@ LABEL437:
     print("OUCH!");
     v32 = 20;
     set(f98);
-    sound(4, f159);
+    sound(4, fSOUND_END_MARKER);
   }
 LABEL467:
-  if (f159) {
+  if (fSOUND_END_MARKER) {
     if (v32 > 0) {
-      reset(f159);
-      sound(4, f159);
+      reset(fSOUND_END_MARKER);
+      sound(4, fSOUND_END_MARKER);
     }
   }
 LABEL485:
@@ -213,7 +213,7 @@ LABEL519:
     LABEL547:
       set(f95);
       stop.cycling(o0);
-      set(f63);
+      set(fGAME_OVER);
   }
 LABEL553:
   if (f27) {
@@ -423,12 +423,12 @@ LABEL1074:
           }
       }
     LABEL1252:
-      if (!f139) {
+      if (!fCARRYING_SWISS_CHEESE) {
         if (said("get", "swiss cheese")) {
           if (v87 == 1) {
             erase(o3);
             get("cheese");
-            set(f139);
+            set(fCARRYING_SWISS_CHEESE);
             vSCORE += 2;
             print("You pluck the Swiss cheese from the shelf.");
             v87 = 3;
@@ -461,7 +461,7 @@ LABEL1346:
       print("You need to be closer to do that.");
     }
     LABEL1389:
-      if (!f139) {
+      if (!fCARRYING_SWISS_CHEESE) {
         if (said("examine", "swiss cheese")) {
           print("You cannot see it from here.");
         }

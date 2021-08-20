@@ -81,7 +81,7 @@ LABEL151:
       set(f134);
   }
 LABEL237:
-  if (!f88) {
+  if (!fBUCKET_FILLED) {
     if (said("drink", "water") || said("get", "drink")) {
       if (posn(o0, 77, 39, 159, 129)) {
         print("You drink deeply of the cold river water.");
@@ -91,15 +91,15 @@ LABEL237:
     }
   }
 LABEL279:
-  if (!f88 && f81 && said("get", "water")) {
+  if (!fBUCKET_FILLED && f81 && said("get", "water")) {
     if (posn(o0, 77, 39, 159, 129)) {
       print("As you fill the bucket, the river almost rips it from your grasp.");
       get("water");
-      set(f88);
-      if (!f91) {
+      set(fBUCKET_FILLED);
+      if (!fFILL_BUCKET_POINTS) {
         vSCORE += 2;
       }
-      set(f91);
+      set(fFILL_BUCKET_POINTS);
       goto(LABEL327);
     }
     print("You must venture closer to the river.");

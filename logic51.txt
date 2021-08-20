@@ -111,13 +111,13 @@ LABEL279:
   if (f20 && v75 == 0) {
     reset(f20);
     set.view(o0, 82);
-    if (f102) {
+    if (fCARRYING_SHIELD) {
       print("Your shield melted from the intensity of the dragon's flames!  You should know about these fire-breathing dragons!  Maybe next time you will be a little more careful!");
       goto(LABEL306);
     }
     print("You should know about these fire-breathing dragons!  Maybe next time you will be a little more careful!");
     LABEL306:
-      set(f63);
+      set(fGAME_OVER);
   }
 LABEL308:
   if (said("examine", "room")) {
@@ -213,7 +213,7 @@ LABEL638:
     }
   }
 LABEL657:
-  if (f67) {
+  if (fCARRYING_DAGGER) {
     if (said("use", "dagger")) {
       print("How?");
     }
@@ -242,10 +242,10 @@ LABEL727:
       reset(f81);
       drop("water bucket");
       vSCORE -= 2;
-      if (f88) {
-        reset(f88);
+      if (fBUCKET_FILLED) {
+        reset(fBUCKET_FILLED);
         drop("water");
-        reset(f91);
+        reset(fFILL_BUCKET_POINTS);
         vSCORE -= 2;
       }
     }
@@ -282,7 +282,7 @@ LABEL788:
             set(f165);
             get("magic mirror");
             print("Carefully, you pick up the magic mirror.");
-            v74++;
+            vTREASURE_COUNT++;
             vSCORE += 8;
           }
         }
@@ -298,7 +298,7 @@ LABEL788:
       }
   }
 LABEL939:
-  if (!f88) {
+  if (!fBUCKET_FILLED) {
     if (said("douse", "dragon") || said("throw", "water") || said("throw", "water", "dragon")) {
       if (v75 != 2) {
         print("You have nothing with which to douse a dragon.");
@@ -310,35 +310,35 @@ LABEL939:
   }
 LABEL991:
   if (posn(o0, 105, 96, 145, 166) && v75 == 0) {
-    if (f67 && said("throw", "dagger")) {
-      reset(f67);
+    if (fCARRYING_DAGGER && said("throw", "dagger")) {
+      reset(fCARRYING_DAGGER);
       print("The dagger sings through the air, but falls short of the dragon.  You should have been closer.");
       drop("dagger");
       vSCORE -= 5;
     }
-    if (f88 && (said("throw", "water") || said("throw", "water", "dragon") || said("douse", "dragon"))) {
-      reset(f88);
+    if (fBUCKET_FILLED && (said("throw", "water") || said("throw", "water", "dragon") || said("douse", "dragon"))) {
+      reset(fBUCKET_FILLED);
       print("You throw your water, but to no avail.  It lands on the floor and is quickly absorbed.");
       drop("water");
       vSCORE -= 2;
-      reset(f91);
+      reset(fFILL_BUCKET_POINTS);
     }
   }
 LABEL1064:
   if (!posn(o0, 105, 96, 145, 166) && v75 == 0) {
-    if (f88 && (said("throw", "water") || said("throw", "water", "dragon") || said("douse", "dragon"))) {
-      reset(f88);
+    if (fBUCKET_FILLED && (said("throw", "water") || said("throw", "water", "dragon") || said("douse", "dragon"))) {
+      reset(fBUCKET_FILLED);
       print("The water hits the dragon squarely in the mouth, extinguishing its roaring flames.  No fire!  How mortified and embarrassed the dragon is!  Moving a huge boulder in leaving, the dragon creeps off to sulk.");
       drop("water");
       vSCORE -= 2;
       vSCORE += 7;
-      reset(f91);
+      reset(fFILL_BUCKET_POINTS);
       move.obj(o3, 40, 137, 0, f21);
       v75 = 2;
     }
-    if (f67 && said("throw", "dagger")) {
+    if (fCARRYING_DAGGER && said("throw", "dagger")) {
       ignore.blocks(o3);
-      reset(f67);
+      reset(fCARRYING_DAGGER);
       print("Nervously, you throw the dagger at the dragon and strike it in the heart.  Death for the dragon is instant.");
       drop("dagger");
       vSCORE -= 5;

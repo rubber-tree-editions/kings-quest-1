@@ -48,7 +48,7 @@ LABEL119:
     print("It is a massive boulder that splits the river.");
   }
 LABEL131:
-  if (!f88) {
+  if (!fBUCKET_FILLED) {
     if (said("drink", "water") || said("get", "drink")) {
       if (posn(o0, 0, 48, 97, 128) || posn(o0, 98, 94, 159, 167) || posn(o0, 120, 44, 159, 86)) {
         print("You drink deeply of the cold river water.");
@@ -58,15 +58,15 @@ LABEL131:
     }
   }
 LABEL187:
-  if (!f88 && f81 && said("get", "water")) {
+  if (!fBUCKET_FILLED && f81 && said("get", "water")) {
     if (posn(o0, 0, 48, 97, 128) || posn(o0, 98, 94, 159, 167) || posn(o0, 120, 44, 159, 86)) {
       print("You carefully fill the bucket at the river's edge.");
       get("water");
-      set(f88);
-      if (!f91) {
+      set(fBUCKET_FILLED);
+      if (!fFILL_BUCKET_POINTS) {
         vSCORE += 2;
       }
-      set(f91);
+      set(fFILL_BUCKET_POINTS);
       goto(LABEL249);
     }
     print("You are not close enough to the Raging River.");

@@ -51,19 +51,19 @@ LABEL134:
   if (fEGO_TOUCHED_TRIGGER_LINE && !f95 && posn(o0, 0, 84, 159, 167)) {
     set(f95);
     stop.cycling(o0);
-    sound(5, f159);
+    sound(5, fSOUND_END_MARKER);
     move.obj(o0, 153, 166, 5, f21);
   }
 LABEL162:
   if (fEGO_TOUCHED_TRIGGER_LINE && posn(o0, 0, 0, 159, 83)) {
     reset(fEGO_TOUCHED_TRIGGER_LINE);
     program.control();
-    if (!f79) {
+    if (!fEGO_INVISIBLE) {
       set.view(o0, 105);
     }
     start.cycling(o0);
     set(f98);
-    sound(5, f159);
+    sound(5, fSOUND_END_MARKER);
     erase(o0);
   }
 LABEL196:
@@ -72,15 +72,15 @@ LABEL196:
     erase(o0);
   }
 LABEL206:
-  if (f159) {
-    reset(f159);
+  if (fSOUND_END_MARKER) {
+    reset(fSOUND_END_MARKER);
     set(f20);
   }
 LABEL216:
   if (f20) {
     reset(f20);
     print("Oops, you've missed the edge and fallen through the  clouds.");
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL228:
   if (posn(o0, 135, 94, 136, 120)) {

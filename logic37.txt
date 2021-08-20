@@ -80,20 +80,20 @@ LABEL188:
       set(f134);
   }
 LABEL258:
-  if (!f88) {
+  if (!fBUCKET_FILLED) {
     if (said("drink", "water") || said("get", "drink")) {
       print("In your thirst, even swamp water is satisfying.");
     }
   }
 LABEL285:
-  if (!f88 && f81 && said("get", "water")) {
+  if (!fBUCKET_FILLED && f81 && said("get", "water")) {
     print(null);
     get("water");
-    set(f88);
-    if (!f91) {
+    set(fBUCKET_FILLED);
+    if (!fFILL_BUCKET_POINTS) {
       vSCORE += 2;
     }
-    set(f91);
+    set(fFILL_BUCKET_POINTS);
   }
 LABEL318:
   if (vEGO_EDGE_CODE != 0) {

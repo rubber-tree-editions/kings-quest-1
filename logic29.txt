@@ -16,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL35:
     if (vPREV_ROOM_NO == 20) {
-      if (!f79) {
+      if (!fEGO_INVISIBLE) {
         set.view(o0, 0);
         reset(f98);
       }
@@ -46,7 +46,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(o0);
     show.pic();
 }
-if (f21 && f159) {
+if (f21 && fSOUND_END_MARKER) {
   if (!f25) {
     set(f25);
     sound(17, f26);
@@ -61,7 +61,7 @@ LABEL139:
   if (v70 == 1) {
     position(o1, 40, 140);
     set(f21);
-    sound(1, f159);
+    sound(1, fSOUND_END_MARKER);
     draw(o1);
     if (!f75) {
       print(null);
@@ -79,10 +79,10 @@ LABEL186:
     if (said("anyword", "man")) {
       print("There's no sorcerer here.");
     }
-    if (said("throw", "dagger") && f67 && !f75) {
+    if (said("throw", "dagger") && fCARRYING_DAGGER && !f75) {
       print("OK.  But you just lost your dagger.");
-      reset(f67);
-      set(f70);
+      reset(fCARRYING_DAGGER);
+      set(fDAGGER_LOST);
       drop("dagger");
       vSCORE -= 5;
     }
@@ -99,18 +99,18 @@ LABEL231:
 LABEL273:
   if (f156) {
     reset(f156);
-    if (f73) {
+    if (fPROTECTED_BY_SPELL) {
       print("This sorcerer's magic is no match for your fairy godmother's.");
       wander(o1);
       set(f22);
       goto(LABEL347);
     }
-    if (f79) {
+    if (fEGO_INVISIBLE) {
       print();
       set(f27);
       goto(LABEL347);
     }
-    if (f102) {
+    if (fCARRYING_SHIELD) {
       print("The magic shield will protect you from this dangerous  sorcerer.");
       wander(o1);
       set(f22);

@@ -94,7 +94,7 @@ LABEL250:
     print("The alligators are swimming in the moat.");
   }
 LABEL262:
-  if (said("drink", "water") && !f88 && !f116) {
+  if (said("drink", "water") && !fBUCKET_FILLED && !f116) {
     if (posn(o0, 0, 146, 159, 167) || posn(o0, 87, 110, 117, 145)) {
       print("There are alligators in this water.  I don't think you want to try drinking it.");
       goto(LABEL303);
@@ -102,15 +102,15 @@ LABEL262:
     print("There is water nearby.");
   }
 LABEL303:
-  if (f81 && !f88) {
+  if (f81 && !fBUCKET_FILLED) {
     if (said("get", "water")) {
       if (posn(o0, 0, 146, 159, 167) || posn(o0, 87, 110, 117, 145)) {
         reset(f116);
         print("You fill the bucket with the murky water from the moat.");
         get("water");
-        set(f88);
-        if (!f91) {
-          set(f91);
+        set(fBUCKET_FILLED);
+        if (!fFILL_BUCKET_POINTS) {
+          set(fFILL_BUCKET_POINTS);
           vSCORE += 2;
         }
         goto(LABEL365);
@@ -209,7 +209,7 @@ LABEL612:
       erase(o12);
     }
     LABEL642:
-      set(f63);
+      set(fGAME_OVER);
   }
 LABEL644:
   v34--;

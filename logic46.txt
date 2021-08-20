@@ -47,7 +47,7 @@ if (v70 == 1) {
   position(o1, 40, 51);
   set(f21);
   set(f135);
-  sound(1, f159);
+  sound(1, fSOUND_END_MARKER);
   draw(o1);
   if (!f75) {
     print(null);
@@ -61,8 +61,8 @@ if (v70 == 1) {
   }
 }
 LABEL145:
-  if (f159) {
-    reset(f159);
+  if (fSOUND_END_MARKER) {
+    reset(fSOUND_END_MARKER);
     reset(f135);
   }
 LABEL155:
@@ -72,10 +72,10 @@ LABEL155:
     if (said("anyword", "man")) {
       print("There is no ogre here.");
     }
-    if (said("throw", "dagger") && f67) {
+    if (said("throw", "dagger") && fCARRYING_DAGGER) {
       print("OK.  You drop the dagger.");
-      reset(f67);
-      set(f70);
+      reset(fCARRYING_DAGGER);
+      set(fDAGGER_LOST);
       drop("dagger");
       vSCORE -= 5;
     }
@@ -83,25 +83,25 @@ LABEL155:
 LABEL201:
   if (f156) {
     reset(f156);
-    if (f79) {
+    if (fEGO_INVISIBLE) {
       print("Fortunately, you are invisible and the ogre can't see you.");
       wander(o1);
       set(f23);
       goto(LABEL284);
     }
-    if (f73) {
+    if (fPROTECTED_BY_SPELL) {
       print("You are very fortunate that your protective spell is still working.");
       wander(o1);
       set(f23);
       goto(LABEL284);
     }
-    if (f102) {
+    if (fCARRYING_SHIELD) {
       print("With the magic shield, no harm will come to you.");
       wander(o1);
       set(f23);
       goto(LABEL284);
     }
-    if (f120) {
+    if (fEGO_TINY) {
       print("The ogre's vision is not keen enough to see you.");
       wander(o1);
       set(f23);
@@ -135,7 +135,7 @@ LABEL300:
     draw(o0);
     stop.motion(o1);
     stop.cycling(o1);
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL339:
   if (f21) {
@@ -170,7 +170,7 @@ LABEL339:
         print("Ogres don't talk, they growl!");
       }
     LABEL456:
-      if (said("throw", "dagger") && f67) {
+      if (said("throw", "dagger") && fCARRYING_DAGGER) {
         print("The dagger is of little use against such a mean creature.  I would save it if I were you.");
       }
   }

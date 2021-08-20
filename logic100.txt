@@ -30,12 +30,12 @@ LABEL53:
     quit(0);
   }
 LABEL68:
-  if (said("restore", "game") || controller(c2)) {
+  if (said("restore", "game") || controller(cRESTORE)) {
     stop.sound();
     restore.game();
   }
 LABEL84:
-  if (said("restart", "game") || controller(c3)) {
+  if (said("restart", "game") || controller(cRESTART)) {
     stop.sound();
     restart.game();
   }

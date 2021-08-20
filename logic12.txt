@@ -105,13 +105,13 @@ LABEL253:
     }
   }
 LABEL272:
-  if (f81 && !f88) {
+  if (f81 && !fBUCKET_FILLED) {
     if (said("get", "water")) {
       print("Somebody has cut the rope;  there's no way for you to get the bucket to the well's bottom.");
     }
   }
 LABEL293:
-  if (!f75 && !f79) {
+  if (!f75 && !fEGO_INVISIBLE) {
     if (posn(o0, 10, 100, 75, 150)) {
       if (f177 || f179) {
         if (said("climb", "rope") || said("climb", "well") || said("go", "well") || said("go down", "well") || said("slide", "rope")) {
@@ -196,7 +196,7 @@ LABEL628:
     }
   }
 LABEL683:
-  if (f75 && !f79) {
+  if (f75 && !fEGO_INVISIBLE) {
     if (posn(o0, 10, 100, 75, 150)) {
       if (said("climb", "rope")) {
         print("The goat sure doesn't want to climb the rope.");
@@ -231,7 +231,7 @@ LABEL683:
     }
   }
 LABEL798:
-  if (f79) {
+  if (fEGO_INVISIBLE) {
     if (posn(o0, 10, 100, 75, 150)) {
       if (said("climb", "rope") || said("go", "bucket") || said("go", "well") || said("go down", "well") || said("slide", "rope") || said("jump", "well")) {
         print("You can't do that when you are invisible!");
@@ -261,7 +261,7 @@ LABEL858:
         move.obj.v(o0, v60, v61, 96, f29);
         print("You should be more careful the next time you try  climbing ropes.");
         set(f135);
-        sound(5, f159);
+        sound(5, fSOUND_END_MARKER);
         reset(f180);
       }
   }
@@ -290,7 +290,7 @@ LABEL958:
     }
     LABEL1001:
       set(f135);
-      sound(5, f159);
+      sound(5, fSOUND_END_MARKER);
   }
 LABEL1006:
   if (f176 || f177) {
@@ -437,14 +437,14 @@ LABEL1524:
   }
 LABEL1538:
   if (said("cut", "rope") || said("cut", "rope", "dagger")) {
-    if (!f67) {
+    if (!fCARRYING_DAGGER) {
       print("You have no way to cut the rope.");
     }
-    if (f67 && !posn(o0, 10, 109, 71, 153)) {
+    if (fCARRYING_DAGGER && !posn(o0, 10, 109, 71, 153)) {
       print("You will need longer arms to cut that rope from here.");
     }
     LABEL1582:
-      if (f67 && posn(o0, 10, 109, 71, 153)) {
+      if (fCARRYING_DAGGER && posn(o0, 10, 109, 71, 153)) {
         if (f176 && !f179) {
           print("You cut a piece of rope and it falls into the well.");
         }
@@ -467,10 +467,10 @@ LABEL1538:
             set(f81);
             if (f163) {
               get("water");
-              set(f88);
-              if (!f91) {
+              set(fBUCKET_FILLED);
+              if (!fFILL_BUCKET_POINTS) {
                 vSCORE += 2;
-                set(f91);
+                set(fFILL_BUCKET_POINTS);
               }
             }
             set(f176);

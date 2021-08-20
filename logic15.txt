@@ -51,31 +51,31 @@ LABEL170:
   reset(f20);
 LABEL172:
   if (f20) {
-    if (!f77 && said("examine", "carrot")) {
+    if (!fCARRYING_CARROT && said("examine", "carrot")) {
       print("There are many large, plump carrots in the garden.");
     }
-    if (!f77 && said("get", "carrot")) {
+    if (!fCARRYING_CARROT && said("get", "carrot")) {
       print("You pluck a plump, orange carrot from the ground.");
-      set(f77);
-      reset(f118);
+      set(fCARRYING_CARROT);
+      reset(fCARROT_EATEN);
       get("carrot");
-      if (!f117) {
+      if (!fPOINTS_FOR_CARROT) {
         vSCORE += 2;
-        set(f117);
+        set(fPOINTS_FOR_CARROT);
       }
     }
   }
 LABEL226:
   if (!f20) {
-    if (!f77 && said("examine", "carrot")) {
+    if (!fCARRYING_CARROT && said("examine", "carrot")) {
       print("The carrots are buried in the ground.  You must get  closer to see them.");
     }
-    if (!f77 && said("get", "carrot")) {
+    if (!fCARRYING_CARROT && said("get", "carrot")) {
       print("You must be in the carrot patch to pick a carrot.");
     }
   }
 LABEL263:
-  if (!f77) {
+  if (!fCARRYING_CARROT) {
     if (said("eat", "carrot")) {
       print();
     }

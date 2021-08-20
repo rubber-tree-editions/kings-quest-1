@@ -39,7 +39,7 @@ LABEL66:
   }
 LABEL113:
   if (said("examine", "slingshot")) {
-    if (f97) {
+    if (fCARRYING_SLINGSHOT) {
       print("This sling is made of very stretchy leather.");
       goto(LABEL136);
     }
@@ -61,7 +61,7 @@ LABEL169:
       if (posn(o0, 117, 100, 144, 117)) {
         print("You reach into the hole and pull out the leather sling.");
         set(f96);
-        set(f97);
+        set(fCARRYING_SLINGSHOT);
         vSCORE += 2;
         get("leather slingshot");
         goto(LABEL212);
@@ -80,7 +80,7 @@ LABEL212:
     v61 += 6;
     v96 = 4;
     move.obj.v(o0, v60, v61, 96, f21);
-    sound(5, f159);
+    sound(5, fSOUND_END_MARKER);
   }
 LABEL248:
   if (f21) {
@@ -88,8 +88,8 @@ LABEL248:
     erase(o0);
   }
 LABEL258:
-  if (f159) {
-    reset(f159);
+  if (fSOUND_END_MARKER) {
+    reset(fSOUND_END_MARKER);
     set(f20);
   }
 LABEL268:
@@ -97,7 +97,7 @@ LABEL268:
     reset(f20);
     print("You've fallen through the clouds!  Cloud walking is for the birds.");
     erase(o0);
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL282:
   if (vEGO_EDGE_CODE == 1) {

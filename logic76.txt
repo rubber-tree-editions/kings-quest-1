@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(o0, 73, 163);
   }
   LABEL34:
-    if (f171) {
+    if (fCARRYING_FIDDLE) {
       load.view(50);
       animate.obj(o1);
       set.view(o1, 50);
@@ -40,7 +40,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (!f186) {
       draw(o13);
       draw(o2);
-      if (f87) {
+      if (fCARRYING_CLOVER) {
         wander(o2);
         goto(LABEL114);
       }
@@ -50,14 +50,14 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(o0);
     show.pic();
     if (!f186) {
-      if (!f87 && f79) {
+      if (!fCARRYING_CLOVER && fEGO_INVISIBLE) {
         print(null);
       }
-      if (!f87 && !f79) {
+      if (!fCARRYING_CLOVER && !fEGO_INVISIBLE) {
         print("The leprechauns do not like your invasion of their territory.  They may not let you get any further.");
       }
       LABEL147:
-        if (f87) {
+        if (fCARRYING_CLOVER) {
           print("The leprechauns revere the power of the fourleaf clover. With it in your possession they will leave you absolutely alone.");
         }
     }
@@ -71,7 +71,7 @@ LABEL155:
     stop.cycling(o0);
     stop.motion(o2);
     stop.cycling(o2);
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL177:
   if (f22) {
@@ -85,7 +85,7 @@ LABEL195:
   }
 LABEL204:
   if (!f186 && !f22) {
-    if (f171 && said("play", "fiddle")) {
+    if (fCARRYING_FIDDLE && said("play", "fiddle")) {
       set(f21);
       set(f22);
       v30 = 45;

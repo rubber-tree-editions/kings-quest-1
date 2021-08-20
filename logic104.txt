@@ -9,7 +9,7 @@ if (v80 == vROOM_NO) {
     if (f157) {
       print(null);
     }
-    if (f79) {
+    if (fEGO_INVISIBLE) {
       print("You can't do that when you are invisible!");
     }
   }

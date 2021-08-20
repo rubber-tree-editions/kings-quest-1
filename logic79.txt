@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(83);
     animate.obj(o1);
   }
-  if (!f172) {
+  if (!fFIDDLE_TAKEN) {
     load.view(50);
     animate.obj(o3);
     set.view(o3, 50);
@@ -34,7 +34,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     stop.cycling(o4);
     draw(o2);
     draw(o4);
-    if (!f172) {
+    if (!fFIDDLE_TAKEN) {
       stop.cycling(o3);
       draw(o3);
     }
@@ -72,7 +72,7 @@ LABEL157:
   }
 LABEL167:
   if (said("examine", "building") || said("examine", "room")) {
-    if (!f172) {
+    if (!fFIDDLE_TAKEN) {
       print("The cottage is run-down and sparsely furnished.  The only nice possession seems to be a fiddle in the corner.");
       goto(LABEL199);
     }
@@ -196,19 +196,19 @@ LABEL521:
     }
   }
 LABEL567:
-  if (!f106 && !f110 && !f108 && !f113) {
+  if (!fCARRYING_DIAMONDS && !fCARRYING_GOLDEN_EGG && !fCARRYING_GOLD_WALNUT && !fCARRYING_SCEPTRE) {
     if (said("give", "treasure")) {
       print("This is a nice thought, but unfortunately you have nothing to give these poor people.");
     }
   }
 LABEL595:
-  if (f106 || f110 || f108 || f113) {
+  if (fCARRYING_DIAMONDS || fCARRYING_GOLDEN_EGG || fCARRYING_GOLD_WALNUT || fCARRYING_SCEPTRE) {
     if (said("give", "treasure")) {
       print("What treasure do you wish to donate to them?");
     }
   }
 LABEL621:
-  if (f106 && said("give", "pouch of diamonds")) {
+  if (fCARRYING_DIAMONDS && said("give", "pouch of diamonds")) {
     print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
     if (!f24) {
       set(f24);
@@ -216,12 +216,12 @@ LABEL621:
       start.cycling(o4);
       v30 = 18;
     }
-    reset(f106);
+    reset(fCARRYING_DIAMONDS);
     drop("pouch of diamonds");
     vSCORE -= 6;
   }
 LABEL658:
-  if (f110 && said("give", "golden egg")) {
+  if (fCARRYING_GOLDEN_EGG && said("give", "golden egg")) {
     print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
     if (!f24) {
       set(f24);
@@ -229,12 +229,12 @@ LABEL658:
       start.cycling(o4);
       v30 = 18;
     }
-    reset(f110);
+    reset(fCARRYING_GOLDEN_EGG);
     drop("gold egg");
     vSCORE -= 6;
   }
 LABEL695:
-  if (f108 && said("give", "golden walnut")) {
+  if (fCARRYING_GOLD_WALNUT && said("give", "golden walnut")) {
     print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
     if (!f24) {
       set(f24);
@@ -242,12 +242,12 @@ LABEL695:
       start.cycling(o4);
       v30 = 18;
     }
-    reset(f108);
+    reset(fCARRYING_GOLD_WALNUT);
     drop("gold walnut");
     vSCORE -= 6;
   }
 LABEL732:
-  if (f113 && said("give", "sceptre")) {
+  if (fCARRYING_SCEPTRE && said("give", "sceptre")) {
     print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
     if (!f24) {
       set(f24);
@@ -255,12 +255,12 @@ LABEL732:
       start.cycling(o4);
       v30 = 18;
     }
-    reset(f113);
+    reset(fCARRYING_SCEPTRE);
     drop("sceptre");
     vSCORE -= 6;
   }
 LABEL769:
-  if (f77 && said("give", "carrot")) {
+  if (fCARRYING_CARROT && said("give", "carrot")) {
     print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
     if (!f24) {
       set(f24);
@@ -268,7 +268,7 @@ LABEL769:
       start.cycling(o4);
       v30 = 18;
     }
-    reset(f77);
+    reset(fCARRYING_CARROT);
     drop("carrot");
     vSCORE -= 2;
   }
@@ -347,8 +347,8 @@ LABEL1129:
       draw(o1);
       print("The couple is amazed and delighted as the bowl miraculously fills with a bubbling stew.  As a token of their gratitude, they offer their last earthly possession, the woodcutter's fiddle.");
       v89 = 1;
-      if (!f184) {
-        set(f184);
+      if (!fPOINTS_FOR_STEW) {
+        set(fPOINTS_FOR_STEW);
         vSCORE += 2;
       }
       set(f185);
@@ -365,7 +365,7 @@ LABEL1196:
     print("The couple does not understand.");
   }
 LABEL1208:
-  if (!f172) {
+  if (!fFIDDLE_TAKEN) {
     if (said("examine", "fiddle")) {
       if (posn(o0, 120, 140, 158, 166)) {
         print("The fiddle is a beautiful instrument made of polished wood.");
@@ -388,8 +388,8 @@ LABEL1208:
         }
         if (posn(o0, 120, 140, 158, 166) && f185) {
           erase(o3);
-          set(f171);
-          set(f172);
+          set(fCARRYING_FIDDLE);
+          set(fFIDDLE_TAKEN);
           print("The polished wood feels like satin -- it seems to still vibrate from the last song it played.");
           get("fiddle");
           vSCORE += 3;
@@ -411,14 +411,14 @@ LABEL1332:
     v61 = 166;
     v96 = 6;
     move.obj.v(o0, v60, v61, 96, f23);
-    sound(5, f159);
+    sound(5, fSOUND_END_MARKER);
   }
 LABEL1371:
   if (f23) {
     reset(f23);
     erase(o0);
     print("These poor people can't even afford to repair the floor!  Sorry about that.");
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL1385:
   if (said("say", "hello") || said("say", "hello") || said("hello") || said("hello")) {

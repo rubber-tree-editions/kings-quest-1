@@ -36,7 +36,7 @@ if (v31 == 1) {
   print(null);
   follow.ego(o1, 25, f21);
   set(f20);
-  set(f73);
+  set(fPROTECTED_BY_SPELL);
   v30 = 250;
   v63 = 100;
   v64 = 250;

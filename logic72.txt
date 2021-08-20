@@ -24,24 +24,24 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (f158 && !f22 && !f23) {
-  sound(5, f159);
+  sound(5, fSOUND_END_MARKER);
   set(f23);
 }
 LABEL69:
-  if (f159) {
+  if (fSOUND_END_MARKER) {
     if (!f22) {
       reset(f23);
-      reset(f159);
+      reset(fSOUND_END_MARKER);
     }
   }
 LABEL86:
-  if (!posn(o0, 65, 100, 84, 120) && !f157 && !f79) {
+  if (!posn(o0, 65, 100, 84, 120) && !f157 && !fEGO_INVISIBLE) {
     if (said("climb", "beanstalk")) {
       print("You need to be closer to do that.");
     }
   }
 LABEL115:
-  if (f79) {
+  if (fEGO_INVISIBLE) {
     if (said("climb", "beanstalk")) {
       print("You can't do that when you are invisible!");
     }
@@ -77,7 +77,7 @@ LABEL210:
 LABEL230:
   if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && !posn(o0, 65, 100, 82, 120) && !f157) {
     set(f21);
-    if (!f79) {
+    if (!fEGO_INVISIBLE) {
       set.view(o0, 105);
     }
     start.cycling(o0);
@@ -91,9 +91,9 @@ LABEL230:
     sound(5, f198);
   }
 LABEL290:
-  if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && posn(o0, 65, 100, 82, 120) && f79) {
+  if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && posn(o0, 65, 100, 82, 120) && fEGO_INVISIBLE) {
     set(f21);
-    if (!f79) {
+    if (!fEGO_INVISIBLE) {
       set.view(o0, 105);
     }
     start.cycling(o0);
@@ -111,10 +111,10 @@ LABEL348:
     reset(f20);
     erase(o0);
     print("Whoops!  You fall toward a distant earth.");
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL362:
-  if (fEGO_TOUCHED_TRIGGER_LINE && posn(o0, 65, 100, 82, 120) && !f79) {
+  if (fEGO_TOUCHED_TRIGGER_LINE && posn(o0, 65, 100, 82, 120) && !fEGO_INVISIBLE) {
     if (f157) {
       reset(f157);
       erase(o0);

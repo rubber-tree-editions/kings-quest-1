@@ -25,23 +25,23 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(o0);
     show.pic();
 }
-if (f120) {
+if (fEGO_TINY) {
   ignore.blocks(o0);
   goto(LABEL70);
 }
 LABEL68:
   observe.blocks(o0);
 LABEL70:
-  if (v82 == 1 && f120) {
+  if (v82 == 1 && fEGO_TINY) {
     if (posn(o0, 104, 127, 110, 132)) {
-      reset(f120);
+      reset(fEGO_TINY);
       print("You feel a stretching sensation... Oh, you're back to your original size.  You can't get out of the small  cave!");
-      set(f63);
+      set(fGAME_OVER);
       goto(LABEL105);
     }
     set.view(o0, 0);
     print();
-    reset(f120);
+    reset(fEGO_TINY);
   }
 LABEL105:
   if (said("examine", "doorway") || said("look inside", "doorway")) {
@@ -64,7 +64,7 @@ LABEL155:
     print("You'll have to move closer.");
   }
 LABEL182:
-  if (!f120) {
+  if (!fEGO_TINY) {
     if (said("go", "doorway") || said("go", "doorway")) {
       if (posn(o0, 75, 125, 109, 158)) {
         print("You would need to be much smaller to fit through that hole.");
@@ -74,7 +74,7 @@ LABEL182:
     }
   }
 LABEL224:
-  if (f120) {
+  if (fEGO_TINY) {
     if (said("go", "doorway") || said("go", "doorway")) {
       print("Go ahead.  Walk right in.");
     }

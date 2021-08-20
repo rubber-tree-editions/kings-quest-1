@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL35:
     load.logics(101);
     call(101);
-    if (!f121) {
+    if (!fMUSHROOM_TAKEN) {
       load.view(60);
       load.view(84);
       animate.obj(o1);
@@ -66,18 +66,18 @@ LABEL150:
     print("You see the familiar side of the Raging River.");
   }
 LABEL185:
-  if (!f123 && f121) {
+  if (!fCARRYING_MUSHROOM && fMUSHROOM_TAKEN) {
     if (said("examine", "toadstools")) {
       print("There is no mushroom here.");
     }
   }
 LABEL206:
-  if (f121) {
+  if (fMUSHROOM_TAKEN) {
     if (said("examine", "ground")) {
       print("There is nothing of interest around you.");
     }
     if (said("get", "toadstools")) {
-      if (f123) {
+      if (fCARRYING_MUSHROOM) {
         print();
         goto(LABEL247);
       }
@@ -85,7 +85,7 @@ LABEL206:
     }
   }
 LABEL247:
-  if (!f121) {
+  if (!fMUSHROOM_TAKEN) {
     if (said("examine", "toadstools")) {
       if (posn(o0, 0, 0, 36, 111) || posn(o0, 0, 112, 97, 167)) {
         print("The mushroom is on the far side of the river.");
@@ -118,8 +118,8 @@ LABEL247:
         if (posn(o0, 74, 70, 94, 90)) {
           erase(o1);
           print("You reach down and pick a fat mushroom.");
-          set(f121);
-          set(f123);
+          set(fMUSHROOM_TAKEN);
+          set(fCARRYING_MUSHROOM);
           vSCORE += 1;
           get("mushroom");
           goto(LABEL415);
@@ -133,7 +133,7 @@ LABEL415:
   }
 LABEL427:
   if (said("examine", "room")) {
-    if (f121) {
+    if (fMUSHROOM_TAKEN) {
       print("This lovely meadow is split by the Raging River.");
       goto(LABEL450);
     }
@@ -182,7 +182,7 @@ LABEL450:
       set(f134);
   }
 LABEL592:
-  if (!f88 && !fEGO_ON_WATER && !f116) {
+  if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
     if (said("drink", "water") || said("get", "drink")) {
       if (posn(o0, 0, 40, 32, 111) || posn(o0, 14, 112, 88, 135) || posn(o0, 39, 136, 99, 167) || posn(o0, 36, 40, 74, 76) || posn(o0, 46, 77, 101, 88) || posn(o0, 68, 89, 151, 167)) {
         print("The water from this swift river is cold and sweet.");
@@ -192,16 +192,16 @@ LABEL592:
     }
   }
 LABEL672:
-  if (!f88 && f81 && !fEGO_ON_WATER && said("get", "water")) {
+  if (!fBUCKET_FILLED && f81 && !fEGO_ON_WATER && said("get", "water")) {
     if (posn(o0, 0, 40, 32, 111) || posn(o0, 14, 112, 88, 135) || posn(o0, 39, 136, 99, 167) || posn(o0, 36, 40, 74, 76) || posn(o0, 46, 77, 101, 88) || posn(o0, 68, 89, 151, 167)) {
       reset(f116);
       print("The river is so swift it is a battle to fill the bucket.");
       get("water");
-      set(f88);
-      if (!f91) {
+      set(fBUCKET_FILLED);
+      if (!fFILL_BUCKET_POINTS) {
         vSCORE += 2;
       }
-      set(f91);
+      set(fFILL_BUCKET_POINTS);
       goto(LABEL757);
     }
     print("You need to get closer to do that.");

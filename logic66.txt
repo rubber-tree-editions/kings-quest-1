@@ -36,7 +36,7 @@ LABEL67:
 LABEL87:
   if (fEGO_TOUCHED_TRIGGER_LINE && !f21) {
     set(f21);
-    if (!f79) {
+    if (!fEGO_INVISIBLE) {
       set.view(o0, 105);
     }
     start.cycling(o0);
@@ -47,14 +47,14 @@ LABEL87:
     v61 = 165;
     v96 = 4;
     move.obj.v(o0, v60, v61, 96, f20);
-    sound(5, f159);
+    sound(5, fSOUND_END_MARKER);
   }
 LABEL137:
   if (f20) {
     reset(f20);
     print();
     erase(o0);
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL151:
   if (vEGO_EDGE_CODE == 1) {

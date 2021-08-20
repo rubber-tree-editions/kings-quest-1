@@ -19,7 +19,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !f21) {
   set(f21);
-  if (!f79) {
+  if (!fEGO_INVISIBLE) {
     set.view(o0, 105);
   }
   start.cycling(o0);
@@ -29,7 +29,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !f21) {
   set.priority.v(o0, v30);
   v61 = 165;
   v96 = 6;
-  sound(5, f159);
+  sound(5, fSOUND_END_MARKER);
   move.obj.v(o0, v60, v61, 96, f22);
 }
 LABEL82:
@@ -38,8 +38,8 @@ LABEL82:
     erase(o0);
   }
 LABEL92:
-  if (f159) {
-    reset(f159);
+  if (fSOUND_END_MARKER) {
+    reset(fSOUND_END_MARKER);
     set(f20);
   }
 LABEL102:
@@ -47,7 +47,7 @@ LABEL102:
     reset(f20);
     print(null);
     erase(o0);
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL116:
   if (said("examine", "anyword")) {

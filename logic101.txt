@@ -11,13 +11,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   set(f122);
   reset(f147);
 }
-if (f174 || f63) {
+if (f174 || fGAME_OVER) {
   goto(LABEL474);
 }
 LABEL29:
   if (f68 && v94 == 1) {
     set(f44);
-    if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(c5)) {
+    if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
       if (vROOM_NO == 1 || vROOM_NO == 2) {
         print("Unfortunately, with the moat population swimming is not possible.");
         goto(LABEL83);
@@ -54,15 +54,15 @@ LABEL112:
           erase(o0);
           set.view(o0, 93);
           draw(o0);
-          if (f120) {
-            reset(f120);
+          if (fEGO_TINY) {
+            reset(fEGO_TINY);
             v82 = 0;
             print();
           }
-          if (f79) {
+          if (fEGO_INVISIBLE) {
             v90 = 0;
             v91 = 0;
-            reset(f79);
+            reset(fEGO_INVISIBLE);
             reset(f83);
             reset(f133);
             set(f115);
@@ -75,15 +75,15 @@ LABEL112:
         }
       LABEL211:
         set.view(o0, 93);
-        if (f120) {
-          reset(f120);
+        if (fEGO_TINY) {
+          reset(fEGO_TINY);
           v82 = 0;
           print();
         }
-        if (f79) {
+        if (fEGO_INVISIBLE) {
           v90 = 0;
           v91 = 0;
-          reset(f79);
+          reset(fEGO_INVISIBLE);
           reset(f83);
           reset(f133);
           set(f115);
@@ -99,7 +99,7 @@ LABEL112:
         goto(LABEL316);
     }
     if (!f68 && v94 != 2 && !f44) {
-      if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(c5)) {
+      if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
         set.view(o0, 70);
         start.motion(o0);
         stop.sound();
@@ -110,7 +110,7 @@ LABEL112:
   }
 LABEL316:
   if (!f147 && !f44) {
-    if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(c5)) {
+    if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
       set(f147);
       if (!fEGO_ON_WATER) {
         print("You need to be in the water in order to swim.");
@@ -123,7 +123,7 @@ LABEL316:
     LABEL375:
       goto(LABEL387);
   }
-  if (!controller(c5)) {
+  if (!controller(cSWIM)) {
     reset(f147);
   }
 LABEL387:
@@ -156,7 +156,7 @@ LABEL450:
   if (v95 == 1) {
     erase(o0);
     stop.sound();
-    set(f63);
+    set(fGAME_OVER);
   }
 LABEL474:
   return;

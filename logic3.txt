@@ -97,7 +97,7 @@ LABEL186:
           move.obj(o1, 118, 145, 0, f62);
           print("This moving rock rolls downhill and you, unfortunately,  are in the way.");
           program.control();
-          set(f63);
+          set(fGAME_OVER);
           erase(o0);
           set.view(o0, 114);
           position(o0, 115, 140);
@@ -145,7 +145,7 @@ LABEL399:
         get("dagger");
         vSCORE += 5;
         set(f69);
-        set(f67);
+        set(fCARRYING_DAGGER);
         goto(LABEL444);
       }
       print("You are to far away to get the dagger.");
