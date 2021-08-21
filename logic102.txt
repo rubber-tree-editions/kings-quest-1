@@ -185,7 +185,7 @@ LABEL879:
       }
   }
 LABEL944:
-  if (!f170) {
+  if (!fCARRYING_NOTE) {
     if (vROOM_NO != 65 && said("get", "note")) {
       print("You will have to find it before you can get it.");
     }

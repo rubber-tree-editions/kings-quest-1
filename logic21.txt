@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL37:
     random(0, 250, v62);
-    if (v62 < 185 && v81 != 3) {
+    if (v62 < 185 && vWITCH_STATE != WITCHSTATE_DEAD) {
       v30 = 4;
       step.size(o1, v30);
       set(f20);

@@ -685,14 +685,14 @@ if (fCARRYING_GOLD_KEY) {
     print("You already have it.");
   }
 }
-if (f170) {
+if (fCARRYING_NOTE) {
   if (said("examine", "note")) {
     show.obj(122);
   }
   if (said("read", "note") || said("read", "message")) {
     print("The note reads, \"Sometimes it is wise to think backwards.\"");
-    if (!f196) {
-      set(f196);
+    if (!fPOINTS_FOR_READING_NOTE) {
+      set(fPOINTS_FOR_READING_NOTE);
       vSCORE += 1;
     }
   }
