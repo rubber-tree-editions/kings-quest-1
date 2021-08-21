@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define oGOLDEN_EGG o1
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -14,71 +14,92 @@ if (fROOM_SCRIPT_EXECUTED) {
     set(f132);
     vSCORE += 2;
   }
-  if (!f137) {
+  if (!fTAKEN_GOLDEN_EGG) {
     set(f20);
     load.view(39);
-    animate.obj(o1);
-    set.view(o1, 39);
-    position(o1, 70, 85);
-    set.priority(o1, 6);
+    animate.obj(oGOLDEN_EGG);
+    set.view(oGOLDEN_EGG, 39);
+    position(oGOLDEN_EGG, 70, 85);
+    set.priority(oGOLDEN_EGG, 6);
   }
-  LABEL51:
-    set.priority(oEGO, 6);
-    position(oEGO, 35, 164);
-    observe.blocks(oEGO);
-    if (f20) {
-      draw(o1);
-      stop.update(o1);
-    }
-  LABEL70:
-    draw(oEGO);
-    show.pic();
+  set.priority(oEGO, 6);
+  position(oEGO, 35, 164);
+  observe.blocks(oEGO);
+  if (f20) {
+    draw(oGOLDEN_EGG);
+    stop.update(oGOLDEN_EGG);
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (said("examine", "trees")) {
   print(null);
 }
-LABEL85:
-  if (f137) {
-    if (said("examine", "birds nest") || said("look inside", "birds nest")) {
-      print("The nest is empty.");
-    }
-    if (fCARRYING_GOLDEN_EGG && said("get", "golden egg")) {
-      print("You already have the golden egg from the nest.");
-    }
-    LABEL125:
-      if (!fCARRYING_GOLDEN_EGG && said("get", "golden egg")) {
-        print("There is no egg here to get.");
-      }
+if (fTAKEN_GOLDEN_EGG) {
+  if (said("examine", "birds nest") || said("look inside", "birds nest")) {
+    print("The nest is empty.");
   }
-LABEL140:
-  distance(oEGO, o1, v62);
-  if (!f137) {
-    if (said("examine", "birds nest") || said("look inside", "birds nest")) {
-      print("There is a pure golden egg lying in the nest!");
-    }
-    if (said("examine", "golden egg")) {
-      print("The golden egg is smooth and shiny.");
-    }
-    LABEL183:
-      if (said("get", "golden egg")) {
-        if (v62 < 24) {
-          start.update(o1);
-          erase(o1);
-          set(fCARRYING_GOLDEN_EGG);
-          get("gold egg");
-          set(f137);
-          vSCORE += 6;
-          print("The golden egg is so heavy you almost drop it.");
-          goto(LABEL220);
-        }
-        print("You can't get the egg from here!");
-      }
+  if (fCARRYING_GOLDEN_EGG && said("get", "golden egg")) {
+    print("You already have the golden egg from the nest.");
   }
-LABEL220:
-  if (fEGO_ON_WATER && !posn(oEGO, 12, 106, 57, 166) && !f21) {
+  if (!fCARRYING_GOLDEN_EGG && said("get", "golden egg")) {
+    print("There is no egg here to get.");
+  }
+}
+distance(oEGO, oGOLDEN_EGG, v62);
+if (!fTAKEN_GOLDEN_EGG) {
+  if (said("examine", "birds nest") || said("look inside", "birds nest")) {
+    print("There is a pure golden egg lying in the nest!");
+  }
+  if (said("examine", "golden egg")) {
+    print("The golden egg is smooth and shiny.");
+  }
+  if (said("get", "golden egg")) {
+    if (v62 < 24) {
+      start.update(oGOLDEN_EGG);
+      erase(oGOLDEN_EGG);
+      set(fCARRYING_GOLDEN_EGG);
+      get("gold egg");
+      set(fTAKEN_GOLDEN_EGG);
+      vSCORE += 6;
+      print("The golden egg is so heavy you almost drop it.");
+    }
+    else {
+      print("You can't get the egg from here!");
+    }
+  }
+}
+if (fEGO_ON_WATER && !posn(oEGO, 12, 106, 57, 166) && !f21) {
+  set(f21);
+  set(f131);
+  ignore.blocks(oEGO);
+  set.view(oEGO, 105);
+  print();
+  get.posn(oEGO, v60, v61);
+  v61 = 166;
+  v96 = 3;
+  sound(5, fSOUND_END_MARKER);
+  move.obj.v(oEGO, v60, v61, 96, f148);
+}
+if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !f21) {
+  set(f21);
+  set(f131);
+  ignore.blocks(oEGO);
+  set.priority(oEGO, 4);
+  set.view(oEGO, 105);
+  print();
+  get.posn(oEGO, v60, v61);
+  v61 = 166;
+  v96 = 3;
+  sound(5, fSOUND_END_MARKER);
+  move.obj.v(oEGO, v60, v61, 96, f148);
+}
+if (posn(oEGO, 12, 106, 57, 166) && !f21) {
+  if (fEGO_TOUCHED_TRIGGER_LINE || fEGO_ON_WATER) {
     set(f21);
     set(f131);
     ignore.blocks(oEGO);
+    set.priority(oEGO, 5);
     set.view(oEGO, 105);
     print();
     get.posn(oEGO, v60, v61);
@@ -87,46 +108,14 @@ LABEL220:
     sound(5, fSOUND_END_MARKER);
     move.obj.v(oEGO, v60, v61, 96, f148);
   }
-LABEL266:
-  if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !f21) {
-    set(f21);
-    set(f131);
-    ignore.blocks(oEGO);
-    set.priority(oEGO, 4);
-    set.view(oEGO, 105);
-    print();
-    get.posn(oEGO, v60, v61);
-    v61 = 166;
-    v96 = 3;
-    sound(5, fSOUND_END_MARKER);
-    move.obj.v(oEGO, v60, v61, 96, f148);
-  }
-LABEL315:
-  if (posn(oEGO, 12, 106, 57, 166) && !f21) {
-    if (fEGO_TOUCHED_TRIGGER_LINE || fEGO_ON_WATER) {
-      set(f21);
-      set(f131);
-      ignore.blocks(oEGO);
-      set.priority(oEGO, 5);
-      set.view(oEGO, 105);
-      print();
-      get.posn(oEGO, v60, v61);
-      v61 = 166;
-      v96 = 3;
-      sound(5, fSOUND_END_MARKER);
-      move.obj.v(oEGO, v60, v61, 96, f148);
-    }
-  }
-LABEL371:
-  if (f148) {
-    new.room(14);
-  }
-LABEL379:
-  if (vEGO_EDGE_CODE == 3) {
-    new.room(14);
-  }
-LABEL388:
-  return;
+}
+if (f148) {
+  new.room(14);
+}
+if (vEGO_EDGE_CODE == 3) {
+  new.room(14);
+}
+return;
 
 LOGIC__FOOTER
 
