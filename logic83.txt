@@ -6,7 +6,7 @@ LOGIC__HEADER
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
-  load.sound(0);
+  load.sound(SND_TITLE_MUSIC);
   configure.screen(0, 21, 0);
   draw.pic(vROOM_NO);
   prevent.input();
@@ -67,7 +67,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 if (!f21) {
   set(f21);
-  sound(0, f20);
+  sound(SND_TITLE_MUSIC, f20);
 }
 LABEL216:
   v30--;

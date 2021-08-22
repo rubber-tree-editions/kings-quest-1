@@ -13,7 +13,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.logics(LOGIC_SWIMMING);
   set.horizon(50);
-  load.sound(15);
+  load.sound(SND_CASTLE_DOOR_FANFARE);
   if (fGOAT_IS_HERE) {
     load.logics(LOGIC_GOAT);
     load.view(9);
@@ -171,7 +171,7 @@ if (!fGOAT_IS_HERE && !f125) {
     if (posn(oEGO, 105, 120, 121, 128)) {
       set(f27);
       start.update(oCASTLE_DOORS);
-      sound(15, f28);
+      sound(SND_CASTLE_DOOR_FANFARE, f28);
       end.of.loop(oCASTLE_DOORS, f24);
       set.priority(oEGO, 15);
       print("The huge doors swing open slowly.");
