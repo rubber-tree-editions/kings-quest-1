@@ -93,15 +93,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.cursor.char("_");
 }
 if (fGAME_OVER) {
-  if (!f197) {
+  if (!fGAME_OVER_PREPARATION) {
     disable.item(cSAVE);
     disable.item(c7);
     disable.item(cSWIM);
     disable.item(cDUCK);
     load.logics(LOGIC_GAME_OVER);
     load.sound(2);
-    v97 = 40;
-    set(f197);
+    vGAME_OVER_MESSAGE_COUNTDOWN = 40;
+    set(fGAME_OVER_PREPARATION);
   }
   program.control();
   stop.motion(oEGO);

@@ -80,7 +80,7 @@
   #define BOWLSTATE_EMPTY 0
   #define BOWLSTATE_FULL_OF_STEW 1
 #define vTEMP_PIC v92
-#define vTEMP_COUNTDOWN v97
+#define vGAME_OVER_MESSAGE_COUNTDOWN v97
 #define vTEMP_STEP_SIZE v98
 #define vTEMP_X_2 v100
 #define vTEMP_Y_2 v101
@@ -168,6 +168,7 @@
 #define fPOINTS_FOR_STEW f184
 #define fPOINTS_FOR_BOWING_TO_KING f194
 #define fPOINTS_FOR_READING_NOTE f196
+#define fGAME_OVER_PREPARATION 197
 #define fEGO_DUCKING f200
 
 // controls

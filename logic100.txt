@@ -4,9 +4,9 @@ LOGIC__HEADER
 
 
 
-v97--;
-if (v97 == 1) {
-  v97 = 0;
+vGAME_OVER_MESSAGE_COUNTDOWN--;
+if (vGAME_OVER_MESSAGE_COUNTDOWN == 1) {
+  vGAME_OVER_MESSAGE_COUNTDOWN = 0;
   sound(2, f148);
   if (vSCORE < 50) {
     print(null);
