@@ -241,7 +241,7 @@ if (said("thank", "anyword")) {
 }
 if (fCARRYING_DAGGER) {
   if (said("examine", "dagger")) {
-    show.obj(117);
+    show.obj(INV_DAGGER);
   }
   if (said("get", "dagger")) {
     print("You already have it.");
@@ -283,7 +283,7 @@ if (fCARRYING_CARROT) {
     }
   }
   if (said("examine", "carrot")) {
-    show.obj(119);
+    show.obj(INV_CARROT);
   }
   if (said("get", "carrot")) {
     print("You already have a carrot.");
@@ -315,7 +315,7 @@ if (fCARRYING_GOLD_WALNUT) {
     print("Don't do that!  This walnut is not edible since it is pure gold.");
   }
   if (said("examine", "golden walnut")) {
-    show.obj(120);
+    show.obj(INV_GOLDEN_WALNUT);
   }
 }
 if (fCARRYING_WALNUT) {
@@ -323,7 +323,7 @@ if (fCARRYING_WALNUT) {
     print("Ouch!  It would be much easier if you opened the walnut first.");
   }
   if (said("examine", "golden walnut")) {
-    show.obj(139);
+    show.obj(INV_WALNUT);
   }
   if (said("open", "golden walnut") || said("crack", "golden walnut")) {
     if (vROOM_NO == 30) {
@@ -363,7 +363,7 @@ if (fCARRYING_BUCKET && fBUCKET_FILLED && !fEGO_ON_WATER) {
     print("You already have it.");
   }
   if (said("examine", "bucket") || said("examine", "water")) {
-    show.obj(128);
+    show.obj(INV_BUCKET_OF_WATER);
   }
   if (said("drink", "water") || said("get", "drink")) {
     set(f116);
@@ -391,7 +391,7 @@ if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
     }
   }
   if (said("examine", "bucket")) {
-    show.obj(127);
+    show.obj(INV_EMPTY_BUCKET);
   }
 }
 if (fCARRYING_MUSHROOM) {
@@ -399,7 +399,7 @@ if (fCARRYING_MUSHROOM) {
     print("You already have it.");
   }
   if (said("examine", "toadstools")) {
-    show.obj(140);
+    show.obj(INV_MUSHROOM);
   }
   if (said("eat", "toadstools")) {
     if (fEGO_INVISIBLE) {
@@ -433,7 +433,7 @@ if (fEGO_TINY && v82 > 0) {
 }
 if (fCARRYING_RING) {
   if (said("examine", "ring")) {
-    show.obj(123);
+    show.obj(INV_GOLD_RING);
   }
   if (said("get", "ring")) {
     print("You already have it.");
@@ -518,7 +518,7 @@ if (v90 == 1 && v91 == 0) {
 }
 if (fCARRYING_MAGIC_BEANS) {
   if (said("examine", "magic beans")) {
-    show.obj(141);
+    show.obj(INV_MAGIC_BEANS);
   }
   if (said("eat", "magic beans")) {
     print("You're going to be sorry!!  These were magic beans!");
@@ -556,7 +556,7 @@ if (fCARRYING_BOWL) {
         print("The stew is chock full of vegetables and meat.");
       }
       if (said("examine", "bowl") || said("look inside", "bowl")) {
-        show.obj(126);
+        show.obj(INV_BOWL_OF_STEW);
       }
       if (said("fill") || said("fill", "bowl") || said("get", "stew")) {
         print("You already have a full bowl of stew.");
@@ -565,7 +565,7 @@ if (fCARRYING_BOWL) {
   }
   else if (vBOWL_STATE == BOWLSTATE_EMPTY) {
     if (said("examine", "bowl") || said("look inside", "bowl")) {
-      show.obj(125);
+      show.obj(INV_EMPTY_BOWL);
     }
     if (said("read", "bowl") || said("read", "word") || said("examine", "word") || said("read", "bottom", "bowl") || said("examine", "bottom", "bowl")) {
       print("The word on the bottom of the bowl says \"fill\".");
@@ -594,7 +594,7 @@ if (fCARRYING_BOWL) {
 }
 if (fCARRYING_PEBBLES) {
   if (said("examine", "pebbles")) {
-    show.obj(129);
+    show.obj(INV_PEBBLES);
   }
   if (said("throw", "pebbles")) {
     print("You throw one of your pebbles.");
@@ -608,7 +608,7 @@ if (fCARRYING_CHEST) {
     print("You already have it.");
   }
   if (said("examine", "chest") || said("look inside", "chest")) {
-    show.obj(118);
+    show.obj(INV_CHEST);
   }
   if (said("open", "chest")) {
     print("You are dazzled by the countless supply of gold coins spilling from the magic chest.  You quickly close the chest.");
@@ -679,7 +679,7 @@ if (f75) {
 }
 if (fCARRYING_GOLD_KEY) {
   if (said("examine", "gold key")) {
-    show.obj(121);
+    show.obj(INV_GOLD_KEY);
   }
   if (said("get", "gold key")) {
     print("You already have it.");
@@ -687,7 +687,7 @@ if (fCARRYING_GOLD_KEY) {
 }
 if (fCARRYING_NOTE) {
   if (said("examine", "note")) {
-    show.obj(122);
+    show.obj(INV_NOTE);
   }
   if (said("read", "note") || said("read", "message")) {
     print("The note reads, \"Sometimes it is wise to think backwards.\"");
@@ -705,7 +705,7 @@ if (fCARRYING_SWISS_CHEESE) {
     print("You already have it.");
   }
   if (said("examine", "swiss cheese")) {
-    show.obj(134);
+    show.obj(INV_SWISS_CHEESE);
   }
   if (said("eat", "swiss cheese")) {
     print("Mmmm!  That Swiss cheese was as delicious as it looked.");
@@ -716,7 +716,7 @@ if (fCARRYING_SWISS_CHEESE) {
 }
 if (fCARRYING_CLOVER) {
   if (said("examine", "four leaf clover")) {
-    show.obj(124);
+    show.obj(INV_CLOVER);
   }
   if (said("get", "four leaf clover")) {
     print("You already have it.");
@@ -727,7 +727,7 @@ if (fCARRYING_SLINGSHOT) {
     print("You already have it.");
   }
   if (said("examine", "slingshot")) {
-    show.obj(130);
+    show.obj(INV_SLINGSHOT);
   }
 }
 if (fCARRYING_SHIELD) {
@@ -735,7 +735,7 @@ if (fCARRYING_SHIELD) {
     print("You already have it.");
   }
   if (said("examine", "shield")) {
-    show.obj(137);
+    show.obj(INV_SHIELD);
   }
 }
 if (fCARRYING_SCEPTRE) {
@@ -743,7 +743,7 @@ if (fCARRYING_SCEPTRE) {
     print("You already have it.");
   }
   if (said("examine", "sceptre")) {
-    show.obj(133);
+    show.obj(INV_SCEPTRE);
   }
 }
 if (fCARRYING_DIAMONDS) {
@@ -751,7 +751,7 @@ if (fCARRYING_DIAMONDS) {
     print("You already have it.");
   }
   if (said("examine", "pouch of diamonds") || said("examine", "bag of jewels")) {
-    show.obj(131);
+    show.obj(INV_POUCH_OF_DIAMONDS);
   }
   if (said("open", "bag of jewels")) {
     print("You have already opened the pouch.");
@@ -762,7 +762,7 @@ if (fCARRYING_POUCH) {
     print("You already have it.");
   }
   if (said("examine", "bag of jewels")) {
-    show.obj(132);
+    show.obj(INV_CLOSED_POUCH);
   }
   if (!fCARRYING_DIAMONDS) {
     if (said("open", "bag of jewels") || said("look inside", "bag of jewels")) {
@@ -780,7 +780,7 @@ if (fCARRYING_GOLDEN_EGG) {
     print("You already have it.");
   }
   if (said("examine", "golden egg")) {
-    show.obj(136);
+    show.obj(INV_GOLDEN_EGG);
   }
   if (said("eat", "golden egg")) {
     print("This egg will be tough to crack.");
@@ -791,7 +791,7 @@ if (fCARRYING_FIDDLE) {
     print("You already have it.");
   }
   if (said("examine", "fiddle")) {
-    show.obj(138);
+    show.obj(INV_FIDDLE);
   }
   if (vROOM_NO != 76 && vROOM_NO != 77) {
     if (said("play", "fiddle")) {
@@ -807,7 +807,7 @@ if (fCARRYING_MIRROR) {
     print("You already have it.");
   }
   if (said("examine", "mirror") || said("look inside", "mirror")) {
-    show.obj(135);
+    show.obj(INV_MIRROR);
   }
 }
 if (vTREASURE_COUNT == 3) {
