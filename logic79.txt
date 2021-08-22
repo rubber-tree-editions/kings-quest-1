@@ -2,7 +2,10 @@
 
 LOGIC__HEADER
 
-
+#define oBOWL o1
+#define oWOODCUTTER o2
+#define oFIDDLE o3
+#define oWIFE o4
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -12,45 +15,45 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(58);
   load.sound(5);
   load.sound(8);
-  if (f89 || f183) {
+  if (f89 || fGIVEN_BOWL_TO_WOODCUTTER) {
     load.view(25);
     load.view(83);
-    animate.obj(o1);
+    animate.obj(oBOWL);
   }
   if (!fFIDDLE_TAKEN) {
     load.view(50);
-    animate.obj(o3);
-    set.view(o3, 50);
-    position(o3, 128, 155);
+    animate.obj(oFIDDLE);
+    set.view(oFIDDLE, 50);
+    position(oFIDDLE, 128, 155);
   }
   LABEL54:
-    animate.obj(o2);
-    set.view(o2, 57);
-    position(o2, 45, 116);
-    stop.cycling(o2);
-    animate.obj(o4);
-    set.view(o4, 58);
-    position(o4, 89, 115);
-    stop.cycling(o4);
-    draw(o2);
-    draw(o4);
+    animate.obj(oWOODCUTTER);
+    set.view(oWOODCUTTER, 57);
+    position(oWOODCUTTER, 45, 116);
+    stop.cycling(oWOODCUTTER);
+    animate.obj(oWIFE);
+    set.view(oWIFE, 58);
+    position(oWIFE, 89, 115);
+    stop.cycling(oWIFE);
+    draw(oWOODCUTTER);
+    draw(oWIFE);
     if (!fFIDDLE_TAKEN) {
-      stop.cycling(o3);
-      draw(o3);
+      stop.cycling(oFIDDLE);
+      draw(oFIDDLE);
     }
   LABEL91:
-    if (f183) {
+    if (fGIVEN_BOWL_TO_WOODCUTTER) {
       if (v89 == 0) {
-        set.view(o1, 25);
+        set.view(oBOWL, 25);
       }
       if (v89 == 1) {
-        set.view(o1, 83);
+        set.view(oBOWL, 83);
       }
       LABEL117:
-        position(o1, 68, 104);
-        set.priority(o1, 14);
-        draw(o1);
-        stop.update(o1);
+        position(oBOWL, 68, 104);
+        set.priority(oBOWL, 14);
+        draw(oBOWL);
+        stop.update(oBOWL);
     }
   LABEL128:
     if (vPREV_ROOM_NO == 44) {
@@ -92,14 +95,14 @@ LABEL231:
   }
 LABEL243:
   if (said("examine", "table")) {
-    if (!f183) {
+    if (!fGIVEN_BOWL_TO_WOODCUTTER) {
       print("The woodcutter and his wife are sitting at the old oak table.");
     }
-    if (f183 && v89 == 0) {
+    if (fGIVEN_BOWL_TO_WOODCUTTER && v89 == 0) {
       print("There is an empty bowl sitting on the old oak table.");
     }
     LABEL273:
-      if (f183 && v89 == 1) {
+      if (fGIVEN_BOWL_TO_WOODCUTTER && v89 == 1) {
         print();
       }
   }
@@ -109,13 +112,13 @@ LABEL284:
     print("\"Welcome to my humble abode.\"");
     if (!f20) {
       set(f20);
-      start.cycling(o2);
+      start.cycling(oWOODCUTTER);
       v30 = 18;
     }
   }
 LABEL312:
   if (said("talk", "woman")) {
-    if (!f183) {
+    if (!fGIVEN_BOWL_TO_WOODCUTTER) {
       print("She replies, \"I'd like to offer you something, but we do not even have food for ourselves.\"");
       goto(LABEL336);
     }
@@ -123,7 +126,7 @@ LABEL312:
     LABEL336:
       if (!f21) {
         set(f21);
-        start.cycling(o4);
+        start.cycling(oWIFE);
         v30 = 18;
       }
   }
@@ -131,17 +134,17 @@ LABEL350:
   if (v30 == 1) {
     if (f20) {
       reset(f20);
-      stop.cycling(o2);
+      stop.cycling(oWOODCUTTER);
     }
     if (f21) {
       reset(f21);
-      stop.cycling(o4);
+      stop.cycling(oWIFE);
     }
     LABEL377:
       if (f24) {
         reset(f24);
-        stop.cycling(o2);
-        stop.cycling(o4);
+        stop.cycling(oWOODCUTTER);
+        stop.cycling(oWIFE);
       }
   }
 LABEL389:
@@ -153,8 +156,8 @@ LABEL415:
     print("What an abominable idea!  You should be ashamed of yourself for even suggesting such a thing!");
     if (!f24) {
       set(f24);
-      start.cycling(o2);
-      start.cycling(o4);
+      start.cycling(oWOODCUTTER);
+      start.cycling(oWIFE);
       v30 = 18;
     }
   }
@@ -175,19 +178,19 @@ LABEL493:
     print("You should have more sympathy for these poor folks!");
     if (!f24) {
       set(f24);
-      start.cycling(o2);
-      start.cycling(o4);
+      start.cycling(oWOODCUTTER);
+      start.cycling(oWIFE);
       v30 = 18;
     }
   }
 LABEL521:
-  if (f183) {
+  if (fGIVEN_BOWL_TO_WOODCUTTER) {
     if (said("get", "bowl")) {
       print("You have given the bowl to these poor people and it is now theirs.  You have no right to take it back.");
       if (!f24) {
         set(f24);
-        start.cycling(o2);
-        start.cycling(o4);
+        start.cycling(oWOODCUTTER);
+        start.cycling(oWIFE);
         v30 = 18;
       }
     }
@@ -212,8 +215,8 @@ LABEL621:
     print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
     if (!f24) {
       set(f24);
-      start.cycling(o2);
-      start.cycling(o4);
+      start.cycling(oWOODCUTTER);
+      start.cycling(oWIFE);
       v30 = 18;
     }
     reset(fCARRYING_DIAMONDS);
@@ -225,8 +228,8 @@ LABEL658:
     print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
     if (!f24) {
       set(f24);
-      start.cycling(o2);
-      start.cycling(o4);
+      start.cycling(oWOODCUTTER);
+      start.cycling(oWIFE);
       v30 = 18;
     }
     reset(fCARRYING_GOLDEN_EGG);
@@ -238,8 +241,8 @@ LABEL695:
     print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
     if (!f24) {
       set(f24);
-      start.cycling(o2);
-      start.cycling(o4);
+      start.cycling(oWOODCUTTER);
+      start.cycling(oWIFE);
       v30 = 18;
     }
     reset(fCARRYING_GOLD_WALNUT);
@@ -251,8 +254,8 @@ LABEL732:
     print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
     if (!f24) {
       set(f24);
-      start.cycling(o2);
-      start.cycling(o4);
+      start.cycling(oWOODCUTTER);
+      start.cycling(oWIFE);
       v30 = 18;
     }
     reset(fCARRYING_SCEPTRE);
@@ -264,8 +267,8 @@ LABEL769:
     print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
     if (!f24) {
       set(f24);
-      start.cycling(o2);
-      start.cycling(o4);
+      start.cycling(oWOODCUTTER);
+      start.cycling(oWIFE);
       v30 = 18;
     }
     reset(fCARRYING_CARROT);
@@ -277,8 +280,8 @@ LABEL806:
     print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
     if (!f24) {
       set(f24);
-      start.cycling(o2);
-      start.cycling(o4);
+      start.cycling(oWOODCUTTER);
+      start.cycling(oWIFE);
       v30 = 18;
     }
     reset(f154);
@@ -289,48 +292,48 @@ LABEL843:
   if (f89) {
     if (v89 == 0) {
       if (said("give", "bowl") || said("give", "bowl", "man") || said("give", "man", "bowl") || said("give", "woman", "bowl") || said("give", "bowl", "woman") || said("drop", "bowl", "table")) {
-        set(f183);
+        set(fGIVEN_BOWL_TO_WOODCUTTER);
         reset(f89);
         drop("ceramic bowl");
         vSCORE -= 3;
         vSCORE += 6;
-        position(o1, 68, 104);
-        set.priority(o1, 14);
-        set.view(o1, 25);
-        draw(o1);
+        position(oBOWL, 68, 104);
+        set.priority(oBOWL, 14);
+        set.view(oBOWL, 25);
+        draw(oBOWL);
         print("Puzzled, the couple wonders why you have given them a bowl.");
         if (!f24) {
           set(f24);
-          start.cycling(o2);
-          start.cycling(o4);
+          start.cycling(oWOODCUTTER);
+          start.cycling(oWIFE);
           v30 = 18;
         }
       }
     }
     if (v89 == 1) {
       if (said("give", "bowl") || said("give", "bowl", "man") || said("give", "man", "bowl") || said("give", "woman", "bowl") || said("give", "bowl", "woman") || said("drop", "bowl", "table") || said("give", "stew") || said("give", "stew", "man") || said("give", "man", "stew") || said("give", "woman", "stew") || said("give", "stew", "woman") || said("drop", "stew", "table")) {
-        set(f183);
+        set(fGIVEN_BOWL_TO_WOODCUTTER);
         reset(f89);
         drop("ceramic bowl");
         vSCORE -= 3;
         vSCORE += 6;
-        position(o1, 68, 104);
-        set.priority(o1, 14);
-        set.view(o1, 83);
-        draw(o1);
+        position(oBOWL, 68, 104);
+        set.priority(oBOWL, 14);
+        set.view(oBOWL, 83);
+        draw(oBOWL);
         print("The woodcutter family is very grateful that you have given them a bowl of stew.  Now they will have at least one last meal.  As a token of their gratitude, they offer their last earthly possession, the woodcutter's fiddle.");
         set(f185);
         if (!f24) {
           set(f24);
-          start.cycling(o2);
-          start.cycling(o4);
+          start.cycling(oWOODCUTTER);
+          start.cycling(oWIFE);
           v30 = 18;
         }
       }
     }
   }
 LABEL1099:
-  if (f183) {
+  if (fGIVEN_BOWL_TO_WOODCUTTER) {
     if (said("eat", "stew")) {
       if (v89 == 0) {
         print("Eat stew from an empty bowl?  The woodcutters are beginning to question your authenticity.");
@@ -340,11 +343,11 @@ LABEL1099:
     }
   }
 LABEL1129:
-  if (f183 && v89 == 0) {
+  if (fGIVEN_BOWL_TO_WOODCUTTER && v89 == 0) {
     if (said("fill") || said("say", "fill")) {
-      erase(o1);
-      set.view(o1, 83);
-      draw(o1);
+      erase(oBOWL);
+      set.view(oBOWL, 83);
+      draw(oBOWL);
       print("The couple is amazed and delighted as the bowl miraculously fills with a bubbling stew.  As a token of their gratitude, they offer their last earthly possession, the woodcutter's fiddle.");
       v89 = 1;
       if (!fPOINTS_FOR_STEW) {
@@ -354,8 +357,8 @@ LABEL1129:
       set(f185);
       if (!f24) {
         set(f24);
-        start.cycling(o2);
-        start.cycling(o4);
+        start.cycling(oWOODCUTTER);
+        start.cycling(oWIFE);
         v30 = 18;
       }
     }
@@ -387,7 +390,7 @@ LABEL1208:
           print("You cannot take their last precious possession!");
         }
         if (posn(oEGO, 120, 140, 158, 166) && f185) {
-          erase(o3);
+          erase(oFIDDLE);
           set(fCARRYING_FIDDLE);
           set(fFIDDLE_TAKEN);
           print("The polished wood feels like satin -- it seems to still vibrate from the last song it played.");
