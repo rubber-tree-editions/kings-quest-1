@@ -67,7 +67,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   }
   draw(oEGO);
-  call(101);
+  call(LOGIC_SWIMMING);
   wander(oGATOR1);
   wander(oGATOR2);
   show.pic();
@@ -311,9 +311,9 @@ LABEL986:
     new.room(3);
   }
   if (f75) {
-    call(103);
+    call(LOGIC_GOAT);
   }
-  call(101);
+  call(LOGIC_SWIMMING);
   return;
 
 LOGIC__FOOTER

@@ -14,7 +14,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(103);
   }
   load.logics(101);
-  call(101);
+  call(LOGIC_SWIMMING);
   set(f68);
   if (!f150 && !f151) {
     load.view(65);
@@ -390,9 +390,9 @@ LABEL1264:
     new.room(40);
   }
 LABEL1273:
-  call(101);
+  call(LOGIC_SWIMMING);
   if (f75) {
-    call(103);
+    call(LOGIC_GOAT);
   }
 LABEL1283:
   return;

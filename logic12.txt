@@ -589,7 +589,7 @@ LABEL1985:
   }
 LABEL1994:
   if (f75) {
-    call(103);
+    call(LOGIC_GOAT);
   }
 LABEL2002:
   return;

@@ -57,6 +57,7 @@
 #define vDRAGON_STATE v75
 #define vTEMP_INPUT_NUM1 v78
 #define vTEMP_INPUT_NUM2 v79
+#define vBEANSTALK_ROOM v80
 #define vWITCH_STATE v81
   #define WITCHSTATE_AT_HOME 1
   #define WITCHSTATE_AWAY_FROM_HOME 2
@@ -174,6 +175,7 @@
 #define cRESTART c3
 #define cSWIM c5
 #define cDUCK c8
+#define cHELP c18
 
 #define oEGO o0
 
@@ -204,3 +206,12 @@
 #define INV_WALNUT 139
 #define INV_MUSHROOM 140
 #define INV_MAGIC_BEANS 141
+
+#define LOGIC_HELP 92
+#define LOGIC_ERROR 98
+#define LOGIC_DEBUG 99
+#define LOGIC_GAME_OVER 100
+#define LOGIC_SWIMMING 101
+#define LOGIC_DEFAULT_RESPONSES 102
+#define LOGIC_GOAT 103
+#define LOGIC_BEANSTALK 104

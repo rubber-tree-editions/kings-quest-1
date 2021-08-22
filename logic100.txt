@@ -45,8 +45,8 @@ LABEL100:
     status();
   }
 LABEL108:
-  if (controller(c18)) {
-    call(92);
+  if (controller(cHELP)) {
+    call(LOGIC_HELP);
   }
 LABEL116:
   if (controller(c17)) {

@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL37:
     load.logics(101);
-    call(101);
+    call(LOGIC_SWIMMING);
     set(f68);
     if (vPREV_ROOM_NO == 23) {
       if (fEGO_ON_WATER) {
@@ -87,10 +87,10 @@ LABEL240:
   }
 LABEL249:
   if (f75) {
-    call(103);
+    call(LOGIC_GOAT);
   }
 LABEL257:
-  call(101);
+  call(LOGIC_SWIMMING);
   return;
 
 LOGIC__FOOTER

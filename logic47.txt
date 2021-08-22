@@ -16,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL35:
     load.logics(101);
-    call(101);
+    call(LOGIC_SWIMMING);
     if (!fMUSHROOM_TAKEN) {
       load.view(60);
       load.view(84);
@@ -220,10 +220,10 @@ LABEL775:
   }
 LABEL784:
   if (f75) {
-    call(103);
+    call(LOGIC_GOAT);
   }
 LABEL792:
-  call(101);
+  call(LOGIC_SWIMMING);
   return;
 
 LOGIC__FOOTER

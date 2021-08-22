@@ -4,7 +4,7 @@ LOGIC__HEADER
 
 
 
-if (v80 == vROOM_NO) {
+if (vBEANSTALK_ROOM == vROOM_NO) {
   if (said("climb", "beanstalk")) {
     if (f157) {
       print(null);

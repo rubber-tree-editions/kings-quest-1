@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.sound(5);
   load.logics(101);
-  call(101);
+  call(LOGIC_SWIMMING);
   load.view(72);
   load.view(16);
   load.view(74);
@@ -407,7 +407,7 @@ LABEL1255:
     new.room(12);
   }
 LABEL1264:
-  call(101);
+  call(LOGIC_SWIMMING);
   return;
 
 LOGIC__FOOTER

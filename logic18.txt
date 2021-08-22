@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL37:
     load.logics(101);
-    call(101);
+    call(LOGIC_SWIMMING);
     random(0, 250, v62);
     if (v62 < 85 && !f82) {
       load.view(7);
@@ -225,10 +225,10 @@ LABEL695:
   }
 LABEL704:
   if (f75) {
-    call(103);
+    call(LOGIC_GOAT);
   }
 LABEL712:
-  call(101);
+  call(LOGIC_SWIMMING);
   return;
 
 LOGIC__FOOTER

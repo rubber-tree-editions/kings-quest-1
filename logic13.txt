@@ -148,7 +148,7 @@ LABEL381:
   }
 LABEL390:
   if (f75) {
-    call(103);
+    call(LOGIC_GOAT);
   }
 LABEL398:
   return;

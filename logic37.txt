@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   set.horizon(55);
   load.logics(101);
-  call(101);
+  call(LOGIC_SWIMMING);
   if (f75) {
     load.logics(103);
   }
@@ -121,10 +121,10 @@ LABEL365:
   }
 LABEL374:
   if (f75) {
-    call(103);
+    call(LOGIC_GOAT);
   }
 LABEL382:
-  call(101);
+  call(LOGIC_SWIMMING);
   return;
 
 LOGIC__FOOTER

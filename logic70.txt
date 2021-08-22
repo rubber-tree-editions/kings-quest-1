@@ -94,22 +94,22 @@ LABEL245:
   }
 LABEL254:
   if (f20 || posn(oEGO, 0, 166, 159, 167)) {
-    if (v80 == 6) {
+    if (vBEANSTALK_ROOM == 6) {
       new.room(6);
     }
-    if (v80 == 22) {
+    if (vBEANSTALK_ROOM == 22) {
       new.room(22);
     }
     LABEL286:
-      if (v80 == 31) {
+      if (vBEANSTALK_ROOM == 31) {
         new.room(31);
       }
     LABEL295:
-      if (v80 == 35) {
+      if (vBEANSTALK_ROOM == 35) {
         new.room(35);
       }
     LABEL304:
-      if (v80 == 38) {
+      if (vBEANSTALK_ROOM == 38) {
         new.room(38);
       }
   }

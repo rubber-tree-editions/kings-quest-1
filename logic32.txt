@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL37:
     load.logics(101);
-    call(101);
+    call(LOGIC_SWIMMING);
     set(f68);
     ignore.blocks(oEGO);
     draw(oEGO);
@@ -100,10 +100,10 @@ LABEL287:
   }
 LABEL296:
   if (f75) {
-    call(103);
+    call(LOGIC_GOAT);
   }
 LABEL304:
-  call(101);
+  call(LOGIC_SWIMMING);
   return;
 
 LOGIC__FOOTER

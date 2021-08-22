@@ -20,7 +20,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 18, 140, 0, 0);
   }
   LABEL47:
-    if (fCARRYING_MAGIC_BEANS || v80 == 22) {
+    if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == 22) {
       v92 = 84;
       set(f155);
       load.pic(v92);
@@ -81,7 +81,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (vPREV_ROOM_NO == 50) {
       position(oEGO, 142, 83);
     }
-    if (v80 == 22) {
+    if (vBEANSTALK_ROOM == 22) {
       overlay.pic(v92);
     }
   LABEL234:
@@ -215,7 +215,7 @@ LABEL633:
   if (fCARRYING_MAGIC_BEANS && f155) {
     if (said("plant", "magic beans")) {
       reset(fCARRYING_MAGIC_BEANS);
-      v80 = 22;
+      vBEANSTALK_ROOM = 22;
       set(f94);
       drop("beans");
       vSCORE += 2;
@@ -226,7 +226,7 @@ LABEL633:
     }
   }
 LABEL671:
-  if (v80 == 22 && !fEGO_INVISIBLE) {
+  if (vBEANSTALK_ROOM == 22 && !fEGO_INVISIBLE) {
     if (said("climb", "beanstalk") && !f157) {
       if (posn(oEGO, 52, 76, 103, 97)) {
         erase(oEGO);
@@ -242,7 +242,7 @@ LABEL671:
     }
   }
 LABEL731:
-  if (v80 != 22) {
+  if (vBEANSTALK_ROOM != 22) {
     if (said("climb", "beanstalk")) {
       print("There is no beanstalk here to climb.");
     }
@@ -346,11 +346,11 @@ LABEL990:
   }
 LABEL1002:
   if (f75) {
-    call(103);
+    call(LOGIC_GOAT);
   }
 LABEL1010:
-  if (v80 == 22) {
-    call(104);
+  if (vBEANSTALK_ROOM == 22) {
+    call(LOGIC_BEANSTALK);
   }
 LABEL1019:
   return;

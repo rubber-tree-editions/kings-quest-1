@@ -133,7 +133,7 @@ LABEL343:
   }
 LABEL352:
   if (f75) {
-    call(103);
+    call(LOGIC_GOAT);
   }
 LABEL360:
   return;

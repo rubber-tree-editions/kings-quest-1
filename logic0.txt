@@ -3,7 +3,7 @@
 LOGIC__HEADER
 
 if (vERROR_CODE > 0) {
-  call(98);
+  call(LOGIC_ERROR);
 }
 if (vROOM_NO == 0) {
   set.game.id("KQ1");
@@ -105,11 +105,11 @@ if (fGAME_OVER) {
   }
   program.control();
   stop.motion(oEGO);
-  call(100);
+  call(LOGIC_GAME_OVER);
   return;
 }
-if (controller(c18) && vROOM_NO != 83) {
-  call(92);
+if (controller(cHELP) && vROOM_NO != 83) {
+  call(LOGIC_HELP);
 }
 if (controller(c17)) {
   toggle(fSOUND_ENABLED);
@@ -814,10 +814,10 @@ if (vTREASURE_COUNT == 3) {
   reset(f125);
 }
 if (f190) {
-  call(99);
+  call(LOGIC_DEBUG);
 }
 call.v(vROOM_NO);
-call(102);
+call(LOGIC_DEFAULT_RESPONSES);
 return;
 
 LOGIC__FOOTER

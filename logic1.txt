@@ -53,7 +53,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   LABEL131:
     draw(oEGO);
-    call(101);
+    call(LOGIC_SWIMMING);
     if (vPREV_ROOM_NO == 83) {
       submit.menu();
     }
@@ -234,10 +234,10 @@ LABEL674:
   }
 LABEL683:
   if (f75) {
-    call(103);
+    call(LOGIC_GOAT);
   }
 LABEL691:
-  call(101);
+  call(LOGIC_SWIMMING);
   return;
 
 LOGIC__FOOTER

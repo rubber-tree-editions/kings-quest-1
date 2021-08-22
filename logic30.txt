@@ -86,7 +86,7 @@ LABEL238:
   }
 LABEL247:
   if (f75) {
-    call(103);
+    call(LOGIC_GOAT);
   }
 LABEL255:
   return;

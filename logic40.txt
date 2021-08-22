@@ -12,7 +12,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   set.horizon(42);
   load.logics(101);
-  call(101);
+  call(LOGIC_SWIMMING);
   ignore.blocks(oEGO);
   if (vGNOME_STATE <= GNOMESTATE_PRESENT) {
     load.view(27);
@@ -285,7 +285,7 @@ LABEL898:
   if (vEGO_EDGE_CODE == 3) {
     new.room(25);
   }
-  call(101);
+  call(LOGIC_SWIMMING);
   return;
 
 LOGIC__FOOTER
