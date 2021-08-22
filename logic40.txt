@@ -2,7 +2,9 @@
 
 LOGIC__HEADER
 
-
+#define oGNOME o1
+#define oMAGIC_BEANS o2
+#define oGOLD_KEY o3
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -14,51 +16,51 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oEGO);
   if (v83 <= 0) {
     load.view(27);
-    animate.obj(o1);
-    set.view(o1, 27);
-    position(o1, 34, 104);
-    observe.blocks(o1);
-    wander(o1);
+    animate.obj(oGNOME);
+    set.view(oGNOME, 27);
+    position(oGNOME, 34, 104);
+    observe.blocks(oGNOME);
+    wander(oGNOME);
     load.view(29);
-    animate.obj(o2);
-    set.view(o2, 29);
-    position(o2, 39, 118);
-    ignore.objs(o2);
+    animate.obj(oMAGIC_BEANS);
+    set.view(oMAGIC_BEANS, 29);
+    position(oMAGIC_BEANS, 39, 118);
+    ignore.objs(oMAGIC_BEANS);
     load.view(28);
-    animate.obj(o3);
-    set.view(o3, 28);
-    position(o3, 39, 118);
-    ignore.objs(o3);
+    animate.obj(oGOLD_KEY);
+    set.view(oGOLD_KEY, 28);
+    position(oGOLD_KEY, 39, 118);
+    ignore.objs(oGOLD_KEY);
   }
   if (v83 == 1 && v85 != 2) {
     set(f20);
     load.view(29);
-    animate.obj(o2);
-    set.view(o2, 29);
-    position(o2, 39, 118);
+    animate.obj(oMAGIC_BEANS);
+    set.view(oMAGIC_BEANS, 29);
+    position(oMAGIC_BEANS, 39, 118);
   }
   LABEL93:
     if (v83 == 2 && v85 != 1) {
       set(f21);
       load.view(28);
-      animate.obj(o3);
-      set.view(o3, 28);
-      position(o3, 39, 118);
+      animate.obj(oGOLD_KEY);
+      set.view(oGOLD_KEY, 28);
+      position(oGOLD_KEY, 39, 118);
     }
   LABEL117:
     if (v83 <= 0) {
-      draw(o1);
+      draw(oGNOME);
       set(f23);
     }
   LABEL129:
     if (f21) {
-      draw(o3);
-      stop.update(o3);
+      draw(oGOLD_KEY);
+      stop.update(oGOLD_KEY);
     }
   LABEL139:
     if (f20) {
-      draw(o2);
-      stop.update(o2);
+      draw(oMAGIC_BEANS);
+      stop.update(oMAGIC_BEANS);
     }
   LABEL149:
     set(f68);
@@ -75,7 +77,7 @@ LABEL166:
   }
 LABEL179:
   if (f23) {
-    distance(oEGO, o1, v62);
+    distance(oEGO, oGNOME, v62);
     if (f22) {
       if (said("talk", "man") || said("hello") || said("say", "hello")) {
         if (v62 < 50) {
@@ -128,12 +130,12 @@ LABEL333:
       goto(LABEL898);
     }
     if (said("ifnkovhgroghprm")) {
-      erase(o1);
+      erase(oGNOME);
       reset(f22);
       reset(f23);
-      draw(o2);
+      draw(oMAGIC_BEANS);
       set(f20);
-      stop.update(o2);
+      stop.update(oMAGIC_BEANS);
       v83 = 1;
       print("That's right!!!  You've guessed it!!  Here are some magic beans for your outstanding accomplishment!");
       if (v84 <= 0) {
@@ -169,12 +171,12 @@ LABEL333:
     if (v84 == 2) {
       if (said("anyword") || said("anyword", "anyword")) {
         accept.input();
-        erase(o1);
+        erase(oGNOME);
         reset(f22);
         reset(f23);
-        draw(o3);
+        draw(oGOLD_KEY);
         set(f21);
-        stop.update(o3);
+        stop.update(oGOLD_KEY);
         v83 = 2;
         print("You didn't guess the gnome's name, but he left you a gold key anyway.  Better luck next time!");
         v84 = 3;
@@ -187,7 +189,7 @@ LABEL333:
       print("There is no gnome here.");
     }
     if (f20) {
-      distance(oEGO, o2, v70);
+      distance(oEGO, oMAGIC_BEANS, v70);
       if (said("examine", "magic beans")) {
         if (v70 > 40) {
           print("That's too far away.");
@@ -203,8 +205,8 @@ LABEL333:
           }
           print("Being careful that you get every one of them, you place the beans in your pocket.");
           reset(f20);
-          start.update(o2);
-          erase(o2);
+          start.update(oMAGIC_BEANS);
+          erase(oMAGIC_BEANS);
           set(fCARRYING_MAGIC_BEANS);
           get("beans");
           v85 = 2;
@@ -213,7 +215,7 @@ LABEL333:
     }
     LABEL660:
       if (f21) {
-        distance(oEGO, o3, v71);
+        distance(oEGO, oGOLD_KEY, v71);
         if (said("examine", "gold key")) {
           if (v71 > 40) {
             print("That's too far away.");
@@ -229,8 +231,8 @@ LABEL333:
             }
             print("It is heavy and cold.");
             reset(f21);
-            start.update(o3);
-            erase(o3);
+            start.update(oGOLD_KEY);
+            erase(oGOLD_KEY);
             set(fCARRYING_GOLD_KEY);
             get("key");
             v85 = 1;

@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define oBIRD o1
 
 if (fROOM_SCRIPT_EXECUTED) {
   v68 = 0;
@@ -61,13 +61,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     random(0, 250, v62);
     if (v62 < 125 && !f204) {
       v31 = 4;
-      step.size(o1, v31);
+      step.size(oBIRD, v31);
       set(f20);
       load.view(8);
       load.view(89);
-      animate.obj(o1);
-      set.view(o1, 8);
-      set.priority(o1, 15);
+      animate.obj(oBIRD);
+      set.view(oBIRD, 8);
+      set.priority(oBIRD, 15);
     }
   LABEL194:
     if (f20) {
@@ -119,17 +119,17 @@ LABEL313:
   v70--;
   if (v70 == 1 && !f158 && !f157) {
     set(f21);
-    position(o1, 7, 35);
+    position(oBIRD, 7, 35);
     v68 = 250;
     v69 = 3;
-    draw(o1);
+    draw(oBIRD);
     if (!f75) {
       print(null);
-      wander(o1);
+      wander(oBIRD);
     }
     if (f75) {
       print("High up in the sky you see a very large, friendly bird, but it is afraid to come near you because of the goat.");
-      wander(o1);
+      wander(oBIRD);
       set(f22);
     }
   }
@@ -141,34 +141,34 @@ LABEL365:
   }
 LABEL382:
   if (v68 == 1 && v69 == 0) {
-    wander(o1);
+    wander(oBIRD);
     set(f22);
   }
 LABEL396:
   if (!f22 && f21) {
-    get.posn(o1, v104, v105);
+    get.posn(oBIRD, v104, v105);
     if (v105 > 110) {
       v106 = 1;
-      set.dir(o1, v106);
-      wander(o1);
+      set.dir(oBIRD, v106);
+      wander(oBIRD);
     }
   }
 LABEL424:
   if (f22 && vOBJECT_EDGE_CODE != 0) {
     reset(f22);
     reset(f21);
-    erase(o1);
+    erase(oBIRD);
   }
 LABEL440:
-  distance(oEGO, o1, v71);
+  distance(oEGO, oBIRD, v71);
   get.posn(oEGO, v100, v101);
-  get.posn(o1, v32, v33);
+  get.posn(oBIRD, v32, v33);
   v33 += 20;
   if (v71 > 20 && v71 < 30 && v101 > v33 && f143 && !f22) {
     reset(f143);
     set(f145);
     program.control();
-    erase(o1);
+    erase(oBIRD);
     set.view(oEGO, 89);
     set(f209);
     ignore.horizon(oEGO);

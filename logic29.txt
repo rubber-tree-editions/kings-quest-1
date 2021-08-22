@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define oSORCERER o1
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -25,13 +25,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     random(0, 250, v62);
     if (v62 < 185) {
       v32 = 2;
-      step.size(o1, v32);
+      step.size(oSORCERER, v32);
       load.view(5);
       load.view(116);
       load.sound(1);
       load.sound(17);
-      animate.obj(o1);
-      set.view(o1, 5);
+      animate.obj(oSORCERER);
+      set.view(oSORCERER, 5);
       set(f20);
     }
   LABEL86:
@@ -59,16 +59,16 @@ if (f21 && fSOUND_END_MARKER) {
 LABEL139:
   v70--;
   if (v70 == 1) {
-    position(o1, 40, 140);
+    position(oSORCERER, 40, 140);
     set(f21);
     sound(1, fSOUND_END_MARKER);
-    draw(o1);
+    draw(oSORCERER);
     if (!f75) {
       print(null);
-      follow.ego(o1, 7, f156);
+      follow.ego(oSORCERER, 7, f156);
     }
     if (f75) {
-      wander(o1);
+      wander(oSORCERER);
       set(f22);
       print(null);
       print("The sorcerer sees the goat and decides to leave.");
@@ -101,7 +101,7 @@ LABEL273:
     reset(f156);
     if (fPROTECTED_BY_SPELL) {
       print("This sorcerer's magic is no match for your fairy godmother's.");
-      wander(o1);
+      wander(oSORCERER);
       set(f22);
       goto(LABEL347);
     }
@@ -112,7 +112,7 @@ LABEL273:
     }
     if (fCARRYING_SHIELD) {
       print("The magic shield will protect you from this dangerous  sorcerer.");
-      wander(o1);
+      wander(oSORCERER);
       set(f22);
       goto(LABEL347);
     }
@@ -121,8 +121,8 @@ LABEL273:
     v31 = 2;
     program.control();
     stop.motion(oEGO);
-    set.view(o1, 116);
-    end.of.loop(o1, f23);
+    set.view(oSORCERER, 116);
+    end.of.loop(oSORCERER, f23);
     print("The sorcerer casts a spell, freezing you to the spot. I hope no dangerous creatures drop by!");
     set(f145);
     set(f146);
@@ -130,20 +130,20 @@ LABEL273:
 LABEL347:
   if (f23) {
     reset(f23);
-    set.view(o1, 5);
-    start.cycling(o1);
-    wander(o1);
+    set.view(oSORCERER, 5);
+    start.cycling(oSORCERER);
+    wander(oSORCERER);
     set(f22);
   }
 LABEL364:
   if (f22 && vOBJECT_EDGE_CODE != 0) {
-    erase(o1);
+    erase(oSORCERER);
     reset(f22);
     reset(f21);
   }
 LABEL380:
   if (f27) {
-    erase(o1);
+    erase(oSORCERER);
     reset(f27);
     reset(f21);
   }

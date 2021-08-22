@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define oMUSHROOM o1
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -20,9 +20,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (!fMUSHROOM_TAKEN) {
       load.view(60);
       load.view(84);
-      animate.obj(o1);
-      set.view(o1, 84);
-      position(o1, 84, 80);
+      animate.obj(oMUSHROOM);
+      set.view(oMUSHROOM, 84);
+      position(oMUSHROOM, 84, 80);
       set(f20);
     }
   LABEL61:
@@ -37,7 +37,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL96:
     if (f20) {
       reset(f20);
-      draw(o1);
+      draw(oMUSHROOM);
     }
   LABEL106:
     set(f68);
@@ -116,7 +116,7 @@ LABEL247:
           goto(LABEL415);
         }
         if (posn(oEGO, 74, 70, 94, 90)) {
-          erase(o1);
+          erase(oMUSHROOM);
           print("You reach down and pick a fat mushroom.");
           set(fMUSHROOM_TAKEN);
           set(fCARRYING_MUSHROOM);

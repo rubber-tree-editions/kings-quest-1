@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define oBOWL o1
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -58,13 +58,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL154:
     if (!fBOWL_TAKEN) {
       load.view(25);
-      animate.obj(o1);
-      set.view(o1, 25);
-      position(o1, 126, 138);
+      animate.obj(oBOWL);
+      set.view(oBOWL, 25);
+      position(oBOWL, 126, 138);
     }
   LABEL172:
     if (!fBOWL_TAKEN) {
-      draw(o1);
+      draw(oBOWL);
     }
   LABEL181:
     if (v80 == 31) {
@@ -118,8 +118,8 @@ LABEL309:
   if (!fBOWL_TAKEN && said("get", "bowl")) {
     if (posn(oEGO, 116, 128, 136, 148)) {
       print("You pick up the ceramic bowl.");
-      start.update(o1);
-      erase(o1);
+      start.update(oBOWL);
+      erase(oBOWL);
       vSCORE += 3;
       set(fCARRYING_BOWL);
       set(fBOWL_TAKEN);

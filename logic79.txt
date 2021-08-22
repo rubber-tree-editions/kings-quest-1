@@ -44,10 +44,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL91:
     if (fGIVEN_BOWL_TO_WOODCUTTER) {
       if (vBOWL_STATE == BOWLSTATE_EMPTY) {
-        set.view(o1, 25);
+        set.view(oBOWL, 25);
       }
       if (vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
-        set.view(o1, 83);
+        set.view(oBOWL, 83);
       }
       LABEL117:
         position(oBOWL, 68, 104);

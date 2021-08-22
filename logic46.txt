@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define oOGRE o1
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -20,12 +20,12 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (v62 < 175) {
       load.sound(1);
       v31 = 2;
-      step.size(o1, v31);
+      step.size(oOGRE, v31);
       load.view(94);
       load.view(95);
       load.view(2);
-      animate.obj(o1);
-      set.view(o1, 2);
+      animate.obj(oOGRE);
+      set.view(oOGRE, 2);
       set(f20);
     }
   LABEL69:
@@ -44,17 +44,17 @@ v70--;
 if (v70 == 1) {
   set(f145);
   set(f146);
-  position(o1, 40, 51);
+  position(oOGRE, 40, 51);
   set(f21);
   set(f135);
   sound(1, fSOUND_END_MARKER);
-  draw(o1);
+  draw(oOGRE);
   if (!f75) {
     print(null);
-    follow.ego(o1, 7, f156);
+    follow.ego(oOGRE, 7, f156);
   }
   if (f75) {
-    wander(o1);
+    wander(oOGRE);
     set(f23);
     print(null);
     print("Lucky for you that ogres are afraid of goats. This one decides to leave you alone.");
@@ -85,25 +85,25 @@ LABEL201:
     reset(f156);
     if (fEGO_INVISIBLE) {
       print("Fortunately, you are invisible and the ogre can't see you.");
-      wander(o1);
+      wander(oOGRE);
       set(f23);
       goto(LABEL284);
     }
     if (fPROTECTED_BY_SPELL) {
       print("You are very fortunate that your protective spell is still working.");
-      wander(o1);
+      wander(oOGRE);
       set(f23);
       goto(LABEL284);
     }
     if (fCARRYING_SHIELD) {
       print("With the magic shield, no harm will come to you.");
-      wander(o1);
+      wander(oOGRE);
       set(f23);
       goto(LABEL284);
     }
     if (fEGO_TINY) {
       print("The ogre's vision is not keen enough to see you.");
-      wander(o1);
+      wander(oOGRE);
       set(f23);
       goto(LABEL284);
     }
@@ -111,14 +111,14 @@ LABEL201:
     v30 = 10;
     program.control();
     stop.motion(oEGO);
-    erase(o1);
+    erase(oOGRE);
     set.view(oEGO, 94);
   }
 LABEL282:
   v30--;
 LABEL284:
   if (f23 && vOBJECT_EDGE_CODE != 0) {
-    erase(o1);
+    erase(oOGRE);
     reset(f23);
     reset(f21);
   }
@@ -128,13 +128,13 @@ LABEL300:
     get.posn(oEGO, v60, v61);
     erase(oEGO);
     set.view(oEGO, 95);
-    set.view(o1, 2);
+    set.view(oOGRE, 2);
     position.v(oEGO, v60, v61);
-    position.v(o1, v60, v61);
-    draw(o1);
+    position.v(oOGRE, v60, v61);
+    draw(oOGRE);
     draw(oEGO);
-    stop.motion(o1);
-    stop.cycling(o1);
+    stop.motion(oOGRE);
+    stop.cycling(oOGRE);
     set(fGAME_OVER);
   }
 LABEL339:

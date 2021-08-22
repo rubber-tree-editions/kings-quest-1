@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define oDWARF o1
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -59,10 +59,10 @@ if (fROOM_SCRIPT_EXECUTED) {
     random(0, 250, v62);
     if (v62 < 85) {
       v31 = 4;
-      step.size(o1, v31);
+      step.size(oDWARF, v31);
       load.view(111);
-      animate.obj(o1);
-      set.view(o1, 111);
+      animate.obj(oDWARF);
+      set.view(oDWARF, 111);
       set(f20);
       load.sound(1);
       load.sound(16);
@@ -116,16 +116,16 @@ LABEL275:
 LABEL295:
   v70--;
   if (v70 == 1 && !f158 && !f157) {
-    position(o1, 16, 79);
+    position(oDWARF, 16, 79);
     set(f21);
     sound(1, fSOUND_END_MARKER);
-    draw(o1);
+    draw(oDWARF);
     if (!f75) {
       print(null);
-      follow.ego(o1, 7, f156);
+      follow.ego(oDWARF, 7, f156);
     }
     if (f75) {
-      wander(o1);
+      wander(oDWARF);
       set(f23);
       print(null);
       print("The dwarf sees the goat and decides to leave.");
@@ -155,13 +155,13 @@ LABEL427:
     reset(f156);
     if (fPROTECTED_BY_SPELL) {
       print("It's a good thing you are protected by a spell.  That little dwarf likes to steal treasures.");
-      wander(o1);
+      wander(oDWARF);
       set(f23);
       goto(LABEL642);
     }
     if (fEGO_INVISIBLE) {
       print();
-      wander(o1);
+      wander(oDWARF);
       set(f23);
       goto(LABEL642);
     }
@@ -231,17 +231,17 @@ LABEL427:
       goto(LABEL636);
     }
     print("The quick, little dwarf came by to see what you had -- nothing interested him.");
-    wander(o1);
+    wander(oDWARF);
     set(f23);
     goto(LABEL642);
     LABEL636:
       print("That little dwarf caught you by surprise.  Is your treasure still OK?");
-      wander(o1);
+      wander(oDWARF);
       set(f23);
   }
 LABEL642:
   if (f23 && vOBJECT_EDGE_CODE != 0) {
-    erase(o1);
+    erase(oDWARF);
     reset(f23);
     reset(f21);
   }

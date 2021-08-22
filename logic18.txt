@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define oELF o1
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -21,11 +21,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     random(0, 250, v62);
     if (v62 < 85 && !f82) {
       load.view(7);
-      animate.obj(o1);
-      set.view(o1, 7);
-      position(o1, 26, 60);
-      observe.blocks(o1);
-      object.on.land(o1);
+      animate.obj(oELF);
+      set.view(oELF, 7);
+      position(oELF, 26, 60);
+      observe.blocks(oELF);
+      object.on.land(oELF);
       set(f22);
     }
   LABEL72:
@@ -49,9 +49,9 @@ if (fROOM_SCRIPT_EXECUTED) {
 v71--;
 if (v71 == 1) {
   reset(f22);
-  draw(o1);
+  draw(oELF);
   set(f20);
-  wander(o1);
+  wander(oELF);
   print(null);
 }
 LABEL138:
@@ -78,7 +78,7 @@ LABEL150:
   }
 LABEL212:
   if (f20) {
-    distance(oEGO, o1, v70);
+    distance(oEGO, oELF, v70);
     if (said("examine", "room")) {
       print("There is a very pretty lake nearby with a small little elf running along its shore.");
     }
@@ -92,7 +92,7 @@ LABEL212:
     LABEL266:
       if (said("murder", "elf") || said("catch", "elf")) {
         set(f21);
-        erase(o1);
+        erase(oELF);
         reset(f20);
         print("I'm surprised at you!  That is very impolite!");
       }
@@ -100,7 +100,7 @@ LABEL212:
       if (fCARRYING_DAGGER) {
         if (said("throw", "dagger") || said("throw", "dagger", "elf")) {
           set(f21);
-          erase(o1);
+          erase(oELF);
           reset(f20);
           print("I'm surprised at you!  That is very impolite!");
         }
@@ -112,7 +112,7 @@ LABEL212:
           get("ring");
           set(fCARRYING_RING);
           vSCORE += 3;
-          erase(o1);
+          erase(oELF);
           reset(f20);
           set(f82);
           goto(LABEL378);

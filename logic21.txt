@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define oWITCH o1
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -19,16 +19,16 @@ if (fROOM_SCRIPT_EXECUTED) {
     random(0, 250, v62);
     if (v62 < 185 && vWITCH_STATE != WITCHSTATE_DEAD) {
       v30 = 4;
-      step.size(o1, v30);
+      step.size(oWITCH, v30);
       set(f20);
       load.view(3);
       load.view(91);
       load.sound(1);
-      animate.obj(o1);
-      set.view(o1, 3);
-      ignore.horizon(o1);
-      ignore.blocks(o1);
-      set.loop(o1, 1);
+      animate.obj(oWITCH);
+      set.view(oWITCH, 3);
+      ignore.horizon(oWITCH);
+      ignore.blocks(oWITCH);
+      set.loop(oWITCH, 1);
     }
   LABEL78:
     if (f20) {
@@ -46,22 +46,22 @@ if (fROOM_SCRIPT_EXECUTED) {
 v70--;
 if (v70 == 1) {
   set(f21);
-  position(o1, 80, 40);
-  draw(o1);
+  position(oWITCH, 80, 40);
+  draw(oWITCH);
   set(f135);
   sound(1, fSOUND_END_MARKER);
   if (!f75) {
     print(null);
-    follow.ego(o1, 20, f24);
+    follow.ego(oWITCH, 20, f24);
   }
   if (f75) {
-    wander(o1);
+    wander(oWITCH);
     set(f22);
     print("There is a witch in the area, but since you have that menacing goat with you, she will keep her distance.");
   }
   LABEL150:
     if (fEGO_INVISIBLE) {
-      wander(o1);
+      wander(oWITCH);
       set(f22);
       print("Lucky for you that you are invisible, the witch can't find you.");
     }
@@ -77,32 +77,32 @@ LABEL172:
     reset(f135);
     if (fPROTECTED_BY_SPELL) {
       print("The witch can feel your protective spell and bids a hasty retreat.");
-      wander(o1);
+      wander(oWITCH);
       set(f22);
       goto(LABEL271);
     }
     if (fEGO_INVISIBLE) {
       print("Lucky for you that you are invisible, the witch can't find you.");
-      wander(o1);
+      wander(oWITCH);
       set(f22);
       goto(LABEL271);
     }
     if (fCARRYING_SHIELD) {
       print("There is a witch in the area, but with the shield no harm will come to you.");
-      wander(o1);
+      wander(oWITCH);
       set(f22);
       goto(LABEL271);
     }
     if (fEGO_DUCKING) {
       print("The witch missed you, this time.");
-      wander(o1);
+      wander(oWITCH);
       set(f22);
       goto(LABEL271);
     }
     print("The witch swoops down, grabs you by the neck, and carries you off to a fate worse than death.");
     program.control();
     set(f142);
-    erase(o1);
+    erase(oWITCH);
     set.view(oEGO, 91);
     ignore.blocks(oEGO);
     ignore.horizon(oEGO);
@@ -115,7 +115,7 @@ LABEL271:
   if (f22 && vOBJECT_EDGE_CODE != 0) {
     reset(f22);
     reset(f21);
-    erase(o1);
+    erase(oWITCH);
   }
 LABEL287:
   if (!f21) {

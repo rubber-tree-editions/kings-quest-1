@@ -2,7 +2,8 @@
 
 LOGIC__HEADER
 
-
+#define oMAGIC_MIRROR o1
+#define oDRAGON o3
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -40,11 +41,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   LABEL91:
     if (!f165) {
-      animate.obj(o1);
-      set.view(o1, 34);
-      position(o1, 38, 108);
-      draw(o1);
-      stop.update(o1);
+      animate.obj(oMAGIC_MIRROR);
+      set.view(oMAGIC_MIRROR, 34);
+      position(oMAGIC_MIRROR, 38, 108);
+      draw(oMAGIC_MIRROR);
+      stop.update(oMAGIC_MIRROR);
     }
   LABEL111:
     if (v75 == 2) {
@@ -63,18 +64,18 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(o2, 3, 127);
       draw(o2);
       stop.cycling(o2);
-      animate.obj(o3);
+      animate.obj(oDRAGON);
       if (v75 == 1) {
         add.to.pic(61, 0, 0, 40, 152, 0, 0);
       }
       if (v75 == 0) {
-        set.view(o3, 33);
-        position(o3, 40, 120);
+        set.view(oDRAGON, 33);
+        position(oDRAGON, 40, 120);
         v30 = 3;
-        step.size(o3, v30);
-        draw(o3);
-        observe.blocks(o3);
-        follow.ego(o3, 20, f20);
+        step.size(oDRAGON, v30);
+        draw(oDRAGON);
+        observe.blocks(oDRAGON);
+        follow.ego(oDRAGON, 20, f20);
       }
     }
   LABEL201:
@@ -100,7 +101,7 @@ LABEL238:
   }
 LABEL253:
   if (v75 == 0 && f25) {
-    current.loop(o3, v31);
+    current.loop(oDRAGON, v31);
     if (v31 == 0) {
       sound(7, f148);
       goto(LABEL279);
@@ -276,8 +277,8 @@ LABEL788:
             print("I do not think that you can get close enough to the magic mirror with the dragon here.");
           }
           if (v75 == 2 || v75 == 1) {
-            start.update(o1);
-            erase(o1);
+            start.update(oMAGIC_MIRROR);
+            erase(oMAGIC_MIRROR);
             set(fCARRYING_MIRROR);
             set(f165);
             get("magic mirror");
@@ -333,23 +334,23 @@ LABEL1064:
       vSCORE -= 2;
       vSCORE += 7;
       reset(fFILL_BUCKET_POINTS);
-      move.obj(o3, 40, 137, 0, f21);
+      move.obj(oDRAGON, 40, 137, 0, f21);
       v75 = 2;
     }
     if (fCARRYING_DAGGER && said("throw", "dagger")) {
-      ignore.blocks(o3);
+      ignore.blocks(oDRAGON);
       reset(fCARRYING_DAGGER);
       print("Nervously, you throw the dagger at the dragon and strike it in the heart.  Death for the dragon is instant.");
       drop("dagger");
       vSCORE -= 5;
       vSCORE += 3;
-      erase(o3);
-      set.view(o3, 61);
+      erase(oDRAGON);
+      set.view(oDRAGON, 61);
       v30 = 0;
-      step.size(o3, v30);
-      draw(o3);
-      stop.motion(o3);
-      stop.cycling(o3);
+      step.size(oDRAGON, v30);
+      draw(oDRAGON);
+      stop.motion(oDRAGON);
+      stop.cycling(oDRAGON);
       v75 = 1;
     }
   }
@@ -361,15 +362,15 @@ LABEL1175:
   }
 LABEL1188:
   if (f22) {
-    ignore.blocks(o3);
+    ignore.blocks(oDRAGON);
     reset(f22);
     stop.cycling(o2);
-    move.obj(o3, 4, 137, 0, f23);
+    move.obj(oDRAGON, 4, 137, 0, f23);
   }
 LABEL1206:
   if (f23) {
     reset(f23);
-    erase(o3);
+    erase(oDRAGON);
   }
 LABEL1216:
   if (vEGO_EDGE_CODE == 2) {

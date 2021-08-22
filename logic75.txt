@@ -2,7 +2,8 @@
 
 LOGIC__HEADER
 
-
+#define oRAT o1
+#define oDOOR o2
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -22,49 +23,49 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (!f138) {
       load.sound(1);
       load.view(45);
-      animate.obj(o1);
-      set.view(o1, 45);
-      position(o1, 36, 127);
+      animate.obj(oRAT);
+      set.view(oRAT, 45);
+      position(oRAT, 36, 127);
       set(f20);
-      follow.ego(o1, 15, f21);
-      observe.blocks(o1);
+      follow.ego(oRAT, 15, f21);
+      observe.blocks(oRAT);
       v30 = 3;
-      step.size(o1, v30);
+      step.size(oRAT, v30);
     }
   LABEL79:
     load.sound(19);
     load.view(46);
-    animate.obj(o2);
-    set.view(o2, 46);
+    animate.obj(oDOOR);
+    set.view(oDOOR, 46);
     if (vPREV_ROOM_NO == 76) {
-      set.cel(o2, 5);
+      set.cel(oDOOR, 5);
       goto(LABEL104);
     }
   LABEL101:
-    set.cel(o2, 0);
+    set.cel(oDOOR, 0);
   LABEL104:
-    ignore.blocks(o2);
-    set.priority(o2, 9);
-    position(o2, 25, 119);
-    draw(o2);
+    ignore.blocks(oDOOR);
+    set.priority(oDOOR, 9);
+    position(oDOOR, 25, 119);
+    draw(oDOOR);
     if (f20) {
-      draw(o1);
+      draw(oRAT);
     }
   LABEL123:
     draw(oEGO);
     show.pic();
     if (vPREV_ROOM_NO == 76) {
-      reverse.loop(o2, f203);
+      reverse.loop(oDOOR, f203);
       sound(19, f148);
       goto(LABEL144);
     }
   LABEL142:
-    stop.update(o2);
+    stop.update(oDOOR);
 }
 LABEL144:
   if (f203) {
     reset(f203);
-    stop.update(o2);
+    stop.update(oDOOR);
   }
 LABEL154:
   if (f20) {
@@ -94,7 +95,7 @@ LABEL195:
   }
 LABEL241:
   if (!f138) {
-    distance(oEGO, o1, v70);
+    distance(oEGO, oRAT, v70);
     if (said("examine", "rat")) {
       print("It is a big rat with dripping teeth and small, greedy eyes.");
     }
@@ -136,7 +137,7 @@ LABEL241:
         if (said("give", "pouch of diamonds") || said("give", "rat", "pouch of diamonds") || said("give", "pouch of diamonds", "rat") || said("give", "bag of jewels") || said("give", "rat", "bag of jewels") || said("give", "bag of jewels", "rat")) {
           if (fCARRYING_DIAMONDS && v70 < 35) {
             print("The huge rat takes the treasure you have offered and scuttles away.");
-            move.obj(o1, 46, 105, 0, f24);
+            move.obj(oRAT, 46, 105, 0, f24);
             drop("pouch of diamonds");
             reset(fCARRYING_DIAMONDS);
             set(f107);
@@ -150,7 +151,7 @@ LABEL241:
       if (said("give", "golden egg") || said("give", "rat", "golden egg") || said("give", "golden egg", "rat")) {
         if (fCARRYING_GOLDEN_EGG && v70 < 35) {
           print("The huge rat takes the treasure you have offered and scuttles away.");
-          move.obj(o1, 46, 105, 0, f24);
+          move.obj(oRAT, 46, 105, 0, f24);
           drop("gold egg");
           reset(fCARRYING_GOLDEN_EGG);
           set(f111);
@@ -172,7 +173,7 @@ LABEL241:
           if (fCARRYING_GOLD_WALNUT) {
             if (v70 < 35) {
               print("The huge rat takes the treasure you have offered and scuttles away.");
-              move.obj(o1, 46, 105, 0, f24);
+              move.obj(oRAT, 46, 105, 0, f24);
               drop("gold walnut");
               reset(fCARRYING_GOLD_WALNUT);
               set(f109);
@@ -186,7 +187,7 @@ LABEL241:
       if (said("give", "sceptre") || said("give", "rat", "sceptre") || said("give", "sceptre", "rat")) {
         if (fCARRYING_SCEPTRE && v70 < 35) {
           print("The huge rat takes the treasure you have offered and scuttles away.");
-          move.obj(o1, 46, 105, 0, f24);
+          move.obj(oRAT, 46, 105, 0, f24);
           drop("sceptre");
           reset(fCARRYING_SCEPTRE);
           set(f114);
@@ -203,7 +204,7 @@ LABEL241:
         if (fCARRYING_SWISS_CHEESE) {
           if (v70 < 35) {
             print("The rat drools at the sight of the cheese... and snatches it from your hand.  You might want to count your fingers.");
-            move.obj(o1, 46, 105, 0, f24);
+            move.obj(oRAT, 46, 105, 0, f24);
             drop("cheese");
             reset(fCARRYING_SWISS_CHEESE);
             set(f140);
@@ -218,7 +219,7 @@ LABEL241:
 LABEL810:
   if (f24) {
     reset(f24);
-    erase(o1);
+    erase(oRAT);
     set(f138);
     print("The rat scrambles to the wall and seems to magically merge with it.");
   }
@@ -230,17 +231,17 @@ LABEL844:
   if (f21) {
     set.view(oEGO, 95);
     print("Be careful around this rat next time!  He's dangerous!!");
-    wander(o1);
+    wander(oRAT);
     set(fGAME_OVER);
   }
 LABEL859:
-  distance(oEGO, o2, v71);
+  distance(oEGO, oDOOR, v71);
   if (said("open", "doors")) {
     if (v71 < 25) {
-      start.update(o2);
+      start.update(oDOOR);
       sound(19, f148);
       print("The door slowly opens.");
-      end.of.loop(o2, f23);
+      end.of.loop(oDOOR, f23);
       goto(LABEL895);
     }
     print("Get closer if you want to try.");

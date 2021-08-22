@@ -2,6 +2,7 @@
 
 LOGIC__HEADER
 
+#define oGATE o1
 #define oGOAT o13
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -10,9 +11,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   set.horizon(41);
   load.view(15);
-  animate.obj(o1);
-  set.view(o1, 15);
-  ignore.blocks(o1);
+  animate.obj(oGATE);
+  set.view(oGATE, 15);
+  ignore.blocks(oGATE);
   load.view(62);
   load.view(67);
   if (!f75 && v65 <= 0 && !f130) {
@@ -28,15 +29,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL70:
     if (!f78) {
-      position(o1, 17, 156);
-      draw(o1);
+      position(oGATE, 17, 156);
+      draw(oGATE);
       set(f20);
     }
   LABEL85:
     if (f78) {
-      position(o1, 43, 156);
-      draw(o1);
-      stop.update(o1);
+      position(oGATE, 43, 156);
+      draw(oGATE);
+      stop.update(oGATE);
     }
   LABEL99:
     if (f75) {
@@ -76,7 +77,7 @@ LABEL189:
   if (said("open", "gate")) {
     if (f20) {
       if (posn(oEGO, 6, 139, 55, 167)) {
-        move.obj(o1, 43, 156, 0, f78);
+        move.obj(oGATE, 43, 156, 0, f78);
         reset(f20);
         print("The gate is rather heavy, but you manage to open it.");
         goto(LABEL230);
@@ -99,8 +100,8 @@ LABEL238:
         }
         print("You find the gate is much easier to close than it was to open.");
         LABEL285:
-          start.update(o1);
-          move.obj(o1, 17, 156, 0, f20);
+          start.update(oGATE);
+          move.obj(oGATE, 17, 156, 0, f20);
           reset(f78);
           goto(LABEL300);
       }

@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define oDWARF o1
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -15,11 +15,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.sound(16);
     load.view(111);
     load.view(115);
-    animate.obj(o1);
-    set.view(o1, 111);
+    animate.obj(oDWARF);
+    set.view(oDWARF, 111);
     set(f23);
-    observe.blocks(o1);
-    ignore.horizon(o1);
+    observe.blocks(oDWARF);
+    ignore.horizon(oDWARF);
   }
   if (f23) {
     LABEL50:
@@ -58,24 +58,24 @@ LABEL137:
   v70--;
   if (v70 == 1) {
     if (posn(oEGO, 0, 0, 159, 83)) {
-      position(o1, 96, 162);
+      position(oDWARF, 96, 162);
       goto(LABEL167);
     }
-    position(o1, 30, 27);
+    position(oDWARF, 30, 27);
     LABEL167:
-      draw(o1);
+      draw(oDWARF);
       set(f24);
-      move.obj(o1, 130, 127, 2, f25);
+      move.obj(oDWARF, 130, 127, 2, f25);
   }
 LABEL177:
   if (!f26) {
-    distance(oEGO, o1, v71);
+    distance(oEGO, oDWARF, v71);
   }
 LABEL188:
   if (f25) {
     set(f26);
     reset(f25);
-    follow.ego(o1, 10, f156);
+    follow.ego(oDWARF, 10, f156);
   }
 LABEL202:
   if (said("examine", "stairway") || said("examine", "room")) {
@@ -138,20 +138,20 @@ LABEL376:
     reset(f156);
     v71 = 0;
     set(f26);
-    normal.motion(o1);
-    ignore.blocks(o1);
+    normal.motion(oDWARF);
+    ignore.blocks(oDWARF);
     if (fPROTECTED_BY_SPELL) {
       print("It's a good thing you are protected by a spell.  That little dwarf likes to steal treasures.");
-      set.view(o1, 115);
+      set.view(oDWARF, 115);
       reset(f24);
-      end.of.loop(o1, f21);
+      end.of.loop(oDWARF, f21);
       goto(LABEL616);
     }
     if (fEGO_INVISIBLE) {
       print();
-      set.view(o1, 115);
+      set.view(oDWARF, 115);
       reset(f24);
-      end.of.loop(o1, f21);
+      end.of.loop(oDWARF, f21);
       goto(LABEL616);
     }
     if (fCARRYING_MIRROR) {
@@ -219,20 +219,20 @@ LABEL376:
       drop("sceptre");
       goto(LABEL606);
     }
-    set.view(o1, 115);
+    set.view(oDWARF, 115);
     reset(f24);
     print("The quick, little dwarf came by to see what you had-- nothing interested him.");
-    end.of.loop(o1, f21);
+    end.of.loop(oDWARF, f21);
     goto(LABEL616);
     LABEL606:
-      set.view(o1, 115);
+      set.view(oDWARF, 115);
       reset(f24);
       print("That little dwarf caught you by surprise.  Is your treasure still OK?");
-      end.of.loop(o1, f21);
+      end.of.loop(oDWARF, f21);
   }
 LABEL616:
   if (f21) {
-    erase(o1);
+    erase(oDWARF);
   }
 LABEL624:
   if (vEGO_EDGE_CODE == 1) {

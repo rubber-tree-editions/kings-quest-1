@@ -2,7 +2,8 @@
 
 LOGIC__HEADER
 
-
+#define oTROLL o1
+#define oGOAT o13
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -17,10 +18,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   set(f68);
   if (!f150 && !f151) {
     load.view(65);
-    animate.obj(o1);
-    set.view(o1, 65);
-    position(o1, 95, 154);
-    observe.blocks(o1);
+    animate.obj(oTROLL);
+    set.view(oTROLL, 65);
+    position(oTROLL, 95, 154);
+    observe.blocks(oTROLL);
     set(f20);
     load.sound(1);
     load.sound(10);
@@ -54,7 +55,7 @@ LABEL113:
 LABEL122:
   if (f21 && !f25) {
     set(f25);
-    follow.ego(o1, 1, f22);
+    follow.ego(oTROLL, 1, f22);
   }
 LABEL137:
   if (!f21) {
@@ -98,9 +99,9 @@ LABEL267:
     reset(f20);
     set(f21);
     v30 = 2;
-    step.size(o1, v30);
+    step.size(oTROLL, v30);
     sound(1, fSOUND_END_MARKER);
-    draw(o1);
+    draw(oTROLL);
     if (fEGO_INVISIBLE) {
       print();
       goto(LABEL303);
@@ -109,45 +110,45 @@ LABEL267:
   }
 LABEL303:
   if (f21 && f75 && !f26) {
-    distance(oEGO, o13, v31);
+    distance(oEGO, oGOAT, v31);
     if (v31 > 25) {
-      reposition.to(o13, 98, 90);
+      reposition.to(oGOAT, 98, 90);
     }
     print("It is a well known fact that goats hate trolls intensely. You should move aside and let the goat take care of this nasty troll.");
     set(f26);
     set(f76);
-    move.obj(o13, 98, 95, 0, f23);
+    move.obj(oGOAT, 98, 95, 0, f23);
   }
 LABEL341:
   if (f23) {
-    ignore.objs(o13);
+    ignore.objs(oGOAT);
     reset(f23);
-    move.obj(o1, 100, 124, 0, f148);
-    move.obj(o13, 100, 124, 1, f203);
+    move.obj(oTROLL, 100, 124, 0, f148);
+    move.obj(oGOAT, 100, 124, 1, f203);
   }
 LABEL363:
-  distance(o1, o13, v62);
+  distance(oTROLL, oGOAT, v62);
   if (v62 < 15 && !f150) {
     print("The old goat seeing the troll, the archenemy of all goats, charges the troll and butts him into oblivion!  The bridge is now yours.");
     set(f150);
     reset(f21);
     reset(f75);
-    erase(o1);
+    erase(oTROLL);
     set(f130);
-    get.posn(o13, v60, v61);
+    get.posn(oGOAT, v60, v61);
     v61 = 80;
-    move.obj.v(o13, v60, v61, 96, f31);
+    move.obj.v(oGOAT, v60, v61, 96, f31);
     vSCORE += 4;
   }
 LABEL405:
   if (f31) {
     reset(f31);
-    move.obj(o13, 135, 80, 1, f30);
+    move.obj(oGOAT, 135, 80, 1, f30);
   }
 LABEL419:
   if (f30) {
     reset(f30);
-    erase(o13);
+    erase(oGOAT);
   }
 LABEL429:
   if (f21 && !f75) {
@@ -292,12 +293,12 @@ LABEL965:
   if (f27) {
     print("Grasping the precious treasure in a dirt-covered paw, the troll disappears under the bridge.");
     reset(f27);
-    move.obj(o1, 99, 153, 0, f28);
+    move.obj(oTROLL, 99, 153, 0, f28);
   }
 LABEL981:
   if (f28) {
     reset(f28);
-    erase(o1);
+    erase(oTROLL);
     reset(f21);
   }
 LABEL993:
