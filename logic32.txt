@@ -38,7 +38,7 @@ LABEL73:
   }
 LABEL97:
   if (said("get", "water")) {
-    if (f81 && !fBUCKET_FILLED) {
+    if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
       print();
     }
   }

@@ -99,13 +99,13 @@ if (said("examine", "flowers")) {
   print("They raise their colorful faces to the sun.");
 }
 LABEL253:
-  if (!f81) {
+  if (!fCARRYING_BUCKET) {
     if (said("get", "water")) {
       print("All the water is at the bottom of the well.");
     }
   }
 LABEL272:
-  if (f81 && !fBUCKET_FILLED) {
+  if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
     if (said("get", "water")) {
       print("Somebody has cut the rope;  there's no way for you to get the bucket to the well's bottom.");
     }
@@ -294,7 +294,7 @@ LABEL958:
   }
 LABEL1006:
   if (f176 || f177) {
-    if (!f81 && (said("get", "bucket") || said("examine", "bucket"))) {
+    if (!fCARRYING_BUCKET && (said("get", "bucket") || said("examine", "bucket"))) {
       print("There is no bucket here.");
     }
   }
@@ -306,7 +306,7 @@ LABEL1039:
   }
 LABEL1065:
   if (!f176 && !f177) {
-    if (!f81 && said("get", "bucket")) {
+    if (!fCARRYING_BUCKET && said("get", "bucket")) {
       if (posn(oEGO, 10, 109, 71, 153)) {
         print("The old bucket is securely fastened to a strong rope.");
         goto(LABEL1105);
@@ -314,7 +314,7 @@ LABEL1065:
       print("You need to be closer to do that.");
     }
     LABEL1105:
-      if (!f81 && said("examine", "bucket")) {
+      if (!fCARRYING_BUCKET && said("examine", "bucket")) {
         if (posn(oEGO, 10, 109, 71, 153)) {
           if (f163) {
             print("The old bucket holds a full load of water.");
@@ -464,7 +464,7 @@ LABEL1538:
             erase(o2);
             draw(o3);
             stop.cycling(o3);
-            set(f81);
+            set(fCARRYING_BUCKET);
             if (f163) {
               get("water");
               set(fBUCKET_FILLED);

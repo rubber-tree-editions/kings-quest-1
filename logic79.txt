@@ -12,7 +12,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(58);
   load.sound(5);
   load.sound(8);
-  if (f89 || f183) {
+  if (fCARRYING_BOWL || f183) {
     load.view(25);
     load.view(83);
     animate.obj(o1);
@@ -40,10 +40,10 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   LABEL91:
     if (f183) {
-      if (v89 == 0) {
+      if (vBOWL_STATE == BOWLSTATE_EMPTY) {
         set.view(o1, 25);
       }
-      if (v89 == 1) {
+      if (vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
         set.view(o1, 83);
       }
       LABEL117:
@@ -95,11 +95,11 @@ LABEL243:
     if (!f183) {
       print("The woodcutter and his wife are sitting at the old oak table.");
     }
-    if (f183 && v89 == 0) {
+    if (f183 && vBOWL_STATE == BOWLSTATE_EMPTY) {
       print("There is an empty bowl sitting on the old oak table.");
     }
     LABEL273:
-      if (f183 && v89 == 1) {
+      if (f183 && vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
         print();
       }
   }
@@ -273,7 +273,7 @@ LABEL769:
     vSCORE -= 2;
   }
 LABEL806:
-  if (f154 && said("give", "magic beans")) {
+  if (fCARRYING_MAGIC_BEANS && said("give", "magic beans")) {
     print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
     if (!f24) {
       set(f24);
@@ -281,16 +281,16 @@ LABEL806:
       start.cycling(o4);
       v30 = 18;
     }
-    reset(f154);
+    reset(fCARRYING_MAGIC_BEANS);
     drop("beans");
     vSCORE -= 6;
   }
 LABEL843:
-  if (f89) {
-    if (v89 == 0) {
+  if (fCARRYING_BOWL) {
+    if (vBOWL_STATE == BOWLSTATE_EMPTY) {
       if (said("give", "bowl") || said("give", "bowl", "man") || said("give", "man", "bowl") || said("give", "woman", "bowl") || said("give", "bowl", "woman") || said("drop", "bowl", "table")) {
         set(f183);
-        reset(f89);
+        reset(fCARRYING_BOWL);
         drop("ceramic bowl");
         vSCORE -= 3;
         vSCORE += 6;
@@ -307,10 +307,10 @@ LABEL843:
         }
       }
     }
-    if (v89 == 1) {
+    if (vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
       if (said("give", "bowl") || said("give", "bowl", "man") || said("give", "man", "bowl") || said("give", "woman", "bowl") || said("give", "bowl", "woman") || said("drop", "bowl", "table") || said("give", "stew") || said("give", "stew", "man") || said("give", "man", "stew") || said("give", "woman", "stew") || said("give", "stew", "woman") || said("drop", "stew", "table")) {
         set(f183);
-        reset(f89);
+        reset(fCARRYING_BOWL);
         drop("ceramic bowl");
         vSCORE -= 3;
         vSCORE += 6;
@@ -332,7 +332,7 @@ LABEL843:
 LABEL1099:
   if (f183) {
     if (said("eat", "stew")) {
-      if (v89 == 0) {
+      if (vBOWL_STATE == BOWLSTATE_EMPTY) {
         print("Eat stew from an empty bowl?  The woodcutters are beginning to question your authenticity.");
         goto(LABEL1129);
       }
@@ -340,13 +340,13 @@ LABEL1099:
     }
   }
 LABEL1129:
-  if (f183 && v89 == 0) {
+  if (f183 && vBOWL_STATE == BOWLSTATE_EMPTY) {
     if (said("fill") || said("say", "fill")) {
       erase(o1);
       set.view(o1, 83);
       draw(o1);
       print("The couple is amazed and delighted as the bowl miraculously fills with a bubbling stew.  As a token of their gratitude, they offer their last earthly possession, the woodcutter's fiddle.");
-      v89 = 1;
+      vBOWL_STATE = BOWLSTATE_FULL_OF_STEW;
       if (!fPOINTS_FOR_STEW) {
         set(fPOINTS_FOR_STEW);
         vSCORE += 2;

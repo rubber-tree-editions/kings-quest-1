@@ -70,7 +70,7 @@ LABEL173:
     }
   }
 LABEL248:
-  if (!fBUCKET_FILLED && f81 && !fEGO_ON_WATER && said("get", "water")) {
+  if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
     if (posn(oEGO, 64, 106, 116, 167)) {
       reset(f116);
       print(null);

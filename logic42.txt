@@ -136,7 +136,7 @@ LABEL383:
     print("You are too far from the water.");
   }
 LABEL462:
-  if (!fBUCKET_FILLED && f81) {
+  if (!fBUCKET_FILLED && fCARRYING_BUCKET) {
     if (said("get", "water") || said("fill", "bucket")) {
       if (posn(oEGO, 121, 40, 159, 78)) {
         print("The crystal clear water fills up the bucket.");

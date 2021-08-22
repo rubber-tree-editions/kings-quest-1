@@ -350,7 +350,7 @@ LABEL1115:
     }
   }
 LABEL1163:
-  if (!fBUCKET_FILLED && f81 && !fEGO_ON_WATER && said("get", "water")) {
+  if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
     if (posn(oEGO, 1, 46, 158, 102)) {
       print("The steep embankment prevents you from doing that.");
       goto(LABEL1198);

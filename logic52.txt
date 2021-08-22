@@ -28,7 +28,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL60:
     v68 = 250;
     v69 = 3;
-    if (f81 && !fBUCKET_FILLED) {
+    if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
       set(fBUCKET_FILLED);
       get("water");
       if (!fFILL_BUCKET_POINTS) {
@@ -43,9 +43,9 @@ if (fROOM_SCRIPT_EXECUTED) {
       drop("ring");
       vSCORE -= 3;
       print();
-      reset(f83);
+      reset(fCARRYING_RING);
       reset(fEGO_INVISIBLE);
-      reset(f133);
+      reset(fWEARING_RING);
       set(f115);
       v90 = 0;
       v91 = 0;

@@ -61,7 +61,7 @@ LABEL196:
       }
   }
 LABEL264:
-  if (!f81) {
+  if (!fCARRYING_BUCKET) {
     if (vROOM_NO != 12 && said("get", "water")) {
       print("You have no container for water.");
     }
@@ -95,7 +95,7 @@ LABEL386:
       }
   }
 LABEL474:
-  if (!f83) {
+  if (!fCARRYING_RING) {
     if (said("get", "ring")) {
       print("You will have to find it before you can get it.");
     }
@@ -104,7 +104,7 @@ LABEL474:
     }
   }
 LABEL512:
-  if (!f154) {
+  if (!fCARRYING_MAGIC_BEANS) {
     if (vROOM_NO != 40 && said("get", "magic beans")) {
       print("You will have to find it before you can get it.");
     }
@@ -117,7 +117,7 @@ LABEL512:
       }
   }
 LABEL577:
-  if (!f89) {
+  if (!fCARRYING_BOWL) {
     if (vROOM_NO != 31 && vROOM_NO != 79 && said("get", "bowl")) {
       print("You will have to find it before you can get it.");
     }
@@ -142,7 +142,7 @@ LABEL577:
       }
   }
 LABEL707:
-  if (!f93) {
+  if (!fCARRYING_PEBBLES) {
     if (vROOM_NO != 34 && said("get", "pebbles")) {
       print("You will have to find it before you can get it.");
     }
@@ -315,7 +315,7 @@ LABEL1529:
       }
   }
 LABEL1594:
-  if (!f100) {
+  if (!fCARRYING_MIRROR) {
     if (vROOM_NO != 51 && said("get", "mirror")) {
       print("You will have to find it before you can get it.");
     }

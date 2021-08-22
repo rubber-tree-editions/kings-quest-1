@@ -67,7 +67,7 @@ LABEL142:
         reset(fEGO_INVISIBLE);
         drop("ring");
         vSCORE -= 3;
-        reset(f83);
+        reset(fCARRYING_RING);
       }
       ignore.blocks(oEGO);
       get.posn(oEGO, v100, v101);

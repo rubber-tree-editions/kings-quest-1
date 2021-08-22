@@ -18,7 +18,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 39, 96, 0, 0);
   }
   LABEL41:
-    if (f154 || v80 == 31) {
+    if (fCARRYING_MAGIC_BEANS || v80 == 31) {
       v92 = 84;
       set(f155);
       load.pic(v92);
@@ -56,14 +56,14 @@ if (fROOM_SCRIPT_EXECUTED) {
         move.obj.v(oEGO, v60, v61, 96, f22);
     }
   LABEL154:
-    if (!f90) {
+    if (!fBOWL_TAKEN) {
       load.view(25);
       animate.obj(o1);
       set.view(o1, 25);
       position(o1, 126, 138);
     }
   LABEL172:
-    if (!f90) {
+    if (!fBOWL_TAKEN) {
       draw(o1);
     }
   LABEL181:
@@ -95,13 +95,13 @@ LABEL222:
     set(fGAME_OVER);
   }
 LABEL242:
-  if (f90 && !f89) {
+  if (fBOWL_TAKEN && !fCARRYING_BOWL) {
     if (said("anyword", "bowl")) {
       print("There may have been a bowl here at one time, but it is not here now!");
     }
   }
 LABEL263:
-  if (!f90) {
+  if (!fBOWL_TAKEN) {
     if (said("examine", "bowl")) {
       if (posn(oEGO, 106, 103, 159, 167)) {
         print(null);
@@ -115,23 +115,23 @@ LABEL263:
       }
   }
 LABEL309:
-  if (!f90 && said("get", "bowl")) {
+  if (!fBOWL_TAKEN && said("get", "bowl")) {
     if (posn(oEGO, 116, 128, 136, 148)) {
       print("You pick up the ceramic bowl.");
       start.update(o1);
       erase(o1);
       vSCORE += 3;
-      set(f89);
-      set(f90);
+      set(fCARRYING_BOWL);
+      set(fBOWL_TAKEN);
       get("ceramic bowl");
       goto(LABEL352);
     }
     print("That is impossible from here.");
   }
 LABEL352:
-  if (f154 && f155) {
+  if (fCARRYING_MAGIC_BEANS && f155) {
     if (said("plant", "magic beans")) {
-      reset(f154);
+      reset(fCARRYING_MAGIC_BEANS);
       v80 = 31;
       set(f94);
       drop("beans");

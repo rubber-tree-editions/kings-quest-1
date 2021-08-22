@@ -110,7 +110,7 @@ LABEL212:
         if (v70 < 40) {
           print("The elf, impressed by your friendliness, gives you a magic ring.  \"Kind person, know that once, only once, this ring will make you invisible,\" he says and then disappears.");
           get("ring");
-          set(f83);
+          set(fCARRYING_RING);
           vSCORE += 3;
           erase(o1);
           reset(f20);
@@ -185,7 +185,7 @@ LABEL547:
     }
   }
 LABEL595:
-  if (!fBUCKET_FILLED && f81 && !fEGO_ON_WATER && said("get", "water")) {
+  if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
     if (posn(oEGO, 81, 87, 159, 167)) {
       reset(f116);
       print("The cold water gushes into the old bucket.");

@@ -358,7 +358,7 @@ else {
     }
   }
 }
-if (f81 && fBUCKET_FILLED && !fEGO_ON_WATER) {
+if (fCARRYING_BUCKET && fBUCKET_FILLED && !fEGO_ON_WATER) {
   if (said("get", "bucket") || said("get", "water")) {
     print("You already have it.");
   }
@@ -377,7 +377,7 @@ if (f81 && fBUCKET_FILLED && !fEGO_ON_WATER) {
 if (fEGO_ON_WATER && (said("drink", "water") || said("get", "drink"))) {
   print("You open your mouth while swimming and quench your thirst.");
 }
-if (f81 && !fBUCKET_FILLED) {
+if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
   if (fEGO_ON_WATER) {
     if (said("get", "water") || said("fill", "bucket")) {
       reset(f116);
@@ -431,7 +431,7 @@ if (fEGO_TINY && v82 > 0) {
     reset(fEGO_TINY);
   }
 }
-if (f83) {
+if (fCARRYING_RING) {
   if (said("examine", "ring")) {
     show.obj(123);
   }
@@ -439,50 +439,50 @@ if (f83) {
     print("You already have it.");
   }
   if (said("put on", "ring") || said("get", "ring", "pocket") || said("get", "ring", "pocket")) {
-    if (f133) {
+    if (fWEARING_RING) {
       print("The ring is already on your finger.");
     }
-    if (!f133) {
-      set(f133);
+    if (!fWEARING_RING) {
+      set(fWEARING_RING);
       print("You slip the beautiful ring on one of your fingers.");
     }
   }
   if (said("take off", "ring")) {
-    if (!f133) {
+    if (!fWEARING_RING) {
       print("You are not wearing the ring.");
     }
-    if (f133 && !fEGO_INVISIBLE) {
+    if (fWEARING_RING && !fEGO_INVISIBLE) {
       drop("ring");
       vSCORE -= 3;
       print("I don't know why, but you drop the magic ring.");
-      reset(f83);
-      reset(f133);
+      reset(fCARRYING_RING);
+      reset(fWEARING_RING);
       set(f115);
     }
-    if (f133 && fEGO_INVISIBLE) {
+    if (fWEARING_RING && fEGO_INVISIBLE) {
       drop("ring");
       vSCORE -= 3;
       print("When the ring disappears, you reappear!");
       set.view(oEGO, 0);
-      reset(f83);
+      reset(fCARRYING_RING);
       reset(fEGO_INVISIBLE);
-      reset(f133);
+      reset(fWEARING_RING);
       set(f115);
       v90 = 0;
       v91 = 0;
     }
   }
   if (said("rub", "ring")) {
-    if (!f133) {
+    if (!fWEARING_RING) {
       print("The magic ring is still in your pocket.  You can't rub it there.");
     }
-    if (f133 && f75) {
+    if (fWEARING_RING && f75) {
       print("You rub the magic ring but the goat seems to have a strange effect on it.");
     }
-    if (f133 && fEGO_INVISIBLE) {
+    if (fWEARING_RING && fEGO_INVISIBLE) {
       print("There is no need to rub the ring as you are already invisible.");
     }
-    if (f133 && !f75 && !fEGO_INVISIBLE) {
+    if (fWEARING_RING && !f75 && !fEGO_INVISIBLE) {
       if (vROOM_NO != 65 && !f157 && !f158 && v94 <= 0 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 49 && vROOM_NO != 51 && vROOM_NO != 52 && vROOM_NO != 12 && vROOM_NO != 79 && !f209 && !f142 && !fEGO_TINY) {
         set.view(oEGO, 110);
         print("When you rub the magic ring, you mysteriously disappear, except for your footprints.");
@@ -508,15 +508,15 @@ if (fEGO_INVISIBLE) {
 if (v90 == 1 && v91 == 0) {
   v90 = 0;
   set.view(oEGO, 0);
-  reset(f83);
+  reset(fCARRYING_RING);
   drop("ring");
-  reset(f133);
+  reset(fWEARING_RING);
   set(f115);
   reset(fEGO_INVISIBLE);
   print("The spell to make you invisible has expired and you are once again visible to dangerous creatures, but, the ring has now disappeared.");
   vSCORE -= 3;
 }
-if (f154) {
+if (fCARRYING_MAGIC_BEANS) {
   if (said("examine", "magic beans")) {
     show.obj(141);
   }
@@ -524,7 +524,7 @@ if (f154) {
     print("You're going to be sorry!!  These were magic beans!");
     vSCORE -= 5;
     drop("beans");
-    reset(f154);
+    reset(fCARRYING_MAGIC_BEANS);
   }
   if (said("plant", "magic beans")) {
     if (vROOM_NO != 6 && vROOM_NO != 22 && vROOM_NO != 31 && vROOM_NO != 35 && vROOM_NO != 38) {
@@ -535,8 +535,8 @@ if (f154) {
     }
   }
 }
-if (f89) {
-  if (v89 == 1) {
+if (fCARRYING_BOWL) {
+  if (vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
     if (said("eat", "stew")) {
       if (vROOM_NO == 79) {
         print("It is very inconsiderate to eat in front of these poor, starving people.  The pains of guilt set in on you.");
@@ -544,7 +544,7 @@ if (f89) {
       else {
         print("You eat every bite of the delicious stew.");
       }
-      v89 = 0;
+      vBOWL_STATE = BOWLSTATE_EMPTY;
       reset(fPOINTS_FOR_STEW);
       vSCORE -= 2;
     }
@@ -563,7 +563,7 @@ if (f89) {
       }
     }
   }
-  else if (v89 == 0) {
+  else if (vBOWL_STATE == BOWLSTATE_EMPTY) {
     if (said("examine", "bowl") || said("look inside", "bowl")) {
       show.obj(125);
     }
@@ -581,7 +581,7 @@ if (f89) {
       else {
         print("After uttering that strange word, the bowl starts quivering and immediately fills up with a delicious, hot stew.");
       }
-      v89 = 1;
+      vBOWL_STATE = BOWLSTATE_FULL_OF_STEW;
       if (!fPOINTS_FOR_STEW) {
         set(fPOINTS_FOR_STEW);
         vSCORE += 2;
@@ -592,7 +592,7 @@ if (f89) {
     }
   }
 }
-if (f93) {
+if (fCARRYING_PEBBLES) {
   if (said("examine", "pebbles")) {
     show.obj(129);
   }
@@ -802,7 +802,7 @@ if (fCARRYING_FIDDLE) {
     }
   }
 }
-if (f100) {
+if (fCARRYING_MIRROR) {
   if (said("get", "mirror")) {
     print("You already have it.");
   }
