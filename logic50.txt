@@ -15,83 +15,71 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == 22) {
     position(oEGO, 3, 147);
   }
-  LABEL36:
-    if (v75 != 2) {
-      load.view(63);
-      animate.obj(o1);
-      set.view(o1, 63);
-      position(o1, 142, 136);
-      ignore.blocks(o1);
-      draw(o1);
-      observe.blocks(oEGO);
-    }
-  LABEL61:
-    if (v75 == 2) {
-      ignore.blocks(oEGO);
-    }
-  LABEL70:
-    draw(oEGO);
-    show.pic();
+  if (v75 != 2) {
+    load.view(63);
+    animate.obj(o1);
+    set.view(o1, 63);
+    position(o1, 142, 136);
+    ignore.blocks(o1);
+    draw(o1);
+    observe.blocks(oEGO);
+  }
+  if (v75 == 2) {
+    ignore.blocks(oEGO);
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (f75) {
   reset(f75);
   set(f130);
   print(null);
 }
-LABEL85:
-  if (v75 != 2) {
-    if (said("examine", "cave")) {
-      print("It is empty except for a huge boulder opposite the opening.");
-    }
-    if (said("examine", "rocks")) {
-      print("It is a huge piece of granite.");
-    }
-    LABEL117:
-      if (said("get", "rocks")) {
-        print("It is far too heavy to carry around.");
-      }
-    LABEL129:
-      if (said("shove", "rocks")) {
-        print("It is impossible for you to move a boulder this large.");
-      }
-    LABEL141:
-      if (said("climb", "rocks")) {
-        print();
-      }
+if (v75 != 2) {
+  if (said("examine", "cave")) {
+    print("It is empty except for a huge boulder opposite the opening.");
   }
-LABEL153:
-  if (said("examine", "stalactites")) {
-    print("It took millenniums for these stalagmites and stalactites to form.");
+  if (said("examine", "rocks")) {
+    print("It is a huge piece of granite.");
   }
-LABEL165:
-  if (v75 == 2) {
-    if (said("examine", "cave")) {
-      print("It is a rather large, vacant cave.");
-    }
+  if (said("get", "rocks")) {
+    print("It is far too heavy to carry around.");
   }
-LABEL184:
-  if (said("examine", "doorway")) {
-    if (posn(oEGO, 0, 0, 80, 167)) {
-      print("Looking out the cave opening, you are able to admire the beautiful scenery outside.");
+  if (said("shove", "rocks")) {
+    print("It is impossible for you to move a boulder this large.");
+  }
+  if (said("climb", "rocks")) {
+    print();
+  }
+}
+if (said("examine", "stalactites")) {
+  print("It took millenniums for these stalagmites and stalactites to form.");
+}
+if (v75 == 2) {
+  if (said("examine", "cave")) {
+    print("It is a rather large, vacant cave.");
+  }
+}
+if (said("examine", "doorway")) {
+  if (posn(oEGO, 0, 0, 80, 167)) {
+    print("Looking out the cave opening, you are able to admire the beautiful scenery outside.");
+  }
+  if (posn(oEGO, 81, 0, 159, 167)) {
+    if (v75 != 2) {
+      print("It is on the far side of the cave.");
     }
-    if (posn(oEGO, 81, 0, 159, 167)) {
-      if (v75 != 2) {
-        print("It is on the far side of the cave.");
-        goto(LABEL231);
-      }
+    else {
       print("It leads to another portion of the cave.");
     }
   }
-LABEL231:
-  if (vEGO_EDGE_CODE == 2) {
-    new.room(51);
-  }
-LABEL240:
-  if (posn(oEGO, 0, 0, 1, 167)) {
-    new.room(22);
-  }
-LABEL252:
-  return;
+}
+if (vEGO_EDGE_CODE == 2) {
+  new.room(51);
+}
+if (posn(oEGO, 0, 0, 1, 167)) {
+  new.room(22);
+}
+return;
 
 LOGIC__FOOTER
 
