@@ -30,8 +30,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (f75) {
-  reset(f75);
+if (fGOAT_IS_HERE) {
+  reset(fGOAT_IS_HERE);
   set(f130);
   print(null);
 }

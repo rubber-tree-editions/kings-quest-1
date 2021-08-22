@@ -11,18 +11,18 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  load.logics(101);
+  load.logics(LOGIC_SWIMMING);
   set.horizon(50);
   load.sound(15);
-  if (f75) {
-    load.logics(103);
+  if (fGOAT_IS_HERE) {
+    load.logics(LOGIC_GOAT);
     load.view(9);
     add.to.pic(9, 0, 0, 105, 120, 0, 0);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 36, 86, 0, 0);
   }
-  if (!f75) {
+  if (!fGOAT_IS_HERE) {
     load.view(9);
     animate.obj(oCASTLE_DOORS);
     set.view(oCASTLE_DOORS, 9);
@@ -131,7 +131,7 @@ if (said("anyword", "lions")) {
     print("You can't see them from here.");
   }
 }
-if (f75) {
+if (fGOAT_IS_HERE) {
   if (said("open", "doors")) {
     if (posn(oEGO, 105, 120, 121, 128)) {
       print("Since the goat is with you, permission to enter the  castle is denied.");
@@ -166,7 +166,7 @@ if (said("knock", "doors")) {
     print("You cannot reach the door from here.");
   }
 }
-if (!f75 && !f125) {
+if (!fGOAT_IS_HERE && !f125) {
   if (said("open", "doors")) {
     if (posn(oEGO, 105, 120, 121, 128)) {
       set(f27);
@@ -310,7 +310,7 @@ LABEL986:
   if (vEGO_EDGE_CODE == 4) {
     new.room(3);
   }
-  if (f75) {
+  if (fGOAT_IS_HERE) {
     call(LOGIC_GOAT);
   }
   call(LOGIC_SWIMMING);

@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(42);
-  load.logics(101);
+  load.logics(LOGIC_SWIMMING);
   call(LOGIC_SWIMMING);
   ignore.blocks(oEGO);
   if (vGNOME_STATE <= GNOMESTATE_PRESENT) {

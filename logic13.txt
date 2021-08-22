@@ -9,8 +9,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(46);
-  if (f75) {
-    load.logics(103);
+  if (fGOAT_IS_HERE) {
+    load.logics(LOGIC_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 83, 142, 0, 0);
@@ -53,11 +53,11 @@ if (v70 == 1) {
   set(f135);
   sound(1, fSOUND_END_MARKER);
   draw(oWOLF);
-  if (!f75) {
+  if (!fGOAT_IS_HERE) {
     print(null);
     follow.ego(oWOLF, 12, f156);
   }
-  if (f75) {
+  if (fGOAT_IS_HERE) {
     wander(oWOLF);
     set(f22);
     print(null);
@@ -147,7 +147,7 @@ LABEL381:
     new.room(4);
   }
 LABEL390:
-  if (f75) {
+  if (fGOAT_IS_HERE) {
     call(LOGIC_GOAT);
   }
 LABEL398:

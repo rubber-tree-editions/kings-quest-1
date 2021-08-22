@@ -15,10 +15,10 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 135, 47);
     }
   }
-  load.logics(101);
+  load.logics(LOGIC_SWIMMING);
   call(LOGIC_SWIMMING);
-  if (f75) {
-    load.logics(103);
+  if (fGOAT_IS_HERE) {
+    load.logics(LOGIC_GOAT);
   }
   LABEL48:
     if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
@@ -153,7 +153,7 @@ LABEL453:
     new.room(31);
   }
 LABEL462:
-  if (f75) {
+  if (fGOAT_IS_HERE) {
     call(LOGIC_GOAT);
   }
 LABEL470:

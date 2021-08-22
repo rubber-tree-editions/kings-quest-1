@@ -8,14 +8,14 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  if (f75) {
-    load.logics(103);
+  if (fGOAT_IS_HERE) {
+    load.logics(LOGIC_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 14, 144, 0, 0);
   }
   LABEL35:
-    load.logics(101);
+    load.logics(LOGIC_SWIMMING);
     call(LOGIC_SWIMMING);
     if (!fMUSHROOM_TAKEN) {
       load.view(60);
@@ -219,7 +219,7 @@ LABEL775:
     new.room(34);
   }
 LABEL784:
-  if (f75) {
+  if (fGOAT_IS_HERE) {
     call(LOGIC_GOAT);
   }
 LABEL792:

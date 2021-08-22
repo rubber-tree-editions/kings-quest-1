@@ -10,8 +10,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   v32 = 4;
   set.horizon(46);
-  if (f75) {
-    load.logics(103);
+  if (fGOAT_IS_HERE) {
+    load.logics(LOGIC_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 27, 131, 0, 0);
@@ -103,7 +103,7 @@ LABEL260:
     new.room(8);
   }
 LABEL269:
-  if (f75) {
+  if (fGOAT_IS_HERE) {
     call(LOGIC_GOAT);
   }
 LABEL277:

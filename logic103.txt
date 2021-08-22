@@ -61,7 +61,7 @@ else {
   v107 = 1;
   step.size(o13, v107);
 }
-if (!f75) {
+if (!fGOAT_IS_HERE) {
   return;
 }
 if (fGAME_OVER) {
@@ -112,7 +112,7 @@ if (f210 && v40 < 25 && v94 <= 0) {
 if (fEGO_INVISIBLE && !f42) {
   set(f42);
   print();
-  reset(f75);
+  reset(fGOAT_IS_HERE);
   wander(o13);
   if (vOBJECT_EDGE_CODE != 0) {
     erase(o13);

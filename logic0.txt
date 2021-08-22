@@ -39,18 +39,18 @@ if (fROOM_SCRIPT_EXECUTED) {
     vEGO_VIEW_NO = 0;
   }
   if (vPREV_ROOM_NO == 10 && vROOM_NO != 11) {
-    if (f75) {
+    if (fGOAT_IS_HERE) {
       vEGO_VIEW_NO = 0;
     }
   }
   if (vPREV_ROOM_NO == 11 && vROOM_NO != 10) {
-    if (f75) {
+    if (fGOAT_IS_HERE) {
       vEGO_VIEW_NO = 0;
     }
   }
   load.view.v(vEGO_VIEW_NO);
   set.view.v(oEGO, vEGO_VIEW_NO);
-  load.logics(102);
+  load.logics(LOGIC_DEFAULT_RESPONSES);
   if (vROOM_NO != 53 && vROOM_NO != 58 && vROOM_NO != 49 && vROOM_NO != 51 && vROOM_NO != 52 && vROOM_NO != 12 && vROOM_NO != 10 && vROOM_NO != 11) {
     load.view(75);
     load.view(87);
@@ -62,7 +62,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (fCARRYING_MUSHROOM || fEGO_TINY) {
     load.view(60);
   }
-  if (f75 || vROOM_YOU_KILLED_THE_GOAT_IN > 0) {
+  if (fGOAT_IS_HERE || vROOM_YOU_KILLED_THE_GOAT_IN > 0) {
     load.view(62);
   }
   reset(f190);
@@ -98,7 +98,7 @@ if (fGAME_OVER) {
     disable.item(c7);
     disable.item(cSWIM);
     disable.item(cDUCK);
-    load.logics(100);
+    load.logics(LOGIC_GAME_OVER);
     load.sound(2);
     v97 = 40;
     set(f197);
@@ -145,7 +145,7 @@ else if (vEGO_DIR <= 0) {
   stop.cycling(oEGO);
 }
 if (controller(c10)) {
-  load.logics(99);
+  load.logics(LOGIC_DEBUG);
   set(f190);
   print("VERSION 1.0U");
   version();
@@ -270,7 +270,7 @@ if (fCARROT_EATEN && said("eat", "carrot")) {
 }
 if (fCARRYING_CARROT) {
   if (said("eat", "carrot")) {
-    if (!f75) {
+    if (!fGOAT_IS_HERE) {
       print("Mmmm!  There's nothing like a crisp, fresh carrot.");
       drop("carrot");
       reset(fCARRYING_CARROT);
@@ -278,7 +278,7 @@ if (fCARRYING_CARROT) {
       vSCORE -= 2;
       set(fCARROT_EATEN);
     }
-    if (f75) {
+    if (fGOAT_IS_HERE) {
       print("Seeing how much the goat likes that carrot, eating it may be hazardous to your health.");
     }
   }
@@ -288,7 +288,7 @@ if (fCARRYING_CARROT) {
   if (said("get", "carrot")) {
     print("You already have a carrot.");
   }
-  if (f75) {
+  if (fGOAT_IS_HERE) {
     if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
       print("The goat quickly eats the carrot and disappears.");
       drop("carrot");
@@ -300,7 +300,7 @@ if (fCARRYING_CARROT) {
       }
       erase(o13);
       set(f130);
-      reset(f75);
+      reset(fGOAT_IS_HERE);
     }
     if (said("show", "carrot") || said("show", "carrot", "goat") || said("show", "goat", "carrot")) {
       print("It is not nice to tease the goat.");
@@ -476,13 +476,13 @@ if (fCARRYING_RING) {
     if (!fWEARING_RING) {
       print("The magic ring is still in your pocket.  You can't rub it there.");
     }
-    if (fWEARING_RING && f75) {
+    if (fWEARING_RING && fGOAT_IS_HERE) {
       print("You rub the magic ring but the goat seems to have a strange effect on it.");
     }
     if (fWEARING_RING && fEGO_INVISIBLE) {
       print("There is no need to rub the ring as you are already invisible.");
     }
-    if (fWEARING_RING && !f75 && !fEGO_INVISIBLE) {
+    if (fWEARING_RING && !fGOAT_IS_HERE && !fEGO_INVISIBLE) {
       if (vROOM_NO != 65 && !f157 && !f158 && v94 <= 0 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 49 && vROOM_NO != 51 && vROOM_NO != 52 && vROOM_NO != 12 && vROOM_NO != 79 && !f209 && !f142 && !fEGO_TINY) {
         set.view(oEGO, 110);
         print("When you rub the magic ring, you mysteriously disappear, except for your footprints.");
@@ -620,7 +620,7 @@ if (fCARRYING_CHEST) {
     print("You open the chest and admire the gold coins for a moment. You then close the chest.");
   }
 }
-if (!f75) {
+if (!fGOAT_IS_HERE) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && vROOM_NO != 10 && vROOM_NO != 11) {
     if (said("anyword", "goat")) {
       print("There is no goat here.");
@@ -632,7 +632,7 @@ if (!f75) {
     }
   }
 }
-if (f75) {
+if (fGOAT_IS_HERE) {
   if (!fCARRYING_DAGGER && said("murder", "goat")) {
     print("You don't have any way to kill the old goat.");
   }
@@ -651,7 +651,7 @@ if (f75) {
         drop("dagger");
         vSCORE -= 5;
         reset(fCARRYING_DAGGER);
-        reset(f75);
+        reset(fGOAT_IS_HERE);
         set(fDAGGER_LOST);
       }
       else {
@@ -665,7 +665,7 @@ if (f75) {
         drop("dagger");
         vSCORE -= 5;
         reset(fCARRYING_DAGGER);
-        reset(f75);
+        reset(fGOAT_IS_HERE);
         set(fDAGGER_LOST);
       }
     }

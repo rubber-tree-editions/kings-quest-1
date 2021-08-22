@@ -16,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oGATE);
   load.view(62);
   load.view(67);
-  if (!f75 && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !f130) {
+  if (!fGOAT_IS_HERE && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !f130) {
     load.sound(11);
     load.view(14);
     v30 = 27;
@@ -37,13 +37,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oGATE);
     stop.update(oGATE);
   }
-  if (f75) {
+  if (fGOAT_IS_HERE) {
     set.view(oEGO, 67);
   }
   draw(oEGO);
   show.pic();
 }
-if (f21 && !f75) {
+if (f21 && !fGOAT_IS_HERE) {
   if (!f23) {
     set(f23);
     sound(11, f24);
@@ -83,7 +83,7 @@ if (said("open", "gate")) {
   }
 }
 if (said("close", "gate")) {
-  if (f78 && !f75) {
+  if (f78 && !fGOAT_IS_HERE) {
     if (posn(oEGO, 33, 139, 75, 167)) {
       get.posn(oEGO, v60, v61);
       if (v61 == 156) {
@@ -100,7 +100,7 @@ if (said("close", "gate")) {
       print("You cannot reach the gate from here.");
     }
   }
-  if (f78 && f75) {
+  if (f78 && fGOAT_IS_HERE) {
     print();
   }
   if (f20) {
@@ -120,7 +120,7 @@ if (v30 == 1) {
   wander(oGOAT);
   v30 = 0;
 }
-if (f21 && !f75) {
+if (f21 && !fGOAT_IS_HERE) {
   if (said("hello") || said("hello", "goat") || said("say", "hello") || said("say", "hello", "goat")) {
     print("You get no response from the goat.");
   }
@@ -234,12 +234,12 @@ if (f74 && f21) {
   }
 }
 if (f74 && f21) {
-  if (fCARRYING_CARROT && !f75 && !fEGO_INVISIBLE) {
+  if (fCARRYING_CARROT && !fGOAT_IS_HERE && !fEGO_INVISIBLE) {
     if (said("show", "carrot") || said("show", "carrot", "goat") || said("show", "goat", "carrot")) {
       if (v70 < 50) {
         if (!f151) {
           print("When you tempt the old goat with the carrot, he starts to follow you.");
-          set(f75);
+          set(fGOAT_IS_HERE);
           erase(oGOAT);
           set.view(oEGO, 67);
           vSCORE += 5;
@@ -289,7 +289,7 @@ if (fEGO_INVISIBLE) {
   }
 }
 if (vOBJECT_EDGE_CODE == 2 || vOBJECT_EDGE_CODE == 3) {
-  if (!f75) {
+  if (!fGOAT_IS_HERE) {
     erase(oGOAT);
     reset(f21);
     set(f130);
@@ -297,7 +297,7 @@ if (vOBJECT_EDGE_CODE == 2 || vOBJECT_EDGE_CODE == 3) {
   }
 }
 if (vEGO_EDGE_CODE != 0) {
-  if (f78 && !f75 && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !f130) {
+  if (f78 && !fGOAT_IS_HERE && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !f130) {
     set(f130);
   }
 }

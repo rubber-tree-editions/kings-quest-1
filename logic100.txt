@@ -19,7 +19,7 @@ if (v97 == 1) {
   print("We, at Sierra, wish to thank you for playing King's Quest. We are delighted by your score and hope you are enjoying the game.");
 }
 LABEL41:
-  if (f75) {
+  if (fGOAT_IS_HERE) {
     normal.motion(o13);
     stop.motion(o13);
     stop.cycling(o13);
