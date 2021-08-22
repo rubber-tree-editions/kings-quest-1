@@ -170,7 +170,7 @@ LABEL427:
       set(f101);
       vSCORE -= 8;
       drop("magic mirror");
-      set(f126);
+      set(fLOST_VITAL_TREASURE);
       reset(f125);
       vTREASURE_COUNT--;
       goto(LABEL636);
@@ -180,7 +180,7 @@ LABEL427:
       set(f103);
       vSCORE -= 8;
       drop("shield");
-      set(f126);
+      set(fLOST_VITAL_TREASURE);
       reset(f125);
       vTREASURE_COUNT--;
       goto(LABEL636);
@@ -190,7 +190,7 @@ LABEL427:
       set(f105);
       vSCORE -= 8;
       drop("chest");
-      set(f126);
+      set(fLOST_VITAL_TREASURE);
       reset(f125);
       vTREASURE_COUNT--;
       goto(LABEL636);
