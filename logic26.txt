@@ -51,7 +51,7 @@ LABEL134:
     print("There is an attractive meadow dotted with trees.");
   }
 LABEL146:
-  if (f81 && !fBUCKET_FILLED) {
+  if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
     if (said("get", "water") || said("drink", "water")) {
       if (posn(oEGO, 0, 27, 95, 95)) {
         print("The bank is too steep to allow access to the river's edge.");

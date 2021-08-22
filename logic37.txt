@@ -86,7 +86,7 @@ LABEL258:
     }
   }
 LABEL285:
-  if (!fBUCKET_FILLED && f81 && said("get", "water")) {
+  if (!fBUCKET_FILLED && fCARRYING_BUCKET && said("get", "water")) {
     print(null);
     get("water");
     set(fBUCKET_FILLED);

@@ -154,8 +154,8 @@ LABEL376:
       end.of.loop(o1, f21);
       goto(LABEL616);
     }
-    if (f100) {
-      reset(f100);
+    if (fCARRYING_MIRROR) {
+      reset(fCARRYING_MIRROR);
       set(f101);
       vSCORE -= 8;
       drop("magic mirror");

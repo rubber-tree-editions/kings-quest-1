@@ -262,7 +262,7 @@ LABEL759:
     print("When you look upwards, you see the top of the well far, far above.");
   }
 LABEL771:
-  if (!f81) {
+  if (!fCARRYING_BUCKET) {
     if (said("examine", "bucket")) {
       if (f177) {
         print("Although you can only see the bottom of the bucket, it looks like a very nice bucket.");
@@ -335,7 +335,7 @@ LABEL973:
           print("You reach up out of the well water and cut the thick rope that holds the bucket.");
           start.update(o1);
           erase(o1);
-          set(f81);
+          set(fCARRYING_BUCKET);
           set(f176);
           reset(f177);
           set(f179);
@@ -374,7 +374,7 @@ LABEL1087:
     }
     LABEL1135:
       if (said("get", "water")) {
-        if (f81 && (v94 == 1 || v94 == 2)) {
+        if (fCARRYING_BUCKET && (v94 == 1 || v94 == 2)) {
           print("In the midst of your activities, you fill the bucket with well water.");
           set(fBUCKET_FILLED);
           if (!fFILL_BUCKET_POINTS) {

@@ -20,7 +20,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 18, 140, 0, 0);
   }
   LABEL47:
-    if (f154 || v80 == 22) {
+    if (fCARRYING_MAGIC_BEANS || v80 == 22) {
       v92 = 84;
       set(f155);
       load.pic(v92);
@@ -212,9 +212,9 @@ LABEL559:
       }
   }
 LABEL633:
-  if (f154 && f155) {
+  if (fCARRYING_MAGIC_BEANS && f155) {
     if (said("plant", "magic beans")) {
-      reset(f154);
+      reset(fCARRYING_MAGIC_BEANS);
       v80 = 22;
       set(f94);
       drop("beans");

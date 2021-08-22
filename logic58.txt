@@ -239,14 +239,14 @@ LABEL653:
   if (fCARRYING_SLINGSHOT) {
     distance(oEGO, o1, v71);
     if (said("use", "slingshot") || said("gingerbread", "slingshot")) {
-      if (!f93) {
+      if (!fCARRYING_PEBBLES) {
         print("You need some kind of small rock to use the sling.");
       }
-      if (f93 && v71 < 20) {
+      if (fCARRYING_PEBBLES && v71 < 20) {
         print();
       }
       LABEL701:
-        if (f93 && !f169 && !fEGO_INVISIBLE && v86 == 0 && v71 > 19 && !f199) {
+        if (fCARRYING_PEBBLES && !f169 && !fEGO_INVISIBLE && v86 == 0 && v71 > 19 && !f199) {
           reset(f23);
           get.posn(oEGO, v100, v101);
           position.v(o15, v100, v101);
@@ -255,12 +255,12 @@ LABEL653:
           sound(18, f148);
           end.of.loop(o15, f24);
           print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.");
-          reset(f93);
+          reset(fCARRYING_PEBBLES);
           drop("pebbles");
           vSCORE -= 1;
         }
       LABEL751:
-        if (f93 && f169 && !fEGO_INVISIBLE && v86 == 2 && v71 > 19) {
+        if (fCARRYING_PEBBLES && f169 && !fEGO_INVISIBLE && v86 == 2 && v71 > 19) {
           reset(f23);
           get.posn(oEGO, v100, v101);
           position.v(o15, v100, v101);
@@ -269,18 +269,18 @@ LABEL653:
           sound(18, f148);
           end.of.loop(o15, f25);
           print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.");
-          reset(f93);
+          reset(fCARRYING_PEBBLES);
           drop("pebbles");
           vSCORE -= 1;
         }
       LABEL797:
-        if (f93 && !f169 && fEGO_INVISIBLE) {
+        if (fCARRYING_PEBBLES && !f169 && fEGO_INVISIBLE) {
           if (v86 == 0 || v86 == 2) {
             print("Not when you're invisible!");
           }
         }
       LABEL822:
-        if (f93) {
+        if (fCARRYING_PEBBLES) {
           if (v86 == 1 || v86 == 3) {
             print("It would be rather cowardly of you to kill a giant while he is asleep!");
           }

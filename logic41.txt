@@ -343,7 +343,7 @@ LABEL1092:
     }
   }
 LABEL1140:
-  if (!fBUCKET_FILLED && f81 && !fEGO_ON_WATER && said("get", "water")) {
+  if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
     if (posn(oEGO, 1, 84, 158, 166)) {
       print("Don't do it!  The bank is steep, muddy, and dangerous.");
       goto(LABEL1175);

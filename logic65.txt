@@ -2,7 +2,10 @@
 
 LOGIC__HEADER
 
-
+#define oNOTE o1
+#define oCUPBOARD o2
+#define oSWISS_CHEESE o3
+#define oWITCH o4
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -11,57 +14,57 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.sound(1);
   load.sound(4);
   load.sound(5);
-  if (!f170) {
+  if (!fCARRYING_NOTE) {
     load.view(42);
-    animate.obj(o1);
-    set.view(o1, 42);
-    position(o1, 118, 140);
-    set.priority(o1, 14);
+    animate.obj(oNOTE);
+    set.view(oNOTE, 42);
+    position(oNOTE, 118, 140);
+    set.priority(oNOTE, 14);
   }
-  if (v87 == 2) {
+  if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE) {
     load.view(40);
-    animate.obj(o2);
-    set.view(o2, 40);
-    position(o2, 33, 76);
-    set.cel(o2, 0);
-    stop.cycling(o2);
+    animate.obj(oCUPBOARD);
+    set.view(oCUPBOARD, 40);
+    position(oCUPBOARD, 33, 76);
+    set.cel(oCUPBOARD, 0);
+    stop.cycling(oCUPBOARD);
   }
   LABEL62:
-    if (v87 == 0) {
+    if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE) {
       load.view(40);
-      animate.obj(o2);
-      set.view(o2, 40);
-      position(o2, 33, 76);
-      set.cel(o2, 0);
-      stop.cycling(o2);
+      animate.obj(oCUPBOARD);
+      set.view(oCUPBOARD, 40);
+      position(oCUPBOARD, 33, 76);
+      set.cel(oCUPBOARD, 0);
+      stop.cycling(oCUPBOARD);
       load.view(41);
-      animate.obj(o3);
-      set.view(o3, 41);
-      position(o3, 41, 61);
-      set.priority(o3, 8);
+      animate.obj(oSWISS_CHEESE);
+      set.view(oSWISS_CHEESE, 41);
+      position(oSWISS_CHEESE, 41, 61);
+      set.priority(oSWISS_CHEESE, 8);
     }
   LABEL99:
-    if (v87 == 3) {
+    if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_NO_CHEESE) {
       load.view(40);
-      animate.obj(o2);
-      set.view(o2, 40);
-      position(o2, 33, 76);
-      set.cel(o2, 5);
-      stop.cycling(o2);
+      animate.obj(oCUPBOARD);
+      set.view(oCUPBOARD, 40);
+      position(oCUPBOARD, 33, 76);
+      set.cel(oCUPBOARD, 5);
+      stop.cycling(oCUPBOARD);
     }
   LABEL122:
-    if (v87 == 1) {
+    if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_WITH_CHEESE) {
       load.view(40);
-      animate.obj(o2);
-      set.view(o2, 40);
-      position(o2, 33, 76);
-      set.cel(o2, 5);
-      stop.cycling(o2);
+      animate.obj(oCUPBOARD);
+      set.view(oCUPBOARD, 40);
+      position(oCUPBOARD, 33, 76);
+      set.cel(oCUPBOARD, 5);
+      stop.cycling(oCUPBOARD);
       load.view(41);
-      animate.obj(o3);
-      set.view(o3, 41);
-      position(o3, 41, 61);
-      set.priority(o3, 8);
+      animate.obj(oSWISS_CHEESE);
+      set.view(oSWISS_CHEESE, 41);
+      position(oSWISS_CHEESE, 41, 61);
+      set.priority(oSWISS_CHEESE, 8);
     }
   LABEL159:
     if (vPREV_ROOM_NO == 80) {
@@ -75,48 +78,48 @@ if (fROOM_SCRIPT_EXECUTED) {
       set(f25);
       program.control();
       move.obj(oEGO, 80, 84, 6, f20);
-      v81 = 2;
+      vWITCH_STATE = WITCHSTATE_AWAY_FROM_HOME;
     }
   LABEL195:
     if (vPREV_ROOM_NO == 28) {
       position(oEGO, 49, 163);
     }
   LABEL206:
-    if (!fPROTECTED_BY_SPELL && v81 != 3 && vPREV_ROOM_NO != 80 && !fEGO_INVISIBLE) {
-      if (v81 == 2) {
+    if (!fPROTECTED_BY_SPELL && vWITCH_STATE != WITCHSTATE_DEAD && vPREV_ROOM_NO != 80 && !fEGO_INVISIBLE) {
+      if (vWITCH_STATE == WITCHSTATE_AWAY_FROM_HOME) {
         random(0, 250, v62);
         if (v62 < 180) {
           load.view(43);
-          animate.obj(o4);
-          set.view(o4, 43);
+          animate.obj(oWITCH);
+          set.view(oWITCH, 43);
           v30 = 250;
           v31 = 3;
         }
       }
     }
   LABEL255:
-    if (v81 == 1) {
+    if (vWITCH_STATE == WITCHSTATE_AT_HOME) {
       if (!fPROTECTED_BY_SPELL && !fEGO_INVISIBLE) {
         set(f27);
         load.view(43);
-        animate.obj(o4);
-        set.view(o4, 43);
-        position(o4, 26, 120);
+        animate.obj(oWITCH);
+        set.view(oWITCH, 43);
+        position(oWITCH, 26, 120);
       }
     }
   LABEL285:
-    if (!f170) {
-      draw(o1);
-      stop.update(o1);
+    if (!fCARRYING_NOTE) {
+      draw(oNOTE);
+      stop.update(oNOTE);
     }
   LABEL296:
-    draw(o2);
-    if (v87 == 1) {
-      draw(o3);
+    draw(oCUPBOARD);
+    if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_WITH_CHEESE) {
+      draw(oSWISS_CHEESE);
     }
   LABEL307:
     ignore.blocks(oEGO);
-    observe.blocks(o4);
+    observe.blocks(oWITCH);
     draw(oEGO);
     show.pic();
     if (fPROTECTED_BY_SPELL) {
@@ -128,8 +131,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   LABEL330:
     if (f27) {
-      draw(o4);
-      follow.ego(o4, 10, f26);
+      draw(oWITCH);
+      follow.ego(oWITCH, 10, f26);
       print("Surprise!  Surprise!  The wicked witch is home and now she's after you!");
     }
 }
@@ -146,7 +149,7 @@ LABEL358:
     vSCORE -= 5;
   }
 LABEL373:
-  if (v81 == 3) {
+  if (vWITCH_STATE == WITCHSTATE_DEAD) {
     if (said("anyword", "witch")) {
       print("The witch is dead.");
     }
@@ -205,7 +208,7 @@ LABEL519:
   if (v33 == 1) {
     if (f27 || f29) {
       print("With a flash, you hear her joyously exclaim, \"This has made me feel like flying!\"");
-      erase(o4);
+      erase(oWITCH);
       reset(f27);
       goto(LABEL547);
     }
@@ -217,7 +220,7 @@ LABEL519:
   }
 LABEL553:
   if (f27) {
-    distance(oEGO, o4, v34);
+    distance(oEGO, oWITCH, v34);
     if (v34 == 30 && !f30) {
       set(f30);
       stop.motion(oEGO);
@@ -248,12 +251,12 @@ LABEL624:
   }
 LABEL636:
   if (v30 == 1 && v31 == 2) {
-    position(o4, 49, 160);
-    draw(o4);
+    position(oWITCH, 49, 160);
+    draw(oWITCH);
     sound(1, f148);
     set(f29);
     if (posn(oEGO, 105, 1, 158, 166)) {
-      move.obj(o4, 26, 120, 2, f21);
+      move.obj(oWITCH, 26, 120, 2, f21);
       set(f31);
       print("The witch mutters, \"I am going to get my oven ready to cook someone for dinner (yum).\"");
     }
@@ -263,15 +266,15 @@ LABEL677:
     v30 = 0;
     v31 = 0;
     if (posn(oEGO, 105, 1, 158, 166) && !f23) {
-      wander(o4);
+      wander(oWITCH);
       goto(LABEL775);
     }
     if (!f23) {
       set(f23);
-      ignore.blocks(o4);
-      follow.ego(o4, 10, f26);
+      ignore.blocks(oWITCH);
+      follow.ego(oWITCH, 10, f26);
     }
-    distance(oEGO, o4, v34);
+    distance(oEGO, oWITCH, v34);
     if (v34 < 30 && !f30 && !posn(oEGO, 105, 132, 158, 166)) {
       set(f30);
       stop.motion(oEGO);
@@ -292,12 +295,12 @@ LABEL775:
     if (said("examine", "witch")) {
       print("This ugly old witch is one of the most hideous sights you have ever seen.  I would never trust her.");
     }
-    distance(oEGO, o4, v70);
+    distance(oEGO, oWITCH, v70);
     if (v70 < 15) {
       if (said("shove", "witch") || said("murder", "witch")) {
-        erase(o4);
+        erase(oWITCH);
         print("Courageously, you manage to push the witch into the oven where she flashes and melts away into a harmless blob. Congratulations!");
-        v81 = 3;
+        vWITCH_STATE = WITCHSTATE_DEAD;
         v30 = 0;
         v31 = 0;
         reset(f29);
@@ -327,7 +330,7 @@ LABEL775:
         reset(f21);
         reset(f31);
         if (posn(oEGO, 100, 1, 158, 166)) {
-          wander(o4);
+          wander(oWITCH);
         }
       }
   }
@@ -347,7 +350,7 @@ LABEL927:
     }
   }
 LABEL980:
-  if (v81 != 3) {
+  if (vWITCH_STATE != WITCHSTATE_DEAD) {
     if (!f29 && !f27) {
       if (said("anyword", "witch")) {
         print("There is no witch here...RIGHT NOW!!");
@@ -374,79 +377,79 @@ LABEL1062:
 LABEL1074:
   if (posn(oEGO, 23, 89, 55, 100)) {
     if (said("examine", "cupboard") || said("look inside", "cupboard")) {
-      if (v87 == 3) {
+      if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_NO_CHEESE) {
         print("There is nothing but a bare shelf here.");
       }
-      if (v87 == 1) {
+      if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_WITH_CHEESE) {
         print("Sitting on the shelf is a delicious piece of Swiss cheese.");
       }
       LABEL1120:
-        if (v87 == 0 || v87 == 2) {
+        if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE || vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE) {
           print("The cabinet on the wall is rather plain and simple.");
         }
     }
     LABEL1134:
       if (said("open", "cupboard")) {
-        if (v87 == 1 || v87 == 3) {
+        if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_WITH_CHEESE || vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_NO_CHEESE) {
           print("It is already open.");
         }
-        if (v87 == 2) {
-          start.cycling(o2);
-          end.of.loop(o2, f148);
-          v87 = 3;
+        if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE) {
+          start.cycling(oCUPBOARD);
+          end.of.loop(oCUPBOARD, f148);
+          vCUPBOARD_STATE = CUPBOARDSTATE_OPEN_NO_CHEESE;
         }
         LABEL1173:
-          if (v87 == 0) {
-            start.cycling(o2);
-            end.of.loop(o2, f24);
-            v87 = 1;
-            if (!f80) {
-              set(f80);
+          if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE) {
+            start.cycling(oCUPBOARD);
+            end.of.loop(oCUPBOARD, f24);
+            vCUPBOARD_STATE = CUPBOARDSTATE_OPEN_WITH_CHEESE;
+            if (!fPOINTS_FOR_FINDING_CHEESE) {
+              set(fPOINTS_FOR_FINDING_CHEESE);
               vSCORE += 2;
             }
           }
       }
     LABEL1200:
       if (said("close", "cupboard")) {
-        if (v87 == 0 || v87 == 2) {
+        if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE || vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE) {
           print("It is already closed.");
         }
-        if (v87 == 3) {
-          reverse.loop(o2, f148);
-          v87 = 2;
+        if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_NO_CHEESE) {
+          reverse.loop(oCUPBOARD, f148);
+          vCUPBOARD_STATE = CUPBOARDSTATE_CLOSED_NO_CHEESE;
         }
         LABEL1237:
-          if (v87 == 1) {
-            reverse.loop(o2, f148);
-            erase(o3);
-            v87 = 0;
+          if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_WITH_CHEESE) {
+            reverse.loop(oCUPBOARD, f148);
+            erase(oSWISS_CHEESE);
+            vCUPBOARD_STATE = CUPBOARDSTATE_CLOSED_WITH_CHEESE;
           }
       }
     LABEL1252:
       if (!fCARRYING_SWISS_CHEESE) {
         if (said("get", "swiss cheese")) {
-          if (v87 == 1) {
-            erase(o3);
+          if (vCUPBOARD_STATE == 1) {
+            erase(oSWISS_CHEESE);
             get("cheese");
             set(fCARRYING_SWISS_CHEESE);
             vSCORE += 2;
             print("You pluck the Swiss cheese from the shelf.");
-            v87 = 3;
+            vCUPBOARD_STATE = 3;
           }
-          if (v87 == 0 || v87 == 2) {
+          if (vCUPBOARD_STATE == 0 || vCUPBOARD_STATE == 2) {
             print("I don't see any here.");
           }
         }
         LABEL1304:
           if (said("examine", "swiss cheese")) {
-            if (v87 == 0 || v87 == 2) {
+            if (vCUPBOARD_STATE == 0 || vCUPBOARD_STATE == 2) {
               print("I don't see any here.");
             }
-            if (v87 == 3) {
+            if (vCUPBOARD_STATE == 3) {
               print("I don't see any here.");
             }
             LABEL1337:
-              if (v87 == 1) {
+              if (vCUPBOARD_STATE == 1) {
                 print("Sitting on the shelf is a delicious piece of Swiss cheese.");
               }
           }
@@ -473,7 +476,7 @@ LABEL1346:
 LABEL1420:
   if (f24) {
     reset(f24);
-    draw(o3);
+    draw(oSWISS_CHEESE);
   }
 LABEL1430:
   if (said("examine", "stove")) {
@@ -521,7 +524,7 @@ LABEL1542:
 LABEL1569:
   if (posn(oEGO, 105, 88, 158, 160)) {
     if (said("examine", "table")) {
-      if (f170) {
+      if (fCARRYING_NOTE) {
         print("It is just a plain, wooden bedside table.");
         goto(LABEL1602);
       }
@@ -558,7 +561,7 @@ LABEL1697:
     print("There is little to see from here.");
   }
 LABEL1724:
-  if (!f170) {
+  if (!fCARRYING_NOTE) {
     if (said("examine", "note")) {
       if (posn(oEGO, 114, 132, 140, 160)) {
         print("It is written in a familiar language.");
@@ -569,9 +572,9 @@ LABEL1724:
     LABEL1758:
       if (said("get", "note")) {
         if (posn(oEGO, 114, 132, 140, 160)) {
-          start.update(o1);
-          erase(o1);
-          set(f170);
+          start.update(oNOTE);
+          erase(oNOTE);
+          set(fCARRYING_NOTE);
           get("note");
           print("You grab the note from the table.");
           vSCORE += 2;

@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (fEGO_INVISIBLE) {
       set(f23);
       reset(fEGO_INVISIBLE);
-      reset(f83);
+      reset(fCARRYING_RING);
       drop("ring");
       vSCORE -= 3;
       set(f115);

@@ -205,7 +205,7 @@ LABEL333:
           reset(f20);
           start.update(o2);
           erase(o2);
-          set(f154);
+          set(fCARRYING_MAGIC_BEANS);
           get("beans");
           v85 = 2;
           vSCORE += 4;
@@ -239,7 +239,7 @@ LABEL333:
       }
   }
 LABEL734:
-  if (!f20 && !f154) {
+  if (!f20 && !fCARRYING_MAGIC_BEANS) {
     if (said("anyword", "magic beans")) {
       print("There are no beans here.");
     }
@@ -279,7 +279,7 @@ LABEL845:
     }
   }
 LABEL878:
-  if (!fBUCKET_FILLED && f81 && !fEGO_ON_WATER && said("get", "water")) {
+  if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
     print("There is no place to safely get water.");
   }
 LABEL898:

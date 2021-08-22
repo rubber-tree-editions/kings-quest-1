@@ -58,7 +58,7 @@ LABEL131:
     }
   }
 LABEL187:
-  if (!fBUCKET_FILLED && f81 && said("get", "water")) {
+  if (!fBUCKET_FILLED && fCARRYING_BUCKET && said("get", "water")) {
     if (posn(oEGO, 0, 48, 97, 128) || posn(oEGO, 98, 94, 159, 167) || posn(oEGO, 120, 44, 159, 86)) {
       print("You carefully fill the bucket at the river's edge.");
       get("water");

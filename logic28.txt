@@ -9,13 +9,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(46);
-  if (v81 != 3) {
+  if (vWITCH_STATE != WITCHSTATE_DEAD) {
     random(0, 250, v62);
     if (v62 > 125) {
-      v81 = 1;
+      vWITCH_STATE = WITCHSTATE_AT_HOME;
       goto(LABEL42);
     }
-    v81 = 2;
+    vWITCH_STATE = WITCHSTATE_AWAY_FROM_HOME;
   }
   LABEL42:
     if (f75) {
@@ -91,12 +91,12 @@ LABEL243:
   }
 LABEL274:
   if (posn(oEGO, 20, 120, 110, 135)) {
-    if (v81 == 2 || v81 == 3) {
+    if (vWITCH_STATE == WITCHSTATE_AWAY_FROM_HOME || vWITCH_STATE == WITCHSTATE_DEAD) {
       if (said("eat", "building")) {
         print("Yum!  The house tastes even better than it looks!");
-        if (!f160) {
+        if (!fPOINTS_FOR_EATING_GINGERBREAD_HOUSE) {
           vSCORE += 2;
-          set(f160);
+          set(fPOINTS_FOR_EATING_GINGERBREAD_HOUSE);
         }
       }
       if (said("eat", "candy")) {
@@ -104,12 +104,12 @@ LABEL274:
       }
     }
     LABEL332:
-      if (v81 == 1) {
+      if (vWITCH_STATE == WITCHSTATE_AT_HOME) {
         if (said("eat", "building")) {
           print("As you begin to eat the house, a squeaky voice from somewhere says, \"Nibble, nibble, little mouse.  Who is nibbling at my house?\"");
-          if (!f160) {
+          if (!fPOINTS_FOR_EATING_GINGERBREAD_HOUSE) {
             vSCORE += 2;
-            set(f160);
+            set(fPOINTS_FOR_EATING_GINGERBREAD_HOUSE);
           }
         }
         if (said("eat", "candy")) {

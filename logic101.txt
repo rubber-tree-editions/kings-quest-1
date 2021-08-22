@@ -63,8 +63,8 @@ LABEL112:
             v90 = 0;
             v91 = 0;
             reset(fEGO_INVISIBLE);
-            reset(f83);
-            reset(f133);
+            reset(fCARRYING_RING);
+            reset(fWEARING_RING);
             set(f115);
             drop("ring");
             vSCORE -= 3;
@@ -84,8 +84,8 @@ LABEL112:
           v90 = 0;
           v91 = 0;
           reset(fEGO_INVISIBLE);
-          reset(f83);
-          reset(f133);
+          reset(fCARRYING_RING);
+          reset(fWEARING_RING);
           set(f115);
           drop("ring");
           vSCORE -= 3;
