@@ -7,7 +7,7 @@ LOGIC__HEADER
 vGAME_OVER_MESSAGE_COUNTDOWN--;
 if (vGAME_OVER_MESSAGE_COUNTDOWN == 1) {
   vGAME_OVER_MESSAGE_COUNTDOWN = 0;
-  sound(2, f148);
+  sound(SND_GAME_OVER, f148);
   if (vSCORE < 50) {
     print(null);
     goto(LABEL41);

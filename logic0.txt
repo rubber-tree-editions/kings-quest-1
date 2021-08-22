@@ -99,7 +99,7 @@ if (fGAME_OVER) {
     disable.item(cSWIM);
     disable.item(cDUCK);
     load.logics(LOGIC_GAME_OVER);
-    load.sound(2);
+    load.sound(SND_GAME_OVER);
     vGAME_OVER_MESSAGE_COUNTDOWN = 40;
     set(fGAME_OVER_PREPARATION);
   }
