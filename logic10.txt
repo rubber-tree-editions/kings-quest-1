@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define oGOAT o13
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -15,8 +15,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(14);
     load.view(62);
     v30 = 27;
-    animate.obj(o13);
-    set.view(o13, 14);
+    animate.obj(oGOAT);
+    set.view(oGOAT, 14);
   }
   if (v65 == vROOM_NO) {
     add.to.pic(62, 0, 0, 140, 80, 0, 0);
@@ -56,9 +56,9 @@ LABEL145:
   v30--;
   if (v30 == 1) {
     set(f20);
-    position(o13, 140, 80);
-    draw(o13);
-    wander(o13);
+    position(oGOAT, 140, 80);
+    draw(oGOAT);
+    wander(oGOAT);
     v30 = 0;
   }
 LABEL167:
@@ -103,11 +103,11 @@ LABEL167:
             print("From here it will be difficult to do such a terrible  thing.");
             goto(LABEL355);
           }
-          erase(o13);
-          set.view(o13, 62);
-          draw(o13);
+          erase(oGOAT);
+          set.view(oGOAT, 62);
+          draw(oGOAT);
           v98 = 0;
-          step.size(o13, v98);
+          step.size(oGOAT, v98);
           print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.");
           drop("dagger");
           vSCORE -= 5;
@@ -175,7 +175,7 @@ LABEL514:
     print("There should be a gate around here somewhere.");
   }
 LABEL526:
-  distance(oEGO, o13, v70);
+  distance(oEGO, oGOAT, v70);
   if (f74 && f20) {
     if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
       if (fCARRYING_CARROT) {
@@ -203,7 +203,7 @@ LABEL624:
           if (!f151) {
             print("When you tempt the old goat with the carrot, he starts to follow you.");
             set(f75);
-            erase(o13);
+            erase(oGOAT);
             set.view(oEGO, 67);
             vSCORE += 5;
           }

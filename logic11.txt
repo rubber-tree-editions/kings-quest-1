@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define oGOAT o13
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -19,9 +19,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.sound(11);
     load.view(14);
     v30 = 27;
-    animate.obj(o13);
-    set.view(o13, 14);
-    observe.blocks(o13);
+    animate.obj(oGOAT);
+    set.view(oGOAT, 14);
+    observe.blocks(oGOAT);
   }
   if (v65 == vROOM_NO) {
     add.to.pic(62, 0, 0, 56, 122, 9, 0);
@@ -125,9 +125,9 @@ LABEL337:
   v30--;
   if (v30 == 1) {
     set(f21);
-    position(o13, 4, 100);
-    draw(o13);
-    wander(o13);
+    position(oGOAT, 4, 100);
+    draw(oGOAT);
+    wander(oGOAT);
     v30 = 0;
   }
 LABEL359:
@@ -172,11 +172,11 @@ LABEL359:
             print("From here it will be very difficult to do such a  terrible thing.");
             goto(LABEL547);
           }
-          erase(o13);
-          set.view(o13, 62);
-          draw(o13);
+          erase(oGOAT);
+          set.view(oGOAT, 62);
+          draw(oGOAT);
           v98 = 0;
-          step.size(o13, v98);
+          step.size(oGOAT, v98);
           print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.");
           drop("dagger");
           vSCORE -= 5;
@@ -232,7 +232,7 @@ LABEL671:
     print("The fence is too high for you to jump over.");
   }
 LABEL683:
-  distance(oEGO, o13, v70);
+  distance(oEGO, oGOAT, v70);
   if (f74 && f21) {
     if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
       if (fCARRYING_CARROT) {
@@ -260,7 +260,7 @@ LABEL781:
           if (!f151) {
             print("When you tempt the old goat with the carrot, he starts to follow you.");
             set(f75);
-            erase(o13);
+            erase(oGOAT);
             set.view(oEGO, 67);
             vSCORE += 5;
           }
@@ -312,7 +312,7 @@ LABEL1020:
 LABEL1040:
   if (vOBJECT_EDGE_CODE == 2 || vOBJECT_EDGE_CODE == 3) {
     if (!f75) {
-      erase(o13);
+      erase(oGOAT);
       reset(f21);
       set(f130);
       print("It seems the old goat has wandered off.");
