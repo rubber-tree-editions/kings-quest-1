@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   set.horizon(41);
   load.view(67);
-  if (!f75 && v65 <= 0 && !f130) {
+  if (!f75 && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !f130) {
     load.sound(11);
     load.view(14);
     load.view(62);
@@ -18,7 +18,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oGOAT);
     set.view(oGOAT, 14);
   }
-  if (v65 == vROOM_NO) {
+  if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 140, 80, 0, 0);
   }
   LABEL59:
@@ -113,7 +113,7 @@ LABEL167:
           vSCORE -= 5;
           reset(fCARRYING_DAGGER);
           set(fDAGGER_LOST);
-          v65 = vROOM_NO;
+          vROOM_YOU_KILLED_THE_GOAT_IN = vROOM_NO;
         }
       }
     LABEL355:
@@ -138,7 +138,7 @@ LABEL167:
       }
   }
 LABEL413:
-  if (v65 == vROOM_NO) {
+  if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     if (said("examine", "goat")) {
       print("Lying lifeless on the ground you see a useless dead  goat.");
     }

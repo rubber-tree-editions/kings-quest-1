@@ -22,7 +22,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       load.logics(103);
     }
   LABEL50:
-    if (v65 == vROOM_NO) {
+    if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
       add.to.pic(62, 0, 0, 102, 142, 0, 0);
     }
   LABEL65:

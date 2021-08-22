@@ -62,7 +62,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (fCARRYING_MUSHROOM || fEGO_TINY) {
     load.view(60);
   }
-  if (f75 || v65 > 0) {
+  if (f75 || vROOM_YOU_KILLED_THE_GOAT_IN > 0) {
     load.view(62);
   }
   reset(f190);
@@ -255,12 +255,12 @@ if (fCARRYING_DAGGER) {
     }
   }
 }
-if (fDAGGER_LOST && v65 != vROOM_NO) {
+if (fDAGGER_LOST && vROOM_YOU_KILLED_THE_GOAT_IN != vROOM_NO) {
   if (said("anyword", "dagger")) {
     print("You had the dagger and lost it.  Sorry.");
   }
 }
-if (fDAGGER_LOST && v65 == vROOM_NO) {
+if (fDAGGER_LOST && vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
   if (said("anyword", "dagger")) {
     print("You don't want the dagger anymore.");
   }
@@ -621,12 +621,12 @@ if (fCARRYING_CHEST) {
   }
 }
 if (!f75) {
-  if (v65 <= 0 && vROOM_NO != 10 && vROOM_NO != 11) {
+  if (vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && vROOM_NO != 10 && vROOM_NO != 11) {
     if (said("anyword", "goat")) {
       print("There is no goat here.");
     }
   }
-  if (v65 > 0 && vROOM_NO != 10 && vROOM_NO != 11) {
+  if (vROOM_YOU_KILLED_THE_GOAT_IN > 0 && vROOM_NO != 10 && vROOM_NO != 11) {
     if (said("anyword", "goat")) {
       print("You've already killed the goat.");
     }
@@ -645,7 +645,7 @@ if (f75) {
         set.view(o13, 62);
         position.v(o13, v60, v61);
         draw(o13);
-        v65 = vROOM_NO;
+        vROOM_YOU_KILLED_THE_GOAT_IN = vROOM_NO;
         v98 = 0;
         step.size(o13, v98);
         drop("dagger");
@@ -659,7 +659,7 @@ if (f75) {
         erase(o13);
         set.view(o13, 62);
         draw(o13);
-        v65 = vROOM_NO;
+        vROOM_YOU_KILLED_THE_GOAT_IN = vROOM_NO;
         v98 = 0;
         step.size(o13, v98);
         drop("dagger");
