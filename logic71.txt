@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -22,76 +20,67 @@ if (fROOM_SCRIPT_EXECUTED) {
     get.posn(oEGO, v60, v61);
     if (v60 > 75) {
       position(oEGO, 90, 29);
-      goto(LABEL75);
     }
-    position(oEGO, 55, 29);
-    LABEL75:
-      v61 = 166;
-      v96 = 4;
-      set.priority(oEGO, 15);
-      move.obj.v(oEGO, v60, v61, 96, f20);
+    else {
+      position(oEGO, 55, 29);
+    }
+    v61 = 166;
+    v96 = 4;
+    set.priority(oEGO, 15);
+    move.obj.v(oEGO, v60, v61, 96, f20);
   }
-  LABEL90:
-    if (vPREV_ROOM_NO == 70) {
-      set.view(oEGO, 74);
-      position(oEGO, 69, 160);
-      move.obj(oEGO, 69, 160, 0, f148);
-    }
-  LABEL110:
-    draw(oEGO);
-    show.pic();
+  if (vPREV_ROOM_NO == 70) {
+    set.view(oEGO, 74);
+    position(oEGO, 69, 160);
+    move.obj(oEGO, 69, 160, 0, f148);
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (f158 && !f20 && !f21) {
   sound(5, fSOUND_END_MARKER);
   set(f21);
 }
-LABEL130:
-  if (fSOUND_END_MARKER) {
-    if (!f20) {
-      reset(f21);
-      reset(fSOUND_END_MARKER);
-    }
+if (fSOUND_END_MARKER) {
+  if (!f20) {
+    reset(f21);
+    reset(fSOUND_END_MARKER);
   }
-LABEL147:
-  if (said("examine", "beanstalk")) {
-    print("You can no longer see the bottom... it seems to go  on forever!");
+}
+if (said("examine", "beanstalk")) {
+  print("You can no longer see the bottom... it seems to go  on forever!");
+}
+if (fEGO_TOUCHED_TRIGGER_LINE && !f158) {
+  program.control();
+  print();
+  get.posn(oEGO, v60, v61);
+  reset(f157);
+  set(f158);
+  erase(oEGO);
+  set.view(oEGO, 105);
+  if (v60 > 75) {
+    v60 = 80;
+    position.v(oEGO, v60, v61);
+    draw(oEGO);
   }
-LABEL159:
-  if (fEGO_TOUCHED_TRIGGER_LINE && !f158) {
-    program.control();
-    print();
-    get.posn(oEGO, v60, v61);
-    reset(f157);
-    set(f158);
-    erase(oEGO);
-    set.view(oEGO, 105);
-    if (v60 > 75) {
-      v60 = 80;
-      position.v(oEGO, v60, v61);
-      draw(oEGO);
-    }
-    if (v60 < 76) {
-      v60 = 65;
-      position.v(oEGO, v60, v61);
-      draw(oEGO);
-    }
-    LABEL216:
-      start.cycling(oEGO);
-      set(f98);
-      v61 = 166;
-      v96 = 4;
-      move.obj.v(oEGO, v60, v61, 96, f20);
+  if (v60 < 76) {
+    v60 = 65;
+    position.v(oEGO, v60, v61);
+    draw(oEGO);
   }
-LABEL232:
-  if (vEGO_EDGE_CODE == 1) {
-    new.room(72);
-  }
-LABEL241:
-  if (f20 || posn(oEGO, 0, 166, 159, 167)) {
-    new.room(70);
-  }
-LABEL257:
-  return;
+  start.cycling(oEGO);
+  set(f98);
+  v61 = 166;
+  v96 = 4;
+  move.obj.v(oEGO, v60, v61, 96, f20);
+}
+if (vEGO_EDGE_CODE == 1) {
+  new.room(72);
+}
+if (f20 || posn(oEGO, 0, 166, 159, 167)) {
+  new.room(70);
+}
+return;
 
 LOGIC__FOOTER
 
