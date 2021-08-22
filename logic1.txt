@@ -2,6 +2,7 @@
 
 LOGIC__HEADER
 
+#define oBANNERS o1
 #define oGATOR1 o11
 #define oGATOR2 o12
 
@@ -22,22 +23,22 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(97);
     animate.obj(oGATOR1);
     animate.obj(oGATOR2);
-    animate.obj(o1);
+    animate.obj(oBANNERS);
     set.view(oGATOR1, 107);
     set.view(oGATOR2, 107);
-    set.view(o1, 97);
+    set.view(oBANNERS, 97);
     position(oGATOR1, 121, 161);
     position(oGATOR2, 73, 166);
-    ignore.horizon(o1);
-    position(o1, 5, 17);
-    set.priority(o1, 15);
+    ignore.horizon(oBANNERS);
+    position(oBANNERS, 5, 17);
+    set.priority(oBANNERS, 15);
     set(f68);
     object.on.water(oGATOR1);
     object.on.water(oGATOR2);
     ignore.blocks(oEGO);
     draw(oGATOR1);
     draw(oGATOR2);
-    draw(o1);
+    draw(oBANNERS);
     if (vPREV_ROOM_NO == 0 || vPREV_ROOM_NO == 83) {
       position(oEGO, 110, 100);
     }

@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define oBANNERS o1
+#define oCASTLE_DOORS o2
 #define oGATOR1 o11
 #define oGATOR2 o12
 
@@ -23,39 +25,39 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL51:
     if (!f75) {
       load.view(9);
-      animate.obj(o2);
-      set.view(o2, 9);
-      position(o2, 105, 120);
+      animate.obj(oCASTLE_DOORS);
+      set.view(oCASTLE_DOORS, 9);
+      position(oCASTLE_DOORS, 105, 120);
       if (vPREV_ROOM_NO == 55) {
-        set.cel(o2, 2);
+        set.cel(oCASTLE_DOORS, 2);
         goto(LABEL85);
       }
-      set.cel(o2, 0);
+      set.cel(oCASTLE_DOORS, 0);
       LABEL85:
-        draw(o2);
-        stop.update(o2);
+        draw(oCASTLE_DOORS);
+        stop.update(oCASTLE_DOORS);
     }
   LABEL89:
     load.view(107);
     load.view(97);
     animate.obj(oGATOR1);
     animate.obj(oGATOR2);
-    animate.obj(o1);
+    animate.obj(oBANNERS);
     set.view(oGATOR1, 107);
     set.view(oGATOR2, 107);
-    set.view(o1, 97);
+    set.view(oBANNERS, 97);
     position(oGATOR1, 121, 161);
     position(oGATOR2, 73, 166);
-    ignore.horizon(o1);
-    position(o1, 115, 17);
-    set.priority(o1, 15);
+    ignore.horizon(oBANNERS);
+    position(oBANNERS, 115, 17);
+    set.priority(oBANNERS, 15);
     set(f68);
     object.on.water(oGATOR1);
     object.on.water(oGATOR2);
     ignore.blocks(oEGO);
     draw(oGATOR1);
     draw(oGATOR2);
-    draw(o1);
+    draw(oBANNERS);
     if (vPREV_ROOM_NO == 55) {
       position(oEGO, 110, 122);
       set(f26);
@@ -76,12 +78,12 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 if (f26) {
   reset(f26);
-  start.update(o2);
-  reverse.loop(o2, f25);
+  start.update(oCASTLE_DOORS);
+  reverse.loop(oCASTLE_DOORS, f25);
 }
 LABEL196:
   if (f25 && !f27) {
-    stop.update(o2);
+    stop.update(oCASTLE_DOORS);
   }
 LABEL207:
   if (said("pet", "alligators")) {
@@ -186,9 +188,9 @@ LABEL518:
     if (said("open", "doors")) {
       if (posn(oEGO, 105, 120, 121, 128)) {
         set(f27);
-        start.update(o2);
+        start.update(oCASTLE_DOORS);
         sound(15, f28);
-        end.of.loop(o2, f24);
+        end.of.loop(oCASTLE_DOORS, f24);
         set.priority(oEGO, 15);
         print("The huge doors swing open slowly.");
         if (!f193) {
