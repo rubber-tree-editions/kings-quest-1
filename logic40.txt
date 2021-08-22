@@ -14,7 +14,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.logics(101);
   call(101);
   ignore.blocks(oEGO);
-  if (v83 <= 0) {
+  if (vGNOME_STATE <= GNOMESTATE_PRESENT) {
     load.view(27);
     animate.obj(oGNOME);
     set.view(oGNOME, 27);
@@ -32,275 +32,259 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oGOLD_KEY, 39, 118);
     ignore.objs(oGOLD_KEY);
   }
-  if (v83 == 1 && v85 != 2) {
+  if (vGNOME_STATE == GNOMESTATE_LEFT_BEANS && vTAKEN_GNOME_GIFT != GNOMEGIFT_BEANS) {
     set(f20);
     load.view(29);
     animate.obj(oMAGIC_BEANS);
     set.view(oMAGIC_BEANS, 29);
     position(oMAGIC_BEANS, 39, 118);
   }
-  LABEL93:
-    if (v83 == 2 && v85 != 1) {
-      set(f21);
-      load.view(28);
-      animate.obj(oGOLD_KEY);
-      set.view(oGOLD_KEY, 28);
-      position(oGOLD_KEY, 39, 118);
-    }
-  LABEL117:
-    if (v83 <= 0) {
-      draw(oGNOME);
-      set(f23);
-    }
-  LABEL129:
-    if (f21) {
-      draw(oGOLD_KEY);
-      stop.update(oGOLD_KEY);
-    }
-  LABEL139:
-    if (f20) {
-      draw(oMAGIC_BEANS);
-      stop.update(oMAGIC_BEANS);
-    }
-  LABEL149:
-    set(f68);
-    draw(oEGO);
-    show.pic();
+  if (vGNOME_STATE == GNOMESTATE_LEFT_KEY && vTAKEN_GNOME_GIFT != GNOMEGIFT_KEY) {
+    set(f21);
+    load.view(28);
+    animate.obj(oGOLD_KEY);
+    set.view(oGOLD_KEY, 28);
+    position(oGOLD_KEY, 39, 118);
+  }
+  if (vGNOME_STATE <= GNOMESTATE_PRESENT) {
+    draw(oGNOME);
+    set(f23);
+  }
+  if (f21) {
+    draw(oGOLD_KEY);
+    stop.update(oGOLD_KEY);
+  }
+  if (f20) {
+    draw(oMAGIC_BEANS);
+    stop.update(oMAGIC_BEANS);
+  }
+  set(f68);
+  draw(oEGO);
+  show.pic();
 }
 if (said("examine", "building")) {
   print("The gnome's lean-to doesn't look very sturdy.");
 }
-LABEL166:
-  if (f23 && !f24) {
-    print(null);
-    set(f24);
-  }
-LABEL179:
-  if (f23) {
-    distance(oEGO, oGNOME, v62);
-    if (f22) {
-      if (said("talk", "man") || said("hello") || said("say", "hello")) {
-        if (v62 < 50) {
-          print("You still haven't guessed my name!");
-          goto(LABEL898);
-        }
-        print("The gnome can't hear you from there.");
-        goto(LABEL898);
-      }
-    }
-    if (!f22) {
-      if (said("talk", "man") || said("hello") || said("say", "hello")) {
-        if (v62 < 50) {
-          set(f22);
-          print("The old gnome tells you he has something that may be very useful to you.  Your task is to guess his name in three guesses and his gift will be yours.  Good luck!  What is your first guess?");
-          goto(LABEL898);
-        }
-        print("The gnome can't hear you from there.");
-        goto(LABEL898);
-      }
-    }
-    if (said("examine", "man")) {
-      if (v62 < 80) {
-        print("The gnome is old and bent under the weight of years, but a playful wisdom still brightens his eyes.");
-        goto(LABEL898);
-      }
-      print("You should get a little closer.");
-      goto(LABEL898);
-    }
-    if (said("murder", "man")) {
-      print("It would be unwise to kill a gnome.");
-      goto(LABEL898);
-    }
-  }
-LABEL333:
+if (f23 && !f24) {
+  print(null);
+  set(f24);
+}
+if (f23) {
+  distance(oEGO, oGNOME, v62);
   if (f22) {
-    if (said("rumplestiltskin") && v84 != 2) {
-      print("That is very close but not quite right!");
-      v84++;
+    if (said("talk", "man") || said("hello") || said("say", "hello")) {
+      if (v62 < 50) {
+        print("You still haven't guessed my name!");
+      }
+      else {
+        print("The gnome can't hear you from there.");
+      }
       goto(LABEL898);
     }
-    if (said("nikstlitselpmur") && v84 != 2) {
-      print("You have the right idea, but your thinking is just a little bit off.");
-      v84++;
+  }
+  if (!f22) {
+    if (said("talk", "man") || said("hello") || said("say", "hello")) {
+      if (v62 < 50) {
+        set(f22);
+        print("The old gnome tells you he has something that may be very useful to you.  Your task is to guess his name in three guesses and his gift will be yours.  Good luck!  What is your first guess?");
+      }
+      else {
+        print("The gnome can't hear you from there.");
+      }
       goto(LABEL898);
     }
-    if (said("mikel knight") && v84 != 2) {
-      print();
-      v84++;
+  }
+  if (said("examine", "man")) {
+    if (v62 < 80) {
+      print("The gnome is old and bent under the weight of years, but a playful wisdom still brightens his eyes.");
+    }
+    else {
+      print("You should get a little closer.");
+    }
+    goto(LABEL898);
+  }
+  if (said("murder", "man")) {
+    print("It would be unwise to kill a gnome.");
+    goto(LABEL898);
+  }
+}
+if (f22) {
+  if (said("rumplestiltskin") && vGNOME_NAME_GUESSES != 2) {
+    print("That is very close but not quite right!");
+    vGNOME_NAME_GUESSES++;
+    goto(LABEL898);
+  }
+  if (said("nikstlitselpmur") && vGNOME_NAME_GUESSES != 2) {
+    print("You have the right idea, but your thinking is just a little bit off.");
+    vGNOME_NAME_GUESSES++;
+    goto(LABEL898);
+  }
+  if (said("mikel knight") && vGNOME_NAME_GUESSES != 2) {
+    print();
+    vGNOME_NAME_GUESSES++;
+    goto(LABEL898);
+  }
+  if (said("ifnkovhgroghprm")) {
+    erase(oGNOME);
+    reset(f22);
+    reset(f23);
+    draw(oMAGIC_BEANS);
+    set(f20);
+    stop.update(oMAGIC_BEANS);
+    vGNOME_STATE = GNOMESTATE_LEFT_BEANS;
+    print("That's right!!!  You've guessed it!!  Here are some magic beans for your outstanding accomplishment!");
+    if (vGNOME_NAME_GUESSES <= 0) {
+      vSCORE += 5;
+    }
+    if (vGNOME_NAME_GUESSES == 1) {
+      vSCORE += 4;
+    }
+    if (vGNOME_NAME_GUESSES == 2) {
+      vSCORE += 3;
+    }
+    goto(LABEL898);
+  }
+  if (vGNOME_NAME_GUESSES <= 0) {
+    if (said("anyword") || said("anyword", "anyword")) {
+      accept.input();
+      print("Where did you get that idea?  That's not even close!");
+      vGNOME_NAME_GUESSES++;
       goto(LABEL898);
     }
-    if (said("ifnkovhgroghprm")) {
+  }
+  if (vGNOME_NAME_GUESSES == 1) {
+    if (said("anyword") || said("anyword", "anyword")) {
+      accept.input();
+      print("You know that's not right!");
+      print("What is your next guess?");
+      vGNOME_NAME_GUESSES++;
+      goto(LABEL898);
+    }
+  }
+  if (vGNOME_NAME_GUESSES == 2) {
+    if (said("anyword") || said("anyword", "anyword")) {
+      accept.input();
       erase(oGNOME);
       reset(f22);
       reset(f23);
-      draw(oMAGIC_BEANS);
-      set(f20);
-      stop.update(oMAGIC_BEANS);
-      v83 = 1;
-      print("That's right!!!  You've guessed it!!  Here are some magic beans for your outstanding accomplishment!");
-      if (v84 <= 0) {
-        vSCORE += 5;
-      }
-      if (v84 == 1) {
-        vSCORE += 4;
-      }
-      LABEL442:
-        if (v84 == 2) {
-          vSCORE += 3;
-        }
-      LABEL452:
-        goto(LABEL898);
-    }
-    if (v84 <= 0) {
-      if (said("anyword") || said("anyword", "anyword")) {
-        accept.input();
-        print("Where did you get that idea?  That's not even close!");
-        v84++;
-        goto(LABEL898);
-      }
-    }
-    if (v84 == 1) {
-      if (said("anyword") || said("anyword", "anyword")) {
-        accept.input();
-        print("You know that's not right!");
-        print("What is your next guess?");
-        v84++;
-        goto(LABEL898);
-      }
-    }
-    if (v84 == 2) {
-      if (said("anyword") || said("anyword", "anyword")) {
-        accept.input();
-        erase(oGNOME);
-        reset(f22);
-        reset(f23);
-        draw(oGOLD_KEY);
-        set(f21);
-        stop.update(oGOLD_KEY);
-        v83 = 2;
-        print("You didn't guess the gnome's name, but he left you a gold key anyway.  Better luck next time!");
-        v84 = 3;
-        goto(LABEL898);
-      }
+      draw(oGOLD_KEY);
+      set(f21);
+      stop.update(oGOLD_KEY);
+      vGNOME_STATE = GNOMESTATE_LEFT_KEY;
+      print("You didn't guess the gnome's name, but he left you a gold key anyway.  Better luck next time!");
+      vGNOME_NAME_GUESSES = 3;
+      goto(LABEL898);
     }
   }
-  if (!f23) {
-    if (said("anyword", "man")) {
-      print("There is no gnome here.");
-    }
-    if (f20) {
-      distance(oEGO, oMAGIC_BEANS, v70);
-      if (said("examine", "magic beans")) {
-        if (v70 > 40) {
-          print("That's too far away.");
-          goto(LABEL620);
-        }
+}
+if (!f23) {
+  if (said("anyword", "man")) {
+    print("There is no gnome here.");
+  }
+  if (f20) {
+    distance(oEGO, oMAGIC_BEANS, v70);
+    if (said("examine", "magic beans")) {
+      if (v70 > 40) {
+        print("That's too far away.");
+      }
+      else {
         print("They look like beans.  Interesting.");
       }
-      LABEL620:
-        if (said("get", "magic beans")) {
-          if (v70 > 20) {
-            print("That's too far away.");
-            goto(LABEL660);
-          }
-          print("Being careful that you get every one of them, you place the beans in your pocket.");
-          reset(f20);
-          start.update(oMAGIC_BEANS);
-          erase(oMAGIC_BEANS);
-          set(fCARRYING_MAGIC_BEANS);
-          get("beans");
-          v85 = 2;
-          vSCORE += 4;
-        }
     }
-    LABEL660:
-      if (f21) {
-        distance(oEGO, oGOLD_KEY, v71);
-        if (said("examine", "gold key")) {
-          if (v71 > 40) {
-            print("That's too far away.");
-            goto(LABEL694);
-          }
-          print("It is a heavy, gold, skeleton key.");
-        }
-        LABEL694:
-          if (said("get", "gold key")) {
-            if (v71 > 20) {
-              print("That's too far away.");
-              goto(LABEL734);
-            }
-            print("It is heavy and cold.");
-            reset(f21);
-            start.update(oGOLD_KEY);
-            erase(oGOLD_KEY);
-            set(fCARRYING_GOLD_KEY);
-            get("key");
-            v85 = 1;
-            vSCORE += 3;
-          }
+    if (said("get", "magic beans")) {
+      if (v70 > 20) {
+        print("That's too far away.");
       }
-  }
-LABEL734:
-  if (!f20 && !fCARRYING_MAGIC_BEANS) {
-    if (said("anyword", "magic beans")) {
-      print("There are no beans here.");
+      else {
+        print("Being careful that you get every one of them, you place the beans in your pocket.");
+        reset(f20);
+        start.update(oMAGIC_BEANS);
+        erase(oMAGIC_BEANS);
+        set(fCARRYING_MAGIC_BEANS);
+        get("beans");
+        vTAKEN_GNOME_GIFT = GNOMEGIFT_BEANS;
+        vSCORE += 4;
+      }
     }
   }
-LABEL756:
-  if (!f21 && !fCARRYING_GOLD_KEY) {
-    if (said("anyword", "gold key")) {
-      print("The key to your problems is elsewhere.");
+  if (f21) {
+    distance(oEGO, oGOLD_KEY, v71);
+    if (said("examine", "gold key")) {
+      if (v71 > 40) {
+        print("That's too far away.");
+      }
+      else {
+        print("It is a heavy, gold, skeleton key.");
+      }
+    }
+    if (said("get", "gold key")) {
+      if (v71 > 20) {
+        print("That's too far away.");
+      }
+      else {
+        print("It is heavy and cold.");
+        reset(f21);
+        start.update(oGOLD_KEY);
+        erase(oGOLD_KEY);
+        set(fCARRYING_GOLD_KEY);
+        get("key");
+        vTAKEN_GNOME_GIFT = GNOMEGIFT_KEY;
+        vSCORE += 3;
+      }
     }
   }
-LABEL778:
-  if (fEGO_ON_WATER && !f25) {
-    set(f25);
-    print("You slip down the bank into the river far below.  Your cries for help are not heard.");
+}
+if (!f20 && !fCARRYING_MAGIC_BEANS) {
+  if (said("anyword", "magic beans")) {
+    print("There are no beans here.");
   }
-LABEL791:
-  if (v94 <= 0 && fEGO_ON_WATER) {
-    v76 = 255;
-    if (posn(oEGO, 0, 34, 34, 67)) {
-      v76 = 6;
-      v77 = 54;
-    }
-    if (v76 == 255) {
-      v76 = 0;
-      goto(LABEL845);
-    }
-    LABEL833:
-      get.posn(oEGO, v60, v61);
-      v76 -= v60;
-      v77 -= v61;
-      set(f134);
+}
+if (!f21 && !fCARRYING_GOLD_KEY) {
+  if (said("anyword", "gold key")) {
+    print("The key to your problems is elsewhere.");
   }
-LABEL845:
-  if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
-    if (said("drink", "water") || said("get", "drink")) {
-      print("There is no place to safely get a drink.");
-    }
+}
+if (fEGO_ON_WATER && !f25) {
+  set(f25);
+  print("You slip down the bank into the river far below.  Your cries for help are not heard.");
+}
+if (v94 <= 0 && fEGO_ON_WATER) {
+  v76 = 255;
+  if (posn(oEGO, 0, 34, 34, 67)) {
+    v76 = 6;
+    v77 = 54;
   }
-LABEL878:
-  if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
-    print("There is no place to safely get water.");
+  if (v76 == 255) {
+    v76 = 0;
   }
+  else {
+    get.posn(oEGO, v60, v61);
+    v76 -= v60;
+    v77 -= v61;
+    set(f134);
+  }
+}
+if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
+  if (said("drink", "water") || said("get", "drink")) {
+    print("There is no place to safely get a drink.");
+  }
+}
+if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
+  print("There is no place to safely get water.");
+}
 LABEL898:
   if (vEGO_EDGE_CODE == 1) {
     new.room(41);
   }
-LABEL907:
   if (vEGO_EDGE_CODE == 2) {
     new.room(39);
   }
-LABEL916:
   if (vEGO_EDGE_CODE == 4) {
     new.room(33);
   }
-LABEL925:
   if (vEGO_EDGE_CODE == 3) {
     new.room(25);
   }
-LABEL934:
   call(101);
   return;
 
