@@ -291,7 +291,7 @@ if (fCARRYING_BOWL) {
       set.view(oBOWL, 83);
       draw(oBOWL);
       print("The woodcutter family is very grateful that you have given them a bowl of stew.  Now they will have at least one last meal.  As a token of their gratitude, they offer their last earthly possession, the woodcutter's fiddle.");
-      set(f185);
+      set(fWOODCUTTER_GIVEN_STEW);
       if (!f24) {
         set(f24);
         start.cycling(oWOODCUTTER);
@@ -322,7 +322,7 @@ if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_EMPTY) {
       set(fPOINTS_FOR_STEW);
       vSCORE += 2;
     }
-    set(f185);
+    set(fWOODCUTTER_GIVEN_STEW);
     if (!f24) {
       set(f24);
       start.cycling(oWOODCUTTER);
@@ -352,10 +352,10 @@ if (!fFIDDLE_TAKEN) {
     }
   }
   if (said("get", "fiddle")) {
-    if (posn(oEGO, 120, 140, 158, 166) && !f185) {
+    if (posn(oEGO, 120, 140, 158, 166) && !fWOODCUTTER_GIVEN_STEW) {
       print("You cannot take their last precious possession!");
     }
-    if (posn(oEGO, 120, 140, 158, 166) && f185) {
+    if (posn(oEGO, 120, 140, 158, 166) && fWOODCUTTER_GIVEN_STEW) {
       erase(oFIDDLE);
       set(fCARRYING_FIDDLE);
       set(fFIDDLE_TAKEN);
