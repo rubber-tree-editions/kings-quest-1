@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -13,37 +11,31 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oEGO, 91);
     position(oEGO, 1, 60);
     move.obj(oEGO, 130, 60, 0, f20);
-    goto(LABEL51);
   }
-  load.view(89);
-  set.view(oEGO, 89);
-  position(oEGO, 1, 60);
-  move.obj(oEGO, 135, 60, 0, f21);
-  LABEL51:
-    draw(oEGO);
-    show.pic();
+  else {
+    load.view(89);
+    set.view(oEGO, 89);
+    position(oEGO, 1, 60);
+    move.obj(oEGO, 135, 60, 0, f21);
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (said("examine", "view") || said("examine", "clouds") || said("examine", "room")) {
   print("The view is magnificent.");
 }
-LABEL80:
-  if (said("anyword", "witch")) {
-    print("Now is not the time to irritate the witch.");
-  }
-LABEL92:
-  if (said("anyword", "bird")) {
-    print("Now is not a good time to bother the bird.");
-  }
-LABEL104:
-  if (f20) {
-    new.room(65);
-  }
-LABEL112:
-  if (f21) {
-    new.room(48);
-  }
-LABEL120:
-  return;
+if (said("anyword", "witch")) {
+  print("Now is not the time to irritate the witch.");
+}
+if (said("anyword", "bird")) {
+  print("Now is not a good time to bother the bird.");
+}
+if (f20) {
+  new.room(65);
+}
+if (f21) {
+  new.room(48);
+}
+return;
 
 LOGIC__FOOTER
-
