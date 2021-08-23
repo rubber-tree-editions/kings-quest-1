@@ -22,99 +22,86 @@ if (fROOM_SCRIPT_EXECUTED) {
     get.posn(oEGO, v60, v61);
     if (v60 > 75) {
       position(oEGO, 90, 29);
-      goto(LABEL75);
     }
-    position(oEGO, 55, 29);
-    LABEL75:
-      v61 = 166;
-      v96 = 4;
-      set.priority(oEGO, 15);
-      move.obj.v(oEGO, v60, v61, 96, f20);
+    else {
+      position(oEGO, 55, 29);
+    }
+    v61 = 166;
+    v96 = 4;
+    set.priority(oEGO, 15);
+    move.obj.v(oEGO, v60, v61, 96, f20);
   }
-  LABEL90:
-    if (vPREV_ROOM_NO < 50) {
-      set.view(oEGO, 74);
-      position(oEGO, 69, 160);
-      move.obj(oEGO, 69, 160, 0, f148);
-    }
-  LABEL110:
-    draw(oEGO);
-    show.pic();
+  if (vPREV_ROOM_NO < 50) {
+    set.view(oEGO, 74);
+    position(oEGO, 69, 160);
+    move.obj(oEGO, 69, 160, 0, f148);
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (f158 && !f20 && !f21) {
   sound(5, fSOUND_END_MARKER);
   set(f21);
 }
-LABEL130:
-  if (fSOUND_END_MARKER) {
-    if (!f20) {
-      reset(f21);
-      reset(fSOUND_END_MARKER);
-    }
+if (fSOUND_END_MARKER) {
+  if (!f20) {
+    reset(f21);
+    reset(fSOUND_END_MARKER);
   }
-LABEL147:
-  if (fGOAT_COMPANION) {
-    print("The goat was quite hesitant about climbing that huge beanstalk!  You may have lost the goat.");
-    reset(fGOAT_COMPANION);
-    set(fGOAT_IS_GONE);
-    vSCORE -= 5;
+}
+if (fGOAT_COMPANION) {
+  print("The goat was quite hesitant about climbing that huge beanstalk!  You may have lost the goat.");
+  reset(fGOAT_COMPANION);
+  set(fGOAT_IS_GONE);
+  vSCORE -= 5;
+}
+if (said("examine", "beanstalk")) {
+  print("The beanstalk disappears up into the clouds.");
+}
+if (fEGO_TOUCHED_TRIGGER_LINE && !f158) {
+  program.control();
+  print("With a wrong move, you fall dizzyingly to the ground.");
+  get.posn(oEGO, v60, v61);
+  set(f158);
+  erase(oEGO);
+  set.view(oEGO, 105);
+  if (v60 > 75) {
+    v60 = 80;
+    position.v(oEGO, v60, v61);
+    draw(oEGO);
   }
-LABEL162:
-  if (said("examine", "beanstalk")) {
-    print("The beanstalk disappears up into the clouds.");
+  if (v60 < 76) {
+    v60 = 65;
+    position.v(oEGO, v60, v61);
+    draw(oEGO);
   }
-LABEL174:
-  if (fEGO_TOUCHED_TRIGGER_LINE && !f158) {
-    program.control();
-    print("With a wrong move, you fall dizzyingly to the ground.");
-    get.posn(oEGO, v60, v61);
-    set(f158);
-    erase(oEGO);
-    set.view(oEGO, 105);
-    if (v60 > 75) {
-      v60 = 80;
-      position.v(oEGO, v60, v61);
-      draw(oEGO);
-    }
-    if (v60 < 76) {
-      v60 = 65;
-      position.v(oEGO, v60, v61);
-      draw(oEGO);
-    }
-    LABEL229:
-      start.cycling(oEGO);
-      set(f98);
-      v61 = 166;
-      v96 = 4;
-      move.obj.v(oEGO, v60, v61, 96, f20);
+  start.cycling(oEGO);
+  set(f98);
+  v61 = 166;
+  v96 = 4;
+  move.obj.v(oEGO, v60, v61, 96, f20);
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(71);
+}
+if (f20 || posn(oEGO, 0, 166, 159, 167)) {
+  if (vBEANSTALK_ROOM == 6) {
+    new.room(6);
   }
-LABEL245:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(71);
+  if (vBEANSTALK_ROOM == 22) {
+    new.room(22);
   }
-LABEL254:
-  if (f20 || posn(oEGO, 0, 166, 159, 167)) {
-    if (vBEANSTALK_ROOM == 6) {
-      new.room(6);
-    }
-    if (vBEANSTALK_ROOM == 22) {
-      new.room(22);
-    }
-    LABEL286:
-      if (vBEANSTALK_ROOM == 31) {
-        new.room(31);
-      }
-    LABEL295:
-      if (vBEANSTALK_ROOM == 35) {
-        new.room(35);
-      }
-    LABEL304:
-      if (vBEANSTALK_ROOM == 38) {
-        new.room(38);
-      }
+  if (vBEANSTALK_ROOM == 31) {
+    new.room(31);
   }
-LABEL313:
-  return;
+  if (vBEANSTALK_ROOM == 35) {
+    new.room(35);
+  }
+  if (vBEANSTALK_ROOM == 38) {
+    new.room(38);
+  }
+}
+return;
 
 LOGIC__FOOTER
 
