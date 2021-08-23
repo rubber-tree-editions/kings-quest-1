@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.view(74);
   load.sound(5);
-  if (vPREV_ROOM_NO == 71 && f157) {
+  if (vPREV_ROOM_NO == 71 && fEGO_CLIMBING_BEANSTALK) {
     set.view(oEGO, 74);
     position(oEGO, 69, 40);
     move.obj(oEGO, 69, 40, 0, f148);

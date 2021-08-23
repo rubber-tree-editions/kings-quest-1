@@ -9,7 +9,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.view(74);
   load.sound(5);
-  if (vPREV_ROOM_NO == 72 && f157) {
+  if (vPREV_ROOM_NO == 72 && fEGO_CLIMBING_BEANSTALK) {
     set.view(oEGO, 74);
     position(oEGO, 66, 40);
     move.obj(oEGO, 66, 40, 0, f148);
@@ -54,7 +54,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !f158) {
   program.control();
   print("You have to be careful when you get so high on the foliage!");
   get.posn(oEGO, v60, v61);
-  reset(f157);
+  reset(fEGO_CLIMBING_BEANSTALK);
   set(f158);
   erase(oEGO);
   set.view(oEGO, 105);

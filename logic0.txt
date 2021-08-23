@@ -185,7 +185,7 @@ if (controller(c14)) {
 }
 if (vROOM_NO != 21) {
   if (said("jump") || controller(c7)) {
-    if (!f143 && !f157 && !f158 && !fEGO_INVISIBLE && !fEGO_TINY && vROOM_NO != 79 && !fEGO_ON_WATER && !f145 && !fEGO_DUCKING && v94 <= 0 && vROOM_NO != 29 && vROOM_NO != 13 && vROOM_NO != 53 && vROOM_NO != 58 && vROOM_NO != 49 && vROOM_NO != 52 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 48 && vROOM_NO != 73 && vROOM_NO != 65 && vROOM_NO != 12 && vROOM_NO != 14 && vROOM_NO != 10 && vROOM_NO != 11 && vROOM_NO != 51) {
+    if (!f143 && !fEGO_CLIMBING_BEANSTALK && !f158 && !fEGO_INVISIBLE && !fEGO_TINY && vROOM_NO != 79 && !fEGO_ON_WATER && !f145 && !fEGO_DUCKING && v94 <= 0 && vROOM_NO != 29 && vROOM_NO != 13 && vROOM_NO != 53 && vROOM_NO != 58 && vROOM_NO != 49 && vROOM_NO != 52 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 48 && vROOM_NO != 73 && vROOM_NO != 65 && vROOM_NO != 12 && vROOM_NO != 14 && vROOM_NO != 10 && vROOM_NO != 11 && vROOM_NO != 51) {
       set(f143);
       stop.motion(oEGO);
       set.cel(oEGO, 0);
@@ -210,7 +210,7 @@ if (vROOM_NO != 21) {
   }
 }
 if (said("duck") || controller(cDUCK)) {
-  if (!fEGO_DUCKING && !f157 && !f158 && !fEGO_INVISIBLE && !fEGO_TINY && !fEGO_ON_WATER && !f145 && v94 <= 0 && !f143 && !f146 && vROOM_NO != 29 && vROOM_NO != 12 && vROOM_NO != 53 && vROOM_NO != 58 && vROOM_NO != 49 && vROOM_NO != 52 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 48 && vROOM_NO != 73 && vROOM_NO != 65 && vROOM_NO != 79 && vROOM_NO != 14 && vROOM_NO != 10 && vROOM_NO != 11 && vROOM_NO != 13 && !fCARRIED_BY_WITCH) {
+  if (!fEGO_DUCKING && !fEGO_CLIMBING_BEANSTALK && !f158 && !fEGO_INVISIBLE && !fEGO_TINY && !fEGO_ON_WATER && !f145 && v94 <= 0 && !f143 && !f146 && vROOM_NO != 29 && vROOM_NO != 12 && vROOM_NO != 53 && vROOM_NO != 58 && vROOM_NO != 49 && vROOM_NO != 52 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 48 && vROOM_NO != 73 && vROOM_NO != 65 && vROOM_NO != 79 && vROOM_NO != 14 && vROOM_NO != 10 && vROOM_NO != 11 && vROOM_NO != 13 && !fCARRIED_BY_WITCH) {
     set(fEGO_DUCKING);
     set.view(oEGO, 87);
     set(f98);
@@ -405,7 +405,7 @@ if (fCARRYING_MUSHROOM) {
     if (fEGO_INVISIBLE) {
       print("You try, but being invisible makes it impossible.");
     }
-    if (!f157 && !f158 && !fEGO_INVISIBLE && !f180 && !f181 && !f175 && vROOM_NO != 21 && vROOM_NO != 22 && vROOM_NO != 80 && vROOM_NO != 65 && vROOM_NO != 14 && vROOM_NO != 63 && v94 <= 0 && vROOM_NO != 12 && vROOM_NO != 73 && vROOM_NO != 74 && vROOM_NO != 75) {
+    if (!fEGO_CLIMBING_BEANSTALK && !f158 && !fEGO_INVISIBLE && !f180 && !f181 && !f175 && vROOM_NO != 21 && vROOM_NO != 22 && vROOM_NO != 80 && vROOM_NO != 65 && vROOM_NO != 14 && vROOM_NO != 63 && v94 <= 0 && vROOM_NO != 12 && vROOM_NO != 73 && vROOM_NO != 74 && vROOM_NO != 75) {
       print("As soon as you swallow the first bite, you have this strange shrinking feeling...  It's true!  You are now no bigger than a mouse!");
       set.view(oEGO, 60);
       v82 = 200;
@@ -483,14 +483,14 @@ if (fCARRYING_RING) {
       print("There is no need to rub the ring as you are already invisible.");
     }
     if (fWEARING_RING && !fGOAT_IS_HERE && !fEGO_INVISIBLE) {
-      if (vROOM_NO != 65 && !f157 && !f158 && v94 <= 0 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 49 && vROOM_NO != 51 && vROOM_NO != 52 && vROOM_NO != 12 && vROOM_NO != 79 && !f209 && !fCARRIED_BY_WITCH && !fEGO_TINY) {
+      if (vROOM_NO != 65 && !fEGO_CLIMBING_BEANSTALK && !f158 && v94 <= 0 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 49 && vROOM_NO != 51 && vROOM_NO != 52 && vROOM_NO != 12 && vROOM_NO != 79 && !f209 && !fCARRIED_BY_WITCH && !fEGO_TINY) {
         set.view(oEGO, 110);
         print("When you rub the magic ring, you mysteriously disappear, except for your footprints.");
         set(fEGO_INVISIBLE);
         v90 = 250;
         v91 = 10;
       }
-      if (vROOM_NO == 65 || f157 || f158 || v94 > 0 || vROOM_NO == 63 || vROOM_NO == 80 || vROOM_NO == 49 || vROOM_NO == 51 || vROOM_NO == 52 || vROOM_NO == 12 || vROOM_NO == 79 || f209 || fCARRIED_BY_WITCH || fEGO_TINY) {
+      if (vROOM_NO == 65 || fEGO_CLIMBING_BEANSTALK || f158 || v94 > 0 || vROOM_NO == 63 || vROOM_NO == 80 || vROOM_NO == 49 || vROOM_NO == 51 || vROOM_NO == 52 || vROOM_NO == 12 || vROOM_NO == 79 || f209 || fCARRIED_BY_WITCH || fEGO_TINY) {
         print("You're too busy right now to rub the ring.");
       }
     }

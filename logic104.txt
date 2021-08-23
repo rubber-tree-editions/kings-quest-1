@@ -2,24 +2,20 @@
 
 LOGIC__HEADER
 
-
-
 if (vBEANSTALK_ROOM == vROOM_NO) {
   if (said("climb", "beanstalk")) {
-    if (f157) {
+    if (fEGO_CLIMBING_BEANSTALK) {
       print("You are already climbing the beanstalk.");
     }
     if (fEGO_INVISIBLE) {
       print("You can't do that when you are invisible!");
     }
   }
-  LABEL33:
-    if (said("examine", "beanstalk")) {
-      print("It is a mighty beanstalk that stretches to the sky.");
-    }
+  if (said("examine", "beanstalk")) {
+    print("It is a mighty beanstalk that stretches to the sky.");
+  }
 }
-LABEL45:
-  return;
+return;
 
 LOGIC__FOOTER
 

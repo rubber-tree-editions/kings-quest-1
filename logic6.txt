@@ -31,7 +31,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       load.sound(12);
     }
   LABEL73:
-    if (vPREV_ROOM_NO == 70 && f157) {
+    if (vPREV_ROOM_NO == 70 && fEGO_CLIMBING_BEANSTALK) {
       set.view(oEGO, 74);
       position(oEGO, 64, 41);
       move.obj(oEGO, 64, 41, 0, f148);
@@ -164,11 +164,11 @@ LABEL439:
   }
 LABEL477:
   if (vBEANSTALK_ROOM == 6 && !fEGO_INVISIBLE) {
-    if (said("climb", "beanstalk") && !f157) {
+    if (said("climb", "beanstalk") && !fEGO_CLIMBING_BEANSTALK) {
       if (posn(oEGO, 52, 76, 103, 97)) {
         erase(oEGO);
         set.view(oEGO, 74);
-        set(f157);
+        set(fEGO_CLIMBING_BEANSTALK);
         position(oEGO, 71, 77);
         set.priority(oEGO, 8);
         draw(oEGO);
@@ -185,11 +185,11 @@ LABEL537:
     }
   }
 LABEL557:
-  if (f157) {
+  if (fEGO_CLIMBING_BEANSTALK) {
     if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 60, 78, 93, 80)) {
       erase(oEGO);
       set.view(oEGO, 0);
-      reset(f157);
+      reset(fEGO_CLIMBING_BEANSTALK);
       position(oEGO, 70, 106);
       release.priority(oEGO);
       draw(oEGO);
@@ -200,7 +200,7 @@ LABEL557:
       get.posn(oEGO, v60, v61);
       erase(oEGO);
       set.view(oEGO, 105);
-      reset(f157);
+      reset(fEGO_CLIMBING_BEANSTALK);
       position.v(oEGO, v60, v61);
       draw(oEGO);
       v61 = 106;
@@ -252,11 +252,11 @@ LABEL724:
     reset(f155);
   }
 LABEL734:
-  if (vEGO_EDGE_CODE == 1 && f157) {
+  if (vEGO_EDGE_CODE == 1 && fEGO_CLIMBING_BEANSTALK) {
     new.room(70);
   }
 LABEL745:
-  if (vEGO_EDGE_CODE == 1 && !f157) {
+  if (vEGO_EDGE_CODE == 1 && !fEGO_CLIMBING_BEANSTALK) {
     new.room(11);
   }
 LABEL757:

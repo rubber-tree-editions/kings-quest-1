@@ -35,7 +35,7 @@ LABEL69:
     }
   }
 LABEL86:
-  if (!posn(oEGO, 65, 100, 84, 120) && !f157 && !fEGO_INVISIBLE) {
+  if (!posn(oEGO, 65, 100, 84, 120) && !fEGO_CLIMBING_BEANSTALK && !fEGO_INVISIBLE) {
     if (said("climb", "beanstalk")) {
       print("You need to be closer to do that.");
     }
@@ -47,7 +47,7 @@ LABEL115:
     }
   }
 LABEL133:
-  if (f157) {
+  if (fEGO_CLIMBING_BEANSTALK) {
     if (said("examine", "beanstalk")) {
       get.posn(oEGO, v60, v61);
       if (v61 > 140) {
@@ -59,7 +59,7 @@ LABEL133:
     }
   }
 LABEL171:
-  if (!f157) {
+  if (!fEGO_CLIMBING_BEANSTALK) {
     if (said("examine", "beanstalk")) {
       get.posn(oEGO, v60, v61);
       if (v60 > 89) {
@@ -75,7 +75,7 @@ LABEL210:
     print("You are in the Land of the Clouds.  It is rumored a giant lives up here.");
   }
 LABEL230:
-  if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && !posn(oEGO, 65, 100, 82, 120) && !f157) {
+  if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && !posn(oEGO, 65, 100, 82, 120) && !fEGO_CLIMBING_BEANSTALK) {
     set(f21);
     if (!fEGO_INVISIBLE) {
       set.view(oEGO, 105);
@@ -115,8 +115,8 @@ LABEL348:
   }
 LABEL362:
   if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 65, 100, 82, 120) && !fEGO_INVISIBLE) {
-    if (f157) {
-      reset(f157);
+    if (fEGO_CLIMBING_BEANSTALK) {
+      reset(fEGO_CLIMBING_BEANSTALK);
       erase(oEGO);
       set.view(oEGO, 0);
       position(oEGO, 85, 112);
@@ -124,8 +124,8 @@ LABEL362:
       move.obj(oEGO, 85, 112, 0, f148);
       goto(LABEL503);
     }
-    if (!f157) {
-      set(f157);
+    if (!fEGO_CLIMBING_BEANSTALK) {
+      set(fEGO_CLIMBING_BEANSTALK);
       erase(oEGO);
       set.view(oEGO, 74);
       position(oEGO, 70, 123);
@@ -134,11 +134,11 @@ LABEL362:
     }
   }
 LABEL431:
-  if (fEGO_TOUCHED_TRIGGER_LINE && f157) {
+  if (fEGO_TOUCHED_TRIGGER_LINE && fEGO_CLIMBING_BEANSTALK) {
     program.control();
     print("Whoops!  You fall toward a distant earth.");
     get.posn(oEGO, v60, v61);
-    reset(f157);
+    reset(fEGO_CLIMBING_BEANSTALK);
     set(f158);
     erase(oEGO);
     set.view(oEGO, 105);
