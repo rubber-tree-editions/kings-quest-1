@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -19,9 +17,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.loop(oEGO, 1);
     move.obj(oEGO, 132, 46, 0, f148);
   }
-  LABEL49:
-    draw(oEGO);
-    show.pic();
+  draw(oEGO);
+  show.pic();
 }
 if (fGOAT_COMPANION) {
   reset(fGOAT_COMPANION);
@@ -29,43 +26,37 @@ if (fGOAT_COMPANION) {
   print("The old goat is afraid of the dark and decides to stay outside.");
   vSCORE -= 5;
 }
-LABEL67:
-  if (said("examine", "stairway") || said("examine", "room")) {
-    print("The stairs go up into the heart of the mountain.");
+if (said("examine", "stairway") || said("examine", "room")) {
+  print("The stairs go up into the heart of the mountain.");
+}
+if (fEGO_TOUCHED_TRIGGER_LINE && !f21) {
+  set(f21);
+  if (!fEGO_INVISIBLE) {
+    set.view(oEGO, 105);
   }
-LABEL87:
-  if (fEGO_TOUCHED_TRIGGER_LINE && !f21) {
-    set(f21);
-    if (!fEGO_INVISIBLE) {
-      set.view(oEGO, 105);
-    }
-    start.cycling(oEGO);
-    set(f98);
-    get.posn(oEGO, v60, v61);
-    get.priority(oEGO, v30);
-    set.priority.v(oEGO, v30);
-    v61 = 165;
-    v96 = 4;
-    move.obj.v(oEGO, v60, v61, 96, f20);
-    sound(5, fSOUND_END_MARKER);
-  }
-LABEL137:
-  if (f20) {
-    reset(f20);
-    print("Oops!  Those stairs are pretty slippery, aren't they?");
-    erase(oEGO);
-    set(fGAME_OVER);
-  }
-LABEL151:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(67);
-  }
-LABEL160:
-  if (posn(oEGO, 16, 165, 31, 166)) {
-    new.room(19);
-  }
-LABEL172:
-  return;
+  start.cycling(oEGO);
+  set(f98);
+  get.posn(oEGO, v60, v61);
+  get.priority(oEGO, v30);
+  set.priority.v(oEGO, v30);
+  v61 = 165;
+  v96 = 4;
+  move.obj.v(oEGO, v60, v61, 96, f20);
+  sound(5, fSOUND_END_MARKER);
+}
+if (f20) {
+  reset(f20);
+  print("Oops!  Those stairs are pretty slippery, aren't they?");
+  erase(oEGO);
+  set(fGAME_OVER);
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(67);
+}
+if (posn(oEGO, 16, 165, 31, 166)) {
+  new.room(19);
+}
+return;
 
 LOGIC__FOOTER
 
