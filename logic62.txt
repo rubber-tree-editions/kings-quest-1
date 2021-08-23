@@ -16,99 +16,92 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (said("examine", "room") || said("examine", "clouds")) {
   print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
 }
-LABEL39:
-  if (said("examine", "trees")) {
-    if (posn(oEGO, 86, 101, 159, 167)) {
-      print("Its trunk has a large hole in the base.");
-      goto(LABEL66);
-    }
+if (said("examine", "trees")) {
+  if (posn(oEGO, 86, 101, 159, 167)) {
+    print("Its trunk has a large hole in the base.");
+  }
+  else {
     print("These are strange looking trees.");
   }
-LABEL66:
-  if (said("examine", "doorway") || said("look inside", "doorway")) {
-    if (posn(oEGO, 117, 100, 144, 117)) {
-      if (!fSLINGSHOT_TAKEN) {
-        print("You notice a sling in the hole in the tree.");
-        goto(LABEL108);
-      }
-      print("It is empty.");
-      LABEL108:
-        goto(LABEL113);
+}
+if (said("examine", "doorway") || said("look inside", "doorway")) {
+  if (posn(oEGO, 117, 100, 144, 117)) {
+    if (!fSLINGSHOT_TAKEN) {
+      print("You notice a sling in the hole in the tree.");
     }
+    else {
+      print("It is empty.");
+    }
+  }
+  else {
     print("You can't see into the hole from here.");
   }
-LABEL113:
-  if (said("examine", "slingshot")) {
-    if (fCARRYING_SLINGSHOT) {
-      print("This sling is made of very stretchy leather.");
-      goto(LABEL136);
-    }
+}
+if (said("examine", "slingshot")) {
+  if (fCARRYING_SLINGSHOT) {
+    print("This sling is made of very stretchy leather.");
+  }
+  else {
     print("Why?  What sling?");
   }
-LABEL136:
-  if (fSLINGSHOT_TAKEN) {
-    if (said("get", "slingshot")) {
-      if (posn(oEGO, 117, 100, 144, 117)) {
-        print("Why?  What sling?");
-        goto(LABEL169);
-      }
+}
+if (fSLINGSHOT_TAKEN) {
+  if (said("get", "slingshot")) {
+    if (posn(oEGO, 117, 100, 144, 117)) {
+      print("Why?  What sling?");
+    }
+    else {
       print("You need to be closer to try.");
     }
   }
-LABEL169:
-  if (!fSLINGSHOT_TAKEN) {
-    if (said("get", "slingshot")) {
-      if (posn(oEGO, 117, 100, 144, 117)) {
-        print("You reach into the hole and pull out the leather sling.");
-        set(fSLINGSHOT_TAKEN);
-        set(fCARRYING_SLINGSHOT);
-        vSCORE += 2;
-        get("leather slingshot");
-        goto(LABEL212);
-      }
+}
+if (!fSLINGSHOT_TAKEN) {
+  if (said("get", "slingshot")) {
+    if (posn(oEGO, 117, 100, 144, 117)) {
+      print("You reach into the hole and pull out the leather sling.");
+      set(fSLINGSHOT_TAKEN);
+      set(fCARRYING_SLINGSHOT);
+      vSCORE += 2;
+      get("leather slingshot");
+    }
+    else {
       print("You need to be closer to try.");
     }
   }
-LABEL212:
-  if (fEGO_TOUCHED_TRIGGER_LINE) {
-    set(f95);
-    program.control();
-    stop.cycling(oEGO);
-    get.posn(oEGO, v60, v61);
-    get.priority(oEGO, v30);
-    set.priority.v(oEGO, v30);
-    v61 += 6;
-    v96 = 4;
-    move.obj.v(oEGO, v60, v61, 96, f21);
-    sound(5, fSOUND_END_MARKER);
-  }
-LABEL248:
-  if (f21) {
-    reset(f21);
-    erase(oEGO);
-  }
-LABEL258:
-  if (fSOUND_END_MARKER) {
-    reset(fSOUND_END_MARKER);
-    set(f20);
-  }
-LABEL268:
-  if (f20) {
-    reset(f20);
-    print("You've fallen through the clouds!  Cloud walking is for the birds.");
-    erase(oEGO);
-    set(fGAME_OVER);
-  }
-LABEL282:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(59);
-  }
-LABEL291:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(61);
-  }
-LABEL300:
-  return;
+}
+if (fEGO_TOUCHED_TRIGGER_LINE) {
+  set(f95);
+  program.control();
+  stop.cycling(oEGO);
+  get.posn(oEGO, v60, v61);
+  get.priority(oEGO, v30);
+  set.priority.v(oEGO, v30);
+  v61 += 6;
+  v96 = 4;
+  move.obj.v(oEGO, v60, v61, 96, f21);
+  sound(5, fSOUND_END_MARKER);
+}
+if (f21) {
+  reset(f21);
+  erase(oEGO);
+}
+if (fSOUND_END_MARKER) {
+  reset(fSOUND_END_MARKER);
+  set(f20);
+}
+if (f20) {
+  reset(f20);
+  print("You've fallen through the clouds!  Cloud walking is for the birds.");
+  erase(oEGO);
+  set(fGAME_OVER);
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(59);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(61);
+}
+return;
 
 LOGIC__FOOTER
 
