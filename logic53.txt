@@ -31,337 +31,301 @@ if (fROOM_SCRIPT_EXECUTED) {
     v71 = 1;
   }
 }
-LABEL70:
-  if (f26) {
-    if (said("examine", "king edward")) {
-      print("You are the only King here!");
+if (f26) {
+  if (said("examine", "king edward")) {
+    print("You are the only King here!");
+  }
+}
+if (f195) {
+  return;
+}
+if (v30 <= 0) {
+  v70--;
+  if (v70 == 1) {
+    if (v71 > 0) {
+      v71--;
+      v70 = 250;
     }
   }
-LABEL88:
-  if (f195) {
-    goto(LABEL1129);
+  if (v70 == 1 && v71 == 0) {
+    v70 = 0;
+    v30 = 250;
   }
-LABEL97:
-  if (v30 <= 0) {
-    v70--;
-    if (v70 == 1) {
-      if (v71 > 0) {
-        v71--;
-        v70 = 250;
-      }
+}
+if (v30 > 0) {
+  v30--;
+  if (v30 == 245) {
+    set.view(oEGO, 0);
+    if (fEGO_INVISIBLE) {
+      print("The spell to make you invisible has expired and you are once again visible.");
+      v90 = 0;
+      v91 = 0;
+      reset(fEGO_INVISIBLE);
+      drop("ring");
+      vSCORE -= 3;
+      reset(fCARRYING_RING);
     }
-    if (v70 == 1 && v71 == 0) {
-      v70 = 0;
-      v30 = 250;
+    ignore.blocks(oEGO);
+    get.posn(oEGO, v100, v101);
+    if (v100 < 60 && v101 < 88) {
+      move.obj(oEGO, 67, 82, 0, f28);
     }
-  }
-LABEL142:
-  if (v30 > 0) {
-    v30--;
-    if (v30 == 245) {
-      set.view(oEGO, 0);
-      if (fEGO_INVISIBLE) {
-        print("The spell to make you invisible has expired and you are once again visible.");
-        v90 = 0;
-        v91 = 0;
-        reset(fEGO_INVISIBLE);
-        drop("ring");
-        vSCORE -= 3;
-        reset(fCARRYING_RING);
-      }
-      ignore.blocks(oEGO);
-      get.posn(oEGO, v100, v101);
-      if (v100 < 60 && v101 < 88) {
-        move.obj(oEGO, 67, 82, 0, f28);
-        goto(LABEL215);
-      }
-      LABEL209:
-        move.obj(oEGO, 60, 105, 0, f20);
-      LABEL215:
-        print("You move aside as the King steps from his throne.");
-    }
-    if (f28) {
-      reset(f28);
+    else {
       move.obj(oEGO, 60, 105, 0, f20);
     }
-    LABEL231:
-      if (f20) {
-        reset(f20);
-        set(f95);
-        set.loop(oEGO, 3);
-        stop.motion(oEGO);
-        stop.cycling(oEGO);
-        v30 = 200;
-      }
-    LABEL251:
-      if (f95) {
-        if (v30 == 195) {
-          erase(oKING);
-          set.view(oKING, 98);
-          position(oKING, 40, 90);
-          draw(oKING);
-          start.cycling(oKING);
-          ignore.blocks(oKING);
-          v32 = 2;
-          cycle.time(oKING, v32);
-          move.obj(oKING, 55, 95, 0, f148);
-          print("As you approach the throne, the King himself rises to commend  you for a job well done.");
-          if (said("examine", "king edward")) {
-            print("The King is walking towards you to commend you.");
-          }
-        }
-        if (v30 == 165) {
-          erase(oKING);
-          set.view(oKING, 85);
-          draw(oKING);
-          end.of.loop(oKING, f26);
-          print("\"Oh!... Oh!!\"  the King proclaims in pain!");
-          if (said("examine", "king edward")) {
-            print("Your heart also aches with pain as you watch the King.");
-          }
-        }
-        LABEL336:
-          if (v30 == 135) {
-            print("From the seemingly lifeless King you hear these words:   \"Well done, Sir Graham.  You have been a good and faithful servant.  Your reward is well deserved.  My kingdom is now yours.\"");
-            if (said("examine", "king edward")) {
-              print("The King is lying motionless on the ground.");
-            }
-          }
-        LABEL357:
-          if (v30 == 115) {
-            set.view(oEGO, 1);
-            print("With those words, King Edward the Benevolent dies.");
-          }
-        LABEL369:
-          if (v30 == 105) {
-            program.control();
-            print("The experiences of your quest will be invaluable to you as you begin your reign as King of Daventry!!");
-            reset(f95);
-            start.cycling(oEGO);
-            ignore.objs(oEGO);
-            ignore.blocks(oEGO);
-            move.obj(oEGO, 40, 90, 0, f27);
-          }
-      }
+    print("You move aside as the King steps from his throne.");
   }
-LABEL393:
-  if (f27) {
-    reset(f27);
-    erase(oEGO);
-    position(oEGO, 30, 85);
-    set.view(oEGO, 142);
-    draw(oEGO);
+  if (f28) {
+    reset(f28);
+    move.obj(oEGO, 60, 105, 0, f20);
+  }
+  if (f20) {
+    reset(f20);
+    set(f95);
+    set.loop(oEGO, 3);
     stop.motion(oEGO);
-    prevent.input();
-    print("    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stevenson                 Mark Crowe            Bob Ballew   Mikel Knight             Susan Lee          ");
-    set(f195);
+    stop.cycling(oEGO);
+    v30 = 200;
   }
-LABEL419:
-  if (posn(oEGO, 18, 80, 67, 107)) {
-    set(f21);
-    goto(LABEL436);
-  }
-LABEL434:
-  reset(f21);
-LABEL436:
-  if (posn(oEGO, 18, 80, 86, 113)) {
-    if (said("examine", "king edward")) {
-      if (v30 <= 0 && vTREASURE_COUNT != 3 && !f126) {
-        print("King Edward the Benevolent is a very wise, but elderly monarch.  His frail body is almost lost in the large throne.");
-      }
-      if (!f21 && !fEGO_INVISIBLE && vTREASURE_COUNT == 3 && v30 <= 0) {
-        print("The King, though very ill, seems happy to see you.");
-      }
-    }
-    LABEL492:
-      if (said("examine", "throne")) {
-        print("The King's throne is made of solid gold, accented with rubies.  It will be yours if you complete your quest.");
-      }
-    LABEL504:
-      if (said("bow", "king edward") || said("bow")) {
-        if (fEGO_INVISIBLE) {
-          print("You bow, but you are the only one who knows it.");
-          goto(LABEL690);
-        }
-        if (!fEGO_INVISIBLE && f21) {
-          print("It is proper to stand directly in front of, and a few paces back from King Edward when addressing His Eminence.");
-          goto(LABEL690);
-        }
-        if (!f21 && !fEGO_INVISIBLE && v30 <= 0 && vTREASURE_COUNT != 3 && !f24) {
-          set(f24);
-          get.posn(oEGO, v60, v61);
-          v60 -= 7;
-          erase(oEGO);
-          stop.motion(oEGO);
-          set.view(oEGO, 71);
-          set.cel(oEGO, 0);
-          position.v(oEGO, v60, v61);
-          v31 = 2;
-          cycle.time(oEGO, v31);
-          draw(oEGO);
-          end.of.loop(oEGO, f22);
-          set(f98);
-          if (!f168) {
-            set(f168);
-            vSCORE += 3;
-          }
-          goto(LABEL690);
-        }
-        if (!f21 && !fEGO_INVISIBLE && v30 <= 0 && vTREASURE_COUNT == 3 && !f25) {
-          set(f25);
-          get.posn(oEGO, v60, v61);
-          v60 -= 7;
-          erase(oEGO);
-          stop.motion(oEGO);
-          set.view(oEGO, 71);
-          set.cel(oEGO, 0);
-          position.v(oEGO, v60, v61);
-          v31 = 2;
-          cycle.time(oEGO, v31);
-          draw(oEGO);
-          end.of.loop(oEGO, f22);
-          set(f98);
-          if (!fPOINTS_FOR_BOWING_TO_KING) {
-            set(fPOINTS_FOR_BOWING_TO_KING);
-            vSCORE += 3;
-          }
-          goto(LABEL690);
-        }
-        print("There is no need to bow again.");
-      }
-    LABEL690:
-      if (said("talk", "king edward")) {
-        if (fSPOKEN_TO_KING && v30 <= 0 && !f126 && vTREASURE_COUNT != 3) {
-          print("Go, Sir Graham!  Go and bring me back these treasures!");
-        }
-        if (v30 <= 0 && vTREASURE_COUNT == 3) {
-          print("Welcome back from your quest, Sir Graham.");
-        }
-        LABEL732:
-          if (v30 <= 0 && f126) {
-            print("Why, Sir Graham, have you failed me and returned without accomplishing your task?  Go, and complete your quest!!");
-            set(f125);
-          }
-        LABEL746:
-          if (v30 > 0) {
-            print("The king cannot talk right now.");
-          }
-        LABEL755:
-          if (!fSPOKEN_TO_KING && v30 <= 0 && !f126 && vTREASURE_COUNT != 3) {
-            set(fSPOKEN_TO_KING);
-            set(f23);
-            set(f125);
-            set.text.attribute(15, 0);
-            text.screen();
-            display(0, 4, "When you speak to King Edward,");
-            display(1, 10, "he sighs and says,");
-            display(2, 0, "\"Sir Graham, I am an old man. I fear");
-            display(3, 0, " my end is near.  I have chosen you to");
-            display(4, 0, " prove yourself worthy of the throne.");
-            display(5, 0, "As you know, our kingdom is weak and");
-            display(6, 0, " poor.  I have knowledge of the");
-            display(7, 0, " existence of three things that would");
-            display(8, 0, " make our kingdom wealthy and strong.");
-            display(9, 0, "Somewhere within our kingdom, there is");
-            display(10, 0, " a magic mirror that tells the future.");
-            display(11, 0, " There is a magic shield that will");
-            display(12, 0, " protect the bearer from mortal harm.");
-            display(13, 0, " Finally, there is a magic chest that");
-            display(14, 0, " is always filled with gold coins.");
-            display(15, 0, "Go, Sir Graham!  Go and bring me");
-            display(16, 0, " back these treasures.");
-            display(17, 0, "If you succeed, you will inherit the");
-            display(18, 0, " throne.\"");
-            display(22, 5, "Press any key to continue.");
-          }
-      }
-  }
-LABEL863:
-  if (!posn(oEGO, 60, 85, 86, 113) && !f21) {
-    if (v30 <= 0) {
+  if (f95) {
+    if (v30 == 195) {
+      erase(oKING);
+      set.view(oKING, 98);
+      position(oKING, 40, 90);
+      draw(oKING);
+      start.cycling(oKING);
+      ignore.blocks(oKING);
+      v32 = 2;
+      cycle.time(oKING, v32);
+      move.obj(oKING, 55, 95, 0, f148);
+      print("As you approach the throne, the King himself rises to commend  you for a job well done.");
       if (said("examine", "king edward")) {
-        print("You are not close enough to see him clearly.");
+        print("The King is walking towards you to commend you.");
       }
-      if (said("examine", "throne")) {
-        print("King Edward the Benevolent is sitting on the throne, waiting for you.");
+    }
+    if (v30 == 165) {
+      erase(oKING);
+      set.view(oKING, 85);
+      draw(oKING);
+      end.of.loop(oKING, f26);
+      print("\"Oh!... Oh!!\"  the King proclaims in pain!");
+      if (said("examine", "king edward")) {
+        print("Your heart also aches with pain as you watch the King.");
       }
-      LABEL909:
-        if (said("bow", "king edward") || said("bow")) {
-          print("It would show more respect if you were closer and in front of King Edward.");
-        }
-      LABEL927:
-        if (said("talk", "king edward")) {
-          print("It is proper to stand directly in front of, and a few paces back from King Edward when addressing His Eminence.");
-        }
+    }
+    if (v30 == 135) {
+      print("From the seemingly lifeless King you hear these words:   \"Well done, Sir Graham.  You have been a good and faithful servant.  Your reward is well deserved.  My kingdom is now yours.\"");
+      if (said("examine", "king edward")) {
+        print("The King is lying motionless on the ground.");
+      }
+    }
+    if (v30 == 115) {
+      set.view(oEGO, 1);
+      print("With those words, King Edward the Benevolent dies.");
+    }
+    if (v30 == 105) {
+      program.control();
+      print("The experiences of your quest will be invaluable to you as you begin your reign as King of Daventry!!");
+      reset(f95);
+      start.cycling(oEGO);
+      ignore.objs(oEGO);
+      ignore.blocks(oEGO);
+      move.obj(oEGO, 40, 90, 0, f27);
     }
   }
-LABEL939:
-  if (said("kneel", "king edward")) {
-    print("That's not a bad idea, but the custom in Daventry is to bow.");
+}
+if (f27) {
+  reset(f27);
+  erase(oEGO);
+  position(oEGO, 30, 85);
+  set.view(oEGO, 142);
+  draw(oEGO);
+  stop.motion(oEGO);
+  prevent.input();
+  print("    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stevenson                 Mark Crowe            Bob Ballew   Mikel Knight             Susan Lee          ");
+  set(f195);
+}
+if (posn(oEGO, 18, 80, 67, 107)) {
+  set(f21);
+}
+else {
+  reset(f21);
+}
+if (posn(oEGO, 18, 80, 86, 113)) {
+  if (said("examine", "king edward")) {
+    if (v30 <= 0 && vTREASURE_COUNT != 3 && !f126) {
+      print("King Edward the Benevolent is a very wise, but elderly monarch.  His frail body is almost lost in the large throne.");
+    }
+    if (!f21 && !fEGO_INVISIBLE && vTREASURE_COUNT == 3 && v30 <= 0) {
+      print("The King, though very ill, seems happy to see you.");
+    }
   }
-LABEL951:
-  if (said("murder", "king edward")) {
-    if (v30 <= 0) {
-      print("To kill King Edward would mean immediate execution!");
+  if (said("examine", "throne")) {
+    print("The King's throne is made of solid gold, accented with rubies.  It will be yours if you complete your quest.");
+  }
+  if (said("bow", "king edward") || said("bow")) {
+    if (fEGO_INVISIBLE) {
+      print("You bow, but you are the only one who knows it.");
+    }
+    else if (!fEGO_INVISIBLE && f21) {
+      print("It is proper to stand directly in front of, and a few paces back from King Edward when addressing His Eminence.");
+    }
+    else if (!f21 && !fEGO_INVISIBLE && v30 <= 0 && vTREASURE_COUNT != 3 && !f24) {
+      set(f24);
+      get.posn(oEGO, v60, v61);
+      v60 -= 7;
+      erase(oEGO);
+      stop.motion(oEGO);
+      set.view(oEGO, 71);
+      set.cel(oEGO, 0);
+      position.v(oEGO, v60, v61);
+      v31 = 2;
+      cycle.time(oEGO, v31);
+      draw(oEGO);
+      end.of.loop(oEGO, f22);
+      set(f98);
+      if (!f168) {
+        set(f168);
+        vSCORE += 3;
+      }
+    }
+    else if (!f21 && !fEGO_INVISIBLE && v30 <= 0 && vTREASURE_COUNT == 3 && !f25) {
+      set(f25);
+      get.posn(oEGO, v60, v61);
+      v60 -= 7;
+      erase(oEGO);
+      stop.motion(oEGO);
+      set.view(oEGO, 71);
+      set.cel(oEGO, 0);
+      position.v(oEGO, v60, v61);
+      v31 = 2;
+      cycle.time(oEGO, v31);
+      draw(oEGO);
+      end.of.loop(oEGO, f22);
+      set(f98);
+      if (!fPOINTS_FOR_BOWING_TO_KING) {
+        set(fPOINTS_FOR_BOWING_TO_KING);
+        vSCORE += 3;
+      }
+    }
+    else {
+      print("There is no need to bow again.");
+    }
+  }
+  if (said("talk", "king edward")) {
+    if (fSPOKEN_TO_KING && v30 <= 0 && !f126 && vTREASURE_COUNT != 3) {
+      print("Go, Sir Graham!  Go and bring me back these treasures!");
+    }
+    if (v30 <= 0 && vTREASURE_COUNT == 3) {
+      print("Welcome back from your quest, Sir Graham.");
+    }
+    if (v30 <= 0 && f126) {
+      print("Why, Sir Graham, have you failed me and returned without accomplishing your task?  Go, and complete your quest!!");
+      set(f125);
     }
     if (v30 > 0) {
-      print("Your concern for the old king won't allow you to move.");
+      print("The king cannot talk right now.");
+    }
+    if (!fSPOKEN_TO_KING && v30 <= 0 && !f126 && vTREASURE_COUNT != 3) {
+      set(fSPOKEN_TO_KING);
+      set(f23);
+      set(f125);
+      set.text.attribute(15, 0);
+      text.screen();
+      display(0, 4, "When you speak to King Edward,");
+      display(1, 10, "he sighs and says,");
+      display(2, 0, "\"Sir Graham, I am an old man. I fear");
+      display(3, 0, " my end is near.  I have chosen you to");
+      display(4, 0, " prove yourself worthy of the throne.");
+      display(5, 0, "As you know, our kingdom is weak and");
+      display(6, 0, " poor.  I have knowledge of the");
+      display(7, 0, " existence of three things that would");
+      display(8, 0, " make our kingdom wealthy and strong.");
+      display(9, 0, "Somewhere within our kingdom, there is");
+      display(10, 0, " a magic mirror that tells the future.");
+      display(11, 0, " There is a magic shield that will");
+      display(12, 0, " protect the bearer from mortal harm.");
+      display(13, 0, " Finally, there is a magic chest that");
+      display(14, 0, " is always filled with gold coins.");
+      display(15, 0, "Go, Sir Graham!  Go and bring me");
+      display(16, 0, " back these treasures.");
+      display(17, 0, "If you succeed, you will inherit the");
+      display(18, 0, " throne.\"");
+      display(22, 5, "Press any key to continue.");
     }
   }
-LABEL980:
-  if (said("sit down", "throne")) {
-    if (v30 <= 0) {
-      print("The throne is already occupied.");
-      goto(LABEL1005);
+}
+if (!posn(oEGO, 60, 85, 86, 113) && !f21) {
+  if (v30 <= 0) {
+    if (said("examine", "king edward")) {
+      print("You are not close enough to see him clearly.");
     }
+    if (said("examine", "throne")) {
+      print("King Edward the Benevolent is sitting on the throne, waiting for you.");
+    }
+    if (said("bow", "king edward") || said("bow")) {
+      print("It would show more respect if you were closer and in front of King Edward.");
+    }
+    if (said("talk", "king edward")) {
+      print("It is proper to stand directly in front of, and a few paces back from King Edward when addressing His Eminence.");
+    }
+  }
+}
+if (said("kneel", "king edward")) {
+  print("That's not a bad idea, but the custom in Daventry is to bow.");
+}
+if (said("murder", "king edward")) {
+  if (v30 <= 0) {
+    print("To kill King Edward would mean immediate execution!");
+  }
+  if (v30 > 0) {
+    print("Your concern for the old king won't allow you to move.");
+  }
+}
+if (said("sit down", "throne")) {
+  if (v30 <= 0) {
+    print("The throne is already occupied.");
+  }
+  else {
     print("You will have to do that yourself.");
   }
-LABEL1005:
-  if (said("examine", "room") || said("examine", "building")) {
-    print("This huge, tapestried room echoes every sound.");
+}
+if (said("examine", "room") || said("examine", "building")) {
+  print("This huge, tapestried room echoes every sound.");
+}
+if (said("hello") || said("say", "hello")) {
+  print("That is no way to try and address King Edward.");
+}
+if (f22) {
+  reset(f22);
+  reset(f98);
+  get.posn(oEGO, v60, v61);
+  v60 += 7;
+  erase(oEGO);
+  set.loop(oEGO, 1);
+  set.view(oEGO, 0);
+  position.v(oEGO, v60, v61);
+  v31 = 1;
+  cycle.time(oEGO, v31);
+  draw(oEGO);
+  start.motion(oEGO);
+  print("When you bow to King Edward, his pleased smile warms you.");
+  if (fPOINTS_FOR_BOWING_TO_KING) {
+    v30 = 250;
+    v70 = 0;
+    v71 = 0;
   }
-LABEL1025:
-  if (said("hello") || said("say", "hello")) {
-    print("That is no way to try and address King Edward.");
-  }
-LABEL1043:
-  if (f22) {
-    reset(f22);
-    reset(f98);
-    get.posn(oEGO, v60, v61);
-    v60 += 7;
-    erase(oEGO);
-    set.loop(oEGO, 1);
-    set.view(oEGO, 0);
-    position.v(oEGO, v60, v61);
-    v31 = 1;
-    cycle.time(oEGO, v31);
-    draw(oEGO);
-    start.motion(oEGO);
-    print("When you bow to King Edward, his pleased smile warms you.");
-    if (fPOINTS_FOR_BOWING_TO_KING) {
-      v30 = 250;
-      v70 = 0;
-      v71 = 0;
-    }
-  }
-LABEL1099:
-  if (f23) {
-    vKEY_PRESSED = 0;
-    LABEL1108:
-      if (!have.key()) {
-        goto(LABEL1108);
-      }
-    LABEL1117:
-      reset(f23);
-      graphics();
-  }
-LABEL1120:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(54);
-  }
-LABEL1129:
-  return;
+}
+if (f23) {
+  vKEY_PRESSED = 0;
+  while (!have.key()) { }
+  reset(f23);
+  graphics();
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(54);
+}
+return;
 
 LOGIC__FOOTER
 
