@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   ignore.horizon(oEGO);
   load.pic(vROOM_NO);
@@ -31,50 +29,40 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
   v96 = 4;
   move.obj.v(oEGO, v60, v61, 96, f20);
 }
-LABEL70:
-  if (!f20 && f199 && !f21) {
-    sound(5, fSOUND_END_MARKER);
-    set(f21);
+if (!f20 && f199 && !f21) {
+  sound(5, fSOUND_END_MARKER);
+  set(f21);
+}
+if (fSOUND_END_MARKER) {
+  if (!f20) {
+    reset(fSOUND_END_MARKER);
+    reset(f21);
   }
-LABEL87:
-  if (fSOUND_END_MARKER) {
-    if (!f20) {
-      reset(fSOUND_END_MARKER);
-      reset(f21);
-    }
-  }
-LABEL104:
-  if (f20) {
-    erase(oEGO);
-    reset(f199);
-    reset(f20);
-    stop.sound();
-    print("You'll have to keep yourself out of the clouds!");
-    set(fGAME_OVER);
-  }
-LABEL121:
-  if (said("examine", "trees")) {
-    print("These are very unusual looking trees.");
-    goto(LABEL148);
-  }
-LABEL136:
-  if (said("examine", "anyword")) {
-    print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
-  }
-LABEL148:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(58);
-  }
-LABEL157:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(56);
-  }
-LABEL166:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(60);
-  }
-LABEL175:
-  return;
+}
+if (f20) {
+  erase(oEGO);
+  reset(f199);
+  reset(f20);
+  stop.sound();
+  print("You'll have to keep yourself out of the clouds!");
+  set(fGAME_OVER);
+}
+if (said("examine", "trees")) {
+  print("These are very unusual looking trees.");
+}
+else if (said("examine", "anyword")) {
+  print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(58);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(56);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(60);
+}
+return;
 
 LOGIC__FOOTER
 
