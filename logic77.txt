@@ -18,7 +18,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == 78) {
     position(oEGO, 9, 95);
   }
-  if (!f188) {
+  if (!fSHIELD_TAKEN) {
     load.view(49);
   }
   if (!fSCEPTRE_TAKEN) {
@@ -71,7 +71,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.blocks(oLEPRECHAUN);
     draw(oLEPRECHAUN);
   }
-  if (!f188) {
+  if (!fSHIELD_TAKEN) {
     animate.obj(oSHIELD);
     set.view(oSHIELD, 49);
     position(oSHIELD, 131, 128);
@@ -198,7 +198,7 @@ if (f186) {
 if (!f187) {
   if (!f20) {
     if (said("examine", "king edward") || said("examine", "king edward", "leprechauns") || said("examine", "leprechauns", "king edward")) {
-      if (!f188) {
+      if (!fSHIELD_TAKEN) {
         print("The King of the leprechauns is sitting on the stone throne. The magic shield is next to the throne.");
       }
       else {
@@ -221,19 +221,19 @@ if (f187) {
   }
 }
 if (said("examine", "cave") || said("examine", "room")) {
-  if (f188 && fSCEPTRE_TAKEN) {
+  if (fSHIELD_TAKEN && fSCEPTRE_TAKEN) {
     print("This is the throne room of the leprechaun King.");
   }
   if (f20 || f187) {
-    if (f188 && !fSCEPTRE_TAKEN) {
+    if (fSHIELD_TAKEN && !fSCEPTRE_TAKEN) {
       print("This is the throne room of the leprechaun King.  There is a sceptre next to the throne.");
     }
-    if (!f188 && !fSCEPTRE_TAKEN) {
+    if (!fSHIELD_TAKEN && !fSCEPTRE_TAKEN) {
       print("This is the throne room of the leprechaun King.  There is a shield and a sceptre near the throne.");
     }
   }
   if (!f20 && !f187) {
-    if (!f188) {
+    if (!fSHIELD_TAKEN) {
       print("This is the throne room of the leprechaun King.  There is a shield next to the throne.");
     }
   }
@@ -246,7 +246,7 @@ if (said("examine", "stairway")) {
     print("To see the stairs, you have to get closer.");
   }
 }
-if (!fCARRYING_SHIELD && f188) {
+if (!fCARRYING_SHIELD && fSHIELD_TAKEN) {
   if (said("examine", "shield")) {
     print("I think there might have been a shield here once, but someone has since taken it.");
   }
@@ -254,7 +254,7 @@ if (!fCARRYING_SHIELD && f188) {
     print("The shield is no longer here.");
   }
 }
-if (!f188) {
+if (!fSHIELD_TAKEN) {
   if (said("examine", "shield")) {
     if (posn(oEGO, 121, 118, 144, 138)) {
       print("It is made of titanium and is rimmed with jewels.");
@@ -272,7 +272,7 @@ if (!f188) {
       else {
         print("As inconspicuously as possible, you add the shield to what you are carrying.");
       }
-      set(f188);
+      set(fSHIELD_TAKEN);
       set(fCARRYING_SHIELD);
       get("shield");
       vSCORE += 8;
