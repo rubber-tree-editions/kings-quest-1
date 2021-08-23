@@ -167,7 +167,7 @@ LABEL427:
     }
     if (fCARRYING_MIRROR) {
       reset(fCARRYING_MIRROR);
-      set(f101);
+      set(fDWARF_STOLE_MIRROR);
       vSCORE -= 8;
       drop("magic mirror");
       set(fLOST_VITAL_TREASURE);
@@ -177,7 +177,7 @@ LABEL427:
     }
     if (fCARRYING_SHIELD) {
       reset(fCARRYING_SHIELD);
-      set(f103);
+      set(fDWARF_STOLE_SHIELD);
       vSCORE -= 8;
       drop("shield");
       set(fLOST_VITAL_TREASURE);
@@ -187,7 +187,7 @@ LABEL427:
     }
     if (fCARRYING_CHEST) {
       reset(fCARRYING_CHEST);
-      set(f105);
+      set(fDWARF_STOLE_CHEST);
       vSCORE -= 8;
       drop("chest");
       set(fLOST_VITAL_TREASURE);
@@ -197,35 +197,35 @@ LABEL427:
     }
     if (fCARRYING_DIAMONDS) {
       reset(fCARRYING_DIAMONDS);
-      set(f107);
+      set(fDWARF_OR_TROLL_HAS_DIAMONDS);
       vSCORE -= 6;
       drop("pouch of diamonds");
       goto(LABEL636);
     }
     if (fCARRYING_GOLD_WALNUT) {
       reset(fCARRYING_GOLD_WALNUT);
-      set(f109);
+      set(fDWARF_OR_TROLL_HAS_WALNUT);
       vSCORE -= 6;
       drop("gold walnut");
       goto(LABEL636);
     }
     if (fCARRYING_GOLDEN_EGG) {
       reset(fCARRYING_GOLDEN_EGG);
-      set(f111);
+      set(fDWARF_OR_TROLL_HAS_EGG);
       vSCORE -= 6;
       drop("gold egg");
       goto(LABEL636);
     }
     if (fCARRYING_POUCH) {
       reset(fCARRYING_POUCH);
-      set(f112);
+      set(fDWARF_HAS_POUCH);
       vSCORE -= 3;
       drop("pouch");
       goto(LABEL636);
     }
     if (fCARRYING_SCEPTRE) {
       reset(fCARRYING_SCEPTRE);
-      set(f114);
+      set(fDWARF_OR_TROLL_HAS_SCEPTRE);
       vSCORE -= 6;
       drop("sceptre");
       goto(LABEL636);
@@ -250,7 +250,7 @@ LABEL658:
     if (said("plant", "magic beans")) {
       reset(fCARRYING_MAGIC_BEANS);
       vBEANSTALK_ROOM = 35;
-      set(f94);
+      set(fMAGIC_BEANS_PLANTED);
       drop("beans");
       vSCORE += 2;
       print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");

@@ -36,14 +36,14 @@ LABEL64:
     }
     LABEL101:
       if (said("get", "golden walnut")) {
-        if (f129) {
+        if (fWALNUT_TAKEN) {
           print("You look around and decide these plain walnuts won't do. You want a gold walnut!");
         }
-        if (!f129) {
+        if (!fWALNUT_TAKEN) {
           if (posn(oEGO, 9, 112, 98, 167)) {
             print("You pluck a nice walnut from the tree.");
             set(fCARRYING_WALNUT);
-            set(f129);
+            set(fWALNUT_TAKEN);
             vSCORE += 3;
             get("walnut");
             goto(LABEL152);

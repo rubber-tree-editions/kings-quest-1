@@ -100,7 +100,7 @@ LABEL318:
     if (f66) {
       reset(f66);
       reset(fGOAT_IS_HERE);
-      set(f130);
+      set(fGOAT_IS_GONE);
     }
   }
 LABEL338:

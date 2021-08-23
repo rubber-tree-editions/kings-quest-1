@@ -210,7 +210,7 @@ if (vROOM_NO != 21) {
   }
 }
 if (said("duck") || controller(cDUCK)) {
-  if (!fEGO_DUCKING && !f157 && !f158 && !fEGO_INVISIBLE && !fEGO_TINY && !fEGO_ON_WATER && !f145 && v94 <= 0 && !f143 && !f146 && vROOM_NO != 29 && vROOM_NO != 12 && vROOM_NO != 53 && vROOM_NO != 58 && vROOM_NO != 49 && vROOM_NO != 52 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 48 && vROOM_NO != 73 && vROOM_NO != 65 && vROOM_NO != 79 && vROOM_NO != 14 && vROOM_NO != 10 && vROOM_NO != 11 && vROOM_NO != 13 && !f142) {
+  if (!fEGO_DUCKING && !f157 && !f158 && !fEGO_INVISIBLE && !fEGO_TINY && !fEGO_ON_WATER && !f145 && v94 <= 0 && !f143 && !f146 && vROOM_NO != 29 && vROOM_NO != 12 && vROOM_NO != 53 && vROOM_NO != 58 && vROOM_NO != 49 && vROOM_NO != 52 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 48 && vROOM_NO != 73 && vROOM_NO != 65 && vROOM_NO != 79 && vROOM_NO != 14 && vROOM_NO != 10 && vROOM_NO != 11 && vROOM_NO != 13 && !fCARRIED_BY_WITCH) {
     set(fEGO_DUCKING);
     set.view(oEGO, 87);
     set(f98);
@@ -299,7 +299,7 @@ if (fCARRYING_CARROT) {
         set.view(oEGO, 0);
       }
       erase(o13);
-      set(f130);
+      set(fGOAT_IS_GONE);
       reset(fGOAT_IS_HERE);
     }
     if (said("show", "carrot") || said("show", "carrot", "goat") || said("show", "goat", "carrot")) {
@@ -411,7 +411,7 @@ if (fCARRYING_MUSHROOM) {
       v82 = 200;
       drop("mushroom");
       reset(fCARRYING_MUSHROOM);
-      set(f124);
+      set(fEATEN_MUSHROOM);
       set(fEGO_TINY);
       vSCORE -= 1;
       if (vROOM_NO == 78) {
@@ -457,7 +457,7 @@ if (fCARRYING_RING) {
       print("I don't know why, but you drop the magic ring.");
       reset(fCARRYING_RING);
       reset(fWEARING_RING);
-      set(f115);
+      set(fLOST_RING);
     }
     if (fWEARING_RING && fEGO_INVISIBLE) {
       drop("ring");
@@ -467,7 +467,7 @@ if (fCARRYING_RING) {
       reset(fCARRYING_RING);
       reset(fEGO_INVISIBLE);
       reset(fWEARING_RING);
-      set(f115);
+      set(fLOST_RING);
       v90 = 0;
       v91 = 0;
     }
@@ -483,14 +483,14 @@ if (fCARRYING_RING) {
       print("There is no need to rub the ring as you are already invisible.");
     }
     if (fWEARING_RING && !fGOAT_IS_HERE && !fEGO_INVISIBLE) {
-      if (vROOM_NO != 65 && !f157 && !f158 && v94 <= 0 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 49 && vROOM_NO != 51 && vROOM_NO != 52 && vROOM_NO != 12 && vROOM_NO != 79 && !f209 && !f142 && !fEGO_TINY) {
+      if (vROOM_NO != 65 && !f157 && !f158 && v94 <= 0 && vROOM_NO != 63 && vROOM_NO != 80 && vROOM_NO != 49 && vROOM_NO != 51 && vROOM_NO != 52 && vROOM_NO != 12 && vROOM_NO != 79 && !f209 && !fCARRIED_BY_WITCH && !fEGO_TINY) {
         set.view(oEGO, 110);
         print("When you rub the magic ring, you mysteriously disappear, except for your footprints.");
         set(fEGO_INVISIBLE);
         v90 = 250;
         v91 = 10;
       }
-      if (vROOM_NO == 65 || f157 || f158 || v94 > 0 || vROOM_NO == 63 || vROOM_NO == 80 || vROOM_NO == 49 || vROOM_NO == 51 || vROOM_NO == 52 || vROOM_NO == 12 || vROOM_NO == 79 || f209 || f142 || fEGO_TINY) {
+      if (vROOM_NO == 65 || f157 || f158 || v94 > 0 || vROOM_NO == 63 || vROOM_NO == 80 || vROOM_NO == 49 || vROOM_NO == 51 || vROOM_NO == 52 || vROOM_NO == 12 || vROOM_NO == 79 || f209 || fCARRIED_BY_WITCH || fEGO_TINY) {
         print("You're too busy right now to rub the ring.");
       }
     }
@@ -511,7 +511,7 @@ if (v90 == 1 && v91 == 0) {
   reset(fCARRYING_RING);
   drop("ring");
   reset(fWEARING_RING);
-  set(f115);
+  set(fLOST_RING);
   reset(fEGO_INVISIBLE);
   print("The spell to make you invisible has expired and you are once again visible to dangerous creatures, but, the ring has now disappeared.");
   vSCORE -= 3;

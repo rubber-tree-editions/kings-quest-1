@@ -20,7 +20,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   LABEL41:
     ignore.objs(oEGO);
     load.view(95);
-    if (!f138) {
+    if (!fRAT_IS_GONE) {
       load.sound(1);
       load.view(45);
       animate.obj(oRAT);
@@ -85,7 +85,7 @@ LABEL182:
     print(null);
   }
 LABEL195:
-  if (f138) {
+  if (fRAT_IS_GONE) {
     if (said("anyword", "rat") || said("anyword", "mouse")) {
       print("There is no rat here.");
     }
@@ -94,7 +94,7 @@ LABEL195:
     }
   }
 LABEL241:
-  if (!f138) {
+  if (!fRAT_IS_GONE) {
     distance(oEGO, oRAT, v70);
     if (said("examine", "rat")) {
       print("It is a big rat with dripping teeth and small, greedy eyes.");
@@ -140,7 +140,7 @@ LABEL241:
             move.obj(oRAT, 46, 105, 0, f24);
             drop("pouch of diamonds");
             reset(fCARRYING_DIAMONDS);
-            set(f107);
+            set(fDWARF_OR_TROLL_HAS_DIAMONDS);
             vSCORE -= 6;
             goto(LABEL512);
           }
@@ -154,7 +154,7 @@ LABEL241:
           move.obj(oRAT, 46, 105, 0, f24);
           drop("gold egg");
           reset(fCARRYING_GOLDEN_EGG);
-          set(f111);
+          set(fDWARF_OR_TROLL_HAS_EGG);
           vSCORE -= 6;
           goto(LABEL571);
         }
@@ -176,7 +176,7 @@ LABEL241:
               move.obj(oRAT, 46, 105, 0, f24);
               drop("gold walnut");
               reset(fCARRYING_GOLD_WALNUT);
-              set(f109);
+              set(fDWARF_OR_TROLL_HAS_WALNUT);
               vSCORE -= 6;
               goto(LABEL654);
             }
@@ -190,7 +190,7 @@ LABEL241:
           move.obj(oRAT, 46, 105, 0, f24);
           drop("sceptre");
           reset(fCARRYING_SCEPTRE);
-          set(f114);
+          set(fDWARF_OR_TROLL_HAS_SCEPTRE);
           vSCORE -= 6;
           goto(LABEL713);
         }
@@ -207,7 +207,7 @@ LABEL241:
             move.obj(oRAT, 46, 105, 0, f24);
             drop("cheese");
             reset(fCARRYING_SWISS_CHEESE);
-            set(f140);
+            set(fRAT_ATE_CHEESE);
             vSCORE -= 2;
             vSCORE += 4;
             goto(LABEL810);
@@ -220,7 +220,7 @@ LABEL810:
   if (f24) {
     reset(f24);
     erase(oRAT);
-    set(f138);
+    set(fRAT_IS_GONE);
     print("The rat scrambles to the wall and seems to magically merge with it.");
   }
 LABEL824:

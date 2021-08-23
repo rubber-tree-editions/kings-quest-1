@@ -56,7 +56,7 @@ LABEL147:
   if (fGOAT_IS_HERE) {
     print();
     reset(fGOAT_IS_HERE);
-    set(f130);
+    set(fGOAT_IS_GONE);
     vSCORE -= 5;
   }
 LABEL162:

@@ -26,7 +26,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       reset(fCARRYING_RING);
       drop("ring");
       vSCORE -= 3;
-      set(f115);
+      set(fLOST_RING);
     }
     if (fEGO_TINY) {
       reset(fEGO_TINY);

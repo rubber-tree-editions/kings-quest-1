@@ -46,7 +46,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       reset(fCARRYING_RING);
       reset(fEGO_INVISIBLE);
       reset(fWEARING_RING);
-      set(f115);
+      set(fLOST_RING);
       v90 = 0;
       v91 = 0;
     }

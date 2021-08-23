@@ -27,7 +27,7 @@ LABEL39:
 LABEL66:
   if (said("examine", "doorway") || said("look inside", "doorway")) {
     if (posn(oEGO, 117, 100, 144, 117)) {
-      if (!f96) {
+      if (!fSLINGSHOT_TAKEN) {
         print("You notice a sling in the hole in the tree.");
         goto(LABEL108);
       }
@@ -46,7 +46,7 @@ LABEL113:
     print("Why?  What sling?");
   }
 LABEL136:
-  if (f96) {
+  if (fSLINGSHOT_TAKEN) {
     if (said("get", "slingshot")) {
       if (posn(oEGO, 117, 100, 144, 117)) {
         print("Why?  What sling?");
@@ -56,11 +56,11 @@ LABEL136:
     }
   }
 LABEL169:
-  if (!f96) {
+  if (!fSLINGSHOT_TAKEN) {
     if (said("get", "slingshot")) {
       if (posn(oEGO, 117, 100, 144, 117)) {
         print("You reach into the hole and pull out the leather sling.");
-        set(f96);
+        set(fSLINGSHOT_TAKEN);
         set(fCARRYING_SLINGSHOT);
         vSCORE += 2;
         get("leather slingshot");

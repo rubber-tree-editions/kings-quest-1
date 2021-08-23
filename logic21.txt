@@ -101,7 +101,7 @@ LABEL172:
     }
     print("The witch swoops down, grabs you by the neck, and carries you off to a fate worse than death.");
     program.control();
-    set(f142);
+    set(fCARRIED_BY_WITCH);
     erase(oWITCH);
     set.view(oEGO, 91);
     ignore.blocks(oEGO);
@@ -146,7 +146,7 @@ LABEL372:
       print();
     }
     if (f21 && !fEGO_INVISIBLE) {
-      if (!f142) {
+      if (!fCARRIED_BY_WITCH) {
         print("Jumping here would put you in even greater danger from that witch!");
         goto(LABEL415);
       }
@@ -178,19 +178,19 @@ LABEL466:
     new.room(80);
   }
 LABEL474:
-  if (vEGO_EDGE_CODE == 1 && !f142) {
+  if (vEGO_EDGE_CODE == 1 && !fCARRIED_BY_WITCH) {
     new.room(28);
   }
 LABEL486:
-  if (vEGO_EDGE_CODE == 2 && !f142) {
+  if (vEGO_EDGE_CODE == 2 && !fCARRIED_BY_WITCH) {
     new.room(20);
   }
 LABEL498:
-  if (vEGO_EDGE_CODE == 4 && !f142) {
+  if (vEGO_EDGE_CODE == 4 && !fCARRIED_BY_WITCH) {
     new.room(22);
   }
 LABEL510:
-  if (vEGO_EDGE_CODE == 3 && !f142) {
+  if (vEGO_EDGE_CODE == 3 && !fCARRIED_BY_WITCH) {
     new.room(12);
   }
 LABEL522:

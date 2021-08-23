@@ -65,7 +65,7 @@ LABEL112:
             reset(fEGO_INVISIBLE);
             reset(fCARRYING_RING);
             reset(fWEARING_RING);
-            set(f115);
+            set(fLOST_RING);
             drop("ring");
             vSCORE -= 3;
             print("Thrashing around in the water has caused you to lose the magic ring and become visible again.");
@@ -86,7 +86,7 @@ LABEL112:
           reset(fEGO_INVISIBLE);
           reset(fCARRYING_RING);
           reset(fWEARING_RING);
-          set(f115);
+          set(fLOST_RING);
           drop("ring");
           vSCORE -= 3;
           print("Thrashing around in the water has caused you to lose the magic ring and become visible again.");

@@ -25,7 +25,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 if (fGOAT_IS_HERE) {
   reset(fGOAT_IS_HERE);
-  set(f130);
+  set(fGOAT_IS_GONE);
   print(null);
   vSCORE -= 5;
 }

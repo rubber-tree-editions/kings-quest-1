@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   set.horizon(41);
   load.view(67);
-  if (!fGOAT_IS_HERE && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !f130) {
+  if (!fGOAT_IS_HERE && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !fGOAT_IS_GONE) {
     load.sound(11);
     load.view(14);
     load.view(62);
@@ -22,7 +22,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 140, 80, 0, 0);
   }
   LABEL59:
-    if (vPREV_ROOM_NO == 11 && f74) {
+    if (vPREV_ROOM_NO == 11 && fINSIDE_GOAT_FENCE) {
       get.posn(oEGO, v60, v61);
       if (v61 > 125) {
         position(oEGO, 150, 128);
@@ -79,7 +79,7 @@ LABEL167:
       }
     LABEL244:
       if (said("get", "goat")) {
-        if (f74) {
+        if (fINSIDE_GOAT_FENCE) {
           print("You can't carry a goat very far.");
           goto(LABEL267);
         }
@@ -99,7 +99,7 @@ LABEL167:
     LABEL300:
       if (fCARRYING_DAGGER) {
         if (said("murder", "goat")) {
-          if (!f74) {
+          if (!fINSIDE_GOAT_FENCE) {
             print("From here it will be difficult to do such a terrible  thing.");
             goto(LABEL355);
           }
@@ -122,7 +122,7 @@ LABEL167:
       }
     LABEL367:
       if (said("get on", "goat")) {
-        if (f74) {
+        if (fINSIDE_GOAT_FENCE) {
           print("Are you kidding?  The goat would never let you!");
           goto(LABEL390);
         }
@@ -130,7 +130,7 @@ LABEL167:
       }
     LABEL390:
       if (said("catch", "goat")) {
-        if (f74) {
+        if (fINSIDE_GOAT_FENCE) {
           print("The goat will not let you catch him.");
           goto(LABEL413);
         }
@@ -148,7 +148,7 @@ LABEL413:
   }
 LABEL444:
   if (said("examine", "goat pen")) {
-    if (f74) {
+    if (fINSIDE_GOAT_FENCE) {
       print("It is high enough to keep the old goat from jumping over it.");
       goto(LABEL467);
     }
@@ -176,7 +176,7 @@ LABEL514:
   }
 LABEL526:
   distance(oEGO, oGOAT, v70);
-  if (f74 && f20) {
+  if (fINSIDE_GOAT_FENCE && f20) {
     if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
       if (fCARRYING_CARROT) {
         if (v70 < 25) {
@@ -196,7 +196,7 @@ LABEL526:
     }
   }
 LABEL624:
-  if (f74 && f20) {
+  if (fINSIDE_GOAT_FENCE && f20) {
     if (fCARRYING_CARROT && !fGOAT_IS_HERE && !fEGO_INVISIBLE) {
       if (said("show", "carrot") || said("show", "carrot", "goat") || said("show", "goat", "carrot")) {
         if (v70 < 50) {
@@ -218,7 +218,7 @@ LABEL624:
     }
   }
 LABEL711:
-  if (!f74 && f20) {
+  if (!fINSIDE_GOAT_FENCE && f20) {
     if (!fCARRYING_CARROT) {
       if (said("anyword", "carrot")) {
         print("You do not have the carrot.");

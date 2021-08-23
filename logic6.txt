@@ -153,7 +153,7 @@ LABEL439:
     if (said("plant", "magic beans")) {
       reset(fCARRYING_MAGIC_BEANS);
       vBEANSTALK_ROOM = 6;
-      set(f94);
+      set(fMAGIC_BEANS_PLANTED);
       drop("beans");
       vSCORE += 2;
       print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");

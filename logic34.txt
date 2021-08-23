@@ -25,7 +25,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       add.to.pic(62, 0, 0, 27, 96, 0, 0);
     }
   LABEL63:
-    if (!f92) {
+    if (!fPEBBLES_TAKEN) {
       load.view(26);
       animate.obj(oPEBBLES);
       set.view(oPEBBLES, 26);
@@ -109,17 +109,17 @@ LABEL327:
     if (fCARRYING_PEBBLES) {
       print("Your pockets cannot hold any more pebbles.");
     }
-    if (!fCARRYING_PEBBLES && f92) {
+    if (!fCARRYING_PEBBLES && fPEBBLES_TAKEN) {
       print("The only pebbles worth getting are already gone.");
     }
     LABEL356:
-      if (!f92) {
+      if (!fPEBBLES_TAKEN) {
         if (posn(oEGO, 68, 83, 109, 124)) {
           print("You grab a handful of pebbles.");
           start.update(oPEBBLES);
           erase(oPEBBLES);
           set(fCARRYING_PEBBLES);
-          set(f92);
+          set(fPEBBLES_TAKEN);
           vSCORE += 1;
           get("pebbles");
           goto(LABEL393);
@@ -129,10 +129,10 @@ LABEL327:
   }
 LABEL393:
   if (said("examine", "pebbles")) {
-    if (!fCARRYING_PEBBLES && !f92) {
+    if (!fCARRYING_PEBBLES && !fPEBBLES_TAKEN) {
       print("The pebbles are round and smooth.");
     }
-    if (!fCARRYING_PEBBLES && f92) {
+    if (!fCARRYING_PEBBLES && fPEBBLES_TAKEN) {
       print("From here it looks like an ordinary delta of pebbles.");
     }
   }

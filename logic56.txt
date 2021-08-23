@@ -85,7 +85,7 @@ LABEL215:
   }
 LABEL224:
   if (vEGO_EDGE_CODE == 4) {
-    if (f94) {
+    if (fMAGIC_BEANS_PLANTED) {
       new.room(72);
       goto(LABEL244);
     }

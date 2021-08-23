@@ -137,7 +137,7 @@ LABEL368:
     reset(f21);
     reset(fGOAT_IS_HERE);
     erase(oTROLL);
-    set(f130);
+    set(fGOAT_IS_GONE);
     get.posn(oGOAT, v60, v61);
     v60 = 140;
     if (v61 < 71) {
@@ -229,7 +229,7 @@ LABEL430:
             drop("pouch of diamonds");
             reset(fCARRYING_DIAMONDS);
             set(f151);
-            set(f107);
+            set(fDWARF_OR_TROLL_HAS_DIAMONDS);
             vSCORE -= 6;
             set(f27);
             goto(LABEL763);
@@ -245,7 +245,7 @@ LABEL430:
             drop("sceptre");
             reset(fCARRYING_SCEPTRE);
             set(f151);
-            set(f114);
+            set(fDWARF_OR_TROLL_HAS_SCEPTRE);
             vSCORE -= 6;
             set(f27);
             goto(LABEL827);
@@ -261,7 +261,7 @@ LABEL430:
             drop("gold egg");
             reset(fCARRYING_GOLDEN_EGG);
             set(f151);
-            set(f111);
+            set(fDWARF_OR_TROLL_HAS_EGG);
             vSCORE -= 6;
             set(f27);
             goto(LABEL891);
@@ -281,7 +281,7 @@ LABEL430:
             drop("gold walnut");
             reset(fCARRYING_GOLD_WALNUT);
             set(f151);
-            set(f109);
+            set(fDWARF_OR_TROLL_HAS_WALNUT);
             vSCORE -= 6;
             set(f27);
             goto(LABEL966);
@@ -372,7 +372,7 @@ LABEL1215:
     if (f21 && fGOAT_IS_HERE) {
       reset(fGOAT_IS_HERE);
       set(f150);
-      set(f130);
+      set(fGOAT_IS_GONE);
     }
   }
 LABEL1241:

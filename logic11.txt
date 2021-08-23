@@ -16,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oGATE);
   load.view(62);
   load.view(67);
-  if (!fGOAT_IS_HERE && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !f130) {
+  if (!fGOAT_IS_HERE && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !fGOAT_IS_GONE) {
     load.sound(11);
     load.view(14);
     v30 = 27;
@@ -27,12 +27,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 56, 122, 9, 0);
   }
-  if (!f78) {
+  if (!fGOAT_GATE_OPEN) {
     position(oGATE, 17, 156);
     draw(oGATE);
     set(f20);
   }
-  if (f78) {
+  if (fGOAT_GATE_OPEN) {
     position(oGATE, 43, 156);
     draw(oGATE);
     stop.update(oGATE);
@@ -54,13 +54,13 @@ if (f21 && !fGOAT_IS_HERE) {
   }
 }
 if (posn(oEGO, 16, 153, 44, 155)) {
-  set(f74);
+  set(fINSIDE_GOAT_FENCE);
 }
 if (posn(oEGO, 16, 156, 44, 158)) {
-  reset(f74);
+  reset(fINSIDE_GOAT_FENCE);
 }
 if (said("examine", "gate")) {
-  if (f78) {
+  if (fGOAT_GATE_OPEN) {
     print("The gate is open.");
   }
   else {
@@ -70,7 +70,7 @@ if (said("examine", "gate")) {
 if (said("open", "gate")) {
   if (f20) {
     if (posn(oEGO, 6, 139, 55, 167)) {
-      move.obj(oGATE, 43, 156, 0, f78);
+      move.obj(oGATE, 43, 156, 0, fGOAT_GATE_OPEN);
       reset(f20);
       print("The gate is rather heavy, but you manage to open it.");
     }
@@ -78,12 +78,12 @@ if (said("open", "gate")) {
       print("You cannot reach the gate from here.");
     }
   }
-  if (f78) {
+  if (fGOAT_GATE_OPEN) {
     print("The gate is already open.");
   }
 }
 if (said("close", "gate")) {
-  if (f78 && !fGOAT_IS_HERE) {
+  if (fGOAT_GATE_OPEN && !fGOAT_IS_HERE) {
     if (posn(oEGO, 33, 139, 75, 167)) {
       get.posn(oEGO, v60, v61);
       if (v61 == 156) {
@@ -94,13 +94,13 @@ if (said("close", "gate")) {
       }
       start.update(oGATE);
       move.obj(oGATE, 17, 156, 0, f20);
-      reset(f78);
+      reset(fGOAT_GATE_OPEN);
     }
     else {
       print("You cannot reach the gate from here.");
     }
   }
-  if (f78 && fGOAT_IS_HERE) {
+  if (fGOAT_GATE_OPEN && fGOAT_IS_HERE) {
     print();
   }
   if (f20) {
@@ -134,7 +134,7 @@ if (f21 && !fGOAT_IS_HERE) {
     print("The old goat refuses to listen to you.");
   }
   if (said("get", "goat")) {
-    if (f74) {
+    if (fINSIDE_GOAT_FENCE) {
       print("It would be rather difficult to carry this goat.");
     }
     else {
@@ -152,7 +152,7 @@ if (f21 && !fGOAT_IS_HERE) {
   }
   if (fCARRYING_DAGGER) {
     if (said("murder", "goat")) {
-      if (!f74) {
+      if (!fINSIDE_GOAT_FENCE) {
         print("From here it will be very difficult to do such a  terrible thing.");
       }
       else {
@@ -174,7 +174,7 @@ if (f21 && !fGOAT_IS_HERE) {
     print("You can try, but be careful.");
   }
   if (said("get on", "goat")) {
-    if (f74) {
+    if (fINSIDE_GOAT_FENCE) {
       print("Are you kidding?  The goat would never let you!");
     }
     else {
@@ -182,7 +182,7 @@ if (f21 && !fGOAT_IS_HERE) {
     }
   }
   if (said("catch", "goat")) {
-    if (f74) {
+    if (fINSIDE_GOAT_FENCE) {
       print("The goat will not let you catch him.");
     }
     else {
@@ -213,7 +213,7 @@ if (said("jump", "goat pen")) {
   print("The fence is too high for you to jump over.");
 }
 distance(oEGO, oGOAT, v70);
-if (f74 && f21) {
+if (fINSIDE_GOAT_FENCE && f21) {
   if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
     if (fCARRYING_CARROT) {
       if (v70 < 25) {
@@ -233,7 +233,7 @@ if (f74 && f21) {
     }
   }
 }
-if (f74 && f21) {
+if (fINSIDE_GOAT_FENCE && f21) {
   if (fCARRYING_CARROT && !fGOAT_IS_HERE && !fEGO_INVISIBLE) {
     if (said("show", "carrot") || said("show", "carrot", "goat") || said("show", "goat", "carrot")) {
       if (v70 < 50) {
@@ -254,7 +254,7 @@ if (f74 && f21) {
     }
   }
 }
-if (!f74 && f21) {
+if (!fINSIDE_GOAT_FENCE && f21) {
   if (!fCARRYING_CARROT) {
     if (said("anyword", "carrot")) {
       print("You do not have a carrot.");
@@ -292,13 +292,13 @@ if (vOBJECT_EDGE_CODE == 2 || vOBJECT_EDGE_CODE == 3) {
   if (!fGOAT_IS_HERE) {
     erase(oGOAT);
     reset(f21);
-    set(f130);
+    set(fGOAT_IS_GONE);
     print("It seems the old goat has wandered off.");
   }
 }
 if (vEGO_EDGE_CODE != 0) {
-  if (f78 && !fGOAT_IS_HERE && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !f130) {
-    set(f130);
+  if (fGOAT_GATE_OPEN && !fGOAT_IS_HERE && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !fGOAT_IS_GONE) {
+    set(fGOAT_IS_GONE);
   }
 }
 if (vEGO_EDGE_CODE == 1) {

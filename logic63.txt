@@ -10,8 +10,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.sound(5);
   load.view(105);
-  if (!f132) {
-    set(f132);
+  if (!fPOINTS_FOR_CLIMBING_TREE) {
+    set(fPOINTS_FOR_CLIMBING_TREE);
     vSCORE += 2;
   }
   if (!fTAKEN_GOLDEN_EGG) {

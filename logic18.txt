@@ -19,7 +19,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC_SWIMMING);
     call(LOGIC_SWIMMING);
     random(0, 250, v62);
-    if (v62 < 85 && !f82) {
+    if (v62 < 85 && !fIMPRESSED_ELF) {
       load.view(7);
       animate.obj(oELF);
       set.view(oELF, 7);
@@ -114,7 +114,7 @@ LABEL212:
           vSCORE += 3;
           erase(oELF);
           reset(f20);
-          set(f82);
+          set(fIMPRESSED_ELF);
           goto(LABEL378);
         }
         print();
@@ -204,7 +204,7 @@ LABEL648:
     if (f66) {
       reset(f66);
       reset(fGOAT_IS_HERE);
-      set(f130);
+      set(fGOAT_IS_GONE);
     }
   }
 LABEL668:
