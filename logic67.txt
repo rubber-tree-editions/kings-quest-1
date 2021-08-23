@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -21,46 +19,40 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.loop(oEGO, 1);
     move.obj(oEGO, 120, 41, 0, f148);
   }
-  LABEL58:
-    draw(oEGO);
-    show.pic();
+  draw(oEGO);
+  show.pic();
 }
 if (said("examine", "stairway") || said("examine", "room")) {
   print("The stairs are moss-covered and slippery.");
 }
-LABEL81:
-  if (fEGO_TOUCHED_TRIGGER_LINE && !f21) {
-    set(f21);
-    if (!fEGO_INVISIBLE) {
-      set.view(oEGO, 105);
-    }
-    start.cycling(oEGO);
-    set(f98);
-    get.posn(oEGO, v60, v61);
-    get.priority(oEGO, v30);
-    set.priority.v(oEGO, v30);
-    print("Darn!  You slipped on the steep stairs.");
-    v61 = 165;
-    v96 = 4;
-    move.obj.v(oEGO, v60, v61, 96, f20);
-    sound(5, fSOUND_END_MARKER);
+if (fEGO_TOUCHED_TRIGGER_LINE && !f21) {
+  set(f21);
+  if (!fEGO_INVISIBLE) {
+    set.view(oEGO, 105);
   }
-LABEL133:
-  if (f20) {
-    reset(f20);
-    erase(oEGO);
-    set(fGAME_OVER);
-  }
-LABEL145:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(68);
-  }
-LABEL154:
-  if (posn(oEGO, 5, 150, 6, 167)) {
-    new.room(66);
-  }
-LABEL166:
-  return;
+  start.cycling(oEGO);
+  set(f98);
+  get.posn(oEGO, v60, v61);
+  get.priority(oEGO, v30);
+  set.priority.v(oEGO, v30);
+  print("Darn!  You slipped on the steep stairs.");
+  v61 = 165;
+  v96 = 4;
+  move.obj.v(oEGO, v60, v61, 96, f20);
+  sound(5, fSOUND_END_MARKER);
+}
+if (f20) {
+  reset(f20);
+  erase(oEGO);
+  set(fGAME_OVER);
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(68);
+}
+if (posn(oEGO, 5, 150, 6, 167)) {
+  new.room(66);
+}
+return;
 
 LOGIC__FOOTER
 
