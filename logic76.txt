@@ -21,7 +21,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(o1, 96, 78);
     load.sound(8);
   }
-  if (!f186) {
+  if (!fDANCING_LEPRECHAUNS) {
     load.view(78);
     load.view(79);
     load.view(80);
@@ -34,7 +34,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     stop.cycling(o13);
     stop.motion(o13);
   }
-  if (!f186) {
+  if (!fDANCING_LEPRECHAUNS) {
     draw(o13);
     draw(o2);
     if (fCARRYING_CLOVER) {
@@ -46,7 +46,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(oEGO);
   show.pic();
-  if (!f186) {
+  if (!fDANCING_LEPRECHAUNS) {
     if (!fCARRYING_CLOVER && fEGO_INVISIBLE) {
       print("The leprechauns' magic powers detect your unseen presence.");
     }
@@ -76,7 +76,7 @@ if (f22) {
 if (v30 > 0) {
   v30--;
 }
-if (!f186 && !f22) {
+if (!fDANCING_LEPRECHAUNS && !f22) {
   if (fCARRYING_FIDDLE && said("play", "fiddle")) {
     set(f21);
     set(f22);
@@ -90,7 +90,7 @@ if (!f186 && !f22) {
     draw(o2);
     wander(o2);
     print("Leprechauns love fiddle music!  Have you ever seen such frenzied dancing?");
-    set(f186);
+    set(fDANCING_LEPRECHAUNS);
     vSCORE += 3;
   }
 }
@@ -117,7 +117,7 @@ if (f21) {
   }
 }
 if (said("examine", "room")) {
-  if (!f186) {
+  if (!fDANCING_LEPRECHAUNS) {
     print("You are in the antechamber of the Hall of the Leprechaun King.  There is a leprechaun in the room with you.");
   }
   else {
@@ -127,7 +127,7 @@ if (said("examine", "room")) {
 if (said("close", "doors")) {
   print("I can think of no good reason to close the door.");
 }
-if (!f186) {
+if (!fDANCING_LEPRECHAUNS) {
   if (said("examine", "leprechauns")) {
     print("They are tiny people dressed all in green.");
   }
@@ -138,7 +138,7 @@ if (!f186) {
     print("You would not get all of them before they got you.");
   }
 }
-if (f186) {
+if (fDANCING_LEPRECHAUNS) {
   if (said("anyword", "leprechauns")) {
     print("There are not any leprechauns here.");
   }

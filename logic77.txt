@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (!fSCEPTRE_TAKEN) {
     load.view(48);
   }
-  if (!f186) {
+  if (!fDANCING_LEPRECHAUNS) {
     load.sound(21);
     load.view(47);
     load.view(79);
@@ -33,7 +33,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(81);
     load.view(54);
   }
-  if (!f186) {
+  if (!fDANCING_LEPRECHAUNS) {
     add.to.pic(79, 1, 0, 94, 156, 14, 0);
     add.to.pic(79, 1, 0, 120, 156, 14, 0);
     add.to.pic(79, 1, 0, 106, 144, 13, 0);
@@ -52,12 +52,12 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.priority(oLEPRECHAUN_KING, 10);
     ignore.blocks(oLEPRECHAUN_KING);
     draw(oLEPRECHAUN_KING);
-    if (f186) {
+    if (fDANCING_LEPRECHAUNS) {
       set(f20);
       v30 = 27;
     }
   }
-  if (!f186) {
+  if (!fDANCING_LEPRECHAUNS) {
     animate.obj(oLEPRECHAUN);
     set.view(oLEPRECHAUN, 47);
     position(oLEPRECHAUN, 56, 108);
@@ -86,7 +86,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (!f186) {
+if (!fDANCING_LEPRECHAUNS) {
   if (!f26) {
     set(f26);
     sound(21, f27);
@@ -96,7 +96,7 @@ if (!f186) {
     reset(f27);
   }
 }
-if (!f186 && fCARRYING_CLOVER) {
+if (!fDANCING_LEPRECHAUNS && fCARRYING_CLOVER) {
   observe.blocks(oEGO);
   if (posn(oEGO, 80, 110, 139, 141)) {
     if (!f25) {
@@ -105,7 +105,7 @@ if (!f186 && fCARRYING_CLOVER) {
     }
   }
 }
-if (f186 && !f187) {
+if (fDANCING_LEPRECHAUNS && !f187) {
   ignore.blocks(oEGO);
   if (posn(oEGO, 31, 110, 158, 98)) {
     if (!f25) {
@@ -114,7 +114,7 @@ if (f186 && !f187) {
     }
   }
 }
-if (f186 && f187) {
+if (fDANCING_LEPRECHAUNS && f187) {
   ignore.blocks(oEGO);
 }
 v30--;
@@ -158,7 +158,7 @@ if (f22) {
 }
 if (fCARRYING_FIDDLE) {
   if (said("play", "fiddle")) {
-    if (!f186) {
+    if (!fDANCING_LEPRECHAUNS) {
       print("You find playing the fiddle here very fun, but the dance floor is in the other room.");
     }
     else {
@@ -167,14 +167,14 @@ if (fCARRYING_FIDDLE) {
   }
 }
 if (said("examine", "throne")) {
-  if (!f20 && !f186) {
+  if (!f20 && !fDANCING_LEPRECHAUNS) {
     print("The King of the leprechauns is sitting on the stone throne.");
   }
   else {
     print("This is a rather simple stone throne, compared to King Edward's.");
   }
 }
-if (!f186 && fCARRYING_CLOVER) {
+if (!fDANCING_LEPRECHAUNS && fCARRYING_CLOVER) {
   if (said("examine", "leprechauns")) {
     print("The little green men do not seem to be noticing you; perhaps because of the fourleaf clover.");
   }
@@ -185,12 +185,12 @@ if (!f186 && fCARRYING_CLOVER) {
     print("You would not get all of them before they got you.");
   }
 }
-if (!f186 && !fCARRYING_CLOVER) {
+if (!fDANCING_LEPRECHAUNS && !fCARRYING_CLOVER) {
   if (said("anyword", "leprechauns")) {
     print("The leprechauns seem irritated by your invasion of their territory.  I would be real careful about what I say and do right now!");
   }
 }
-if (f186) {
+if (fDANCING_LEPRECHAUNS) {
   if (said("anyword", "leprechauns")) {
     print("There aren't any leprechauns here.");
   }
@@ -266,7 +266,7 @@ if (!fSHIELD_TAKEN) {
   if (said("get", "shield")) {
     if (posn(oEGO, 121, 118, 144, 138)) {
       erase(oSHIELD);
-      if (f186) {
+      if (fDANCING_LEPRECHAUNS) {
         print("You take the magic shield and carefully put it in your pocket.");
       }
       else {
