@@ -259,7 +259,7 @@ struct current {
 } current;
 
 struct submit {
-  void (*menu)(void);
+  void (*_menu)(void);
 } submit;
 
 struct show {
