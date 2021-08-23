@@ -22,27 +22,23 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.horizon(oDWARF);
   }
   if (f23) {
-    LABEL50:
+    do {
       random(0, 250, v70);
-      if (v70 > 90) {
-        goto(LABEL50);
-      }
+    } while (v70 > 90);
   }
-  LABEL64:
-    set.horizon(40);
-    if (vPREV_ROOM_NO == 67) {
-      position(oEGO, 94, 160);
-      set.loop(oEGO, 0);
-      move.obj(oEGO, 94, 160, 0, f148);
-    }
-    if (vPREV_ROOM_NO == 69) {
-      position(oEGO, 43, 41);
-      set.loop(oEGO, 0);
-      move.obj(oEGO, 43, 41, 0, f148);
-    }
-  LABEL106:
-    draw(oEGO);
-    show.pic();
+  set.horizon(40);
+  if (vPREV_ROOM_NO == 67) {
+    position(oEGO, 94, 160);
+    set.loop(oEGO, 0);
+    move.obj(oEGO, 94, 160, 0, f148);
+  }
+  if (vPREV_ROOM_NO == 69) {
+    position(oEGO, 43, 41);
+    set.loop(oEGO, 0);
+    move.obj(oEGO, 43, 41, 0, f148);
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (f24) {
   if (!f27) {
@@ -54,195 +50,183 @@ if (f24) {
     reset(f28);
   }
 }
-LABEL137:
-  v70--;
-  if (v70 == 1) {
-    if (posn(oEGO, 0, 0, 159, 83)) {
-      position(oDWARF, 96, 162);
-      goto(LABEL167);
-    }
-    position(oDWARF, 30, 27);
-    LABEL167:
-      draw(oDWARF);
-      set(f24);
-      move.obj(oDWARF, 130, 127, 2, f25);
+v70--;
+if (v70 == 1) {
+  if (posn(oEGO, 0, 0, 159, 83)) {
+    position(oDWARF, 96, 162);
+    goto(LABEL167);
   }
-LABEL177:
-  if (!f26) {
-    distance(oEGO, oDWARF, v71);
+  position(oDWARF, 30, 27);
+  LABEL167:
+    draw(oDWARF);
+    set(f24);
+    move.obj(oDWARF, 130, 127, 2, f25);
+}
+if (!f26) {
+  distance(oEGO, oDWARF, v71);
+}
+if (f25) {
+  set(f26);
+  reset(f25);
+  follow.ego(oDWARF, 10, f156);
+}
+if (said("examine", "stairway") || said("examine", "room")) {
+  print("The stairs seem to go on forever.");
+}
+if (said("examine", "man")) {
+  if (f24) {
+    print("This is a shy little dwarf.  He is too quick to catch.");
   }
-LABEL188:
-  if (f25) {
-    set(f26);
-    reset(f25);
-    follow.ego(oDWARF, 10, f156);
-  }
-LABEL202:
-  if (said("examine", "stairway") || said("examine", "room")) {
-    print("The stairs seem to go on forever.");
-  }
-LABEL222:
-  if (said("examine", "man")) {
-    if (f24) {
-      print("This is a shy little dwarf.  He is too quick to catch.");
-      goto(LABEL245);
-    }
+  else {
     print("There is nobody here but you.");
   }
-LABEL245:
-  if (said("talk", "man") || said("hello") || said("say", "hello")) {
-    if (f24) {
-      print("The dwarf is not here for idle conversion.");
-      goto(LABEL280);
-    }
+}
+if (said("talk", "man") || said("hello") || said("say", "hello")) {
+  if (f24) {
+    print("The dwarf is not here for idle conversion.");
+  }
+  else {
     print("There is nobody here but you.");
   }
-LABEL280:
-  if (fEGO_TOUCHED_TRIGGER_LINE && !f22) {
-    set(f22);
-    ignore.blocks(oEGO);
-    start.cycling(oEGO);
-    set(f98);
-    get.posn(oEGO, v60, v61);
-    get.priority(oEGO, v30);
-    set.priority.v(oEGO, v30);
-    if (!fEGO_INVISIBLE) {
-      set.view(oEGO, 105);
-    }
-    print("Look out!  You are too close to the edge!  Oh, oh, you fell!");
-    if (v61 < 130) {
-      v61 = 130;
-      goto(LABEL335);
-    }
-    LABEL332:
-      v61 = 165;
-    LABEL335:
-      v96 = 4;
-      move.obj.v(oEGO, v60, v61, 96, f20);
-      sound(5, fSOUND_END_MARKER);
+}
+if (fEGO_TOUCHED_TRIGGER_LINE && !f22) {
+  set(f22);
+  ignore.blocks(oEGO);
+  start.cycling(oEGO);
+  set(f98);
+  get.posn(oEGO, v60, v61);
+  get.priority(oEGO, v30);
+  set.priority.v(oEGO, v30);
+  if (!fEGO_INVISIBLE) {
+    set.view(oEGO, 105);
   }
-LABEL347:
-  if (f20) {
-    reset(f20);
-    erase(oEGO);
-    set(fGAME_OVER);
+  print("Look out!  You are too close to the edge!  Oh, oh, you fell!");
+  if (v61 < 130) {
+    v61 = 130;
   }
-LABEL359:
-  if (v71 > 0 && v71 < 11) {
-    set(f26);
-    v71 = 0;
-    set(f156);
+  else {
+    v61 = 165;
   }
-LABEL376:
-  if (f156) {
-    reset(f156);
-    v71 = 0;
-    set(f26);
-    normal.motion(oDWARF);
-    ignore.blocks(oDWARF);
-    if (fPROTECTED_BY_SPELL) {
-      print("It's a good thing you are protected by a spell.  That little dwarf likes to steal treasures.");
-      set.view(oDWARF, 115);
-      reset(f24);
-      end.of.loop(oDWARF, f21);
-      goto(LABEL616);
-    }
-    if (fEGO_INVISIBLE) {
-      print("Being invisible has protected you, and your treasures, from the dwarf.");
-      set.view(oDWARF, 115);
-      reset(f24);
-      end.of.loop(oDWARF, f21);
-      goto(LABEL616);
-    }
-    if (fCARRYING_MIRROR) {
-      reset(fCARRYING_MIRROR);
-      set(fDWARF_STOLE_MIRROR);
-      vSCORE -= 8;
-      drop("magic mirror");
-      set(fLOST_VITAL_TREASURE);
-      reset(f125);
-      vTREASURE_COUNT--;
-      goto(LABEL606);
-    }
-    if (fCARRYING_SHIELD) {
-      reset(fCARRYING_SHIELD);
-      set(fDWARF_STOLE_SHIELD);
-      vSCORE -= 8;
-      drop("shield");
-      set(fLOST_VITAL_TREASURE);
-      reset(f125);
-      vTREASURE_COUNT--;
-      goto(LABEL606);
-    }
-    if (fCARRYING_CHEST) {
-      reset(fCARRYING_CHEST);
-      set(fDWARF_STOLE_CHEST);
-      vSCORE -= 8;
-      drop("chest");
-      set(fLOST_VITAL_TREASURE);
-      reset(f125);
-      vTREASURE_COUNT--;
-      goto(LABEL606);
-    }
-    if (fCARRYING_DIAMONDS) {
-      reset(fCARRYING_DIAMONDS);
-      set(fDWARF_OR_TROLL_HAS_DIAMONDS);
-      vSCORE -= 6;
-      drop("pouch of diamonds");
-      goto(LABEL606);
-    }
-    if (fCARRYING_GOLD_WALNUT) {
-      reset(fCARRYING_GOLD_WALNUT);
-      set(fDWARF_OR_TROLL_HAS_WALNUT);
-      vSCORE -= 6;
-      drop("gold walnut");
-      goto(LABEL606);
-    }
-    if (fCARRYING_GOLDEN_EGG) {
-      reset(fCARRYING_GOLDEN_EGG);
-      set(fDWARF_OR_TROLL_HAS_EGG);
-      vSCORE -= 6;
-      drop("gold egg");
-      goto(LABEL606);
-    }
-    if (fCARRYING_POUCH) {
-      reset(fCARRYING_POUCH);
-      set(fDWARF_HAS_POUCH);
-      vSCORE -= 3;
-      drop("pouch");
-      goto(LABEL606);
-    }
-    if (fCARRYING_SCEPTRE) {
-      reset(fCARRYING_SCEPTRE);
-      set(fDWARF_OR_TROLL_HAS_SCEPTRE);
-      vSCORE -= 6;
-      drop("sceptre");
-      goto(LABEL606);
-    }
+  v96 = 4;
+  move.obj.v(oEGO, v60, v61, 96, f20);
+  sound(5, fSOUND_END_MARKER);
+}
+if (f20) {
+  reset(f20);
+  erase(oEGO);
+  set(fGAME_OVER);
+}
+if (v71 > 0 && v71 < 11) {
+  set(f26);
+  v71 = 0;
+  set(f156);
+}
+if (f156) {
+  reset(f156);
+  v71 = 0;
+  set(f26);
+  normal.motion(oDWARF);
+  ignore.blocks(oDWARF);
+  if (fPROTECTED_BY_SPELL) {
+    print("It's a good thing you are protected by a spell.  That little dwarf likes to steal treasures.");
     set.view(oDWARF, 115);
     reset(f24);
-    print("The quick, little dwarf came by to see what you had-- nothing interested him.");
     end.of.loop(oDWARF, f21);
     goto(LABEL616);
-    LABEL606:
-      set.view(oDWARF, 115);
-      reset(f24);
-      print("That little dwarf caught you by surprise.  Is your treasure still OK?");
-      end.of.loop(oDWARF, f21);
   }
+  if (fEGO_INVISIBLE) {
+    print("Being invisible has protected you, and your treasures, from the dwarf.");
+    set.view(oDWARF, 115);
+    reset(f24);
+    end.of.loop(oDWARF, f21);
+    goto(LABEL616);
+  }
+  if (fCARRYING_MIRROR) {
+    reset(fCARRYING_MIRROR);
+    set(fDWARF_STOLE_MIRROR);
+    vSCORE -= 8;
+    drop("magic mirror");
+    set(fLOST_VITAL_TREASURE);
+    reset(f125);
+    vTREASURE_COUNT--;
+    goto(LABEL606);
+  }
+  if (fCARRYING_SHIELD) {
+    reset(fCARRYING_SHIELD);
+    set(fDWARF_STOLE_SHIELD);
+    vSCORE -= 8;
+    drop("shield");
+    set(fLOST_VITAL_TREASURE);
+    reset(f125);
+    vTREASURE_COUNT--;
+    goto(LABEL606);
+  }
+  if (fCARRYING_CHEST) {
+    reset(fCARRYING_CHEST);
+    set(fDWARF_STOLE_CHEST);
+    vSCORE -= 8;
+    drop("chest");
+    set(fLOST_VITAL_TREASURE);
+    reset(f125);
+    vTREASURE_COUNT--;
+    goto(LABEL606);
+  }
+  if (fCARRYING_DIAMONDS) {
+    reset(fCARRYING_DIAMONDS);
+    set(fDWARF_OR_TROLL_HAS_DIAMONDS);
+    vSCORE -= 6;
+    drop("pouch of diamonds");
+    goto(LABEL606);
+  }
+  if (fCARRYING_GOLD_WALNUT) {
+    reset(fCARRYING_GOLD_WALNUT);
+    set(fDWARF_OR_TROLL_HAS_WALNUT);
+    vSCORE -= 6;
+    drop("gold walnut");
+    goto(LABEL606);
+  }
+  if (fCARRYING_GOLDEN_EGG) {
+    reset(fCARRYING_GOLDEN_EGG);
+    set(fDWARF_OR_TROLL_HAS_EGG);
+    vSCORE -= 6;
+    drop("gold egg");
+    goto(LABEL606);
+  }
+  if (fCARRYING_POUCH) {
+    reset(fCARRYING_POUCH);
+    set(fDWARF_HAS_POUCH);
+    vSCORE -= 3;
+    drop("pouch");
+    goto(LABEL606);
+  }
+  if (fCARRYING_SCEPTRE) {
+    reset(fCARRYING_SCEPTRE);
+    set(fDWARF_OR_TROLL_HAS_SCEPTRE);
+    vSCORE -= 6;
+    drop("sceptre");
+    goto(LABEL606);
+  }
+  set.view(oDWARF, 115);
+  reset(f24);
+  print("The quick, little dwarf came by to see what you had-- nothing interested him.");
+  end.of.loop(oDWARF, f21);
+  goto(LABEL616);
+  LABEL606:
+    set.view(oDWARF, 115);
+    reset(f24);
+    print("That little dwarf caught you by surprise.  Is your treasure still OK?");
+    end.of.loop(oDWARF, f21);
+}
 LABEL616:
   if (f21) {
     erase(oDWARF);
   }
-LABEL624:
   if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(69);
   }
-LABEL633:
   if (posn(oEGO, 0, 166, 159, 167)) {
     new.room(67);
   }
-LABEL645:
   return;
 
 LOGIC__FOOTER
