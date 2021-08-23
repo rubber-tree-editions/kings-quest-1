@@ -262,3 +262,86 @@
 #define SND_TITLE_MUSIC 0
 #define SND_GAME_OVER 2
 #define SND_CASTLE_DOOR_FANFARE 15
+
+#define KEY_CTRL_A 1
+#define KEY_CTRL_B 2
+#define KEY_CTRL_C 3
+#define KEY_CTRL_D 4
+#define KEY_CTRL_E 5
+#define KEY_CTRL_F 6
+#define KEY_CTRL_G 7
+#define KEY_CTRL_H 8
+  #define KEY_BACKSPACE 8
+#define KEY_CTRL_I 9
+  #define KEY_TAB 9
+#define KEY_CTRL_J 10
+#define KEY_CTRL_K 11
+#define KEY_CTRL_L 12
+#define KEY_CTRL_M 13
+  #define KEY_ENTER 13
+#define KEY_CTRL_N 14
+#define KEY_CTRL_O 15
+#define KEY_CTRL_P 16
+#define KEY_CTRL_Q 17
+#define KEY_CTRL_R 18
+#define KEY_CTRL_S 19
+#define KEY_CTRL_T 20
+#define KEY_CTRL_U 21
+#define KEY_CTRL_V 22
+#define KEY_CTRL_X 23
+#define KEY_CTRL_Y 24
+#define KEY_CTRL_Z 25
+#define KEY_ESC 27
+#define KEY_SPACE 32
+#define KEY_DASH 41
+#define KEY_DOT 46
+#define KEY_0 48
+#define KEY_1 49
+#define KEY_2 50
+#define KEY_3 51
+#define KEY_4 52
+#define KEY_5 53
+#define KEY_6 54
+#define KEY_7 55
+#define KEY_8 56
+#define KEY_9 57
+#define KEY_EQUALS 61
+
+#define XKEY_F1 59
+#define XKEY_F2 60
+#define XKEY_F3 61
+#define XKEY_F4 62
+#define XKEY_F5 63
+#define XKEY_F6 64
+#define XKEY_F7 65
+#define XKEY_F8 66
+#define XKEY_F9 67
+#define XKEY_F10 68
+#define XKEY_ALT_Q 16
+#define XKEY_ALT_W 17
+#define XKEY_ALT_E 18
+#define XKEY_ALT_R 19
+#define XKEY_ALT_T 20
+#define XKEY_ALT_Y 21
+#define XKEY_ALT_U 22
+#define XKEY_ALT_I 23
+#define XKEY_ALT_O 24
+#define XKEY_ALT_P 25
+#define XKEY_ALT_A 30
+#define XKEY_ALT_S 31
+#define XKEY_ALT_D 32
+#define XKEY_ALT_F 33
+#define XKEY_ALT_G 34
+#define XKEY_ALT_H 35
+#define XKEY_ALT_J 36
+#define XKEY_ALT_K 37
+#define XKEY_ALT_L 38
+#define XKEY_ALT_Z 44
+#define XKEY_ALT_X 45
+#define XKEY_ALT_C 46
+#define XKEY_ALT_V 47
+#define XKEY_ALT_B 48
+#define XKEY_ALT_N 49
+#define XKEY_ALT_M 50
+
+
