@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -16,58 +14,51 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oEGO, 146, 131);
     move.obj(oEGO, 146, 131, 0, f148);
   }
-  LABEL43:
-    draw(oEGO);
-    show.pic();
+  draw(oEGO);
+  show.pic();
 }
 if (fEGO_TINY) {
   ignore.blocks(oEGO);
-  goto(LABEL59);
 }
-LABEL57:
+else {
   observe.blocks(oEGO);
-LABEL59:
-  if (v82 == 1 && fEGO_TINY) {
-    if (posn(oEGO, 1, 75, 12, 82)) {
-      reset(fEGO_TINY);
-      print("You feel a stretching sensation... Oh, you're back to your original size.  You can't get out of the small cave!");
-      set(fGAME_OVER);
-      goto(LABEL94);
-    }
+}
+if (v82 == 1 && fEGO_TINY) {
+  if (posn(oEGO, 1, 75, 12, 82)) {
+    reset(fEGO_TINY);
+    print("You feel a stretching sensation... Oh, you're back to your original size.  You can't get out of the small cave!");
+    set(fGAME_OVER);
+  }
+  else {
     set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
     reset(fEGO_TINY);
   }
-LABEL94:
-  if (said("examine", "stairway")) {
-    print("The stairs are very steep and narrow.");
+}
+if (said("examine", "stairway")) {
+  print("The stairs are very steep and narrow.");
+}
+if (said("examine", "doorway") || said("look inside", "doorway")) {
+  print("The small hole leads to the outside world.");
+}
+if (said("go", "doorway") || said("go", "doorway")) {
+  if (fEGO_TINY) {
+    print("Go ahead.  Walk right in.");
   }
-LABEL106:
-  if (said("examine", "doorway") || said("look inside", "doorway")) {
-    print("The small hole leads to the outside world.");
-  }
-LABEL126:
-  if (said("go", "doorway") || said("go", "doorway")) {
-    if (fEGO_TINY) {
-      print("Go ahead.  Walk right in.");
-      goto(LABEL157);
-    }
+  else {
     print("You are much too big to fit through that small hole.");
   }
-LABEL157:
-  if (said("examine", "cave") || said("examine", "room")) {
-    print("This is a small cave with stairs on one side and a very small hole on the other side.");
-  }
-LABEL177:
-  if (vEGO_EDGE_CODE == 2) {
-    new.room(77);
-  }
-LABEL186:
-  if (posn(oEGO, 0, 0, 1, 167)) {
-    new.room(36);
-  }
-LABEL198:
-  return;
+}
+if (said("examine", "cave") || said("examine", "room")) {
+  print("This is a small cave with stairs on one side and a very small hole on the other side.");
+}
+if (vEGO_EDGE_CODE == 2) {
+  new.room(77);
+}
+if (posn(oEGO, 0, 0, 1, 167)) {
+  new.room(36);
+}
+return;
 
 LOGIC__FOOTER
 
