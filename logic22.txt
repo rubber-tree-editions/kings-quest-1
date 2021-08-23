@@ -124,7 +124,7 @@ LABEL313:
     v69 = 3;
     draw(oBIRD);
     if (!fGOAT_IS_HERE) {
-      print(null);
+      print("High up in the sky you see a very large, friendly bird.");
       wander(oBIRD);
     }
     if (fGOAT_IS_HERE) {
@@ -208,7 +208,7 @@ LABEL559:
       }
     LABEL609:
       if (said("talk", "bird") || said("hello") || said("say", "hello")) {
-        print();
+        print("This bird doesn't talk much.");
       }
   }
 LABEL633:

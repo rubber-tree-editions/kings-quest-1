@@ -58,7 +58,7 @@ LABEL149:
 LABEL151:
   if (fEGO_ON_WATER && f68 && !f20) {
     set(f20);
-    print(null);
+    print("You have fallen in the raging current and are swept under.  I'm afraid your end has come.");
   }
 LABEL166:
   if (said("examine", "water")) {
@@ -74,7 +74,7 @@ LABEL193:
   }
 LABEL205:
   if (said("look under", "bridge")) {
-    print();
+    print("You glance under the old bridge, but see nothing unusual.");
   }
 LABEL217:
   if (v94 <= 0 && fEGO_ON_WATER) {

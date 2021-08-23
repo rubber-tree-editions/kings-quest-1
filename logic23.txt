@@ -36,7 +36,7 @@ if (said("examine", "lake")) {
 }
 LABEL87:
   if (said("examine", "cattails")) {
-    print();
+    print("These cattails look soft and fuzzy.");
   }
 LABEL99:
   if (!fEGO_ON_WATER) {
@@ -81,7 +81,7 @@ LABEL274:
   if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
     if (posn(oEGO, 0, 40, 109, 167) || posn(oEGO, 110, 55, 151, 142)) {
       reset(f116);
-      print(null);
+      print("The clear mountain water pours into the bucket.");
       get("water");
       set(fBUCKET_FILLED);
       if (!fFILL_BUCKET_POINTS) {

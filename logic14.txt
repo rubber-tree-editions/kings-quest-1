@@ -60,7 +60,7 @@ LABEL120:
     v30 = 20;
     set(f98);
     shake.screen(2);
-    print();
+    print("OUCH!");
     sound(4, fSOUND_END_MARKER);
   }
 LABEL153:
@@ -92,7 +92,7 @@ LABEL207:
       print("This is a very large oak tree with branches stretching to the sky.");
       goto(LABEL234);
     }
-    print(null);
+    print("This is a very pretty maple tree.");
   }
 LABEL234:
   if (said("climb", "trees") || said("climb", "oak", "trees") || said("climb", "oak")) {

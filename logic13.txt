@@ -54,13 +54,13 @@ if (v70 == 1) {
   sound(1, fSOUND_END_MARKER);
   draw(oWOLF);
   if (!fGOAT_IS_HERE) {
-    print(null);
+    print("Look out for that wolf -- he can run very fast!   Don't let him catch you!");
     follow.ego(oWOLF, 12, f156);
   }
   if (fGOAT_IS_HERE) {
     wander(oWOLF);
     set(f22);
-    print(null);
+    print("Look out for that wolf -- he can run very fast!   Don't let him catch you!");
     print("The wolf sees that menacing goat by your side and decides to keep his distance.");
   }
 }
@@ -89,7 +89,7 @@ LABEL194:
       }
     LABEL244:
       if (said("hello") || said("say", "hello")) {
-        print();
+        print("The wolf is in no mood for conversion.");
       }
   }
 LABEL262:

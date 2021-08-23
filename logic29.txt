@@ -64,13 +64,13 @@ LABEL139:
     sound(1, fSOUND_END_MARKER);
     draw(oSORCERER);
     if (!fGOAT_IS_HERE) {
-      print(null);
+      print("Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!");
       follow.ego(oSORCERER, 7, f156);
     }
     if (fGOAT_IS_HERE) {
       wander(oSORCERER);
       set(f22);
-      print(null);
+      print("Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!");
       print("The sorcerer sees the goat and decides to leave.");
     }
   }
@@ -106,7 +106,7 @@ LABEL273:
       goto(LABEL347);
     }
     if (fEGO_INVISIBLE) {
-      print();
+      print("Being invisible has protected you from this sorcerer.");
       set(f27);
       goto(LABEL347);
     }

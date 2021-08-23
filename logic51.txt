@@ -123,7 +123,7 @@ LABEL279:
 LABEL308:
   if (said("examine", "room")) {
     if (!f165 && v75 == 0) {
-      print(null);
+      print("The ferocious fire-breathing dragon is protecting the magic mirror.");
     }
     if (!f165 && v75 == 1) {
       print("There is a dead dragon, a large boulder, and a seemingly ordinary mirror in the cave.");
@@ -173,7 +173,7 @@ LABEL459:
       print("There is no dragon here.");
     }
     if (v75 == 0 || v75 == 1) {
-      print();
+      print("I think you found the dragon!");
     }
   }
 LABEL492:

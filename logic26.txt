@@ -36,7 +36,7 @@ if (said("examine", "doorway") || said("look inside", "doorway") || said("look i
     print("It is just a hole in an empty, old stump.");
     goto(LABEL110);
   }
-  print();
+  print("You are not close enough.");
 }
 LABEL110:
   if (said("examine", "stumps")) {
@@ -63,7 +63,7 @@ LABEL146:
 LABEL190:
   if (fEGO_ON_WATER && !f20) {
     set(f20);
-    print(null);
+    print("This placid looking stream is actually quite dangerous.... the current is stronger than it looks.  You can't keep your head above water.");
   }
 LABEL203:
   if (vEGO_EDGE_CODE != 0) {

@@ -65,7 +65,7 @@ LABEL173:
       }
       LABEL228:
         if (!posn(oEGO, 64, 106, 116, 167) && !posn(oEGO, 0, 0, 115, 105)) {
-          print();
+          print("You are not close enough to the water.");
         }
     }
   }
@@ -73,7 +73,7 @@ LABEL248:
   if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
     if (posn(oEGO, 64, 106, 116, 167)) {
       reset(f116);
-      print(null);
+      print("You carefully fill the bucket with water.");
       get("water");
       set(fBUCKET_FILLED);
       if (!fFILL_BUCKET_POINTS) {
@@ -86,7 +86,7 @@ LABEL248:
     }
     LABEL308:
       if (!posn(oEGO, 64, 106, 116, 167) && !posn(oEGO, 0, 0, 115, 105)) {
-        print();
+        print("You are not close enough to the water.");
       }
   }
 LABEL328:

@@ -68,7 +68,7 @@ LABEL201:
   if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
     if (posn(oEGO, 0, 36, 84, 167)) {
       reset(f116);
-      print(null);
+      print("The lake's waters pour into the bucket.");
       get("water");
       set(fBUCKET_FILLED);
       if (!fFILL_BUCKET_POINTS) {
@@ -84,7 +84,7 @@ LABEL254:
     set(f20);
     v94 = 0;
     set.view(oEGO, 93);
-    print();
+    print("The swift water pulls you down to your untimely demise.");
   }
 LABEL279:
   if (!fEGO_ON_WATER) {

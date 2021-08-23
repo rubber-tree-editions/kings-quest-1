@@ -67,12 +67,12 @@ LABEL171:
     reset(f199);
     reset(f20);
     stop.sound();
-    print(null);
+    print("You should know you can't walk on clouds.");
     set(fGAME_OVER);
   }
 LABEL188:
   if (said("examine", "flowers")) {
-    print();
+    print("These flowers look different than any you have ever seen before.");
     goto(LABEL215);
   }
 LABEL203:

@@ -87,7 +87,7 @@ if (said("examine", "bridge")) {
   print("It is a rather small, wooden bridge.");
 }
 if (said("examine", "flags")) {
-  print(null);
+  print("High above the castle, the flags are waving in the wind.");
 }
 if (said("examine", "building")) {
   print("King Edward the Benevolent, the mighty ruler of Daventry, lives in this castle.");
@@ -160,7 +160,7 @@ if (f125) {
 }
 if (said("knock", "doors")) {
   if (posn(oEGO, 105, 120, 121, 128)) {
-    print();
+    print("Your knock echos within the castle.  Unfortunately, no one answers.");
   }
   else {
     print("You cannot reach the door from here.");

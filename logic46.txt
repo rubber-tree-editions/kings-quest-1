@@ -50,13 +50,13 @@ if (v70 == 1) {
   sound(1, fSOUND_END_MARKER);
   draw(oOGRE);
   if (!fGOAT_IS_HERE) {
-    print(null);
+    print("Watch out!!!  There is an ogre nearby!  He will crush you in his strong arms if he catches you.");
     follow.ego(oOGRE, 7, f156);
   }
   if (fGOAT_IS_HERE) {
     wander(oOGRE);
     set(f23);
-    print(null);
+    print("Watch out!!!  There is an ogre nearby!  He will crush you in his strong arms if he catches you.");
     print("Lucky for you that ogres are afraid of goats. This one decides to leave you alone.");
   }
 }
@@ -163,7 +163,7 @@ LABEL339:
           print("Their perfume is joyful, sweet, and light.");
           goto(LABEL432);
         }
-        print();
+        print("You need to be a little closer to smell the flowers.");
       }
     LABEL432:
       if (said("talk", "man") || said("hello") || said("say", "hello")) {

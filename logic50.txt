@@ -33,7 +33,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (fGOAT_IS_HERE) {
   reset(fGOAT_IS_HERE);
   set(fGOAT_IS_GONE);
-  print(null);
+  print("When the goat saw how dark it was in here, it decided not to stay around.");
 }
 if (v75 != 2) {
   if (said("examine", "cave")) {
@@ -49,7 +49,7 @@ if (v75 != 2) {
     print("It is impossible for you to move a boulder this large.");
   }
   if (said("climb", "rocks")) {
-    print();
+    print("There is nothing of interest on top of the boulder.");
   }
 }
 if (said("examine", "stalactites")) {

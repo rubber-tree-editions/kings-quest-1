@@ -35,7 +35,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (!fCARRYING_CLOVER) {
   if (said("examine", "four leaf clover") || said("examine", "ground")) {
     if (posn(oEGO, 0, 77, 118, 167)) {
-      print(null);
+      print("There is a small patch of clover under the tree.");
       goto(LABEL112);
     }
     print("Off in the distance you see a patch of clover.");
@@ -49,7 +49,7 @@ LABEL112:
         print("You already have the only fourleaf clover here.");
         goto(LABEL145);
       }
-      print();
+      print("You had, and lost, the only fourleaf clover  around.  You really don't want a threeleaf clover.");
     }
     LABEL145:
       if (!fCLOVER_TAKEN) {

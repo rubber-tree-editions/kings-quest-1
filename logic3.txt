@@ -50,7 +50,7 @@ LABEL101:
 LABEL103:
   if (!fSAID_ACCEPTED_USER_INPUT) {
     if (said("examine", "trees")) {
-      print(null);
+      print("There are numerous white birch trees reaching to the sky.");
     }
     distance(oEGO, oROCK, v62);
     if (said("examine", "rocks")) {
@@ -122,7 +122,7 @@ LABEL304:
     }
     LABEL349:
       if (fMOVED_ROCK && v70 > 14) {
-        print();
+        print("You are too far from the hole to see in it.");
       }
     LABEL360:
       if (!fMOVED_ROCK) {

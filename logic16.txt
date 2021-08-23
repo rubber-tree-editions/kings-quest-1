@@ -28,7 +28,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (said("examine", "garden") || said("examine", "ground") || said("examine", "plant") || said("examine", "bushes")) {
-  print(null);
+  print("This is a neat little carrot patch.  The plump carrots  look tempting.");
 }
 LABEL93:
   if (said("examine", "goat pen")) {
@@ -77,7 +77,7 @@ LABEL214:
 LABEL251:
   if (!fCARRYING_CARROT) {
     if (said("eat", "carrot")) {
-      print();
+      print("You do not have a carrot to eat.");
     }
   }
 LABEL270:

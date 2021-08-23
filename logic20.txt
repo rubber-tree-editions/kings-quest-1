@@ -40,7 +40,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (said("examine", "lake")) {
-  print();
+  print("This is a small alpine lake.");
 }
 LABEL115:
   if (said("examine", "stumps")) {
@@ -84,7 +84,7 @@ LABEL250:
   if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
     if (posn(oEGO, 15, 40, 138, 167)) {
       reset(f116);
-      print(null);
+      print("You fill up your bucket with sparkling water.");
       get("water");
       set(fBUCKET_FILLED);
       if (!fFILL_BUCKET_POINTS) {

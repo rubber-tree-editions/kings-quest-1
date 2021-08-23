@@ -33,7 +33,7 @@ v31--;
 if (v31 == 1) {
   position(oFAIRY_GODMOTHER, 50, 80);
   draw(oFAIRY_GODMOTHER);
-  print(null);
+  print("\"Gentle Sir Graham, I am your fairy godmother.  Your quest is indeed noble.  My small part to aid you can be no bigger than this magic spell, protective but for a little while.\"");
   follow.ego(oFAIRY_GODMOTHER, 25, f21);
   set(f20);
   set(fPROTECTED_BY_SPELL);
@@ -64,7 +64,7 @@ LABEL103:
       }
     LABEL161:
       if (said("anyword", "woman") || said("hello") || said("say", "hello")) {
-        print();
+        print("There is no need to say, or do, anything.");
       }
     LABEL185:
       if (f21) {

@@ -60,7 +60,7 @@ LABEL131:
     release.priority(oEGO);
     set.view(oEGO, 103);
     shake.screen(1);
-    print();
+    print("OUCH");
     sound(4, fSOUND_END_MARKER);
     v30 = 18;
   }
@@ -89,7 +89,7 @@ LABEL191:
 LABEL209:
   if (said("examine", "doorway") || said("look inside", "doorway")) {
     if (posn(oEGO, 55, 105, 100, 142)) {
-      print(null);
+      print("In the depths of the large hole you seem to sense a faint, green glow.");
       goto(LABEL244);
     }
     print("Don't be afraid... get closer.");

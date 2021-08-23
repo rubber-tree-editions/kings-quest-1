@@ -20,7 +20,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (said("examine", "anyword")) {
-  print();
+  print("What are you doing that for?  There's nothing here.");
 }
 LABEL52:
   if (vEGO_EDGE_CODE == 1) {

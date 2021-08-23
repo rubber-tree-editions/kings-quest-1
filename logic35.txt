@@ -121,13 +121,13 @@ LABEL295:
     sound(1, fSOUND_END_MARKER);
     draw(oDWARF);
     if (!fGOAT_IS_HERE) {
-      print(null);
+      print("There is a small dwarf close by.  It would be a good idea to be careful.");
       follow.ego(oDWARF, 7, f156);
     }
     if (fGOAT_IS_HERE) {
       wander(oDWARF);
       set(f23);
-      print(null);
+      print("There is a small dwarf close by.  It would be a good idea to be careful.");
       print("The dwarf sees the goat and decides to leave.");
     }
   }
@@ -160,7 +160,7 @@ LABEL427:
       goto(LABEL642);
     }
     if (fEGO_INVISIBLE) {
-      print();
+      print("Being invisible has protected you from the dwarf.");
       wander(oDWARF);
       set(f23);
       goto(LABEL642);

@@ -48,7 +48,7 @@ if (said("examine", "lake")) {
 }
 LABEL129:
   if (said("examine", "trees")) {
-    print();
+    print("This is a very interesting tree, growing in the middle of the lake.");
   }
 LABEL141:
   if (!fEGO_ON_WATER) {
@@ -87,7 +87,7 @@ LABEL258:
   }
 LABEL285:
   if (!fBUCKET_FILLED && fCARRYING_BUCKET && said("get", "water")) {
-    print(null);
+    print("The bucket fills with the somewhat swampy water.");
     get("water");
     set(fBUCKET_FILLED);
     if (!fFILL_BUCKET_POINTS) {

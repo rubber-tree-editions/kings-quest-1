@@ -157,7 +157,7 @@ LABEL421:
       print("You should be more careful before trying that next time!");
       goto(LABEL448);
     }
-    print(null);
+    print("I can see you need a little practice climbing rope!");
     LABEL448:
       set(fGAME_OVER);
   }
@@ -389,7 +389,7 @@ LABEL1087:
 LABEL1180:
   if (v94 != 2) {
     if (said("dive", "water") || said("dive", "gingerbread") || said("dive")) {
-      print();
+      print("Now is not the time to try diving.");
     }
   }
 LABEL1212:

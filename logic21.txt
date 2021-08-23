@@ -51,7 +51,7 @@ if (v70 == 1) {
   set(f135);
   sound(1, fSOUND_END_MARKER);
   if (!fGOAT_IS_HERE) {
-    print(null);
+    print("It's a witch swooping through the sky... She's trying to catch you!  Look out!");
     follow.ego(oWITCH, 20, f24);
   }
   if (fGOAT_IS_HERE) {
@@ -143,7 +143,7 @@ LABEL306:
 LABEL372:
   if (said("jump") || controller(c7)) {
     if (fEGO_INVISIBLE) {
-      print();
+      print("There is no reason to jump now.");
     }
     if (f21 && !fEGO_INVISIBLE) {
       if (!fCARRIED_BY_WITCH) {

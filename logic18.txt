@@ -52,7 +52,7 @@ if (v71 == 1) {
   draw(oELF);
   set(f20);
   wander(oELF);
-  print(null);
+  print("Wandering on the banks of the lake, you see a cute little elf.");
 }
 LABEL138:
   if (said("examine", "lake")) {
@@ -117,7 +117,7 @@ LABEL212:
           set(fIMPRESSED_ELF);
           goto(LABEL378);
         }
-        print();
+        print("You are too far away.");
       }
   }
 LABEL378:

@@ -30,7 +30,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (said("examine", "pump")) {
-  print(null);
+  print("It is an ancient, rusty water pump.  It probably doesn't even work.");
 }
 LABEL80:
   if (said("examine", "axe")) {
@@ -63,7 +63,7 @@ LABEL151:
 LABEL178:
   if (said("use", "axe")) {
     if (posn(oEGO, 61, 80, 88, 118)) {
-      print();
+      print("How are you going to use the ax when you can't even get it out of this stump?");
       goto(LABEL205);
     }
     print("You are not close enough.");

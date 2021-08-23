@@ -160,7 +160,7 @@ LABEL467:
       print("You see a grey billy goat inside the pen.");
       goto(LABEL490);
     }
-    print();
+    print("This looks like an area in which to keep animals.");
   }
 LABEL490:
   if (said("jump", "goat pen")) {

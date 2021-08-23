@@ -85,7 +85,7 @@ LABEL195:
   }
 LABEL215:
   if (said("examine", "flowers")) {
-    print(null);
+    print("What a pretty bed of wild flowers.");
   }
 LABEL227:
   if (said("smell", "flowers")) {
@@ -177,7 +177,7 @@ LABEL483:
     v30 = 20;
     set(f98);
     shake.screen(2);
-    print();
+    print("Ouch!");
     set(f135);
     sound(4, fSOUND_END_MARKER);
   }

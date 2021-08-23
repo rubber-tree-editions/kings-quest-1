@@ -47,7 +47,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 if (fEGO_ON_WATER && !f21) {
   set(f21);
-  print(null);
+  print("This is sad.  You are not the first to fail your quest in the Raging River... I hope you may be the last.");
 }
 LABEL126:
   if (said("examine", "water")) {
@@ -78,7 +78,7 @@ LABEL206:
     }
     if (said("get", "toadstools")) {
       if (fCARRYING_MUSHROOM) {
-        print();
+        print("You already have it.");
         goto(LABEL247);
       }
       print("There is no mushroom here.");

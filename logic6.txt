@@ -117,7 +117,7 @@ LABEL329:
   if (said("look inside", "stumps")) {
     if (posn(oEGO, 0, 103, 35, 146)) {
       if (!fPOUCH_TAKEN) {
-        print(null);
+        print("Inside the old, rotted stump you notice a small, canvas pouch.");
         if (!fPOINTS_FOR_FINDING_POUCH) {
           set(fPOINTS_FOR_FINDING_POUCH);
           vSCORE += 1;
@@ -145,7 +145,7 @@ LABEL380:
     }
     LABEL426:
       if (!posn(oEGO, 0, 103, 35, 146)) {
-        print();
+        print("You have to find it first.");
       }
   }
 LABEL439:

@@ -45,13 +45,13 @@ if (said("examine", "stream") || said("examine", "beach")) {
 }
 LABEL114:
   if (said("examine", "across") || said("examine", "across", "stream")) {
-    print(null);
+    print("You notice an enchanting meadow.");
     set(fSAID_ACCEPTED_USER_INPUT);
   }
 LABEL138:
   if (fEGO_ON_WATER && !f20) {
     set(f20);
-    print();
+    print("Your swimming attempt proved fatal!  The raging current drags you under... you are lost....");
   }
 LABEL151:
   if (v94 <= 0 && fEGO_ON_WATER) {

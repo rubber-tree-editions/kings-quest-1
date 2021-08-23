@@ -57,7 +57,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (said("examine", "witch")) {
-  print(null);
+  print("You must be getting nervous!  I see no witch here!");
 }
 LABEL154:
   if (said("examine", "window") || said("look inside", "window")) {
@@ -123,7 +123,7 @@ LABEL375:
       print("The door is already closed.");
     }
     if (said("knock", "doors")) {
-      print();
+      print("There is no answer from inside the house.");
     }
     LABEL409:
       if (said("open", "doors")) {

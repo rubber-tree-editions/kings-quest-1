@@ -426,7 +426,7 @@ LABEL1460:
 LABEL1494:
   if (said("get", "rope") && !f178) {
     if (posn(oEGO, 10, 109, 71, 153)) {
-      print(null);
+      print("The rope is securely fastened to the well.");
       goto(LABEL1524);
     }
     print("You are not close enough to even try.");
@@ -492,7 +492,7 @@ LABEL1538:
 LABEL1701:
   if (f178) {
     if (said("lower", "rope") || said("lower", "bucket")) {
-      print();
+      print("There is not enough rope left to lower.");
     }
   }
 LABEL1727:

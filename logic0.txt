@@ -121,7 +121,7 @@ if (controller(c12)) {
   cancel.line();
 }
 if (controller(c19)) {
-  print();
+  print("        King's Quest\n             by\n      Roberta Williams\n\n    Original version by\nArthur Abraham, Chuck Tingley\n        Ken McNeill\n\n        Graphics by\n Doug McNeill, Greg Rowland\n\n      This version by\n       Sol Ackerman\n\n(C) 1986 Sierra On-Line, Inc.");
 }
 if (vROOM_NO > 52 || vROOM_NO == 3 || vROOM_NO == 6 || vROOM_NO == 9 || vROOM_NO == 10 || vROOM_NO == 11 || vROOM_NO == 12 || vROOM_NO == 13 || vROOM_NO == 14 || vROOM_NO == 15 || vROOM_NO == 16 || vROOM_NO == 19 || vROOM_NO == 21 || vROOM_NO == 22 || vROOM_NO == 24 || vROOM_NO == 27 || vROOM_NO == 28 || vROOM_NO == 29 || vROOM_NO == 30 || vROOM_NO == 31 || vROOM_NO == 35 || vROOM_NO == 36 || vROOM_NO == 38 || vROOM_NO == 44 || vROOM_NO == 45 || vROOM_NO == 46 || vROOM_NO == 48 || vROOM_NO == 50 || vROOM_NO == 51) {
   if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {

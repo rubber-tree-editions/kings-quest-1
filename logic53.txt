@@ -61,7 +61,7 @@ LABEL142:
     if (v30 == 245) {
       set.view(oEGO, 0);
       if (fEGO_INVISIBLE) {
-        print();
+        print("The spell to make you invisible has expired and you are once again visible.");
         v90 = 0;
         v91 = 0;
         reset(fEGO_INVISIBLE);
@@ -166,7 +166,7 @@ LABEL434:
 LABEL436:
   if (posn(oEGO, 18, 80, 86, 113)) {
     if (said("examine", "king edward")) {
-      if (v30 <= 0 && vTREASURE_COUNT != 3 && !fLOST_VITAL_TREASURE) {
+      if (v30 <= 0 && vTREASURE_COUNT != 3 && !f126) {
         print("King Edward the Benevolent is a very wise, but elderly monarch.  His frail body is almost lost in the large throne.");
       }
       if (!f21 && !fEGO_INVISIBLE && vTREASURE_COUNT == 3 && v30 <= 0) {
@@ -231,14 +231,14 @@ LABEL436:
       }
     LABEL690:
       if (said("talk", "king edward")) {
-        if (fSPOKEN_TO_KING && v30 <= 0 && !fLOST_VITAL_TREASURE && vTREASURE_COUNT != 3) {
+        if (fSPOKEN_TO_KING && v30 <= 0 && !f126 && vTREASURE_COUNT != 3) {
           print("Go, Sir Graham!  Go and bring me back these treasures!");
         }
         if (v30 <= 0 && vTREASURE_COUNT == 3) {
           print("Welcome back from your quest, Sir Graham.");
         }
         LABEL732:
-          if (v30 <= 0 && fLOST_VITAL_TREASURE) {
+          if (v30 <= 0 && f126) {
             print("Why, Sir Graham, have you failed me and returned without accomplishing your task?  Go, and complete your quest!!");
             set(f125);
           }
@@ -247,7 +247,7 @@ LABEL436:
             print("The king cannot talk right now.");
           }
         LABEL755:
-          if (!fSPOKEN_TO_KING && v30 <= 0 && !fLOST_VITAL_TREASURE && vTREASURE_COUNT != 3) {
+          if (!fSPOKEN_TO_KING && v30 <= 0 && !f126 && vTREASURE_COUNT != 3) {
             set(fSPOKEN_TO_KING);
             set(f23);
             set(f125);

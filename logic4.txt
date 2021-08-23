@@ -30,7 +30,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (said("examine", "lake")) {
-  print();
+  print("This is a serene mountain lake.");
 }
 LABEL80:
   if (said("examine", "cattails")) {
@@ -50,7 +50,7 @@ LABEL160:
   if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
     if (posn(oEGO, 0, 40, 57, 56) || posn(oEGO, 0, 57, 76, 70) || posn(oEGO, 0, 90, 106, 133) || posn(oEGO, 0, 134, 106, 167)) {
       reset(f116);
-      print(null);
+      print("The clear water washes into the bucket.");
       get("water");
       set(fBUCKET_FILLED);
       if (!fFILL_BUCKET_POINTS) {

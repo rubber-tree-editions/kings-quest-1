@@ -52,7 +52,7 @@ if (said("examine", "mountains")) {
 }
 LABEL123:
   if (said("climb", "mountains")) {
-    print(null);
+    print("The mountain is much too steep and rocky for you to climb.";
   }
 LABEL135:
   if (said("examine", "doors")) {
@@ -143,7 +143,7 @@ LABEL276:
     LABEL524:
       if (said("close", "doors")) {
         if (vDOOR_STATE == DOORSTATE_LOCKED || vDOOR_STATE == DOORSTATE_CLOSED) {
-          print();
+          print("The door is already closed.");
         }
         if (vDOOR_STATE == DOORSTATE_OPEN) {
           start.update(oDOOR);

@@ -104,14 +104,14 @@ LABEL263:
   if (!fBOWL_TAKEN) {
     if (said("examine", "bowl")) {
       if (posn(oEGO, 106, 103, 159, 167)) {
-        print(null);
+        print("This is a very colorful ceramic bowl.");
         goto(LABEL297);
       }
       print("It looks like an interesting, colorful bowl.");
     }
     LABEL297:
       if (said("examine", "ground")) {
-        print();
+        print("There appears to be some sort of bowl on the ground.");
       }
   }
 LABEL309:

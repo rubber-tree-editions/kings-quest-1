@@ -32,11 +32,11 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 if (fEGO_ON_WATER && !f20) {
   set(f20);
-  print();
+  print("Your swimming attempt proved fatal!  The raging current drags you under....");
 }
 LABEL83:
   if (said("examine", "stream")) {
-    print(null);
+    print("This is a Raging River filled with boulders and rapids.");
   }
 LABEL95:
   if (said("examine", "across") || said("examine", "across", "stream")) {

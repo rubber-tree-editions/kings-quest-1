@@ -20,7 +20,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (said("examine", "building")) {
-  print(null);
+  print("This old cottage is sagging and in great need of repair.");
 }
 LABEL52:
   if (said("examine", "stumps")) {
@@ -32,7 +32,7 @@ LABEL64:
       print("You need to go inside to do that.");
       goto(LABEL99);
     }
-    print();
+    print("You can't do that now.");
   }
 LABEL99:
   if (said("examine", "window") || said("look inside", "window")) {

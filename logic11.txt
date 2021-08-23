@@ -101,7 +101,7 @@ if (said("close", "gate")) {
     }
   }
   if (fGOAT_GATE_OPEN && fGOAT_IS_HERE) {
-    print();
+    print("There is no need to close the gate now.");
   }
   if (f20) {
     print("The gate is already closed.");

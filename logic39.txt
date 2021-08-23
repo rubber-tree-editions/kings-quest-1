@@ -103,10 +103,10 @@ LABEL267:
     sound(1, fSOUND_END_MARKER);
     draw(oTROLL);
     if (fEGO_INVISIBLE) {
-      print();
+      print("As you start to cross the bridge, a wretched troll appears.  Even though you are invisible, he will not let you cross his bridge.");
       goto(LABEL303);
     }
-    print(null);
+    print("As you approach the bridge, a mean, ugly troll appears and refuses to let you cross his bridge.");
   }
 LABEL303:
   if (f21 && fGOAT_IS_HERE && !f26) {

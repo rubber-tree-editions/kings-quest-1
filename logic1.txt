@@ -63,7 +63,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     accept.input();
 }
 if (said("pet", "alligators")) {
-  print();
+  print("What!  Are you crazy?");
 }
 LABEL158:
   if (said("examine", "bridge")) {
@@ -186,19 +186,19 @@ LABEL538:
   }
 LABEL560:
   if (posn(oEGO, 89, 132, 91, 134) && !f22) {
-    print(null);
+    print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
     set(f22);
     v34 = 45;
   }
 LABEL580:
   if (f20 && !f22) {
-    print(null);
+    print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
     set(f22);
     v34 = 45;
   }
 LABEL596:
   if (f21 && !f22) {
-    print(null);
+    print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
     set(f22);
     v34 = 45;
   }

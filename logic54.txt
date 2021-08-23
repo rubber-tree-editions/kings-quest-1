@@ -23,11 +23,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (said("examine", "chandelier")) {
-  print(null);
+  print("The light from the oil lamp is rather dim in the dark interior of the castle.");
 }
 LABEL63:
   if (said("examine", "hall") || said("examine", "room") || said("examine", "building")) {
-    print();
+    print("The long marble hall has a cold, dreary feeling.");
   }
 LABEL89:
   if (posn(oEGO, 0, 0, 1, 167)) {

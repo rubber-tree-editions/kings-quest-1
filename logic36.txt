@@ -40,13 +40,13 @@ LABEL70:
       goto(LABEL105);
     }
     set.view(oEGO, 0);
-    print();
+    print("You feel a stretching sensation... Oh, you're back to your original size.");
     reset(fEGO_TINY);
   }
 LABEL105:
   if (said("examine", "doorway") || said("look inside", "doorway")) {
     if (posn(oEGO, 90, 124, 106, 140)) {
-      print(null);
+      print("When looking in this small hole, you see a faint green glow.");
       goto(LABEL343);
     }
     if (posn(oEGO, 75, 125, 109, 158)) {
