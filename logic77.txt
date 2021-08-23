@@ -21,7 +21,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (!f188) {
     load.view(49);
   }
-  if (!f189) {
+  if (!fSCEPTRE_TAKEN) {
     load.view(48);
   }
   if (!f186) {
@@ -77,7 +77,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oSHIELD, 131, 128);
     draw(oSHIELD);
   }
-  if (f187 && !f189) {
+  if (f187 && !fSCEPTRE_TAKEN) {
     animate.obj(oSCEPTRE);
     set.view(oSCEPTRE, 48);
     position(oSCEPTRE, 115, 106);
@@ -221,14 +221,14 @@ if (f187) {
   }
 }
 if (said("examine", "cave") || said("examine", "room")) {
-  if (f188 && f189) {
+  if (f188 && fSCEPTRE_TAKEN) {
     print("This is the throne room of the leprechaun King.");
   }
   if (f20 || f187) {
-    if (f188 && !f189) {
+    if (f188 && !fSCEPTRE_TAKEN) {
       print("This is the throne room of the leprechaun King.  There is a sceptre next to the throne.");
     }
-    if (!f188 && !f189) {
+    if (!f188 && !fSCEPTRE_TAKEN) {
       print("This is the throne room of the leprechaun King.  There is a shield and a sceptre near the throne.");
     }
   }
@@ -283,7 +283,7 @@ if (!f188) {
     }
   }
 }
-if (f189 && !fCARRYING_SCEPTRE) {
+if (fSCEPTRE_TAKEN && !fCARRYING_SCEPTRE) {
   if (said("examine", "sceptre")) {
     print("I see no sceptre in the vicinity.");
   }
@@ -291,7 +291,7 @@ if (f189 && !fCARRYING_SCEPTRE) {
     print("There is no sceptre in sight to get.");
   }
 }
-if (!f189) {
+if (!fSCEPTRE_TAKEN) {
   if (posn(oEGO, 103, 100, 142, 142)) {
     if (f187 || f20) {
       if (said("examine", "sceptre")) {
@@ -299,7 +299,7 @@ if (!f189) {
       }
       if (said("get", "sceptre")) {
         erase(oSCEPTRE);
-        set(f189);
+        set(fSCEPTRE_TAKEN);
         set(fCARRYING_SCEPTRE);
         print("Eagerly, you pick up the sceptre.");
         get("sceptre");
