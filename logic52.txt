@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -15,112 +13,98 @@ if (fROOM_SCRIPT_EXECUTED) {
   set(fEGO_ON_WATER);
   if (vPREV_ROOM_NO == 49) {
     position(oEGO, 75, 26);
-    goto(LABEL41);
   }
-  position(oEGO, 38, 116);
-  LABEL41:
-    if (vPREV_ROOM_NO == 51) {
-      if (!f208) {
-        set(f208);
-        vSCORE += 2;
-      }
+  else {
+    position(oEGO, 38, 116);
+  }
+  if (vPREV_ROOM_NO == 51) {
+    if (!f208) {
+      set(f208);
+      vSCORE += 2;
     }
-  LABEL60:
-    v68 = 250;
-    v69 = 3;
-    if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
-      set(fBUCKET_FILLED);
-      get("water");
-      if (!fFILL_BUCKET_POINTS) {
-        set(fFILL_BUCKET_POINTS);
-        vSCORE += 2;
-      }
+  }
+  v68 = 250;
+  v69 = 3;
+  if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
+    set(fBUCKET_FILLED);
+    get("water");
+    if (!fFILL_BUCKET_POINTS) {
+      set(fFILL_BUCKET_POINTS);
+      vSCORE += 2;
     }
-  LABEL91:
-    draw(oEGO);
-    show.pic();
-    if (fEGO_INVISIBLE) {
-      drop("ring");
-      vSCORE -= 3;
-      print("Thrashing around in the water has caused you to lose the magic ring and become visible again.");
-      reset(fCARRYING_RING);
-      reset(fEGO_INVISIBLE);
-      reset(fWEARING_RING);
-      set(fLOST_RING);
-      v90 = 0;
-      v91 = 0;
-    }
+  }
+  draw(oEGO);
+  show.pic();
+  if (fEGO_INVISIBLE) {
+    drop("ring");
+    vSCORE -= 3;
+    print("Thrashing around in the water has caused you to lose the magic ring and become visible again.");
+    reset(fCARRYING_RING);
+    reset(fEGO_INVISIBLE);
+    reset(fWEARING_RING);
+    set(fLOST_RING);
+    v90 = 0;
+    v91 = 0;
+  }
 }
-LABEL121:
-  v68--;
-  if (v68 == 0) {
-    v69--;
-    if (v69 > 0) {
-      v68 = 250;
-    }
+v68--;
+if (v68 == 0) {
+  v69--;
+  if (v69 > 0) {
+    v68 = 250;
   }
-LABEL142:
-  if (v68 == 0 && v69 == 0 && !f21) {
-    set(f21);
-    set.view(oEGO, 114);
-    print("Not even you can hold your breath forever.  The well bottom has become your eternal resting place.");
-    ignore.blocks(oEGO);
-    get.posn(oEGO, v60, v61);
-    if (v61 < 141) {
-      move.obj(oEGO, 65, 140, 1, f20);
-    }
-    if (v61 > 140) {
-      set(f20);
-    }
+}
+if (v68 == 0 && v69 == 0 && !f21) {
+  set(f21);
+  set.view(oEGO, 114);
+  print("Not even you can hold your breath forever.  The well bottom has become your eternal resting place.");
+  ignore.blocks(oEGO);
+  get.posn(oEGO, v60, v61);
+  if (v61 < 141) {
+    move.obj(oEGO, 65, 140, 1, f20);
   }
-LABEL190:
-  if (f20) {
-    reset(f20);
-    set(fGAME_OVER);
+  if (v61 > 140) {
+    set(f20);
   }
-LABEL200:
-  if (said("examine", "water")) {
-    print("This looks like typical well water.");
+}
+if (f20) {
+  reset(f20);
+  set(fGAME_OVER);
+}
+if (said("examine", "water")) {
+  print("This looks like typical well water.");
+}
+if (said("examine", "bottle")) {
+  print("It looks like this bottle has been here for a very long time.");
+}
+if (said("get", "bottle")) {
+  print("This is just an old, junky bottle.  You don't want it.");
+}
+if (said("examine", "well")) {
+  print("You are at the bottom of th well.  Through the plants you spy what seems to be a hole in the side of the well.");
+}
+if (said("examine", "doorway")) {
+  if (posn(oEGO, 1, 75, 65, 166)) {
+    print("It is very difficult to tell where the hole might lead.");
   }
-LABEL212:
-  if (said("examine", "bottle")) {
-    print("It looks like this bottle has been here for a very long time.");
-  }
-LABEL224:
-  if (said("get", "bottle")) {
-    print("This is just an old, junky bottle.  You don't want it.");
-  }
-LABEL236:
-  if (said("examine", "well")) {
-    print("You are at the bottom of th well.  Through the plants you spy what seems to be a hole in the side of the well.");
-  }
-LABEL248:
-  if (said("examine", "doorway")) {
-    if (posn(oEGO, 1, 75, 65, 166)) {
-      print("It is very difficult to tell where the hole might lead.");
-      goto(LABEL275);
-    }
+  else {
     print("You are too far away to see clearly.");
   }
-LABEL275:
-  if (said("examine", "can")) {
-    print("The rusty old can has been here awhile.");
-  }
-LABEL287:
-  if (said("get", "can")) {
-    print("You have no use for this old can.");
-  }
-LABEL299:
-  if (posn(oEGO, 31, 111, 32, 130)) {
-    reset(fEGO_ON_WATER);
-    new.room(51);
-  }
-LABEL313:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(49);
-  }
-LABEL322:
-  return;
+}
+if (said("examine", "can")) {
+  print("The rusty old can has been here awhile.");
+}
+if (said("get", "can")) {
+  print("You have no use for this old can.");
+}
+if (posn(oEGO, 31, 111, 32, 130)) {
+  reset(fEGO_ON_WATER);
+  new.room(51);
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(49);
+}
+return;
 
 LOGIC__FOOTER
 
