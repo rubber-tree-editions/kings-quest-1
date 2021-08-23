@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   ignore.horizon(oEGO);
   load.pic(vROOM_NO);
@@ -36,63 +34,54 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
   v96 = 4;
   move.obj.v(oEGO, v60, v61, 96, f20);
 }
-LABEL96:
-  if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 84, 159, 167)) {
-    set(f199);
-    set(f95);
-    program.control();
-    stop.cycling(oEGO);
-    get.posn(oEGO, v60, v61);
-    get.priority(oEGO, v30);
-    set.priority.v(oEGO, v30);
-    v61 += 9;
-    v96 = 4;
-    move.obj.v(oEGO, v60, v61, 96, f20);
+if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 84, 159, 167)) {
+  set(f199);
+  set(f95);
+  program.control();
+  stop.cycling(oEGO);
+  get.posn(oEGO, v60, v61);
+  get.priority(oEGO, v30);
+  set.priority.v(oEGO, v30);
+  v61 += 9;
+  v96 = 4;
+  move.obj.v(oEGO, v60, v61, 96, f20);
+}
+if (!f20 && f199 && !f21) {
+  sound(5, fSOUND_END_MARKER);
+  set(f21);
+}
+if (fSOUND_END_MARKER) {
+  if (!f20) {
+    reset(fSOUND_END_MARKER);
+    reset(f21);
   }
-LABEL137:
-  if (!f20 && f199 && !f21) {
-    sound(5, fSOUND_END_MARKER);
-    set(f21);
+}
+if (f20) {
+  erase(oEGO);
+  reset(f199);
+  reset(f20);
+  stop.sound();
+  print("You should know you can't walk on clouds.");
+  set(fGAME_OVER);
+}
+if (said("examine", "flowers")) {
+  print("These flowers look different than any you have ever seen before.");
+}
+else if (said("examine", "anyword")) {
+  print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(57);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  if (fMAGIC_BEANS_PLANTED) {
+    new.room(72);
   }
-LABEL154:
-  if (fSOUND_END_MARKER) {
-    if (!f20) {
-      reset(fSOUND_END_MARKER);
-      reset(f21);
-    }
-  }
-LABEL171:
-  if (f20) {
-    erase(oEGO);
-    reset(f199);
-    reset(f20);
-    stop.sound();
-    print("You should know you can't walk on clouds.");
-    set(fGAME_OVER);
-  }
-LABEL188:
-  if (said("examine", "flowers")) {
-    print("These flowers look different than any you have ever seen before.");
-    goto(LABEL215);
-  }
-LABEL203:
-  if (said("examine", "anyword")) {
-    print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
-  }
-LABEL215:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(57);
-  }
-LABEL224:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    if (fMAGIC_BEANS_PLANTED) {
-      new.room(72);
-      goto(LABEL244);
-    }
+  else {
     new.room(64);
   }
-LABEL244:
-  return;
+}
+return;
 
 LOGIC__FOOTER
 
