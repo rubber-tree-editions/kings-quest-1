@@ -32,33 +32,27 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !f21) {
   sound(5, fSOUND_END_MARKER);
   move.obj.v(oEGO, v60, v61, 96, f22);
 }
-LABEL82:
-  if (f22) {
-    reset(f22);
-    erase(oEGO);
-  }
-LABEL92:
-  if (fSOUND_END_MARKER) {
-    reset(fSOUND_END_MARKER);
-    set(f20);
-  }
-LABEL102:
-  if (f20) {
-    reset(f20);
-    print("So you're walking on clouds, huh?  Unfortunately, that's an impossible task that cost you your life!");
-    erase(oEGO);
-    set(fGAME_OVER);
-  }
-LABEL116:
-  if (said("examine", "anyword")) {
-    print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
-  }
-LABEL128:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(56);
-  }
-LABEL137:
-  return;
+if (f22) {
+  reset(f22);
+  erase(oEGO);
+}
+if (fSOUND_END_MARKER) {
+  reset(fSOUND_END_MARKER);
+  set(f20);
+}
+if (f20) {
+  reset(f20);
+  print("So you're walking on clouds, huh?  Unfortunately, that's an impossible task that cost you your life!");
+  erase(oEGO);
+  set(fGAME_OVER);
+}
+if (said("examine", "anyword")) {
+  print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(56);
+}
+return;
 
 LOGIC__FOOTER
 
