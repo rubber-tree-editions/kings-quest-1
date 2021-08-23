@@ -1,4 +1,4 @@
-typedef unsigned char *agivar;
+typedef unsigned char agivar;
 agivar v0, v1, v2, v3, v4, v5, v6, v7, v8, v9,
       v10, v11, v12, v13, v14, v15, v16, v17, v18, v19,
       v20, v21, v22, v23, v24, v25, v26, v27, v28, v29,
@@ -155,6 +155,9 @@ struct set {
   struct set_priority {
     void (*v)(agiobj, agivar);
   } priority;
+  struct set_menu {
+    void (*item)(agistr, agicontrol);
+  } menu;
   void (*horizon)(int);
   void (*string)(agistr, const char*);
   void (*cel)(agiobj, int);
@@ -162,6 +165,9 @@ struct set {
   void (*_priority)(agiobj, int);
   void (*dir)(agiobj, agivar);
   void (*loop)(agiobj, int);
+  void (*v)(agivar);
+  void (*key)(int, int, agicontrol);
+  void (*_menu)(agistr);
 } set;
 
 struct add {
@@ -183,7 +189,10 @@ struct script {
 } script;
 
 struct new {
-  void (*room)(int);
+  struct new_room {
+    void (*v)(agivar);
+  } room;
+  void (*_room)(int);
 } new;
 
 struct load {
@@ -254,8 +263,12 @@ struct submit {
 } submit;
 
 struct show {
+  struct show_pri {
+    void (*screen)(void);
+  } pri;
   void (*_obj)(int);
   void (*pic)(void);
+  void (*mem)(void);
 } show;
 
 struct shake {
@@ -358,6 +371,8 @@ struct disable {
 struct get {
   void (*posn)(agiobj, agivar, agivar);
   void (*_priority)(agiobj, agivar);
+  void (*num)(agistr, agivar);
+  void (*v)(agivar);
 } get;
 
 struct end {
@@ -377,6 +392,16 @@ struct move {
   void (*_obj)(agiobj, int, int, int, agiflag);
 } move;
 
+struct obj {
+  struct obj_status {
+    void (*v)(agivar);
+  } status;
+} obj;
+
+struct print {
+  void (*v)(agivar);
+} print;
+
 void _draw(agiobj);
 
 #define set(...) _set(__VA_ARGS__)
@@ -391,6 +416,9 @@ void _draw(agiobj);
 #define obj(...) _obj(__VA_ARGS__)
 #define priority(...) _priority(__VA_ARGS__)
 #define reposition(...) _reposition(__VA_ARGS__)
+#define room(...) _room(__VA_ARGS__)
+#define menu(...) _menu(__VA_ARGS__)
+#define print(...) _print(__VA_ARGS__)
 
 #define null 0
 

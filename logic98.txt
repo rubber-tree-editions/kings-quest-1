@@ -39,6 +39,7 @@ return;
 #message 29 "\nView not "
 #message 30 "%m29loaded.%m25"
 #message 31 "%m29set.%m25"
+#message 32 "Picture not loaded.%m25"
 
 LOGIC__FOOTER
 

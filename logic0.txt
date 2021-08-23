@@ -86,7 +86,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   } while (v45 < 45);
   v45 = 30;
   do {
-    *v45 = 0;
+    lindirect(v45, 0);
     v45++;
   } while (v45 < 45);
   set.string(sPROMPT, ">");
