@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -16,49 +14,41 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (said("examine", "room") || said("examine", "clouds")) {
   print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
 }
-LABEL39:
-  if (said("examine", "trees") || said("examine", "flowers")) {
-    print("This is very strange vegetation.");
-  }
-LABEL59:
-  if (fEGO_TOUCHED_TRIGGER_LINE) {
-    set(f95);
-    program.control();
-    stop.cycling(oEGO);
-    get.posn(oEGO, v60, v61);
-    get.priority(oEGO, v30);
-    set.priority.v(oEGO, v30);
-    v61 += 8;
-    v96 = 4;
-    sound(5, fSOUND_END_MARKER);
-    move.obj.v(oEGO, v60, v61, 96, f21);
-  }
-LABEL95:
-  if (f21) {
-    reset(f21);
-    erase(oEGO);
-  }
-LABEL105:
-  if (fSOUND_END_MARKER) {
-    reset(fSOUND_END_MARKER);
-    set(f20);
-  }
-LABEL115:
-  if (f20) {
-    reset(f20);
-    print("You should know that it is not possible to walk on clouds!");
-    set(fGAME_OVER);
-  }
-LABEL127:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(57);
-  }
-LABEL136:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(61);
-  }
-LABEL145:
-  return;
+if (said("examine", "trees") || said("examine", "flowers")) {
+  print("This is very strange vegetation.");
+}
+if (fEGO_TOUCHED_TRIGGER_LINE) {
+  set(f95);
+  program.control();
+  stop.cycling(oEGO);
+  get.posn(oEGO, v60, v61);
+  get.priority(oEGO, v30);
+  set.priority.v(oEGO, v30);
+  v61 += 8;
+  v96 = 4;
+  sound(5, fSOUND_END_MARKER);
+  move.obj.v(oEGO, v60, v61, 96, f21);
+}
+if (f21) {
+  reset(f21);
+  erase(oEGO);
+}
+if (fSOUND_END_MARKER) {
+  reset(fSOUND_END_MARKER);
+  set(f20);
+}
+if (f20) {
+  reset(f20);
+  print("You should know that it is not possible to walk on clouds!");
+  set(fGAME_OVER);
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(57);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(61);
+}
+return;
 
 LOGIC__FOOTER
 
