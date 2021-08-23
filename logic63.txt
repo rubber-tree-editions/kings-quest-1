@@ -33,7 +33,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 if (said("examine", "trees")) {
-  print(null);
+  print("There is a rather large bird's nest here.");
 }
 if (fTAKEN_GOLDEN_EGG) {
   if (said("examine", "birds nest") || said("look inside", "birds nest")) {
@@ -74,7 +74,7 @@ if (fEGO_ON_WATER && !posn(oEGO, 12, 106, 57, 166) && !f21) {
   set(f131);
   ignore.blocks(oEGO);
   set.view(oEGO, 105);
-  print();
+  print("Apparently you lost your grip while climbing this tree and you fall to the hard earth below.");
   get.posn(oEGO, v60, v61);
   v61 = 166;
   v96 = 3;
@@ -87,7 +87,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !f21) {
   ignore.blocks(oEGO);
   set.priority(oEGO, 4);
   set.view(oEGO, 105);
-  print();
+  print("Apparently you lost your grip while climbing this tree and you fall to the hard earth below.");
   get.posn(oEGO, v60, v61);
   v61 = 166;
   v96 = 3;
@@ -101,7 +101,7 @@ if (posn(oEGO, 12, 106, 57, 166) && !f21) {
     ignore.blocks(oEGO);
     set.priority(oEGO, 5);
     set.view(oEGO, 105);
-    print();
+    print("Apparently you lost your grip while climbing this tree and you fall to the hard earth below.");
     get.posn(oEGO, v60, v61);
     v61 = 166;
     v96 = 3;

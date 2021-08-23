@@ -49,12 +49,12 @@ LABEL104:
     reset(f199);
     reset(f20);
     stop.sound();
-    print(null);
+    print("You'll have to keep yourself out of the clouds!");
     set(fGAME_OVER);
   }
 LABEL121:
   if (said("examine", "trees")) {
-    print();
+    print("These are very unusual looking trees.");
     goto(LABEL148);
   }
 LABEL136:

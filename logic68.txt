@@ -79,7 +79,7 @@ LABEL188:
   }
 LABEL202:
   if (said("examine", "stairway") || said("examine", "room")) {
-    print(null);
+    print("The stairs seem to go on forever.");
   }
 LABEL222:
   if (said("examine", "man")) {
@@ -148,7 +148,7 @@ LABEL376:
       goto(LABEL616);
     }
     if (fEGO_INVISIBLE) {
-      print();
+      print("Being invisible has protected you, and your treasures, from the dwarf.");
       set.view(oDWARF, 115);
       reset(f24);
       end.of.loop(oDWARF, f21);

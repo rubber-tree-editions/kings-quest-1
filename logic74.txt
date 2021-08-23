@@ -21,7 +21,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (said("examine", "cave")) {
-  print();
+  print("The further you get from the light, the darker and mustier it becomes.");
 }
 LABEL56:
   if (posn(oEGO, 65, 51, 100, 52)) {

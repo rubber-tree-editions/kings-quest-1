@@ -99,7 +99,7 @@ LABEL221:
     if (fCARRYING_SHIELD) {
       reset(f22);
       reset(f23);
-      print(null);
+      print("You are fortunate that you have the magic shield or this giant would cause problems for you.");
       wander(o1);
       goto(LABEL318);
     }
@@ -243,7 +243,7 @@ LABEL653:
         print("You need some kind of small rock to use the sling.");
       }
       if (fCARRYING_PEBBLES && v71 < 20) {
-        print();
+        print("There is no way you can get the chest from here!");
       }
       LABEL701:
         if (fCARRYING_PEBBLES && !f169 && !fEGO_INVISIBLE && v86 == 0 && v71 > 19 && !f199) {

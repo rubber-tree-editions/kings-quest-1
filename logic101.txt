@@ -57,7 +57,7 @@ LABEL112:
           if (fEGO_TINY) {
             reset(fEGO_TINY);
             v82 = 0;
-            print();
+            print("It appears you have become normal size again.");
           }
           if (fEGO_INVISIBLE) {
             v90 = 0;
@@ -78,7 +78,7 @@ LABEL112:
         if (fEGO_TINY) {
           reset(fEGO_TINY);
           v82 = 0;
-          print();
+          print("It appears you have become normal size again.");
         }
         if (fEGO_INVISIBLE) {
           v90 = 0;
@@ -130,7 +130,7 @@ LABEL387:
   if (v94 == 1 && v95 <= 0) {
     if (v93 == 0) {
       set(f44);
-      print(null);
+      print("You splash around in the water for a while but seem  to have forgotten how to swim. Unfortunately, you drown.");
       v95 = 50;
       goto(LABEL417);
     }

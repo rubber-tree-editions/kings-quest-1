@@ -24,7 +24,7 @@ if (fPLAYER_ENTERED_COMMAND && vUNKNOWN_WORD_NO > 0) {
     goto(LABEL2108);
 }
 if (said("look for", "anyword") || said("look for", "anyword", "anyword")) {
-  print();
+  print("Well.  Go look for it.");
 }
 if (!fCARRYING_DAGGER && !fDAGGER_LOST) {
   if (vROOM_NO != 3 && said("get", "dagger")) {
@@ -353,7 +353,7 @@ LABEL1710:
     print("You need to be more specific.");
   }
   if (said("examine", "anyword")) {
-    print(null);
+    print("You see nothing special.");
   }
 LABEL1747:
   if (said("get", "anyword") && !said("get")) {

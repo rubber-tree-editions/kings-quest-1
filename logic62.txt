@@ -19,7 +19,7 @@ if (said("examine", "room") || said("examine", "clouds")) {
 LABEL39:
   if (said("examine", "trees")) {
     if (posn(oEGO, 86, 101, 159, 167)) {
-      print(null);
+      print("Its trunk has a large hole in the base.");
       goto(LABEL66);
     }
     print("These are strange looking trees.");
@@ -52,7 +52,7 @@ LABEL136:
         print("Why?  What sling?");
         goto(LABEL169);
       }
-      print();
+      print("You need to be closer to try.");
     }
   }
 LABEL169:
@@ -66,7 +66,7 @@ LABEL169:
         get("leather slingshot");
         goto(LABEL212);
       }
-      print();
+      print("You need to be closer to try.");
     }
   }
 LABEL212:

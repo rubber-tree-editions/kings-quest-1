@@ -9,7 +9,7 @@ if (vGAME_OVER_MESSAGE_COUNTDOWN == 1) {
   vGAME_OVER_MESSAGE_COUNTDOWN = 0;
   sound(SND_GAME_OVER, f148);
   if (vSCORE < 50) {
-    print(null);
+    print("We, at Sierra, wish to thank you for playing King's Quest. We are very sorry that you did not succeed and hope you will fare better next time. Good luck.");
     goto(LABEL41);
   }
   if (vSCORE < 100) {
@@ -58,7 +58,7 @@ LABEL124:
   }
 LABEL131:
   if (controller(c19)) {
-    print();
+    print("        King's Quest\n             by\n      Roberta Williams\n\n    Original version by\nArthur Abraham, Chuck Tingley\n        Ken McNeill\n\n        Graphics by\n Doug McNeill, Greg Rowland\n\n      This version by\n       Sol Ackerman\n\n(C) 1986 Sierra On-Line, Inc.");
   }
 LABEL139:
   if (controller(c13)) {

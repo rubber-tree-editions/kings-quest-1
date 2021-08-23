@@ -26,7 +26,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (said("examine", "stairway") || said("examine", "room")) {
-  print(null);
+  print("The stairs are moss-covered and slippery.");
 }
 LABEL81:
   if (fEGO_TOUCHED_TRIGGER_LINE && !f21) {
@@ -39,7 +39,7 @@ LABEL81:
     get.posn(oEGO, v60, v61);
     get.priority(oEGO, v30);
     set.priority.v(oEGO, v30);
-    print();
+    print("Darn!  You slipped on the steep stairs.");
     v61 = 165;
     v96 = 4;
     move.obj.v(oEGO, v60, v61, 96, f20);

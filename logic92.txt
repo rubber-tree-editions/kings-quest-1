@@ -9,7 +9,7 @@ status.line.off();
 text.screen();
 vKEY_PRESSED = 0;
 reset(fSAID_ACCEPTED_USER_INPUT);
-display(2, 1, null);
+display(2, 1, "          KING'S QUEST");
 display(3, 1, "             Help");
 if (vCOMPUTER_TYPE == 4 || vCOMPUTER_TYPE == 5) {
   display(6, 1, "F1 or HELP displays this message.");

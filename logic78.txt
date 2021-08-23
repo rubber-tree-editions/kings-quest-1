@@ -30,7 +30,7 @@ LABEL59:
   if (v82 == 1 && fEGO_TINY) {
     if (posn(oEGO, 1, 75, 12, 82)) {
       reset(fEGO_TINY);
-      print(null);
+      print("You feel a stretching sensation... Oh, you're back to your original size.  You can't get out of the small cave!");
       set(fGAME_OVER);
       goto(LABEL94);
     }
@@ -56,7 +56,7 @@ LABEL126:
   }
 LABEL157:
   if (said("examine", "cave") || said("examine", "room")) {
-    print();
+    print("This is a small cave with stairs on one side and a very small hole on the other side.");
   }
 LABEL177:
   if (vEGO_EDGE_CODE == 2) {

@@ -82,7 +82,7 @@ LABEL180:
 LABEL182:
   if (fEGO_INVISIBLE && !f22) {
     set(f22);
-    print(null);
+    print("Being invisible won't hide you from this rat's keen sense of smell.");
   }
 LABEL195:
   if (fRAT_IS_GONE) {
@@ -225,7 +225,7 @@ LABEL810:
   }
 LABEL824:
   if (said("count", "fingers") || said("examine", "fingers")) {
-    print();
+    print("You count your fingers and are relieved to see you still have all of them.");
   }
 LABEL844:
   if (f21) {

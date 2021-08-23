@@ -9,7 +9,7 @@ if (said("quit")) {
   quit(0);
 }
 if (said("tp")) {
-  get.num(null, v78);
+  get.num("new room: ", v78);
   new.room.v(v78);
 }
 LABEL24:
@@ -83,12 +83,13 @@ LABEL199:
   }
 LABEL208:
   if (vUNKNOWN_WORD_NO == 0 && fPLAYER_ENTERED_COMMAND && !fSAID_ACCEPTED_USER_INPUT) {
-    log();
+    log("No response to input.");
   }
 LABEL222:
   return;
 
 #message 0 ""
+#message 1 "new room: "
 #message 2 "x: "
 #message 3 "y: "
 #message 4 "object number: "
@@ -103,6 +104,7 @@ LABEL222:
 #message 13 "%m12%w1"
 #message 14 "%m12%w2"
 #message 15 "%m12%w3"
+#message 16 "No response to input."
 
 LOGIC__FOOTER
 

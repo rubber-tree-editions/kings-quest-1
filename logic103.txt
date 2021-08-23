@@ -99,7 +99,7 @@ if (f207) {
 }
 if (v40 > 20 && v94 > 0 && !f210) {
   if (vROOM_NO != 1 && vROOM_NO != 2 && vROOM_NO != 41 && vROOM_NO != 33 && vROOM_NO != 34 && vROOM_NO != 32 && vROOM_NO != 25 && vROOM_NO != 26 && vROOM_NO != 39) {
-    print(null);
+    print("The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water.");
   }
   set(f210);
   start.cycling(o13);
@@ -111,7 +111,7 @@ if (f210 && v40 < 25 && v94 <= 0) {
 }
 if (fEGO_INVISIBLE && !f42) {
   set(f42);
-  print();
+  print("The goat, not being able to see you, wanders off.");
   reset(fGOAT_IS_HERE);
   wander(o13);
   if (vOBJECT_EDGE_CODE != 0) {
@@ -123,7 +123,7 @@ LABEL397:
   distance(oEGO, o13, v40);
   if (f43 && v94 > 0 && !f210) {
     set(f210);
-    print(null);
+    print("The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water.");
   }
   if (f43 && f210 && v40 < 25 && v94 <= 0) {
     reset(f210);

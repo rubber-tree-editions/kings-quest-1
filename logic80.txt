@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (said("examine", "view") || said("examine", "clouds") || said("examine", "room")) {
-  print(null);
+  print("The view is magnificent.");
 }
 LABEL80:
   if (said("anyword", "witch")) {
@@ -32,7 +32,7 @@ LABEL80:
   }
 LABEL92:
   if (said("anyword", "bird")) {
-    print();
+    print("Now is not a good time to bother the bird.");
   }
 LABEL104:
   if (f20) {

@@ -71,7 +71,7 @@ if (fGOAT_IS_HERE) {
 }
 LABEL157:
   if (said("jump")) {
-    print(null);
+    print("You dare not jump here or you would go through the floor!");
   }
 LABEL167:
   if (said("examine", "building") || said("examine", "room")) {
@@ -103,7 +103,7 @@ LABEL243:
     }
     LABEL273:
       if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
-        print();
+        print("There is a bowl of stew sitting on the old oak table.");
       }
   }
 LABEL284:

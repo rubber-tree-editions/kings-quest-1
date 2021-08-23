@@ -127,7 +127,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   LABEL322:
     if (fEGO_INVISIBLE) {
-      print();
+      print("Be thankful that you are invisible or the witch may have stuck around to try and catch you!");
     }
   LABEL330:
     if (f27) {
@@ -193,7 +193,7 @@ LABEL485:
   if (v32 == 1) {
     set.view(oEGO, 104);
     end.of.loop(oEGO, f22);
-    print(null);
+    print("As the wicked witch flew over her house, she dropped you... into her cage!  If you can't get out, you may become the secret ingredient in this witches' brew!");
     player.control();
   }
 LABEL501:

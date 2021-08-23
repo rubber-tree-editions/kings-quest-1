@@ -45,13 +45,13 @@ LABEL92:
 LABEL102:
   if (f20) {
     reset(f20);
-    print(null);
+    print("So you're walking on clouds, huh?  Unfortunately, that's an impossible task that cost you your life!");
     erase(oEGO);
     set(fGAME_OVER);
   }
 LABEL116:
   if (said("examine", "anyword")) {
-    print();
+    print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
   }
 LABEL128:
   if (vEGO_EDGE_CODE == 2) {

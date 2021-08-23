@@ -52,7 +52,7 @@ if (said("examine", "beanstalk")) {
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !f158) {
   program.control();
-  print();
+  print("You have to be careful when you get so high on the foliage!");
   get.posn(oEGO, v60, v61);
   reset(f157);
   set(f158);

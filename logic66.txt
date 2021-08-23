@@ -26,7 +26,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (fGOAT_IS_HERE) {
   reset(fGOAT_IS_HERE);
   set(fGOAT_IS_GONE);
-  print(null);
+  print("The old goat is afraid of the dark and decides to stay outside.");
   vSCORE -= 5;
 }
 LABEL67:
@@ -52,7 +52,7 @@ LABEL87:
 LABEL137:
   if (f20) {
     reset(f20);
-    print();
+    print("Oops!  Those stairs are pretty slippery, aren't they?");
     erase(oEGO);
     set(fGAME_OVER);
   }

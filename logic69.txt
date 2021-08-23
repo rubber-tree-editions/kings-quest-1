@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (said("examine", "stairway") || said("examine", "room")) {
-  print(null);
+  print("The stairs descend into the lower reaches of the mountain.");
 }
 LABEL70:
   if (said("examine", "doorway")) {
@@ -40,7 +40,7 @@ LABEL82:
     get.posn(oEGO, v60, v61);
     get.priority(oEGO, v30);
     set.priority.v(oEGO, v30);
-    print();
+    print("Oh dear!  With a slip of the foot, you fall head over heels down the long stairway.");
     v61 = 165;
     v96 = 4;
     move.obj.v(oEGO, v60, v61, 96, f20);

@@ -51,7 +51,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
     if (!f186) {
       if (!fCARRYING_CLOVER && fEGO_INVISIBLE) {
-        print(null);
+        print("The leprechauns' magic powers detect your unseen presence.");
       }
       if (!fCARRYING_CLOVER && !fEGO_INVISIBLE) {
         print("The leprechauns do not like your invasion of their territory.  They may not let you get any further.");
@@ -76,7 +76,7 @@ LABEL155:
 LABEL177:
   if (f22) {
     if (said("play", "fiddle")) {
-      print();
+      print("You are already playing the fiddle.");
     }
   }
 LABEL195:

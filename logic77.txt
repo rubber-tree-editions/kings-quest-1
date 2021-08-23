@@ -178,7 +178,7 @@ LABEL488:
   if (fCARRYING_FIDDLE) {
     if (said("play", "fiddle")) {
       if (!f186) {
-        print(null);
+        print("You find playing the fiddle here very fun, but the dance floor is in the other room.");
         goto(LABEL518);
       }
       print("You play a little tune on the fiddle to amuse yourself.");
@@ -187,7 +187,7 @@ LABEL488:
 LABEL518:
   if (said("examine", "throne")) {
     if (!f20 && !f186) {
-      print();
+      print("The King of the leprechauns is sitting on the stone throne.");
       goto(LABEL545);
     }
     print("This is a rather simple stone throne, compared to King Edward's.");

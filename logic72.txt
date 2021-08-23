@@ -72,7 +72,7 @@ LABEL171:
   }
 LABEL210:
   if (said("examine", "clouds") || said("examine", "room")) {
-    print();
+    print("You are in the Land of the Clouds.  It is rumored a giant lives up here.");
   }
 LABEL230:
   if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && !posn(oEGO, 65, 100, 82, 120) && !f157) {

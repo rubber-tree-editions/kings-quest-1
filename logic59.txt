@@ -25,7 +25,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (said("examine", "cave")) {
-  print(null);
+  print("The dark cave burrows its way into a steep mountain.");
 }
 LABEL66:
   if (said("climb", "mountains")) {
@@ -45,7 +45,7 @@ LABEL110:
   }
 LABEL122:
   if (said("examine", "flowers")) {
-    print();
+    print("These are unusual looking flowers.");
   }
 LABEL134:
   if (fEGO_TOUCHED_TRIGGER_LINE && !f95 && posn(oEGO, 0, 84, 159, 167)) {
