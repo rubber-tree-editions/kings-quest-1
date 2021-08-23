@@ -29,7 +29,7 @@ LABEL61:
   if (said("set", "var")) {
     get.num("var number: ", v78);
     get.num("var value: ", v79);
-    *v78 = v79;
+    lindirectv(v78, v79);
   }
 LABEL80:
   if (said("object")) {
@@ -43,7 +43,7 @@ LABEL93:
 LABEL100:
   if (said("show", "var")) {
     get.num("var number: ", v73);
-    v72 = *v73;
+    rindirect(v72, v73);
     print("var %v73: %v72");
   }
 LABEL118:
