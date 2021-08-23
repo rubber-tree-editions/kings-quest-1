@@ -36,7 +36,7 @@ LABEL82:
   }
 LABEL101:
   if (vCOMPUTER_TYPE == 4 || vCOMPUTER_TYPE == 5) {
-    display(17, 1, "");
+    display(17, 1, "Double clicking joystick button or\n right mouse button also shows status\n screen.");
   }
 LABEL117:
   display(20, 1, "0 for jumping");
