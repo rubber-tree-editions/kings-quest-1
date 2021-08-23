@@ -26,42 +26,37 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oFIDDLE, 50);
     position(oFIDDLE, 128, 155);
   }
-  LABEL54:
-    animate.obj(oWOODCUTTER);
-    set.view(oWOODCUTTER, 57);
-    position(oWOODCUTTER, 45, 116);
-    stop.cycling(oWOODCUTTER);
-    animate.obj(oWIFE);
-    set.view(oWIFE, 58);
-    position(oWIFE, 89, 115);
-    stop.cycling(oWIFE);
-    draw(oWOODCUTTER);
-    draw(oWIFE);
-    if (!fFIDDLE_TAKEN) {
-      stop.cycling(oFIDDLE);
-      draw(oFIDDLE);
+  animate.obj(oWOODCUTTER);
+  set.view(oWOODCUTTER, 57);
+  position(oWOODCUTTER, 45, 116);
+  stop.cycling(oWOODCUTTER);
+  animate.obj(oWIFE);
+  set.view(oWIFE, 58);
+  position(oWIFE, 89, 115);
+  stop.cycling(oWIFE);
+  draw(oWOODCUTTER);
+  draw(oWIFE);
+  if (!fFIDDLE_TAKEN) {
+    stop.cycling(oFIDDLE);
+    draw(oFIDDLE);
+  }
+  if (fGIVEN_BOWL_TO_WOODCUTTER) {
+    if (vBOWL_STATE == BOWLSTATE_EMPTY) {
+      set.view(oBOWL, 25);
     }
-  LABEL91:
-    if (fGIVEN_BOWL_TO_WOODCUTTER) {
-      if (vBOWL_STATE == BOWLSTATE_EMPTY) {
-        set.view(oBOWL, 25);
-      }
-      if (vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
-        set.view(oBOWL, 83);
-      }
-      LABEL117:
-        position(oBOWL, 68, 104);
-        set.priority(oBOWL, 14);
-        draw(oBOWL);
-        stop.update(oBOWL);
+    if (vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
+      set.view(oBOWL, 83);
     }
-  LABEL128:
-    if (vPREV_ROOM_NO == 44) {
-      position(oEGO, 24, 113);
-    }
-  LABEL139:
-    draw(oEGO);
-    show.pic();
+    position(oBOWL, 68, 104);
+    set.priority(oBOWL, 14);
+    draw(oBOWL);
+    stop.update(oBOWL);
+  }
+  if (vPREV_ROOM_NO == 44) {
+    position(oEGO, 24, 113);
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (fGOAT_IS_HERE) {
   reset(fGOAT_IS_HERE);
@@ -69,91 +64,107 @@ if (fGOAT_IS_HERE) {
   print("As soon as you entered the house the old goat ran away.");
   vSCORE -= 5;
 }
-LABEL157:
-  if (said("jump")) {
-    print("You dare not jump here or you would go through the floor!");
+if (said("jump")) {
+  print("You dare not jump here or you would go through the floor!");
+}
+if (said("examine", "building") || said("examine", "room")) {
+  if (!fFIDDLE_TAKEN) {
+    print("The cottage is run-down and sparsely furnished.  The only nice possession seems to be a fiddle in the corner.");
   }
-LABEL167:
-  if (said("examine", "building") || said("examine", "room")) {
-    if (!fFIDDLE_TAKEN) {
-      print("The cottage is run-down and sparsely furnished.  The only nice possession seems to be a fiddle in the corner.");
-      goto(LABEL199);
-    }
+  else {
     print("The cottage is run-down and sparsely furnished.");
   }
-LABEL199:
-  if (said("examine", "doorway") || said("examine", "floor")) {
-    print("This family is so poor, they can't even repair the floor.");
+}
+if (said("examine", "doorway") || said("examine", "floor")) {
+  print("This family is so poor, they can't even repair the floor.");
+}
+if (said("examine", "man")) {
+  print("The woodcutter is thin and dressed in rags.");
+}
+if (said("examine", "woman")) {
+  print("The woodcutter's wife is skinny and poorly dressed.");
+}
+if (said("examine", "table")) {
+  if (!fGIVEN_BOWL_TO_WOODCUTTER) {
+    print("The woodcutter and his wife are sitting at the old oak table.");
   }
-LABEL219:
-  if (said("examine", "man")) {
-    print("The woodcutter is thin and dressed in rags.");
+  if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_EMPTY) {
+    print("There is an empty bowl sitting on the old oak table.");
   }
-LABEL231:
-  if (said("examine", "woman")) {
-    print("The woodcutter's wife is skinny and poorly dressed.");
+  if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
+    print("There is a bowl of stew sitting on the old oak table.");
   }
-LABEL243:
-  if (said("examine", "table")) {
-    if (!fGIVEN_BOWL_TO_WOODCUTTER) {
-      print("The woodcutter and his wife are sitting at the old oak table.");
-    }
-    if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_EMPTY) {
-      print("There is an empty bowl sitting on the old oak table.");
-    }
-    LABEL273:
-      if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
-        print("There is a bowl of stew sitting on the old oak table.");
-      }
+}
+v30--;
+if (said("talk", "man")) {
+  print("\"Welcome to my humble abode.\"");
+  if (!f20) {
+    set(f20);
+    start.cycling(oWOODCUTTER);
+    v30 = 18;
   }
-LABEL284:
-  v30--;
-  if (said("talk", "man")) {
-    print("\"Welcome to my humble abode.\"");
-    if (!f20) {
-      set(f20);
-      start.cycling(oWOODCUTTER);
-      v30 = 18;
-    }
+}
+if (said("talk", "woman")) {
+  if (!fGIVEN_BOWL_TO_WOODCUTTER) {
+    print("She replies, \"I'd like to offer you something, but we do not even have food for ourselves.\"");
   }
-LABEL312:
-  if (said("talk", "woman")) {
-    if (!fGIVEN_BOWL_TO_WOODCUTTER) {
-      print("She replies, \"I'd like to offer you something, but we do not even have food for ourselves.\"");
-      goto(LABEL336);
-    }
+  else {
     print("\"Make yourself at home in our humble home.\"");
-    LABEL336:
-      if (!f21) {
-        set(f21);
-        start.cycling(oWIFE);
-        v30 = 18;
-      }
   }
-LABEL350:
-  if (v30 == 1) {
-    if (f20) {
-      reset(f20);
-      stop.cycling(oWOODCUTTER);
-    }
-    if (f21) {
-      reset(f21);
-      stop.cycling(oWIFE);
-    }
-    LABEL377:
-      if (f24) {
-        reset(f24);
-        stop.cycling(oWOODCUTTER);
-        stop.cycling(oWIFE);
-      }
+  if (!f21) {
+    set(f21);
+    start.cycling(oWIFE);
+    v30 = 18;
   }
-LABEL389:
-  if (said("help", "man") || said("help", "woman") || said("help", "people")) {
-    print("That would be very nice.  How do you want to help them?");
+}
+if (v30 == 1) {
+  if (f20) {
+    reset(f20);
+    stop.cycling(oWOODCUTTER);
   }
-LABEL415:
-  if (said("murder", "man") || said("murder", "woman") || said("murder", "people")) {
-    print("What an abominable idea!  You should be ashamed of yourself for even suggesting such a thing!");
+  if (f21) {
+    reset(f21);
+    stop.cycling(oWIFE);
+  }
+  if (f24) {
+    reset(f24);
+    stop.cycling(oWOODCUTTER);
+    stop.cycling(oWIFE);
+  }
+}
+if (said("help", "man") || said("help", "woman") || said("help", "people")) {
+  print("That would be very nice.  How do you want to help them?");
+}
+if (said("murder", "man") || said("murder", "woman") || said("murder", "people")) {
+  print("What an abominable idea!  You should be ashamed of yourself for even suggesting such a thing!");
+  if (!f24) {
+    set(f24);
+    start.cycling(oWOODCUTTER);
+    start.cycling(oWIFE);
+    v30 = 18;
+  }
+}
+if (said("examine", "cupboard")) {
+  print("It is closed, but in this house, all the cabinets are bare.");
+}
+if (said("open", "cupboard")) {
+  print("The cabinet is all but bare.");
+}
+if (said("examine", "window")) {
+  print("The beautiful scenery outside is in contrast to the dreariness inside.");
+}
+if (said("break", "window")) {
+  print("You should have more sympathy for these poor folks!");
+  if (!f24) {
+    set(f24);
+    start.cycling(oWOODCUTTER);
+    start.cycling(oWIFE);
+    v30 = 18;
+  }
+}
+if (fGIVEN_BOWL_TO_WOODCUTTER) {
+  if (said("get", "bowl")) {
+    print("You have given the bowl to these poor people and it is now theirs.  You have no right to take it back.");
     if (!f24) {
       set(f24);
       start.cycling(oWOODCUTTER);
@@ -161,32 +172,105 @@ LABEL415:
       v30 = 18;
     }
   }
-LABEL457:
-  if (said("examine", "cupboard")) {
-    print("It is closed, but in this house, all the cabinets are bare.");
+  if (said("examine", "bowl")) {
+    print("The woodcutters admire the bowl as it sits on their table.");
   }
-LABEL469:
-  if (said("open", "cupboard")) {
-    print("The cabinet is all but bare.");
+}
+if (!fCARRYING_DIAMONDS && !fCARRYING_GOLDEN_EGG && !fCARRYING_GOLD_WALNUT && !fCARRYING_SCEPTRE) {
+  if (said("give", "treasure")) {
+    print("This is a nice thought, but unfortunately you have nothing to give these poor people.");
   }
-LABEL481:
-  if (said("examine", "window")) {
-    print("The beautiful scenery outside is in contrast to the dreariness inside.");
+}
+if (fCARRYING_DIAMONDS || fCARRYING_GOLDEN_EGG || fCARRYING_GOLD_WALNUT || fCARRYING_SCEPTRE) {
+  if (said("give", "treasure")) {
+    print("What treasure do you wish to donate to them?");
   }
-LABEL493:
-  if (said("break", "window")) {
-    print("You should have more sympathy for these poor folks!");
-    if (!f24) {
-      set(f24);
-      start.cycling(oWOODCUTTER);
-      start.cycling(oWIFE);
-      v30 = 18;
-    }
+}
+if (fCARRYING_DIAMONDS && said("give", "pouch of diamonds")) {
+  print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
+  if (!f24) {
+    set(f24);
+    start.cycling(oWOODCUTTER);
+    start.cycling(oWIFE);
+    v30 = 18;
   }
-LABEL521:
-  if (fGIVEN_BOWL_TO_WOODCUTTER) {
-    if (said("get", "bowl")) {
-      print("You have given the bowl to these poor people and it is now theirs.  You have no right to take it back.");
+  reset(fCARRYING_DIAMONDS);
+  drop("pouch of diamonds");
+  vSCORE -= 6;
+}
+if (fCARRYING_GOLDEN_EGG && said("give", "golden egg")) {
+  print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
+  if (!f24) {
+    set(f24);
+    start.cycling(oWOODCUTTER);
+    start.cycling(oWIFE);
+    v30 = 18;
+  }
+  reset(fCARRYING_GOLDEN_EGG);
+  drop("gold egg");
+  vSCORE -= 6;
+}
+if (fCARRYING_GOLD_WALNUT && said("give", "golden walnut")) {
+  print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
+  if (!f24) {
+    set(f24);
+    start.cycling(oWOODCUTTER);
+    start.cycling(oWIFE);
+    v30 = 18;
+  }
+  reset(fCARRYING_GOLD_WALNUT);
+  drop("gold walnut");
+  vSCORE -= 6;
+}
+if (fCARRYING_SCEPTRE && said("give", "sceptre")) {
+  print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
+  if (!f24) {
+    set(f24);
+    start.cycling(oWOODCUTTER);
+    start.cycling(oWIFE);
+    v30 = 18;
+  }
+  reset(fCARRYING_SCEPTRE);
+  drop("sceptre");
+  vSCORE -= 6;
+}
+if (fCARRYING_CARROT && said("give", "carrot")) {
+  print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
+  if (!f24) {
+    set(f24);
+    start.cycling(oWOODCUTTER);
+    start.cycling(oWIFE);
+    v30 = 18;
+  }
+  reset(fCARRYING_CARROT);
+  drop("carrot");
+  vSCORE -= 2;
+}
+if (fCARRYING_MAGIC_BEANS && said("give", "magic beans")) {
+  print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
+  if (!f24) {
+    set(f24);
+    start.cycling(oWOODCUTTER);
+    start.cycling(oWIFE);
+    v30 = 18;
+  }
+  reset(fCARRYING_MAGIC_BEANS);
+  drop("beans");
+  vSCORE -= 6;
+}
+if (fCARRYING_BOWL) {
+  if (vBOWL_STATE == BOWLSTATE_EMPTY) {
+    if (said("give", "bowl") || said("give", "bowl", "man") || said("give", "man", "bowl") || said("give", "woman", "bowl") || said("give", "bowl", "woman") || said("drop", "bowl", "table")) {
+      set(fGIVEN_BOWL_TO_WOODCUTTER);
+      reset(fCARRYING_BOWL);
+      drop("ceramic bowl");
+      vSCORE -= 3;
+      vSCORE += 6;
+      position(oBOWL, 68, 104);
+      set.priority(oBOWL, 14);
+      set.view(oBOWL, 25);
+      draw(oBOWL);
+      print("Puzzled, the couple wonders why you have given them a bowl.");
       if (!f24) {
         set(f24);
         start.cycling(oWOODCUTTER);
@@ -194,166 +278,19 @@ LABEL521:
         v30 = 18;
       }
     }
-    if (said("examine", "bowl")) {
-      print("The woodcutters admire the bowl as it sits on their table.");
-    }
   }
-LABEL567:
-  if (!fCARRYING_DIAMONDS && !fCARRYING_GOLDEN_EGG && !fCARRYING_GOLD_WALNUT && !fCARRYING_SCEPTRE) {
-    if (said("give", "treasure")) {
-      print("This is a nice thought, but unfortunately you have nothing to give these poor people.");
-    }
-  }
-LABEL595:
-  if (fCARRYING_DIAMONDS || fCARRYING_GOLDEN_EGG || fCARRYING_GOLD_WALNUT || fCARRYING_SCEPTRE) {
-    if (said("give", "treasure")) {
-      print("What treasure do you wish to donate to them?");
-    }
-  }
-LABEL621:
-  if (fCARRYING_DIAMONDS && said("give", "pouch of diamonds")) {
-    print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
-    if (!f24) {
-      set(f24);
-      start.cycling(oWOODCUTTER);
-      start.cycling(oWIFE);
-      v30 = 18;
-    }
-    reset(fCARRYING_DIAMONDS);
-    drop("pouch of diamonds");
-    vSCORE -= 6;
-  }
-LABEL658:
-  if (fCARRYING_GOLDEN_EGG && said("give", "golden egg")) {
-    print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
-    if (!f24) {
-      set(f24);
-      start.cycling(oWOODCUTTER);
-      start.cycling(oWIFE);
-      v30 = 18;
-    }
-    reset(fCARRYING_GOLDEN_EGG);
-    drop("gold egg");
-    vSCORE -= 6;
-  }
-LABEL695:
-  if (fCARRYING_GOLD_WALNUT && said("give", "golden walnut")) {
-    print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
-    if (!f24) {
-      set(f24);
-      start.cycling(oWOODCUTTER);
-      start.cycling(oWIFE);
-      v30 = 18;
-    }
-    reset(fCARRYING_GOLD_WALNUT);
-    drop("gold walnut");
-    vSCORE -= 6;
-  }
-LABEL732:
-  if (fCARRYING_SCEPTRE && said("give", "sceptre")) {
-    print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
-    if (!f24) {
-      set(f24);
-      start.cycling(oWOODCUTTER);
-      start.cycling(oWIFE);
-      v30 = 18;
-    }
-    reset(fCARRYING_SCEPTRE);
-    drop("sceptre");
-    vSCORE -= 6;
-  }
-LABEL769:
-  if (fCARRYING_CARROT && said("give", "carrot")) {
-    print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
-    if (!f24) {
-      set(f24);
-      start.cycling(oWOODCUTTER);
-      start.cycling(oWIFE);
-      v30 = 18;
-    }
-    reset(fCARRYING_CARROT);
-    drop("carrot");
-    vSCORE -= 2;
-  }
-LABEL806:
-  if (fCARRYING_MAGIC_BEANS && said("give", "magic beans")) {
-    print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
-    if (!f24) {
-      set(f24);
-      start.cycling(oWOODCUTTER);
-      start.cycling(oWIFE);
-      v30 = 18;
-    }
-    reset(fCARRYING_MAGIC_BEANS);
-    drop("beans");
-    vSCORE -= 6;
-  }
-LABEL843:
-  if (fCARRYING_BOWL) {
-    if (vBOWL_STATE == BOWLSTATE_EMPTY) {
-      if (said("give", "bowl") || said("give", "bowl", "man") || said("give", "man", "bowl") || said("give", "woman", "bowl") || said("give", "bowl", "woman") || said("drop", "bowl", "table")) {
-        set(fGIVEN_BOWL_TO_WOODCUTTER);
-        reset(fCARRYING_BOWL);
-        drop("ceramic bowl");
-        vSCORE -= 3;
-        vSCORE += 6;
-        position(oBOWL, 68, 104);
-        set.priority(oBOWL, 14);
-        set.view(oBOWL, 25);
-        draw(oBOWL);
-        print("Puzzled, the couple wonders why you have given them a bowl.");
-        if (!f24) {
-          set(f24);
-          start.cycling(oWOODCUTTER);
-          start.cycling(oWIFE);
-          v30 = 18;
-        }
-      }
-    }
-    if (vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
-      if (said("give", "bowl") || said("give", "bowl", "man") || said("give", "man", "bowl") || said("give", "woman", "bowl") || said("give", "bowl", "woman") || said("drop", "bowl", "table") || said("give", "stew") || said("give", "stew", "man") || said("give", "man", "stew") || said("give", "woman", "stew") || said("give", "stew", "woman") || said("drop", "stew", "table")) {
-        set(fGIVEN_BOWL_TO_WOODCUTTER);
-        reset(fCARRYING_BOWL);
-        drop("ceramic bowl");
-        vSCORE -= 3;
-        vSCORE += 6;
-        position(oBOWL, 68, 104);
-        set.priority(oBOWL, 14);
-        set.view(oBOWL, 83);
-        draw(oBOWL);
-        print("The woodcutter family is very grateful that you have given them a bowl of stew.  Now they will have at least one last meal.  As a token of their gratitude, they offer their last earthly possession, the woodcutter's fiddle.");
-        set(f185);
-        if (!f24) {
-          set(f24);
-          start.cycling(oWOODCUTTER);
-          start.cycling(oWIFE);
-          v30 = 18;
-        }
-      }
-    }
-  }
-LABEL1099:
-  if (fGIVEN_BOWL_TO_WOODCUTTER) {
-    if (said("eat", "stew")) {
-      if (vBOWL_STATE == BOWLSTATE_EMPTY) {
-        print("Eat stew from an empty bowl?  The woodcutters are beginning to question your authenticity.");
-        goto(LABEL1129);
-      }
-      print("The stew looks delicious, but it is no longer yours.  Now you will have to do without.");
-    }
-  }
-LABEL1129:
-  if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_EMPTY) {
-    if (said("fill") || said("say", "fill")) {
-      erase(oBOWL);
+  if (vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
+    if (said("give", "bowl") || said("give", "bowl", "man") || said("give", "man", "bowl") || said("give", "woman", "bowl") || said("give", "bowl", "woman") || said("drop", "bowl", "table") || said("give", "stew") || said("give", "stew", "man") || said("give", "man", "stew") || said("give", "woman", "stew") || said("give", "stew", "woman") || said("drop", "stew", "table")) {
+      set(fGIVEN_BOWL_TO_WOODCUTTER);
+      reset(fCARRYING_BOWL);
+      drop("ceramic bowl");
+      vSCORE -= 3;
+      vSCORE += 6;
+      position(oBOWL, 68, 104);
+      set.priority(oBOWL, 14);
       set.view(oBOWL, 83);
       draw(oBOWL);
-      print("The couple is amazed and delighted as the bowl miraculously fills with a bubbling stew.  As a token of their gratitude, they offer their last earthly possession, the woodcutter's fiddle.");
-      vBOWL_STATE = BOWLSTATE_FULL_OF_STEW;
-      if (!fPOINTS_FOR_STEW) {
-        set(fPOINTS_FOR_STEW);
-        vSCORE += 2;
-      }
+      print("The woodcutter family is very grateful that you have given them a bowl of stew.  Now they will have at least one last meal.  As a token of their gratitude, they offer their last earthly possession, the woodcutter's fiddle.");
       set(f185);
       if (!f24) {
         set(f24);
@@ -363,76 +300,99 @@ LABEL1129:
       }
     }
   }
-LABEL1196:
-  if (said("show", "anyword")) {
-    print("The couple does not understand.");
+}
+if (fGIVEN_BOWL_TO_WOODCUTTER) {
+  if (said("eat", "stew")) {
+    if (vBOWL_STATE == BOWLSTATE_EMPTY) {
+      print("Eat stew from an empty bowl?  The woodcutters are beginning to question your authenticity.");
+    }
+    else {
+      print("The stew looks delicious, but it is no longer yours.  Now you will have to do without.");
+    }
   }
-LABEL1208:
-  if (!fFIDDLE_TAKEN) {
-    if (said("examine", "fiddle")) {
-      if (posn(oEGO, 120, 140, 158, 166)) {
-        print("The fiddle is a beautiful instrument made of polished wood.");
-        goto(LABEL1242);
-      }
+}
+if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_EMPTY) {
+  if (said("fill") || said("say", "fill")) {
+    erase(oBOWL);
+    set.view(oBOWL, 83);
+    draw(oBOWL);
+    print("The couple is amazed and delighted as the bowl miraculously fills with a bubbling stew.  As a token of their gratitude, they offer their last earthly possession, the woodcutter's fiddle.");
+    vBOWL_STATE = BOWLSTATE_FULL_OF_STEW;
+    if (!fPOINTS_FOR_STEW) {
+      set(fPOINTS_FOR_STEW);
+      vSCORE += 2;
+    }
+    set(f185);
+    if (!f24) {
+      set(f24);
+      start.cycling(oWOODCUTTER);
+      start.cycling(oWIFE);
+      v30 = 18;
+    }
+  }
+}
+if (said("show", "anyword")) {
+  print("The couple does not understand.");
+}
+if (!fFIDDLE_TAKEN) {
+  if (said("examine", "fiddle")) {
+    if (posn(oEGO, 120, 140, 158, 166)) {
+      print("The fiddle is a beautiful instrument made of polished wood.");
+    }
+    else {
       print("You cannot see it very well from here.");
     }
-    LABEL1242:
-      if (said("steal", "fiddle")) {
-        if (posn(oEGO, 120, 140, 158, 166)) {
-          print("What a terrible suggestion!  These people are poor and starving and you want to steal one of their last earthly possessions.");
-          goto(LABEL1269);
-        }
-        print("I doubt that you will get away with it, but you will have to get closer to try.");
-      }
-    LABEL1269:
-      if (said("get", "fiddle")) {
-        if (posn(oEGO, 120, 140, 158, 166) && !f185) {
-          print("You cannot take their last precious possession!");
-        }
-        if (posn(oEGO, 120, 140, 158, 166) && f185) {
-          erase(oFIDDLE);
-          set(fCARRYING_FIDDLE);
-          set(fFIDDLE_TAKEN);
-          print("The polished wood feels like satin -- it seems to still vibrate from the last song it played.");
-          get("fiddle");
-          vSCORE += 3;
-        }
-        LABEL1319:
-          if (!posn(oEGO, 120, 140, 158, 166)) {
-            print("You are not close enough to reach it.");
-          }
-      }
   }
-LABEL1332:
-  if (fEGO_ON_WATER && !f199) {
-    ignore.blocks(oEGO);
-    set(f95);
-    stop.cycling(oEGO);
-    set(f199);
-    set.priority(oEGO, 5);
-    get.posn(oEGO, v60, v61);
-    v61 = 166;
-    v96 = 6;
-    move.obj.v(oEGO, v60, v61, 96, f23);
-    sound(5, fSOUND_END_MARKER);
+  if (said("steal", "fiddle")) {
+    if (posn(oEGO, 120, 140, 158, 166)) {
+      print("What a terrible suggestion!  These people are poor and starving and you want to steal one of their last earthly possessions.");
+    }
+    else {
+      print("I doubt that you will get away with it, but you will have to get closer to try.");
+    }
   }
-LABEL1371:
-  if (f23) {
-    reset(f23);
-    erase(oEGO);
-    print("These poor people can't even afford to repair the floor!  Sorry about that.");
-    set(fGAME_OVER);
+  if (said("get", "fiddle")) {
+    if (posn(oEGO, 120, 140, 158, 166) && !f185) {
+      print("You cannot take their last precious possession!");
+    }
+    if (posn(oEGO, 120, 140, 158, 166) && f185) {
+      erase(oFIDDLE);
+      set(fCARRYING_FIDDLE);
+      set(fFIDDLE_TAKEN);
+      print("The polished wood feels like satin -- it seems to still vibrate from the last song it played.");
+      get("fiddle");
+      vSCORE += 3;
+    }
+    if (!posn(oEGO, 120, 140, 158, 166)) {
+      print("You are not close enough to reach it.");
+    }
   }
-LABEL1385:
-  if (said("say", "hello") || said("say", "hello") || said("hello") || said("hello")) {
-    print("\"Hello\"");
-  }
-LABEL1413:
-  if (fEGO_TOUCHED_TRIGGER_LINE) {
-    new.room(44);
-  }
-LABEL1421:
-  return;
+}
+if (fEGO_ON_WATER && !f199) {
+  ignore.blocks(oEGO);
+  set(f95);
+  stop.cycling(oEGO);
+  set(f199);
+  set.priority(oEGO, 5);
+  get.posn(oEGO, v60, v61);
+  v61 = 166;
+  v96 = 6;
+  move.obj.v(oEGO, v60, v61, 96, f23);
+  sound(5, fSOUND_END_MARKER);
+}
+if (f23) {
+  reset(f23);
+  erase(oEGO);
+  print("These poor people can't even afford to repair the floor!  Sorry about that.");
+  set(fGAME_OVER);
+}
+if (said("say", "hello") || said("say", "hello") || said("hello") || said("hello")) {
+  print("\"Hello\"");
+}
+if (fEGO_TOUCHED_TRIGGER_LINE) {
+  new.room(44);
+}
+return;
 
 LOGIC__FOOTER
 
