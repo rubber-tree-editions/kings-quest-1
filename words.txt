@@ -450,6 +450,7 @@
 070 turn
 *** U
 000 under
+252 undo
 073 unlock
 138 untie
 000 up
