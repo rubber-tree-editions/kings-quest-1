@@ -1,0 +1,494 @@
+*** A
+000 a
+173 abracadabra
+005 acquire
+227 across
+124 aid
+000 all
+012 alligator
+012 alligators
+000 an
+000 another
+000 antique
+001 anyword
+082 armor
+000 around
+124 assist
+000 at
+080 attack
+086 ax
+086 axe
+*** B
+193 back
+051 bag
+051 bag of jewels
+244 beach
+122 bean
+122 beans
+123 beanstalk
+093 bed
+120 beg
+118 big bird
+118 bird
+115 bird nest
+115 birds nest
+016 blossom
+016 blossoms
+187 blow out
+218 both
+107 bottle
+243 bottom
+037 boulder
+037 boulders
+239 bow
+083 bowl
+069 branch
+069 branches
+020 break
+078 bridge
+027 broth
+034 bucket
+021 building
+220 bureau
+121 bury
+011 bush
+011 bushes
+182 buy
+*** C
+101 cabinet
+162 cage
+060 call
+102 can
+092 candle
+143 candy
+212 cap
+030 capture
+124 care
+061 carrot
+139 cast
+021 castle
+030 catch
+047 cattails
+076 cave
+219 chair
+219 chairs
+081 chandelier
+033 chasm
+002 check
+129 cheese
+152 chest
+027 chicken broth
+027 chicken soup
+006 climb
+028 close
+088 clouds
+074 clover
+213 coin
+213 coins
+118 condor
+099 consume
+021 cottage
+241 count
+214 crack
+101 cupboard
+156 cut
+*** D
+024 dagger
+127 diamond
+127 diamonds
+211 disk
+039 dive
+022 door
+022 doors
+038 doorway
+017 douse
+000 down
+023 dragon
+221 drawer
+220 dresser
+035 drink
+140 drop
+240 duck
+058 dwarf
+*** E
+118 eagle
+099 eat
+108 egg
+065 elf
+058 enchanter
+004 enter
+000 every
+002 examine
+145 exit
+*** F
+178 fairy
+178 fairy godmother
+160 fast
+126 feed
+126 feed broth
+126 feed soup
+126 feed the soup
+163 feel
+153 fence
+195 fiddle
+080 fight
+188 fill
+014 find
+242 finger
+242 fingers
+191 fire
+191 fireplace
+000 first
+194 fishing
+055 flag
+055 flags
+091 floor
+016 flower
+016 flowers
+164 fly
+164 fly away
+154 follow
+000 for
+210 format
+021 fort
+074 four leaf clover
+074 fourleaf clover
+000 from
+*** G
+146 game
+064 garden
+063 gate
+005 get
+062 get in
+207 get off
+209 get on
+157 get out
+148 giant
+000 gingerbread
+178 girl
+040 give
+058 gnome
+004 go
+142 go down
+059 goat
+153 goat pen
+178 godmother
+199 gold
+108 gold egg
+075 gold key
+090 gold nut
+090 gold walnut
+199 golden
+108 golden egg
+090 golden walnut
+132 graham
+132 grahams
+008 grass
+008 ground
+000 guess
+195 guitar
+*** H
+077 hall
+212 hat
+086 hatchet
+212 hats
+149 hello
+124 help
+149 hi
+080 hit
+038 hole
+038 holes
+165 home
+021 house
+043 hug
+112 hush
+*** I
+000 i
+171 ifnkovhgroghprm
+000 in
+210 init
+210 initialize
+000 into
+000 is
+053 island
+*** J
+041 jewelry
+224 jump
+*** K
+075 key
+230 key hole
+230 keyhole
+054 kill
+208 king
+208 king edward
+082 kinghts
+042 kiss
+100 kitchen
+032 kneel
+024 knife
+082 knight
+072 knob
+150 knock
+*** L
+136 ladder
+178 lady
+249 lake
+111 lamp
+113 last name
+021 leanto
+224 leap
+157 leave
+196 leprechaun
+196 leprechauns
+196 leps
+202 let
+190 lid
+192 lift
+081 light
+048 lion
+048 lions
+000 little
+014 locate
+068 lock
+069 log
+069 logs
+002 look
+200 look down
+184 look for
+203 look in
+203 look inside
+175 look under
+231 look up
+237 love
+134 lower
+*** M
+122 magic beans
+058 man
+000 me
+144 message
+247 mikel
+247 mikel knight
+036 mirror
+010 moat
+067 mountain
+067 mountains
+116 mouse
+168 move
+054 murder
+097 mushroom
+097 mushrooms
+177 my name
+*** N
+113 name
+176 nap
+115 nest
+170 nikstlitselpmur
+181 no
+159 normal
+167 note
+000 now
+090 nut
+090 nuts
+*** O
+250 oak
+049 object
+000 of
+000 off
+040 offer
+058 ogre
+000 old
+000 on
+216 one
+019 open
+038 opening
+000 out
+158 oven
+000 over
+*** P
+034 pail
+021 palace
+084 pebbles
+153 pen
+179 people
+052 pet
+236 pew
+005 pick
+248 pine tree
+121 plant
+011 plants
+007 play
+000 please
+005 pluck
+246 pocket
+201 point
+249 pond
+045 pos
+045 position
+051 pouch
+127 pouch of diamonds
+105 pound
+040 present
+229 priority
+094 programmed
+172 pry
+168 pull
+085 pump
+182 purchase
+168 push
+140 put
+125 put on
+*** Q
+112 quiet
+044 quit
+*** R
+135 raise
+222 ramp
+228 rat
+096 reach
+079 read
+185 remove
+235 reset
+031 restart
+147 restore
+209 ride
+114 ring
+186 river
+005 rob
+037 rock
+037 rocks
+137 room
+133 rope
+109 rub
+169 rumplestiltskin
+*** S
+141 save
+197 say
+006 scale
+128 sceptre
+000 second
+002 see
+174 sesame
+238 set
+206 shield
+168 shove
+025 show
+011 shrub
+011 shrubs
+028 shut
+057 sign
+112 silence
+198 silver
+000 sir
+155 sit
+155 sit down
+232 sky
+166 sleep
+130 slide
+089 sling
+089 slingshot
+161 slow
+020 smash
+015 smell
+015 sniff
+000 some
+058 sorcerer
+027 soup
+226 sp
+013 speak
+240 squat
+095 stairs
+095 stairway
+098 stalactite
+098 stalactites
+098 stalagmite
+098 stalagmites
+123 stalk
+018 stand
+018 stand up
+183 steal
+095 steps
+189 stew
+158 stove
+186 stream
+225 stump
+225 stumps
+003 swim
+003 swimming
+005 swipe
+129 swiss cheese
+*** T
+103 table
+005 take
+185 take off
+013 talk
+215 taste
+204 thank
+204 thank you
+000 that
+000 the
+217 them
+000 these
+000 third
+000 this
+050 thorns
+000 those
+205 throne
+000 through
+139 throw
+000 to
+097 toadstool
+097 toadstools
+029 torch
+029 torches
+139 toss
+021 tower
+026 tp
+046 treasure
+009 tree
+009 trees
+119 troll
+070 turn
+*** U
+000 under
+073 unlock
+138 untie
+000 up
+071 use
+*** V
+233 var
+251 view
+195 violin
+*** W
+003 wade
+003 wading
+104 wake
+090 walnut
+245 walnut tree
+090 walnuts
+151 water
+056 waterfall
+125 wear
+106 well
+110 what is
+110 whats
+066 who
+178 wife
+000 will
+087 window
+117 witch
+000 with
+131 wolf
+178 woman
+069 wood
+058 woodcutter
+058 woodcutters
+178 woodcutters wife
+223 word
+094 wrote
+*** X
+*** Y
+234 yell
+180 yes
+000 you
+000 your
+*** Z
