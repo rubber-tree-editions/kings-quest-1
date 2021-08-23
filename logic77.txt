@@ -18,83 +18,73 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == 78) {
     position(oEGO, 9, 95);
   }
-  LABEL36:
-    if (!f188) {
-      load.view(49);
+  if (!f188) {
+    load.view(49);
+  }
+  if (!f189) {
+    load.view(48);
+  }
+  if (!f186) {
+    load.sound(21);
+    load.view(47);
+    load.view(79);
+  }
+  if (!f187) {
+    load.view(81);
+    load.view(54);
+  }
+  if (!f186) {
+    add.to.pic(79, 1, 0, 94, 156, 14, 0);
+    add.to.pic(79, 1, 0, 120, 156, 14, 0);
+    add.to.pic(79, 1, 0, 106, 144, 13, 0);
+    add.to.pic(79, 1, 0, 128, 156, 14, 0);
+    add.to.pic(79, 1, 0, 111, 78, 7, 0);
+    add.to.pic(79, 0, 0, 57, 72, 7, 0);
+    add.to.pic(79, 0, 0, 45, 77, 7, 0);
+    add.to.pic(79, 0, 0, 36, 88, 8, 0);
+    add.to.pic(79, 0, 0, 16, 140, 12, 0);
+    add.to.pic(79, 0, 0, 30, 150, 13, 0);
+  }
+  if (!f187) {
+    animate.obj(oLEPRECHAUN_KING);
+    set.view(oLEPRECHAUN_KING, 54);
+    position(oLEPRECHAUN_KING, 121, 98);
+    set.priority(oLEPRECHAUN_KING, 10);
+    ignore.blocks(oLEPRECHAUN_KING);
+    draw(oLEPRECHAUN_KING);
+    if (f186) {
+      set(f20);
+      v30 = 27;
     }
-  LABEL45:
-    if (!f189) {
-      load.view(48);
+  }
+  if (!f186) {
+    animate.obj(oLEPRECHAUN);
+    set.view(oLEPRECHAUN, 47);
+    position(oLEPRECHAUN, 56, 108);
+    if (!fCARRYING_CLOVER) {
+      set(f21);
+      follow.ego(oLEPRECHAUN, 5, f22);
     }
-  LABEL54:
-    if (!f186) {
-      load.sound(21);
-      load.view(47);
-      load.view(79);
-    }
-  LABEL67:
-    if (!f187) {
-      load.view(81);
-      load.view(54);
-    }
-  LABEL78:
-    if (!f186) {
-      add.to.pic(79, 1, 0, 94, 156, 14, 0);
-      add.to.pic(79, 1, 0, 120, 156, 14, 0);
-      add.to.pic(79, 1, 0, 106, 144, 13, 0);
-      add.to.pic(79, 1, 0, 128, 156, 14, 0);
-      add.to.pic(79, 1, 0, 111, 78, 7, 0);
-      add.to.pic(79, 0, 0, 57, 72, 7, 0);
-      add.to.pic(79, 0, 0, 45, 77, 7, 0);
-      add.to.pic(79, 0, 0, 36, 88, 8, 0);
-      add.to.pic(79, 0, 0, 16, 140, 12, 0);
-      add.to.pic(79, 0, 0, 30, 150, 13, 0);
-    }
-  LABEL165:
-    if (!f187) {
-      animate.obj(oLEPRECHAUN_KING);
-      set.view(oLEPRECHAUN_KING, 54);
-      position(oLEPRECHAUN_KING, 121, 98);
-      set.priority(oLEPRECHAUN_KING, 10);
-      ignore.blocks(oLEPRECHAUN_KING);
-      draw(oLEPRECHAUN_KING);
-      if (f186) {
-        set(f20);
-        v30 = 27;
-      }
-    }
-  LABEL199:
-    if (!f186) {
-      animate.obj(oLEPRECHAUN);
-      set.view(oLEPRECHAUN, 47);
-      position(oLEPRECHAUN, 56, 108);
-      if (!fCARRYING_CLOVER) {
-        set(f21);
-        follow.ego(oLEPRECHAUN, 5, f22);
-        goto(LABEL233);
-      }
+    else {
       wander(oLEPRECHAUN);
-      LABEL233:
-        ignore.blocks(oLEPRECHAUN);
-        draw(oLEPRECHAUN);
     }
-  LABEL237:
-    if (!f188) {
-      animate.obj(oSHIELD);
-      set.view(oSHIELD, 49);
-      position(oSHIELD, 131, 128);
-      draw(oSHIELD);
-    }
-  LABEL255:
-    if (f187 && !f189) {
-      animate.obj(oSCEPTRE);
-      set.view(oSCEPTRE, 48);
-      position(oSCEPTRE, 115, 106);
-      draw(oSCEPTRE);
-    }
-  LABEL275:
-    draw(oEGO);
-    show.pic();
+    ignore.blocks(oLEPRECHAUN);
+    draw(oLEPRECHAUN);
+  }
+  if (!f188) {
+    animate.obj(oSHIELD);
+    set.view(oSHIELD, 49);
+    position(oSHIELD, 131, 128);
+    draw(oSHIELD);
+  }
+  if (f187 && !f189) {
+    animate.obj(oSCEPTRE);
+    set.view(oSCEPTRE, 48);
+    position(oSCEPTRE, 115, 106);
+    draw(oSCEPTRE);
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (!f186) {
   if (!f26) {
@@ -106,269 +96,243 @@ if (!f186) {
     reset(f27);
   }
 }
-LABEL307:
-  if (!f186 && fCARRYING_CLOVER) {
-    observe.blocks(oEGO);
-    if (posn(oEGO, 80, 110, 139, 141)) {
-      if (!f25) {
-        print("The King's magic prevents you from getting close enough to harm him.");
-        set(f25);
-      }
+if (!f186 && fCARRYING_CLOVER) {
+  observe.blocks(oEGO);
+  if (posn(oEGO, 80, 110, 139, 141)) {
+    if (!f25) {
+      print("The King's magic prevents you from getting close enough to harm him.");
+      set(f25);
     }
   }
-LABEL339:
-  if (f186 && !f187) {
-    ignore.blocks(oEGO);
-    if (posn(oEGO, 31, 110, 158, 98)) {
-      if (!f25) {
-        print("The King's magic prevents you from getting close enough to harm him.");
-        set(f25);
-      }
+}
+if (f186 && !f187) {
+  ignore.blocks(oEGO);
+  if (posn(oEGO, 31, 110, 158, 98)) {
+    if (!f25) {
+      print("The King's magic prevents you from getting close enough to harm him.");
+      set(f25);
     }
   }
-LABEL371:
-  if (f186 && f187) {
-    ignore.blocks(oEGO);
-  }
-LABEL381:
-  v30--;
-  if (f20 && v30 == 1) {
-    v30 = 0;
-    erase(oLEPRECHAUN_KING);
-    set.view(oLEPRECHAUN_KING, 81);
-    position(oLEPRECHAUN_KING, 115, 117);
-    set.loop(oLEPRECHAUN_KING, 1);
-    draw(oLEPRECHAUN_KING);
-    move.obj(oLEPRECHAUN_KING, 33, 114, 0, f23);
-    animate.obj(oSCEPTRE);
-    set.view(oSCEPTRE, 48);
-    position(oSCEPTRE, 115, 106);
-    draw(oSCEPTRE);
-    print("After his followers have danced away, the King of the leprechauns realizes he can lead best by following, and leaves, forgetting his beautiful sceptre.");
-  }
-LABEL428:
-  if (f23) {
-    reset(f23);
-    move.obj(oLEPRECHAUN_KING, 5, 85, 0, f24);
-  }
-LABEL442:
-  if (f24) {
-    set(f187);
-    reset(f20);
-    reset(f24);
-    erase(oLEPRECHAUN_KING);
-  }
-LABEL456:
-  if (f21) {
-    reset(f21);
-    print("I hope you can escape from the leprechauns, but it doesn't look good for you.");
-  }
-LABEL466:
-  if (f22) {
-    reset(f22);
-    print("The leprechaun, with much support from his peers, catches you and refuses to let go.  I think you will be here for a long, long time.");
-    stop.motion(oEGO);
-    set(f95);
-    stop.cycling(oEGO);
-    stop.motion(oLEPRECHAUN);
-    stop.cycling(oLEPRECHAUN);
-    set(fGAME_OVER);
-  }
-LABEL488:
-  if (fCARRYING_FIDDLE) {
-    if (said("play", "fiddle")) {
-      if (!f186) {
-        print("You find playing the fiddle here very fun, but the dance floor is in the other room.");
-        goto(LABEL518);
-      }
+}
+if (f186 && f187) {
+  ignore.blocks(oEGO);
+}
+v30--;
+if (f20 && v30 == 1) {
+  v30 = 0;
+  erase(oLEPRECHAUN_KING);
+  set.view(oLEPRECHAUN_KING, 81);
+  position(oLEPRECHAUN_KING, 115, 117);
+  set.loop(oLEPRECHAUN_KING, 1);
+  draw(oLEPRECHAUN_KING);
+  move.obj(oLEPRECHAUN_KING, 33, 114, 0, f23);
+  animate.obj(oSCEPTRE);
+  set.view(oSCEPTRE, 48);
+  position(oSCEPTRE, 115, 106);
+  draw(oSCEPTRE);
+  print("After his followers have danced away, the King of the leprechauns realizes he can lead best by following, and leaves, forgetting his beautiful sceptre.");
+}
+if (f23) {
+  reset(f23);
+  move.obj(oLEPRECHAUN_KING, 5, 85, 0, f24);
+}
+if (f24) {
+  set(f187);
+  reset(f20);
+  reset(f24);
+  erase(oLEPRECHAUN_KING);
+}
+if (f21) {
+  reset(f21);
+  print("I hope you can escape from the leprechauns, but it doesn't look good for you.");
+}
+if (f22) {
+  reset(f22);
+  print("The leprechaun, with much support from his peers, catches you and refuses to let go.  I think you will be here for a long, long time.");
+  stop.motion(oEGO);
+  set(f95);
+  stop.cycling(oEGO);
+  stop.motion(oLEPRECHAUN);
+  stop.cycling(oLEPRECHAUN);
+  set(fGAME_OVER);
+}
+if (fCARRYING_FIDDLE) {
+  if (said("play", "fiddle")) {
+    if (!f186) {
+      print("You find playing the fiddle here very fun, but the dance floor is in the other room.");
+    }
+    else {
       print("You play a little tune on the fiddle to amuse yourself.");
     }
   }
-LABEL518:
-  if (said("examine", "throne")) {
-    if (!f20 && !f186) {
-      print("The King of the leprechauns is sitting on the stone throne.");
-      goto(LABEL545);
-    }
+}
+if (said("examine", "throne")) {
+  if (!f20 && !f186) {
+    print("The King of the leprechauns is sitting on the stone throne.");
+  }
+  else {
     print("This is a rather simple stone throne, compared to King Edward's.");
   }
-LABEL545:
-  if (!f186 && fCARRYING_CLOVER) {
-    if (said("examine", "leprechauns")) {
-      print("The little green men do not seem to be noticing you; perhaps because of the fourleaf clover.");
-    }
-    if (said("talk", "leprechauns") || said("hello") || said("say", "hello")) {
-      print("I would not try talking to the leprechauns.  You might say the wrong thing.");
-    }
-    LABEL590:
-      if (said("murder", "leprechauns")) {
-        print("You would not get all of them before they got you.");
+}
+if (!f186 && fCARRYING_CLOVER) {
+  if (said("examine", "leprechauns")) {
+    print("The little green men do not seem to be noticing you; perhaps because of the fourleaf clover.");
+  }
+  if (said("talk", "leprechauns") || said("hello") || said("say", "hello")) {
+    print("I would not try talking to the leprechauns.  You might say the wrong thing.");
+  }
+  if (said("murder", "leprechauns")) {
+    print("You would not get all of them before they got you.");
+  }
+}
+if (!f186 && !fCARRYING_CLOVER) {
+  if (said("anyword", "leprechauns")) {
+    print("The leprechauns seem irritated by your invasion of their territory.  I would be real careful about what I say and do right now!");
+  }
+}
+if (f186) {
+  if (said("anyword", "leprechauns")) {
+    print("There aren't any leprechauns here.");
+  }
+}
+if (!f187) {
+  if (!f20) {
+    if (said("examine", "king edward") || said("examine", "king edward", "leprechauns") || said("examine", "leprechauns", "king edward")) {
+      if (!f188) {
+        print("The King of the leprechauns is sitting on the stone throne. The magic shield is next to the throne.");
       }
-  }
-LABEL602:
-  if (!f186 && !fCARRYING_CLOVER) {
-    if (said("anyword", "leprechauns")) {
-      print("The leprechauns seem irritated by your invasion of their territory.  I would be real careful about what I say and do right now!");
-    }
-  }
-LABEL624:
-  if (f186) {
-    if (said("anyword", "leprechauns")) {
-      print("There aren't any leprechauns here.");
-    }
-  }
-LABEL642:
-  if (!f187) {
-    if (!f20) {
-      if (said("examine", "king edward") || said("examine", "king edward", "leprechauns") || said("examine", "leprechauns", "king edward")) {
-        if (!f188) {
-          print("The King of the leprechauns is sitting on the stone throne. The magic shield is next to the throne.");
-          goto(LABEL698);
-        }
+      else {
         print("The King of the leprechauns is sitting on the stone throne.");
       }
     }
-    LABEL698:
-      if (f20) {
-        if (said("examine", "king edward") || said("examine", "king edward", "leprechauns") || said("examine", "leprechauns", "king edward")) {
-          print("The King is leaving.");
-        }
-      }
-    LABEL734:
-      if (said("talk", "king edward") || said("hello") || said("say", "hello")) {
-        print("The leprechaun King ignores your words.");
-      }
   }
-LABEL758:
-  if (f187) {
-    if (said("anyword", "king edward")) {
-      print("The King of the leprechauns is no longer here.");
+  if (f20) {
+    if (said("examine", "king edward") || said("examine", "king edward", "leprechauns") || said("examine", "leprechauns", "king edward")) {
+      print("The King is leaving.");
     }
   }
-LABEL776:
-  if (said("examine", "cave") || said("examine", "room")) {
-    if (f188 && f189) {
-      print("This is the throne room of the leprechaun King.");
-    }
-    if (f20 || f187) {
-      if (f188 && !f189) {
-        print("This is the throne room of the leprechaun King.  There is a sceptre next to the throne.");
-      }
-      if (!f188 && !f189) {
-        print("This is the throne room of the leprechaun King.  There is a shield and a sceptre near the throne.");
-      }
-    }
-    LABEL837:
-      if (!f20 && !f187) {
-        if (!f188) {
-          print("This is the throne room of the leprechaun King.  There is a shield next to the throne.");
-        }
-      }
+  if (said("talk", "king edward") || said("hello") || said("say", "hello")) {
+    print("The leprechaun King ignores your words.");
   }
-LABEL856:
-  if (said("examine", "stairway")) {
-    if (posn(oEGO, 56, 10, 60, 156)) {
-      print("The stairs go up a narrow tunnel.");
-      goto(LABEL883);
+}
+if (f187) {
+  if (said("anyword", "king edward")) {
+    print("The King of the leprechauns is no longer here.");
+  }
+}
+if (said("examine", "cave") || said("examine", "room")) {
+  if (f188 && f189) {
+    print("This is the throne room of the leprechaun King.");
+  }
+  if (f20 || f187) {
+    if (f188 && !f189) {
+      print("This is the throne room of the leprechaun King.  There is a sceptre next to the throne.");
     }
+    if (!f188 && !f189) {
+      print("This is the throne room of the leprechaun King.  There is a shield and a sceptre near the throne.");
+    }
+  }
+  if (!f20 && !f187) {
+    if (!f188) {
+      print("This is the throne room of the leprechaun King.  There is a shield next to the throne.");
+    }
+  }
+}
+if (said("examine", "stairway")) {
+  if (posn(oEGO, 56, 10, 60, 156)) {
+    print("The stairs go up a narrow tunnel.");
+  }
+  else {
     print("To see the stairs, you have to get closer.");
   }
-LABEL883:
-  if (!fCARRYING_SHIELD && f188) {
-    if (said("examine", "shield")) {
-      print("I think there might have been a shield here once, but someone has since taken it.");
-    }
-    if (said("get", "shield")) {
-      print("The shield is no longer here.");
-    }
+}
+if (!fCARRYING_SHIELD && f188) {
+  if (said("examine", "shield")) {
+    print("I think there might have been a shield here once, but someone has since taken it.");
   }
-LABEL916:
-  if (!f188) {
-    if (said("examine", "shield")) {
-      if (posn(oEGO, 121, 118, 144, 138)) {
-        print("It is made of titanium and is rimmed with jewels.");
-        goto(LABEL950);
-      }
+  if (said("get", "shield")) {
+    print("The shield is no longer here.");
+  }
+}
+if (!f188) {
+  if (said("examine", "shield")) {
+    if (posn(oEGO, 121, 118, 144, 138)) {
+      print("It is made of titanium and is rimmed with jewels.");
+    }
+    else {
       print("You need to get closer to see it clearly.");
     }
-    LABEL950:
-      if (said("get", "shield")) {
-        if (posn(oEGO, 121, 118, 144, 138)) {
-          erase(oSHIELD);
-          if (f186) {
-            print("You take the magic shield and carefully put it in your pocket.");
-            goto(LABEL985);
-          }
-          print("As inconspicuously as possible, you add the shield to what you are carrying.");
-          LABEL985:
-            set(f188);
-            set(fCARRYING_SHIELD);
-            get("shield");
-            vSCORE += 8;
-            vTREASURE_COUNT++;
-            goto(LABEL1001);
-        }
-        print("You must be closer to do that.");
+  }
+  if (said("get", "shield")) {
+    if (posn(oEGO, 121, 118, 144, 138)) {
+      erase(oSHIELD);
+      if (f186) {
+        print("You take the magic shield and carefully put it in your pocket.");
       }
-  }
-LABEL1001:
-  if (f189 && !fCARRYING_SCEPTRE) {
-    if (said("examine", "sceptre")) {
-      print("I see no sceptre in the vicinity.");
-    }
-    if (said("get", "sceptre")) {
-      print("There is no sceptre in sight to get.");
-    }
-  }
-LABEL1034:
-  if (!f189) {
-    if (posn(oEGO, 103, 100, 142, 142)) {
-      if (f187 || f20) {
-        if (said("examine", "sceptre")) {
-          print("The sceptre is fashioned from gold and silver, and accented with emeralds.");
-        }
-        if (said("get", "sceptre")) {
-          erase(oSCEPTRE);
-          set(f189);
-          set(fCARRYING_SCEPTRE);
-          print("Eagerly, you pick up the sceptre.");
-          get("sceptre");
-          vSCORE += 6;
-        }
+      else {
+        print("As inconspicuously as possible, you add the shield to what you are carrying.");
       }
-      LABEL1096:
-        if (!f187 && !f20) {
-          if (said("examine", "sceptre")) {
-            print("I see no sceptre right here.");
-          }
-          if (said("get", "sceptre")) {
-            print("I see no sceptre to get around here.");
-          }
-        }
+      set(f188);
+      set(fCARRYING_SHIELD);
+      get("shield");
+      vSCORE += 8;
+      vTREASURE_COUNT++;
     }
-    LABEL1130:
-      if (!posn(oEGO, 103, 100, 142, 142)) {
-        if (said("examine", "sceptre") || said("get", "sceptre")) {
-          print("You must be closer to do that.");
-        }
+    else {
+      print("You must be closer to do that.");
+    }
+  }
+}
+if (f189 && !fCARRYING_SCEPTRE) {
+  if (said("examine", "sceptre")) {
+    print("I see no sceptre in the vicinity.");
+  }
+  if (said("get", "sceptre")) {
+    print("There is no sceptre in sight to get.");
+  }
+}
+if (!f189) {
+  if (posn(oEGO, 103, 100, 142, 142)) {
+    if (f187 || f20) {
+      if (said("examine", "sceptre")) {
+        print("The sceptre is fashioned from gold and silver, and accented with emeralds.");
       }
-  }
-LABEL1161:
-  if (vEGO_EDGE_CODE != 0) {
-    if (f20) {
-      set(f187);
+      if (said("get", "sceptre")) {
+        erase(oSCEPTRE);
+        set(f189);
+        set(fCARRYING_SCEPTRE);
+        print("Eagerly, you pick up the sceptre.");
+        get("sceptre");
+        vSCORE += 6;
+      }
+    }
+    if (!f187 && !f20) {
+      if (said("examine", "sceptre")) {
+        print("I see no sceptre right here.");
+      }
+      if (said("get", "sceptre")) {
+        print("I see no sceptre to get around here.");
+      }
     }
   }
-LABEL1177:
-  if (vEGO_EDGE_CODE == 1) {
-    new.room(76);
+  if (!posn(oEGO, 103, 100, 142, 142)) {
+    if (said("examine", "sceptre") || said("get", "sceptre")) {
+      print("You must be closer to do that.");
+    }
   }
-LABEL1186:
-  if (posn(oEGO, 0, 0, 1, 167)) {
-    new.room(78);
+}
+if (vEGO_EDGE_CODE != 0) {
+  if (f20) {
+    set(f187);
   }
-LABEL1198:
-  return;
+}
+if (vEGO_EDGE_CODE == 1) {
+  new.room(76);
+}
+if (posn(oEGO, 0, 0, 1, 167)) {
+  new.room(78);
+}
+return;
 
 LOGIC__FOOTER
 
