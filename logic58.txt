@@ -30,56 +30,50 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(68);
     load.view(77);
   }
-  LABEL67:
-    if (fCARRYING_CHEST || f169) {
-      load.view(68);
-      load.view(66);
-      load.view(77);
-    }
-  LABEL83:
-    if (v86 == 0) {
-      animate.obj(o1);
-      set.view(o1, 36);
-      position(o1, 91, 71);
-      follow.ego(o1, 10, f22);
-      set(f23);
-      v30 = 250;
-      v31 = 2;
-    }
-  LABEL111:
-    if (v86 == 2) {
-      animate.obj(o1);
-      set.view(o1, 66);
-      position(o1, 91, 71);
-      follow.ego(o1, 10, f22);
-      set(f23);
-    }
-  LABEL133:
-    if (v86 == 4) {
-      animate.obj(o1);
-      set.view(o1, 77);
-      position(o1, 73, 113);
-      set.cel(o1, 3);
-      stop.cycling(o1);
-      step.size(o1, v33);
-      animate.obj(o2);
-      set.view(o2, 37);
-      position(o2, 75, 114);
-      draw(o2);
-    }
-  LABEL168:
-    if (v86 == 5) {
-      animate.obj(o1);
-      set.view(o1, 77);
-      position(o1, 73, 113);
-      set.cel(o1, 3);
-      stop.cycling(o1);
-      step.size(o1, v33);
-    }
-  LABEL192:
-    draw(o1);
-    draw(oEGO);
-    show.pic();
+  if (fCARRYING_CHEST || f169) {
+    load.view(68);
+    load.view(66);
+    load.view(77);
+  }
+  if (v86 == 0) {
+    animate.obj(o1);
+    set.view(o1, 36);
+    position(o1, 91, 71);
+    follow.ego(o1, 10, f22);
+    set(f23);
+    v30 = 250;
+    v31 = 2;
+  }
+  if (v86 == 2) {
+    animate.obj(o1);
+    set.view(o1, 66);
+    position(o1, 91, 71);
+    follow.ego(o1, 10, f22);
+    set(f23);
+  }
+  if (v86 == 4) {
+    animate.obj(o1);
+    set.view(o1, 77);
+    position(o1, 73, 113);
+    set.cel(o1, 3);
+    stop.cycling(o1);
+    step.size(o1, v33);
+    animate.obj(o2);
+    set.view(o2, 37);
+    position(o2, 75, 114);
+    draw(o2);
+  }
+  if (v86 == 5) {
+    animate.obj(o1);
+    set.view(o1, 77);
+    position(o1, 73, 113);
+    set.cel(o1, 3);
+    stop.cycling(o1);
+    step.size(o1, v33);
+  }
+  draw(o1);
+  draw(oEGO);
+  show.pic();
 }
 if (v86 == 0 || v86 == 2) {
   if (!f26) {
@@ -87,332 +81,295 @@ if (v86 == 0 || v86 == 2) {
     sound(1, f148);
   }
 }
-LABEL221:
-  if (f22 && f23) {
-    if (fEGO_INVISIBLE) {
+if (f22 && f23) {
+  if (fEGO_INVISIBLE) {
+    reset(f22);
+    reset(f23);
+    print("The giant cannot see you since you are invisible.");
+    wander(o1);
+  }
+  else if (fCARRYING_SHIELD) {
+    reset(f22);
+    reset(f23);
+    print("You are fortunate that you have the magic shield or this giant would cause problems for you.");
+    wander(o1);
+  }
+  else if (fPROTECTED_BY_SPELL) {
+    reset(f22);
+    reset(f23);
+    print("The fairy godmother's spell is protecting you.");
+    wander(o1);
+  }
+  else if (!fCARRYING_SHIELD && !fEGO_INVISIBLE && !fPROTECTED_BY_SPELL) {
+    if (v86 == 0 || v86 == 2) {
       reset(f22);
       reset(f23);
-      print("The giant cannot see you since you are invisible.");
+      set.view(oEGO, 114);
+      print("Be a little more careful next time.  This giant is mean!");
       wander(o1);
-      goto(LABEL318);
-    }
-    if (fCARRYING_SHIELD) {
-      reset(f22);
-      reset(f23);
-      print("You are fortunate that you have the magic shield or this giant would cause problems for you.");
-      wander(o1);
-      goto(LABEL318);
-    }
-    if (fPROTECTED_BY_SPELL) {
-      reset(f22);
-      reset(f23);
-      print("The fairy godmother's spell is protecting you.");
-      wander(o1);
-      goto(LABEL318);
-    }
-    if (!fCARRYING_SHIELD && !fEGO_INVISIBLE && !fPROTECTED_BY_SPELL) {
-      if (v86 == 0 || v86 == 2) {
-        reset(f22);
-        reset(f23);
-        set.view(oEGO, 114);
-        print("Be a little more careful next time.  This giant is mean!");
-        wander(o1);
-        set(fGAME_OVER);
-      }
+      set(fGAME_OVER);
     }
   }
-LABEL318:
-  if (fEGO_TOUCHED_TRIGGER_LINE) {
-    set(f199);
-    reset(fEGO_TOUCHED_TRIGGER_LINE);
-    program.control();
-    if (!fEGO_INVISIBLE) {
-      set.view(oEGO, 105);
-    }
-    start.cycling(oEGO);
-    set(f98);
-    sound(5, fSOUND_END_MARKER);
-    erase(oEGO);
+}
+if (fEGO_TOUCHED_TRIGGER_LINE) {
+  set(f199);
+  reset(fEGO_TOUCHED_TRIGGER_LINE);
+  program.control();
+  if (!fEGO_INVISIBLE) {
+    set.view(oEGO, 105);
   }
-LABEL348:
-  if (fSOUND_END_MARKER) {
-    reset(fSOUND_END_MARKER);
-    set(f20);
+  start.cycling(oEGO);
+  set(f98);
+  sound(5, fSOUND_END_MARKER);
+  erase(oEGO);
+}
+if (fSOUND_END_MARKER) {
+  reset(fSOUND_END_MARKER);
+  set(f20);
+}
+if (f20) {
+  reset(f20);
+  print("You know you can't walk on clouds.");
+  set(fGAME_OVER);
+}
+if (said("examine", "giant")) {
+  if (v86 == 2) {
+    print("The giant is enormous!  He does look rather stupid, though.");
   }
-LABEL358:
-  if (f20) {
-    reset(f20);
-    print("You know you can't walk on clouds.");
-    set(fGAME_OVER);
+  if (v86 == 0) {
+    print("The enormous giant has been carrying that heavy chest for longer than he can remember.");
   }
-LABEL370:
-  if (said("examine", "giant")) {
-    if (v86 == 2) {
-      print("The giant is enormous!  He does look rather stupid, though.");
-    }
+  if (v86 == 1) {
+    print("The giant is sleeping with a chest.");
+  }
+  if (v86 == 3) {
+    print("The huge giant has fallen asleep and is now snoring loudly.");
+  }
+  if (v86 == 4) {
+    print("The giant lies dead on the ground and there is a chest beside him.");
+  }
+  if (v86 == 5) {
+    print("The giant has been slain by a little pebble to the forehead.");
+  }
+}
+if (said("talk", "giant") || said("hello") || said("say", "hello")) {
+  if (v86 == 2 || v86 == 0) {
+    print("The giant is in no mood for talking.");
+  }
+  if (v86 == 1 || v86 == 3) {
+    print("It is not a good idea to wake a sleeping giant.");
+  }
+  if (v86 == 4 || v86 == 5) {
+    print("A dead giant does not have a lot to say.");
+  }
+}
+if (!fCARRYING_CHEST && !f169) {
+  if (said("examine", "chest")) {
+    print("The magic chest appears to have been fashioned from ebony and rimmed on the edges with gold.");
+  }
+}
+if (!fCARRYING_CHEST) {
+  if (said("get", "chest") || said("get", "chest", "giant")) {
     if (v86 == 0) {
-      print("The enormous giant has been carrying that heavy chest for longer than he can remember.");
+      print("The giant is protecting the magic chest.");
     }
-    LABEL398:
-      if (v86 == 1) {
-        print("The giant is sleeping with a chest.");
-      }
-    LABEL407:
-      if (v86 == 3) {
-        print("The huge giant has fallen asleep and is now snoring loudly.");
-      }
-    LABEL416:
-      if (v86 == 4) {
-        print("The giant lies dead on the ground and there is a chest beside him.");
-      }
-    LABEL425:
-      if (v86 == 5) {
-        print("The giant has been slain by a little pebble to the forehead.");
-      }
-  }
-LABEL434:
-  if (said("talk", "giant") || said("hello") || said("say", "hello")) {
-    if (v86 == 2 || v86 == 0) {
-      print("The giant is in no mood for talking.");
+    if (f169) {
+      print("There is no chest around here to get.");
     }
-    if (v86 == 1 || v86 == 3) {
-      print("It is not a good idea to wake a sleeping giant.");
-    }
-    LABEL484:
-      if (v86 == 4 || v86 == 5) {
-        print("A dead giant does not have a lot to say.");
-      }
-  }
-LABEL498:
-  if (!fCARRYING_CHEST && !f169) {
-    if (said("examine", "chest")) {
-      print("The magic chest appears to have been fashioned from ebony and rimmed on the edges with gold.");
-    }
-  }
-LABEL520:
-  if (!fCARRYING_CHEST) {
-    if (said("get", "chest") || said("get", "chest", "giant")) {
-      if (v86 == 0) {
-        print("The giant is protecting the magic chest.");
-      }
-      if (f169) {
-        print("There is no chest around here to get.");
-      }
-      LABEL564:
-        distance(oEGO, o1, v70);
-        if (v86 == 1) {
-          if (v70 > 30) {
-            print("There is no way you can get the chest from here!");
-            goto(LABEL612);
-          }
-          erase(o1);
-          set.view(o1, 68);
-          stop.motion(o1);
-          draw(o1);
-          print("Very carefully, you slip the magic chest from the sleeping giant's arms.");
-          set(fCARRYING_CHEST);
-          set(f169);
-          vSCORE += 8;
-          get("chest");
-          vTREASURE_COUNT++;
-          v86 = 3;
-        }
-      LABEL612:
-        distance(oEGO, o2, v62);
-        if (v86 == 4) {
-          if (v62 > 30) {
-            print("There is no way you can get the chest from here!");
-            goto(LABEL653);
-          }
-          erase(o2);
-          print("It's easy to take a magic chest from a dead giant.");
-          set(fCARRYING_CHEST);
-          set(f169);
-          vSCORE += 8;
-          get("chest");
-          vTREASURE_COUNT++;
-          v86 = 5;
-        }
-    }
-  }
-LABEL653:
-  if (fCARRYING_SLINGSHOT) {
-    distance(oEGO, o1, v71);
-    if (said("use", "slingshot") || said("gingerbread", "slingshot")) {
-      if (!fCARRYING_PEBBLES) {
-        print("You need some kind of small rock to use the sling.");
-      }
-      if (fCARRYING_PEBBLES && v71 < 20) {
+    distance(oEGO, o1, v70);
+    if (v86 == 1) {
+      if (v70 > 30) {
         print("There is no way you can get the chest from here!");
       }
-      LABEL701:
-        if (fCARRYING_PEBBLES && !f169 && !fEGO_INVISIBLE && v86 == 0 && v71 > 19 && !f199) {
-          reset(f23);
-          get.posn(oEGO, v100, v101);
-          position.v(o15, v100, v101);
-          erase(oEGO);
-          draw(o15);
-          sound(18, f148);
-          end.of.loop(o15, f24);
-          print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.");
-          reset(fCARRYING_PEBBLES);
-          drop("pebbles");
-          vSCORE -= 1;
-        }
-      LABEL751:
-        if (fCARRYING_PEBBLES && f169 && !fEGO_INVISIBLE && v86 == 2 && v71 > 19) {
-          reset(f23);
-          get.posn(oEGO, v100, v101);
-          position.v(o15, v100, v101);
-          erase(oEGO);
-          draw(o15);
-          sound(18, f148);
-          end.of.loop(o15, f25);
-          print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.");
-          reset(fCARRYING_PEBBLES);
-          drop("pebbles");
-          vSCORE -= 1;
-        }
-      LABEL797:
-        if (fCARRYING_PEBBLES && !f169 && fEGO_INVISIBLE) {
-          if (v86 == 0 || v86 == 2) {
-            print("Not when you're invisible!");
-          }
-        }
-      LABEL822:
-        if (fCARRYING_PEBBLES) {
-          if (v86 == 1 || v86 == 3) {
-            print("It would be rather cowardly of you to kill a giant while he is asleep!");
-          }
-        }
+      else {
+        erase(o1);
+        set.view(o1, 68);
+        stop.motion(o1);
+        draw(o1);
+        print("Very carefully, you slip the magic chest from the sleeping giant's arms.");
+        set(fCARRYING_CHEST);
+        set(f169);
+        vSCORE += 8;
+        get("chest");
+        vTREASURE_COUNT++;
+        v86 = 3;
+      }
+    }
+    distance(oEGO, o2, v62);
+    if (v86 == 4) {
+      if (v62 > 30) {
+        print("There is no way you can get the chest from here!");
+      }
+      else {
+        erase(o2);
+        print("It's easy to take a magic chest from a dead giant.");
+        set(fCARRYING_CHEST);
+        set(f169);
+        vSCORE += 8;
+        get("chest");
+        vTREASURE_COUNT++;
+        v86 = 5;
+      }
     }
   }
-LABEL842:
-  if (f24) {
-    reset(f24);
-    erase(o15);
-    set.view(oEGO, 0);
-    position.v(oEGO, v100, v101);
-    draw(oEGO);
-    erase(o1);
-    set.view(o1, 77);
-    step.size(o1, v33);
-    draw(o1);
-    end.of.loop(o1, f148);
-    get.posn(o1, v60, v61);
-    position.v(o2, v60, v61);
-    draw(o2);
-    v86 = 4;
-    vSCORE += 3;
-  }
-LABEL890:
-  if (f25) {
-    reset(f25);
-    erase(o15);
-    set.view(oEGO, 0);
-    position.v(oEGO, v100, v101);
-    draw(oEGO);
-    erase(o1);
-    set.view(o1, 77);
-    step.size(o1, v33);
-    draw(o1);
-    end.of.loop(o1, f148);
-    v86 = 5;
-  }
-LABEL925:
-  if (fCARRYING_DAGGER) {
-    if (said("use", "dagger") || said("throw", "dagger")) {
-      reset(fCARRYING_DAGGER);
-      drop("dagger");
-      print("I don't believe it!  How could you miss something so big?");
-      vSCORE -= 5;
+}
+if (fCARRYING_SLINGSHOT) {
+  distance(oEGO, o1, v71);
+  if (said("use", "slingshot") || said("gingerbread", "slingshot")) {
+    if (!fCARRYING_PEBBLES) {
+      print("You need some kind of small rock to use the sling.");
     }
-  }
-LABEL958:
-  if (said("murder", "giant")) {
-    if (v86 == 0) {
-      print("How?");
+    if (fCARRYING_PEBBLES && v71 < 20) {
+      print("There is no way you can get the chest from here!");
     }
-    if (v86 == 2) {
-      print("There is no reason to kill the giant.");
+    if (fCARRYING_PEBBLES && !f169 && !fEGO_INVISIBLE && v86 == 0 && v71 > 19 && !f199) {
+      reset(f23);
+      get.posn(oEGO, v100, v101);
+      position.v(o15, v100, v101);
+      erase(oEGO);
+      draw(o15);
+      sound(18, f148);
+      end.of.loop(o15, f24);
+      print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.");
+      reset(fCARRYING_PEBBLES);
+      drop("pebbles");
+      vSCORE -= 1;
     }
-    LABEL986:
+    if (fCARRYING_PEBBLES && f169 && !fEGO_INVISIBLE && v86 == 2 && v71 > 19) {
+      reset(f23);
+      get.posn(oEGO, v100, v101);
+      position.v(o15, v100, v101);
+      erase(oEGO);
+      draw(o15);
+      sound(18, f148);
+      end.of.loop(o15, f25);
+      print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.");
+      reset(fCARRYING_PEBBLES);
+      drop("pebbles");
+      vSCORE -= 1;
+    }
+    if (fCARRYING_PEBBLES && !f169 && fEGO_INVISIBLE) {
+      if (v86 == 0 || v86 == 2) {
+        print("Not when you're invisible!");
+      }
+    }
+    if (fCARRYING_PEBBLES) {
       if (v86 == 1 || v86 == 3) {
         print("It would be rather cowardly of you to kill a giant while he is asleep!");
       }
-    LABEL1000:
-      if (v86 == 4 || v86 == 5) {
-        print("The giant has been slain by a little pebble to the forehead.");
-      }
+    }
   }
-LABEL1014:
-  if (said("examine", "room") || said("examine", "clouds")) {
-    print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
+}
+if (f24) {
+  reset(f24);
+  erase(o15);
+  set.view(oEGO, 0);
+  position.v(oEGO, v100, v101);
+  draw(oEGO);
+  erase(o1);
+  set.view(o1, 77);
+  step.size(o1, v33);
+  draw(o1);
+  end.of.loop(o1, f148);
+  get.posn(o1, v60, v61);
+  position.v(o2, v60, v61);
+  draw(o2);
+  v86 = 4;
+  vSCORE += 3;
+}
+if (f25) {
+  reset(f25);
+  erase(o15);
+  set.view(oEGO, 0);
+  position.v(oEGO, v100, v101);
+  draw(oEGO);
+  erase(o1);
+  set.view(o1, 77);
+  step.size(o1, v33);
+  draw(o1);
+  end.of.loop(o1, f148);
+  v86 = 5;
+}
+if (fCARRYING_DAGGER) {
+  if (said("use", "dagger") || said("throw", "dagger")) {
+    reset(fCARRYING_DAGGER);
+    drop("dagger");
+    print("I don't believe it!  How could you miss something so big?");
+    vSCORE -= 5;
   }
-LABEL1034:
+}
+if (said("murder", "giant")) {
   if (v86 == 0) {
-    v30--;
-    if (v30 == 0) {
-      if (v31 > 0) {
-        v31--;
-        v30 = 250;
-      }
-    }
+    print("How?");
   }
-LABEL1062:
-  if (v30 == 1 && v31 == 0) {
-    reset(f23);
-    v30 = 0;
-    stop.motion(o1);
-    erase(o1);
-    set.view(o1, 52);
-    step.size(o1, v33);
-    draw(o1);
-    v86 = 1;
-    if (!f205) {
-      set(f205);
-      vSCORE += 7;
-    }
-    print("What luck!  The huge giant fell fast asleep!");
+  if (v86 == 2) {
+    print("There is no reason to kill the giant.");
   }
-LABEL1106:
   if (v86 == 1 || v86 == 3) {
-    if (!f28) {
-      set(f28);
-      sound(9, f27);
-    }
-    if (f27) {
-      reset(f27);
-      reset(f28);
-    }
+    print("It would be rather cowardly of you to kill a giant while he is asleep!");
   }
-LABEL1140:
-  if (fGAME_OVER) {
-    goto(LABEL1204);
+  if (v86 == 4 || v86 == 5) {
+    print("The giant has been slain by a little pebble to the forehead.");
   }
-LABEL1149:
-  if (vEGO_EDGE_CODE != EDGE_NONE) {
-    if (v86 == 1) {
-      v86 = 0;
-    }
-    if (v86 == 3) {
-      v86 = 2;
+}
+if (said("examine", "room") || said("examine", "clouds")) {
+  print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
+}
+if (v86 == 0) {
+  v30--;
+  if (v30 == 0) {
+    if (v31 > 0) {
+      v31--;
+      v30 = 250;
     }
   }
-LABEL1177:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(59);
+}
+if (v30 == 1 && v31 == 0) {
+  reset(f23);
+  v30 = 0;
+  stop.motion(o1);
+  erase(o1);
+  set.view(o1, 52);
+  step.size(o1, v33);
+  draw(o1);
+  v86 = 1;
+  if (!f205) {
+    set(f205);
+    vSCORE += 7;
   }
-LABEL1186:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(57);
+  print("What luck!  The huge giant fell fast asleep!");
+}
+if (v86 == 1 || v86 == 3) {
+  if (!f28) {
+    set(f28);
+    sound(9, f27);
   }
-LABEL1195:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(61);
+  if (f27) {
+    reset(f27);
+    reset(f28);
   }
-LABEL1204:
+}
+if (fGAME_OVER) {
   return;
+}
+if (vEGO_EDGE_CODE != EDGE_NONE) {
+  if (v86 == 1) {
+    v86 = 0;
+  }
+  if (v86 == 3) {
+    v86 = 2;
+  }
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(59);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(57);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(61);
+}
+return;
 
 LOGIC__FOOTER
 
