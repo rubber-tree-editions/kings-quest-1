@@ -207,15 +207,15 @@ LABEL672:
     print("You need to get closer to do that.");
   }
 LABEL757:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(48);
   }
 LABEL766:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(46);
   }
 LABEL775:
-  if (vEGO_EDGE_CODE == 3) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
     new.room(34);
   }
 LABEL784:

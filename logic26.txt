@@ -66,23 +66,23 @@ LABEL190:
     print("This placid looking stream is actually quite dangerous.... the current is stronger than it looks.  You can't keep your head above water.");
   }
 LABEL203:
-  if (vEGO_EDGE_CODE != 0) {
+  if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f68);
   }
 LABEL213:
-  if (vEGO_EDGE_CODE == 1) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(39);
   }
 LABEL222:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(27);
   }
 LABEL231:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(25);
   }
 LABEL240:
-  if (vEGO_EDGE_CODE == 3) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
     new.room(23);
   }
 LABEL249:

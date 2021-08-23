@@ -73,7 +73,7 @@ if (said("examine", "doorway")) {
     }
   }
 }
-if (vEGO_EDGE_CODE == 2) {
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(51);
 }
 if (posn(oEGO, 0, 0, 1, 167)) {

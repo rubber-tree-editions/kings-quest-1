@@ -69,19 +69,19 @@ LABEL199:
     print("If you've seen one pine tree, you've seen them all.");
   }
 LABEL211:
-  if (vEGO_EDGE_CODE == 1) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(35);
   }
 LABEL220:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(31);
   }
 LABEL229:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(29);
   }
 LABEL238:
-  if (vEGO_EDGE_CODE == 3) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
     new.room(19);
   }
 LABEL247:

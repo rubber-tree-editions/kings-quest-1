@@ -87,19 +87,19 @@ LABEL214:
     }
   }
 LABEL233:
-  if (vEGO_EDGE_CODE == 1) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(24);
   }
 LABEL242:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(10);
   }
 LABEL251:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(16);
   }
 LABEL260:
-  if (vEGO_EDGE_CODE == 3) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
     new.room(8);
   }
 LABEL269:

@@ -136,19 +136,19 @@ LABEL284:
       set(f134);
   }
 LABEL466:
-  if (vEGO_EDGE_CODE == 1) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(48);
   }
 LABEL475:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(40);
   }
 LABEL484:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(34);
   }
 LABEL493:
-  if (vEGO_EDGE_CODE == 3) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
     new.room(32);
   }
 LABEL502:

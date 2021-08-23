@@ -259,7 +259,7 @@ LABEL915:
     print("The door is closed.");
   }
 LABEL927:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(74);
   }
 LABEL936:

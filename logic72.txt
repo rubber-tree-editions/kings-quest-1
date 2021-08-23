@@ -164,7 +164,7 @@ LABEL503:
     new.room(71);
   }
 LABEL519:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(56);
   }
 LABEL528:

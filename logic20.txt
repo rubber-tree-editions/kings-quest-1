@@ -96,7 +96,7 @@ LABEL250:
     print("You are not close enough to the water.");
   }
 LABEL303:
-  if (vEGO_EDGE_CODE != 0) {
+  if (vEGO_EDGE_CODE != EDGE_NONE) {
     if (f66) {
       reset(f66);
       reset(fGOAT_COMPANION);
@@ -104,19 +104,19 @@ LABEL303:
     }
   }
 LABEL323:
-  if (vEGO_EDGE_CODE == 1) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(29);
   }
 LABEL332:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(19);
   }
 LABEL341:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(21);
   }
 LABEL350:
-  if (vEGO_EDGE_CODE == 3) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
     new.room(13);
   }
 LABEL359:

@@ -298,16 +298,16 @@ if (f22 && v31 < 1) {
 }
 v31--;
 LABEL986:
-  if (vEGO_EDGE_CODE != 0) {
+  if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f68);
   }
-  if (vEGO_EDGE_CODE == 1) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(15);
   }
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(1);
   }
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(3);
   }
   if (fGOAT_COMPANION) {

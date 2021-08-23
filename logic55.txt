@@ -35,7 +35,7 @@ LABEL89:
     print("The armor is firmly mounted to the wall.");
   }
 LABEL101:
-  if (vEGO_EDGE_CODE == 1) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(54);
   }
 LABEL110:

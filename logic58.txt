@@ -391,7 +391,7 @@ LABEL1140:
     goto(LABEL1204);
   }
 LABEL1149:
-  if (vEGO_EDGE_CODE != 0) {
+  if (vEGO_EDGE_CODE != EDGE_NONE) {
     if (v86 == 1) {
       v86 = 0;
     }
@@ -400,15 +400,15 @@ LABEL1149:
     }
   }
 LABEL1177:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(59);
   }
 LABEL1186:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(57);
   }
 LABEL1195:
-  if (vEGO_EDGE_CODE == 3) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
     new.room(61);
   }
 LABEL1204:

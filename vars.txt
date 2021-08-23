@@ -348,4 +348,8 @@
 #define XKEY_ALT_N 49
 #define XKEY_ALT_M 50
 
-
+#define EDGE_NONE 0
+#define EDGE_HORIZON 1
+#define EDGE_RIGHT 2
+#define EDGE_BOTTOM 3
+#define EDGE_LEFT 4

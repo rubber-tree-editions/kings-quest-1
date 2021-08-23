@@ -62,15 +62,15 @@ LABEL136:
     print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
   }
 LABEL148:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(58);
   }
 LABEL157:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(56);
   }
 LABEL166:
-  if (vEGO_EDGE_CODE == 3) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
     new.room(60);
   }
 LABEL175:

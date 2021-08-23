@@ -366,7 +366,7 @@ LABEL1203:
     print("The stream may not be safe to cross.");
   }
 LABEL1215:
-  if (vEGO_EDGE_CODE != 0) {
+  if (vEGO_EDGE_CODE != EDGE_NONE) {
     observe.blocks(oEGO);
     reset(f68);
     if (f21 && fGOAT_COMPANION) {
@@ -376,19 +376,19 @@ LABEL1215:
     }
   }
 LABEL1241:
-  if (vEGO_EDGE_CODE == 1) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(42);
   }
 LABEL1250:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(38);
   }
 LABEL1259:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(40);
   }
 LABEL1268:
-  if (vEGO_EDGE_CODE == 3) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
     new.room(26);
   }
 LABEL1277:

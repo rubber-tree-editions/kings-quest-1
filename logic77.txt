@@ -321,12 +321,12 @@ if (!fSCEPTRE_TAKEN) {
     }
   }
 }
-if (vEGO_EDGE_CODE != 0) {
+if (vEGO_EDGE_CODE != EDGE_NONE) {
   if (f20) {
     set(f187);
   }
 }
-if (vEGO_EDGE_CODE == 1) {
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(76);
 }
 if (posn(oEGO, 0, 0, 1, 167)) {

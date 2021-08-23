@@ -114,11 +114,11 @@ LABEL281:
     new.room(73);
   }
 LABEL295:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(47);
   }
 LABEL304:
-  if (vEGO_EDGE_CODE == 3) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
     new.room(33);
   }
 LABEL313:

@@ -87,11 +87,11 @@ LABEL228:
     new.room(69);
   }
 LABEL240:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(58);
   }
 LABEL249:
-  if (vEGO_EDGE_CODE == 3) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
     get.posn(oEGO, v60, v61);
     if (v60 < 153) {
       new.room(62);

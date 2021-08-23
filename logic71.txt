@@ -74,7 +74,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !f158) {
   v96 = 4;
   move.obj.v(oEGO, v60, v61, 96, f20);
 }
-if (vEGO_EDGE_CODE == 1) {
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(72);
 }
 if (f20 || posn(oEGO, 0, 166, 159, 167)) {

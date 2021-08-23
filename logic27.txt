@@ -23,19 +23,19 @@ if (said("examine", "anyword")) {
   print("What are you doing that for?  There's nothing here.");
 }
 LABEL52:
-  if (vEGO_EDGE_CODE == 1) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(38);
   }
 LABEL61:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(28);
   }
 LABEL70:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(26);
   }
 LABEL79:
-  if (vEGO_EDGE_CODE == 3) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
     new.room(22);
   }
 LABEL88:

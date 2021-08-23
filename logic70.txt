@@ -89,7 +89,7 @@ LABEL174:
       move.obj.v(oEGO, v60, v61, 96, f20);
   }
 LABEL245:
-  if (vEGO_EDGE_CODE == 1) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(71);
   }
 LABEL254:

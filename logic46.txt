@@ -175,7 +175,7 @@ LABEL339:
       }
   }
 LABEL470:
-  if (vEGO_EDGE_CODE != 0) {
+  if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f145);
     reset(f146);
   }
@@ -184,18 +184,18 @@ LABEL482:
     goto(LABEL551);
   }
 LABEL491:
-  if (vEGO_EDGE_CODE == 1 && v30 <= 0) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON && v30 <= 0) {
     new.room(3);
   }
-  if (vEGO_EDGE_CODE == 2 && v30 <= 0) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT && v30 <= 0) {
     new.room(47);
   }
 LABEL517:
-  if (vEGO_EDGE_CODE == 4 && v30 <= 0) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT && v30 <= 0) {
     new.room(45);
   }
 LABEL530:
-  if (vEGO_EDGE_CODE == 3 && v30 <= 0) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM && v30 <= 0) {
     new.room(35);
   }
 LABEL543:

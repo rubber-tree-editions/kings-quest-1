@@ -75,7 +75,7 @@ LABEL245:
     set(fFILL_BUCKET_POINTS);
   }
 LABEL278:
-  if (vEGO_EDGE_CODE != 0) {
+  if (vEGO_EDGE_CODE != EDGE_NONE) {
     if (f66) {
       reset(f66);
       reset(fGOAT_COMPANION);
@@ -83,19 +83,19 @@ LABEL278:
     }
   }
 LABEL298:
-  if (vEGO_EDGE_CODE == 1) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(6);
   }
 LABEL307:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(44);
   }
 LABEL316:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(42);
   }
 LABEL325:
-  if (vEGO_EDGE_CODE == 3) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
     new.room(38);
   }
 LABEL334:

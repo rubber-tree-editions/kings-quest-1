@@ -57,7 +57,7 @@ LABEL137:
     set(fGAME_OVER);
   }
 LABEL151:
-  if (vEGO_EDGE_CODE == 1) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(67);
   }
 LABEL160:

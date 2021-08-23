@@ -100,11 +100,11 @@ LABEL268:
     set(fGAME_OVER);
   }
 LABEL282:
-  if (vEGO_EDGE_CODE == 1) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(59);
   }
 LABEL291:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(61);
   }
 LABEL300:

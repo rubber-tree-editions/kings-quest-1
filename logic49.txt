@@ -403,7 +403,7 @@ LABEL1212:
     }
   }
 LABEL1255:
-  if (vEGO_EDGE_CODE == 1) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(12);
   }
 LABEL1264:

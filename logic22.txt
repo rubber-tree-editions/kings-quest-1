@@ -311,7 +311,7 @@ LABEL900:
     player.control();
   }
 LABEL918:
-  if (vEGO_EDGE_CODE != 0) {
+  if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f155);
   }
 LABEL928:
@@ -321,23 +321,23 @@ LABEL928:
     reset(f155);
   }
 LABEL940:
-  if (vEGO_EDGE_CODE == 1 && fEGO_CLIMBING_BEANSTALK) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON && fEGO_CLIMBING_BEANSTALK) {
     new.room(70);
   }
 LABEL951:
-  if (vEGO_EDGE_CODE == 1 && !fEGO_CLIMBING_BEANSTALK) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK) {
     new.room(27);
   }
 LABEL963:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(21);
   }
 LABEL972:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(23);
   }
 LABEL981:
-  if (vEGO_EDGE_CODE == 3) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
     new.room(11);
   }
 LABEL990:

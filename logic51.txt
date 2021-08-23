@@ -373,7 +373,7 @@ LABEL1206:
     erase(oDRAGON);
   }
 LABEL1216:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(52);
   }
 LABEL1225:

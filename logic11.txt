@@ -296,21 +296,21 @@ if (vOBJECT_EDGE_CODE == 2 || vOBJECT_EDGE_CODE == 3) {
     print("It seems the old goat has wandered off.");
   }
 }
-if (vEGO_EDGE_CODE != 0) {
+if (vEGO_EDGE_CODE != EDGE_NONE) {
   if (fGOAT_GATE_OPEN && !fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !fGOAT_IS_GONE) {
     set(fGOAT_IS_GONE);
   }
 }
-if (vEGO_EDGE_CODE == 1) {
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(22);
 }
-if (vEGO_EDGE_CODE == 2) {
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(12);
 }
-if (vEGO_EDGE_CODE == 4) {
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(10);
 }
-if (vEGO_EDGE_CODE == 3) {
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(6);
 }
 return;

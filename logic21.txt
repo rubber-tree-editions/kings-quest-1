@@ -178,19 +178,19 @@ LABEL466:
     new.room(80);
   }
 LABEL474:
-  if (vEGO_EDGE_CODE == 1 && !fCARRIED_BY_WITCH) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON && !fCARRIED_BY_WITCH) {
     new.room(28);
   }
 LABEL486:
-  if (vEGO_EDGE_CODE == 2 && !fCARRIED_BY_WITCH) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT && !fCARRIED_BY_WITCH) {
     new.room(20);
   }
 LABEL498:
-  if (vEGO_EDGE_CODE == 4 && !fCARRIED_BY_WITCH) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT && !fCARRIED_BY_WITCH) {
     new.room(22);
   }
 LABEL510:
-  if (vEGO_EDGE_CODE == 3 && !fCARRIED_BY_WITCH) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM && !fCARRIED_BY_WITCH) {
     new.room(12);
   }
 LABEL522:

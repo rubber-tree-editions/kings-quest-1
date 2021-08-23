@@ -145,7 +145,7 @@ LABEL416:
       set(f134);
   }
 LABEL505:
-  if (vEGO_EDGE_CODE != 0) {
+  if (vEGO_EDGE_CODE != EDGE_NONE) {
     if (f66) {
       reset(f66);
       reset(fGOAT_COMPANION);
@@ -153,19 +153,19 @@ LABEL505:
     }
   }
 LABEL525:
-  if (vEGO_EDGE_CODE == 1) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(32);
   }
 LABEL534:
-  if (vEGO_EDGE_CODE == 2) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(24);
   }
 LABEL543:
-  if (vEGO_EDGE_CODE == 4) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(18);
   }
 LABEL552:
-  if (vEGO_EDGE_CODE == 3) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
     new.room(16);
   }
 LABEL561:
