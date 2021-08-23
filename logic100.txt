@@ -2,85 +2,70 @@
 
 LOGIC__HEADER
 
-
-
 vGAME_OVER_MESSAGE_COUNTDOWN--;
 if (vGAME_OVER_MESSAGE_COUNTDOWN == 1) {
   vGAME_OVER_MESSAGE_COUNTDOWN = 0;
   sound(SND_GAME_OVER, f148);
   if (vSCORE < 50) {
     print("We, at Sierra, wish to thank you for playing King's Quest. We are very sorry that you did not succeed and hope you will fare better next time. Good luck.");
-    goto(LABEL41);
   }
-  if (vSCORE < 100) {
+  else if (vSCORE < 100) {
     print("We, at Sierra, wish to thank you for playing King's Quest. We are pleased to see that you are doing so well and hope that your score will keep improving.");
-    goto(LABEL41);
   }
-  print("We, at Sierra, wish to thank you for playing King's Quest. We are delighted by your score and hope you are enjoying the game.");
+  else {
+    print("We, at Sierra, wish to thank you for playing King's Quest. We are delighted by your score and hope you are enjoying the game.");
+  }
 }
-LABEL41:
-  if (fGOAT_IS_HERE) {
-    normal.motion(o13);
-    stop.motion(o13);
-    stop.cycling(o13);
-  }
-LABEL53:
-  if (said("quit") || controller(c6)) {
+if (fGOAT_IS_HERE) {
+  normal.motion(o13);
+  stop.motion(o13);
+  stop.cycling(o13);
+}
+if (said("quit") || controller(c6)) {
+  stop.sound();
+  quit(0);
+}
+if (said("restore", "game") || controller(cRESTORE)) {
+  stop.sound();
+  restore.game();
+}
+if (said("restart", "game") || controller(cRESTART)) {
+  stop.sound();
+  restart.game();
+}
+if (controller(c4)) {
+  stop.sound();
+  status();
+}
+if (controller(cHELP)) {
+  call(LOGIC_HELP);
+}
+if (controller(c17)) {
+  toggle(fSOUND_ENABLED);
+}
+if (controller(c12)) {
+  cancel.line();
+}
+if (controller(c19)) {
+  print("        King's Quest\n             by\n      Roberta Williams\n\n    Original version by\nArthur Abraham, Chuck Tingley\n        Ken McNeill\n\n        Graphics by\n Doug McNeill, Greg Rowland\n\n      This version by\n       Sol Ackerman\n\n(C) 1986 Sierra On-Line, Inc.");
+}
+if (controller(c13)) {
+  echo.line();
+}
+if (controller(c14)) {
+  pause();
+}
+if (!fSAID_ACCEPTED_USER_INPUT) {
+  if (said("anyword", "anyword") || said("anyword") || said("anyword", "anyword", "anyword")) {
     stop.sound();
-    quit(0);
-  }
-LABEL68:
-  if (said("restore", "game") || controller(cRESTORE)) {
-    stop.sound();
-    restore.game();
-  }
-LABEL84:
-  if (said("restart", "game") || controller(cRESTART)) {
-    stop.sound();
-    restart.game();
-  }
-LABEL100:
-  if (controller(c4)) {
-    stop.sound();
-    status();
-  }
-LABEL108:
-  if (controller(cHELP)) {
-    call(LOGIC_HELP);
-  }
-LABEL116:
-  if (controller(c17)) {
-    toggle(fSOUND_ENABLED);
-  }
-LABEL124:
-  if (controller(c12)) {
-    cancel.line();
-  }
-LABEL131:
-  if (controller(c19)) {
-    print("        King's Quest\n             by\n      Roberta Williams\n\n    Original version by\nArthur Abraham, Chuck Tingley\n        Ken McNeill\n\n        Graphics by\n Doug McNeill, Greg Rowland\n\n      This version by\n       Sol Ackerman\n\n(C) 1986 Sierra On-Line, Inc.");
-  }
-LABEL139:
-  if (controller(c13)) {
-    echo.line();
-  }
-LABEL146:
-  if (controller(c14)) {
-    pause();
-  }
-LABEL153:
-  if (!fSAID_ACCEPTED_USER_INPUT) {
-    if (said("anyword", "anyword") || said("anyword") || said("anyword", "anyword", "anyword")) {
-      stop.sound();
-      if (vROOM_NO == 65) {
-        print("As you will never get out of this cage alive, I can only permit you to: Restore Game, Restart Game or Take Inventory. Sorry.");
-        goto(LABEL199);
-      }
+    if (vROOM_NO == 65) {
+      print("As you will never get out of this cage alive, I can only permit you to: Restore Game, Restart Game or Take Inventory. Sorry.");
+    }
+    else {
       print("As you are dead, I can only permit you to: Restore Game,  Restart Game or Take Inventory. Sorry.");
     }
   }
-LABEL199:
-  return;
+}
+return;
 
 LOGIC__FOOTER
-
