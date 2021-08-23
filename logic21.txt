@@ -141,7 +141,7 @@ LABEL306:
       }
   }
 LABEL372:
-  if (said("jump") || controller(c7)) {
+  if (said("jump") || controller(cJUMP)) {
     if (fEGO_INVISIBLE) {
       print("There is no reason to jump now.");
     }

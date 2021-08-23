@@ -37,7 +37,7 @@ LABEL80:
     obj.status.v(v78);
   }
 LABEL93:
-  if (controller(c16)) {
+  if (controller(cSHOWPRIORITY)) {
     show.pri.screen();
   }
 LABEL100:
@@ -66,7 +66,7 @@ LABEL159:
     set.v(v73);
   }
 LABEL174:
-  if (controller(c9)) {
+  if (controller(cSHOWMEM)) {
     show.mem();
   }
 LABEL181:

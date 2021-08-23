@@ -204,9 +204,21 @@
 #define cSAVE c1
 #define cRESTORE c2
 #define cRESTART c3
+#define cINVENTORY c4
 #define cSWIM c5
+#define cQUIT c6
+#define cJUMP c7
 #define cDUCK c8
+#define cSHOWMEM c9
+#define cDEBUG c10
+#define cINITJOYSTICK c11
+#define cCLEARINPUT c12
+#define cPREVINPUT c13
+#define cPAUSE c14
+#define cSHOWPRIORITY c16
+#define cTOGGLESOUND c17
 #define cHELP c18
+#define cABOUT c19
 
 #define oEGO o0
 
