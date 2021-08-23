@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == 22) {
     position(oEGO, 3, 147);
   }
-  if (v75 != 2) {
+  if (vDRAGON_STATE != DRAGONSTATE_ABSENT) {
     load.view(63);
     animate.obj(o1);
     set.view(o1, 63);
@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(o1);
     observe.blocks(oEGO);
   }
-  if (v75 == 2) {
+  if (vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     ignore.blocks(oEGO);
   }
   draw(oEGO);
@@ -35,7 +35,7 @@ if (fGOAT_COMPANION) {
   set(fGOAT_IS_GONE);
   print("When the goat saw how dark it was in here, it decided not to stay around.");
 }
-if (v75 != 2) {
+if (vDRAGON_STATE != DRAGONSTATE_ABSENT) {
   if (said("examine", "cave")) {
     print("It is empty except for a huge boulder opposite the opening.");
   }
@@ -55,7 +55,7 @@ if (v75 != 2) {
 if (said("examine", "stalactites")) {
   print("It took millenniums for these stalagmites and stalactites to form.");
 }
-if (v75 == 2) {
+if (vDRAGON_STATE == DRAGONSTATE_ABSENT) {
   if (said("examine", "cave")) {
     print("It is a rather large, vacant cave.");
   }
@@ -65,7 +65,7 @@ if (said("examine", "doorway")) {
     print("Looking out the cave opening, you are able to admire the beautiful scenery outside.");
   }
   if (posn(oEGO, 81, 0, 159, 167)) {
-    if (v75 != 2) {
+    if (vDRAGON_STATE != DRAGONSTATE_ABSENT) {
       print("It is on the far side of the cave.");
     }
     else {

@@ -12,10 +12,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (!f165) {
     load.view(34);
   }
-  if (v75 == 1) {
+  if (vDRAGON_STATE == DRAGONSTATE_DEAD) {
     load.view(61);
   }
-  if (v75 == 0) {
+  if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     load.view(33);
     load.view(61);
     load.view(82);
@@ -43,7 +43,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oMAGIC_MIRROR);
     stop.update(oMAGIC_MIRROR);
   }
-  if (v75 == 2) {
+  if (vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     animate.obj(o2);
     set.view(o2, 35);
     ignore.blocks(o2);
@@ -51,7 +51,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(o2);
     stop.cycling(o2);
   }
-  if (v75 != 2) {
+  if (vDRAGON_STATE != DRAGONSTATE_ABSENT) {
     animate.obj(o2);
     set.view(o2, 35);
     ignore.blocks(o2);
@@ -59,10 +59,10 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(o2);
     stop.cycling(o2);
     animate.obj(oDRAGON);
-    if (v75 == 1) {
+    if (vDRAGON_STATE == DRAGONSTATE_DEAD) {
       add.to.pic(61, 0, 0, 40, 152, 0, 0);
     }
-    if (v75 == 0) {
+    if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
       set.view(oDRAGON, 33);
       position(oDRAGON, 40, 120);
       v30 = 3;
@@ -80,18 +80,18 @@ if (v60 > 15) {
   ignore.blocks(oEGO);
 }
 if (v60 < 16) {
-  if (v75 == 2) {
+  if (vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     ignore.blocks(oEGO);
   }
   else {
     observe.blocks(oEGO);
   }
 }
-if (v75 == 0 && !f24) {
+if (vDRAGON_STATE == DRAGONSTATE_NORMAL && !f24) {
   set(f24);
   sound(1, f25);
 }
-if (v75 == 0 && f25) {
+if (vDRAGON_STATE == DRAGONSTATE_NORMAL && f25) {
   current.loop(oDRAGON, v31);
   if (v31 == 0) {
     sound(7, f148);
@@ -100,7 +100,7 @@ if (v75 == 0 && f25) {
     stop.sound();
   }
 }
-if (f20 && v75 == 0) {
+if (f20 && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
   reset(f20);
   set.view(oEGO, 82);
   if (fCARRYING_SHIELD) {
@@ -112,49 +112,49 @@ if (f20 && v75 == 0) {
   set(fGAME_OVER);
 }
 if (said("examine", "room")) {
-  if (!f165 && v75 == 0) {
+  if (!f165 && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     print("The ferocious fire-breathing dragon is protecting the magic mirror.");
   }
-  if (!f165 && v75 == 1) {
+  if (!f165 && vDRAGON_STATE == DRAGONSTATE_DEAD) {
     print("There is a dead dragon, a large boulder, and a seemingly ordinary mirror in the cave.");
   }
-  if (!f165 && v75 == 2) {
+  if (!f165 && vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     print("There is a large granite boulder and a magic mirror!! in the cave.");
   }
 }
 if (said("examine", "cave")) {
-  if (!f165 && v75 == 0) {
+  if (!f165 && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     print("A green, scaly dragon breathing hot fire and smoke is protecting the mirror.");
   }
-  if (f165 && v75 == 1) {
+  if (f165 && vDRAGON_STATE == DRAGONSTATE_DEAD) {
     print("In this large cavern, there is a slimy dead dragon, an opening on one side, and a large boulder in the other.");
   }
-  if (!f165 && v75 == 1) {
+  if (!f165 && vDRAGON_STATE == DRAGONSTATE_DEAD) {
     print("There is a dead dragon, a large boulder, and a seemingly ordinary mirror in the cave.");
   }
-  if (!f165 && v75 == 2) {
+  if (!f165 && vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     print("There is a large granite boulder and a magic mirror!! in the cave.");
   }
-  if (f165 && v75 == 2) {
+  if (f165 && vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     print("The cavern is empty, save for a couple of openings on either side.");
   }
 }
 if (said("examine", "dragon")) {
-  if (v75 == 2) {
+  if (vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     print("There is no dragon here.");
   }
-  if (v75 == 0) {
+  if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     print("This ferocious, fire-breathing dragon with sharp, green scales and a long tail is protecting the magic mirror. Watch out for the flames!");
   }
-  if (v75 == 1) {
+  if (vDRAGON_STATE == DRAGONSTATE_DEAD) {
     print("You see the once powerful dragon lying lifeless before you.");
   }
 }
 if (said("find", "dragon")) {
-  if (v75 == 2) {
+  if (vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     print("There is no dragon here.");
   }
-  if (v75 == 0 || v75 == 1) {
+  if (vDRAGON_STATE == DRAGONSTATE_NORMAL || vDRAGON_STATE == DRAGONSTATE_DEAD) {
     print("I think you found the dragon!");
   }
 }
@@ -167,7 +167,7 @@ if (said("examine", "rocks")) {
 if (said("shove", "rocks") || said("shove", "rocks")) {
   print("This boulder is far too heavy to move.");
 }
-if (v75 == 0) {
+if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
   if (said("examine", "doorway") || said("look inside", "doorway")) {
     print("A strange watery light issues from the hole.");
   }
@@ -175,7 +175,7 @@ if (v75 == 0) {
     print("This dragon does not respond to reason.");
   }
 }
-if (v75 != 0) {
+if (vDRAGON_STATE != DRAGONSTATE_NORMAL) {
   if (said("examine", "doorway") || said("look inside", "doorway")) {
     if (posn(oEGO, 1, 1, 75, 166)) {
       print("The hole seems to lead further into the cave.");
@@ -185,7 +185,7 @@ if (v75 != 0) {
     }
   }
 }
-if (v75 == 1) {
+if (vDRAGON_STATE == DRAGONSTATE_DEAD) {
   if (said("get", "dagger")) {
     print("The mere thought of retrieving the dagger repulses you.");
   }
@@ -196,13 +196,13 @@ if (fCARRYING_DAGGER) {
   }
 }
 if (said("murder", "dragon")) {
-  if (v75 == 2) {
+  if (vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     print("How?");
   }
-  if (v75 == 1) {
+  if (vDRAGON_STATE == DRAGONSTATE_DEAD) {
     print("This dragon had only one life and you have taken it.");
   }
-  if (v75 == 0) {
+  if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     if (posn(oEGO, 105, 96, 145, 166)) {
       print("You can't do that from here.!");
     }
@@ -231,23 +231,23 @@ if (!fCARRYING_MIRROR && f165) {
   }
 }
 if (!fCARRYING_MIRROR && !f165) {
-  if (said("steal", "mirror") && v75 == 0) {
+  if (said("steal", "mirror") && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     print("With that dragon here?  No way!");
   }
   if (posn(oEGO, 26, 104, 59, 127)) {
     if (said("examine", "mirror")) {
-      if (v75 == 0) {
+      if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
         print("The dragon is protecting the magic mirror.");
       }
-      if (v75 == 2 || v75 == 1) {
+      if (vDRAGON_STATE == DRAGONSTATE_ABSENT || vDRAGON_STATE == DRAGONSTATE_DEAD) {
         print("The magic mirror is framed with ornate mahogany wood, polished to a high sheen.");
       }
     }
     if (said("get", "mirror")) {
-      if (v75 == 0) {
+      if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
         print("I do not think that you can get close enough to the magic mirror with the dragon here.");
       }
-      if (v75 == 2 || v75 == 1) {
+      if (vDRAGON_STATE == DRAGONSTATE_ABSENT || vDRAGON_STATE == DRAGONSTATE_DEAD) {
         start.update(oMAGIC_MIRROR);
         erase(oMAGIC_MIRROR);
         set(fCARRYING_MIRROR);
@@ -270,15 +270,15 @@ if (!fCARRYING_MIRROR && !f165) {
 }
 if (!fBUCKET_FILLED) {
   if (said("douse", "dragon") || said("throw", "water") || said("throw", "water", "dragon")) {
-    if (v75 != 2) {
+    if (vDRAGON_STATE != DRAGONSTATE_ABSENT) {
       print("You have nothing with which to douse a dragon.");
     }
-    if (v75 == 2) {
+    if (vDRAGON_STATE == DRAGONSTATE_ABSENT) {
       print("There is no dragon here.");
     }
   }
 }
-if (posn(oEGO, 105, 96, 145, 166) && v75 == 0) {
+if (posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
   if (fCARRYING_DAGGER && said("throw", "dagger")) {
     reset(fCARRYING_DAGGER);
     print("The dagger sings through the air, but falls short of the dragon.  You should have been closer.");
@@ -293,7 +293,7 @@ if (posn(oEGO, 105, 96, 145, 166) && v75 == 0) {
     reset(fFILL_BUCKET_POINTS);
   }
 }
-if (!posn(oEGO, 105, 96, 145, 166) && v75 == 0) {
+if (!posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
   if (fBUCKET_FILLED && (said("throw", "water") || said("throw", "water", "dragon") || said("douse", "dragon"))) {
     reset(fBUCKET_FILLED);
     print("The water hits the dragon squarely in the mouth, extinguishing its roaring flames.  No fire!  How mortified and embarrassed the dragon is!  Moving a huge boulder in leaving, the dragon creeps off to sulk.");
@@ -302,7 +302,7 @@ if (!posn(oEGO, 105, 96, 145, 166) && v75 == 0) {
     vSCORE += 7;
     reset(fFILL_BUCKET_POINTS);
     move.obj(oDRAGON, 40, 137, 0, f21);
-    v75 = 2;
+    vDRAGON_STATE = DRAGONSTATE_ABSENT;
   }
   if (fCARRYING_DAGGER && said("throw", "dagger")) {
     ignore.blocks(oDRAGON);
@@ -318,7 +318,7 @@ if (!posn(oEGO, 105, 96, 145, 166) && v75 == 0) {
     draw(oDRAGON);
     stop.motion(oDRAGON);
     stop.cycling(oDRAGON);
-    v75 = 1;
+    vDRAGON_STATE = DRAGONSTATE_DEAD;
   }
 }
 if (f21) {
