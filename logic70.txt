@@ -53,9 +53,9 @@ LABEL130:
     }
   }
 LABEL147:
-  if (fGOAT_IS_HERE) {
+  if (fGOAT_COMPANION) {
     print("The goat was quite hesitant about climbing that huge beanstalk!  You may have lost the goat.");
-    reset(fGOAT_IS_HERE);
+    reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
     vSCORE -= 5;
   }

@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.sound(4);
   load.sound(5);
   set.horizon(50);
-  if (fGOAT_IS_HERE) {
+  if (fGOAT_COMPANION) {
     load.logics(LOGIC_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
@@ -252,7 +252,7 @@ LABEL688:
     new.room(18);
   }
 LABEL697:
-  if (fGOAT_IS_HERE) {
+  if (fGOAT_COMPANION) {
     call(LOGIC_GOAT);
   }
 LABEL705:

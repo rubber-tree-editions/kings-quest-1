@@ -8,7 +8,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  if (fGOAT_IS_HERE) {
+  if (fGOAT_COMPANION) {
     load.logics(LOGIC_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
@@ -63,11 +63,11 @@ LABEL139:
     set(f21);
     sound(1, fSOUND_END_MARKER);
     draw(oSORCERER);
-    if (!fGOAT_IS_HERE) {
+    if (!fGOAT_COMPANION) {
       print("Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!");
       follow.ego(oSORCERER, 7, f156);
     }
-    if (fGOAT_IS_HERE) {
+    if (fGOAT_COMPANION) {
       wander(oSORCERER);
       set(f22);
       print("Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!");
@@ -79,7 +79,7 @@ LABEL186:
     if (said("anyword", "man")) {
       print("There's no sorcerer here.");
     }
-    if (said("throw", "dagger") && fCARRYING_DAGGER && !fGOAT_IS_HERE) {
+    if (said("throw", "dagger") && fCARRYING_DAGGER && !fGOAT_COMPANION) {
       print("OK.  But you just lost your dagger.");
       reset(fCARRYING_DAGGER);
       set(fDAGGER_LOST);
@@ -180,7 +180,7 @@ LABEL462:
     new.room(20);
   }
 LABEL471:
-  if (fGOAT_IS_HERE) {
+  if (fGOAT_COMPANION) {
     call(LOGIC_GOAT);
   }
 LABEL479:

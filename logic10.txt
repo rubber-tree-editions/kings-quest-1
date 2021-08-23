@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   set.horizon(41);
   load.view(67);
-  if (!fGOAT_IS_HERE && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !fGOAT_IS_GONE) {
+  if (!fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !fGOAT_IS_GONE) {
     load.sound(11);
     load.view(14);
     load.view(62);
@@ -29,14 +29,14 @@ if (fROOM_SCRIPT_EXECUTED) {
       }
     }
   LABEL83:
-    if (fGOAT_IS_HERE) {
+    if (fGOAT_COMPANION) {
       set.view(oEGO, 67);
     }
   LABEL92:
     draw(oEGO);
     show.pic();
 }
-if (f20 && !fGOAT_IS_HERE) {
+if (f20 && !fGOAT_COMPANION) {
   if (!f22) {
     set(f22);
     sound(11, f23);
@@ -62,7 +62,7 @@ LABEL145:
     v30 = 0;
   }
 LABEL167:
-  if (f20 && !fGOAT_IS_HERE) {
+  if (f20 && !fGOAT_COMPANION) {
     if (said("hello") || said("hello", "goat") || said("say", "hello") || said("say", "hello", "goat")) {
       print("You get no response from the goat.");
     }
@@ -197,12 +197,12 @@ LABEL526:
   }
 LABEL624:
   if (fINSIDE_GOAT_FENCE && f20) {
-    if (fCARRYING_CARROT && !fGOAT_IS_HERE && !fEGO_INVISIBLE) {
+    if (fCARRYING_CARROT && !fGOAT_COMPANION && !fEGO_INVISIBLE) {
       if (said("show", "carrot") || said("show", "carrot", "goat") || said("show", "goat", "carrot")) {
         if (v70 < 50) {
           if (!f151) {
             print("When you tempt the old goat with the carrot, he starts to follow you.");
-            set(fGOAT_IS_HERE);
+            set(fGOAT_COMPANION);
             erase(oGOAT);
             set.view(oEGO, 67);
             vSCORE += 5;

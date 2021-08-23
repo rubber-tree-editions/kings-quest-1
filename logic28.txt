@@ -18,7 +18,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     vWITCH_STATE = WITCHSTATE_AWAY_FROM_HOME;
   }
   LABEL42:
-    if (fGOAT_IS_HERE) {
+    if (fGOAT_COMPANION) {
       load.logics(LOGIC_GOAT);
     }
   LABEL50:
@@ -187,7 +187,7 @@ LABEL592:
     new.room(21);
   }
 LABEL601:
-  if (fGOAT_IS_HERE) {
+  if (fGOAT_COMPANION) {
     call(LOGIC_GOAT);
   }
 LABEL609:

@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   load.logics(LOGIC_SWIMMING);
   call(LOGIC_SWIMMING);
-  if (fGOAT_IS_HERE) {
+  if (fGOAT_COMPANION) {
     load.logics(LOGIC_GOAT);
   }
   LABEL48:
@@ -153,7 +153,7 @@ LABEL453:
     new.room(31);
   }
 LABEL462:
-  if (fGOAT_IS_HERE) {
+  if (fGOAT_COMPANION) {
     call(LOGIC_GOAT);
   }
 LABEL470:

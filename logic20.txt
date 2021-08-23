@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.horizon(53);
   load.logics(LOGIC_SWIMMING);
   call(LOGIC_SWIMMING);
-  if (fGOAT_IS_HERE) {
+  if (fGOAT_COMPANION) {
     load.logics(LOGIC_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
@@ -99,7 +99,7 @@ LABEL303:
   if (vEGO_EDGE_CODE != 0) {
     if (f66) {
       reset(f66);
-      reset(fGOAT_IS_HERE);
+      reset(fGOAT_COMPANION);
       set(fGOAT_IS_GONE);
     }
   }
@@ -120,7 +120,7 @@ LABEL350:
     new.room(13);
   }
 LABEL359:
-  if (fGOAT_IS_HERE) {
+  if (fGOAT_COMPANION) {
     call(LOGIC_GOAT);
   }
 LABEL367:

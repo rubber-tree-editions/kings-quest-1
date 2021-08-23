@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(42);
-  if (fGOAT_IS_HERE) {
+  if (fGOAT_COMPANION) {
     load.logics(LOGIC_GOAT);
   }
   load.logics(LOGIC_SWIMMING);
@@ -109,7 +109,7 @@ LABEL267:
     print("As you approach the bridge, a mean, ugly troll appears.  He will not let you cross his bridge.");
   }
 LABEL303:
-  if (f21 && fGOAT_IS_HERE && !f26) {
+  if (f21 && fGOAT_COMPANION && !f26) {
     distance(oEGO, oGOAT, v31);
     if (v31 > 25) {
       reposition.to(oGOAT, 98, 90);
@@ -132,7 +132,7 @@ LABEL363:
     print("The old goat seeing the troll, the archenemy of all goats, charges the troll and butts him into oblivion!  The bridge is now yours.");
     set(f150);
     reset(f21);
-    reset(fGOAT_IS_HERE);
+    reset(fGOAT_COMPANION);
     erase(oTROLL);
     set(fGOAT_IS_GONE);
     get.posn(oGOAT, v60, v61);
@@ -151,7 +151,7 @@ LABEL419:
     erase(oGOAT);
   }
 LABEL429:
-  if (f21 && !fGOAT_IS_HERE) {
+  if (f21 && !fGOAT_COMPANION) {
     if (said("examine", "troll")) {
       if (posn(oEGO, 78, 90, 148, 166)) {
         print("This troll is big, strong, and mean-looking.  Don't mess with this troll!");
@@ -367,8 +367,8 @@ LABEL1211:
   if (vEGO_EDGE_CODE != 0) {
     observe.blocks(oEGO);
     reset(f68);
-    if (f21 && fGOAT_IS_HERE) {
-      reset(fGOAT_IS_HERE);
+    if (f21 && fGOAT_COMPANION) {
+      reset(fGOAT_COMPANION);
       set(f150);
       set(fGOAT_IS_GONE);
     }
@@ -391,7 +391,7 @@ LABEL1264:
   }
 LABEL1273:
   call(LOGIC_SWIMMING);
-  if (fGOAT_IS_HERE) {
+  if (fGOAT_COMPANION) {
     call(LOGIC_GOAT);
   }
 LABEL1283:

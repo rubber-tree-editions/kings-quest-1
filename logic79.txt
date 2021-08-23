@@ -58,8 +58,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (fGOAT_IS_HERE) {
-  reset(fGOAT_IS_HERE);
+if (fGOAT_COMPANION) {
+  reset(fGOAT_COMPANION);
   set(fGOAT_IS_GONE);
   print("As soon as you entered the house the old goat ran away.");
   vSCORE -= 5;

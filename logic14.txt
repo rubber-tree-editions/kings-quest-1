@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.horizon(40);
   load.sound(4);
   load.sound(5);
-  if (fGOAT_IS_HERE) {
+  if (fGOAT_COMPANION) {
     load.logics(LOGIC_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
@@ -100,7 +100,7 @@ LABEL234:
       print("You can't do that when you're invisible.");
       goto(LABEL316);
     }
-    if (fGOAT_IS_HERE) {
+    if (fGOAT_COMPANION) {
       print("The old goat is afraid of heights and refuses to climb the tree.");
       goto(LABEL316);
     }
@@ -132,7 +132,7 @@ LABEL343:
     new.room(3);
   }
 LABEL352:
-  if (fGOAT_IS_HERE) {
+  if (fGOAT_COMPANION) {
     call(LOGIC_GOAT);
   }
 LABEL360:
