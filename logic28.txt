@@ -13,185 +13,166 @@ if (fROOM_SCRIPT_EXECUTED) {
     random(0, 250, v62);
     if (v62 > 125) {
       vWITCH_STATE = WITCHSTATE_AT_HOME;
-      goto(LABEL42);
     }
-    vWITCH_STATE = WITCHSTATE_AWAY_FROM_HOME;
+    else {
+      vWITCH_STATE = WITCHSTATE_AWAY_FROM_HOME;
+    }
   }
-  LABEL42:
-    if (fGOAT_COMPANION) {
-      load.logics(LOGIC_GOAT);
+  if (fGOAT_COMPANION) {
+    load.logics(LOGIC_GOAT);
+  }
+  if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
+    add.to.pic(62, 0, 0, 102, 142, 0, 0);
+  }
+  load.view(23);
+  animate.obj(oDOOR);
+  set.view(oDOOR, 23);
+  set.cel(oDOOR, 0);
+  ignore.blocks(oDOOR);
+  position(oDOOR, 45, 128);
+  load.sound(19);
+  observe.blocks(oEGO);
+  if (vPREV_ROOM_NO == 65) {
+    position(oEGO, 48, 132);
+  }
+  if (vPREV_ROOM_NO == 27) {
+    get.posn(oEGO, v60, v61);
+    if (v61 > 94) {
+      position(oEGO, 1, 155);
     }
-  LABEL50:
-    if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-      add.to.pic(62, 0, 0, 102, 142, 0, 0);
-    }
-  LABEL65:
-    load.view(23);
-    animate.obj(oDOOR);
-    set.view(oDOOR, 23);
-    set.cel(oDOOR, 0);
-    ignore.blocks(oDOOR);
-    position(oDOOR, 45, 128);
-    load.sound(19);
-    observe.blocks(oEGO);
-    if (vPREV_ROOM_NO == 65) {
-      position(oEGO, 48, 132);
-    }
-  LABEL96:
-    if (vPREV_ROOM_NO == 27) {
-      get.posn(oEGO, v60, v61);
-      if (v61 > 94) {
-        position(oEGO, 1, 155);
-      }
-    }
-  LABEL118:
-    if (vPREV_ROOM_NO == 37 && fEGO_ON_WATER) {
-      set.view(oEGO, 0);
-      reset(f98);
-      v94 = 0;
-    }
-  LABEL135:
-    draw(oDOOR);
-    stop.update(oDOOR);
-    draw(oEGO);
-    show.pic();
+  }
+  if (vPREV_ROOM_NO == 37 && fEGO_ON_WATER) {
+    set.view(oEGO, 0);
+    reset(f98);
+    v94 = 0;
+  }
+  draw(oDOOR);
+  stop.update(oDOOR);
+  draw(oEGO);
+  show.pic();
 }
 if (said("examine", "witch")) {
   print("You must be getting nervous!  I see no witch here!");
 }
-LABEL154:
-  if (said("examine", "window") || said("look inside", "window")) {
-    if (posn(oEGO, 66, 120, 92, 134)) {
-      print("The windows are made from translucent, hardened sugar.  It's difficult to see through them.");
-      goto(LABEL189);
-    }
+if (said("examine", "window") || said("look inside", "window")) {
+  if (posn(oEGO, 66, 120, 92, 134)) {
+    print("The windows are made from translucent, hardened sugar.  It's difficult to see through them.");
+  }
+  else {
     print("You can't see much from here.");
   }
-LABEL189:
-  if (said("break", "window")) {
-    if (posn(oEGO, 66, 120, 92, 134)) {
-      print("The windows are hard to break.");
-      goto(LABEL216);
-    }
+}
+if (said("break", "window")) {
+  if (posn(oEGO, 66, 120, 92, 134)) {
+    print("The windows are hard to break.");
+  }
+  else {
     print("You would have to get closer to the windows.");
   }
-LABEL216:
-  if (said("examine", "building")) {
-    if (posn(oEGO, 1, 105, 158, 166)) {
-      print("This is the sweetest little gingerbread house you ever saw.  The walls are cake, the roof is frosting, the chimney looks delicious, and the candy path and cookie fence are unbearably tempting!");
-      goto(LABEL243);
-    }
+}
+if (said("examine", "building")) {
+  if (posn(oEGO, 1, 105, 158, 166)) {
+    print("This is the sweetest little gingerbread house you ever saw.  The walls are cake, the roof is frosting, the chimney looks delicious, and the candy path and cookie fence are unbearably tempting!");
+  }
+  else {
     print("You can't see much from here.");
   }
-LABEL243:
-  if (!posn(oEGO, 20, 120, 110, 135)) {
-    if (said("eat", "building") || said("eat", "candy")) {
-      print("The house looks tempting, but you need to get closer.");
-    }
+}
+if (!posn(oEGO, 20, 120, 110, 135)) {
+  if (said("eat", "building") || said("eat", "candy")) {
+    print("The house looks tempting, but you need to get closer.");
   }
-LABEL274:
-  if (posn(oEGO, 20, 120, 110, 135)) {
-    if (vWITCH_STATE == WITCHSTATE_AWAY_FROM_HOME || vWITCH_STATE == WITCHSTATE_DEAD) {
-      if (said("eat", "building")) {
-        print("Yum!  The house tastes even better than it looks!");
-        if (!fPOINTS_FOR_EATING_GINGERBREAD_HOUSE) {
-          vSCORE += 2;
-          set(fPOINTS_FOR_EATING_GINGERBREAD_HOUSE);
-        }
-      }
-      if (said("eat", "candy")) {
-        print("Yum!  The house tastes even better than it looks!");
+}
+if (posn(oEGO, 20, 120, 110, 135)) {
+  if (vWITCH_STATE == WITCHSTATE_AWAY_FROM_HOME || vWITCH_STATE == WITCHSTATE_DEAD) {
+    if (said("eat", "building")) {
+      print("Yum!  The house tastes even better than it looks!");
+      if (!fPOINTS_FOR_EATING_GINGERBREAD_HOUSE) {
+        vSCORE += 2;
+        set(fPOINTS_FOR_EATING_GINGERBREAD_HOUSE);
       }
     }
-    LABEL332:
-      if (vWITCH_STATE == WITCHSTATE_AT_HOME) {
-        if (said("eat", "building")) {
-          print("As you begin to eat the house, a squeaky voice from somewhere says, \"Nibble, nibble, little mouse.  Who is nibbling at my house?\"");
-          if (!fPOINTS_FOR_EATING_GINGERBREAD_HOUSE) {
-            vSCORE += 2;
-            set(fPOINTS_FOR_EATING_GINGERBREAD_HOUSE);
-          }
-        }
-        if (said("eat", "candy")) {
-          print("As you begin to eat the house, a squeaky voice from somewhere says, \"Nibble, nibble, little mouse.  Who is nibbling at my house?\"");
-        }
+    if (said("eat", "candy")) {
+      print("Yum!  The house tastes even better than it looks!");
+    }
+  }
+  if (vWITCH_STATE == WITCHSTATE_AT_HOME) {
+    if (said("eat", "building")) {
+      print("As you begin to eat the house, a squeaky voice from somewhere says, \"Nibble, nibble, little mouse.  Who is nibbling at my house?\"");
+      if (!fPOINTS_FOR_EATING_GINGERBREAD_HOUSE) {
+        vSCORE += 2;
+        set(fPOINTS_FOR_EATING_GINGERBREAD_HOUSE);
       }
-  }
-LABEL375:
-  if (posn(oEGO, 40, 127, 70, 135)) {
-    if (said("close", "doors")) {
-      print("The door is already closed.");
     }
-    if (said("knock", "doors")) {
-      print("There is no answer from inside the house.");
-    }
-    LABEL409:
-      if (said("open", "doors")) {
-        start.update(oDOOR);
-        sound(19, f148);
-        end.of.loop(oDOOR, f20);
-      }
-  }
-LABEL427:
-  if (!posn(oEGO, 40, 127, 70, 135)) {
-    if (said("open", "doors") || said("close", "doors") || said("knock", "doors")) {
-      print("You will have to move closer to do that.");
+    if (said("eat", "candy")) {
+      print("As you begin to eat the house, a squeaky voice from somewhere says, \"Nibble, nibble, little mouse.  Who is nibbling at my house?\"");
     }
   }
-LABEL464:
-  if (f20) {
-    new.room(65);
+}
+if (posn(oEGO, 40, 127, 70, 135)) {
+  if (said("close", "doors")) {
+    print("The door is already closed.");
   }
-LABEL472:
-  if (said("examine", "doors")) {
-    if (posn(oEGO, 1, 106, 158, 166)) {
-      print("The door is made from graham crackers held together  with chocolate drop nails.");
-      goto(LABEL499);
-    }
-    print("The door is around the corner.");
+  if (said("knock", "doors")) {
+    print("There is no answer from inside the house.");
   }
-LABEL499:
-  if (said("break", "doors")) {
-    if (posn(oEGO, 1, 106, 158, 166)) {
-      print("You don't need to do that; opening the door would suffice.");
-      goto(LABEL526);
-    }
-    print("The door is around the corner.");
+  if (said("open", "doors")) {
+    start.update(oDOOR);
+    sound(19, f148);
+    end.of.loop(oDOOR, f20);
   }
-LABEL526:
-  if (said("examine", "goat pen")) {
-    print("It is made of delicious chocolate chip cookies!");
-  }
-LABEL538:
-  if (said("eat", "goat pen")) {
-    if (posn(oEGO, 1, 95, 134, 159)) {
-      print("Yummy!");
-      goto(LABEL565);
-    }
+}
+if (!posn(oEGO, 40, 127, 70, 135)) {
+  if (said("open", "doors") || said("close", "doors") || said("knock", "doors")) {
     print("You will have to move closer to do that.");
   }
-LABEL565:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(37);
+}
+if (f20) {
+  new.room(65);
+}
+if (said("examine", "doors")) {
+  if (posn(oEGO, 1, 106, 158, 166)) {
+    print("The door is made from graham crackers held together  with chocolate drop nails.");
   }
-LABEL574:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(29);
+  else {
+    print("The door is around the corner.");
   }
-LABEL583:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(27);
+}
+if (said("break", "doors")) {
+  if (posn(oEGO, 1, 106, 158, 166)) {
+    print("You don't need to do that; opening the door would suffice.");
   }
-LABEL592:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(21);
+  else {
+    print("The door is around the corner.");
   }
-LABEL601:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
+}
+if (said("examine", "goat pen")) {
+  print("It is made of delicious chocolate chip cookies!");
+}
+if (said("eat", "goat pen")) {
+  if (posn(oEGO, 1, 95, 134, 159)) {
+    print("Yummy!");
   }
-LABEL609:
-  return;
+  else {
+    print("You will have to move closer to do that.");
+  }
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(37);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(29);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(27);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(21);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+return;
 
 LOGIC__FOOTER
 
