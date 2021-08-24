@@ -18,227 +18,195 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 95, 72, 0, 0);
   }
-  LABEL39:
-    load.view(107);
-    load.view(97);
-    animate.obj(oGATOR1);
-    animate.obj(oGATOR2);
-    animate.obj(oBANNERS);
-    set.view(oGATOR1, 107);
-    set.view(oGATOR2, 107);
-    set.view(oBANNERS, 97);
-    position(oGATOR1, 121, 161);
-    position(oGATOR2, 73, 166);
-    ignore.horizon(oBANNERS);
-    position(oBANNERS, 5, 17);
-    set.priority(oBANNERS, 15);
-    set(f68);
-    object.on.water(oGATOR1);
-    object.on.water(oGATOR2);
-    ignore.blocks(oEGO);
-    draw(oGATOR1);
-    draw(oGATOR2);
-    draw(oBANNERS);
-    if (vPREV_ROOM_NO == 0 || vPREV_ROOM_NO == 83) {
-      position(oEGO, 110, 100);
+  load.view(107);
+  load.view(97);
+  animate.obj(oGATOR1);
+  animate.obj(oGATOR2);
+  animate.obj(oBANNERS);
+  set.view(oGATOR1, 107);
+  set.view(oGATOR2, 107);
+  set.view(oBANNERS, 97);
+  position(oGATOR1, 121, 161);
+  position(oGATOR2, 73, 166);
+  ignore.horizon(oBANNERS);
+  position(oBANNERS, 5, 17);
+  set.priority(oBANNERS, 15);
+  set(f68);
+  object.on.water(oGATOR1);
+  object.on.water(oGATOR2);
+  ignore.blocks(oEGO);
+  draw(oGATOR1);
+  draw(oGATOR2);
+  draw(oBANNERS);
+  if (vPREV_ROOM_NO == 0 || vPREV_ROOM_NO == 83) {
+    position(oEGO, 110, 100);
+  }
+  wander(oGATOR1);
+  wander(oGATOR2);
+  if (vPREV_ROOM_NO == 8) {
+    get.posn(oEGO, v60, v61);
+    if (v61 > 150) {
+      position(oEGO, 148, 150);
     }
-  LABEL105:
-    wander(oGATOR1);
-    wander(oGATOR2);
-    if (vPREV_ROOM_NO == 8) {
-      get.posn(oEGO, v60, v61);
-      if (v61 > 150) {
-        position(oEGO, 148, 150);
-      }
-    }
-  LABEL131:
-    draw(oEGO);
-    call(LOGIC_SWIMMING);
-    if (vPREV_ROOM_NO == 83) {
-      submit.menu();
-    }
-  LABEL143:
-    show.pic();
-    status.line.on();
-    accept.input();
+  }
+  draw(oEGO);
+  call(LOGIC_SWIMMING);
+  if (vPREV_ROOM_NO == 83) {
+    submit.menu();
+  }
+  show.pic();
+  status.line.on();
+  accept.input();
 }
 if (said("pet", "alligators")) {
   print("What!  Are you crazy?");
 }
-LABEL158:
-  if (said("examine", "bridge")) {
-    print("It is a very small,  wooden barrel bridge.");
+if (said("examine", "bridge")) {
+  print("It is a very small,  wooden barrel bridge.");
+}
+if (said("examine", "flags")) {
+  print("King Edward's banners are waving in the strong breeze.");
+}
+if (said("examine", "building")) {
+  print("This is the castle of King Edward the Benevolent.");
+}
+if (said("examine", "moat")) {
+  print("It looks deep and dangerous.  You can see alligators  floating in the water.");
+}
+if (said("examine", "water")) {
+  print("The water in the moat is not conducive to swimming.");
+}
+if (said("examine", "flowers")) {
+  print("They are absolutely gorgeous!");
+}
+if (said("get", "flowers") || said("steal", "flowers")) {
+  print("King Edward does not allow anyone to take his flowers.");
+}
+if (said("examine", "alligators")) {
+  print("The alligators are swimming in the moat.");
+}
+if (said("drink", "water") && !fBUCKET_FILLED && !f116) {
+  if (posn(oEGO, 0, 146, 159, 167) || posn(oEGO, 87, 110, 117, 145)) {
+    print("There are alligators in this water.  I don't think you want to try drinking it.");
   }
-LABEL170:
-  if (said("examine", "flags")) {
-    print("King Edward's banners are waving in the strong breeze.");
-  }
-LABEL182:
-  if (said("examine", "building")) {
-    print("This is the castle of King Edward the Benevolent.");
-  }
-LABEL194:
-  if (said("examine", "moat")) {
-    print("It looks deep and dangerous.  You can see alligators  floating in the water.");
-  }
-LABEL206:
-  if (said("examine", "water")) {
-    print("The water in the moat is not conducive to swimming.");
-  }
-LABEL218:
-  if (said("examine", "flowers")) {
-    print("They are absolutely gorgeous!");
-  }
-LABEL230:
-  if (said("get", "flowers") || said("steal", "flowers")) {
-    print("King Edward does not allow anyone to take his flowers.");
-  }
-LABEL250:
-  if (said("examine", "alligators")) {
-    print("The alligators are swimming in the moat.");
-  }
-LABEL262:
-  if (said("drink", "water") && !fBUCKET_FILLED && !f116) {
-    if (posn(oEGO, 0, 146, 159, 167) || posn(oEGO, 87, 110, 117, 145)) {
-      print("There are alligators in this water.  I don't think you want to try drinking it.");
-      goto(LABEL303);
-    }
+  else {
     print("There is water nearby.");
   }
-LABEL303:
-  if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
-    if (said("get", "water")) {
-      if (posn(oEGO, 0, 146, 159, 167) || posn(oEGO, 87, 110, 117, 145)) {
-        reset(f116);
-        print("You fill the bucket with the murky water from the moat.");
-        get("water");
-        set(fBUCKET_FILLED);
-        if (!fFILL_BUCKET_POINTS) {
-          set(fFILL_BUCKET_POINTS);
-          vSCORE += 2;
-        }
-        goto(LABEL365);
+}
+if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
+  if (said("get", "water")) {
+    if (posn(oEGO, 0, 146, 159, 167) || posn(oEGO, 87, 110, 117, 145)) {
+      reset(f116);
+      print("You fill the bucket with the murky water from the moat.");
+      get("water");
+      set(fBUCKET_FILLED);
+      if (!fFILL_BUCKET_POINTS) {
+        set(fFILL_BUCKET_POINTS);
+        vSCORE += 2;
       }
+    }
+    else {
       print("You need to get closer to the water.");
     }
   }
-LABEL365:
-  if (fEGO_TOUCHED_TRIGGER_LINE) {
-    set(fEGO_ON_WATER);
+}
+if (fEGO_TOUCHED_TRIGGER_LINE) {
+  set(fEGO_ON_WATER);
+}
+if (v94 <= 0 && fEGO_ON_WATER) {
+  v76 = 255;
+  ignore.objs(oEGO);
+  if (posn(oEGO, 0, 158, 28, 166)) {
+    v76 = 2;
+    v77 = 166;
   }
-LABEL373:
-  if (v94 <= 0 && fEGO_ON_WATER) {
-    v76 = 255;
-    ignore.objs(oEGO);
-    if (posn(oEGO, 0, 158, 28, 166)) {
-      v76 = 2;
-      v77 = 166;
-    }
-    if (posn(oEGO, 29, 158, 56, 166)) {
-      v76 = 30;
-      v77 = 166;
-    }
-    LABEL420:
-      if (posn(oEGO, 57, 158, 84, 166)) {
-        v76 = 58;
-        v77 = 166;
-      }
-    LABEL436:
-      if (posn(oEGO, 85, 158, 111, 166)) {
-        v76 = 86;
-        v77 = 166;
-      }
-    LABEL452:
-      if (posn(oEGO, 89, 117, 108, 146)) {
-        set.priority(oEGO, 5);
-        v76 = 90;
-        v77 = 133;
-      }
-    LABEL471:
-      if (posn(oEGO, 112, 136, 159, 167)) {
-        v76 = 122;
-        v77 = 166;
-      }
-    LABEL487:
-      if (v76 == 255) {
-        v76 = 0;
-        goto(LABEL512);
-      }
-    LABEL500:
-      get.posn(oEGO, v60, v61);
-      v76 -= v60;
-      v77 -= v61;
-      set(f134);
+  if (posn(oEGO, 29, 158, 56, 166)) {
+    v76 = 30;
+    v77 = 166;
   }
-LABEL512:
-  if (fEGO_ON_WATER) {
-    if (said("get out", "moat") || said("exit", "moat")) {
-      print("The moats slippery sides prevent you from getting out.");
-    }
+  if (posn(oEGO, 57, 158, 84, 166)) {
+    v76 = 58;
+    v77 = 166;
   }
-LABEL538:
-  if (fEGO_ON_WATER && !f23) {
-    program.control();
-    stop.motion(oEGO);
-    follow.ego(oGATOR1, 18, f20);
-    follow.ego(oGATOR2, 18, f21);
-    set(f23);
+  if (posn(oEGO, 85, 158, 111, 166)) {
+    v76 = 86;
+    v77 = 166;
   }
-LABEL560:
-  if (posn(oEGO, 89, 132, 91, 134) && !f22) {
-    print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
-    set(f22);
-    v34 = 45;
+  if (posn(oEGO, 89, 117, 108, 146)) {
+    set.priority(oEGO, 5);
+    v76 = 90;
+    v77 = 133;
   }
-LABEL580:
-  if (f20 && !f22) {
-    print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
-    set(f22);
-    v34 = 45;
+  if (posn(oEGO, 112, 136, 159, 167)) {
+    v76 = 122;
+    v77 = 166;
   }
-LABEL596:
-  if (f21 && !f22) {
-    print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
-    set(f22);
-    v34 = 45;
+  if (v76 == 255) {
+    v76 = 0;
   }
-LABEL612:
-  if (f22 && v34 == 1) {
-    v34 = 0;
-    erase(oEGO);
-    if (f20) {
-      erase(oGATOR1);
-    }
-    if (f21) {
-      erase(oGATOR2);
-    }
-    LABEL642:
-      set(fGAME_OVER);
+  else {
+    get.posn(oEGO, v60, v61);
+    v76 -= v60;
+    v77 -= v61;
+    set(f134);
   }
-LABEL644:
-  v34--;
-  if (vEGO_EDGE_CODE != EDGE_NONE) {
-    reset(f68);
+}
+if (fEGO_ON_WATER) {
+  if (said("get out", "moat") || said("exit", "moat")) {
+    print("The moats slippery sides prevent you from getting out.");
   }
-LABEL656:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(16);
+}
+if (fEGO_ON_WATER && !f23) {
+  program.control();
+  stop.motion(oEGO);
+  follow.ego(oGATOR1, 18, f20);
+  follow.ego(oGATOR2, 18, f21);
+  set(f23);
+}
+if (posn(oEGO, 89, 132, 91, 134) && !f22) {
+  print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
+  set(f22);
+  v34 = 45;
+}
+if (f20 && !f22) {
+  print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
+  set(f22);
+  v34 = 45;
+}
+if (f21 && !f22) {
+  print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
+  set(f22);
+  v34 = 45;
+}
+if (f22 && v34 == 1) {
+  v34 = 0;
+  erase(oEGO);
+  if (f20) {
+    erase(oGATOR1);
   }
-LABEL665:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(8);
+  if (f21) {
+    erase(oGATOR2);
   }
-LABEL674:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(2);
-  }
-LABEL683:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL691:
-  call(LOGIC_SWIMMING);
-  return;
+  set(fGAME_OVER);
+}
+v34--;
+if (vEGO_EDGE_CODE != EDGE_NONE) {
+  reset(f68);
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(16);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(8);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(2);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+call(LOGIC_SWIMMING);
+return;
 
 LOGIC__FOOTER
 
