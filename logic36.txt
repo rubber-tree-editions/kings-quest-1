@@ -44,7 +44,7 @@ LABEL70:
     reset(fEGO_TINY);
   }
 LABEL105:
-  if (said("examine", "doorway") || said("look inside", "doorway")) {
+  if (said("examine", "hole") || said("look inside", "hole")) {
     if (posn(oEGO, 90, 124, 106, 140)) {
       print("When looking in this small hole, you see a faint green glow.");
       goto(LABEL343);
@@ -56,7 +56,7 @@ LABEL105:
     print("You'll have to move closer.");
   }
 LABEL155:
-  if (said("reach", "doorway")) {
+  if (said("reach", "hole")) {
     if (posn(oEGO, 90, 124, 106, 140)) {
       print("Very cautiously, you reach into the hole, and to your dismay, find nothing.");
       goto(LABEL182);
@@ -65,7 +65,7 @@ LABEL155:
   }
 LABEL182:
   if (!fEGO_TINY) {
-    if (said("go", "doorway") || said("go", "doorway")) {
+    if (said("go", "hole") || said("go", "hole")) {
       if (posn(oEGO, 75, 125, 109, 158)) {
         print("You would need to be much smaller to fit through that hole.");
         goto(LABEL224);
@@ -75,7 +75,7 @@ LABEL182:
   }
 LABEL224:
   if (fEGO_TINY) {
-    if (said("go", "doorway") || said("go", "doorway")) {
+    if (said("go", "hole") || said("go", "hole")) {
       print("Go ahead.  Walk right in.");
     }
   }

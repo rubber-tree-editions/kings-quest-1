@@ -47,7 +47,7 @@ if (f20) {
   print("You'll have to keep yourself out of the clouds!");
   set(fGAME_OVER);
 }
-if (said("examine", "trees")) {
+if (said("examine", "tree")) {
   print("These are very unusual looking trees.");
 }
 else if (said("examine", "anyword")) {

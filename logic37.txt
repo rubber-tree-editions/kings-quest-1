@@ -47,7 +47,7 @@ if (said("examine", "lake")) {
   print("This lake looks refreshing, but a little swampy.");
 }
 LABEL129:
-  if (said("examine", "trees")) {
+  if (said("examine", "tree")) {
     print("This is a very interesting tree, growing in the middle of the lake.");
   }
 LABEL141:

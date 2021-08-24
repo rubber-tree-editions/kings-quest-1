@@ -47,7 +47,7 @@ if (!f20 && !f22 && vPREV_ROOM_NO == 48) {
   set(f22);
 }
 LABEL112:
-  if (said("examine", "doorway")) {
+  if (said("examine", "hole")) {
     print("The warm sunlight falls through the hole in the ceiling.  Unfortunately, you can't reach it.");
   }
 LABEL124:

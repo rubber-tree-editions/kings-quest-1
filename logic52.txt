@@ -83,7 +83,7 @@ if (said("get", "bottle")) {
 if (said("examine", "well")) {
   print("You are at the bottom of th well.  Through the plants you spy what seems to be a hole in the side of the well.");
 }
-if (said("examine", "doorway")) {
+if (said("examine", "hole")) {
   if (posn(oEGO, 1, 75, 65, 166)) {
     print("It is very difficult to tell where the hole might lead.");
   }

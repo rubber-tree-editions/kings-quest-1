@@ -87,7 +87,7 @@ LABEL191:
     reset(f209);
   }
 LABEL209:
-  if (said("examine", "doorway") || said("look inside", "doorway")) {
+  if (said("examine", "hole") || said("look inside", "hole")) {
     if (posn(oEGO, 55, 105, 100, 142)) {
       print("In the depths of the large hole you seem to sense a faint, green glow.");
       goto(LABEL244);

@@ -308,24 +308,24 @@ if (fCARRYING_CARROT) {
   }
 }
 if (fCARRYING_GOLD_WALNUT) {
-  if (said("open", "golden walnut") || said("crack", "golden walnut")) {
+  if (said("open", "walnut") || said("crack", "walnut")) {
     print("You have already opened the walnut.");
   }
-  if (said("eat", "golden walnut")) {
+  if (said("eat", "walnut")) {
     print("Don't do that!  This walnut is not edible since it is pure gold.");
   }
-  if (said("examine", "golden walnut")) {
+  if (said("examine", "walnut")) {
     show.obj(INV_GOLDEN_WALNUT);
   }
 }
 if (fCARRYING_WALNUT) {
-  if (said("eat", "golden walnut")) {
+  if (said("eat", "walnut")) {
     print("Ouch!  It would be much easier if you opened the walnut first.");
   }
-  if (said("examine", "golden walnut")) {
+  if (said("examine", "walnut")) {
     show.obj(INV_WALNUT);
   }
-  if (said("open", "golden walnut") || said("crack", "golden walnut")) {
+  if (said("open", "walnut") || said("crack", "walnut")) {
     if (vROOM_NO == 30) {
       sound(14, f148);
     }
@@ -395,13 +395,13 @@ if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
   }
 }
 if (fCARRYING_MUSHROOM) {
-  if (said("get", "toadstools")) {
+  if (said("get", "mushroom")) {
     print("You already have it.");
   }
-  if (said("examine", "toadstools")) {
+  if (said("examine", "mushroom")) {
     show.obj(INV_MUSHROOM);
   }
-  if (said("eat", "toadstools")) {
+  if (said("eat", "mushroom")) {
     if (fEGO_INVISIBLE) {
       print("You try, but being invisible makes it impossible.");
     }

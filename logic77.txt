@@ -197,7 +197,7 @@ if (fDANCING_LEPRECHAUNS) {
 }
 if (!f187) {
   if (!f20) {
-    if (said("examine", "king edward") || said("examine", "king edward", "leprechauns") || said("examine", "leprechauns", "king edward")) {
+    if (said("examine", "king") || said("examine", "king", "leprechauns") || said("examine", "leprechauns", "king")) {
       if (!fSHIELD_TAKEN) {
         print("The King of the leprechauns is sitting on the stone throne. The magic shield is next to the throne.");
       }
@@ -207,16 +207,16 @@ if (!f187) {
     }
   }
   if (f20) {
-    if (said("examine", "king edward") || said("examine", "king edward", "leprechauns") || said("examine", "leprechauns", "king edward")) {
+    if (said("examine", "king") || said("examine", "king", "leprechauns") || said("examine", "leprechauns", "king")) {
       print("The King is leaving.");
     }
   }
-  if (said("talk", "king edward") || said("hello") || said("say", "hello")) {
+  if (said("talk", "king") || said("hello") || said("say", "hello")) {
     print("The leprechaun King ignores your words.");
   }
 }
 if (f187) {
-  if (said("anyword", "king edward")) {
+  if (said("anyword", "king")) {
     print("The King of the leprechauns is no longer here.");
   }
 }

@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (said("examine", "stairway") || said("examine", "room")) {
   print("The stairs descend into the lower reaches of the mountain.");
 }
-if (said("examine", "doorway")) {
+if (said("examine", "opening")) {
   print("You can see sky, light, and smell clouds through the opening.");
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !f21) {

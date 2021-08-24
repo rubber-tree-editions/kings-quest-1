@@ -14,7 +14,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (said("examine", "room") || said("examine", "clouds")) {
   print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
 }
-if (said("examine", "trees") || said("examine", "flowers")) {
+if (said("examine", "tree") || said("examine", "flowers")) {
   print("This is very strange vegetation.");
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {

@@ -60,7 +60,7 @@ if (vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     print("It is a rather large, vacant cave.");
   }
 }
-if (said("examine", "doorway")) {
+if (said("examine", "opening")) {
   if (posn(oEGO, 0, 0, 80, 167)) {
     print("Looking out the cave opening, you are able to admire the beautiful scenery outside.");
   }

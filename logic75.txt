@@ -161,7 +161,7 @@ LABEL241:
         print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
       }
     LABEL571:
-      if (said("give", "golden walnut") || said("give", "rat", "golden walnut") || said("give", "golden walnut", "rat")) {
+      if (said("give", "walnut") || said("give", "rat", "walnut") || said("give", "walnut", "rat")) {
         if (fCARRYING_WALNUT) {
           if (v70 < 35) {
             print("The rat doesn't want an ordinary walnut.");

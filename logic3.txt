@@ -45,7 +45,7 @@ else {
   observe.blocks(oEGO);
 }
 if (!fSAID_ACCEPTED_USER_INPUT) {
-  if (said("examine", "trees")) {
+  if (said("examine", "tree")) {
     print("There are numerous white birch trees reaching to the sky.");
   }
   distance(oEGO, oROCK, v62);
@@ -104,7 +104,7 @@ if (said("shove", "rocks")) {
     print("After moving that rock once, even thinking about it should make you tired.");
   }
 }
-if (said("examine", "doorway") || said("look inside", "doorway")) {
+if (said("examine", "hole") || said("look inside", "hole")) {
   distance(oEGO, oHOLE, v70);
   if (fMOVED_ROCK && v70 < 15) {
     if (!fTAKEN_DAGGER) {

@@ -75,7 +75,7 @@ if (said("examine", "building") || said("examine", "room")) {
     print("The cottage is run-down and sparsely furnished.");
   }
 }
-if (said("examine", "doorway") || said("examine", "floor")) {
+if (said("examine", "hole") || said("examine", "floor")) {
   print("This family is so poor, they can't even repair the floor.");
 }
 if (said("examine", "man")) {
@@ -210,7 +210,7 @@ if (fCARRYING_GOLDEN_EGG && said("give", "golden egg")) {
   drop("gold egg");
   vSCORE -= 6;
 }
-if (fCARRYING_GOLD_WALNUT && said("give", "golden walnut")) {
+if (fCARRYING_GOLD_WALNUT && said("give", "walnut")) {
   print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
   if (!f24) {
     set(f24);

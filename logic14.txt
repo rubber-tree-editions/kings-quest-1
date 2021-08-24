@@ -87,7 +87,7 @@ LABEL189:
     player.control();
   }
 LABEL207:
-  if (said("examine", "trees")) {
+  if (said("examine", "tree")) {
     if (posn(oEGO, 45, 125, 159, 167)) {
       print("This is a very large oak tree with branches stretching to the sky.");
       goto(LABEL234);
@@ -95,7 +95,7 @@ LABEL207:
     print("This is a very pretty maple tree.");
   }
 LABEL234:
-  if (said("climb", "trees") || said("climb", "oak", "trees") || said("climb", "oak")) {
+  if (said("climb", "tree") || said("climb", "oak", "tree") || said("climb", "oak")) {
     if (fEGO_INVISIBLE) {
       print("You can't do that when you're invisible.");
       goto(LABEL316);

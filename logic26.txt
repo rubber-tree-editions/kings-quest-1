@@ -31,7 +31,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oEGO);
     show.pic();
 }
-if (said("examine", "doorway") || said("look inside", "doorway") || said("look inside", "stumps")) {
+if (said("examine", "hole") || said("look inside", "hole") || said("look inside", "stumps")) {
   if (posn(oEGO, 66, 134, 159, 167)) {
     print("It is just a hole in an empty, old stump.");
     goto(LABEL110);

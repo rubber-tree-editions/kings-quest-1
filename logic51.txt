@@ -168,7 +168,7 @@ if (said("shove", "rocks") || said("shove", "rocks")) {
   print("This boulder is far too heavy to move.");
 }
 if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
-  if (said("examine", "doorway") || said("look inside", "doorway")) {
+  if (said("examine", "hole") || said("look inside", "hole")) {
     print("A strange watery light issues from the hole.");
   }
   if (said("talk", "dragon") || said("hello") || said("say", "hello")) {
@@ -176,7 +176,7 @@ if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
   }
 }
 if (vDRAGON_STATE != DRAGONSTATE_NORMAL) {
-  if (said("examine", "doorway") || said("look inside", "doorway")) {
+  if (said("examine", "hole") || said("look inside", "hole")) {
     if (posn(oEGO, 1, 1, 75, 166)) {
       print("The hole seems to lead further into the cave.");
     }

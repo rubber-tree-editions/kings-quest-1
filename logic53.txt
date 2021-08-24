@@ -32,7 +32,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
 }
 if (f26) {
-  if (said("examine", "king edward")) {
+  if (said("examine", "king")) {
     print("You are the only King here!");
   }
 }
@@ -99,7 +99,7 @@ if (v30 > 0) {
       cycle.time(oKING, v32);
       move.obj(oKING, 55, 95, 0, f148);
       print("As you approach the throne, the King himself rises to commend  you for a job well done.");
-      if (said("examine", "king edward")) {
+      if (said("examine", "king")) {
         print("The King is walking towards you to commend you.");
       }
     }
@@ -109,13 +109,13 @@ if (v30 > 0) {
       draw(oKING);
       end.of.loop(oKING, f26);
       print("\"Oh!... Oh!!\"  the King proclaims in pain!");
-      if (said("examine", "king edward")) {
+      if (said("examine", "king")) {
         print("Your heart also aches with pain as you watch the King.");
       }
     }
     if (v30 == 135) {
       print("From the seemingly lifeless King you hear these words:   \"Well done, Sir Graham.  You have been a good and faithful servant.  Your reward is well deserved.  My kingdom is now yours.\"");
-      if (said("examine", "king edward")) {
+      if (said("examine", "king")) {
         print("The King is lying motionless on the ground.");
       }
     }
@@ -152,7 +152,7 @@ else {
   reset(f21);
 }
 if (posn(oEGO, 18, 80, 86, 113)) {
-  if (said("examine", "king edward")) {
+  if (said("examine", "king")) {
     if (v30 <= 0 && vTREASURE_COUNT != 3 && !f126) {
       print("King Edward the Benevolent is a very wise, but elderly monarch.  His frail body is almost lost in the large throne.");
     }
@@ -163,7 +163,7 @@ if (posn(oEGO, 18, 80, 86, 113)) {
   if (said("examine", "throne")) {
     print("The King's throne is made of solid gold, accented with rubies.  It will be yours if you complete your quest.");
   }
-  if (said("bow", "king edward") || said("bow")) {
+  if (said("bow", "king") || said("bow")) {
     if (fEGO_INVISIBLE) {
       print("You bow, but you are the only one who knows it.");
     }
@@ -212,7 +212,7 @@ if (posn(oEGO, 18, 80, 86, 113)) {
       print("There is no need to bow again.");
     }
   }
-  if (said("talk", "king edward")) {
+  if (said("talk", "king")) {
     if (fSPOKEN_TO_KING && v30 <= 0 && !f126 && vTREASURE_COUNT != 3) {
       print("Go, Sir Graham!  Go and bring me back these treasures!");
     }
@@ -257,24 +257,24 @@ if (posn(oEGO, 18, 80, 86, 113)) {
 }
 if (!posn(oEGO, 60, 85, 86, 113) && !f21) {
   if (v30 <= 0) {
-    if (said("examine", "king edward")) {
+    if (said("examine", "king")) {
       print("You are not close enough to see him clearly.");
     }
     if (said("examine", "throne")) {
       print("King Edward the Benevolent is sitting on the throne, waiting for you.");
     }
-    if (said("bow", "king edward") || said("bow")) {
+    if (said("bow", "king") || said("bow")) {
       print("It would show more respect if you were closer and in front of King Edward.");
     }
-    if (said("talk", "king edward")) {
+    if (said("talk", "king")) {
       print("It is proper to stand directly in front of, and a few paces back from King Edward when addressing His Eminence.");
     }
   }
 }
-if (said("kneel", "king edward")) {
+if (said("kneel", "king")) {
   print("That's not a bad idea, but the custom in Daventry is to bow.");
 }
-if (said("murder", "king edward")) {
+if (said("murder", "king")) {
   if (v30 <= 0) {
     print("To kill King Edward would mean immediate execution!");
   }

@@ -79,7 +79,7 @@ if (!f21) {
   if (said("give", "golden egg") && fCARRYING_GOLDEN_EGG) {
     print("To what?");
   }
-  if (said("give", "golden walnut")) {
+  if (said("give", "walnut")) {
     if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) {
       print("To what?");
     }
@@ -248,7 +248,7 @@ if (f21 && !fGOAT_COMPANION) {
       }
     }
   }
-  if (said("give", "golden walnut") || said("give", "troll", "golden walnut") || said("give", "golden walnut", "troll")) {
+  if (said("give", "walnut") || said("give", "troll", "walnut") || said("give", "walnut", "troll")) {
     if (fCARRYING_WALNUT) {
       print("The troll doesn't want just a plain walnut.");
     }

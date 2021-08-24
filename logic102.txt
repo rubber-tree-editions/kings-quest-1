@@ -44,13 +44,13 @@ if (!fCARRYING_CARROT && vROOM_NO != 15 && vROOM_NO != 16) {
   }
 }
 if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
-  if (vROOM_NO != 30 && said("get", "golden walnut")) {
+  if (vROOM_NO != 30 && said("get", "walnut")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != 30 && said("examine", "golden walnut")) {
+  if (vROOM_NO != 30 && said("examine", "walnut")) {
     print("You do not have it.");
   }
-  if (said("anyword", "golden walnut") && !said("get", "golden walnut") && !said("examine", "golden walnut")) {
+  if (said("anyword", "walnut") && !said("get", "walnut") && !said("examine", "walnut")) {
     print("You do not have it.");
   }
 }
@@ -69,16 +69,16 @@ if (!fCARRYING_BUCKET) {
   }
 }
 if (!fCARRYING_MUSHROOM && vROOM_NO != 47) {
-  if (vROOM_NO != 47 && said("get", "toadstools")) {
+  if (vROOM_NO != 47 && said("get", "mushroom")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != 47 && said("examine", "toadstools")) {
+  if (vROOM_NO != 47 && said("examine", "mushroom")) {
     print("You do not have it.");
   }
-  if (said("eat", "toadstools")) {
+  if (said("eat", "mushroom")) {
     print("You can't eat the mushroom if you don't have it!");
   }
-  if (said("anyword", "toadstools") && !said("get", "toadstools") && !said("examine", "toadstools") && !said("eat", "toadstools")) {
+  if (said("anyword", "mushroom") && !said("get", "mushroom") && !said("examine", "mushroom") && !said("eat", "mushroom")) {
     print("You do not have it.");
   }
 }
@@ -351,7 +351,7 @@ else if (said("find", "anyword")) {
 if (said("get on", "anyword")) {
   print("Not right now!");
 }
-if (said("talk", "elf") || said("talk", "man") || said("talk", "man") || said("talk", "witch") || said("talk", "wolf") || said("talk", "woman") || said("talk", "bird") || said("talk", "goat") || said("talk", "troll") || said("talk", "man") || said("talk", "dragon") || said("talk", "giant") || said("talk", "rat") || said("talk", "leprechauns") || said("talk", "king edward") || said("talk", "man") || said("talk", "man") || said("talk", "woman")) {
+if (said("talk", "elf") || said("talk", "man") || said("talk", "man") || said("talk", "witch") || said("talk", "wolf") || said("talk", "woman") || said("talk", "bird") || said("talk", "goat") || said("talk", "troll") || said("talk", "man") || said("talk", "dragon") || said("talk", "giant") || said("talk", "rat") || said("talk", "leprechauns") || said("talk", "king") || said("talk", "man") || said("talk", "man") || said("talk", "woman")) {
   print("There is no \"%w2\" here.");
   return;
 }

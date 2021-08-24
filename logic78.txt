@@ -38,10 +38,10 @@ if (v82 == 1 && fEGO_TINY) {
 if (said("examine", "stairway")) {
   print("The stairs are very steep and narrow.");
 }
-if (said("examine", "doorway") || said("look inside", "doorway")) {
+if (said("examine", "hole") || said("look inside", "hole")) {
   print("The small hole leads to the outside world.");
 }
-if (said("go", "doorway") || said("go", "doorway")) {
+if (said("go", "hole") || said("go", "hole")) {
   if (fEGO_TINY) {
     print("Go ahead.  Walk right in.");
   }

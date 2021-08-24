@@ -33,7 +33,7 @@ if (said("examine", "mountains")) {
 if (said("examine", "clouds") || said("examine", "room")) {
   print("You are in the Land of the Clouds.  It is rumored that a giant lives here.");
 }
-if (said("examine", "trees")) {
+if (said("examine", "tree")) {
   print("These are the most unusual looking trees.");
 }
 if (said("examine", "flowers")) {

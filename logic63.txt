@@ -32,7 +32,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (said("examine", "trees")) {
+if (said("examine", "tree")) {
   print("There is a rather large bird's nest here.");
 }
 if (fTAKEN_GOLDEN_EGG) {

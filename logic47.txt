@@ -60,7 +60,7 @@ if (said("examine", "across")) {
   }
 }
 if (!fCARRYING_MUSHROOM && fMUSHROOM_TAKEN) {
-  if (said("examine", "toadstools")) {
+  if (said("examine", "mushroom")) {
     print("There is no mushroom here.");
   }
 }
@@ -68,7 +68,7 @@ if (fMUSHROOM_TAKEN) {
   if (said("examine", "ground")) {
     print("There is nothing of interest around you.");
   }
-  if (said("get", "toadstools")) {
+  if (said("get", "mushroom")) {
     if (fCARRYING_MUSHROOM) {
       print("You already have it.");
     }
@@ -78,7 +78,7 @@ if (fMUSHROOM_TAKEN) {
   }
 }
 if (!fMUSHROOM_TAKEN) {
-  if (said("examine", "toadstools")) {
+  if (said("examine", "mushroom")) {
     if (posn(oEGO, 0, 0, 36, 111) || posn(oEGO, 0, 112, 97, 167)) {
       print("The mushroom is on the far side of the river.");
     }
@@ -100,7 +100,7 @@ if (!fMUSHROOM_TAKEN) {
       print("There is nothing of interest around you.");
     }
   }
-  if (said("get", "toadstools")) {
+  if (said("get", "mushroom")) {
     if (posn(oEGO, 0, 0, 36, 111) || posn(oEGO, 0, 112, 97, 167)) {
       print("The mushroom is on the far side of the river.");
     }

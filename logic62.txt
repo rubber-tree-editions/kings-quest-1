@@ -16,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (said("examine", "room") || said("examine", "clouds")) {
   print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
 }
-if (said("examine", "trees")) {
+if (said("examine", "tree")) {
   if (posn(oEGO, 86, 101, 159, 167)) {
     print("Its trunk has a large hole in the base.");
   }
@@ -24,7 +24,7 @@ if (said("examine", "trees")) {
     print("These are strange looking trees.");
   }
 }
-if (said("examine", "doorway") || said("look inside", "doorway")) {
+if (said("examine", "hole") || said("look inside", "hole")) {
   if (posn(oEGO, 117, 100, 144, 117)) {
     if (!fSLINGSHOT_TAKEN) {
       print("You notice a sling in the hole in the tree.");
