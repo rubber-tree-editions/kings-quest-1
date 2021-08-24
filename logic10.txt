@@ -21,20 +21,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 140, 80, 0, 0);
   }
-  LABEL59:
-    if (vPREV_ROOM_NO == 11 && fINSIDE_GOAT_FENCE) {
-      get.posn(oEGO, v60, v61);
-      if (v61 > 125) {
-        position(oEGO, 150, 128);
-      }
+  if (vPREV_ROOM_NO == 11 && fINSIDE_GOAT_FENCE) {
+    get.posn(oEGO, v60, v61);
+    if (v61 > 125) {
+      position(oEGO, 150, 128);
     }
-  LABEL83:
-    if (fGOAT_COMPANION) {
-      set.view(oEGO, 67);
-    }
-  LABEL92:
-    draw(oEGO);
-    show.pic();
+  }
+  if (fGOAT_COMPANION) {
+    set.view(oEGO, 67);
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (f20 && !fGOAT_COMPANION) {
   if (!f22) {
@@ -46,230 +43,211 @@ if (f20 && !fGOAT_COMPANION) {
     reset(f23);
   }
 }
-LABEL126:
-  if (!f20) {
-    if (said("anyword", "goat")) {
-      print("There is no goat in the immediate area.");
-    }
+if (!f20) {
+  if (said("anyword", "goat")) {
+    print("There is no goat in the immediate area.");
   }
-LABEL145:
-  v30--;
-  if (v30 == 1) {
-    set(f20);
-    position(oGOAT, 140, 80);
-    draw(oGOAT);
-    wander(oGOAT);
-    v30 = 0;
+}
+v30--;
+if (v30 == 1) {
+  set(f20);
+  position(oGOAT, 140, 80);
+  draw(oGOAT);
+  wander(oGOAT);
+  v30 = 0;
+}
+if (f20 && !fGOAT_COMPANION) {
+  if (said("hello") || said("hello", "goat") || said("say", "hello") || said("say", "hello", "goat")) {
+    print("You get no response from the goat.");
   }
-LABEL167:
-  if (f20 && !fGOAT_COMPANION) {
-    if (said("hello") || said("hello", "goat") || said("say", "hello") || said("say", "hello", "goat")) {
-      print("You get no response from the goat.");
-    }
-    if (said("examine", "goat")) {
-      print("The goat is wandering this way and that.");
-    }
-    LABEL220:
-      if (said("talk", "goat")) {
-        print("The goat refuses to listen to your words.");
-      }
-    LABEL232:
-      if (said("call", "goat")) {
-        print("The old goat refuses to listen to you.");
-      }
-    LABEL244:
-      if (said("get", "goat")) {
-        if (fINSIDE_GOAT_FENCE) {
-          print("You can't carry a goat very far.");
-          goto(LABEL267);
-        }
-        print("You cannot do that from outside the fence.");
-      }
-    LABEL267:
-      if (said("feed", "goat")) {
-        print("What do you want to feed the old goat?");
-        set(fSAID_ACCEPTED_USER_INPUT);
-      }
-    LABEL281:
-      if (!fCARRYING_DAGGER) {
-        if (said("murder", "goat")) {
-          print("You have no way to accomplish such a terrible deed.");
-        }
-      }
-    LABEL300:
-      if (fCARRYING_DAGGER) {
-        if (said("murder", "goat")) {
-          if (!fINSIDE_GOAT_FENCE) {
-            print("From here it will be difficult to do such a terrible  thing.");
-            goto(LABEL355);
-          }
-          erase(oGOAT);
-          set.view(oGOAT, 62);
-          draw(oGOAT);
-          v98 = 0;
-          step.size(oGOAT, v98);
-          print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.");
-          drop("dagger");
-          vSCORE -= 5;
-          reset(fCARRYING_DAGGER);
-          set(fDAGGER_LOST);
-          vROOM_YOU_KILLED_THE_GOAT_IN = vROOM_NO;
-        }
-      }
-    LABEL355:
-      if (said("pet", "goat")) {
-        print("You can try, but be careful.");
-      }
-    LABEL367:
-      if (said("get on", "goat")) {
-        if (fINSIDE_GOAT_FENCE) {
-          print("Are you kidding?  The goat would never let you!");
-          goto(LABEL390);
-        }
-        print("You cannot do that from outside the fence.");
-      }
-    LABEL390:
-      if (said("catch", "goat")) {
-        if (fINSIDE_GOAT_FENCE) {
-          print("The goat will not let you catch him.");
-          goto(LABEL413);
-        }
-        print("You cannot do that from outside the fence.");
-      }
+  if (said("examine", "goat")) {
+    print("The goat is wandering this way and that.");
   }
-LABEL413:
-  if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    if (said("examine", "goat")) {
-      print("Lying lifeless on the ground you see a useless dead  goat.");
-    }
-    if (said("get", "goat")) {
-      print("You do not want to carry around a dead goat.");
-    }
+  if (said("talk", "goat")) {
+    print("The goat refuses to listen to your words.");
   }
-LABEL444:
-  if (said("examine", "goat pen")) {
+  if (said("call", "goat")) {
+    print("The old goat refuses to listen to you.");
+  }
+  if (said("get", "goat")) {
     if (fINSIDE_GOAT_FENCE) {
-      print("It is high enough to keep the old goat from jumping over it.");
-      goto(LABEL467);
+      print("You can't carry a goat very far.");
     }
+    else {
+      print("You cannot do that from outside the fence.");
+    }
+  }
+  if (said("feed", "goat")) {
+    print("What do you want to feed the old goat?");
+    set(fSAID_ACCEPTED_USER_INPUT);
+  }
+  if (!fCARRYING_DAGGER) {
+    if (said("murder", "goat")) {
+      print("You have no way to accomplish such a terrible deed.");
+    }
+  }
+  if (fCARRYING_DAGGER) {
+    if (said("murder", "goat")) {
+      if (!fINSIDE_GOAT_FENCE) {
+        print("From here it will be difficult to do such a terrible  thing.");
+      }
+      else {
+        erase(oGOAT);
+        set.view(oGOAT, 62);
+        draw(oGOAT);
+        v98 =/ 0;
+        step.size(oGOAT, v98);
+        print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.");
+        drop("dagger");
+        vSCORE -= 5;
+        reset(fCARRYING_DAGGER);
+        set(fDAGGER_LOST);
+        vROOM_YOU_KILLED_THE_GOAT_IN = vROOM_NO;
+      }
+    }
+  }
+  if (said("pet", "goat")) {
+    print("You can try, but be careful.");
+  }
+  if (said("get on", "goat")) {
+    if (fINSIDE_GOAT_FENCE) {
+      print("Are you kidding?  The goat would never let you!");
+    }
+    else {
+      print("You cannot do that from outside the fence.");
+    }
+  }
+  if (said("catch", "goat")) {
+    if (fINSIDE_GOAT_FENCE) {
+      print("The goat will not let you catch him.");
+    }
+    else {
+      print("You cannot do that from outside the fence.");
+    }
+  }
+}
+if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
+  if (said("examine", "goat")) {
+    print("Lying lifeless on the ground you see a useless dead  goat.");
+  }
+  if (said("get", "goat")) {
+    print("You do not want to carry around a dead goat.");
+  }
+}
+if (said("examine", "goat pen")) {
+  if (fINSIDE_GOAT_FENCE) {
+    print("It is high enough to keep the old goat from jumping over it.");
+  }
+  else {
     print("It is rather high.  Probably the only way to get in is through the gate.");
   }
-LABEL467:
-  if (said("look inside", "goat pen")) {
-    if (f20) {
-      print("You see a grey billy goat inside the pen.");
-      goto(LABEL490);
-    }
+}
+if (said("look inside", "goat pen")) {
+  if (f20) {
+    print("You see a grey billy goat inside the pen.");
+  }
+  else {
     print("This looks like an area in which to keep animals.");
   }
-LABEL490:
-  if (said("jump", "goat pen")) {
-    print("The fence is too high for you to jump over.");
-  }
-LABEL502:
-  if (said("anyword", "gate")) {
-    print("There is no gate right here.");
-  }
-LABEL514:
-  if (said("climb", "goat pen")) {
-    print("There should be a gate around here somewhere.");
-  }
-LABEL526:
-  distance(oEGO, oGOAT, v70);
-  if (fINSIDE_GOAT_FENCE && f20) {
-    if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
-      if (fCARRYING_CARROT) {
-        if (v70 < 25) {
-          print("Goats love carrots!  The old goat quickly devours yours.");
-          vSCORE -= 2;
-          drop("carrot");
-          reset(fCARRYING_CARROT);
-          reset(fPOINTS_FOR_CARROT);
-          goto(LABEL617);
-        }
-        print("You are too far away.");
-        LABEL617:
-          goto(LABEL624);
+}
+if (said("jump", "goat pen")) {
+  print("The fence is too high for you to jump over.");
+}
+if (said("anyword", "gate")) {
+  print("There is no gate right here.");
+}
+if (said("climb", "goat pen")) {
+  print("There should be a gate around here somewhere.");
+}
+distance(oEGO, oGOAT, v70);
+if (fINSIDE_GOAT_FENCE && f20) {
+  if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
+    if (fCARRYING_CARROT) {
+      if (v70 < 25) {
+        print("Goats love carrots!  The old goat quickly devours yours.");
+        vSCORE -= 2;
+        drop("carrot");
+        reset(fCARRYING_CARROT);
+        reset(fPOINTS_FOR_CARROT);
       }
+      else {
+        print("You are too far away.");
+      }
+    }
+    else {
       print("You do not have the carrot.");
       set(fSAID_ACCEPTED_USER_INPUT);
     }
   }
-LABEL624:
-  if (fINSIDE_GOAT_FENCE && f20) {
-    if (fCARRYING_CARROT && !fGOAT_COMPANION && !fEGO_INVISIBLE) {
-      if (said("show", "carrot") || said("show", "carrot", "goat") || said("show", "goat", "carrot")) {
-        if (v70 < 50) {
-          if (!f151) {
-            print("When you tempt the old goat with the carrot, he starts to follow you.");
-            set(fGOAT_COMPANION);
-            erase(oGOAT);
-            set.view(oEGO, 67);
-            vSCORE += 5;
-          }
-          if (f151) {
-            print("The old goat shows some interest in the carrot.");
-          }
-          LABEL706:
-            goto(LABEL711);
+}
+if (fINSIDE_GOAT_FENCE && f20) {
+  if (fCARRYING_CARROT && !fGOAT_COMPANION && !fEGO_INVISIBLE) {
+    if (said("show", "carrot") || said("show", "carrot", "goat") || said("show", "goat", "carrot")) {
+      if (v70 < 50) {
+        if (!f151) {
+          print("When you tempt the old goat with the carrot, he starts to follow you.");
+          set(fGOAT_COMPANION);
+          erase(oGOAT);
+          set.view(oEGO, 67);
+          vSCORE += 5;
         }
+        if (f151) {
+          print("The old goat shows some interest in the carrot.");
+        }
+      }
+      else {
         print("You are too far away.");
       }
     }
   }
-LABEL711:
-  if (!fINSIDE_GOAT_FENCE && f20) {
-    if (!fCARRYING_CARROT) {
-      if (said("anyword", "carrot")) {
-        print("You do not have the carrot.");
-      }
+}
+if (!fINSIDE_GOAT_FENCE && f20) {
+  if (!fCARRYING_CARROT) {
+    if (said("anyword", "carrot")) {
+      print("You do not have the carrot.");
     }
-    if (fCARRYING_CARROT && !fEGO_INVISIBLE) {
-      if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
-        if (v70 < 25) {
-          print("Goats love carrots!  The old goat quickly devours yours.");
-          vSCORE -= 2;
-          drop("carrot");
-          reset(fCARRYING_CARROT);
-          reset(fPOINTS_FOR_CARROT);
-          goto(LABEL821);
-        }
+  }
+  if (fCARRYING_CARROT && !fEGO_INVISIBLE) {
+    if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
+      if (v70 < 25) {
+        print("Goats love carrots!  The old goat quickly devours yours.");
+        vSCORE -= 2;
+        drop("carrot");
+        reset(fCARRYING_CARROT);
+        reset(fPOINTS_FOR_CARROT);
+      }
+      else {
         print("You are too far away.");
       }
-      LABEL821:
-        if (said("show", "carrot") || said("show", "goat", "carrot") || said("show", "carrot", "goat")) {
-          if (v70 < 50) {
-            print("The old goat shows some interest in the carrot.");
-            goto(LABEL863);
-          }
-          print("You are too far away.");
-        }
+    }
+    if (said("show", "carrot") || said("show", "goat", "carrot") || said("show", "carrot", "goat")) {
+      if (v70 < 50) {
+        print("The old goat shows some interest in the carrot.");
+      }
+      else {
+        print("You are too far away.");
+      }
     }
   }
-LABEL863:
-  if (fEGO_INVISIBLE) {
-    if (fCARRYING_CARROT && said("anyword", "carrot")) {
-      print("Since you are invisible, everything you own is invisible. The goat cannot see the carrot.");
-    }
+}
+if (fEGO_INVISIBLE) {
+  if (fCARRYING_CARROT && said("anyword", "carrot")) {
+    print("Since you are invisible, everything you own is invisible. The goat cannot see the carrot.");
   }
-LABEL883:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(23);
-  }
-LABEL892:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(11);
-  }
-LABEL901:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(9);
-  }
-LABEL910:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(7);
-  }
-LABEL919:
-  return;
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(23);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(11);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(9);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(7);
+}
+return;
 
 LOGIC__FOOTER
 
