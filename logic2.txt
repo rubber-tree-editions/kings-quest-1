@@ -139,7 +139,7 @@ if (fGOAT_COMPANION) {
     else {
       print("You cannot reach the door from here.");
     }
-    goto(LABEL986);
+    goto(FINALCHECKS);
   }
 }
 if (f125) {
@@ -155,7 +155,7 @@ if (f125) {
     else {
       print("You cannot reach the door from here.");
     }
-    goto(LABEL986);
+    goto(FINALCHECKS);
   }
 }
 if (said("knock", "doors")) {
@@ -178,7 +178,7 @@ if (!fGOAT_COMPANION && !f125) {
       if (!f193) {
         set(f193);
         vSCORE += 1;
-        goto(LABEL986);
+        goto(FINALCHECKS);
       }
       if (!f206) {
         set(f206);
@@ -297,7 +297,7 @@ if (f22 && v31 < 1) {
   set(fGAME_OVER);
 }
 v31--;
-LABEL986:
+FINALCHECKS:
   if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f68);
   }
