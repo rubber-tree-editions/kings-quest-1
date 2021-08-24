@@ -79,7 +79,7 @@ if (f23) {
       else {
         print("The gnome can't hear you from there.");
       }
-      goto(LABEL898);
+      goto(FINALCHECKS);
     }
   }
   if (!f22) {
@@ -91,7 +91,7 @@ if (f23) {
       else {
         print("The gnome can't hear you from there.");
       }
-      goto(LABEL898);
+      goto(FINALCHECKS);
     }
   }
   if (said("examine", "gnome")) {
@@ -101,28 +101,28 @@ if (f23) {
     else {
       print("You should get a little closer.");
     }
-    goto(LABEL898);
+    goto(FINALCHECKS);
   }
   if (said("murder", "gnome")) {
     print("It would be unwise to kill a gnome.");
-    goto(LABEL898);
+    goto(FINALCHECKS);
   }
 }
 if (f22) {
   if (said("rumplestiltskin") && vGNOME_NAME_GUESSES != 2) {
     print("That is very close but not quite right!");
     vGNOME_NAME_GUESSES++;
-    goto(LABEL898);
+    goto(FINALCHECKS);
   }
   if (said("nikstlitselpmur") && vGNOME_NAME_GUESSES != 2) {
     print("You have the right idea, but your thinking is just a little bit off.");
     vGNOME_NAME_GUESSES++;
-    goto(LABEL898);
+    goto(FINALCHECKS);
   }
   if (said("mikel knight") && vGNOME_NAME_GUESSES != 2) {
     print("What do you think I am, a car?  This also won't get you a raise.  Nice try.");
     vGNOME_NAME_GUESSES++;
-    goto(LABEL898);
+    goto(FINALCHECKS);
   }
   if (said("ifnkovhgroghprm")) {
     erase(oGNOME);
@@ -142,14 +142,14 @@ if (f22) {
     if (vGNOME_NAME_GUESSES == 2) {
       vSCORE += 3;
     }
-    goto(LABEL898);
+    goto(FINALCHECKS);
   }
   if (vGNOME_NAME_GUESSES <= 0) {
     if (said("anyword") || said("anyword", "anyword")) {
       accept.input();
       print("Where did you get that idea?  That's not even close!");
       vGNOME_NAME_GUESSES++;
-      goto(LABEL898);
+      goto(FINALCHECKS);
     }
   }
   if (vGNOME_NAME_GUESSES == 1) {
@@ -158,7 +158,7 @@ if (f22) {
       print("You know that's not right!");
       print("What is your next guess?");
       vGNOME_NAME_GUESSES++;
-      goto(LABEL898);
+      goto(FINALCHECKS);
     }
   }
   if (vGNOME_NAME_GUESSES == 2) {
@@ -173,7 +173,7 @@ if (f22) {
       vGNOME_STATE = GNOMESTATE_LEFT_KEY;
       print("You didn't guess the gnome's name, but he left you a gold key anyway.  Better luck next time!");
       vGNOME_NAME_GUESSES = 3;
-      goto(LABEL898);
+      goto(FINALCHECKS);
     }
   }
 }
@@ -272,7 +272,7 @@ if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
 if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
   print("There is no place to safely get water.");
 }
-LABEL898:
+FINALCHECKS:
   if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(41);
   }
