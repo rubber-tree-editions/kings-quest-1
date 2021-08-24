@@ -146,10 +146,10 @@ if (said("break", "doors")) {
     print("The door is around the corner.");
   }
 }
-if (said("examine", "goat pen")) {
+if (said("examine", "fence")) {
   print("It is made of delicious chocolate chip cookies!");
 }
-if (said("eat", "goat pen")) {
+if (said("eat", "fence")) {
   if (posn(oEGO, 1, 95, 134, 159)) {
     print("Yummy!");
   }

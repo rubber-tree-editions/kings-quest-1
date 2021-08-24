@@ -31,15 +31,15 @@ if (said("examine", "garden") || said("examine", "ground") || said("examine", "p
   print("This is a neat little carrot patch.  The plump carrots  look tempting.");
 }
 LABEL93:
-  if (said("examine", "goat pen")) {
+  if (said("examine", "fence")) {
     print("It is a relatively low, native stone and masonry fence to the right and rear of a garden.");
   }
 LABEL105:
-  if (said("climb", "goat pen")) {
+  if (said("climb", "fence")) {
     print("There is no reason to climb the fence.");
   }
 LABEL117:
-  if (said("jump", "goat pen")) {
+  if (said("jump", "fence")) {
     print("You can go around the fence.");
   }
 LABEL129:
