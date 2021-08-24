@@ -15,83 +15,71 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 110, 110, 0, 0);
   }
-  LABEL37:
-    load.logics(LOGIC_SWIMMING);
-    call(LOGIC_SWIMMING);
-    set(f68);
-    if (vPREV_ROOM_NO == 23) {
-      if (fEGO_ON_WATER) {
-        set.view(oEGO, 0);
-        reset(f98);
-        v94 = 0;
-      }
+  load.logics(LOGIC_SWIMMING);
+  call(LOGIC_SWIMMING);
+  set(f68);
+  if (vPREV_ROOM_NO == 23) {
+    if (fEGO_ON_WATER) {
+      set.view(oEGO, 0);
+      reset(f98);
+      v94 = 0;
     }
-  LABEL64:
-    ignore.blocks(oEGO);
-    draw(oEGO);
-    show.pic();
+  }
+  ignore.blocks(oEGO);
+  draw(oEGO);
+  show.pic();
 }
 if (said("examine", "hole") || said("look inside", "hole") || said("look inside", "stumps")) {
   if (posn(oEGO, 66, 134, 159, 167)) {
     print("It is just a hole in an empty, old stump.");
-    goto(LABEL110);
   }
-  print("You are not close enough.");
+  else {
+    print("You are not close enough.");
+  }
 }
-LABEL110:
-  if (said("examine", "stumps")) {
-    print("It is old and rotted.");
-  }
-LABEL122:
-  if (said("examine", "stream")) {
-    print("The stream appears placid enough, but appearances can be deceiving.");
-  }
-LABEL134:
-  if (said("examine", "anyword")) {
-    print("There is an attractive meadow dotted with trees.");
-  }
-LABEL146:
-  if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
-    if (said("get", "water") || said("drink", "water")) {
-      if (posn(oEGO, 0, 27, 95, 95)) {
-        print("The bank is too steep to allow access to the river's edge.");
-        goto(LABEL190);
-      }
+if (said("examine", "stumps")) {
+  print("It is old and rotted.");
+}
+if (said("examine", "stream")) {
+  print("The stream appears placid enough, but appearances can be deceiving.");
+}
+if (said("examine", "anyword")) {
+  print("There is an attractive meadow dotted with trees.");
+}
+if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
+  if (said("get", "water") || said("drink", "water")) {
+    if (posn(oEGO, 0, 27, 95, 95)) {
+      print("The bank is too steep to allow access to the river's edge.");
+    }
+    else {
       print("You are not close enough to the river.");
     }
   }
-LABEL190:
-  if (fEGO_ON_WATER && !f20) {
-    set(f20);
-    print("This placid looking stream is actually quite dangerous.... the current is stronger than it looks.  You can't keep your head above water.");
-  }
-LABEL203:
-  if (vEGO_EDGE_CODE != EDGE_NONE) {
-    reset(f68);
-  }
-LABEL213:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(39);
-  }
-LABEL222:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(27);
-  }
-LABEL231:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(25);
-  }
-LABEL240:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(23);
-  }
-LABEL249:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL257:
-  call(LOGIC_SWIMMING);
-  return;
+}
+if (fEGO_ON_WATER && !f20) {
+  set(f20);
+  print("This placid looking stream is actually quite dangerous.... the current is stronger than it looks.  You can't keep your head above water.");
+}
+if (vEGO_EDGE_CODE != EDGE_NONE) {
+  reset(f68);
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(39);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(27);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(25);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(23);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+call(LOGIC_SWIMMING);
+return;
 
 LOGIC__FOOTER
 
