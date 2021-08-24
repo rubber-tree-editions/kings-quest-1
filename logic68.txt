@@ -73,7 +73,7 @@ if (f25) {
 if (said("examine", "stairway") || said("examine", "room")) {
   print("The stairs seem to go on forever.");
 }
-if (said("examine", "man")) {
+if (said("examine", "dwarf")) {
   if (f24) {
     print("This is a shy little dwarf.  He is too quick to catch.");
   }
@@ -81,7 +81,7 @@ if (said("examine", "man")) {
     print("There is nobody here but you.");
   }
 }
-if (said("talk", "man") || said("hello") || said("say", "hello")) {
+if (said("talk", "dwarf") || said("hello") || said("say", "hello")) {
   if (f24) {
     print("The dwarf is not here for idle conversion.");
   }

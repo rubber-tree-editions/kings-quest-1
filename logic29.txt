@@ -76,7 +76,7 @@ LABEL139:
   }
 LABEL186:
   if (!f21) {
-    if (said("anyword", "man")) {
+    if (said("anyword", "sorcerer")) {
       print("There's no sorcerer here.");
     }
     if (said("throw", "dagger") && fCARRYING_DAGGER && !fGOAT_COMPANION) {
@@ -89,10 +89,10 @@ LABEL186:
   }
 LABEL231:
   if (f21) {
-    if (said("examine", "man")) {
+    if (said("examine", "sorcerer")) {
       print("This sorcerer exudes mystery and danger.");
     }
-    if (said("talk", "man") || said("hello") || said("say", "hello")) {
+    if (said("talk", "sorcerer") || said("hello") || said("say", "hello")) {
       print("The sorcerer only speaks in the language of the Mystics.");
     }
   }

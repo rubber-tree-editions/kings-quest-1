@@ -78,10 +78,10 @@ if (said("examine", "building") || said("examine", "room")) {
 if (said("examine", "hole") || said("examine", "floor")) {
   print("This family is so poor, they can't even repair the floor.");
 }
-if (said("examine", "man")) {
+if (said("examine", "woodcutter")) {
   print("The woodcutter is thin and dressed in rags.");
 }
-if (said("examine", "woman")) {
+if (said("examine", "wife")) {
   print("The woodcutter's wife is skinny and poorly dressed.");
 }
 if (said("examine", "table")) {
@@ -96,7 +96,7 @@ if (said("examine", "table")) {
   }
 }
 v30--;
-if (said("talk", "man")) {
+if (said("talk", "woodcutter")) {
   print("\"Welcome to my humble abode.\"");
   if (!f20) {
     set(f20);
@@ -104,7 +104,7 @@ if (said("talk", "man")) {
     v30 = 18;
   }
 }
-if (said("talk", "woman")) {
+if (said("talk", "wife")) {
   if (!fGIVEN_BOWL_TO_WOODCUTTER) {
     print("She replies, \"I'd like to offer you something, but we do not even have food for ourselves.\"");
   }
@@ -132,10 +132,10 @@ if (v30 == 1) {
     stop.cycling(oWIFE);
   }
 }
-if (said("help", "man") || said("help", "woman") || said("help", "people")) {
+if (said("help", "woodcutter") || said("help", "wife") || said("help", "people")) {
   print("That would be very nice.  How do you want to help them?");
 }
-if (said("murder", "man") || said("murder", "woman") || said("murder", "people")) {
+if (said("murder", "woodcutter") || said("murder", "wife") || said("murder", "people")) {
   print("What an abominable idea!  You should be ashamed of yourself for even suggesting such a thing!");
   if (!f24) {
     set(f24);
@@ -260,7 +260,7 @@ if (fCARRYING_MAGIC_BEANS && said("give", "magic beans")) {
 }
 if (fCARRYING_BOWL) {
   if (vBOWL_STATE == BOWLSTATE_EMPTY) {
-    if (said("give", "bowl") || said("give", "bowl", "man") || said("give", "man", "bowl") || said("give", "woman", "bowl") || said("give", "bowl", "woman") || said("drop", "bowl", "table")) {
+    if (said("give", "bowl") || said("give", "bowl", "woodcutter") || said("give", "woodcutter", "bowl") || said("give", "wife", "bowl") || said("give", "bowl", "wife") || said("drop", "bowl", "table")) {
       set(fGIVEN_BOWL_TO_WOODCUTTER);
       reset(fCARRYING_BOWL);
       drop("ceramic bowl");
@@ -280,7 +280,7 @@ if (fCARRYING_BOWL) {
     }
   }
   if (vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
-    if (said("give", "bowl") || said("give", "bowl", "man") || said("give", "man", "bowl") || said("give", "woman", "bowl") || said("give", "bowl", "woman") || said("drop", "bowl", "table") || said("give", "stew") || said("give", "stew", "man") || said("give", "man", "stew") || said("give", "woman", "stew") || said("give", "stew", "woman") || said("drop", "stew", "table")) {
+    if (said("give", "bowl") || said("give", "bowl", "woodcutter") || said("give", "woodcutter", "bowl") || said("give", "wife", "bowl") || said("give", "bowl", "wife") || said("drop", "bowl", "table") || said("give", "stew") || said("give", "stew", "woodcutter") || said("give", "woodcutter", "stew") || said("give", "wife", "stew") || said("give", "stew", "wife") || said("drop", "stew", "table")) {
       set(fGIVEN_BOWL_TO_WOODCUTTER);
       reset(fCARRYING_BOWL);
       drop("ceramic bowl");

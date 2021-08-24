@@ -72,7 +72,7 @@ if (f23 && !f24) {
 if (f23) {
   distance(oEGO, oGNOME, v62);
   if (f22) {
-    if (said("talk", "man") || said("hello") || said("say", "hello")) {
+    if (said("talk", "gnome") || said("hello") || said("say", "hello")) {
       if (v62 < 50) {
         print("You still haven't guessed my name!");
       }
@@ -83,7 +83,7 @@ if (f23) {
     }
   }
   if (!f22) {
-    if (said("talk", "man") || said("hello") || said("say", "hello")) {
+    if (said("talk", "gnome") || said("hello") || said("say", "hello")) {
       if (v62 < 50) {
         set(f22);
         print("The old gnome tells you he has something that may be very useful to you.  Your task is to guess his name in three guesses and his gift will be yours.  Good luck!  What is your first guess?");
@@ -94,7 +94,7 @@ if (f23) {
       goto(LABEL898);
     }
   }
-  if (said("examine", "man")) {
+  if (said("examine", "gnome")) {
     if (v62 < 80) {
       print("The gnome is old and bent under the weight of years, but a playful wisdom still brightens his eyes.");
     }
@@ -103,7 +103,7 @@ if (f23) {
     }
     goto(LABEL898);
   }
-  if (said("murder", "man")) {
+  if (said("murder", "gnome")) {
     print("It would be unwise to kill a gnome.");
     goto(LABEL898);
   }
@@ -178,7 +178,7 @@ if (f22) {
   }
 }
 if (!f23) {
-  if (said("anyword", "man")) {
+  if (said("anyword", "gnome")) {
     print("There is no gnome here.");
   }
   if (f20) {

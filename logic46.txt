@@ -69,7 +69,7 @@ LABEL155:
   if (!f21) {
     reset(f145);
     reset(f146);
-    if (said("anyword", "man")) {
+    if (said("anyword", "ogre")) {
       print("There is no ogre here.");
     }
     if (said("throw", "dagger") && fCARRYING_DAGGER) {
@@ -139,10 +139,10 @@ LABEL300:
   }
 LABEL339:
   if (f21) {
-    if (said("examine", "man")) {
+    if (said("examine", "ogre")) {
       print("That is a ferocious looking beast.  Please keep your distance!");
     }
-    if (said("murder", "man")) {
+    if (said("murder", "ogre")) {
       print("Ogres are practically indestructible.");
     }
     LABEL369:
@@ -150,7 +150,7 @@ LABEL339:
         print("At one time these were very pretty trees.");
       }
     LABEL381:
-      if (said("pet", "man")) {
+      if (said("pet", "ogre")) {
         print("Do you really want to try that?");
       }
     LABEL393:
@@ -166,7 +166,7 @@ LABEL339:
         print("You need to be a little closer to smell the flowers.");
       }
     LABEL432:
-      if (said("talk", "man") || said("hello") || said("say", "hello")) {
+      if (said("talk", "ogre") || said("hello") || said("say", "hello")) {
         print("Ogres don't talk, they growl!");
       }
     LABEL456:

@@ -133,20 +133,20 @@ LABEL295:
   }
 LABEL348:
   if (!f21) {
-    if (said("anyword", "man")) {
+    if (said("anyword", "dwarf")) {
       print("There is no dwarf here.");
     }
   }
 LABEL367:
   if (f21) {
-    if (said("examine", "man")) {
+    if (said("examine", "dwarf")) {
       print("Dwarfs are quick, little guys who will try to take your treasure.");
     }
-    if (said("murder", "man")) {
+    if (said("murder", "dwarf")) {
       print("He's too quick for you to catch.");
     }
     LABEL397:
-      if (said("talk", "man") || said("hello") || said("say", "hello") || said("hello", "man")) {
+      if (said("talk", "dwarf") || said("hello") || said("say", "hello") || said("hello", "dwarf")) {
         print("No time to talk to him.  He's in too much of a hurry!");
       }
   }

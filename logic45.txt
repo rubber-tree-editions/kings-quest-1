@@ -27,7 +27,7 @@ LABEL52:
     print("The trees were cut from these stumps long ago.");
   }
 LABEL64:
-  if (said("talk", "man") || said("talk", "woman")) {
+  if (said("talk", "woodcutter") || said("talk", "wife")) {
     if (posn(oEGO, 11, 119, 45, 146)) {
       print("You need to go inside to do that.");
       goto(LABEL99);
