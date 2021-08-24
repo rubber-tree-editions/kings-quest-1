@@ -16,168 +16,152 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 32, 75, 0, 0);
   }
-  LABEL37:
-    load.view(10);
-    animate.obj(oROCK);
-    set.view(oROCK, 10);
-    if (!fMOVED_ROCK) {
-      position(oROCK, 118, 133);
-      goto(LABEL62);
-    }
-  LABEL58:
+  load.view(10);
+  animate.obj(oROCK);
+  set.view(oROCK, 10);
+  if (!fMOVED_ROCK) {
+    position(oROCK, 118, 133);
+  }
+  else {
     position(oROCK, 118, 145);
-  LABEL62:
-    load.view(112);
-    animate.obj(oHOLE);
-    set.view(oHOLE, 112);
-    position(oHOLE, 122, 124);
-    ignore.objs(oHOLE);
-    load.view(114);
-    draw(oROCK);
-    if (fMOVED_ROCK) {
-      draw(oHOLE);
-    }
-  LABEL87:
-    draw(oEGO);
-    show.pic();
+  }
+  load.view(112);
+  animate.obj(oHOLE);
+  set.view(oHOLE, 112);
+  position(oHOLE, 122, 124);
+  ignore.objs(oHOLE);
+  load.view(114);
+  draw(oROCK);
+  if (fMOVED_ROCK) {
+    draw(oHOLE);
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (fMOVED_ROCK) {
   ignore.blocks(oEGO);
-  goto(LABEL103);
 }
-LABEL101:
+else {
   observe.blocks(oEGO);
-LABEL103:
-  if (!fSAID_ACCEPTED_USER_INPUT) {
-    if (said("examine", "trees")) {
-      print("There are numerous white birch trees reaching to the sky.");
-    }
-    distance(oEGO, oROCK, v62);
-    if (said("examine", "rocks")) {
-      if (!fMOVED_ROCK) {
-        if (v62 > 50) {
-          print("There is a rock in the distance.");
-          goto(LABEL157);
-        }
-        print("You see a large, grey rock.");
-        LABEL157:
-          goto(LABEL162);
+}
+if (!fSAID_ACCEPTED_USER_INPUT) {
+  if (said("examine", "trees")) {
+    print("There are numerous white birch trees reaching to the sky.");
+  }
+  distance(oEGO, oROCK, v62);
+  if (said("examine", "rocks")) {
+    if (!fMOVED_ROCK) {
+      if (v62 > 50) {
+        print("There is a rock in the distance.");
       }
+      else {
+        print("You see a large, grey rock.");
+      }
+    }
+    else {
       print("It is a large rock with a hole next to it.");
     }
-    LABEL162:
-      if (said("get", "rocks")) {
-        if (v62 < 20) {
-          print("This rock is far too heavy for you to carry.");
-          goto(LABEL186);
-        }
-        print("You are much too far away to even attempt getting the rock.");
-      }
   }
-LABEL186:
-  if (said("shove", "rocks")) {
-    if (!fMOVED_ROCK && !f20) {
-      if (!posn(oEGO, 115, 114, 133, 133) && !posn(oEGO, 118, 134, 133, 148)) {
-        print("It will be very difficult to move the rock from here.");
-      }
-      if (posn(oEGO, 115, 114, 133, 133)) {
-        draw(oHOLE);
-        stop.update(oHOLE);
-        move.obj(oROCK, 118, 145, 0, fMOVED_ROCK);
-        print("With a heave and a ho, you manage to move the rock... revealing a dark hole underneath it.");
-        vSCORE += 2;
-        set(f20);
-      }
-      LABEL253:
-        if (posn(oEGO, 118, 134, 133, 148)) {
-          ignore.objs(oROCK);
-          draw(oHOLE);
-          stop.update(oHOLE);
-          set(f21);
-          set.priority(oROCK, 15);
-          move.obj(oROCK, 118, 145, 0, fMOVED_ROCK);
-          print("This moving rock rolls downhill and you, unfortunately,  are in the way.");
-          program.control();
-          set(fGAME_OVER);
-          erase(oEGO);
-          set.view(oEGO, 114);
-          position(oEGO, 115, 140);
-          draw(oEGO);
-        }
+  if (said("get", "rocks")) {
+    if (v62 < 20) {
+      print("This rock is far too heavy for you to carry.");
     }
-    LABEL296:
-      if (fMOVED_ROCK) {
-        print("After moving that rock once, even thinking about it should make you tired.");
-      }
+    else {
+      print("You are much too far away to even attempt getting the rock.");
+    }
   }
-LABEL304:
-  if (said("examine", "doorway") || said("look inside", "doorway")) {
-    distance(oEGO, oHOLE, v70);
-    if (fMOVED_ROCK && v70 < 15) {
-      if (!fTAKEN_DAGGER) {
-        print("There is an intricately carved dagger in the hole.");
-        goto(LABEL349);
-      }
+}
+if (said("shove", "rocks")) {
+  if (!fMOVED_ROCK && !f20) {
+    if (!posn(oEGO, 115, 114, 133, 133) && !posn(oEGO, 118, 134, 133, 148)) {
+      print("It will be very difficult to move the rock from here.");
+    }
+    if (posn(oEGO, 115, 114, 133, 133)) {
+      draw(oHOLE);
+      stop.update(oHOLE);
+      move.obj(oROCK, 118, 145, 0, fMOVED_ROCK);
+      print("With a heave and a ho, you manage to move the rock... revealing a dark hole underneath it.");
+      vSCORE += 2;
+      set(f20);
+    }
+    if (posn(oEGO, 118, 134, 133, 148)) {
+      ignore.objs(oROCK);
+      draw(oHOLE);
+      stop.update(oHOLE);
+      set(f21);
+      set.priority(oROCK, 15);
+      move.obj(oROCK, 118, 145, 0, fMOVED_ROCK);
+      print("This moving rock rolls downhill and you, unfortunately,  are in the way.");
+      program.control();
+      set(fGAME_OVER);
+      erase(oEGO);
+      set.view(oEGO, 114);
+      position(oEGO, 115, 140);
+      draw(oEGO);
+    }
+  }
+  if (fMOVED_ROCK) {
+    print("After moving that rock once, even thinking about it should make you tired.");
+  }
+}
+if (said("examine", "doorway") || said("look inside", "doorway")) {
+  distance(oEGO, oHOLE, v70);
+  if (fMOVED_ROCK && v70 < 15) {
+    if (!fTAKEN_DAGGER) {
+      print("There is an intricately carved dagger in the hole.");
+    }
+    else {
       print("There is nothing in this hole but dirt.");
     }
-    LABEL349:
-      if (fMOVED_ROCK && v70 > 14) {
-        print("You are too far from the hole to see in it.");
-      }
-    LABEL360:
-      if (!fMOVED_ROCK) {
-        print("There is no hole here.");
-      }
   }
-LABEL369:
-  if (said("examine", "dagger")) {
-    if (!fTAKEN_DAGGER && fMOVED_ROCK) {
-      print("You could see it better if you picked it up.");
-    }
-    if (!fMOVED_ROCK) {
-      print("You do not have a dagger to look at.");
-    }
+  if (fMOVED_ROCK && v70 > 14) {
+    print("You are too far from the hole to see in it.");
   }
-LABEL399:
-  if (said("get", "dagger")) {
-    if (fMOVED_ROCK && !fTAKEN_DAGGER) {
-      if (posn(oEGO, 112, 108, 134, 133)) {
-        print("You reach into the hole and grasp the dagger, being careful not to cut yourself.");
-        get("dagger");
-        vSCORE += 5;
-        set(fTAKEN_DAGGER);
-        set(fCARRYING_DAGGER);
-        goto(LABEL444);
-      }
+  if (!fMOVED_ROCK) {
+    print("There is no hole here.");
+  }
+}
+if (said("examine", "dagger")) {
+  if (!fTAKEN_DAGGER && fMOVED_ROCK) {
+    print("You could see it better if you picked it up.");
+  }
+  if (!fMOVED_ROCK) {
+    print("You do not have a dagger to look at.");
+  }
+}
+if (said("get", "dagger")) {
+  if (fMOVED_ROCK && !fTAKEN_DAGGER) {
+    if (posn(oEGO, 112, 108, 134, 133)) {
+      print("You reach into the hole and grasp the dagger, being careful not to cut yourself.");
+      get("dagger");
+      vSCORE += 5;
+      set(fTAKEN_DAGGER);
+      set(fCARRYING_DAGGER);
+    }
+    else {
       print("You are to far away to get the dagger.");
     }
-    LABEL444:
-      if (!fMOVED_ROCK && !fTAKEN_DAGGER) {
-        print("There is no dagger here.");
-      }
   }
-LABEL456:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(14);
+  if (!fMOVED_ROCK && !fTAKEN_DAGGER) {
+    print("There is no dagger here.");
   }
-LABEL465:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(2);
-  }
-LABEL474:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(4);
-  }
-LABEL483:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(46);
-  }
-LABEL492:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL500:
-  return;
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(14);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(2);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(4);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(46);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+return;
 
 LOGIC__FOOTER
 
