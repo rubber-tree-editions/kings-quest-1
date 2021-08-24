@@ -26,9 +26,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.sound(1);
     load.sound(10);
   }
-  LABEL57:
-    draw(oEGO);
-    show.pic();
+  draw(oEGO);
+  show.pic();
 }
 if (f21 && fSOUND_END_MARKER) {
   if (!f31) {
@@ -40,364 +39,329 @@ if (f21 && fSOUND_END_MARKER) {
     reset(f32);
   }
 }
-LABEL90:
-  if (f21) {
-    if (posn(oEGO, 52, 59, 57, 79)) {
-      observe.blocks(oEGO);
-      goto(LABEL113);
-    }
+if (f21) {
+  if (posn(oEGO, 52, 59, 57, 79)) {
+    observe.blocks(oEGO);
+  }
+  else {
     ignore.blocks(oEGO);
   }
-LABEL113:
-  if (!f21) {
-    ignore.blocks(oEGO);
+}
+if (!f21) {
+  ignore.blocks(oEGO);
+}
+if (f21 && !f25) {
+  set(f25);
+  follow.ego(oTROLL, 1, f22);
+}
+if (!f21) {
+  if (said("anyword", "troll")) {
+    print("I don't see a troll.");
   }
-LABEL122:
-  if (f21 && !f25) {
-    set(f25);
-    follow.ego(oTROLL, 1, f22);
+  if (said("throw", "dagger") || said("murder", "goat")) {
+    if (fCARRYING_DAGGER) {
+      print("You throw the dagger and it lands in the stream, lost forever.");
+      drop("dagger");
+      reset(fCARRYING_DAGGER);
+      set(fDAGGER_LOST);
+      vSCORE -= 5;
+    }
   }
-LABEL137:
-  if (!f21) {
-    if (said("anyword", "troll")) {
-      print("I don't see a troll.");
-    }
-    if (said("throw", "dagger") || said("murder", "goat")) {
-      if (fCARRYING_DAGGER) {
-        print("You throw the dagger and it lands in the stream, lost forever.");
-        drop("dagger");
-        reset(fCARRYING_DAGGER);
-        set(fDAGGER_LOST);
-        vSCORE -= 5;
-      }
-    }
-    LABEL191:
-      if (said("use", "dagger") && fCARRYING_DAGGER) {
-        print("How?");
-      }
-    LABEL205:
-      if (said("give", "treasure")) {
-        print("To what?");
-      }
-    LABEL217:
-      if (said("give", "pouch of diamonds") && fCARRYING_DIAMONDS) {
-        print("To what?");
-      }
-    LABEL231:
-      if (said("give", "golden egg") && fCARRYING_GOLDEN_EGG) {
-        print("To what?");
-      }
-    LABEL245:
-      if (said("give", "golden walnut")) {
-        if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) {
-          print("To what?");
-        }
-      }
+  if (said("use", "dagger") && fCARRYING_DAGGER) {
+    print("How?");
   }
-LABEL267:
-  if (f20 && fEGO_TOUCHED_TRIGGER_LINE) {
-    reset(f20);
-    set(f21);
-    v30 = 2;
-    step.size(oTROLL, v30);
-    sound(1, fSOUND_END_MARKER);
-    draw(oTROLL);
-    if (fEGO_INVISIBLE) {
-      print("As you start to cross the bridge, a wretched troll appears.  Even though you are invisible, he will not let you cross his bridge.");
-      goto(LABEL303);
+  if (said("give", "treasure")) {
+    print("To what?");
+  }
+  if (said("give", "pouch of diamonds") && fCARRYING_DIAMONDS) {
+    print("To what?");
+  }
+  if (said("give", "golden egg") && fCARRYING_GOLDEN_EGG) {
+    print("To what?");
+  }
+  if (said("give", "golden walnut")) {
+    if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) {
+      print("To what?");
     }
+  }
+}
+if (f20 && fEGO_TOUCHED_TRIGGER_LINE) {
+  reset(f20);
+  set(f21);
+  v30 = 2;
+  step.size(oTROLL, v30);
+  sound(1, fSOUND_END_MARKER);
+  draw(oTROLL);
+  if (fEGO_INVISIBLE) {
+    print("As you start to cross the bridge, a wretched troll appears.  Even though you are invisible, he will not let you cross his bridge.");
+  }
+  else {
     print("As you approach the bridge, a mean, ugly troll appears and refuses to let you cross his bridge.");
   }
-LABEL303:
-  if (f21 && fGOAT_COMPANION && !f26) {
-    distance(oEGO, oGOAT, v31);
-    if (v31 > 25) {
-      reposition.to(oGOAT, 85, 71);
+}
+if (f21 && fGOAT_COMPANION && !f26) {
+  distance(oEGO, oGOAT, v31);
+  if (v31 > 25) {
+    reposition.to(oGOAT, 85, 71);
+  }
+  print("It is a well known fact that goats hate trolls intensely.   You should move aside and let the goat take care of this nasty troll.");
+  set(f26);
+  set(f76);
+  move.obj(oGOAT, 80, 71, 0, f23);
+}
+if (f23) {
+  ignore.objs(oGOAT);
+  reset(f23);
+  normal.motion(oTROLL);
+  stop.motion(oTROLL);
+  get.posn(oTROLL, v60, v61);
+  v96 = 2;
+  move.obj.v(oGOAT, v60, v61, 96, f24);
+}
+distance(oTROLL, oGOAT, v62);
+if (v62 < 17 && !f150) {
+  print("The goat butts the troll right off the bridge, never to be seen in these parts again.");
+  set(f150);
+  reset(f21);
+  reset(fGOAT_COMPANION);
+  erase(oTROLL);
+  set(fGOAT_IS_GONE);
+  get.posn(oGOAT, v60, v61);
+  v60 = 140;
+  if (v61 < 71) {
+    v61 += 5;
+  }
+  move.obj.v(oGOAT, v60, v61, 96, f30);
+  vSCORE += 4;
+}
+if (f30) {
+  reset(f30);
+  erase(oGOAT);
+}
+if (f21 && !fGOAT_COMPANION) {
+  if (said("examine", "troll")) {
+    if (posn(oEGO, 1, 40, 100, 90)) {
+      print("This is the ugliest, meanest troll I have ever seen.");
     }
-    print("It is a well known fact that goats hate trolls intensely.   You should move aside and let the goat take care of this nasty troll.");
-    set(f26);
-    set(f76);
-    move.obj(oGOAT, 80, 71, 0, f23);
-  }
-LABEL341:
-  if (f23) {
-    ignore.objs(oGOAT);
-    reset(f23);
-    normal.motion(oTROLL);
-    stop.motion(oTROLL);
-    get.posn(oTROLL, v60, v61);
-    v96 = 2;
-    move.obj.v(oGOAT, v60, v61, 96, f24);
-  }
-LABEL368:
-  distance(oTROLL, oGOAT, v62);
-  if (v62 < 17 && !f150) {
-    print("The goat butts the troll right off the bridge, never to be seen in these parts again.");
-    set(f150);
-    reset(f21);
-    reset(fGOAT_COMPANION);
-    erase(oTROLL);
-    set(fGOAT_IS_GONE);
-    get.posn(oGOAT, v60, v61);
-    v60 = 140;
-    if (v61 < 71) {
-      v61 += 5;
-    }
-    move.obj.v(oGOAT, v60, v61, 96, f30);
-    vSCORE += 4;
-  }
-LABEL420:
-  if (f30) {
-    reset(f30);
-    erase(oGOAT);
-  }
-LABEL430:
-  if (f21 && !fGOAT_COMPANION) {
-    if (said("examine", "troll")) {
-      if (posn(oEGO, 1, 40, 100, 90)) {
-        print("This is the ugliest, meanest troll I have ever seen.");
-        goto(LABEL466);
-      }
+    else {
       print("There may be something trollish around, but you're not close enough to do anything about it.");
     }
-    LABEL466:
-      if (said("murder", "troll")) {
-        if (posn(oEGO, 1, 40, 100, 90) && fCARRYING_DAGGER) {
-          print("Do you really think you can do that?");
-        }
-        if (posn(oEGO, 1, 40, 100, 90) && !fCARRYING_DAGGER) {
-          print("Fortunately for you, you have no way to do that.");
-        }
-        LABEL505:
-          if (!posn(oEGO, 1, 40, 100, 90)) {
-            print("There may be something trollish around, but you're not close enough to do anything about it.");
-          }
+  }
+  if (said("murder", "troll")) {
+    if (posn(oEGO, 1, 40, 100, 90) && fCARRYING_DAGGER) {
+      print("Do you really think you can do that?");
+    }
+    if (posn(oEGO, 1, 40, 100, 90) && !fCARRYING_DAGGER) {
+      print("Fortunately for you, you have no way to do that.");
+    }
+    if (!posn(oEGO, 1, 40, 100, 90)) {
+      print("There may be something trollish around, but you're not close enough to do anything about it.");
+    }
+  }
+  if (said("talk", "troll") || said("hello") || said("say", "hello")) {
+    if (posn(oEGO, 1, 40, 100, 90)) {
+      print("The troll demands a treasure for passage across his bridge.");
+    }
+    else {
+      print("There may be something trollish around, but you're not close enough to do anything about it.");
+    }
+  }
+  if (said("throw", "dagger") && fCARRYING_DAGGER) {
+    if (posn(oEGO, 1, 40, 100, 90)) {
+      print("You throw the dagger and the quick old troll catches it.");
+      drop("dagger");
+      reset(fCARRYING_DAGGER);
+      set(fDAGGER_LOST);
+      vSCORE -= 5;
+    }
+    else {
+      print("You throw the dagger and it lands in the stream, lost forever.");
+      drop("dagger");
+      reset(fCARRYING_DAGGER);
+      set(fDAGGER_LOST);
+      vSCORE -= 5;
+    }
+  }
+  if (said("use", "dagger") && fCARRYING_DAGGER) {
+    print("How?");
+  }
+  if (said("shove", "troll")) {
+    if (posn(oEGO, 1, 40, 100, 90)) {
+      print("You push the troll as hard as you can; he won't budge.");
+    }
+    else {
+      print("There may be something trollish around, but you're not close enough to do anything about it.");
+    }
+  }
+  if (said("beg", "troll")) {
+    print("Trools have no sympathy.");
+  }
+  if (said("attack", "troll")) {
+    print("You could never win a fight with a troll.");
+  }
+  if (said("give", "treasure") || said("give", "troll", "treasure") || said("give", "treasure", "troll")) {
+    print("What precious treasure would you like to give to the  old troll?");
+  }
+  if (said("give", "pouch of diamonds") || said("give", "troll", "pouch of diamonds") || said("give", "pouch of diamonds", "troll")) {
+    if (fCARRYING_DIAMONDS) {
+      if (posn(oEGO, 1, 40, 100, 90)) {
+        print("The troll grabs the treasure and vanishes.");
+        drop("pouch of diamonds");
+        reset(fCARRYING_DIAMONDS);
+        set(f151);
+        set(fDWARF_OR_TROLL_HAS_DIAMONDS);
+        vSCORE -= 6;
+        set(f27);
       }
-    LABEL518:
-      if (said("talk", "troll") || said("hello") || said("say", "hello")) {
-        if (posn(oEGO, 1, 40, 100, 90)) {
-          print("The troll demands a treasure for passage across his bridge.");
-          goto(LABEL557);
-        }
+      else {
         print("There may be something trollish around, but you're not close enough to do anything about it.");
       }
-    LABEL557:
-      if (said("throw", "dagger") && fCARRYING_DAGGER) {
-        if (posn(oEGO, 1, 40, 100, 90)) {
-          print("You throw the dagger and the quick old troll catches it.");
-          drop("dagger");
-          reset(fCARRYING_DAGGER);
-          set(fDAGGER_LOST);
-          vSCORE -= 5;
-          goto(LABEL604);
-        }
-        print("You throw the dagger and it lands in the stream, lost forever.");
-        drop("dagger");
-        reset(fCARRYING_DAGGER);
-        set(fDAGGER_LOST);
-        vSCORE -= 5;
+    }
+  }
+  if (said("give", "sceptre") || said("give", "troll", "sceptre") || said("give", "sceptre", "troll")) {
+    if (fCARRYING_SCEPTRE) {
+      if (posn(oEGO, 1, 40, 100, 90)) {
+        print("The troll grabs the treasure and vanishes.");
+        drop("sceptre");
+        reset(fCARRYING_SCEPTRE);
+        set(f151);
+        set(fDWARF_OR_TROLL_HAS_SCEPTRE);
+        vSCORE -= 6;
+        set(f27);
       }
-    LABEL604:
-      if (said("use", "dagger") && fCARRYING_DAGGER) {
-        print("How?");
-      }
-    LABEL618:
-      if (said("shove", "troll")) {
-        if (posn(oEGO, 1, 40, 100, 90)) {
-          print("You push the troll as hard as you can; he won't budge.");
-          goto(LABEL645);
-        }
+      else {
         print("There may be something trollish around, but you're not close enough to do anything about it.");
       }
-    LABEL645:
-      if (said("beg", "troll")) {
-        print("Trools have no sympathy.");
-      }
-    LABEL657:
-      if (said("attack", "troll")) {
-        print("You could never win a fight with a troll.");
-      }
-    LABEL669:
-      if (said("give", "treasure") || said("give", "troll", "treasure") || said("give", "treasure", "troll")) {
-        print("What precious treasure would you like to give to the  old troll?");
-      }
-    LABEL699:
-      if (said("give", "pouch of diamonds") || said("give", "troll", "pouch of diamonds") || said("give", "pouch of diamonds", "troll")) {
-        if (fCARRYING_DIAMONDS) {
-          if (posn(oEGO, 1, 40, 100, 90)) {
-            print("The troll grabs the treasure and vanishes.");
-            drop("pouch of diamonds");
-            reset(fCARRYING_DIAMONDS);
-            set(f151);
-            set(fDWARF_OR_TROLL_HAS_DIAMONDS);
-            vSCORE -= 6;
-            set(f27);
-            goto(LABEL763);
-          }
-          print("There may be something trollish around, but you're not close enough to do anything about it.");
-        }
-      }
-    LABEL763:
-      if (said("give", "sceptre") || said("give", "troll", "sceptre") || said("give", "sceptre", "troll")) {
-        if (fCARRYING_SCEPTRE) {
-          if (posn(oEGO, 1, 40, 100, 90)) {
-            print("The troll grabs the treasure and vanishes.");
-            drop("sceptre");
-            reset(fCARRYING_SCEPTRE);
-            set(f151);
-            set(fDWARF_OR_TROLL_HAS_SCEPTRE);
-            vSCORE -= 6;
-            set(f27);
-            goto(LABEL827);
-          }
-          print("There may be something trollish around, but you're not close enough to do anything about it.");
-        }
-      }
-    LABEL827:
-      if (said("give", "golden egg") || said("give", "troll", "golden egg") || said("give", "golden egg", "troll")) {
-        if (fCARRYING_GOLDEN_EGG) {
-          if (posn(oEGO, 1, 40, 100, 90)) {
-            print("The troll grabs the treasure and vanishes.");
-            drop("gold egg");
-            reset(fCARRYING_GOLDEN_EGG);
-            set(f151);
-            set(fDWARF_OR_TROLL_HAS_EGG);
-            vSCORE -= 6;
-            set(f27);
-            goto(LABEL891);
-          }
-          print("There may be something trollish around, but you're not close enough to do anything about it.");
-        }
-      }
-    LABEL891:
-      if (said("give", "golden walnut") || said("give", "troll", "golden walnut") || said("give", "golden walnut", "troll")) {
-        if (fCARRYING_WALNUT) {
-          print("The troll doesn't want just a plain walnut.");
-          goto(LABEL966);
-        }
-        if (fCARRYING_GOLD_WALNUT) {
-          if (posn(oEGO, 1, 40, 100, 90)) {
-            print("The troll grabs the treasure and vanishes.");
-            drop("gold walnut");
-            reset(fCARRYING_GOLD_WALNUT);
-            set(f151);
-            set(fDWARF_OR_TROLL_HAS_WALNUT);
-            vSCORE -= 6;
-            set(f27);
-            goto(LABEL966);
-          }
-          print("There may be something trollish around, but you're not close enough to do anything about it.");
-        }
-      }
-  }
-LABEL966:
-  if (f27) {
-    reset(f27);
-    move.obj(oTROLL, 20, 72, 0, f28);
-  }
-LABEL980:
-  if (f28) {
-    reset(f28);
-    erase(oTROLL);
-    reset(f21);
-  }
-LABEL992:
-  if (!fEGO_ON_WATER) {
-    if (posn(oEGO, 24, 44, 68, 58)) {
-      set(fEGO_ON_WATER);
-      set(f134);
     }
   }
-LABEL1013:
-  if (v94 <= 0 && fEGO_ON_WATER) {
-    v76 = 255;
-    if (posn(oEGO, 0, 83, 94, 167)) {
-      v76 = 34;
-      v77 = 151;
-    }
-    if (posn(oEGO, 20, 40, 72, 60)) {
-      v76 = 43;
-      v77 = 55;
-    }
-    LABEL1058:
-      if (v76 == 255) {
-        v76 = 0;
-        goto(LABEL1083);
+  if (said("give", "golden egg") || said("give", "troll", "golden egg") || said("give", "golden egg", "troll")) {
+    if (fCARRYING_GOLDEN_EGG) {
+      if (posn(oEGO, 1, 40, 100, 90)) {
+        print("The troll grabs the treasure and vanishes.");
+        drop("gold egg");
+        reset(fCARRYING_GOLDEN_EGG);
+        set(f151);
+        set(fDWARF_OR_TROLL_HAS_EGG);
+        vSCORE -= 6;
+        set(f27);
       }
-    LABEL1071:
-      get.posn(oEGO, v60, v61);
-      v76 -= v60;
-      v77 -= v61;
-      set(f134);
-  }
-LABEL1083:
-  if (fEGO_ON_WATER && !f29) {
-    set(f29);
-    print("It seems to me that by now you would have learned to be more careful.  You are stuck in the mud at the bottom of this river and sinking fast.");
-  }
-LABEL1096:
-  if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
-    if (said("drink", "water") || said("get", "drink")) {
-      if (posn(oEGO, 15, 40, 90, 166)) {
-        print("Caution and steep banks advise against getting water here.");
-        goto(LABEL1144);
+      else {
+        print("There may be something trollish around, but you're not close enough to do anything about it.");
       }
+    }
+  }
+  if (said("give", "golden walnut") || said("give", "troll", "golden walnut") || said("give", "golden walnut", "troll")) {
+    if (fCARRYING_WALNUT) {
+      print("The troll doesn't want just a plain walnut.");
+    }
+    else if (fCARRYING_GOLD_WALNUT) {
+      if (posn(oEGO, 1, 40, 100, 90)) {
+        print("The troll grabs the treasure and vanishes.");
+        drop("gold walnut");
+        reset(fCARRYING_GOLD_WALNUT);
+        set(f151);
+        set(fDWARF_OR_TROLL_HAS_WALNUT);
+        vSCORE -= 6;
+        set(f27);
+      }
+      else {
+        print("There may be something trollish around, but you're not close enough to do anything about it.");
+      }
+    }
+  }
+}
+if (f27) {
+  reset(f27);
+  move.obj(oTROLL, 20, 72, 0, f28);
+}
+if (f28) {
+  reset(f28);
+  erase(oTROLL);
+  reset(f21);
+}
+if (!fEGO_ON_WATER) {
+  if (posn(oEGO, 24, 44, 68, 58)) {
+    set(fEGO_ON_WATER);
+    set(f134);
+  }
+}
+if (v94 <= 0 && fEGO_ON_WATER) {
+  v76 = 255;
+  if (posn(oEGO, 0, 83, 94, 167)) {
+    v76 = 34;
+    v77 = 151;
+  }
+  if (posn(oEGO, 20, 40, 72, 60)) {
+    v76 = 43;
+    v77 = 55;
+  }
+  if (v76 == 255) {
+    v76 = 0;
+  }
+  else {
+    get.posn(oEGO, v60, v61);
+    v76 -= v60;
+    v77 -= v61;
+    set(f134);
+  }
+}
+if (fEGO_ON_WATER && !f29) {
+  set(f29);
+  print("It seems to me that by now you would have learned to be more careful.  You are stuck in the mud at the bottom of this river and sinking fast.");
+}
+if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
+  if (said("drink", "water") || said("get", "drink")) {
+    if (posn(oEGO, 15, 40, 90, 166)) {
+      print("Caution and steep banks advise against getting water here.");
+    }
+    else {
       print("You are too far from the river.");
     }
   }
-LABEL1144:
-  if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
-    if (posn(oEGO, 15, 40, 90, 166)) {
-      print("Caution and steep banks advise against getting water here.");
-      goto(LABEL1179);
-    }
+}
+if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
+  if (posn(oEGO, 15, 40, 90, 166)) {
+    print("Caution and steep banks advise against getting water here.");
+  }
+  else {
     print("You are too far from the river.");
   }
-LABEL1179:
-  if (said("examine", "bridge")) {
-    print("The wooden bridge is old and weather beaten.");
+}
+if (said("examine", "bridge")) {
+  print("The wooden bridge is old and weather beaten.");
+}
+if (said("look under", "bridge")) {
+  print("You glance under the old bridge, but see nothing unusual.");
+}
+if (said("examine", "stream")) {
+  print("The stream may not be safe to cross.");
+}
+if (vEGO_EDGE_CODE != EDGE_NONE) {
+  observe.blocks(oEGO);
+  reset(f68);
+  if (f21 && fGOAT_COMPANION) {
+    reset(fGOAT_COMPANION);
+    set(f150);
+    set(fGOAT_IS_GONE);
   }
-LABEL1191:
-  if (said("look under", "bridge")) {
-    print("You glance under the old bridge, but see nothing unusual.");
-  }
-LABEL1203:
-  if (said("examine", "stream")) {
-    print("The stream may not be safe to cross.");
-  }
-LABEL1215:
-  if (vEGO_EDGE_CODE != EDGE_NONE) {
-    observe.blocks(oEGO);
-    reset(f68);
-    if (f21 && fGOAT_COMPANION) {
-      reset(fGOAT_COMPANION);
-      set(f150);
-      set(fGOAT_IS_GONE);
-    }
-  }
-LABEL1241:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(42);
-  }
-LABEL1250:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(38);
-  }
-LABEL1259:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(40);
-  }
-LABEL1268:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(26);
-  }
-LABEL1277:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL1285:
-  call(LOGIC_SWIMMING);
-  return;
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(42);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(38);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(40);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(26);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+call(LOGIC_SWIMMING);
+return;
 
 LOGIC__FOOTER
 
