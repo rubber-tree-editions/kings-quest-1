@@ -17,253 +17,230 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == 76) {
     position(oEGO, 34, 125);
   }
-  LABEL41:
-    ignore.objs(oEGO);
-    load.view(95);
-    if (!fRAT_IS_GONE) {
-      load.sound(1);
-      load.view(45);
-      animate.obj(oRAT);
-      set.view(oRAT, 45);
-      position(oRAT, 36, 127);
-      set(f20);
-      follow.ego(oRAT, 15, f21);
-      observe.blocks(oRAT);
-      v30 = 3;
-      step.size(oRAT, v30);
-    }
-  LABEL79:
-    load.sound(19);
-    load.view(46);
-    animate.obj(oDOOR);
-    set.view(oDOOR, 46);
-    if (vPREV_ROOM_NO == 76) {
-      set.cel(oDOOR, 5);
-      goto(LABEL104);
-    }
-  LABEL101:
-    set.cel(oDOOR, 0);
-  LABEL104:
-    ignore.blocks(oDOOR);
-    set.priority(oDOOR, 9);
-    position(oDOOR, 25, 119);
-    draw(oDOOR);
-    if (f20) {
-      draw(oRAT);
-    }
-  LABEL123:
-    draw(oEGO);
-    show.pic();
-    if (vPREV_ROOM_NO == 76) {
-      reverse.loop(oDOOR, f203);
-      sound(19, f148);
-      goto(LABEL144);
-    }
-  LABEL142:
-    stop.update(oDOOR);
-}
-LABEL144:
-  if (f203) {
-    reset(f203);
-    stop.update(oDOOR);
-  }
-LABEL154:
-  if (f20) {
-    reset(f20);
-    sound(1, f148);
-  }
-LABEL165:
-  if (posn(oEGO, 0, 0, 54, 167)) {
-    observe.blocks(oEGO);
-    goto(LABEL182);
-  }
-LABEL180:
-  ignore.blocks(oEGO);
-LABEL182:
-  if (fEGO_INVISIBLE && !f22) {
-    set(f22);
-    print("Being invisible won't hide you from this rat's keen sense of smell.");
-  }
-LABEL195:
-  if (fRAT_IS_GONE) {
-    if (said("anyword", "rat") || said("anyword", "mouse")) {
-      print("There is no rat here.");
-    }
-    if (said("examine", "cave") || said("examine", "room")) {
-      print("It is very dark and dreary in here.");
-    }
-  }
-LABEL241:
+  ignore.objs(oEGO);
+  load.view(95);
   if (!fRAT_IS_GONE) {
-    distance(oEGO, oRAT, v70);
-    if (said("examine", "rat")) {
-      print("It is a big rat with dripping teeth and small, greedy eyes.");
-    }
-    if (said("examine", "cave") || said("examine", "room")) {
-      print("It is very dark and dreary.  The rat seems to like it here.");
-    }
-    LABEL284:
-      if (said("examine", "mouse")) {
-        print("This is no mouse, this is a big, ugly rat!");
+    load.sound(1);
+    load.view(45);
+    animate.obj(oRAT);
+    set.view(oRAT, 45);
+    position(oRAT, 36, 127);
+    set(f20);
+    follow.ego(oRAT, 15, f21);
+    observe.blocks(oRAT);
+    v30 = 3;
+    step.size(oRAT, v30);
+  }
+  load.sound(19);
+  load.view(46);
+  animate.obj(oDOOR);
+  set.view(oDOOR, 46);
+  if (vPREV_ROOM_NO == 76) {
+    set.cel(oDOOR, 5);
+  }
+  else {
+    set.cel(oDOOR, 0);
+  }
+  ignore.blocks(oDOOR);
+  set.priority(oDOOR, 9);
+  position(oDOOR, 25, 119);
+  draw(oDOOR);
+  if (f20) {
+    draw(oRAT);
+  }
+  draw(oEGO);
+  show.pic();
+  if (vPREV_ROOM_NO == 76) {
+    reverse.loop(oDOOR, f203);
+    sound(19, f148);
+  }
+  else {
+    stop.update(oDOOR);
+  }
+}
+if (f203) {
+  reset(f203);
+  stop.update(oDOOR);
+}
+if (f20) {
+  reset(f20);
+  sound(1, f148);
+}
+if (posn(oEGO, 0, 0, 54, 167)) {
+  observe.blocks(oEGO);
+}
+else {
+  ignore.blocks(oEGO);
+}
+if (fEGO_INVISIBLE && !f22) {
+  set(f22);
+  print("Being invisible won't hide you from this rat's keen sense of smell.");
+}
+if (fRAT_IS_GONE) {
+  if (said("anyword", "rat") || said("anyword", "mouse")) {
+    print("There is no rat here.");
+  }
+  if (said("examine", "cave") || said("examine", "room")) {
+    print("It is very dark and dreary in here.");
+  }
+}
+if (!fRAT_IS_GONE) {
+  distance(oEGO, oRAT, v70);
+  if (said("examine", "rat")) {
+    print("It is a big rat with dripping teeth and small, greedy eyes.");
+  }
+  if (said("examine", "cave") || said("examine", "room")) {
+    print("It is very dark and dreary.  The rat seems to like it here.");
+  }
+  if (said("examine", "mouse")) {
+    print("This is no mouse, this is a big, ugly rat!");
+  }
+  if (said("pet", "rat")) {
+    print("What!  Are you crazy?");
+  }
+  if (said("murder", "rat")) {
+    print("You can't.  He moves too quickly.");
+  }
+  if (said("talk", "rat") || said("hello") || said("say", "hello")) {
+    print("The rat rasps, \"Treasure!  Treasure!  Give treasure, or no go door!  Give treasure NOW!\"");
+  }
+  if (said("give", "treasure") || said("give", "rat", "treasure") || said("give", "treasure", "rat")) {
+    print("What kind of treasure would you like to give the  greedy rat?");
+  }
+  if (!fCARRYING_DIAMONDS) {
+    if (said("give", "bag of jewels") || said("give", "rat", "bag of jewels") || said("give", "bag of jewels", "rat")) {
+      if (fCARRYING_POUCH && v70 < 35) {
+        print("The rat doesn't want a tattered pouch.");
       }
-    LABEL296:
-      if (said("pet", "rat")) {
-        print("What!  Are you crazy?");
-      }
-    LABEL308:
-      if (said("murder", "rat")) {
-        print("You can't.  He moves too quickly.");
-      }
-    LABEL320:
-      if (said("talk", "rat") || said("hello") || said("say", "hello")) {
-        print("The rat rasps, \"Treasure!  Treasure!  Give treasure, or no go door!  Give treasure NOW!\"");
-      }
-    LABEL344:
-      if (said("give", "treasure") || said("give", "rat", "treasure") || said("give", "treasure", "rat")) {
-        print("What kind of treasure would you like to give the  greedy rat?");
-      }
-    LABEL374:
-      if (!fCARRYING_DIAMONDS) {
-        if (said("give", "bag of jewels") || said("give", "rat", "bag of jewels") || said("give", "bag of jewels", "rat")) {
-          if (fCARRYING_POUCH && v70 < 35) {
-            print("The rat doesn't want a tattered pouch.");
-            goto(LABEL425);
-          }
-          print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
-        }
-      }
-    LABEL425:
-      if (fCARRYING_DIAMONDS) {
-        if (said("give", "pouch of diamonds") || said("give", "rat", "pouch of diamonds") || said("give", "pouch of diamonds", "rat") || said("give", "bag of jewels") || said("give", "rat", "bag of jewels") || said("give", "bag of jewels", "rat")) {
-          if (fCARRYING_DIAMONDS && v70 < 35) {
-            print("The huge rat takes the treasure you have offered and scuttles away.");
-            move.obj(oRAT, 46, 105, 0, f24);
-            drop("pouch of diamonds");
-            reset(fCARRYING_DIAMONDS);
-            set(fDWARF_OR_TROLL_HAS_DIAMONDS);
-            vSCORE -= 6;
-            goto(LABEL512);
-          }
-          print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
-        }
-      }
-    LABEL512:
-      if (said("give", "golden egg") || said("give", "rat", "golden egg") || said("give", "golden egg", "rat")) {
-        if (fCARRYING_GOLDEN_EGG && v70 < 35) {
-          print("The huge rat takes the treasure you have offered and scuttles away.");
-          move.obj(oRAT, 46, 105, 0, f24);
-          drop("gold egg");
-          reset(fCARRYING_GOLDEN_EGG);
-          set(fDWARF_OR_TROLL_HAS_EGG);
-          vSCORE -= 6;
-          goto(LABEL571);
-        }
+      else {
         print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
       }
-    LABEL571:
-      if (said("give", "walnut") || said("give", "rat", "walnut") || said("give", "walnut", "rat")) {
-        if (fCARRYING_WALNUT) {
-          if (v70 < 35) {
-            print("The rat doesn't want an ordinary walnut.");
-            goto(LABEL619);
-          }
-          print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
-        }
-        LABEL619:
-          if (fCARRYING_GOLD_WALNUT) {
-            if (v70 < 35) {
-              print("The huge rat takes the treasure you have offered and scuttles away.");
-              move.obj(oRAT, 46, 105, 0, f24);
-              drop("gold walnut");
-              reset(fCARRYING_GOLD_WALNUT);
-              set(fDWARF_OR_TROLL_HAS_WALNUT);
-              vSCORE -= 6;
-              goto(LABEL654);
-            }
-            print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
-          }
+    }
+  }
+  if (fCARRYING_DIAMONDS) {
+    if (said("give", "pouch of diamonds") || said("give", "rat", "pouch of diamonds") || said("give", "pouch of diamonds", "rat") || said("give", "bag of jewels") || said("give", "rat", "bag of jewels") || said("give", "bag of jewels", "rat")) {
+      if (fCARRYING_DIAMONDS && v70 < 35) {
+        print("The huge rat takes the treasure you have offered and scuttles away.");
+        move.obj(oRAT, 46, 105, 0, f24);
+        drop("pouch of diamonds");
+        reset(fCARRYING_DIAMONDS);
+        set(fDWARF_OR_TROLL_HAS_DIAMONDS);
+        vSCORE -= 6;
       }
-    LABEL654:
-      if (said("give", "sceptre") || said("give", "rat", "sceptre") || said("give", "sceptre", "rat")) {
-        if (fCARRYING_SCEPTRE && v70 < 35) {
-          print("The huge rat takes the treasure you have offered and scuttles away.");
-          move.obj(oRAT, 46, 105, 0, f24);
-          drop("sceptre");
-          reset(fCARRYING_SCEPTRE);
-          set(fDWARF_OR_TROLL_HAS_SCEPTRE);
-          vSCORE -= 6;
-          goto(LABEL713);
-        }
+      else {
         print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
       }
-    LABEL713:
-      if (said("give", "swiss cheese") || said("give", "rat", "swiss cheese") || said("give", "swiss cheese", "rat") || said("feed", "swiss cheese") || said("feed", "rat", "swiss cheese") || said("feed", "swiss cheese", "rat")) {
-        if (!fCARRYING_SWISS_CHEESE) {
-          print("That is a good idea, but you do not have any cheese.");
-        }
-        if (fCARRYING_SWISS_CHEESE) {
-          if (v70 < 35) {
-            print("The rat drools at the sight of the cheese... and snatches it from your hand.  You might want to count your fingers.");
-            move.obj(oRAT, 46, 105, 0, f24);
-            drop("cheese");
-            reset(fCARRYING_SWISS_CHEESE);
-            set(fRAT_ATE_CHEESE);
-            vSCORE -= 2;
-            vSCORE += 4;
-            goto(LABEL810);
-          }
-          print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
-        }
-      }
-  }
-LABEL810:
-  if (f24) {
-    reset(f24);
-    erase(oRAT);
-    set(fRAT_IS_GONE);
-    print("The rat scrambles to the wall and seems to magically merge with it.");
-  }
-LABEL824:
-  if (said("count", "fingers") || said("examine", "fingers")) {
-    print("You count your fingers and are relieved to see you still have all of them.");
-  }
-LABEL844:
-  if (f21) {
-    set.view(oEGO, 95);
-    print("Be careful around this rat next time!  He's dangerous!!");
-    wander(oRAT);
-    set(fGAME_OVER);
-  }
-LABEL859:
-  distance(oEGO, oDOOR, v71);
-  if (said("open", "doors")) {
-    if (v71 < 25) {
-      start.update(oDOOR);
-      sound(19, f148);
-      print("The door slowly opens.");
-      end.of.loop(oDOOR, f23);
-      goto(LABEL895);
     }
+  }
+  if (said("give", "golden egg") || said("give", "rat", "golden egg") || said("give", "golden egg", "rat")) {
+    if (fCARRYING_GOLDEN_EGG && v70 < 35) {
+      print("The huge rat takes the treasure you have offered and scuttles away.");
+      move.obj(oRAT, 46, 105, 0, f24);
+      drop("gold egg");
+      reset(fCARRYING_GOLDEN_EGG);
+      set(fDWARF_OR_TROLL_HAS_EGG);
+      vSCORE -= 6;
+    }
+    else {
+      print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
+    }
+  }
+  if (said("give", "walnut") || said("give", "rat", "walnut") || said("give", "walnut", "rat")) {
+    if (fCARRYING_WALNUT) {
+      if (v70 < 35) {
+        print("The rat doesn't want an ordinary walnut.");
+      }
+      else {
+        print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
+      }
+    }
+    if (fCARRYING_GOLD_WALNUT) {
+      if (v70 < 35) {
+        print("The huge rat takes the treasure you have offered and scuttles away.");
+        move.obj(oRAT, 46, 105, 0, f24);
+        drop("gold walnut");
+        reset(fCARRYING_GOLD_WALNUT);
+        set(fDWARF_OR_TROLL_HAS_WALNUT);
+        vSCORE -= 6;
+      }
+      else {
+        print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
+      }
+    }
+  }
+  if (said("give", "sceptre") || said("give", "rat", "sceptre") || said("give", "sceptre", "rat")) {
+    if (fCARRYING_SCEPTRE && v70 < 35) {
+      print("The huge rat takes the treasure you have offered and scuttles away.");
+      move.obj(oRAT, 46, 105, 0, f24);
+      drop("sceptre");
+      reset(fCARRYING_SCEPTRE);
+      set(fDWARF_OR_TROLL_HAS_SCEPTRE);
+      vSCORE -= 6;
+    }
+    else {
+      print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
+    }
+  }
+  if (said("give", "swiss cheese") || said("give", "rat", "swiss cheese") || said("give", "swiss cheese", "rat") || said("feed", "swiss cheese") || said("feed", "rat", "swiss cheese") || said("feed", "swiss cheese", "rat")) {
+    if (!fCARRYING_SWISS_CHEESE) {
+      print("That is a good idea, but you do not have any cheese.");
+    }
+    if (fCARRYING_SWISS_CHEESE) {
+      if (v70 < 35) {
+        print("The rat drools at the sight of the cheese... and snatches it from your hand.  You might want to count your fingers.");
+        move.obj(oRAT, 46, 105, 0, f24);
+        drop("cheese");
+        reset(fCARRYING_SWISS_CHEESE);
+        set(fRAT_ATE_CHEESE);
+        vSCORE -= 2;
+        vSCORE += 4;
+      }
+      else {
+        print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
+      }
+    }
+  }
+}
+if (f24) {
+  reset(f24);
+  erase(oRAT);
+  set(fRAT_IS_GONE);
+  print("The rat scrambles to the wall and seems to magically merge with it.");
+}
+if (said("count", "fingers") || said("examine", "fingers")) {
+  print("You count your fingers and are relieved to see you still have all of them.");
+}
+if (f21) {
+  set.view(oEGO, 95);
+  print("Be careful around this rat next time!  He's dangerous!!");
+  wander(oRAT);
+  set(fGAME_OVER);
+}
+distance(oEGO, oDOOR, v71);
+if (said("open", "doors")) {
+  if (v71 < 25) {
+    start.update(oDOOR);
+    sound(19, f148);
+    print("The door slowly opens.");
+    end.of.loop(oDOOR, f23);
+  }
+  else {
     print("Get closer if you want to try.");
   }
-LABEL895:
-  if (f23) {
-    new.room(76);
-  }
-LABEL903:
-  if (said("close", "doors")) {
-    print("It is already closed.");
-  }
-LABEL915:
-  if (said("examine", "doors")) {
-    print("The door is closed.");
-  }
-LABEL927:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(74);
-  }
-LABEL936:
-  return;
+}
+if (f23) {
+  new.room(76);
+}
+if (said("close", "doors")) {
+  print("It is already closed.");
+}
+if (said("examine", "doors")) {
+  print("The door is closed.");
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(74);
+}
+return;
 
 LOGIC__FOOTER
 
