@@ -14,217 +14,195 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 14, 144, 0, 0);
   }
-  LABEL35:
-    load.logics(LOGIC_SWIMMING);
-    call(LOGIC_SWIMMING);
-    if (!fMUSHROOM_TAKEN) {
-      load.view(60);
-      load.view(84);
-      animate.obj(oMUSHROOM);
-      set.view(oMUSHROOM, 84);
-      position(oMUSHROOM, 84, 80);
-      set(f20);
+  load.logics(LOGIC_SWIMMING);
+  call(LOGIC_SWIMMING);
+  if (!fMUSHROOM_TAKEN) {
+    load.view(60);
+    load.view(84);
+    animate.obj(oMUSHROOM);
+    set.view(oMUSHROOM, 84);
+    position(oMUSHROOM, 84, 80);
+    set(f20);
+  }
+  if (vPREV_ROOM_NO == 34) {
+    if (posn(oEGO, 77, 165, 112, 167)) {
+      position(oEGO, 71, 164);
     }
-  LABEL61:
-    if (vPREV_ROOM_NO == 34) {
-      if (posn(oEGO, 77, 165, 112, 167)) {
-        position(oEGO, 71, 164);
-      }
-      if (posn(oEGO, 113, 165, 159, 167)) {
-        position(oEGO, 142, 164);
-      }
+    if (posn(oEGO, 113, 165, 159, 167)) {
+      position(oEGO, 142, 164);
     }
-  LABEL96:
-    if (f20) {
-      reset(f20);
-      draw(oMUSHROOM);
-    }
-  LABEL106:
-    set(f68);
-    ignore.blocks(oEGO);
-    draw(oEGO);
-    show.pic();
+  }
+  if (f20) {
+    reset(f20);
+    draw(oMUSHROOM);
+  }
+  set(f68);
+  ignore.blocks(oEGO);
+  draw(oEGO);
+  show.pic();
 }
 if (fEGO_ON_WATER && !f21) {
   set(f21);
   print("This is sad.  You are not the first to fail your quest in the Raging River... I hope you may be the last.");
 }
-LABEL126:
-  if (said("examine", "water")) {
-    print("This is the wild Raging River filled with boulders and rapids.");
+if (said("examine", "water")) {
+  print("This is the wild Raging River filled with boulders and rapids.");
+}
+if (said("examine", "rocks")) {
+  print("It would be dangerous to try and jump across the river on the boulders.");
+}
+if (said("examine", "across")) {
+  if (posn(oEGO, 0, 0, 36, 111) || posn(oEGO, 0, 112, 97, 167)) {
+    print("The land across the river looks enchanting.  You wonder how you can get there.");
   }
-LABEL138:
-  if (said("examine", "rocks")) {
-    print("It would be dangerous to try and jump across the river on the boulders.");
-  }
-LABEL150:
-  if (said("examine", "across")) {
-    if (posn(oEGO, 0, 0, 36, 111) || posn(oEGO, 0, 112, 97, 167)) {
-      print("The land across the river looks enchanting.  You wonder how you can get there.");
-      goto(LABEL185);
-    }
+  else {
     print("You see the familiar side of the Raging River.");
   }
-LABEL185:
-  if (!fCARRYING_MUSHROOM && fMUSHROOM_TAKEN) {
-    if (said("examine", "toadstools")) {
+}
+if (!fCARRYING_MUSHROOM && fMUSHROOM_TAKEN) {
+  if (said("examine", "toadstools")) {
+    print("There is no mushroom here.");
+  }
+}
+if (fMUSHROOM_TAKEN) {
+  if (said("examine", "ground")) {
+    print("There is nothing of interest around you.");
+  }
+  if (said("get", "toadstools")) {
+    if (fCARRYING_MUSHROOM) {
+      print("You already have it.");
+    }
+    else {
       print("There is no mushroom here.");
     }
   }
-LABEL206:
-  if (fMUSHROOM_TAKEN) {
-    if (said("examine", "ground")) {
-      print("There is nothing of interest around you.");
+}
+if (!fMUSHROOM_TAKEN) {
+  if (said("examine", "toadstools")) {
+    if (posn(oEGO, 0, 0, 36, 111) || posn(oEGO, 0, 112, 97, 167)) {
+      print("The mushroom is on the far side of the river.");
     }
-    if (said("get", "toadstools")) {
-      if (fCARRYING_MUSHROOM) {
-        print("You already have it.");
-        goto(LABEL247);
-      }
-      print("There is no mushroom here.");
+    else if (posn(oEGO, 64, 61, 114, 101)) {
+      print("This mushroom is large and aromatic.");
     }
-  }
-LABEL247:
-  if (!fMUSHROOM_TAKEN) {
-    if (said("examine", "toadstools")) {
-      if (posn(oEGO, 0, 0, 36, 111) || posn(oEGO, 0, 112, 97, 167)) {
-        print("The mushroom is on the far side of the river.");
-        goto(LABEL304);
-      }
-      if (posn(oEGO, 64, 61, 114, 101)) {
-        print("This mushroom is large and aromatic.");
-        goto(LABEL304);
-      }
+    else {
       print("The colorful mushroom is in the distance.");
     }
-    LABEL304:
-      if (said("examine", "ground")) {
-        if (posn(oEGO, 0, 0, 36, 111) || posn(oEGO, 0, 112, 97, 167)) {
-          print("There is nothing of interest around you.");
-          goto(LABEL354);
-        }
-        if (posn(oEGO, 64, 61, 114, 101)) {
-          print("There is a large mushroom growing in the ground close by.");
-          goto(LABEL354);
-        }
-        print("There is nothing of interest around you.");
-      }
-    LABEL354:
-      if (said("get", "toadstools")) {
-        if (posn(oEGO, 0, 0, 36, 111) || posn(oEGO, 0, 112, 97, 167)) {
-          print("The mushroom is on the far side of the river.");
-          goto(LABEL415);
-        }
-        if (posn(oEGO, 74, 70, 94, 90)) {
-          erase(oMUSHROOM);
-          print("You reach down and pick a fat mushroom.");
-          set(fMUSHROOM_TAKEN);
-          set(fCARRYING_MUSHROOM);
-          vSCORE += 1;
-          get("mushroom");
-          goto(LABEL415);
-        }
-        print("You need to get closer to do that.");
-      }
   }
-LABEL415:
-  if (said("examine", "building")) {
-    print("You see King Edward's castle on the horizon.");
-  }
-LABEL427:
-  if (said("examine", "room")) {
-    if (fMUSHROOM_TAKEN) {
-      print("This lovely meadow is split by the Raging River.");
-      goto(LABEL450);
+  if (said("examine", "ground")) {
+    if (posn(oEGO, 0, 0, 36, 111) || posn(oEGO, 0, 112, 97, 167)) {
+      print("There is nothing of interest around you.");
     }
-    print("There is a large mushroom in the meadow next to the river.");
-  }
-LABEL450:
-  if (v94 <= 0 && fEGO_ON_WATER) {
-    v76 = 255;
-    if (posn(oEGO, 7, 40, 62, 81)) {
-      v76 = 23;
-      v77 = 81;
+    else if (posn(oEGO, 64, 61, 114, 101)) {
+      print("There is a large mushroom growing in the ground close by.");
     }
-    if (posn(oEGO, 10, 82, 37, 116)) {
-      v76 = 28;
-      v77 = 95;
+    else {
+      print("There is nothing of interest around you.");
     }
-    LABEL495:
-      if (posn(oEGO, 37, 82, 74, 90)) {
-        v76 = 60;
-        v77 = 104;
-      }
-    LABEL511:
-      if (posn(oEGO, 64, 91, 104, 116)) {
-        v76 = 74;
-        v77 = 116;
-      }
-    LABEL527:
-      if (posn(oEGO, 37, 117, 100, 145)) {
-        v76 = 70;
-        v77 = 117;
-      }
-    LABEL543:
-      if (posn(oEGO, 68, 146, 111, 167) || posn(oEGO, 101, 117, 143, 167)) {
-        v76 = 102;
-        v77 = 155;
-      }
-    LABEL567:
-      if (v76 == 255) {
-        v76 = 0;
-        goto(LABEL592);
-      }
-    LABEL580:
-      get.posn(oEGO, v60, v61);
-      v76 -= v60;
-      v77 -= v61;
-      set(f134);
   }
-LABEL592:
-  if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
-    if (said("drink", "water") || said("get", "drink")) {
-      if (posn(oEGO, 0, 40, 32, 111) || posn(oEGO, 14, 112, 88, 135) || posn(oEGO, 39, 136, 99, 167) || posn(oEGO, 36, 40, 74, 76) || posn(oEGO, 46, 77, 101, 88) || posn(oEGO, 68, 89, 151, 167)) {
-        print("The water from this swift river is cold and sweet.");
-        goto(LABEL672);
-      }
+  if (said("get", "toadstools")) {
+    if (posn(oEGO, 0, 0, 36, 111) || posn(oEGO, 0, 112, 97, 167)) {
+      print("The mushroom is on the far side of the river.");
+    }
+    else if (posn(oEGO, 74, 70, 94, 90)) {
+      erase(oMUSHROOM);
+      print("You reach down and pick a fat mushroom.");
+      set(fMUSHROOM_TAKEN);
+      set(fCARRYING_MUSHROOM);
+      vSCORE += 1;
+      get("mushroom");
+    }
+    else {
       print("You need to get closer to do that.");
     }
   }
-LABEL672:
-  if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
+}
+if (said("examine", "building")) {
+  print("You see King Edward's castle on the horizon.");
+}
+if (said("examine", "room")) {
+  if (fMUSHROOM_TAKEN) {
+    print("This lovely meadow is split by the Raging River.");
+  }
+  else {
+    print("There is a large mushroom in the meadow next to the river.");
+  }
+}
+if (v94 <= 0 && fEGO_ON_WATER) {
+  v76 = 255;
+  if (posn(oEGO, 7, 40, 62, 81)) {
+    v76 = 23;
+    v77 = 81;
+  }
+  if (posn(oEGO, 10, 82, 37, 116)) {
+    v76 = 28;
+    v77 = 95;
+  }
+  if (posn(oEGO, 37, 82, 74, 90)) {
+    v76 = 60;
+    v77 = 104;
+  }
+  if (posn(oEGO, 64, 91, 104, 116)) {
+    v76 = 74;
+    v77 = 116;
+  }
+  if (posn(oEGO, 37, 117, 100, 145)) {
+    v76 = 70;
+    v77 = 117;
+  }
+  if (posn(oEGO, 68, 146, 111, 167) || posn(oEGO, 101, 117, 143, 167)) {
+    v76 = 102;
+    v77 = 155;
+  }
+  if (v76 == 255) {
+    v76 = 0;
+  }
+  else {
+    get.posn(oEGO, v60, v61);
+    v76 -= v60;
+    v77 -= v61;
+    set(f134);
+  }
+}
+if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
+  if (said("drink", "water") || said("get", "drink")) {
     if (posn(oEGO, 0, 40, 32, 111) || posn(oEGO, 14, 112, 88, 135) || posn(oEGO, 39, 136, 99, 167) || posn(oEGO, 36, 40, 74, 76) || posn(oEGO, 46, 77, 101, 88) || posn(oEGO, 68, 89, 151, 167)) {
-      reset(f116);
-      print("The river is so swift it is a battle to fill the bucket.");
-      get("water");
-      set(fBUCKET_FILLED);
-      if (!fFILL_BUCKET_POINTS) {
-        vSCORE += 2;
-      }
-      set(fFILL_BUCKET_POINTS);
-      goto(LABEL757);
+      print("The water from this swift river is cold and sweet.");
     }
+    else {
+      print("You need to get closer to do that.");
+    }
+  }
+}
+if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
+  if (posn(oEGO, 0, 40, 32, 111) || posn(oEGO, 14, 112, 88, 135) || posn(oEGO, 39, 136, 99, 167) || posn(oEGO, 36, 40, 74, 76) || posn(oEGO, 46, 77, 101, 88) || posn(oEGO, 68, 89, 151, 167)) {
+    reset(f116);
+    print("The river is so swift it is a battle to fill the bucket.");
+    get("water");
+    set(fBUCKET_FILLED);
+    if (!fFILL_BUCKET_POINTS) {
+      vSCORE += 2;
+    }
+    set(fFILL_BUCKET_POINTS);
+  }
+  else {
     print("You need to get closer to do that.");
   }
-LABEL757:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(48);
-  }
-LABEL766:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(46);
-  }
-LABEL775:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(34);
-  }
-LABEL784:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL792:
-  call(LOGIC_SWIMMING);
-  return;
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(48);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(46);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(34);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+call(LOGIC_SWIMMING);
+return;
 
 LOGIC__FOOTER
 
