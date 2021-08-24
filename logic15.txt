@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -15,93 +13,78 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 20, 65, 0, 0);
   }
-  LABEL37:
-    if (vPREV_ROOM_NO == 18) {
-      if (fEGO_ON_WATER) {
-        set.view(oEGO, 0);
-        reset(f98);
-        v94 = 0;
-      }
+  if (vPREV_ROOM_NO == 18) {
+    if (fEGO_ON_WATER) {
+      set.view(oEGO, 0);
+      reset(f98);
+      v94 = 0;
     }
-  LABEL58:
-    draw(oEGO);
-    show.pic();
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (said("examine", "garden") || said("examine", "ground") || said("examine", "plant") || said("examine", "bushes")) {
   print("This is a well-tended carrot patch.  The carrots look tempting to a hungry traveler.");
 }
-LABEL93:
-  if (said("examine", "fence")) {
-    print("This is a relatively low, rustic stone fence which runs along the left and rear sides of the garden.");
-  }
-LABEL105:
-  if (said("climb", "fence")) {
-    print("There is no reason to climb the fence.");
-  }
-LABEL117:
-  if (said("jump", "fence")) {
-    print("You can go around the fence.");
-  }
-LABEL129:
-  if (posn(oEGO, 87, 54, 159, 65) || posn(oEGO, 79, 66, 159, 76) || posn(oEGO, 66, 77, 159, 91) || posn(oEGO, 46, 92, 159, 116) || posn(oEGO, 32, 117, 159, 147)) {
-    set(f20);
-    goto(LABEL172);
-  }
-LABEL170:
+if (said("examine", "fence")) {
+  print("This is a relatively low, rustic stone fence which runs along the left and rear sides of the garden.");
+}
+if (said("climb", "fence")) {
+  print("There is no reason to climb the fence.");
+}
+if (said("jump", "fence")) {
+  print("You can go around the fence.");
+}
+if (posn(oEGO, 87, 54, 159, 65) || posn(oEGO, 79, 66, 159, 76) || posn(oEGO, 66, 77, 159, 91) || posn(oEGO, 46, 92, 159, 116) || posn(oEGO, 32, 117, 159, 147)) {
+  set(f20);
+}
+else {
   reset(f20);
-LABEL172:
-  if (f20) {
-    if (!fCARRYING_CARROT && said("examine", "carrot")) {
-      print("There are many large, plump carrots in the garden.");
-    }
-    if (!fCARRYING_CARROT && said("get", "carrot")) {
-      print("You pluck a plump, orange carrot from the ground.");
-      set(fCARRYING_CARROT);
-      reset(fCARROT_EATEN);
-      get("carrot");
-      if (!fPOINTS_FOR_CARROT) {
-        vSCORE += 2;
-        set(fPOINTS_FOR_CARROT);
-      }
-    }
+}
+if (f20) {
+  if (!fCARRYING_CARROT && said("examine", "carrot")) {
+    print("There are many large, plump carrots in the garden.");
   }
-LABEL226:
-  if (!f20) {
-    if (!fCARRYING_CARROT && said("examine", "carrot")) {
-      print("The carrots are buried in the ground.  You must get  closer to see them.");
-    }
-    if (!fCARRYING_CARROT && said("get", "carrot")) {
-      print("You must be in the carrot patch to pick a carrot.");
+  if (!fCARRYING_CARROT && said("get", "carrot")) {
+    print("You pluck a plump, orange carrot from the ground.");
+    set(fCARRYING_CARROT);
+    reset(fCARROT_EATEN);
+    get("carrot");
+    if (!fPOINTS_FOR_CARROT) {
+      vSCORE += 2;
+      set(fPOINTS_FOR_CARROT);
     }
   }
-LABEL263:
-  if (!fCARRYING_CARROT) {
-    if (said("eat", "carrot")) {
-      print("You do not have a carrot to eat.");
-    }
+}
+if (!f20) {
+  if (!fCARRYING_CARROT && said("examine", "carrot")) {
+    print("The carrots are buried in the ground.  You must get  closer to see them.");
   }
-LABEL282:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(18);
+  if (!fCARRYING_CARROT && said("get", "carrot")) {
+    print("You must be in the carrot patch to pick a carrot.");
   }
-LABEL291:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(16);
+}
+if (!fCARRYING_CARROT) {
+  if (said("eat", "carrot")) {
+    print("You do not have a carrot to eat.");
   }
-LABEL300:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(14);
-  }
-LABEL309:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(2);
-  }
-LABEL318:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL326:
-  return;
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(18);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(16);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(14);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(2);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+return;
 
 LOGIC__FOOTER
 
