@@ -17,70 +17,62 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 24, 110, 0, 0);
   }
-  LABEL41:
-    if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == 35) {
-      v92 = 84;
-      set(f155);
-      load.pic(v92);
-      load.view(114);
-      load.view(103);
-      load.view(104);
-      load.view(74);
-      load.view(105);
-      load.logics(LOGIC_BEANSTALK);
-      load.sound(12);
+  if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == 35) {
+    v92 = 84;
+    set(f155);
+    load.pic(v92);
+    load.view(114);
+    load.view(103);
+    load.view(104);
+    load.view(74);
+    load.view(105);
+    load.logics(LOGIC_BEANSTALK);
+    load.sound(12);
+  }
+  if (vPREV_ROOM_NO == 70 && fEGO_CLIMBING_BEANSTALK) {
+    set.view(oEGO, 74);
+    position(oEGO, 64, 41);
+    move.obj(oEGO, 64, 41, 0, f148);
+    set.priority(oEGO, 8);
+  }
+  if (vPREV_ROOM_NO == 70 && f158) {
+    program.control();
+    ignore.horizon(oEGO);
+    set.priority(oEGO, 15);
+    set.view(oEGO, 105);
+    get.posn(oEGO, v60, v61);
+    if (v60 > 75) {
+      position(oEGO, 80, 29);
     }
-  LABEL73:
-    if (vPREV_ROOM_NO == 70 && fEGO_CLIMBING_BEANSTALK) {
-      set.view(oEGO, 74);
-      position(oEGO, 64, 41);
-      move.obj(oEGO, 64, 41, 0, f148);
-      set.priority(oEGO, 8);
-    }
-  LABEL98:
-    if (vPREV_ROOM_NO == 70 && f158) {
-      program.control();
-      ignore.horizon(oEGO);
-      set.priority(oEGO, 15);
-      set.view(oEGO, 105);
-      get.posn(oEGO, v60, v61);
-      if (v60 > 75) {
-        position(oEGO, 80, 29);
-        goto(LABEL138);
-      }
+    else {
       position(oEGO, 65, 29);
-      LABEL138:
-        get.posn(oEGO, v60, v61);
-        v61 = 106;
-        v96 = 2;
-        move.obj.v(oEGO, v60, v61, 96, f26);
     }
-  LABEL154:
-    random(0, 250, v62);
-    if (v62 < 85) {
-      v31 = 4;
-      step.size(oDWARF, v31);
-      load.view(111);
-      animate.obj(oDWARF);
-      set.view(oDWARF, 111);
-      set(f20);
-      load.sound(1);
-      load.sound(16);
-    }
-  LABEL184:
-    if (f20) {
-      LABEL190:
-        random(0, 250, v70);
-        if (v70 > 90) {
-          goto(LABEL190);
-        }
-    }
-  LABEL204:
-    if (vBEANSTALK_ROOM == 35) {
-      overlay.pic(v92);
-    }
-    draw(oEGO);
-    show.pic();
+    get.posn(oEGO, v60, v61);
+    v61 = 106;
+    v96 = 2;
+    move.obj.v(oEGO, v60, v61, 96, f26);
+  }
+  random(0, 250, v62);
+  if (v62 < 85) {
+    v31 = 4;
+    step.size(oDWARF, v31);
+    load.view(111);
+    animate.obj(oDWARF);
+    set.view(oDWARF, 111);
+    set(f20);
+    load.sound(1);
+    load.sound(16);
+  }
+  if (f20) {
+    do {
+      random(0, 250, v70);
+    } while (v70 > 90);
+  }
+  if (vBEANSTALK_ROOM == 35) {
+    overlay.pic(v92);
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (f21 && fSOUND_END_MARKER) {
   if (!f30) {
@@ -92,79 +84,70 @@ if (f21 && fSOUND_END_MARKER) {
     reset(f31);
   }
 }
-LABEL246:
-  if (f158 && !f27) {
-    set(f27);
-    set(f135);
-    sound(5, f28);
+if (f158 && !f27) {
+  set(f27);
+  set(f135);
+  sound(5, f28);
+}
+if (!f26 && f28) {
+  reset(f27);
+  reset(f28);
+}
+if (f26) {
+  stop.sound();
+  set(f27);
+  reset(f158);
+  reset(f135);
+  set.view(oEGO, 114);
+  shake.screen(2);
+  set(fGAME_OVER);
+}
+v70--;
+if (v70 == 1 && !f158 && !fEGO_CLIMBING_BEANSTALK) {
+  position(oDWARF, 16, 79);
+  set(f21);
+  sound(1, fSOUND_END_MARKER);
+  draw(oDWARF);
+  if (!fGOAT_COMPANION) {
+    print("There is a small dwarf close by.  It would be a good idea to be careful.");
+    follow.ego(oDWARF, 7, f156);
   }
-LABEL262:
-  if (!f26 && f28) {
-    reset(f27);
-    reset(f28);
+  if (fGOAT_COMPANION) {
+    wander(oDWARF);
+    set(f23);
+    print("There is a small dwarf close by.  It would be a good idea to be careful.");
+    print("The dwarf sees the goat and decides to leave.");
   }
-LABEL275:
-  if (f26) {
-    stop.sound();
-    set(f27);
-    reset(f158);
-    reset(f135);
-    set.view(oEGO, 114);
-    shake.screen(2);
-    set(fGAME_OVER);
+}
+if (!f21) {
+  if (said("anyword", "dwarf")) {
+    print("There is no dwarf here.");
   }
-LABEL295:
-  v70--;
-  if (v70 == 1 && !f158 && !fEGO_CLIMBING_BEANSTALK) {
-    position(oDWARF, 16, 79);
-    set(f21);
-    sound(1, fSOUND_END_MARKER);
-    draw(oDWARF);
-    if (!fGOAT_COMPANION) {
-      print("There is a small dwarf close by.  It would be a good idea to be careful.");
-      follow.ego(oDWARF, 7, f156);
-    }
-    if (fGOAT_COMPANION) {
-      wander(oDWARF);
-      set(f23);
-      print("There is a small dwarf close by.  It would be a good idea to be careful.");
-      print("The dwarf sees the goat and decides to leave.");
-    }
+}
+if (f21) {
+  if (said("examine", "dwarf")) {
+    print("Dwarfs are quick, little guys who will try to take your treasure.");
   }
-LABEL348:
-  if (!f21) {
-    if (said("anyword", "dwarf")) {
-      print("There is no dwarf here.");
-    }
+  if (said("murder", "dwarf")) {
+    print("He's too quick for you to catch.");
   }
-LABEL367:
-  if (f21) {
-    if (said("examine", "dwarf")) {
-      print("Dwarfs are quick, little guys who will try to take your treasure.");
-    }
-    if (said("murder", "dwarf")) {
-      print("He's too quick for you to catch.");
-    }
-    LABEL397:
-      if (said("talk", "dwarf") || said("hello") || said("say", "hello") || said("hello", "dwarf")) {
-        print("No time to talk to him.  He's in too much of a hurry!");
-      }
+  if (said("talk", "dwarf") || said("hello") || said("say", "hello") || said("hello", "dwarf")) {
+    print("No time to talk to him.  He's in too much of a hurry!");
   }
-LABEL427:
-  if (f156) {
-    reset(f156);
-    if (fPROTECTED_BY_SPELL) {
-      print("It's a good thing you are protected by a spell.  That little dwarf likes to steal treasures.");
-      wander(oDWARF);
-      set(f23);
-      goto(LABEL642);
-    }
-    if (fEGO_INVISIBLE) {
-      print("Being invisible has protected you from the dwarf.");
-      wander(oDWARF);
-      set(f23);
-      goto(LABEL642);
-    }
+}
+if (f156) {
+  reset(f156);
+  if (fPROTECTED_BY_SPELL) {
+    print("It's a good thing you are protected by a spell.  That little dwarf likes to steal treasures.");
+    wander(oDWARF);
+    set(f23);
+  }
+  else if (fEGO_INVISIBLE) {
+    print("Being invisible has protected you from the dwarf.");
+    wander(oDWARF);
+    set(f23);
+  }
+  else {
     if (fCARRYING_MIRROR) {
       reset(fCARRYING_MIRROR);
       set(fDWARF_STOLE_MIRROR);
@@ -173,7 +156,6 @@ LABEL427:
       set(fLOST_VITAL_TREASURE);
       reset(f125);
       vTREASURE_COUNT--;
-      goto(LABEL636);
     }
     if (fCARRYING_SHIELD) {
       reset(fCARRYING_SHIELD);
@@ -183,7 +165,6 @@ LABEL427:
       set(fLOST_VITAL_TREASURE);
       reset(f125);
       vTREASURE_COUNT--;
-      goto(LABEL636);
     }
     if (fCARRYING_CHEST) {
       reset(fCARRYING_CHEST);
@@ -193,193 +174,173 @@ LABEL427:
       set(fLOST_VITAL_TREASURE);
       reset(f125);
       vTREASURE_COUNT--;
-      goto(LABEL636);
     }
     if (fCARRYING_DIAMONDS) {
       reset(fCARRYING_DIAMONDS);
       set(fDWARF_OR_TROLL_HAS_DIAMONDS);
       vSCORE -= 6;
       drop("pouch of diamonds");
-      goto(LABEL636);
     }
     if (fCARRYING_GOLD_WALNUT) {
       reset(fCARRYING_GOLD_WALNUT);
       set(fDWARF_OR_TROLL_HAS_WALNUT);
       vSCORE -= 6;
       drop("gold walnut");
-      goto(LABEL636);
     }
     if (fCARRYING_GOLDEN_EGG) {
       reset(fCARRYING_GOLDEN_EGG);
       set(fDWARF_OR_TROLL_HAS_EGG);
       vSCORE -= 6;
       drop("gold egg");
-      goto(LABEL636);
     }
     if (fCARRYING_POUCH) {
       reset(fCARRYING_POUCH);
       set(fDWARF_HAS_POUCH);
       vSCORE -= 3;
       drop("pouch");
-      goto(LABEL636);
     }
     if (fCARRYING_SCEPTRE) {
       reset(fCARRYING_SCEPTRE);
       set(fDWARF_OR_TROLL_HAS_SCEPTRE);
       vSCORE -= 6;
       drop("sceptre");
-      goto(LABEL636);
     }
-    print("The quick, little dwarf came by to see what you had -- nothing interested him.");
-    wander(oDWARF);
-    set(f23);
-    goto(LABEL642);
-    LABEL636:
-      print("That little dwarf caught you by surprise.  Is your treasure still OK?");
+    else {
+      print("The quick, little dwarf came by to see what you had -- nothing interested him.");
       wander(oDWARF);
       set(f23);
-  }
-LABEL642:
-  if (f23 && vOBJECT_EDGE_CODE != 0) {
-    erase(oDWARF);
-    reset(f23);
-    reset(f21);
-  }
-LABEL658:
-  if (fCARRYING_MAGIC_BEANS && f155) {
-    if (said("plant", "magic beans")) {
-      reset(fCARRYING_MAGIC_BEANS);
-      vBEANSTALK_ROOM = 35;
-      set(fMAGIC_BEANS_PLANTED);
-      drop("beans");
-      vSCORE += 2;
-      print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
-      sound(12, f29);
-      overlay.pic(v92);
-      show.pic();
+      goto(NOTHING_TAKEN);
     }
+    print("That little dwarf caught you by surprise.  Is your treasure still OK?");
+    wander(oDWARF);
+    set(f23);
+    NOTHING_TAKEN:
   }
-LABEL696:
-  if (vBEANSTALK_ROOM == 35 && !fEGO_INVISIBLE) {
-    if (said("climb", "beanstalk") && !fEGO_CLIMBING_BEANSTALK) {
-      if (posn(oEGO, 52, 76, 103, 97)) {
-        erase(oEGO);
-        ignore.blocks(oEGO);
-        set.view(oEGO, 74);
-        set(fEGO_CLIMBING_BEANSTALK);
-        position(oEGO, 71, 77);
-        set.priority(oEGO, 8);
-        draw(oEGO);
-        move.obj(oEGO, 71, 77, 0, f148);
-        goto(LABEL758);
-      }
+}
+if (f23 && vOBJECT_EDGE_CODE != 0) {
+  erase(oDWARF);
+  reset(f23);
+  reset(f21);
+}
+if (fCARRYING_MAGIC_BEANS && f155) {
+  if (said("plant", "magic beans")) {
+    reset(fCARRYING_MAGIC_BEANS);
+    vBEANSTALK_ROOM = 35;
+    set(fMAGIC_BEANS_PLANTED);
+    drop("beans");
+    vSCORE += 2;
+    print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
+    sound(12, f29);
+    overlay.pic(v92);
+    show.pic();
+  }
+}
+if (vBEANSTALK_ROOM == 35 && !fEGO_INVISIBLE) {
+  if (said("climb", "beanstalk") && !fEGO_CLIMBING_BEANSTALK) {
+    if (posn(oEGO, 52, 76, 103, 97)) {
+      erase(oEGO);
+      ignore.blocks(oEGO);
+      set.view(oEGO, 74);
+      set(fEGO_CLIMBING_BEANSTALK);
+      position(oEGO, 71, 77);
+      set.priority(oEGO, 8);
+      draw(oEGO);
+      move.obj(oEGO, 71, 77, 0, f148);
+    }
+    else {
       print("You can't reach the beanstalk from here.");
     }
   }
-LABEL758:
-  if (vBEANSTALK_ROOM != 35) {
-    if (said("climb", "beanstalk")) {
-      print("There is no beanstalk here to climb.");
-    }
+}
+if (vBEANSTALK_ROOM != 35) {
+  if (said("climb", "beanstalk")) {
+    print("There is no beanstalk here to climb.");
   }
-LABEL778:
-  if (fEGO_CLIMBING_BEANSTALK) {
-    if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 60, 78, 93, 80)) {
-      erase(oEGO);
-      set.view(oEGO, 0);
-      observe.blocks(oEGO);
-      reset(fEGO_CLIMBING_BEANSTALK);
-      position(oEGO, 70, 106);
-      release.priority(oEGO);
-      draw(oEGO);
-    }
-    if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 60, 78, 93, 80)) {
-      program.control();
-      set.priority(oEGO, 15);
-      get.posn(oEGO, v60, v61);
-      erase(oEGO);
-      set.view(oEGO, 105);
-      reset(fEGO_CLIMBING_BEANSTALK);
-      position.v(oEGO, v60, v61);
-      draw(oEGO);
-      v61 = 106;
-      v96 = 2;
-      move.obj.v(oEGO, v60, v61, 96, f24);
-      set(f135);
-      sound(5, f198);
-    }
-  }
-LABEL864:
-  v30--;
-  if (f24) {
-    stop.sound();
-    reset(f24);
+}
+if (fEGO_CLIMBING_BEANSTALK) {
+  if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 60, 78, 93, 80)) {
+    erase(oEGO);
+    set.view(oEGO, 0);
     observe.blocks(oEGO);
+    reset(fEGO_CLIMBING_BEANSTALK);
+    position(oEGO, 70, 106);
     release.priority(oEGO);
-    stop.motion(oEGO);
-    set.view(oEGO, 103);
-    v30 = 20;
-    set(f98);
-    shake.screen(2);
-    print("Ouch!");
+    draw(oEGO);
+  }
+  if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 60, 78, 93, 80)) {
+    program.control();
+    set.priority(oEGO, 15);
+    get.posn(oEGO, v60, v61);
+    erase(oEGO);
+    set.view(oEGO, 105);
+    reset(fEGO_CLIMBING_BEANSTALK);
+    position.v(oEGO, v60, v61);
+    draw(oEGO);
+    v61 = 106;
+    v96 = 2;
+    move.obj.v(oEGO, v60, v61, 96, f24);
     set(f135);
+    sound(5, f198);
+  }
+}
+v30--;
+if (f24) {
+  stop.sound();
+  reset(f24);
+  observe.blocks(oEGO);
+  release.priority(oEGO);
+  stop.motion(oEGO);
+  set.view(oEGO, 103);
+  v30 = 20;
+  set(f98);
+  shake.screen(2);
+  print("Ouch!");
+  set(f135);
+  sound(4, fSOUND_END_MARKER);
+}
+if (fSOUND_END_MARKER) {
+  if (v30 > 0) {
+    reset(fSOUND_END_MARKER);
     sound(4, fSOUND_END_MARKER);
   }
-LABEL898:
-  if (fSOUND_END_MARKER) {
-    if (v30 > 0) {
-      reset(fSOUND_END_MARKER);
-      sound(4, fSOUND_END_MARKER);
-    }
-  }
-LABEL916:
-  if (v30 == 1) {
-    set.view(oEGO, 104);
-    end.of.loop(oEGO, f25);
-  }
-LABEL929:
-  if (f25) {
-    reset(f25);
-    reset(f98);
-    start.motion(oEGO);
-    set.view(oEGO, 0);
-    release.priority(oEGO);
-    player.control();
-  }
-LABEL947:
-  if (vEGO_EDGE_CODE != EDGE_NONE) {
-    reset(f155);
-  }
-LABEL957:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON && fEGO_CLIMBING_BEANSTALK) {
-    new.room(70);
-  }
-LABEL968:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK) {
-    new.room(46);
-  }
-LABEL980:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(34);
-  }
-LABEL989:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(36);
-  }
-LABEL998:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(30);
-  }
-LABEL1007:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL1015:
-  if (vBEANSTALK_ROOM == 35) {
-    call(LOGIC_BEANSTALK);
-  }
-LABEL1024:
-  return;
+}
+if (v30 == 1) {
+  set.view(oEGO, 104);
+  end.of.loop(oEGO, f25);
+}
+if (f25) {
+  reset(f25);
+  reset(f98);
+  start.motion(oEGO);
+  set.view(oEGO, 0);
+  release.priority(oEGO);
+  player.control();
+}
+if (vEGO_EDGE_CODE != EDGE_NONE) {
+  reset(f155);
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON && fEGO_CLIMBING_BEANSTALK) {
+  new.room(70);
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK) {
+  new.room(46);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(34);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(36);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(30);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+if (vBEANSTALK_ROOM == 35) {
+  call(LOGIC_BEANSTALK);
+}
+return;
 
 LOGIC__FOOTER
 
