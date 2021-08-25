@@ -281,6 +281,7 @@
 #define SND_TITLE_MUSIC 0
 #define SND_VILLAIN 1
 #define SND_GAME_OVER 2
+#define SND_OUCH 4
 #define SND_TROLL 10
 #define SND_BEANSTALK 12
 #define SND_DWARF 16

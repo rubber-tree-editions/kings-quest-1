@@ -8,7 +8,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  load.sound(4);
+  load.sound(SND_OUCH);
   load.sound(5);
   set.horizon(50);
   if (fGOAT_COMPANION) {
@@ -204,13 +204,13 @@ LABEL554:
     shake.screen(2);
     print("Ouch!");
     set(f135);
-    sound(4, fSOUND_END_MARKER);
+    sound(SND_OUCH, fSOUND_END_MARKER);
   }
 LABEL588:
   if (fSOUND_END_MARKER) {
     if (v30 > 0) {
       reset(fSOUND_END_MARKER);
-      sound(4, fSOUND_END_MARKER);
+      sound(SND_OUCH, fSOUND_END_MARKER);
     }
   }
 LABEL606:
