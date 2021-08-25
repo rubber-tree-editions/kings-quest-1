@@ -95,7 +95,7 @@ if (f20 && !fGOAT_COMPANION) {
         erase(oGOAT);
         set.view(oGOAT, 62);
         draw(oGOAT);
-        v98 =/ 0;
+        v98 = 0;
         step.size(oGOAT, v98);
         print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.");
         drop("dagger");
