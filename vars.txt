@@ -48,8 +48,8 @@
 #define vTEMP_X v60
 #define vTEMP_Y v61
 #define vTEMP_RESULT v62
-#define vSPELL_STATE_HI v63
-#define vSPELL_STATE_LO v64
+#define vSPELL_COUNTDOWN_HI v63
+#define vSPELL_COUNTDOWN_LO v64
 #define vROOM_YOU_KILLED_THE_GOAT_IN v65
 #define vDOOR_STATE v66
   #define DOORSTATE_LOCKED 0

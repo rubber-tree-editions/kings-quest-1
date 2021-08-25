@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 27, 131, 0, 0);
   }
   random(0, 250, v62);
-  if (v62 < 125 && v64 == 0) {
+  if (v62 < 125 && vSPELL_COUNTDOWN_LO == 0) {
     load.view(6);
     animate.obj(oFAIRY_GODMOTHER);
     set.view(oFAIRY_GODMOTHER, 6);
@@ -36,8 +36,8 @@ if (v31 == 1) {
   set(f20);
   set(fPROTECTED_BY_SPELL);
   v30 = 250;
-  v63 = 100;
-  v64 = 250;
+  vSPELL_COUNTDOWN_HI = 100;
+  vSPELL_COUNTDOWN_LO = 250;
 }
 if (f20) {
   set(f135);

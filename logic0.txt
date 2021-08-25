@@ -366,16 +366,16 @@ if (vROOM_NO != 49 && said("dive", "anyword")) {
     print("You need to be in the water to try that.");
   }
 }
-if (v63 == 0 && v64 == 0 && fPROTECTED_BY_SPELL) {
+if (vSPELL_COUNTDOWN_HI == 0 && vSPELL_COUNTDOWN_LO == 0 && fPROTECTED_BY_SPELL) {
   print("\"Ye best be careful, young Graham.  The mystic protective spell of mine has weakened and departed.\"");
   reset(fPROTECTED_BY_SPELL);
 }
 else {
-  v64--;
-  if (v64 == 0) {
-    v63--;
-    if (v63 != 0) {
-      v64 = 250;
+  vSPELL_COUNTDOWN_LO--;
+  if (vSPELL_COUNTDOWN_LO == 0) {
+    vSPELL_COUNTDOWN_HI--;
+    if (vSPELL_COUNTDOWN_HI != 0) {
+      vSPELL_COUNTDOWN_LO = 250;
     }
   }
 }
