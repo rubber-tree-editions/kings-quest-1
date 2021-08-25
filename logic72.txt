@@ -19,155 +19,140 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oEGO, 66, 165);
     move.obj(oEGO, 66, 165, 0, f148);
   }
-  LABEL49:
-    draw(oEGO);
-    show.pic();
+  draw(oEGO);
+  show.pic();
 }
 if (f158 && !f22 && !f23) {
   sound(5, fSOUND_END_MARKER);
   set(f23);
 }
-LABEL69:
-  if (fSOUND_END_MARKER) {
-    if (!f22) {
-      reset(f23);
-      reset(fSOUND_END_MARKER);
-    }
+if (fSOUND_END_MARKER) {
+  if (!f22) {
+    reset(f23);
+    reset(fSOUND_END_MARKER);
   }
-LABEL86:
-  if (!posn(oEGO, 65, 100, 84, 120) && !fEGO_CLIMBING_BEANSTALK && !fEGO_INVISIBLE) {
-    if (said("climb", "beanstalk")) {
-      print("You need to be closer to do that.");
-    }
+}
+if (!posn(oEGO, 65, 100, 84, 120) && !fEGO_CLIMBING_BEANSTALK && !fEGO_INVISIBLE) {
+  if (said("climb", "beanstalk")) {
+    print("You need to be closer to do that.");
   }
-LABEL115:
-  if (fEGO_INVISIBLE) {
-    if (said("climb", "beanstalk")) {
-      print("You can't do that when you are invisible!");
-    }
+}
+if (fEGO_INVISIBLE) {
+  if (said("climb", "beanstalk")) {
+    print("You can't do that when you are invisible!");
   }
-LABEL133:
-  if (fEGO_CLIMBING_BEANSTALK) {
-    if (said("examine", "beanstalk")) {
-      get.posn(oEGO, v60, v61);
-      if (v61 > 140) {
-        print("Your heart thuds.  Dare you climb into the clouds?");
-      }
-      if (v61 < 141) {
-        print("It is amazing that you actually climbed up this high!");
-      }
-    }
-  }
-LABEL171:
-  if (!fEGO_CLIMBING_BEANSTALK) {
-    if (said("examine", "beanstalk")) {
-      get.posn(oEGO, v60, v61);
-      if (v60 > 89) {
-        print("It is hard to believe those seeds you planted grew this high.");
-      }
-      if (v60 < 90) {
-        print("It is a long, long way down....");
-      }
-    }
-  }
-LABEL210:
-  if (said("examine", "clouds") || said("examine", "room")) {
-    print("You are in the Land of the Clouds.  It is rumored a giant lives up here.");
-  }
-LABEL230:
-  if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && !posn(oEGO, 65, 100, 82, 120) && !fEGO_CLIMBING_BEANSTALK) {
-    set(f21);
-    if (!fEGO_INVISIBLE) {
-      set.view(oEGO, 105);
-    }
-    start.cycling(oEGO);
-    set(f98);
+}
+if (fEGO_CLIMBING_BEANSTALK) {
+  if (said("examine", "beanstalk")) {
     get.posn(oEGO, v60, v61);
-    get.priority(oEGO, v30);
-    set.priority.v(oEGO, v30);
-    v61 = 165;
-    v96 = 4;
-    move.obj.v(oEGO, v60, v61, 96, f20);
-    sound(5, f198);
-  }
-LABEL290:
-  if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && posn(oEGO, 65, 100, 82, 120) && fEGO_INVISIBLE) {
-    set(f21);
-    if (!fEGO_INVISIBLE) {
-      set.view(oEGO, 105);
+    if (v61 > 140) {
+      print("Your heart thuds.  Dare you climb into the clouds?");
     }
-    start.cycling(oEGO);
-    set(f98);
+    if (v61 < 141) {
+      print("It is amazing that you actually climbed up this high!");
+    }
+  }
+}
+if (!fEGO_CLIMBING_BEANSTALK) {
+  if (said("examine", "beanstalk")) {
     get.posn(oEGO, v60, v61);
-    get.priority(oEGO, v30);
-    set.priority.v(oEGO, v30);
-    v61 = 165;
-    v96 = 4;
-    move.obj.v(oEGO, v60, v61, 96, f20);
-    sound(5, f198);
-  }
-LABEL348:
-  if (f20) {
-    reset(f20);
-    erase(oEGO);
-    print("Whoops!  You fall toward a distant earth.");
-    set(fGAME_OVER);
-  }
-LABEL362:
-  if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 65, 100, 82, 120) && !fEGO_INVISIBLE) {
-    if (fEGO_CLIMBING_BEANSTALK) {
-      reset(fEGO_CLIMBING_BEANSTALK);
-      erase(oEGO);
-      set.view(oEGO, 0);
-      position(oEGO, 85, 112);
-      draw(oEGO);
-      move.obj(oEGO, 85, 112, 0, f148);
-      goto(LABEL503);
+    if (v60 > 89) {
+      print("It is hard to believe those seeds you planted grew this high.");
     }
-    if (!fEGO_CLIMBING_BEANSTALK) {
-      set(fEGO_CLIMBING_BEANSTALK);
-      erase(oEGO);
-      set.view(oEGO, 74);
-      position(oEGO, 70, 123);
-      draw(oEGO);
-      move.obj(oEGO, 70, 123, 0, f148);
+    if (v60 < 90) {
+      print("It is a long, long way down....");
     }
   }
-LABEL431:
-  if (fEGO_TOUCHED_TRIGGER_LINE && fEGO_CLIMBING_BEANSTALK) {
-    program.control();
-    print("Whoops!  You fall toward a distant earth.");
-    get.posn(oEGO, v60, v61);
-    reset(fEGO_CLIMBING_BEANSTALK);
-    set(f158);
-    erase(oEGO);
+}
+if (said("examine", "clouds") || said("examine", "room")) {
+  print("You are in the Land of the Clouds.  It is rumored a giant lives up here.");
+}
+if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && !posn(oEGO, 65, 100, 82, 120) && !fEGO_CLIMBING_BEANSTALK) {
+  set(f21);
+  if (!fEGO_INVISIBLE) {
     set.view(oEGO, 105);
-    if (v60 > 75) {
-      v60 = 80;
-      position.v(oEGO, v60, v61);
-      draw(oEGO);
-    }
-    if (v60 < 76) {
-      v60 = 65;
-      position.v(oEGO, v60, v61);
-      draw(oEGO);
-    }
-    LABEL487:
-      start.cycling(oEGO);
-      set(f98);
-      v61 = 166;
-      v96 = 4;
-      move.obj.v(oEGO, v60, v61, 96, f22);
   }
-LABEL503:
+  start.cycling(oEGO);
+  set(f98);
+  get.posn(oEGO, v60, v61);
+  get.priority(oEGO, v30);
+  set.priority.v(oEGO, v30);
+  v61 = 165;
+  v96 = 4;
+  move.obj.v(oEGO, v60, v61, 96, f20);
+  sound(5, f198);
+}
+if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && posn(oEGO, 65, 100, 82, 120) && fEGO_INVISIBLE) {
+  set(f21);
+  if (!fEGO_INVISIBLE) {
+    set.view(oEGO, 105);
+  }
+  start.cycling(oEGO);
+  set(f98);
+  get.posn(oEGO, v60, v61);
+  get.priority(oEGO, v30);
+  set.priority.v(oEGO, v30);
+  v61 = 165;
+  v96 = 4;
+  move.obj.v(oEGO, v60, v61, 96, f20);
+  sound(5, f198);
+}
+if (f20) {
+  reset(f20);
+  erase(oEGO);
+  print("Whoops!  You fall toward a distant earth.");
+  set(fGAME_OVER);
+}
+if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 65, 100, 82, 120) && !fEGO_INVISIBLE) {
+  if (fEGO_CLIMBING_BEANSTALK) {
+    reset(fEGO_CLIMBING_BEANSTALK);
+    erase(oEGO);
+    set.view(oEGO, 0);
+    position(oEGO, 85, 112);
+    draw(oEGO);
+    move.obj(oEGO, 85, 112, 0, f148);
+    goto(FINALCHECKS);
+  }
+  if (!fEGO_CLIMBING_BEANSTALK) {
+    set(fEGO_CLIMBING_BEANSTALK);
+    erase(oEGO);
+    set.view(oEGO, 74);
+    position(oEGO, 70, 123);
+    draw(oEGO);
+    move.obj(oEGO, 70, 123, 0, f148);
+  }
+}
+if (fEGO_TOUCHED_TRIGGER_LINE && fEGO_CLIMBING_BEANSTALK) {
+  program.control();
+  print("Whoops!  You fall toward a distant earth.");
+  get.posn(oEGO, v60, v61);
+  reset(fEGO_CLIMBING_BEANSTALK);
+  set(f158);
+  erase(oEGO);
+  set.view(oEGO, 105);
+  if (v60 > 75) {
+    v60 = 80;
+    position.v(oEGO, v60, v61);
+    draw(oEGO);
+  }
+  if (v60 < 76) {
+    v60 = 65;
+    position.v(oEGO, v60, v61);
+    draw(oEGO);
+  }
+  start.cycling(oEGO);
+  set(f98);
+  v61 = 166;
+  v96 = 4;
+  move.obj.v(oEGO, v60, v61, 96, f22);
+}
+FINALCHECKS:
   if (f22 || posn(oEGO, 0, 166, 159, 167)) {
     new.room(71);
   }
-LABEL519:
   if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(56);
   }
-LABEL528:
   return;
 
 LOGIC__FOOTER
