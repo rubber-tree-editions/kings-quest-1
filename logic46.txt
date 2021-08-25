@@ -18,7 +18,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.horizon(42);
     random(0, 250, v62);
     if (v62 < 175) {
-      load.sound(1);
+      load.sound(SND_VILLAIN);
       v31 = 2;
       step.size(oOGRE, v31);
       load.view(94);
@@ -47,7 +47,7 @@ if (v70 == 1) {
   position(oOGRE, 40, 51);
   set(f21);
   set(f135);
-  sound(1, fSOUND_END_MARKER);
+  sound(SND_VILLAIN, fSOUND_END_MARKER);
   draw(oOGRE);
   if (!fGOAT_COMPANION) {
     print("Watch out!!!  There is an ogre nearby!  He will crush you in his strong arms if he catches you.");

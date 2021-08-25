@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       set(f20);
       load.view(3);
       load.view(91);
-      load.sound(1);
+      load.sound(SND_VILLAIN);
       animate.obj(oWITCH);
       set.view(oWITCH, 3);
       ignore.horizon(oWITCH);
@@ -49,7 +49,7 @@ if (v70 == 1) {
   position(oWITCH, 80, 40);
   draw(oWITCH);
   set(f135);
-  sound(1, fSOUND_END_MARKER);
+  sound(SND_VILLAIN, fSOUND_END_MARKER);
   if (!fGOAT_COMPANION) {
     print("It's a witch swooping through the sky... She's trying to catch you!  Look out!");
     follow.ego(oWITCH, 20, f24);

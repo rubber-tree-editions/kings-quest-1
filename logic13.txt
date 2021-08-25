@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       set(f23);
       load.view(4);
       load.view(96);
-      load.sound(1);
+      load.sound(SND_VILLAIN);
       animate.obj(oWOLF);
       set.view(oWOLF, 4);
     }
@@ -51,7 +51,7 @@ if (v70 == 1) {
   set(f20);
   position(oWOLF, 7, 68);
   set(f135);
-  sound(1, fSOUND_END_MARKER);
+  sound(SND_VILLAIN, fSOUND_END_MARKER);
   draw(oWOLF);
   if (!fGOAT_COMPANION) {
     print("Look out for that wolf -- he can run very fast!   Don't let him catch you!");

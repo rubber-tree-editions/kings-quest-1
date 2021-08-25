@@ -19,7 +19,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(33);
     load.view(61);
     load.view(82);
-    load.sound(1);
+    load.sound(SND_VILLAIN);
     load.sound(7);
   }
   load.view(35);
@@ -89,7 +89,7 @@ if (v60 < 16) {
 }
 if (vDRAGON_STATE == DRAGONSTATE_NORMAL && !f24) {
   set(f24);
-  sound(1, f25);
+  sound(SND_VILLAIN, f25);
 }
 if (vDRAGON_STATE == DRAGONSTATE_NORMAL && f25) {
   current.loop(oDRAGON, v31);

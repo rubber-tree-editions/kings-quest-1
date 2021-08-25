@@ -60,7 +60,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oDWARF);
     set.view(oDWARF, 111);
     set(f20);
-    load.sound(1);
+    load.sound(SND_VILLAIN);
     load.sound(16);
   }
   if (f20) {
@@ -106,7 +106,7 @@ v70--;
 if (v70 == 1 && !f158 && !fEGO_CLIMBING_BEANSTALK) {
   position(oDWARF, 16, 79);
   set(f21);
-  sound(1, fSOUND_END_MARKER);
+  sound(SND_VILLAIN, fSOUND_END_MARKER);
   draw(oDWARF);
   if (!fGOAT_COMPANION) {
     print("There is a small dwarf close by.  It would be a good idea to be careful.");

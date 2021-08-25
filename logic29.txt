@@ -28,7 +28,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       step.size(oSORCERER, v32);
       load.view(5);
       load.view(116);
-      load.sound(1);
+      load.sound(SND_VILLAIN);
       load.sound(17);
       animate.obj(oSORCERER);
       set.view(oSORCERER, 5);
@@ -61,7 +61,7 @@ LABEL139:
   if (v70 == 1) {
     position(oSORCERER, 40, 140);
     set(f21);
-    sound(1, fSOUND_END_MARKER);
+    sound(SND_VILLAIN, fSOUND_END_MARKER);
     draw(oSORCERER);
     if (!fGOAT_COMPANION) {
       print("Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!");

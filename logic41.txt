@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oTROLL, 95, 154);
     observe.blocks(oTROLL);
     set(f20);
-    load.sound(1);
+    load.sound(SND_VILLAIN);
     load.sound(10);
   }
   draw(oEGO);
@@ -90,7 +90,7 @@ if (f20 && fEGO_TOUCHED_TRIGGER_LINE) {
   set(f21);
   v30 = 2;
   step.size(oTROLL, v30);
-  sound(1, fSOUND_END_MARKER);
+  sound(SND_VILLAIN, fSOUND_END_MARKER);
   draw(oTROLL);
   if (fEGO_INVISIBLE) {
     print("As you start to cross the bridge, a wretched troll appears.  Even though you are invisible, he will not let you cross his bridge.");

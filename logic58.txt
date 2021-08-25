@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.view(105);
   load.view(114);
-  load.sound(1);
+  load.sound(SND_VILLAIN);
   load.sound(5);
   load.sound(9);
   load.sound(18);
@@ -78,7 +78,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (v86 == 0 || v86 == 2) {
   if (!f26) {
     set(f26);
-    sound(1, f148);
+    sound(SND_VILLAIN, f148);
   }
 }
 if (f22 && f23) {

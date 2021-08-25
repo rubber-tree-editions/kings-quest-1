@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  load.sound(1);
+  load.sound(SND_VILLAIN);
   load.sound(4);
   load.sound(5);
   if (!fCARRYING_NOTE) {
@@ -126,7 +126,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 if (f27 && !f32) {
   set(f32);
-  sound(1, f148);
+  sound(SND_VILLAIN, f148);
 }
 if (fGOAT_COMPANION) {
   reset(fGOAT_COMPANION);
@@ -227,7 +227,7 @@ if (v30 == 1 && v31 == 3) {
 if (v30 == 1 && v31 == 2) {
   position(oWITCH, 49, 160);
   draw(oWITCH);
-  sound(1, f148);
+  sound(SND_VILLAIN, f148);
   set(f29);
   if (posn(oEGO, 105, 1, 158, 166)) {
     move.obj(oWITCH, 26, 120, 2, f21);

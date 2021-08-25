@@ -20,7 +20,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.objs(oEGO);
   load.view(95);
   if (!fRAT_IS_GONE) {
-    load.sound(1);
+    load.sound(SND_VILLAIN);
     load.view(45);
     animate.obj(oRAT);
     set.view(oRAT, 45);
@@ -64,7 +64,7 @@ if (f203) {
 }
 if (f20) {
   reset(f20);
-  sound(1, f148);
+  sound(SND_VILLAIN, f148);
 }
 if (posn(oEGO, 0, 0, 54, 167)) {
   observe.blocks(oEGO);
