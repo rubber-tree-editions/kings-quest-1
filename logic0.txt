@@ -818,7 +818,7 @@ if (fCARRYING_FIDDLE) {
     if (said("play", "fiddle")) {
       print("You play a lively, toe-tapping tune on the fiddle.");
       if (vROOM_NO == 79) {
-        sound(8, f148);
+        sound(SND_FIDDLE_TUNE, f148);
       }
     }
   }

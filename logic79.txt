@@ -14,7 +14,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(57);
   load.view(58);
   load.sound(SND_FALLING);
-  load.sound(8);
+  load.sound(SND_FIDDLE_TUNE);
   if (fCARRYING_BOWL || fGIVEN_BOWL_TO_WOODCUTTER) {
     load.view(25);
     load.view(83);

@@ -19,7 +19,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(o1);
     set.view(o1, 50);
     position(o1, 96, 78);
-    load.sound(8);
+    load.sound(SND_FIDDLE_TUNE);
   }
   if (!fDANCING_LEPRECHAUNS) {
     load.view(78);
@@ -82,7 +82,7 @@ if (!fDANCING_LEPRECHAUNS && !f22) {
     set(f22);
     v30 = 45;
     draw(o1);
-    sound(8, f23);
+    sound(SND_FIDDLE_TUNE, f23);
     start.cycling(o13);
     wander(o13);
     erase(o2);
@@ -96,7 +96,7 @@ if (!fDANCING_LEPRECHAUNS && !f22) {
 }
 if (v30 > 1 && f23) {
   reset(f23);
-  sound(8, f23);
+  sound(SND_FIDDLE_TUNE, f23);
 }
 if (v30 == 1) {
   v30 = 0;

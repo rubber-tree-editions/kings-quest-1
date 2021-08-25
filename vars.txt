@@ -284,6 +284,7 @@
 #define SND_OUCH 4
 #define SND_FALLING 5
 #define SND_FAIRY_GODMOTHER 6
+#define SND_FIDDLE_TUNE 8
 #define SND_TROLL 10
 #define SND_BEANSTALK 12
 #define SND_DWARF 16
