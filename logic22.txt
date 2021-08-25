@@ -21,9 +21,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL47:
     if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == 22) {
-      v92 = 84;
+      vTEMP_PIC = 84;
       set(f155);
-      load.pic(v92);
+      load.pic(vTEMP_PIC);
       load.view(114);
       load.view(103);
       load.view(104);
@@ -82,7 +82,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 142, 83);
     }
     if (vBEANSTALK_ROOM == 22) {
-      overlay.pic(v92);
+      overlay.pic(vTEMP_PIC);
     }
   LABEL234:
     draw(oEGO);
@@ -221,7 +221,7 @@ LABEL633:
       vSCORE += 2;
       print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
       sound(SND_BEANSTALK, f30);
-      overlay.pic(v92);
+      overlay.pic(vTEMP_PIC);
       show.pic();
     }
   }
