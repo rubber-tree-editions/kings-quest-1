@@ -52,7 +52,7 @@ if (said("examine", "mountains")) {
 }
 LABEL123:
   if (said("climb", "mountains")) {
-    print("The mountain is much too steep and rocky for you to climb.";
+    print("The mountain is much too steep and rocky for you to climb.");
   }
 LABEL135:
   if (said("examine", "doors")) {
