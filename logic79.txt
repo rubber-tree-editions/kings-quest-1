@@ -376,8 +376,8 @@ if (fEGO_ON_WATER && !f199) {
   set.priority(oEGO, 5);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_Y = 166;
-  v96 = 6;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f23);
+  vTEMP_STEP = 6;
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f23);
   sound(SND_FALLING, fSOUND_END_MARKER);
 }
 if (f23) {

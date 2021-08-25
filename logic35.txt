@@ -49,8 +49,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_Y = 106;
-    v96 = 2;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f26);
+    vTEMP_STEP = 2;
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f26);
   }
   random(0, 250, v62);
   if (v62 < 85) {
@@ -277,8 +277,8 @@ if (fEGO_CLIMBING_BEANSTALK) {
     position.v(oEGO, vTEMP_X, vTEMP_Y);
     draw(oEGO);
     vTEMP_Y = 106;
-    v96 = 2;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f24);
+    vTEMP_STEP = 2;
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f24);
     set(f135);
     sound(SND_FALLING, f198);
   }

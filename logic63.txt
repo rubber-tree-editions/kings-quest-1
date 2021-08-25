@@ -77,9 +77,9 @@ if (fEGO_ON_WATER && !posn(oEGO, 12, 106, 57, 166) && !f21) {
   print("Apparently you lost your grip while climbing this tree and you fall to the hard earth below.");
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_Y = 166;
-  v96 = 3;
+  vTEMP_STEP = 3;
   sound(SND_FALLING, fSOUND_END_MARKER);
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f148);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f148);
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !f21) {
   set(f21);
@@ -90,9 +90,9 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !f21) {
   print("Apparently you lost your grip while climbing this tree and you fall to the hard earth below.");
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_Y = 166;
-  v96 = 3;
+  vTEMP_STEP = 3;
   sound(SND_FALLING, fSOUND_END_MARKER);
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f148);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f148);
 }
 if (posn(oEGO, 12, 106, 57, 166) && !f21) {
   if (fEGO_TOUCHED_TRIGGER_LINE || fEGO_ON_WATER) {
@@ -104,9 +104,9 @@ if (posn(oEGO, 12, 106, 57, 166) && !f21) {
     print("Apparently you lost your grip while climbing this tree and you fall to the hard earth below.");
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_Y = 166;
-    v96 = 3;
+    vTEMP_STEP = 3;
     sound(SND_FALLING, fSOUND_END_MARKER);
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f148);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f148);
   }
 }
 if (f148) {

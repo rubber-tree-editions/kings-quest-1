@@ -27,9 +27,9 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 55, 29);
     }
     vTEMP_Y = 166;
-    v96 = 4;
+    vTEMP_STEP = 4;
     set.priority(oEGO, 15);
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f20);
   }
   if (vPREV_ROOM_NO < 50) {
     set.view(oEGO, 74);
@@ -78,8 +78,8 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !f158) {
   start.cycling(oEGO);
   set(f98);
   vTEMP_Y = 166;
-  v96 = 4;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
+  vTEMP_STEP = 4;
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f20);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(71);

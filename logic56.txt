@@ -31,8 +31,8 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
   set.priority.v(oEGO, v30);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_Y += 40;
-  v96 = 4;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
+  vTEMP_STEP = 4;
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f20);
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 84, 159, 167)) {
   set(f199);
@@ -43,8 +43,8 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 84, 159, 167)) {
   get.priority(oEGO, v30);
   set.priority.v(oEGO, v30);
   vTEMP_Y += 9;
-  v96 = 4;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
+  vTEMP_STEP = 4;
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f20);
 }
 if (!f20 && f199 && !f21) {
   sound(SND_FALLING, fSOUND_END_MARKER);

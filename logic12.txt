@@ -228,8 +228,8 @@ if (f180) {
   if (vTEMP_X < 35 || vTEMP_X > 44) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_Y = 145;
-    v96 = 3;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f29);
+    vTEMP_STEP = 3;
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f29);
     print("You should be more careful the next time you try  climbing ropes.");
     set(f135);
     sound(SND_FALLING, fSOUND_END_MARKER);

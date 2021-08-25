@@ -113,8 +113,8 @@ if (f23) {
   reset(f23);
   stop.motion(oTROLL);
   get.posn(oTROLL, vTEMP_X, vTEMP_Y);
-  v96 = 1;
-  move.obj.v(oGOAT, vTEMP_X, vTEMP_Y, 96, f24);
+  vTEMP_STEP = 1;
+  move.obj.v(oGOAT, vTEMP_X, vTEMP_Y, vTEMP_STEP, f24);
 }
 distance(oTROLL, oGOAT, v62);
 if (v62 < 20 && !f150) {
@@ -126,7 +126,7 @@ if (v62 < 20 && !f150) {
   set(fGOAT_IS_GONE);
   get.posn(oGOAT, vTEMP_X, vTEMP_Y);
   vTEMP_Y = 165;
-  move.obj.v(oGOAT, vTEMP_X, vTEMP_Y, 96, f30);
+  move.obj.v(oGOAT, vTEMP_X, vTEMP_Y, vTEMP_STEP, f30);
   vSCORE += 4;
 }
 if (f30) {

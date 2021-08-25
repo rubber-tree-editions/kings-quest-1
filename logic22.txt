@@ -54,8 +54,8 @@ if (fROOM_SCRIPT_EXECUTED) {
       LABEL144:
         get.posn(oEGO, vTEMP_X, vTEMP_Y);
         vTEMP_Y = 106;
-        v96 = 2;
-        move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f28);
+        vTEMP_STEP = 2;
+        move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f28);
     }
   LABEL160:
     random(0, 250, v62);
@@ -175,7 +175,7 @@ LABEL440:
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_X = 130;
     set.priority(oEGO, 15);
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 31, f25);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, v31, f25);
     set(f98);
     if (!fTAKEN_BY_GIANT_BIRD) {
       set(fTAKEN_BY_GIANT_BIRD);
@@ -267,8 +267,8 @@ LABEL751:
       position.v(oEGO, vTEMP_X, vTEMP_Y);
       draw(oEGO);
       vTEMP_Y = 106;
-      v96 = 2;
-      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f26);
+      vTEMP_STEP = 2;
+      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f26);
       set(f135);
       sound(SND_FALLING, f198);
     }

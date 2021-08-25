@@ -92,6 +92,7 @@
   #define BOWLSTATE_EMPTY 0
   #define BOWLSTATE_FULL_OF_STEW 1
 #define vTEMP_PIC v92
+#define vTEMP_STEP v96
 #define vGAME_OVER_MESSAGE_COUNTDOWN v97
 #define vTEMP_STEP_SIZE v98
 #define vTEMP_X_2 v100

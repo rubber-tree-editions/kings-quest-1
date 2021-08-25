@@ -78,8 +78,8 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && !posn(oEGO, 65, 100, 82, 120) && !fEGO_
   get.priority(oEGO, v30);
   set.priority.v(oEGO, v30);
   vTEMP_Y = 165;
-  v96 = 4;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
+  vTEMP_STEP = 4;
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f20);
   sound(SND_FALLING, f198);
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && posn(oEGO, 65, 100, 82, 120) && fEGO_INVISIBLE) {
@@ -93,8 +93,8 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && posn(oEGO, 65, 100, 82, 120) && fEGO_IN
   get.priority(oEGO, v30);
   set.priority.v(oEGO, v30);
   vTEMP_Y = 165;
-  v96 = 4;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
+  vTEMP_STEP = 4;
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f20);
   sound(SND_FALLING, f198);
 }
 if (f20) {
@@ -143,8 +143,8 @@ if (fEGO_TOUCHED_TRIGGER_LINE && fEGO_CLIMBING_BEANSTALK) {
   start.cycling(oEGO);
   set(f98);
   vTEMP_Y = 166;
-  v96 = 4;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f22);
+  vTEMP_STEP = 4;
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f22);
 }
 FINALCHECKS:
   if (f22 || posn(oEGO, 0, 166, 159, 167)) {

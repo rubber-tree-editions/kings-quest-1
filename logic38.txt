@@ -48,8 +48,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     LABEL138:
       get.posn(oEGO, vTEMP_X, vTEMP_Y);
       vTEMP_Y = 106;
-      v96 = 2;
-      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f22);
+      vTEMP_STEP = 2;
+      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f22);
   }
   if (vBEANSTALK_ROOM == 38) {
     overlay.pic(v92);
@@ -147,8 +147,8 @@ if (fEGO_CLIMBING_BEANSTALK) {
     position.v(oEGO, vTEMP_X, vTEMP_Y);
     draw(oEGO);
     vTEMP_Y = 106;
-    v96 = 2;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
+    vTEMP_STEP = 2;
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f20);
     set(f135);
     sound(SND_FALLING, f198);
   }

@@ -47,8 +47,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_Y = 106;
-    v96 = 2;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f21);
+    vTEMP_STEP = 2;
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f21);
   }
   if (vPREV_ROOM_NO == 43 && fEGO_ON_WATER) {
     reset(f98);
@@ -188,8 +188,8 @@ if (fEGO_CLIMBING_BEANSTALK) {
     position.v(oEGO, vTEMP_X, vTEMP_Y);
     draw(oEGO);
     vTEMP_Y = 106;
-    v96 = 2;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
+    vTEMP_STEP = 2;
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f20);
     set(f135);
     sound(SND_FALLING, f198);
   }

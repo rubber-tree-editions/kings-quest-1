@@ -125,7 +125,7 @@ if (v62 < 15 && !f150) {
   set(fGOAT_IS_GONE);
   get.posn(oGOAT, vTEMP_X, vTEMP_Y);
   vTEMP_Y = 80;
-  move.obj.v(oGOAT, vTEMP_X, vTEMP_Y, 96, f31);
+  move.obj.v(oGOAT, vTEMP_X, vTEMP_Y, vTEMP_STEP, f31);
   vSCORE += 4;
 }
 if (f31) {

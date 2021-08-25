@@ -107,8 +107,8 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !f22) {
   else {
     vTEMP_Y = 165;
   }
-  v96 = 4;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
+  vTEMP_STEP = 4;
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f20);
   sound(SND_FALLING, fSOUND_END_MARKER);
 }
 if (f20) {

@@ -388,7 +388,7 @@ struct overlay {
 
 struct move {
   struct move_obj {
-    void (*v)(agiobj, agivar, agivar, int, agiflag);
+    void (*v)(agiobj, agivar, agivar, agivar, agiflag);
   } obj;
   void (*_obj)(agiobj, int, int, int, agiflag);
 } move;

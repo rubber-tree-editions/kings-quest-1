@@ -98,8 +98,8 @@ if (f180) {
     set.priority(oEGO, 15);
     set(f98);
     set(f20);
-    v96 = 3;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f22);
+    vTEMP_STEP = 3;
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f22);
   }
   if (vTEMP_Y > 115 && f179) {
     reset(f180);
@@ -110,8 +110,8 @@ if (f180) {
     set.priority(oEGO, 15);
     set(f98);
     set(f20);
-    v96 = 3;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f22);
+    vTEMP_STEP = 3;
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f22);
   }
   if (vTEMP_X < 79 || vTEMP_X > 83) {
     if (vTEMP_Y > 70) {
@@ -123,8 +123,8 @@ if (f180) {
       set.priority(oEGO, 15);
       set(f98);
       set(f20);
-      v96 = 3;
-      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f22);
+      vTEMP_STEP = 3;
+      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f22);
     }
     else {
       reset(f180);
@@ -136,8 +136,8 @@ if (f180) {
       set.priority(oEGO, 15);
       set(f98);
       set(f20);
-      v96 = 3;
-      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f21);
+      vTEMP_STEP = 3;
+      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f21);
     }
   }
 }
