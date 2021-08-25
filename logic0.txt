@@ -672,8 +672,8 @@ if (fGOAT_COMPANION) {
         position.v(oGOAT, vTEMP_X, vTEMP_Y);
         draw(oGOAT);
         vROOM_YOU_KILLED_THE_GOAT_IN = vROOM_NO;
-        v98 = 0;
-        step.size(oGOAT, v98);
+        vTEMP_STEP_SIZE = 0;
+        step.size(oGOAT, vTEMP_STEP_SIZE);
         drop("dagger");
         vSCORE -= 5;
         reset(fCARRYING_DAGGER);
@@ -686,8 +686,8 @@ if (fGOAT_COMPANION) {
         set.view(oGOAT, 62);
         draw(oGOAT);
         vROOM_YOU_KILLED_THE_GOAT_IN = vROOM_NO;
-        v98 = 0;
-        step.size(oGOAT, v98);
+        vTEMP_STEP_SIZE = 0;
+        step.size(oGOAT, vTEMP_STEP_SIZE);
         drop("dagger");
         vSCORE -= 5;
         reset(fCARRYING_DAGGER);
