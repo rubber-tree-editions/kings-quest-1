@@ -12,7 +12,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.sound(5);
   random(0, 250, v62);
   if (v62 < 150) {
-    load.sound(16);
+    load.sound(SND_DWARF);
     load.view(111);
     load.view(115);
     animate.obj(oDWARF);
@@ -43,7 +43,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (f24) {
   if (!f27) {
     set(f27);
-    sound(16, f28);
+    sound(SND_DWARF, f28);
   }
   if (f28) {
     reset(f27);

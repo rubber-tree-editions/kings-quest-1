@@ -61,7 +61,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oDWARF, 111);
     set(f20);
     load.sound(SND_VILLAIN);
-    load.sound(16);
+    load.sound(SND_DWARF);
   }
   if (f20) {
     do {
@@ -77,7 +77,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (f21 && fSOUND_END_MARKER) {
   if (!f30) {
     set(f30);
-    sound(16, f31);
+    sound(SND_DWARF, f31);
   }
   if (f31) {
     reset(f30);
