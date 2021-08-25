@@ -143,10 +143,10 @@ if (f22 && vOBJECT_EDGE_CODE != 0) {
   erase(oBIRD);
 }
 distance(oEGO, oBIRD, v71);
-get.posn(oEGO, v100, v101);
+get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
 get.posn(oBIRD, v32, v33);
 v33 += 20;
-if (v71 > 20 && v71 < 30 && v101 > v33 && f143 && !f22) {
+if (v71 > 20 && v71 < 30 && vTEMP_Y_2 > v33 && f143 && !f22) {
   reset(f143);
   set(f145);
   program.control();

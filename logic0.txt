@@ -149,15 +149,15 @@ if (vROOM_NO > 52 || vROOM_NO == 3 || vROOM_NO == 6 || vROOM_NO == 9 || vROOM_NO
     print("You need to be in water to swim.");
   }
 }
-get.posn(oEGO, v100, v101);
-if (vEGO_DIR == vSAVED_EGO_DIR && v100 == vSAVED_EGO_X && v101 == vSAVED_EGO_Y) {
+get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
+if (vEGO_DIR == vSAVED_EGO_DIR && vTEMP_X_2 == vSAVED_EGO_X && vTEMP_Y_2 == vSAVED_EGO_Y) {
   stop.cycling(oEGO);
 }
 else {
   start.cycling(oEGO);
 }
-vSAVED_EGO_X = v100;
-vSAVED_EGO_Y = v101;
+vSAVED_EGO_X = vTEMP_X_2;
+vSAVED_EGO_Y = vTEMP_Y_2;
 vSAVED_EGO_DIR = vEGO_DIR;
 if (f98) {
   start.cycling(oEGO);

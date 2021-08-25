@@ -66,8 +66,8 @@ if (v30 > 0) {
       reset(fCARRYING_RING);
     }
     ignore.blocks(oEGO);
-    get.posn(oEGO, v100, v101);
-    if (v100 < 60 && v101 < 88) {
+    get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
+    if (vTEMP_X_2 < 60 && vTEMP_Y_2 < 88) {
       move.obj(oEGO, 67, 82, 0, f28);
     }
     else {
