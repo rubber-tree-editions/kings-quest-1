@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   load.sound(SND_OUCH);
-  load.sound(5);
+  load.sound(SND_FALLING);
   set.horizon(41);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC_GOAT);
@@ -91,7 +91,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (f158 && !f29) {
   set(f29);
   set(f135);
-  sound(5, f24);
+  sound(SND_FALLING, f24);
 }
 LABEL253:
   if (!f28 && f24) {
@@ -270,7 +270,7 @@ LABEL751:
       v96 = 2;
       move.obj.v(oEGO, v60, v61, 96, f26);
       set(f135);
-      sound(5, f198);
+      sound(SND_FALLING, f198);
     }
   }
 LABEL835:

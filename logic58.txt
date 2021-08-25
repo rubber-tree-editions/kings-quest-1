@@ -12,7 +12,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.view(114);
   load.sound(SND_VILLAIN);
-  load.sound(5);
+  load.sound(SND_FALLING);
   load.sound(9);
   load.sound(18);
   v33 = 0;
@@ -120,7 +120,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
   }
   start.cycling(oEGO);
   set(f98);
-  sound(5, fSOUND_END_MARKER);
+  sound(SND_FALLING, fSOUND_END_MARKER);
   erase(oEGO);
 }
 if (fSOUND_END_MARKER) {

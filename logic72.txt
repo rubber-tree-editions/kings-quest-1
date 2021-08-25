@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.view(105);
   load.view(74);
-  load.sound(5);
+  load.sound(SND_FALLING);
   if (vPREV_ROOM_NO == 56) {
     position(oEGO, 145, 109);
   }
@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 if (f158 && !f22 && !f23) {
-  sound(5, fSOUND_END_MARKER);
+  sound(SND_FALLING, fSOUND_END_MARKER);
   set(f23);
 }
 if (fSOUND_END_MARKER) {
@@ -80,7 +80,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && !posn(oEGO, 65, 100, 82, 120) && !fEGO_
   v61 = 165;
   v96 = 4;
   move.obj.v(oEGO, v60, v61, 96, f20);
-  sound(5, f198);
+  sound(SND_FALLING, f198);
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && posn(oEGO, 65, 100, 82, 120) && fEGO_INVISIBLE) {
   set(f21);
@@ -95,7 +95,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && posn(oEGO, 65, 100, 82, 120) && fEGO_IN
   v61 = 165;
   v96 = 4;
   move.obj.v(oEGO, v60, v61, 96, f20);
-  sound(5, f198);
+  sound(SND_FALLING, f198);
 }
 if (f20) {
   reset(f20);

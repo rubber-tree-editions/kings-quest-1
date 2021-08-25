@@ -8,7 +8,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.view(105);
   load.view(74);
-  load.sound(5);
+  load.sound(SND_FALLING);
   if (vPREV_ROOM_NO == 72 && fEGO_CLIMBING_BEANSTALK) {
     set.view(oEGO, 74);
     position(oEGO, 66, 40);
@@ -38,7 +38,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 if (f158 && !f20 && !f21) {
-  sound(5, fSOUND_END_MARKER);
+  sound(SND_FALLING, fSOUND_END_MARKER);
   set(f21);
 }
 if (fSOUND_END_MARKER) {

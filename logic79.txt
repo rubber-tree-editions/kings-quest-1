@@ -13,7 +13,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.view(57);
   load.view(58);
-  load.sound(5);
+  load.sound(SND_FALLING);
   load.sound(8);
   if (fCARRYING_BOWL || fGIVEN_BOWL_TO_WOODCUTTER) {
     load.view(25);
@@ -378,7 +378,7 @@ if (fEGO_ON_WATER && !f199) {
   v61 = 166;
   v96 = 6;
   move.obj.v(oEGO, v60, v61, 96, f23);
-  sound(5, fSOUND_END_MARKER);
+  sound(SND_FALLING, fSOUND_END_MARKER);
 }
 if (f23) {
   reset(f23);

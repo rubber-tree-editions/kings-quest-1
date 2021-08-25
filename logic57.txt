@@ -7,7 +7,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  load.sound(5);
+  load.sound(SND_FALLING);
   load.view(105);
   draw(oEGO);
   show.pic();
@@ -30,7 +30,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
   move.obj.v(oEGO, v60, v61, 96, f20);
 }
 if (!f20 && f199 && !f21) {
-  sound(5, fSOUND_END_MARKER);
+  sound(SND_FALLING, fSOUND_END_MARKER);
   set(f21);
 }
 if (fSOUND_END_MARKER) {

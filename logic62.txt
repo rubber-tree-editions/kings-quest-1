@@ -9,7 +9,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(45);
-  load.sound(5);
+  load.sound(SND_FALLING);
   draw(oEGO);
   show.pic();
 }
@@ -79,7 +79,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
   v61 += 6;
   v96 = 4;
   move.obj.v(oEGO, v60, v61, 96, f21);
-  sound(5, fSOUND_END_MARKER);
+  sound(SND_FALLING, fSOUND_END_MARKER);
 }
 if (f21) {
   reset(f21);

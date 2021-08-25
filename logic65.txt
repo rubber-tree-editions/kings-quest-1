@@ -13,7 +13,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.sound(SND_VILLAIN);
   load.sound(SND_OUCH);
-  load.sound(5);
+  load.sound(SND_FALLING);
   if (!fCARRYING_NOTE) {
     load.view(42);
     animate.obj(oNOTE);
@@ -141,7 +141,7 @@ if (vWITCH_STATE == WITCHSTATE_DEAD) {
 }
 if (vPREV_ROOM_NO == 80) {
   if (!f20 && !f33 && !f27) {
-    sound(5, f198);
+    sound(SND_FALLING, f198);
     set(f33);
   }
 }

@@ -8,7 +8,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  load.sound(5);
+  load.sound(SND_FALLING);
   load.view(105);
   if (!fPOINTS_FOR_CLIMBING_TREE) {
     set(fPOINTS_FOR_CLIMBING_TREE);
@@ -78,7 +78,7 @@ if (fEGO_ON_WATER && !posn(oEGO, 12, 106, 57, 166) && !f21) {
   get.posn(oEGO, v60, v61);
   v61 = 166;
   v96 = 3;
-  sound(5, fSOUND_END_MARKER);
+  sound(SND_FALLING, fSOUND_END_MARKER);
   move.obj.v(oEGO, v60, v61, 96, f148);
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !f21) {
@@ -91,7 +91,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !f21) {
   get.posn(oEGO, v60, v61);
   v61 = 166;
   v96 = 3;
-  sound(5, fSOUND_END_MARKER);
+  sound(SND_FALLING, fSOUND_END_MARKER);
   move.obj.v(oEGO, v60, v61, 96, f148);
 }
 if (posn(oEGO, 12, 106, 57, 166) && !f21) {
@@ -105,7 +105,7 @@ if (posn(oEGO, 12, 106, 57, 166) && !f21) {
     get.posn(oEGO, v60, v61);
     v61 = 166;
     v96 = 3;
-    sound(5, fSOUND_END_MARKER);
+    sound(SND_FALLING, fSOUND_END_MARKER);
     move.obj.v(oEGO, v60, v61, 96, f148);
   }
 }

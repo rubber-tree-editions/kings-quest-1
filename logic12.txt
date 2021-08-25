@@ -7,7 +7,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(46);
-  load.sound(5);
+  load.sound(SND_FALLING);
   load.sound(SND_WELL_HANDLE_TURNING);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC_GOAT);
@@ -232,7 +232,7 @@ if (f180) {
     move.obj.v(oEGO, v60, v61, 96, f29);
     print("You should be more careful the next time you try  climbing ropes.");
     set(f135);
-    sound(5, fSOUND_END_MARKER);
+    sound(SND_FALLING, fSOUND_END_MARKER);
     reset(f180);
   }
 }
@@ -258,7 +258,7 @@ if (f28) {
     print("What a mistake you made!  This well is too deep to jump into.");
   }
   set(f135);
-  sound(5, fSOUND_END_MARKER);
+  sound(SND_FALLING, fSOUND_END_MARKER);
 }
 if (f176 || f177) {
   if (!fCARRYING_BUCKET && (said("get", "bucket") || said("examine", "bucket"))) {

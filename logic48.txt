@@ -9,7 +9,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   load.sound(SND_OUCH);
-  load.sound(5);
+  load.sound(SND_FALLING);
   load.view(8);
   load.view(89);
   load.view(105);
@@ -39,11 +39,11 @@ if (f20) {
   move.obj(o1, 130, 48, 2, f21);
   move.obj(oEGO, 108, 107, 4, f22);
   set(f135);
-  sound(5, f198);
+  sound(SND_FALLING, f198);
 }
 if (!f22 && f198 && !f27) {
   reset(f198);
-  sound(5, f198);
+  sound(SND_FALLING, f198);
 }
 if (f21) {
   reset(f21);
@@ -97,7 +97,7 @@ if (fEGO_ON_WATER && !f199) {
   v61 += 35;
   v96 = 8;
   move.obj.v(oEGO, v60, v61, 96, f23);
-  sound(5, f148);
+  sound(SND_FALLING, f148);
 }
 if (f23) {
   reset(f23);

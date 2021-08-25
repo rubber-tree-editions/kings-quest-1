@@ -7,7 +7,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  load.sound(5);
+  load.sound(SND_FALLING);
   load.view(105);
   if (vPREV_ROOM_NO == 62) {
     get.posn(oEGO, v60, v61);
@@ -42,7 +42,7 @@ if (said("examine", "flowers")) {
 if (fEGO_TOUCHED_TRIGGER_LINE && !f95 && posn(oEGO, 0, 84, 159, 167)) {
   set(f95);
   stop.cycling(oEGO);
-  sound(5, fSOUND_END_MARKER);
+  sound(SND_FALLING, fSOUND_END_MARKER);
   move.obj(oEGO, 153, 166, 5, f21);
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
@@ -53,7 +53,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
   }
   start.cycling(oEGO);
   set(f98);
-  sound(5, fSOUND_END_MARKER);
+  sound(SND_FALLING, fSOUND_END_MARKER);
   erase(oEGO);
 }
 if (f21) {

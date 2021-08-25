@@ -8,7 +8,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  load.sound(5);
+  load.sound(SND_FALLING);
   load.logics(LOGIC_SWIMMING);
   call(LOGIC_SWIMMING);
   load.view(72);
@@ -78,7 +78,7 @@ else {
   ignore.blocks(oEGO);
 }
 if (f182 && !f21 && !f22 && !f24) {
-  sound(5, fSOUND_END_MARKER);
+  sound(SND_FALLING, fSOUND_END_MARKER);
   set(f24);
 }
 if (fSOUND_END_MARKER) {
