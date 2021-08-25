@@ -212,6 +212,7 @@
 #define fPOINTS_FOR_READING_NOTE f196
 #define fGAME_OVER_PREPARATION f197
 #define fEGO_DUCKING f200
+#define fGOAT_WONT_SWIM f210
 
 // controls
 #define cSAVE c1

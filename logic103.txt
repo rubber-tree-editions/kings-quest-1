@@ -97,16 +97,16 @@ if (f207) {
   stop.motion(oGOAT);
   stop.cycling(oGOAT);
 }
-if (v40 > 20 && v94 > 0 && !f210) {
+if (v40 > 20 && v94 > 0 && !fGOAT_WONT_SWIM) {
   if (vROOM_NO != 1 && vROOM_NO != 2 && vROOM_NO != 41 && vROOM_NO != 33 && vROOM_NO != 34 && vROOM_NO != 32 && vROOM_NO != 25 && vROOM_NO != 26 && vROOM_NO != 39) {
     print("The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water.");
   }
-  set(f210);
+  set(fGOAT_WONT_SWIM);
   start.cycling(oGOAT);
   wander(oGOAT);
 }
-if (f210 && v40 < 25 && v94 <= 0) {
-  reset(f210);
+if (fGOAT_WONT_SWIM && v40 < 25 && v94 <= 0) {
+  reset(fGOAT_WONT_SWIM);
   follow.ego(oGOAT, 10, f207);
 }
 if (fEGO_INVISIBLE && !f42) {
@@ -121,12 +121,12 @@ if (fEGO_INVISIBLE && !f42) {
 return;
 ATRIVER:
   distance(oEGO, oGOAT, v40);
-  if (f43 && v94 > 0 && !f210) {
-    set(f210);
+  if (f43 && v94 > 0 && !fGOAT_WONT_SWIM) {
+    set(fGOAT_WONT_SWIM);
     print("The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water.");
   }
-  if (f43 && f210 && v40 < 25 && v94 <= 0) {
-    reset(f210);
+  if (f43 && fGOAT_WONT_SWIM && v40 < 25 && v94 <= 0) {
+    reset(fGOAT_WONT_SWIM);
   }
   return;
 
