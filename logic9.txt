@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       animate.obj(oFAIRY_GODMOTHER);
       set.view(oFAIRY_GODMOTHER, 6);
       v31 = 45;
-      load.sound(6);
+      load.sound(SND_FAIRY_GODMOTHER);
     }
   LABEL66:
     draw(oEGO);
@@ -47,7 +47,7 @@ LABEL103:
     v30--;
     v32--;
     if (v32 == 1) {
-      sound(6, f22);
+      sound(SND_FAIRY_GODMOTHER, f22);
     }
     if (f22) {
       reset(f22);
