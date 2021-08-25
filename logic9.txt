@@ -16,18 +16,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 27, 131, 0, 0);
   }
-  LABEL40:
-    random(0, 250, v62);
-    if (v62 < 125 && v64 == 0) {
-      load.view(6);
-      animate.obj(oFAIRY_GODMOTHER);
-      set.view(oFAIRY_GODMOTHER, 6);
-      v31 = 45;
-      load.sound(SND_FAIRY_GODMOTHER);
-    }
-  LABEL66:
-    draw(oEGO);
-    show.pic();
+  random(0, 250, v62);
+  if (v62 < 125 && v64 == 0) {
+    load.view(6);
+    animate.obj(oFAIRY_GODMOTHER);
+    set.view(oFAIRY_GODMOTHER, 6);
+    v31 = 45;
+    load.sound(SND_FAIRY_GODMOTHER);
+  }
+  draw(oEGO);
+  show.pic();
 }
 v31--;
 if (v31 == 1) {
@@ -41,73 +39,60 @@ if (v31 == 1) {
   v63 = 100;
   v64 = 250;
 }
-LABEL103:
-  if (f20) {
-    set(f135);
-    v30--;
-    v32--;
-    if (v32 == 1) {
-      sound(SND_FAIRY_GODMOTHER, f22);
-    }
-    if (f22) {
-      reset(f22);
-      stop.sound();
-      v32 = 4;
-    }
-    LABEL137:
-      if (said("examine", "fairy godmother")) {
-        print("She is your fairy godmother.");
-      }
-    LABEL149:
-      if (said("get", "fairy godmother")) {
-        print("It is impossible to acquire a fairy godmother.");
-      }
-    LABEL161:
-      if (said("anyword", "fairy godmother") || said("hello") || said("say", "hello")) {
-        print("There is no need to say, or do, anything.");
-      }
-    LABEL185:
-      if (f21) {
-        wander(oFAIRY_GODMOTHER);
-      }
+if (f20) {
+  set(f135);
+  v30--;
+  v32--;
+  if (v32 == 1) {
+    sound(SND_FAIRY_GODMOTHER, f22);
   }
-LABEL193:
-  if (f20 && v30 == 1) {
-    print("\"I will be watching over you, Sir Graham.\"");
-    erase(oFAIRY_GODMOTHER);
-    reset(f20);
-    v32 = 0;
+  if (f22) {
+    reset(f22);
     stop.sound();
-    reset(f135);
+    v32 = 4;
   }
-LABEL214:
-  if (!f20) {
-    if (said("anyword", "fairy godmother")) {
-      print("There is no fairy here.");
-    }
+  if (said("examine", "fairy godmother")) {
+    print("She is your fairy godmother.");
   }
-LABEL233:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(24);
+  if (said("get", "fairy godmother")) {
+    print("It is impossible to acquire a fairy godmother.");
   }
-LABEL242:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(10);
+  if (said("anyword", "fairy godmother") || said("hello") || said("say", "hello")) {
+    print("There is no need to say, or do, anything.");
   }
-LABEL251:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(16);
+  if (f21) {
+    wander(oFAIRY_GODMOTHER);
   }
-LABEL260:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(8);
+}
+if (f20 && v30 == 1) {
+  print("\"I will be watching over you, Sir Graham.\"");
+  erase(oFAIRY_GODMOTHER);
+  reset(f20);
+  v32 = 0;
+  stop.sound();
+  reset(f135);
+}
+if (!f20) {
+  if (said("anyword", "fairy godmother")) {
+    print("There is no fairy here.");
   }
-LABEL269:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL277:
-  return;
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(24);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(10);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(16);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(8);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+return;
 
 LOGIC__FOOTER
 
