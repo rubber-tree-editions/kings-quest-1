@@ -202,13 +202,13 @@ if (f156) {
       reset(f24);
       print("The quick, little dwarf came by to see what you had-- nothing interested him.");
       end.of.loop(oDWARF, f21);
-      goto(TAKEN_NO_TREASURE);
+      goto(END_OF_DWARF_LOGIC);
     }
     set.view(oDWARF, 115);
     reset(f24);
     print("That little dwarf caught you by surprise.  Is your treasure still OK?");
     end.of.loop(oDWARF, f21);
-    TAKEN_NO_TREASURE:
+END_OF_DWARF_LOGIC:
   }
 }
 if (f21) {

@@ -209,12 +209,12 @@ if (f156) {
       print("The quick, little dwarf came by to see what you had -- nothing interested him.");
       wander(oDWARF);
       set(f23);
-      goto(NOTHING_TAKEN);
+      goto(END_OF_DWARF_LOGIC);
     }
     print("That little dwarf caught you by surprise.  Is your treasure still OK?");
     wander(oDWARF);
     set(f23);
-    NOTHING_TAKEN:
+END_OF_DWARF_LOGIC:
   }
 }
 if (f23 && vOBJECT_EDGE_CODE != 0) {
