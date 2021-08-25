@@ -2,6 +2,13 @@
 
 LOGIC__HEADER
 
+#ifdef RUBBER_TREE
+  if (fUNDO) {
+    print("Sorry, UNDO is not available right now!");
+    reset(fUNDO);
+    return;
+  }
+#endif
 if (!fPLAYER_ENTERED_COMMAND) {
   return;
 }
@@ -21,13 +28,6 @@ if (fPLAYER_ENTERED_COMMAND && vUNKNOWN_WORD_NO > 0) {
   reset(fPLAYER_ENTERED_COMMAND);
   return;
 }
-#ifdef RUBBER_TREE
-  if (fUNDO) {
-    print("Sorry, UNDO is not available right now!");
-    reset(fUNDO);
-    return;
-  }
-#endif
 if (said("look for", "anyword") || said("look for", "anyword", "anyword")) {
   print("Well.  Go look for it.");
 }
