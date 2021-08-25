@@ -8,7 +8,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   set.horizon(46);
   load.sound(5);
-  load.sound(20);
+  load.sound(SND_WELL_HANDLE_TURNING);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC_GOAT);
   }
@@ -139,7 +139,7 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         stop.cycling(o2);
         draw(o2);
         set(f181);
-        sound(20, f30);
+        sound(SND_WELL_HANDLE_TURNING, f30);
         end.of.loop(o2, f25);
         start.update(o1);
         start.cycling(o1);
@@ -330,7 +330,7 @@ if (!f176 && !f177) {
       start.update(o2);
       start.update(o1);
       end.of.loop(o2, f21);
-      sound(20, f30);
+      sound(SND_WELL_HANDLE_TURNING, f30);
       start.cycling(o1);
       set(f177);
     }
@@ -356,7 +356,7 @@ if (!f176 && f177 && !f180) {
       }
       reverse.loop(o2, f22);
       start.cycling(o1);
-      sound(20, f30);
+      sound(SND_WELL_HANDLE_TURNING, f30);
       reset(f177);
     }
     else {
@@ -465,7 +465,7 @@ if (f176 && !f179) {
       start.cycling(o3);
       start.update(o1);
       print("The rope descends into the darkness.");
-      sound(20, f30);
+      sound(SND_WELL_HANDLE_TURNING, f30);
       end.of.loop(o3, f24);
       start.cycling(o1);
       set(f179);
@@ -497,7 +497,7 @@ if (f176 && f179 && !f180) {
       start.update(o1);
       print("The rope emerges from the well.");
       reverse.loop(o3, f23);
-      sound(20, f30);
+      sound(SND_WELL_HANDLE_TURNING, f30);
       start.cycling(o1);
       reset(f179);
     }
