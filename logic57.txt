@@ -24,10 +24,10 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
   set(f98);
   get.priority(oEGO, v30);
   set.priority.v(oEGO, v30);
-  get.posn(oEGO, v60, v61);
-  v61 += 30;
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  vTEMP_Y += 30;
   v96 = 4;
-  move.obj.v(oEGO, v60, v61, 96, f20);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
 }
 if (!f20 && f199 && !f21) {
   sound(SND_FALLING, fSOUND_END_MARKER);

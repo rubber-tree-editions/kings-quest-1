@@ -19,8 +19,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL41:
     if (vPREV_ROOM_NO == 29) {
-      get.posn(oEGO, v60, v61);
-      if (v60 < 50) {
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      if (vTEMP_X < 50) {
         position(oEGO, 12, 54);
         goto(LABEL70);
       }
@@ -75,9 +75,9 @@ LABEL196:
       goto(LABEL250);
     }
     LABEL238:
-      get.posn(oEGO, v60, v61);
-      v76 -= v60;
-      v77 -= v61;
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      v76 -= vTEMP_X;
+      v77 -= vTEMP_Y;
       set(f134);
   }
 LABEL250:

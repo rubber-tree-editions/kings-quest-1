@@ -21,13 +21,13 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
   set(f95);
   program.control();
   stop.cycling(oEGO);
-  get.posn(oEGO, v60, v61);
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
   get.priority(oEGO, v30);
   set.priority.v(oEGO, v30);
-  v61 += 8;
+  vTEMP_Y += 8;
   v96 = 4;
   sound(SND_FALLING, fSOUND_END_MARKER);
-  move.obj.v(oEGO, v60, v61, 96, f21);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f21);
 }
 if (f21) {
   reset(f21);

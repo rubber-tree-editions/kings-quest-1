@@ -10,8 +10,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.sound(SND_FALLING);
   load.view(105);
   if (vPREV_ROOM_NO == 57) {
-    get.posn(oEGO, v60, v61);
-    if (v61 > 154) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_Y > 154) {
       position(oEGO, 150, 153);
     }
   }
@@ -29,22 +29,22 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
   set(f98);
   get.priority(oEGO, v30);
   set.priority.v(oEGO, v30);
-  get.posn(oEGO, v60, v61);
-  v61 += 40;
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  vTEMP_Y += 40;
   v96 = 4;
-  move.obj.v(oEGO, v60, v61, 96, f20);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 84, 159, 167)) {
   set(f199);
   set(f95);
   program.control();
   stop.cycling(oEGO);
-  get.posn(oEGO, v60, v61);
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
   get.priority(oEGO, v30);
   set.priority.v(oEGO, v30);
-  v61 += 9;
+  vTEMP_Y += 9;
   v96 = 4;
-  move.obj.v(oEGO, v60, v61, 96, f20);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
 }
 if (!f20 && f199 && !f21) {
   sound(SND_FALLING, fSOUND_END_MARKER);

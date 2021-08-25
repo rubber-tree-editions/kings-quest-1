@@ -106,9 +106,9 @@ LABEL172:
     set.view(oEGO, 91);
     ignore.blocks(oEGO);
     ignore.horizon(oEGO);
-    get.posn(oEGO, v60, v61);
-    v60 = 130;
-    move.obj.v(oEGO, v60, v61, 30, f23);
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    vTEMP_X = 130;
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 30, f23);
     set(f98);
   }
 LABEL271:

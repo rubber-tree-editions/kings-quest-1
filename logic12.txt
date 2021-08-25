@@ -212,8 +212,8 @@ if (fEGO_INVISIBLE) {
   }
 }
 if (f180) {
-  get.posn(oEGO, v60, v61);
-  if (v61 < 131) {
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  if (vTEMP_Y < 131) {
     erase(oEGO);
     set.view(oEGO, 0);
     position(oEGO, 48, 111);
@@ -222,14 +222,14 @@ if (f180) {
     observe.blocks(oEGO);
     reset(f180);
   }
-  if (v61 > 145) {
+  if (vTEMP_Y > 145) {
     new.room(49);
   }
-  if (v60 < 35 || v60 > 44) {
-    get.posn(oEGO, v60, v61);
-    v61 = 145;
+  if (vTEMP_X < 35 || vTEMP_X > 44) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    vTEMP_Y = 145;
     v96 = 3;
-    move.obj.v(oEGO, v60, v61, 96, f29);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f29);
     print("You should be more careful the next time you try  climbing ropes.");
     set(f135);
     sound(SND_FALLING, fSOUND_END_MARKER);

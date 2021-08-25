@@ -19,28 +19,28 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL41:
     if (vPREV_ROOM_NO == 7) {
-      get.posn(oEGO, v60, v61);
-      if (v60 > 99) {
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      if (vTEMP_X > 99) {
         position(oEGO, 99, 52);
       }
     }
   LABEL63:
     if (vPREV_ROOM_NO == 39) {
-      get.posn(oEGO, v60, v61);
-      if (v60 < 56) {
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      if (vTEMP_X < 56) {
         position(oEGO, 6, 165);
       }
-      if (v60 > 74) {
+      if (vTEMP_X > 74) {
         position(oEGO, 109, 165);
       }
     }
   LABEL96:
     if (vPREV_ROOM_NO == 43) {
-      get.posn(oEGO, v60, v61);
-      if (v61 < 123) {
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      if (vTEMP_Y < 123) {
         position(oEGO, 140, 58);
       }
-      if (v61 > 122) {
+      if (vTEMP_Y > 122) {
         position(oEGO, 147, 150);
       }
     }
@@ -118,9 +118,9 @@ LABEL217:
         goto(LABEL383);
       }
     LABEL371:
-      get.posn(oEGO, v60, v61);
-      v76 -= v60;
-      v77 -= v61;
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      v76 -= vTEMP_X;
+      v77 -= vTEMP_Y;
       set(f134);
   }
 LABEL383:

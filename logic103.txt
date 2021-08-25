@@ -8,9 +8,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(14);
   animate.obj(oGOAT);
   set.view(oGOAT, 14);
-  get.posn(oEGO, v60, v61);
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
   object.on.land(oGOAT);
-  if (vROOM_NO == 7 && vPREV_ROOM_NO == 8 && v61 < 65) {
+  if (vROOM_NO == 7 && vPREV_ROOM_NO == 8 && vTEMP_Y < 65) {
     position(oGOAT, 1, 42);
     stop.motion(oGOAT);
     stop.cycling(oGOAT);
@@ -20,7 +20,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oGOAT);
     goto(ATRIVER);
   }
-  if (vROOM_NO == 17 && vPREV_ROOM_NO == 18 && v61 < 65) {
+  if (vROOM_NO == 17 && vPREV_ROOM_NO == 18 && vTEMP_Y < 65) {
     position(oGOAT, 1, 45);
     stop.motion(oGOAT);
     stop.cycling(oGOAT);
@@ -30,7 +30,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oGOAT);
     goto(ATRIVER);
   }
-  if (vROOM_NO == 17 && vPREV_ROOM_NO == 32 && v60 < 50) {
+  if (vROOM_NO == 17 && vPREV_ROOM_NO == 32 && vTEMP_X < 50) {
     position(oGOAT, 1, 45);
     stop.motion(oGOAT);
     stop.cycling(oGOAT);
@@ -40,13 +40,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oGOAT);
     goto(ATRIVER);
   }
-  if (v61 > 100) {
-    v61 += 1;
+  if (vTEMP_Y > 100) {
+    vTEMP_Y += 1;
   }
   else {
-    v61 -= 1;
+    vTEMP_Y -= 1;
   }
-  position.v(oGOAT, v60, v61);
+  position.v(oGOAT, vTEMP_X, vTEMP_Y);
   v107 = 1;
   step.size(oGOAT, v107);
   draw(oGOAT);

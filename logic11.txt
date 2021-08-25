@@ -85,8 +85,8 @@ if (said("open", "gate")) {
 if (said("close", "gate")) {
   if (fGOAT_GATE_OPEN && !fGOAT_COMPANION) {
     if (posn(oEGO, 33, 139, 75, 167)) {
-      get.posn(oEGO, v60, v61);
-      if (v61 == 156) {
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      if (vTEMP_Y == 156) {
         print("You will have to move out of the way so the gate can close all the way.");
       }
       else {

@@ -19,17 +19,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == 71 && f158) {
     program.control();
     set.view(oEGO, 105);
-    get.posn(oEGO, v60, v61);
-    if (v60 > 75) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_X > 75) {
       position(oEGO, 90, 29);
     }
     else {
       position(oEGO, 55, 29);
     }
-    v61 = 166;
+    vTEMP_Y = 166;
     v96 = 4;
     set.priority(oEGO, 15);
-    move.obj.v(oEGO, v60, v61, 96, f20);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
   }
   if (vPREV_ROOM_NO < 50) {
     set.view(oEGO, 74);
@@ -61,25 +61,25 @@ if (said("examine", "beanstalk")) {
 if (fEGO_TOUCHED_TRIGGER_LINE && !f158) {
   program.control();
   print("With a wrong move, you fall dizzyingly to the ground.");
-  get.posn(oEGO, v60, v61);
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
   set(f158);
   erase(oEGO);
   set.view(oEGO, 105);
-  if (v60 > 75) {
-    v60 = 80;
-    position.v(oEGO, v60, v61);
+  if (vTEMP_X > 75) {
+    vTEMP_X = 80;
+    position.v(oEGO, vTEMP_X, vTEMP_Y);
     draw(oEGO);
   }
-  if (v60 < 76) {
-    v60 = 65;
-    position.v(oEGO, v60, v61);
+  if (vTEMP_X < 76) {
+    vTEMP_X = 65;
+    position.v(oEGO, vTEMP_X, vTEMP_Y);
     draw(oEGO);
   }
   start.cycling(oEGO);
   set(f98);
-  v61 = 166;
+  vTEMP_Y = 166;
   v96 = 4;
-  move.obj.v(oEGO, v60, v61, 96, f20);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(71);

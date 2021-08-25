@@ -19,15 +19,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   LABEL41:
     if (vPREV_ROOM_NO == 18 && fEGO_ON_WATER) {
-      get.posn(oEGO, v60, v61);
-      if (v61 < 111) {
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      if (vTEMP_Y < 111) {
         position(oEGO, 4, 121);
       }
     }
   LABEL65:
     if (vPREV_ROOM_NO == 32) {
-      get.posn(oEGO, v60, v61);
-      if (v60 < 50) {
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      if (vTEMP_X < 50) {
         position(oEGO, 2, 59);
         goto(LABEL94);
       }
@@ -112,9 +112,9 @@ LABEL328:
         goto(LABEL416);
       }
     LABEL404:
-      get.posn(oEGO, v60, v61);
-      v76 -= v60;
-      v77 -= v61;
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      v76 -= vTEMP_X;
+      v77 -= vTEMP_Y;
       set(f134);
   }
 LABEL416:
@@ -139,9 +139,9 @@ LABEL416:
         goto(LABEL505);
       }
     LABEL493:
-      get.posn(oEGO, v60, v61);
-      v76 -= v60;
-      v77 -= v61;
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      v76 -= vTEMP_X;
+      v77 -= vTEMP_Y;
       set(f134);
   }
 LABEL505:

@@ -112,9 +112,9 @@ if (f23) {
   ignore.objs(oGOAT);
   reset(f23);
   stop.motion(oTROLL);
-  get.posn(oTROLL, v60, v61);
+  get.posn(oTROLL, vTEMP_X, vTEMP_Y);
   v96 = 1;
-  move.obj.v(oGOAT, v60, v61, 96, f24);
+  move.obj.v(oGOAT, vTEMP_X, vTEMP_Y, 96, f24);
 }
 distance(oTROLL, oGOAT, v62);
 if (v62 < 20 && !f150) {
@@ -124,9 +124,9 @@ if (v62 < 20 && !f150) {
   reset(fGOAT_COMPANION);
   erase(oTROLL);
   set(fGOAT_IS_GONE);
-  get.posn(oGOAT, v60, v61);
-  v61 = 165;
-  move.obj.v(oGOAT, v60, v61, 96, f30);
+  get.posn(oGOAT, vTEMP_X, vTEMP_Y);
+  vTEMP_Y = 165;
+  move.obj.v(oGOAT, vTEMP_X, vTEMP_Y, 96, f30);
   vSCORE += 4;
 }
 if (f30) {
@@ -304,9 +304,9 @@ if (v94 <= 0 && fEGO_ON_WATER) {
     v76 = 0;
   }
   else {
-    get.posn(oEGO, v60, v61);
-    v76 -= v60;
-    v77 -= v61;
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    v76 -= vTEMP_X;
+    v77 -= vTEMP_Y;
     set(f134);
   }
 }

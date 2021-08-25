@@ -44,22 +44,22 @@ if (fEGO_INVISIBLE) {
 }
 if (fEGO_CLIMBING_BEANSTALK) {
   if (said("examine", "beanstalk")) {
-    get.posn(oEGO, v60, v61);
-    if (v61 > 140) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_Y > 140) {
       print("Your heart thuds.  Dare you climb into the clouds?");
     }
-    if (v61 < 141) {
+    if (vTEMP_Y < 141) {
       print("It is amazing that you actually climbed up this high!");
     }
   }
 }
 if (!fEGO_CLIMBING_BEANSTALK) {
   if (said("examine", "beanstalk")) {
-    get.posn(oEGO, v60, v61);
-    if (v60 > 89) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_X > 89) {
       print("It is hard to believe those seeds you planted grew this high.");
     }
-    if (v60 < 90) {
+    if (vTEMP_X < 90) {
       print("It is a long, long way down....");
     }
   }
@@ -74,12 +74,12 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && !posn(oEGO, 65, 100, 82, 120) && !fEGO_
   }
   start.cycling(oEGO);
   set(f98);
-  get.posn(oEGO, v60, v61);
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
   get.priority(oEGO, v30);
   set.priority.v(oEGO, v30);
-  v61 = 165;
+  vTEMP_Y = 165;
   v96 = 4;
-  move.obj.v(oEGO, v60, v61, 96, f20);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
   sound(SND_FALLING, f198);
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && posn(oEGO, 65, 100, 82, 120) && fEGO_INVISIBLE) {
@@ -89,12 +89,12 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && posn(oEGO, 65, 100, 82, 120) && fEGO_IN
   }
   start.cycling(oEGO);
   set(f98);
-  get.posn(oEGO, v60, v61);
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
   get.priority(oEGO, v30);
   set.priority.v(oEGO, v30);
-  v61 = 165;
+  vTEMP_Y = 165;
   v96 = 4;
-  move.obj.v(oEGO, v60, v61, 96, f20);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f20);
   sound(SND_FALLING, f198);
 }
 if (f20) {
@@ -125,26 +125,26 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 65, 100, 82, 120) && !fEGO_INVISIBLE
 if (fEGO_TOUCHED_TRIGGER_LINE && fEGO_CLIMBING_BEANSTALK) {
   program.control();
   print("Whoops!  You fall toward a distant earth.");
-  get.posn(oEGO, v60, v61);
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
   reset(fEGO_CLIMBING_BEANSTALK);
   set(f158);
   erase(oEGO);
   set.view(oEGO, 105);
-  if (v60 > 75) {
-    v60 = 80;
-    position.v(oEGO, v60, v61);
+  if (vTEMP_X > 75) {
+    vTEMP_X = 80;
+    position.v(oEGO, vTEMP_X, vTEMP_Y);
     draw(oEGO);
   }
-  if (v60 < 76) {
-    v60 = 65;
-    position.v(oEGO, v60, v61);
+  if (vTEMP_X < 76) {
+    vTEMP_X = 65;
+    position.v(oEGO, vTEMP_X, vTEMP_Y);
     draw(oEGO);
   }
   start.cycling(oEGO);
   set(f98);
-  v61 = 166;
+  vTEMP_Y = 166;
   v96 = 4;
-  move.obj.v(oEGO, v60, v61, 96, f22);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f22);
 }
 FINALCHECKS:
   if (f22 || posn(oEGO, 0, 166, 159, 167)) {

@@ -172,13 +172,13 @@ if (posn(oEGO, 18, 80, 86, 113)) {
     }
     else if (!f21 && !fEGO_INVISIBLE && v30 <= 0 && vTREASURE_COUNT != 3 && !f24) {
       set(f24);
-      get.posn(oEGO, v60, v61);
-      v60 -= 7;
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      vTEMP_X -= 7;
       erase(oEGO);
       stop.motion(oEGO);
       set.view(oEGO, 71);
       set.cel(oEGO, 0);
-      position.v(oEGO, v60, v61);
+      position.v(oEGO, vTEMP_X, vTEMP_Y);
       v31 = 2;
       cycle.time(oEGO, v31);
       draw(oEGO);
@@ -191,13 +191,13 @@ if (posn(oEGO, 18, 80, 86, 113)) {
     }
     else if (!f21 && !fEGO_INVISIBLE && v30 <= 0 && vTREASURE_COUNT == 3 && !f25) {
       set(f25);
-      get.posn(oEGO, v60, v61);
-      v60 -= 7;
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      vTEMP_X -= 7;
       erase(oEGO);
       stop.motion(oEGO);
       set.view(oEGO, 71);
       set.cel(oEGO, 0);
-      position.v(oEGO, v60, v61);
+      position.v(oEGO, vTEMP_X, vTEMP_Y);
       v31 = 2;
       cycle.time(oEGO, v31);
       draw(oEGO);
@@ -299,12 +299,12 @@ if (said("hello") || said("say", "hello")) {
 if (f22) {
   reset(f22);
   reset(f98);
-  get.posn(oEGO, v60, v61);
-  v60 += 7;
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  vTEMP_X += 7;
   erase(oEGO);
   set.loop(oEGO, 1);
   set.view(oEGO, 0);
-  position.v(oEGO, v60, v61);
+  position.v(oEGO, vTEMP_X, vTEMP_Y);
   v31 = 1;
   cycle.time(oEGO, v31);
   draw(oEGO);

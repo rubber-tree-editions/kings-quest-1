@@ -88,56 +88,56 @@ if (fSOUND_END_MARKER) {
   }
 }
 if (f180) {
-  get.posn(oEGO, v60, v61);
-  if (v61 > 115 && f177) {
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  if (vTEMP_Y > 115 && f177) {
     reset(f180);
     set(f182);
     set.view(oEGO, 105);
-    v61 = 164;
+    vTEMP_Y = 164;
     ignore.objs(oEGO);
     set.priority(oEGO, 15);
     set(f98);
     set(f20);
     v96 = 3;
-    move.obj.v(oEGO, v60, v61, 96, f22);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f22);
   }
-  if (v61 > 115 && f179) {
+  if (vTEMP_Y > 115 && f179) {
     reset(f180);
     set(f182);
     set.view(oEGO, 105);
-    v61 = 164;
+    vTEMP_Y = 164;
     ignore.objs(oEGO);
     set.priority(oEGO, 15);
     set(f98);
     set(f20);
     v96 = 3;
-    move.obj.v(oEGO, v60, v61, 96, f22);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f22);
   }
-  if (v60 < 79 || v60 > 83) {
-    if (v61 > 70) {
+  if (vTEMP_X < 79 || vTEMP_X > 83) {
+    if (vTEMP_Y > 70) {
       reset(f180);
       set(f182);
       set.view(oEGO, 105);
-      v61 = 164;
+      vTEMP_Y = 164;
       ignore.objs(oEGO);
       set.priority(oEGO, 15);
       set(f98);
       set(f20);
       v96 = 3;
-      move.obj.v(oEGO, v60, v61, 96, f22);
+      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f22);
     }
     else {
       reset(f180);
       set(f182);
       set(f25);
       set.view(oEGO, 105);
-      v61 = 164;
+      vTEMP_Y = 164;
       ignore.objs(oEGO);
       set.priority(oEGO, 15);
       set(f98);
       set(f20);
       v96 = 3;
-      move.obj.v(oEGO, v60, v61, 96, f21);
+      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f21);
     }
   }
 }

@@ -10,9 +10,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   if (vPREV_ROOM_NO == 74) {
-    get.posn(oEGO, v60, v61);
-    v60 += 150;
-    position.v(oEGO, v60, v61);
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    vTEMP_X += 150;
+    position.v(oEGO, vTEMP_X, vTEMP_Y);
   }
   if (vPREV_ROOM_NO == 76) {
     position(oEGO, 34, 125);

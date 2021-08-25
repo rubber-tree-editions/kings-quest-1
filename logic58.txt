@@ -273,8 +273,8 @@ if (f24) {
   step.size(oGIANT, v33);
   draw(oGIANT);
   end.of.loop(oGIANT, f148);
-  get.posn(oGIANT, v60, v61);
-  position.v(oCHEST, v60, v61);
+  get.posn(oGIANT, vTEMP_X, vTEMP_Y);
+  position.v(oCHEST, vTEMP_X, vTEMP_Y);
   draw(oCHEST);
   vGIANT_STATE = GIANTSTATE_DEAD_WITH_CHEST;
   vSCORE += 3;

@@ -7,14 +7,14 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   if (vPREV_ROOM_NO == 53) {
-    get.posn(oEGO, v60, v61);
-    v60 += 2;
-    position.v(oEGO, v60, v61);
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    vTEMP_X += 2;
+    position.v(oEGO, vTEMP_X, vTEMP_Y);
   }
   if (vPREV_ROOM_NO == 55) {
-    get.posn(oEGO, v60, v61);
-    v61 -= 2;
-    position.v(oEGO, v60, v61);
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    vTEMP_Y -= 2;
+    position.v(oEGO, vTEMP_X, vTEMP_Y);
   }
   draw(oEGO);
   show.pic();

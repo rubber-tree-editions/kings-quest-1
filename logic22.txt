@@ -45,17 +45,17 @@ if (fROOM_SCRIPT_EXECUTED) {
       ignore.horizon(oEGO);
       set.priority(oEGO, 15);
       set.view(oEGO, 105);
-      get.posn(oEGO, v60, v61);
-      if (v60 > 75) {
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      if (vTEMP_X > 75) {
         position(oEGO, 80, 29);
         goto(LABEL144);
       }
       position(oEGO, 65, 29);
       LABEL144:
-        get.posn(oEGO, v60, v61);
-        v61 = 106;
+        get.posn(oEGO, vTEMP_X, vTEMP_Y);
+        vTEMP_Y = 106;
         v96 = 2;
-        move.obj.v(oEGO, v60, v61, 96, f28);
+        move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f28);
     }
   LABEL160:
     random(0, 250, v62);
@@ -172,10 +172,10 @@ LABEL440:
     set.view(oEGO, 89);
     set(f209);
     ignore.horizon(oEGO);
-    get.posn(oEGO, v60, v61);
-    v60 = 130;
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    vTEMP_X = 130;
     set.priority(oEGO, 15);
-    move.obj.v(oEGO, v60, v61, 31, f25);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 31, f25);
     set(f98);
     if (!fTAKEN_BY_GIANT_BIRD) {
       set(fTAKEN_BY_GIANT_BIRD);
@@ -260,15 +260,15 @@ LABEL751:
     if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 60, 78, 93, 80)) {
       program.control();
       set.priority(oEGO, 15);
-      get.posn(oEGO, v60, v61);
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
       erase(oEGO);
       set.view(oEGO, 105);
       reset(fEGO_CLIMBING_BEANSTALK);
-      position.v(oEGO, v60, v61);
+      position.v(oEGO, vTEMP_X, vTEMP_Y);
       draw(oEGO);
-      v61 = 106;
+      vTEMP_Y = 106;
       v96 = 2;
-      move.obj.v(oEGO, v60, v61, 96, f26);
+      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 96, f26);
       set(f135);
       sound(SND_FALLING, f198);
     }

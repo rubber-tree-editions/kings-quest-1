@@ -22,8 +22,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 140, 80, 0, 0);
   }
   if (vPREV_ROOM_NO == 11 && fINSIDE_GOAT_FENCE) {
-    get.posn(oEGO, v60, v61);
-    if (v61 > 125) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_Y > 125) {
       position(oEGO, 150, 128);
     }
   }

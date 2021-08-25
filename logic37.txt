@@ -16,20 +16,20 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 128, 61, 0, 0);
   }
   if (vPREV_ROOM_NO == 44) {
-    get.posn(oEGO, v60, v61);
-    if (v60 < 75) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_X < 75) {
       position(oEGO, 10, 57);
     }
-    if (v60 > 74) {
+    if (vTEMP_X > 74) {
       position(oEGO, 140, 57);
     }
   }
   if (vPREV_ROOM_NO == 28) {
-    get.posn(oEGO, v60, v61);
-    if (v60 < 75) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_X < 75) {
       position(oEGO, 5, 164);
     }
-    if (v60 > 74) {
+    if (vTEMP_X > 74) {
       position(oEGO, 144, 164);
     }
   }
@@ -64,9 +64,9 @@ if (v94 <= 0 && fEGO_ON_WATER) {
     v76 = 0;
   }
   else {
-    get.posn(oEGO, v60, v61);
-    v76 -= v60;
-    v77 -= v61;
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    v76 -= vTEMP_X;
+    v77 -= vTEMP_Y;
     set(f134);
   }
 }

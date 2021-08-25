@@ -75,11 +75,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-get.posn(oEGO, v60, v61);
-if (v60 > 15) {
+get.posn(oEGO, vTEMP_X, vTEMP_Y);
+if (vTEMP_X > 15) {
   ignore.blocks(oEGO);
 }
-if (v60 < 16) {
+if (vTEMP_X < 16) {
   if (vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     ignore.blocks(oEGO);
   }

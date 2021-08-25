@@ -10,8 +10,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.sound(SND_FALLING);
   load.view(105);
   if (vPREV_ROOM_NO == 62) {
-    get.posn(oEGO, v60, v61);
-    if (v60 > 152) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_X > 152) {
       position(oEGO, 150, 164);
     }
   }
@@ -76,8 +76,8 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(58);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  get.posn(oEGO, v60, v61);
-  if (v60 < 153) {
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  if (vTEMP_X < 153) {
     new.room(62);
   }
 }

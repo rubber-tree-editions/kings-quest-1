@@ -36,8 +36,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oEGO, 48, 132);
   }
   if (vPREV_ROOM_NO == 27) {
-    get.posn(oEGO, v60, v61);
-    if (v61 > 94) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_Y > 94) {
       position(oEGO, 1, 155);
     }
   }

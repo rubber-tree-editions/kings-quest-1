@@ -59,11 +59,11 @@ if (v68 == 0 && v69 == 0 && !f21) {
   set.view(oEGO, 114);
   print("Not even you can hold your breath forever.  The well bottom has become your eternal resting place.");
   ignore.blocks(oEGO);
-  get.posn(oEGO, v60, v61);
-  if (v61 < 141) {
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  if (vTEMP_Y < 141) {
     move.obj(oEGO, 65, 140, 1, f20);
   }
-  if (v61 > 140) {
+  if (vTEMP_Y > 140) {
     set(f20);
   }
 }

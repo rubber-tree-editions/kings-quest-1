@@ -61,8 +61,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     set(f26);
   }
   if (vPREV_ROOM_NO == 3) {
-    get.posn(oEGO, v60, v61);
-    if (v61 > 150) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_Y > 150) {
       position(oEGO, 2, 150);
     }
   }
@@ -253,9 +253,9 @@ if (v94 <= 0 && fEGO_ON_WATER) {
     v76 = 0;
   }
   else {
-    get.posn(oEGO, v60, v61);
-    v76 -= v60;
-    v77 -= v61;
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    v76 -= vTEMP_X;
+    v77 -= vTEMP_Y;
     set(f134);
   }
 }
