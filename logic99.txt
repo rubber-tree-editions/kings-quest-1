@@ -9,28 +9,28 @@ if (said("quit")) {
   quit(0);
 }
 if (said("tp")) {
-  get.num("new room: ", v78);
-  new.room.v(v78);
+  get.num("new room: ", vTEMP_INPUT_NUM1);
+  new.room.v(vTEMP_INPUT_NUM1);
 }
 if (said("position")) {
-  get.num("x: ", v78);
-  get.num("y: ", v79);
+  get.num("x: ", vTEMP_INPUT_NUM1);
+  get.num("y: ", vTEMP_INPUT_NUM2);
   erase(oEGO);
-  position.v(oEGO, v78, v79);
+  position.v(oEGO, vTEMP_INPUT_NUM1, vTEMP_INPUT_NUM2);
   draw(oEGO);
 }
 if (said("get", "object")) {
-  get.num("object number: ", v78);
-  get.v(v78);
+  get.num("object number: ", vTEMP_INPUT_NUM1);
+  get.v(vTEMP_INPUT_NUM1);
 }
 if (said("set", "var")) {
-  get.num("var number: ", v78);
-  get.num("var value: ", v79);
-  lindirectv(v78, v79);
+  get.num("var number: ", vTEMP_INPUT_NUM1);
+  get.num("var value: ", vTEMP_INPUT_NUM2);
+  lindirectv(vTEMP_INPUT_NUM1, vTEMP_INPUT_NUM2);
 }
 if (said("object")) {
-  get.num("object #: ", v78);
-  obj.status.v(v78);
+  get.num("object #: ", vTEMP_INPUT_NUM1);
+  obj.status.v(vTEMP_INPUT_NUM1);
 }
 if (controller(cSHOWPRIORITY)) {
   show.pri.screen();
