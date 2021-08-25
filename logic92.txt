@@ -11,7 +11,7 @@ vKEY_PRESSED = 0;
 reset(fSAID_ACCEPTED_USER_INPUT);
 display(2, 1, "          KING'S QUEST");
 display(3, 1, "             Help");
-if (vCOMPUTER_TYPE == 4 || vCOMPUTER_TYPE == 5) {
+if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
   display(6, 1, "F1 or HELP displays this message.");
   goto(LABEL39);
 }
@@ -22,7 +22,7 @@ LABEL39:
   display(9, 1, "F5 saves your current game.");
   display(10, 1, "F7 restores a saved game.");
   display(11, 1, "F9 restarts the game.");
-  if (vCOMPUTER_TYPE == 4 || vCOMPUTER_TYPE == 5) {
+  if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
     display(14, 1, "TAB shows status screen. (see below)");
     goto(LABEL82);
   }
@@ -31,11 +31,11 @@ LABEL78:
 LABEL82:
   display(15, 1, "ESC pauses the game.");
   display(16, 1, "Ctrl-J sets up your joystick.");
-  if (vCOMPUTER_TYPE == 0) {
+  if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
     display(17, 1, "Ctrl-R toggles RGB monitor modes.");
   }
 LABEL101:
-  if (vCOMPUTER_TYPE == 4 || vCOMPUTER_TYPE == 5) {
+  if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
     display(17, 1, "Double clicking joystick button or\n right mouse button also shows status\n screen.");
   }
 LABEL117:
