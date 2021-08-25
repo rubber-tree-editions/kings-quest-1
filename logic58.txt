@@ -13,7 +13,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(114);
   load.sound(SND_VILLAIN);
   load.sound(SND_FALLING);
-  load.sound(9);
+  load.sound(SND_GIANT);
   load.sound(18);
   v33 = 0;
   if (fCARRYING_SLINGSHOT) {
@@ -342,7 +342,7 @@ if (v30 == 1 && v31 == 0) {
 if (v86 == 1 || v86 == 3) {
   if (!f28) {
     set(f28);
-    sound(9, f27);
+    sound(SND_GIANT, f27);
   }
   if (f27) {
     reset(f27);

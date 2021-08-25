@@ -20,7 +20,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(61);
     load.view(82);
     load.sound(SND_VILLAIN);
-    load.sound(7);
+    load.sound(SND_DRAGON);
   }
   load.view(35);
   if (vPREV_ROOM_NO == 52) {
@@ -94,7 +94,7 @@ if (vDRAGON_STATE == DRAGONSTATE_NORMAL && !f24) {
 if (vDRAGON_STATE == DRAGONSTATE_NORMAL && f25) {
   current.loop(oDRAGON, v31);
   if (v31 == 0) {
-    sound(7, f148);
+    sound(SND_DRAGON, f148);
   }
   else {
     stop.sound();
