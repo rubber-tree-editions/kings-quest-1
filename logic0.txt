@@ -150,15 +150,15 @@ if (vROOM_NO > 52 || vROOM_NO == 3 || vROOM_NO == 6 || vROOM_NO == 9 || vROOM_NO
   }
 }
 get.posn(oEGO, v100, v101);
-if (vEGO_DIR == v110 && v100 == v108 && v101 == v109) {
+if (vEGO_DIR == vSAVED_EGO_DIR && v100 == vSAVED_EGO_X && v101 == vSAVED_EGO_Y) {
   stop.cycling(oEGO);
 }
 else {
   start.cycling(oEGO);
 }
-v108 = v100;
-v109 = v101;
-v110 = vEGO_DIR;
+vSAVED_EGO_X = v100;
+vSAVED_EGO_Y = v101;
+vSAVED_EGO_DIR = vEGO_DIR;
 if (f98) {
   start.cycling(oEGO);
 }
