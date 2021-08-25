@@ -348,7 +348,7 @@ if (fCARRYING_WALNUT) {
   }
   if (said("open", "walnut") || said("crack", "walnut")) {
     if (vROOM_NO == 30) {
-      sound(14, f148);
+      sound(SND_GOLDEN_WALNUT, f148);
     }
     print("When you open the walnut, you discover the nut inside is pure gold!");
     reset(fCARRYING_WALNUT);
