@@ -37,7 +37,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(66);
     load.view(77);
   }
-  if (v86 == 0) {
+  if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
     animate.obj(oGIANT);
     set.view(oGIANT, 36);
     position(oGIANT, 91, 71);
@@ -46,14 +46,14 @@ if (fROOM_SCRIPT_EXECUTED) {
     v30 = 250;
     v31 = 2;
   }
-  if (v86 == 2) {
+  if (vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
     animate.obj(oGIANT);
     set.view(oGIANT, 66);
     position(oGIANT, 91, 71);
     follow.ego(oGIANT, 10, f22);
     set(f23);
   }
-  if (v86 == 4) {
+  if (vGIANT_STATE == GIANTSTATE_DEAD_WITH_CHEST) {
     animate.obj(oGIANT);
     set.view(oGIANT, 77);
     position(oGIANT, 73, 113);
@@ -65,7 +65,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oCHEST, 75, 114);
     draw(oCHEST);
   }
-  if (v86 == 5) {
+  if (vGIANT_STATE == GIANTSTATE_DEAD_NO_CHEST) {
     animate.obj(oGIANT);
     set.view(oGIANT, 77);
     position(oGIANT, 73, 113);
@@ -77,7 +77,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (v86 == 0 || v86 == 2) {
+if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
   if (!f26) {
     set(f26);
     sound(SND_VILLAIN, f148);
@@ -103,7 +103,7 @@ if (f22 && f23) {
     wander(oGIANT);
   }
   else if (!fCARRYING_SHIELD && !fEGO_INVISIBLE && !fPROTECTED_BY_SPELL) {
-    if (v86 == 0 || v86 == 2) {
+    if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
       reset(f22);
       reset(f23);
       set.view(oEGO, 114);
@@ -135,33 +135,33 @@ if (f20) {
   set(fGAME_OVER);
 }
 if (said("examine", "giant")) {
-  if (v86 == 2) {
+  if (vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
     print("The giant is enormous!  He does look rather stupid, though.");
   }
-  if (v86 == 0) {
+  if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
     print("The enormous giant has been carrying that heavy chest for longer than he can remember.");
   }
-  if (v86 == 1) {
+  if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST) {
     print("The giant is sleeping with a chest.");
   }
-  if (v86 == 3) {
+  if (vGIANT_STATE == GIANTSTATE_ASLEEP_NO_CHEST) {
     print("The huge giant has fallen asleep and is now snoring loudly.");
   }
-  if (v86 == 4) {
+  if (vGIANT_STATE == GIANTSTATE_DEAD_WITH_CHEST) {
     print("The giant lies dead on the ground and there is a chest beside him.");
   }
-  if (v86 == 5) {
+  if (vGIANT_STATE == GIANTSTATE_DEAD_NO_CHEST) {
     print("The giant has been slain by a little pebble to the forehead.");
   }
 }
 if (said("talk", "giant") || said("hello") || said("say", "hello")) {
-  if (v86 == 2 || v86 == 0) {
+  if (vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST || vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
     print("The giant is in no mood for talking.");
   }
-  if (v86 == 1 || v86 == 3) {
+  if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST || vGIANT_STATE == GIANTSTATE_ASLEEP_NO_CHEST) {
     print("It is not a good idea to wake a sleeping giant.");
   }
-  if (v86 == 4 || v86 == 5) {
+  if (vGIANT_STATE == GIANTSTATE_DEAD_WITH_CHEST || vGIANT_STATE == GIANTSTATE_DEAD_NO_CHEST) {
     print("A dead giant does not have a lot to say.");
   }
 }
@@ -172,14 +172,14 @@ if (!fCARRYING_CHEST && !f169) {
 }
 if (!fCARRYING_CHEST) {
   if (said("get", "chest") || said("get", "chest", "giant")) {
-    if (v86 == 0) {
+    if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
       print("The giant is protecting the magic chest.");
     }
     if (f169) {
       print("There is no chest around here to get.");
     }
     distance(oEGO, oGIANT, v70);
-    if (v86 == 1) {
+    if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST) {
       if (v70 > 30) {
         print("There is no way you can get the chest from here!");
       }
@@ -194,11 +194,11 @@ if (!fCARRYING_CHEST) {
         vSCORE += 8;
         get("chest");
         vTREASURE_COUNT++;
-        v86 = 3;
+        vGIANT_STATE = GIANTSTATE_ASLEEP_NO_CHEST;
       }
     }
     distance(oEGO, oCHEST, v62);
-    if (v86 == 4) {
+    if (vGIANT_STATE == GIANTSTATE_DEAD_WITH_CHEST) {
       if (v62 > 30) {
         print("There is no way you can get the chest from here!");
       }
@@ -210,7 +210,7 @@ if (!fCARRYING_CHEST) {
         vSCORE += 8;
         get("chest");
         vTREASURE_COUNT++;
-        v86 = 5;
+        vGIANT_STATE = GIANTSTATE_DEAD_NO_CHEST;
       }
     }
   }
@@ -224,7 +224,7 @@ if (fCARRYING_SLINGSHOT) {
     if (fCARRYING_PEBBLES && v71 < 20) {
       print("There is no way you can get the chest from here!");
     }
-    if (fCARRYING_PEBBLES && !f169 && !fEGO_INVISIBLE && v86 == 0 && v71 > 19 && !f199) {
+    if (fCARRYING_PEBBLES && !f169 && !fEGO_INVISIBLE && vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST && v71 > 19 && !f199) {
       reset(f23);
       get.posn(oEGO, v100, v101);
       position.v(oFLUNG_PEBBLE, v100, v101);
@@ -237,7 +237,7 @@ if (fCARRYING_SLINGSHOT) {
       drop("pebbles");
       vSCORE -= 1;
     }
-    if (fCARRYING_PEBBLES && f169 && !fEGO_INVISIBLE && v86 == 2 && v71 > 19) {
+    if (fCARRYING_PEBBLES && f169 && !fEGO_INVISIBLE && vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST && v71 > 19) {
       reset(f23);
       get.posn(oEGO, v100, v101);
       position.v(oFLUNG_PEBBLE, v100, v101);
@@ -251,12 +251,12 @@ if (fCARRYING_SLINGSHOT) {
       vSCORE -= 1;
     }
     if (fCARRYING_PEBBLES && !f169 && fEGO_INVISIBLE) {
-      if (v86 == 0 || v86 == 2) {
+      if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
         print("Not when you're invisible!");
       }
     }
     if (fCARRYING_PEBBLES) {
-      if (v86 == 1 || v86 == 3) {
+      if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST || vGIANT_STATE == GIANTSTATE_ASLEEP_NO_CHEST) {
         print("It would be rather cowardly of you to kill a giant while he is asleep!");
       }
     }
@@ -276,7 +276,7 @@ if (f24) {
   get.posn(oGIANT, v60, v61);
   position.v(oCHEST, v60, v61);
   draw(oCHEST);
-  v86 = 4;
+  vGIANT_STATE = GIANTSTATE_DEAD_WITH_CHEST;
   vSCORE += 3;
 }
 if (f25) {
@@ -290,7 +290,7 @@ if (f25) {
   step.size(oGIANT, v33);
   draw(oGIANT);
   end.of.loop(oGIANT, f148);
-  v86 = 5;
+  vGIANT_STATE = GIANTSTATE_DEAD_NO_CHEST;
 }
 if (fCARRYING_DAGGER) {
   if (said("use", "dagger") || said("throw", "dagger")) {
@@ -301,23 +301,23 @@ if (fCARRYING_DAGGER) {
   }
 }
 if (said("murder", "giant")) {
-  if (v86 == 0) {
+  if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
     print("How?");
   }
-  if (v86 == 2) {
+  if (vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
     print("There is no reason to kill the giant.");
   }
-  if (v86 == 1 || v86 == 3) {
+  if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST || vGIANT_STATE == GIANTSTATE_ASLEEP_NO_CHEST) {
     print("It would be rather cowardly of you to kill a giant while he is asleep!");
   }
-  if (v86 == 4 || v86 == 5) {
+  if (vGIANT_STATE == GIANTSTATE_DEAD_WITH_CHEST || vGIANT_STATE == GIANTSTATE_DEAD_NO_CHEST) {
     print("The giant has been slain by a little pebble to the forehead.");
   }
 }
 if (said("examine", "room") || said("examine", "clouds")) {
   print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
 }
-if (v86 == 0) {
+if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
   v30--;
   if (v30 == 0) {
     if (v31 > 0) {
@@ -334,14 +334,14 @@ if (v30 == 1 && v31 == 0) {
   set.view(oGIANT, 52);
   step.size(oGIANT, v33);
   draw(oGIANT);
-  v86 = 1;
+  vGIANT_STATE = GIANTSTATE_ASLEEP_WITH_CHEST;
   if (!f205) {
     set(f205);
     vSCORE += 7;
   }
   print("What luck!  The huge giant fell fast asleep!");
 }
-if (v86 == 1 || v86 == 3) {
+if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST || vGIANT_STATE == GIANTSTATE_ASLEEP_NO_CHEST) {
   if (!f28) {
     set(f28);
     sound(SND_GIANT, f27);
@@ -355,11 +355,11 @@ if (fGAME_OVER) {
   return;
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
-  if (v86 == 1) {
-    v86 = 0;
+  if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST) {
+    vGIANT_STATE = GIANTSTATE_AWAKE_WITH_CHEST;
   }
-  if (v86 == 3) {
-    v86 = 2;
+  if (vGIANT_STATE == GIANTSTATE_ASLEEP_NO_CHEST) {
+    vGIANT_STATE = GIANTSTATE_AWAKE_NO_CHEST;
   }
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
