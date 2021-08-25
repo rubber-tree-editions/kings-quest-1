@@ -132,8 +132,8 @@ if (v68 == 1 && v69 == 0) {
 if (!f22 && f21) {
   get.posn(oBIRD, v104, v105);
   if (v105 > 110) {
-    v106 = 1;
-    set.dir(oBIRD, v106);
+    vTEMP_DIR = DIR_NORTH;
+    set.dir(oBIRD, vTEMP_DIR);
     wander(oBIRD);
   }
 }

@@ -396,3 +396,13 @@
 #define COMPUTERTYPE_PC 0
 #define COMPUTERTYPE_ATARI_ST 4
 #define COMPUTERTYPE_AMIGA 5
+
+#define DIR_NONE 0
+#define DIR_NORTH 1
+#define DIR_NORTHEAST 2
+#define DIR_EAST 3
+#define DIR_SOUTHEAST 4
+#define DIR_SOUTH 5
+#define DIR_SOUTHWEST 6
+#define DIR_WEST 7
+#define DIR_NORTHWEST 8
