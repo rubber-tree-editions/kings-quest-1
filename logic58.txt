@@ -14,7 +14,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.sound(SND_VILLAIN);
   load.sound(SND_FALLING);
   load.sound(SND_GIANT);
-  load.sound(18);
+  load.sound(SND_KILL_GIANT);
   v33 = 0;
   if (fCARRYING_SLINGSHOT) {
     load.view(102);
@@ -228,7 +228,7 @@ if (fCARRYING_SLINGSHOT) {
       position.v(o15, v100, v101);
       erase(oEGO);
       draw(o15);
-      sound(18, f148);
+      sound(SND_KILL_GIANT, f148);
       end.of.loop(o15, f24);
       print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.");
       reset(fCARRYING_PEBBLES);
@@ -241,7 +241,7 @@ if (fCARRYING_SLINGSHOT) {
       position.v(o15, v100, v101);
       erase(oEGO);
       draw(o15);
-      sound(18, f148);
+      sound(SND_KILL_GIANT, f148);
       end.of.loop(o15, f25);
       print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.");
       reset(fCARRYING_PEBBLES);
