@@ -162,7 +162,7 @@ v110 = vEGO_DIR;
 if (f98) {
   start.cycling(oEGO);
 }
-else if (vEGO_DIR <= 0) {
+else if (vEGO_DIR <= DIR_NONE) {
   stop.cycling(oEGO);
 }
 if (controller(cDEBUG)) {
