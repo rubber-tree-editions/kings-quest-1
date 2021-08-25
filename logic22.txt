@@ -30,7 +30,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       load.view(74);
       load.view(105);
       load.logics(LOGIC_BEANSTALK);
-      load.sound(12);
+      load.sound(SND_BEANSTALK);
     }
   LABEL79:
     if (vPREV_ROOM_NO == 70 && fEGO_CLIMBING_BEANSTALK) {
@@ -220,7 +220,7 @@ LABEL633:
       drop("beans");
       vSCORE += 2;
       print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
-      sound(12, f30);
+      sound(SND_BEANSTALK, f30);
       overlay.pic(v92);
       show.pic();
     }
