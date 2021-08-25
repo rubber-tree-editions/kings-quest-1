@@ -278,6 +278,7 @@ struct shake {
 struct status {
   struct status_line {
     void (*on)(void);
+    void (*off)(void);
   } line;
 } status;
 
