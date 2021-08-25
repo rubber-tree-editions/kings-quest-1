@@ -59,7 +59,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   LABEL160:
     random(0, 250, v62);
-    if (v62 < 125 && !f204) {
+    if (v62 < 125 && !fTAKEN_BY_GIANT_BIRD) {
       v31 = 4;
       step.size(oBIRD, v31);
       set(f20);
@@ -177,8 +177,8 @@ LABEL440:
     set.priority(oEGO, 15);
     move.obj.v(oEGO, v60, v61, 31, f25);
     set(f98);
-    if (!f204) {
-      set(f204);
+    if (!fTAKEN_BY_GIANT_BIRD) {
+      set(fTAKEN_BY_GIANT_BIRD);
       vSCORE += 3;
     }
   }
