@@ -33,6 +33,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.key(KEY_EQUALS, 0, cSWIM);
   set.key(KEY_DASH, 0, cDUCK);
   set.key(KEY_0, 0, cJUMP);
+
+  #ifdef RUBBER_TREE
+  set.key(KEY_CTRL_Z, 0, cUNDO);
+  #endif
+
   if (vCOMPUTER_TYPE == 1) {
     set.key(KEY_1, 0, cHELP);
     set.key(KEY_2, 0, cTOGGLESOUND);
@@ -54,6 +59,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.menu.item("Inventory     <Tab>", cINVENTORY);
   set.menu.item("Pause         <Esc>", cPAUSE);
   set.menu.item("Restart Game   <F9>", cRESTART);
+#ifdef RUBBER_TREE
+  set.menu.item("Undo               ", cUNDO);
+#endif
   set.menu.item("Quit               ", cQUIT);
   set.menu("Actions");
   set.menu.item("Swim    =", cSWIM);

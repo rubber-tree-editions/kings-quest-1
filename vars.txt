@@ -12,6 +12,8 @@
 
 #endif
 
+#define RUBBER_TREE
+
 // built-in vars
 #define vROOM_NO v0
 #define vPREV_ROOM_NO v1
@@ -152,7 +154,11 @@
 #define fMAGIC_BEANS_PLANTED f94
 #define fSLINGSHOT_TAKEN f96
 #define fCARRYING_SLINGSHOT f97
-// unused: f99
+
+#ifdef RUBBER_TREE
+  #define fUNDO f99
+#endif
+
 #define fCARRYING_MIRROR f100
 #define fDWARF_STOLE_MIRROR f101
 #define fCARRYING_SHIELD f102
@@ -226,6 +232,10 @@
 #define cTOGGLESOUND c17
 #define cHELP c18
 #define cABOUT c19
+
+#ifdef RUBBER_TREE
+  #define cUNDO c20
+#endif
 
 #define oEGO o0
 
