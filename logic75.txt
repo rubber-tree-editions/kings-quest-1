@@ -31,7 +31,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     v30 = 3;
     step.size(oRAT, v30);
   }
-  load.sound(19);
+  load.sound(SND_DOOR_OPENING);
   load.view(46);
   animate.obj(oDOOR);
   set.view(oDOOR, 46);
@@ -52,7 +52,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
   if (vPREV_ROOM_NO == 76) {
     reverse.loop(oDOOR, f203);
-    sound(19, f148);
+    sound(SND_DOOR_OPENING, f148);
   }
   else {
     stop.update(oDOOR);
@@ -220,7 +220,7 @@ distance(oEGO, oDOOR, v71);
 if (said("open", "doors")) {
   if (v71 < 25) {
     start.update(oDOOR);
-    sound(19, f148);
+    sound(SND_DOOR_OPENING, f148);
     print("The door slowly opens.");
     end.of.loop(oDOOR, f23);
   }

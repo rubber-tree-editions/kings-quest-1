@@ -30,7 +30,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.cel(oDOOR, 0);
   ignore.blocks(oDOOR);
   position(oDOOR, 45, 128);
-  load.sound(19);
+  load.sound(SND_DOOR_OPENING);
   observe.blocks(oEGO);
   if (vPREV_ROOM_NO == 65) {
     position(oEGO, 48, 132);
@@ -118,7 +118,7 @@ if (posn(oEGO, 40, 127, 70, 135)) {
   }
   if (said("open", "doors")) {
     start.update(oDOOR);
-    sound(19, f148);
+    sound(SND_DOOR_OPENING, f148);
     end.of.loop(oDOOR, f20);
   }
 }

@@ -22,7 +22,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oDOOR, 20);
     set.priority(oDOOR, 8);
     position(oDOOR, 101, 92);
-    load.sound(19);
+    load.sound(SND_DOOR_OPENING);
     if (vPREV_ROOM_NO == 66) {
       position(oEGO, 102, 98);
       vDOOR_STATE = DOORSTATE_OPEN;
@@ -135,7 +135,7 @@ LABEL276:
       if (vDOOR_STATE == DOORSTATE_CLOSED) {
         if (said("open", "doors") || said("turn", "knob")) {
           start.update(oDOOR);
-          sound(19, f148);
+          sound(SND_DOOR_OPENING, f148);
           end.of.loop(oDOOR, f20);
           vDOOR_STATE = DOORSTATE_OPEN;
         }
