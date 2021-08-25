@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 prevent.input();
 status.line.off();
 text.screen();
@@ -13,45 +11,38 @@ display(2, 1, "          KING'S QUEST");
 display(3, 1, "             Help");
 if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
   display(6, 1, "F1 or HELP displays this message.");
-  goto(LABEL39);
 }
-display(6, 1, "F1 displays this message.");
-LABEL39:
-  display(7, 1, "F2 turns the sound off and on.");
-  display(8, 1, "F3 retypes the last line typed.");
-  display(9, 1, "F5 saves your current game.");
-  display(10, 1, "F7 restores a saved game.");
-  display(11, 1, "F9 restarts the game.");
-  if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
-    display(14, 1, "TAB shows status screen. (see below)");
-    goto(LABEL82);
-  }
-LABEL78:
+else {
+  display(6, 1, "F1 displays this message.");
+}
+display(7, 1, "F2 turns the sound off and on.");
+display(8, 1, "F3 retypes the last line typed.");
+display(9, 1, "F5 saves your current game.");
+display(10, 1, "F7 restores a saved game.");
+display(11, 1, "F9 restarts the game.");
+if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
+  display(14, 1, "TAB shows status screen. (see below)");
+}
+else {
   display(14, 1, "TAB shows the status screen.");
-LABEL82:
-  display(15, 1, "ESC pauses the game.");
-  display(16, 1, "Ctrl-J sets up your joystick.");
-  if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
-    display(17, 1, "Ctrl-R toggles RGB monitor modes.");
-  }
-LABEL101:
-  if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
-    display(17, 1, "Double clicking joystick button or\n right mouse button also shows status\n screen.");
-  }
-LABEL117:
-  display(20, 1, "0 for jumping");
-  display(21, 1, "- for ducking");
-  display(22, 1, "= for swimming");
-LABEL129:
-  if (!have.key()) {
-    goto(LABEL129);
-  }
-LABEL138:
-  accept.input();
-  status.line.on();
-  graphics();
-  set(fSAID_ACCEPTED_USER_INPUT);
-  return;
+}
+display(15, 1, "ESC pauses the game.");
+display(16, 1, "Ctrl-J sets up your joystick.");
+if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
+  display(17, 1, "Ctrl-R toggles RGB monitor modes.");
+}
+if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
+  display(17, 1, "Double clicking joystick button or\n right mouse button also shows status\n screen.");
+}
+display(20, 1, "0 for jumping");
+display(21, 1, "- for ducking");
+display(22, 1, "= for swimming");
+while (!have.key()) { }
+accept.input();
+status.line.on();
+graphics();
+set(fSAID_ACCEPTED_USER_INPUT);
+return;
 
 LOGIC__FOOTER
 
