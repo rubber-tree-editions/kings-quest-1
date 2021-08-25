@@ -2,7 +2,9 @@
 
 LOGIC__HEADER
 
-
+#define oGIANT o1
+#define oCHEST o2
+#define oFLUNG_PEBBLE o15
 
 if (fROOM_SCRIPT_EXECUTED) {
   ignore.horizon(oEGO);
@@ -18,13 +20,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   v33 = 0;
   if (fCARRYING_SLINGSHOT) {
     load.view(102);
-    animate.obj(o15);
-    set.view(o15, 102);
+    animate.obj(oFLUNG_PEBBLE);
+    set.view(oFLUNG_PEBBLE, 102);
   }
   if (!fCARRYING_CHEST && !f169) {
     load.view(37);
-    animate.obj(o2);
-    set.view(o2, 37);
+    animate.obj(oCHEST);
+    set.view(oCHEST, 37);
     load.view(36);
     load.view(52);
     load.view(68);
@@ -36,42 +38,42 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(77);
   }
   if (v86 == 0) {
-    animate.obj(o1);
-    set.view(o1, 36);
-    position(o1, 91, 71);
-    follow.ego(o1, 10, f22);
+    animate.obj(oGIANT);
+    set.view(oGIANT, 36);
+    position(oGIANT, 91, 71);
+    follow.ego(oGIANT, 10, f22);
     set(f23);
     v30 = 250;
     v31 = 2;
   }
   if (v86 == 2) {
-    animate.obj(o1);
-    set.view(o1, 66);
-    position(o1, 91, 71);
-    follow.ego(o1, 10, f22);
+    animate.obj(oGIANT);
+    set.view(oGIANT, 66);
+    position(oGIANT, 91, 71);
+    follow.ego(oGIANT, 10, f22);
     set(f23);
   }
   if (v86 == 4) {
-    animate.obj(o1);
-    set.view(o1, 77);
-    position(o1, 73, 113);
-    set.cel(o1, 3);
-    stop.cycling(o1);
-    step.size(o1, v33);
-    animate.obj(o2);
-    set.view(o2, 37);
-    position(o2, 75, 114);
-    draw(o2);
+    animate.obj(oGIANT);
+    set.view(oGIANT, 77);
+    position(oGIANT, 73, 113);
+    set.cel(oGIANT, 3);
+    stop.cycling(oGIANT);
+    step.size(oGIANT, v33);
+    animate.obj(oCHEST);
+    set.view(oCHEST, 37);
+    position(oCHEST, 75, 114);
+    draw(oCHEST);
   }
   if (v86 == 5) {
-    animate.obj(o1);
-    set.view(o1, 77);
-    position(o1, 73, 113);
-    set.cel(o1, 3);
-    stop.cycling(o1);
-    step.size(o1, v33);
+    animate.obj(oGIANT);
+    set.view(oGIANT, 77);
+    position(oGIANT, 73, 113);
+    set.cel(oGIANT, 3);
+    stop.cycling(oGIANT);
+    step.size(oGIANT, v33);
   }
-  draw(o1);
+  draw(oGIANT);
   draw(oEGO);
   show.pic();
 }
@@ -86,19 +88,19 @@ if (f22 && f23) {
     reset(f22);
     reset(f23);
     print("The giant cannot see you since you are invisible.");
-    wander(o1);
+    wander(oGIANT);
   }
   else if (fCARRYING_SHIELD) {
     reset(f22);
     reset(f23);
     print("You are fortunate that you have the magic shield or this giant would cause problems for you.");
-    wander(o1);
+    wander(oGIANT);
   }
   else if (fPROTECTED_BY_SPELL) {
     reset(f22);
     reset(f23);
     print("The fairy godmother's spell is protecting you.");
-    wander(o1);
+    wander(oGIANT);
   }
   else if (!fCARRYING_SHIELD && !fEGO_INVISIBLE && !fPROTECTED_BY_SPELL) {
     if (v86 == 0 || v86 == 2) {
@@ -106,7 +108,7 @@ if (f22 && f23) {
       reset(f23);
       set.view(oEGO, 114);
       print("Be a little more careful next time.  This giant is mean!");
-      wander(o1);
+      wander(oGIANT);
       set(fGAME_OVER);
     }
   }
@@ -176,16 +178,16 @@ if (!fCARRYING_CHEST) {
     if (f169) {
       print("There is no chest around here to get.");
     }
-    distance(oEGO, o1, v70);
+    distance(oEGO, oGIANT, v70);
     if (v86 == 1) {
       if (v70 > 30) {
         print("There is no way you can get the chest from here!");
       }
       else {
-        erase(o1);
-        set.view(o1, 68);
-        stop.motion(o1);
-        draw(o1);
+        erase(oGIANT);
+        set.view(oGIANT, 68);
+        stop.motion(oGIANT);
+        draw(oGIANT);
         print("Very carefully, you slip the magic chest from the sleeping giant's arms.");
         set(fCARRYING_CHEST);
         set(f169);
@@ -195,13 +197,13 @@ if (!fCARRYING_CHEST) {
         v86 = 3;
       }
     }
-    distance(oEGO, o2, v62);
+    distance(oEGO, oCHEST, v62);
     if (v86 == 4) {
       if (v62 > 30) {
         print("There is no way you can get the chest from here!");
       }
       else {
-        erase(o2);
+        erase(oCHEST);
         print("It's easy to take a magic chest from a dead giant.");
         set(fCARRYING_CHEST);
         set(f169);
@@ -214,7 +216,7 @@ if (!fCARRYING_CHEST) {
   }
 }
 if (fCARRYING_SLINGSHOT) {
-  distance(oEGO, o1, v71);
+  distance(oEGO, oGIANT, v71);
   if (said("use", "slingshot") || said("gingerbread", "slingshot")) {
     if (!fCARRYING_PEBBLES) {
       print("You need some kind of small rock to use the sling.");
@@ -225,11 +227,11 @@ if (fCARRYING_SLINGSHOT) {
     if (fCARRYING_PEBBLES && !f169 && !fEGO_INVISIBLE && v86 == 0 && v71 > 19 && !f199) {
       reset(f23);
       get.posn(oEGO, v100, v101);
-      position.v(o15, v100, v101);
+      position.v(oFLUNG_PEBBLE, v100, v101);
       erase(oEGO);
-      draw(o15);
+      draw(oFLUNG_PEBBLE);
       sound(SND_KILL_GIANT, f148);
-      end.of.loop(o15, f24);
+      end.of.loop(oFLUNG_PEBBLE, f24);
       print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.");
       reset(fCARRYING_PEBBLES);
       drop("pebbles");
@@ -238,11 +240,11 @@ if (fCARRYING_SLINGSHOT) {
     if (fCARRYING_PEBBLES && f169 && !fEGO_INVISIBLE && v86 == 2 && v71 > 19) {
       reset(f23);
       get.posn(oEGO, v100, v101);
-      position.v(o15, v100, v101);
+      position.v(oFLUNG_PEBBLE, v100, v101);
       erase(oEGO);
-      draw(o15);
+      draw(oFLUNG_PEBBLE);
       sound(SND_KILL_GIANT, f148);
-      end.of.loop(o15, f25);
+      end.of.loop(oFLUNG_PEBBLE, f25);
       print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.");
       reset(fCARRYING_PEBBLES);
       drop("pebbles");
@@ -262,32 +264,32 @@ if (fCARRYING_SLINGSHOT) {
 }
 if (f24) {
   reset(f24);
-  erase(o15);
+  erase(oFLUNG_PEBBLE);
   set.view(oEGO, 0);
   position.v(oEGO, v100, v101);
   draw(oEGO);
-  erase(o1);
-  set.view(o1, 77);
-  step.size(o1, v33);
-  draw(o1);
-  end.of.loop(o1, f148);
-  get.posn(o1, v60, v61);
-  position.v(o2, v60, v61);
-  draw(o2);
+  erase(oGIANT);
+  set.view(oGIANT, 77);
+  step.size(oGIANT, v33);
+  draw(oGIANT);
+  end.of.loop(oGIANT, f148);
+  get.posn(oGIANT, v60, v61);
+  position.v(oCHEST, v60, v61);
+  draw(oCHEST);
   v86 = 4;
   vSCORE += 3;
 }
 if (f25) {
   reset(f25);
-  erase(o15);
+  erase(oFLUNG_PEBBLE);
   set.view(oEGO, 0);
   position.v(oEGO, v100, v101);
   draw(oEGO);
-  erase(o1);
-  set.view(o1, 77);
-  step.size(o1, v33);
-  draw(o1);
-  end.of.loop(o1, f148);
+  erase(oGIANT);
+  set.view(oGIANT, 77);
+  step.size(oGIANT, v33);
+  draw(oGIANT);
+  end.of.loop(oGIANT, f148);
   v86 = 5;
 }
 if (fCARRYING_DAGGER) {
@@ -327,11 +329,11 @@ if (v86 == 0) {
 if (v30 == 1 && v31 == 0) {
   reset(f23);
   v30 = 0;
-  stop.motion(o1);
-  erase(o1);
-  set.view(o1, 52);
-  step.size(o1, v33);
-  draw(o1);
+  stop.motion(oGIANT);
+  erase(oGIANT);
+  set.view(oGIANT, 52);
+  step.size(oGIANT, v33);
+  draw(oGIANT);
   v86 = 1;
   if (!f205) {
     set(f205);
