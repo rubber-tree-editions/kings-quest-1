@@ -166,7 +166,13 @@ if (v94 <= 0 && fEGO_ON_WATER) {
 }
 if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
   if (said("drink", "water") || said("get", "drink")) {
-    if (posn(oEGO, 0, 40, 32, 111) || posn(oEGO, 14, 112, 88, 135) || posn(oEGO, 39, 136, 99, 167) || posn(oEGO, 36, 40, 74, 76) || posn(oEGO, 46, 77, 101, 88) || posn(oEGO, 68, 89, 151, 167)) {
+    if (posn(oEGO, 0, 40, 32, 111)
+      || posn(oEGO, 14, 112, 88, 135)
+      || posn(oEGO, 39, 136, 99, 167)
+      || posn(oEGO, 36, 40, 74, 76)
+      || posn(oEGO, 46, 77, 101, 88)
+      || posn(oEGO, 68, 89, 151, 167)
+    ) {
       print("The water from this swift river is cold and sweet.");
     }
     else {
@@ -175,7 +181,13 @@ if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
   }
 }
 if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
-  if (posn(oEGO, 0, 40, 32, 111) || posn(oEGO, 14, 112, 88, 135) || posn(oEGO, 39, 136, 99, 167) || posn(oEGO, 36, 40, 74, 76) || posn(oEGO, 46, 77, 101, 88) || posn(oEGO, 68, 89, 151, 167)) {
+  if (posn(oEGO, 0, 40, 32, 111)
+    || posn(oEGO, 14, 112, 88, 135)
+    || posn(oEGO, 39, 136, 99, 167)
+    || posn(oEGO, 36, 40, 74, 76)
+    || posn(oEGO, 46, 77, 101, 88)
+    || posn(oEGO, 68, 89, 151, 167)
+  ) {
     reset(f116);
     print("The river is so swift it is a battle to fill the bucket.");
     get("water");

@@ -111,7 +111,12 @@ if (!fBUCKET_FILLED && (said("drink", "water") || said("get", "drink"))) {
   if (posn(oEGO, 121, 40, 159, 81)) {
     print("It tastes very refreshing to a thirsty wanderer.");
   }
-  else if (posn(oEGO, 127, 79, 159, 92) || posn(oEGO, 145, 125, 159, 140) || posn(oEGO, 73, 130, 103, 167) || posn(oEGO, 0, 136, 49, 167) || posn(oEGO, 0, 88, 84, 112)) {
+  else if (posn(oEGO, 127, 79, 159, 92)
+        || posn(oEGO, 145, 125, 159, 140)
+        || posn(oEGO, 73, 130, 103, 167)
+        || posn(oEGO, 0, 136, 49, 167)
+        || posn(oEGO, 0, 88, 84, 112)
+  ) {
     print("Being careful not to slip in, you drink deeply of the cool water.");
   }
   else {
@@ -129,7 +134,12 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET) {
       }
       set(fFILL_BUCKET_POINTS);
     }
-    else if (posn(oEGO, 127, 79, 159, 92) || posn(oEGO, 145, 125, 159, 140) || posn(oEGO, 73, 130, 103, 167) || posn(oEGO, 0, 136, 49, 167) || posn(oEGO, 0, 88, 84, 112)) {
+    else if (posn(oEGO, 127, 79, 159, 92)
+          || posn(oEGO, 145, 125, 159, 140)
+          || posn(oEGO, 73, 130, 103, 167)
+          || posn(oEGO, 0, 136, 49, 167)
+          || posn(oEGO, 0, 88, 84, 112)
+    ) {
       print("Very carefully, the bucket fills with water from the  rapid river.");
       get("water");
       set(fBUCKET_FILLED);

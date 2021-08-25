@@ -197,7 +197,10 @@ if (fDANCING_LEPRECHAUNS) {
 }
 if (!f187) {
   if (!f20) {
-    if (said("examine", "king") || said("examine", "king", "leprechauns") || said("examine", "leprechauns", "king")) {
+    if (said("examine", "king")
+      || said("examine", "king", "leprechauns")
+      || said("examine", "leprechauns", "king")
+    ) {
       if (!fSHIELD_TAKEN) {
         print("The King of the leprechauns is sitting on the stone throne. The magic shield is next to the throne.");
       }
@@ -207,7 +210,10 @@ if (!f187) {
     }
   }
   if (f20) {
-    if (said("examine", "king") || said("examine", "king", "leprechauns") || said("examine", "leprechauns", "king")) {
+    if (said("examine", "king")
+      || said("examine", "king", "leprechauns")
+      || said("examine", "leprechauns", "king")
+    ) {
       print("The King is leaving.");
     }
   }

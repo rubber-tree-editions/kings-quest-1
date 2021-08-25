@@ -219,7 +219,11 @@ if (!f180 && !f20) {
     }
   }
   if (f181) {
-    if (said("go", "water") || said("exit", "bucket") || said("go", "water") || said("jump", "water")) {
+    if (said("go", "water")
+      || said("exit", "bucket")
+      || said("go", "water")
+      || said("jump", "water")
+    ) {
       start.update(o1);
       erase(o1);
       set.view(o1, 16);
@@ -289,7 +293,11 @@ if (said("break", "rope")) {
     print("The rope is out of reach.");
   }
 }
-if (said("lower", "bucket") || said("raise", "bucket") || said("lower", "rope") || said("raise", "rope")) {
+if (said("lower", "bucket")
+  || said("raise", "bucket")
+  || said("lower", "rope")
+  || said("raise", "rope")
+) {
   print("A person in your position is in no position to raise or lower anything.");
 }
 if (!fCARRYING_DAGGER) {

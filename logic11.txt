@@ -121,7 +121,11 @@ if (v30 == 1) {
   v30 = 0;
 }
 if (f21 && !fGOAT_COMPANION) {
-  if (said("hello") || said("hello", "goat") || said("say", "hello") || said("say", "hello", "goat")) {
+  if (said("hello")
+    || said("hello", "goat")
+    || said("say", "hello")
+    || said("say", "hello", "goat")
+  ) {
     print("You get no response from the goat.");
   }
   if (said("examine", "goat")) {
@@ -214,7 +218,13 @@ if (said("jump", "goat pen")) {
 }
 distance(oEGO, oGOAT, v70);
 if (fINSIDE_GOAT_FENCE && f21) {
-  if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
+  if (said("feed", "carrot")
+    || said("feed", "goat", "carrot")
+    || said("feed", "carrot", "goat")
+    || said("give", "carrot")
+    || said("give", "goat", "carrot")
+    || said("give", "carrot", "goat")
+  ) {
     if (fCARRYING_CARROT) {
       if (v70 < 25) {
         print("Goats love carrots!  The goat quickly devours yours.");
@@ -235,7 +245,10 @@ if (fINSIDE_GOAT_FENCE && f21) {
 }
 if (fINSIDE_GOAT_FENCE && f21) {
   if (fCARRYING_CARROT && !fGOAT_COMPANION && !fEGO_INVISIBLE) {
-    if (said("show", "carrot") || said("show", "carrot", "goat") || said("show", "goat", "carrot")) {
+    if (said("show", "carrot")
+      || said("show", "carrot", "goat")
+      || said("show", "goat", "carrot")
+    ) {
       if (v70 < 50) {
         if (!f151) {
           print("When you tempt the old goat with the carrot, he starts to follow you.");
@@ -261,7 +274,13 @@ if (!fINSIDE_GOAT_FENCE && f21) {
     }
   }
   if (fCARRYING_CARROT && !fEGO_INVISIBLE) {
-    if (said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat")) {
+    if (said("feed", "carrot")
+      || said("feed", "goat", "carrot")
+      || said("feed", "carrot", "goat")
+      || said("give", "carrot")
+      || said("give", "goat", "carrot")
+      || said("give", "carrot", "goat")
+    ) {
       if (v70 < 25) {
         print("Goats love carrots!  The goat quickly devours yours.");
         vSCORE -= 2;
@@ -273,7 +292,10 @@ if (!fINSIDE_GOAT_FENCE && f21) {
         print("You are too far away.");
       }
     }
-    if (said("show", "carrot") || said("show", "goat", "carrot") || said("show", "carrot", "goat")) {
+    if (said("show", "carrot")
+      || said("show", "goat", "carrot")
+      || said("show", "carrot", "goat")
+    ) {
       if (v70 < 50) {
         print("The goat shows some interest in the carrot.");
       }

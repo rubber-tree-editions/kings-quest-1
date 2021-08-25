@@ -65,7 +65,12 @@ if (said("break", "doors")) {
   }
 }
 if (!posn(oEGO, 90, 93, 125, 114)) {
-  if (said("open", "doors") || said("close", "doors") || said("turn", "knob") || said("open", "doors", "gold key") || said("open", "doors", "golden", "gold key")) {
+  if (said("open", "doors")
+    || said("close", "doors")
+    || said("turn", "knob")
+    || said("open", "doors", "gold key")
+    || said("open", "doors", "golden", "gold key")
+  ) {
     print("It will be difficult to do that from here.");
   }
   if (fCARRYING_GOLD_KEY) {
@@ -79,7 +84,12 @@ if (posn(oEGO, 90, 93, 125, 114)) {
     if (said("use", "gold key")) {
       print("How do you want to use the key?");
     }
-    if (said("unlock", "doors") || said("unlock", "doors", "gold key") || said("unlock", "doors", "golden", "gold key") || said("open", "doors", "gold key") || said("open", "doors", "golden", "gold key")) {
+    if (said("unlock", "doors")
+      || said("unlock", "doors", "gold key")
+      || said("unlock", "doors", "golden", "gold key")
+      || said("open", "doors", "gold key")
+      || said("open", "doors", "golden", "gold key")
+    ) {
       if (vDOOR_STATE == DOORSTATE_CLOSED) {
         print("The door is already unlocked.");
       }

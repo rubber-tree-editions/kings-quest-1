@@ -197,10 +197,16 @@ if (f21 && !fGOAT_COMPANION) {
   if (said("attack", "troll")) {
     print("You could never win a fight with a troll.");
   }
-  if (said("give", "treasure") || said("give", "troll", "treasure") || said("give", "treasure", "troll")) {
+  if (said("give", "treasure")
+    || said("give", "troll", "treasure")
+    || said("give", "treasure", "troll")
+  ) {
     print("What priceless treasure are you giving the old troll?");
   }
-  if (said("give", "pouch of diamonds") || said("give", "troll", "pouch of diamonds") || said("give", "pouch of diamonds", "troll")) {
+  if (said("give", "pouch of diamonds")
+    || said("give", "troll", "pouch of diamonds")
+    || said("give", "pouch of diamonds", "troll")
+  ) {
     if (fCARRYING_DIAMONDS) {
       if (posn(oEGO, 78, 90, 148, 166)) {
         print("OK");
@@ -216,7 +222,10 @@ if (f21 && !fGOAT_COMPANION) {
       }
     }
   }
-  if (said("give", "sceptre") || said("give", "troll", "sceptre") || said("give", "sceptre", "troll")) {
+  if (said("give", "sceptre")
+    || said("give", "troll", "sceptre")
+    || said("give", "sceptre", "troll")
+  ) {
     if (fCARRYING_SCEPTRE) {
       if (posn(oEGO, 78, 90, 148, 166)) {
         print("OK");
@@ -232,7 +241,10 @@ if (f21 && !fGOAT_COMPANION) {
       }
     }
   }
-  if (said("give", "golden egg") || said("give", "troll", "golden egg") || said("give", "golden egg", "troll")) {
+  if (said("give", "golden egg")
+    || said("give", "troll", "golden egg")
+    || said("give", "golden egg", "troll")
+  ) {
     if (fCARRYING_GOLDEN_EGG) {
       if (posn(oEGO, 78, 90, 148, 166)) {
         print("OK");
@@ -248,7 +260,10 @@ if (f21 && !fGOAT_COMPANION) {
       }
     }
   }
-  if (said("give", "walnut") || said("give", "troll", "walnut") || said("give", "walnut", "troll")) {
+  if (said("give", "walnut")
+    || said("give", "troll", "walnut")
+    || said("give", "walnut", "troll")
+  ) {
     if (fCARRYING_WALNUT) {
       print("The troll doesn't want just a plain walnut.");
     }

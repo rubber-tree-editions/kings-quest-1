@@ -38,7 +38,10 @@ LABEL82:
   }
 LABEL94:
   if (!fEGO_ON_WATER) {
-    if (posn(oEGO, 84, 59, 113, 78) || posn(oEGO, 102, 79, 113, 94) || posn(oEGO, 100, 95, 113, 128)) {
+    if (posn(oEGO, 84, 59, 113, 78)
+      || posn(oEGO, 102, 79, 113, 94)
+      || posn(oEGO, 100, 95, 113, 128)
+    ) {
       set(fEGO_ON_WATER);
       set(f134);
     }
@@ -65,12 +68,20 @@ LABEL129:
         v77 = 74;
       }
     LABEL206:
-      if (posn(oEGO, 97, 106, 105, 109) || posn(oEGO, 98, 110, 105, 115) || posn(oEGO, 100, 116, 106, 121) || posn(oEGO, 102, 122, 110, 124) || posn(oEGO, 104, 125, 111, 128)) {
+      if (posn(oEGO, 97, 106, 105, 109)
+        || posn(oEGO, 98, 110, 105, 115)
+        || posn(oEGO, 100, 116, 106, 121)
+        || posn(oEGO, 102, 122, 110, 124)
+        || posn(oEGO, 104, 125, 111, 128)
+      ) {
         v76 = 103;
         v77 = 115;
       }
     LABEL248:
-      if (posn(oEGO, 102, 86, 106, 94) || posn(oEGO, 101, 95, 106, 98) || posn(oEGO, 97, 99, 105, 105)) {
+      if (posn(oEGO, 102, 86, 106, 94)
+        || posn(oEGO, 101, 95, 106, 98)
+        || posn(oEGO, 97, 99, 105, 105)
+      ) {
         v76 = 104;
         v77 = 98;
       }

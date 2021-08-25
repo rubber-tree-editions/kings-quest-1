@@ -68,10 +68,21 @@ if (!fCARRYING_BUCKET) {
   if (vROOM_NO != 12 && said("get", "bucket")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != 12 && (said("examine", "bucket") || said("climb", "bucket") || said("go", "bucket") || said("go down", "bucket"))) {
+  if (vROOM_NO != 12 && (
+    said("examine", "bucket")
+    || said("climb", "bucket")
+    || said("go", "bucket")
+    || said("go down", "bucket"))
+  ) {
     print("You do not have it.");
   }
-  if (said("anyword", "bucket") && !said("get", "bucket") && !said("examine", "bucket") && !said("climb", "bucket") && !said("go", "bucket") && !said("go down", "bucket")) {
+  if (said("anyword", "bucket")
+    && !said("get", "bucket")
+    && !said("examine", "bucket")
+    && !said("climb", "bucket")
+    && !said("go", "bucket")
+    && !said("go down", "bucket")
+  ) {
     print("You do not have it.");
   }
 }
@@ -85,7 +96,10 @@ if (!fCARRYING_MUSHROOM && vROOM_NO != 47) {
   if (said("eat", "mushroom")) {
     print("You can't eat the mushroom if you don't have it!");
   }
-  if (said("anyword", "mushroom") && !said("get", "mushroom") && !said("examine", "mushroom") && !said("eat", "mushroom")) {
+  if (said("anyword", "mushroom")
+    && !said("get", "mushroom")
+    && !said("examine", "mushroom")
+    && !said("eat", "mushroom")) {
     print("You do not have it.");
   }
 }
@@ -104,7 +118,10 @@ if (!fCARRYING_MAGIC_BEANS) {
   if (vROOM_NO != 40 && said("examine", "magic beans")) {
     print("You do not have it.");
   }
-  if (said("anyword", "magic beans") && !said("get", "magic beans") && !said("examine", "magic beans")) {
+  if (said("anyword", "magic beans")
+    && !said("get", "magic beans")
+    && !said("examine", "magic beans")
+  ) {
     print("You do not have it.");
   }
 }
@@ -121,7 +138,12 @@ if (!fCARRYING_BOWL) {
   if (vROOM_NO != 79 && said("eat", "stew")) {
     print("You do not have it.");
   }
-  if (said("anyword", "bowl") && !said("get", "bowl") && !said("examine", "bowl") && !said("fill") && !said("eat", "stew")) {
+  if (said("anyword", "bowl")
+    && !said("get", "bowl")
+    && !said("examine", "bowl")
+    && !said("fill")
+    && !said("eat", "stew")
+  ) {
     print("You do not have it.");
   }
   if (said("anyword", "stew") && !said("eat", "stew")) {
@@ -182,7 +204,10 @@ if (!fCARRYING_SWISS_CHEESE) {
   if (vROOM_NO != 65 && said("examine", "swiss cheese")) {
     print("You do not have it.");
   }
-  if (said("anyword", "swiss cheese") && !said("get", "swiss cheese") && !said("examine", "swiss cheese")) {
+  if (said("anyword", "swiss cheese")
+    && !said("get", "swiss cheese")
+    && !said("examine", "swiss cheese")
+  ) {
     print("You do not have it.");
   }
 }
@@ -193,7 +218,10 @@ if (!fCARRYING_CLOVER) {
   if (vROOM_NO != 24 && said("examine", "four leaf clover")) {
     print("You do not have it.");
   }
-  if (said("anyword", "four leaf clover") && !said("get", "four leaf clover") && !said("examine", "four leaf clover")) {
+  if (said("anyword", "four leaf clover")
+    && !said("get", "four leaf clover")
+    && !said("examine", "four leaf clover")
+  ) {
     print("You do not have it.");
   }
 }
@@ -237,7 +265,10 @@ if (!fCARRYING_POUCH) {
   if (vROOM_NO != 6 && said("examine", "bag of jewels")) {
     print("You do not have it.");
   }
-  if (said("anyword", "bag of jewels") && !said("get", "bag of jewels") && !said("examine", "bag of jewels")) {
+  if (said("anyword", "bag of jewels")
+    && !said("get", "bag of jewels")
+    && !said("examine", "bag of jewels")
+  ) {
     print("You do not have it.");
   }
 }
@@ -248,7 +279,10 @@ if (!fCARRYING_DIAMONDS) {
   if (vROOM_NO != 6 && said("examine", "pouch of diamonds")) {
     print("You do not have it.");
   }
-  if (said("anyword", "pouch of diamonds") && !said("get", "pouch of diamonds") && !said("examine", "pouch of diamonds")) {
+  if (said("anyword", "pouch of diamonds")
+    && !said("get", "pouch of diamonds")
+    && !said("examine", "pouch of diamonds")
+  ) {
     print("You do not have it.");
   }
 }
@@ -259,7 +293,10 @@ if (!fCARRYING_GOLDEN_EGG) {
   if (vROOM_NO != 63 && said("examine", "golden egg")) {
     print("You do not have it.");
   }
-  if (said("anyword", "golden egg") && !said("get", "golden egg") && !said("examine", "golden egg")) {
+  if (said("anyword", "golden egg")
+    && !said("get", "golden egg")
+    && !said("examine", "golden egg")
+  ) {
     print("You do not have it.");
   }
 }
@@ -358,7 +395,25 @@ else if (said("find", "anyword")) {
 if (said("get on", "anyword")) {
   print("Not right now!");
 }
-if (said("talk", "elf") || said("talk", "man") || said("talk", "man") || said("talk", "witch") || said("talk", "wolf") || said("talk", "woman") || said("talk", "bird") || said("talk", "goat") || said("talk", "troll") || said("talk", "man") || said("talk", "dragon") || said("talk", "giant") || said("talk", "rat") || said("talk", "leprechauns") || said("talk", "king") || said("talk", "man") || said("talk", "man") || said("talk", "woman")) {
+if (said("talk", "elf")
+  || said("talk", "man")
+  || said("talk", "man")
+  || said("talk", "witch")
+  || said("talk", "wolf")
+  || said("talk", "woman")
+  || said("talk", "bird")
+  || said("talk", "goat")
+  || said("talk", "troll")
+  || said("talk", "man")
+  || said("talk", "dragon")
+  || said("talk", "giant")
+  || said("talk", "rat")
+  || said("talk", "leprechauns")
+  || said("talk", "king")
+  || said("talk", "man")
+  || said("talk", "man")
+  || said("talk", "woman")
+) {
   print("There is no \"%w2\" here.");
   return;
 }

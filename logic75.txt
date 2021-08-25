@@ -104,11 +104,17 @@ if (!fRAT_IS_GONE) {
   if (said("talk", "rat") || said("hello") || said("say", "hello")) {
     print("The rat rasps, \"Treasure!  Treasure!  Give treasure, or no go door!  Give treasure NOW!\"");
   }
-  if (said("give", "treasure") || said("give", "rat", "treasure") || said("give", "treasure", "rat")) {
+  if (said("give", "treasure")
+    || said("give", "rat", "treasure")
+    || said("give", "treasure", "rat")
+  ) {
     print("What kind of treasure would you like to give the  greedy rat?");
   }
   if (!fCARRYING_DIAMONDS) {
-    if (said("give", "bag of jewels") || said("give", "rat", "bag of jewels") || said("give", "bag of jewels", "rat")) {
+    if (said("give", "bag of jewels")
+      || said("give", "rat", "bag of jewels")
+      || said("give", "bag of jewels", "rat")
+    ) {
       if (fCARRYING_POUCH && v70 < 35) {
         print("The rat doesn't want a tattered pouch.");
       }
@@ -118,7 +124,13 @@ if (!fRAT_IS_GONE) {
     }
   }
   if (fCARRYING_DIAMONDS) {
-    if (said("give", "pouch of diamonds") || said("give", "rat", "pouch of diamonds") || said("give", "pouch of diamonds", "rat") || said("give", "bag of jewels") || said("give", "rat", "bag of jewels") || said("give", "bag of jewels", "rat")) {
+    if (said("give", "pouch of diamonds")
+      || said("give", "rat", "pouch of diamonds")
+      || said("give", "pouch of diamonds", "rat")
+      || said("give", "bag of jewels")
+      || said("give", "rat", "bag of jewels")
+      || said("give", "bag of jewels", "rat")
+    ) {
       if (fCARRYING_DIAMONDS && v70 < 35) {
         print("The huge rat takes the treasure you have offered and scuttles away.");
         move.obj(oRAT, 46, 105, 0, f24);
@@ -132,7 +144,9 @@ if (!fRAT_IS_GONE) {
       }
     }
   }
-  if (said("give", "golden egg") || said("give", "rat", "golden egg") || said("give", "golden egg", "rat")) {
+  if (said("give", "golden egg")
+    || said("give", "rat", "golden egg")
+    || said("give", "golden egg", "rat")) {
     if (fCARRYING_GOLDEN_EGG && v70 < 35) {
       print("The huge rat takes the treasure you have offered and scuttles away.");
       move.obj(oRAT, 46, 105, 0, f24);
@@ -168,7 +182,10 @@ if (!fRAT_IS_GONE) {
       }
     }
   }
-  if (said("give", "sceptre") || said("give", "rat", "sceptre") || said("give", "sceptre", "rat")) {
+  if (said("give", "sceptre")
+    || said("give", "rat", "sceptre")
+    || said("give", "sceptre", "rat")
+  ) {
     if (fCARRYING_SCEPTRE && v70 < 35) {
       print("The huge rat takes the treasure you have offered and scuttles away.");
       move.obj(oRAT, 46, 105, 0, f24);
@@ -181,7 +198,13 @@ if (!fRAT_IS_GONE) {
       print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
     }
   }
-  if (said("give", "swiss cheese") || said("give", "rat", "swiss cheese") || said("give", "swiss cheese", "rat") || said("feed", "swiss cheese") || said("feed", "rat", "swiss cheese") || said("feed", "swiss cheese", "rat")) {
+  if (said("give", "swiss cheese")
+    || said("give", "rat", "swiss cheese")
+    || said("give", "swiss cheese", "rat")
+    || said("feed", "swiss cheese")
+    || said("feed", "rat", "swiss cheese")
+    || said("feed", "swiss cheese", "rat")
+  ) {
     if (!fCARRYING_SWISS_CHEESE) {
       print("That is a good idea, but you do not have any cheese.");
     }

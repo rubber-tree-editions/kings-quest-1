@@ -285,7 +285,11 @@ if (posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     drop("dagger");
     vSCORE -= 5;
   }
-  if (fBUCKET_FILLED && (said("throw", "water") || said("throw", "water", "dragon") || said("douse", "dragon"))) {
+  if (fBUCKET_FILLED && (
+    said("throw", "water")
+    || said("throw", "water", "dragon")
+    || said("douse", "dragon")
+  )) {
     reset(fBUCKET_FILLED);
     print("You throw your water, but to no avail.  It lands on the floor and is quickly absorbed.");
     drop("water");
@@ -294,7 +298,11 @@ if (posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
   }
 }
 if (!posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
-  if (fBUCKET_FILLED && (said("throw", "water") || said("throw", "water", "dragon") || said("douse", "dragon"))) {
+  if (fBUCKET_FILLED && (
+    said("throw", "water")
+    || said("throw", "water", "dragon")
+    || said("douse", "dragon")
+  )) {
     reset(fBUCKET_FILLED);
     print("The water hits the dragon squarely in the mouth, extinguishing its roaring flames.  No fire!  How mortified and embarrassed the dragon is!  Moving a huge boulder in leaving, the dragon creeps off to sulk.");
     drop("water");

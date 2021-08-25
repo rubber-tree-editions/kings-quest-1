@@ -45,7 +45,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
 }
 if (!fEGO_ON_WATER) {
-  if (posn(oEGO, 32, 103, 102, 123) || posn(oEGO, 0, 96, 58, 108) || posn(oEGO, 34, 87, 68, 97) || posn(oEGO, 13, 88, 37, 97)) {
+  if (posn(oEGO, 32, 103, 102, 123)
+    || posn(oEGO, 0, 96, 58, 108)
+    || posn(oEGO, 34, 87, 68, 97)
+    || posn(oEGO, 13, 88, 37, 97)
+  ) {
     set(fEGO_ON_WATER);
     set(f134);
   }

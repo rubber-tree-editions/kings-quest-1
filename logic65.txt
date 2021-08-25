@@ -79,7 +79,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == 28) {
     position(oEGO, 49, 163);
   }
-  if (!fPROTECTED_BY_SPELL && vWITCH_STATE != WITCHSTATE_DEAD && vPREV_ROOM_NO != 80 && !fEGO_INVISIBLE) {
+  if (!fPROTECTED_BY_SPELL
+    && vWITCH_STATE != WITCHSTATE_DEAD
+    && vPREV_ROOM_NO != 80
+    && !fEGO_INVISIBLE
+  ) {
     if (vWITCH_STATE == WITCHSTATE_AWAY_FROM_HOME) {
       random(0, 250, v62);
       if (v62 < 180) {
@@ -344,12 +348,16 @@ if (posn(oEGO, 23, 89, 55, 100)) {
     if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_WITH_CHEESE) {
       print("Sitting on the shelf is a delicious piece of Swiss cheese.");
     }
-    if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE || vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE) {
+    if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE
+      || vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE
+    ) {
       print("The cabinet on the wall is rather plain and simple.");
     }
   }
   if (said("open", "cupboard")) {
-    if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_WITH_CHEESE || vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_NO_CHEESE) {
+    if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_WITH_CHEESE
+      || vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_NO_CHEESE
+    ) {
       print("It is already open.");
     }
     if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE) {
@@ -368,7 +376,9 @@ if (posn(oEGO, 23, 89, 55, 100)) {
     }
   }
   if (said("close", "cupboard")) {
-    if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE || vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE) {
+    if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE
+      || vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE
+    ) {
       print("It is already closed.");
     }
     if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_NO_CHEESE) {

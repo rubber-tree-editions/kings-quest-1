@@ -52,7 +52,10 @@ LABEL128:
   }
 LABEL140:
   if (!fEGO_ON_WATER) {
-    if (posn(oEGO, 71, 110, 88, 139) || posn(oEGO, 104, 81, 159, 163) || posn(oEGO, 89, 110, 103, 142)) {
+    if (posn(oEGO, 71, 110, 88, 139)
+      || posn(oEGO, 104, 81, 159, 163)
+      || posn(oEGO, 89, 110, 103, 142)
+    ) {
       set(fEGO_ON_WATER);
       set(f134);
     }
@@ -97,7 +100,10 @@ LABEL175:
 LABEL301:
   if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
     if (said("drink", "water") || said("get", "drink")) {
-      if (posn(oEGO, 110, 40, 159, 56) || posn(oEGO, 78, 57, 159, 86) || posn(oEGO, 47, 87, 159, 167)) {
+      if (posn(oEGO, 110, 40, 159, 56)
+        || posn(oEGO, 78, 57, 159, 86)
+        || posn(oEGO, 47, 87, 159, 167)
+      ) {
         print("You drink of the clear lake water.");
         goto(LABEL363);
       }
@@ -106,7 +112,10 @@ LABEL301:
   }
 LABEL363:
   if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
-    if (posn(oEGO, 110, 40, 159, 56) || posn(oEGO, 78, 57, 159, 86) || posn(oEGO, 47, 87, 159, 167)) {
+    if (posn(oEGO, 110, 40, 159, 56)
+      || posn(oEGO, 78, 57, 159, 86)
+      || posn(oEGO, 47, 87, 159, 167)
+    ) {
       reset(f116);
       print("You kneel down and fill the bucket with the cool water.");
       get("water");

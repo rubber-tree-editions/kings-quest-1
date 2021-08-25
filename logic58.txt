@@ -224,7 +224,13 @@ if (fCARRYING_SLINGSHOT) {
     if (fCARRYING_PEBBLES && v71 < 20) {
       print("There is no way you can get the chest from here!");
     }
-    if (fCARRYING_PEBBLES && !f169 && !fEGO_INVISIBLE && vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST && v71 > 19 && !f199) {
+    if (fCARRYING_PEBBLES
+      && !f169
+      && !fEGO_INVISIBLE
+      && vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST
+      && v71 > 19
+      && !f199
+    ) {
       reset(f23);
       get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
       position.v(oFLUNG_PEBBLE, vTEMP_X_2, vTEMP_Y_2);
@@ -237,7 +243,12 @@ if (fCARRYING_SLINGSHOT) {
       drop("pebbles");
       vSCORE -= 1;
     }
-    if (fCARRYING_PEBBLES && f169 && !fEGO_INVISIBLE && vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST && v71 > 19) {
+    if (fCARRYING_PEBBLES
+      && f169
+      && !fEGO_INVISIBLE
+      && vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST
+      && v71 > 19
+    ) {
       reset(f23);
       get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
       position.v(oFLUNG_PEBBLE, vTEMP_X_2, vTEMP_Y_2);
@@ -251,12 +262,16 @@ if (fCARRYING_SLINGSHOT) {
       vSCORE -= 1;
     }
     if (fCARRYING_PEBBLES && !f169 && fEGO_INVISIBLE) {
-      if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
+      if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST
+        || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST
+      ) {
         print("Not when you're invisible!");
       }
     }
     if (fCARRYING_PEBBLES) {
-      if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST || vGIANT_STATE == GIANTSTATE_ASLEEP_NO_CHEST) {
+      if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST
+        || vGIANT_STATE == GIANTSTATE_ASLEEP_NO_CHEST
+      ) {
         print("It would be rather cowardly of you to kill a giant while he is asleep!");
       }
     }

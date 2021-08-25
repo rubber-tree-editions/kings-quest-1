@@ -102,7 +102,12 @@ if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
 if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
   if (posn(oEGO, 10, 100, 75, 150)) {
     if (f177 || f179) {
-      if (said("climb", "rope") || said("climb", "well") || said("go", "well") || said("go down", "well") || said("slide", "rope")) {
+      if (said("climb", "rope")
+        || said("climb", "well")
+        || said("go", "well")
+        || said("go down", "well")
+        || said("slide", "rope")
+      ) {
         erase(oEGO);
         if (f176) {
           set.view(oEGO, 143);
@@ -127,7 +132,11 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
       }
     }
     if (!f176 && !f177) {
-      if (said("climb", "bucket") || said("go", "bucket") || said("go", "well") || said("go down", "well")) {
+      if (said("climb", "bucket")
+        || said("go", "bucket")
+        || said("go", "well")
+        || said("go down", "well")
+      ) {
         erase(oEGO);
         set.view(o2, 72);
         position(o2, 38, 145);
@@ -172,7 +181,13 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
   }
 }
 if (!posn(oEGO, 10, 100, 75, 150)) {
-  if (said("climb", "rope") || said("go", "well") || said("go down", "well") || said("jump", "well") || said("slide", "rope") || said("go", "bucket")) {
+  if (said("climb", "rope")
+    || said("go", "well")
+    || said("go down", "well")
+    || said("jump", "well")
+    || said("slide", "rope")
+    || said("go", "bucket")
+  ) {
     print("You need to be closer to do that.");
   }
 }
@@ -206,7 +221,13 @@ if (fGOAT_COMPANION && !fEGO_INVISIBLE) {
 }
 if (fEGO_INVISIBLE) {
   if (posn(oEGO, 10, 100, 75, 150)) {
-    if (said("climb", "rope") || said("go", "bucket") || said("go", "well") || said("go down", "well") || said("slide", "rope") || said("jump", "well")) {
+    if (said("climb", "rope")
+      || said("go", "bucket")
+      || said("go", "well")
+      || said("go down", "well")
+      || said("slide", "rope")
+      || said("jump", "well")
+    ) {
       print("You can't do that when you are invisible!");
     }
   }

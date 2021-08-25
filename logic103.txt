@@ -98,7 +98,16 @@ if (f207) {
   stop.cycling(oGOAT);
 }
 if (v40 > 20 && v94 > 0 && !fGOAT_WONT_SWIM) {
-  if (vROOM_NO != 1 && vROOM_NO != 2 && vROOM_NO != 41 && vROOM_NO != 33 && vROOM_NO != 34 && vROOM_NO != 32 && vROOM_NO != 25 && vROOM_NO != 26 && vROOM_NO != 39) {
+  if (vROOM_NO != 1
+    && vROOM_NO != 2
+    && vROOM_NO != 41
+    && vROOM_NO != 33
+    && vROOM_NO != 34
+    && vROOM_NO != 32
+    && vROOM_NO != 25
+    && vROOM_NO != 26
+    && vROOM_NO != 39
+  ) {
     print("The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water.");
   }
   set(fGOAT_WONT_SWIM);

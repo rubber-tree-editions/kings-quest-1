@@ -25,7 +25,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (said("examine", "garden") || said("examine", "ground") || said("examine", "plant") || said("examine", "bushes")) {
+if (said("examine", "garden")
+  || said("examine", "ground")
+  || said("examine", "plant")
+  || said("examine", "bushes")
+) {
   print("This is a neat little carrot patch.  The plump carrots  look tempting.");
 }
 if (said("examine", "fence")) {

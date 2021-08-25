@@ -67,7 +67,11 @@ if (!fEGO_CLIMBING_BEANSTALK) {
 if (said("examine", "clouds") || said("examine", "room")) {
   print("You are in the Land of the Clouds.  It is rumored a giant lives up here.");
 }
-if (fEGO_TOUCHED_TRIGGER_LINE && !f21 && !posn(oEGO, 65, 100, 82, 120) && !fEGO_CLIMBING_BEANSTALK) {
+if (fEGO_TOUCHED_TRIGGER_LINE
+  && !f21
+  && !posn(oEGO, 65, 100, 82, 120)
+  && !fEGO_CLIMBING_BEANSTALK
+) {
   set(f21);
   if (!fEGO_INVISIBLE) {
     set.view(oEGO, 105);

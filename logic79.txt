@@ -260,7 +260,13 @@ if (fCARRYING_MAGIC_BEANS && said("give", "magic beans")) {
 }
 if (fCARRYING_BOWL) {
   if (vBOWL_STATE == BOWLSTATE_EMPTY) {
-    if (said("give", "bowl") || said("give", "bowl", "woodcutter") || said("give", "woodcutter", "bowl") || said("give", "wife", "bowl") || said("give", "bowl", "wife") || said("drop", "bowl", "table")) {
+    if (said("give", "bowl")
+      || said("give", "bowl", "woodcutter")
+      || said("give", "woodcutter", "bowl")
+      || said("give", "wife", "bowl")
+      || said("give", "bowl", "wife")
+      || said("drop", "bowl", "table")
+    ) {
       set(fGIVEN_BOWL_TO_WOODCUTTER);
       reset(fCARRYING_BOWL);
       drop("ceramic bowl");
@@ -280,7 +286,19 @@ if (fCARRYING_BOWL) {
     }
   }
   if (vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
-    if (said("give", "bowl") || said("give", "bowl", "woodcutter") || said("give", "woodcutter", "bowl") || said("give", "wife", "bowl") || said("give", "bowl", "wife") || said("drop", "bowl", "table") || said("give", "stew") || said("give", "stew", "woodcutter") || said("give", "woodcutter", "stew") || said("give", "wife", "stew") || said("give", "stew", "wife") || said("drop", "stew", "table")) {
+    if (said("give", "bowl")
+      || said("give", "bowl", "woodcutter")
+      || said("give", "woodcutter", "bowl")
+      || said("give", "wife", "bowl")
+      || said("give", "bowl", "wife")
+      || said("drop", "bowl", "table")
+      || said("give", "stew")
+      || said("give", "stew", "woodcutter")
+      || said("give", "woodcutter", "stew")
+      || said("give", "wife", "stew")
+      || said("give", "stew", "wife")
+      || said("drop", "stew", "table")
+    ) {
       set(fGIVEN_BOWL_TO_WOODCUTTER);
       reset(fCARRYING_BOWL);
       drop("ceramic bowl");

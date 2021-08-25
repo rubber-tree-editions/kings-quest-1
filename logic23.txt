@@ -40,7 +40,11 @@ LABEL87:
   }
 LABEL99:
   if (!fEGO_ON_WATER) {
-    if (posn(oEGO, 69, 76, 103, 131) || posn(oEGO, 104, 96, 123, 120) || posn(oEGO, 120, 96, 131, 105) || posn(oEGO, 120, 106, 125, 111)) {
+    if (posn(oEGO, 69, 76, 103, 131)
+      || posn(oEGO, 104, 96, 123, 120)
+      || posn(oEGO, 120, 96, 131, 105)
+      || posn(oEGO, 120, 106, 125, 111)
+    ) {
       set(fEGO_ON_WATER);
       set(f134);
     }

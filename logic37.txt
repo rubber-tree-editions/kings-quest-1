@@ -45,7 +45,12 @@ if (said("examine", "tree")) {
   print("This is a very interesting tree, growing in the middle of the lake.");
 }
 if (!fEGO_ON_WATER) {
-  if (posn(oEGO, 83, 108, 131, 143) || posn(oEGO, 37, 101, 82, 145) || posn(oEGO, 48, 37, 94, 100) || posn(oEGO, 39, 54, 100, 80) || posn(oEGO, 85, 146, 108, 155)) {
+  if (posn(oEGO, 83, 108, 131, 143)
+    || posn(oEGO, 37, 101, 82, 145)
+    || posn(oEGO, 48, 37, 94, 100)
+    || posn(oEGO, 39, 54, 100, 80)
+    || posn(oEGO, 85, 146, 108, 155)
+  ) {
     set(fEGO_ON_WATER);
     set(f134);
   }
