@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -17,225 +15,201 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 36, 84, 0, 0);
   }
-  LABEL41:
-    if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == 38) {
-      v92 = 84;
-      set(f155);
-      load.pic(v92);
-      load.view(114);
-      load.view(103);
-      load.view(104);
-      load.view(74);
-      load.view(105);
-      load.logics(LOGIC_BEANSTALK);
-      load.sound(SND_BEANSTALK);
+  if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == 38) {
+    v92 = 84;
+    set(f155);
+    load.pic(v92);
+    load.view(114);
+    load.view(103);
+    load.view(104);
+    load.view(74);
+    load.view(105);
+    load.logics(LOGIC_BEANSTALK);
+    load.sound(SND_BEANSTALK);
+  }
+  if (vPREV_ROOM_NO == 70 && fEGO_CLIMBING_BEANSTALK) {
+    set.view(oEGO, 74);
+    position(oEGO, 64, 41);
+    move.obj(oEGO, 64, 41, 0, f148);
+    set.priority(oEGO, 8);
+  }
+  if (vPREV_ROOM_NO == 70 && f158) {
+    program.control();
+    ignore.horizon(oEGO);
+    set.priority(oEGO, 15);
+    set.view(oEGO, 105);
+    get.posn(oEGO, v60, v61);
+    if (v60 > 75) {
+      position(oEGO, 80, 29);
     }
-  LABEL73:
-    if (vPREV_ROOM_NO == 70 && fEGO_CLIMBING_BEANSTALK) {
-      set.view(oEGO, 74);
-      position(oEGO, 64, 41);
-      move.obj(oEGO, 64, 41, 0, f148);
-      set.priority(oEGO, 8);
-    }
-  LABEL98:
-    if (vPREV_ROOM_NO == 70 && f158) {
-      program.control();
-      ignore.horizon(oEGO);
-      set.priority(oEGO, 15);
-      set.view(oEGO, 105);
-      get.posn(oEGO, v60, v61);
-      if (v60 > 75) {
-        position(oEGO, 80, 29);
-        goto(LABEL138);
-      }
+    else {
       position(oEGO, 65, 29);
-      LABEL138:
-        get.posn(oEGO, v60, v61);
-        v61 = 106;
-        v96 = 2;
-        move.obj.v(oEGO, v60, v61, 96, f22);
     }
-  LABEL154:
-    if (vBEANSTALK_ROOM == 38) {
-      overlay.pic(v92);
-    }
-  LABEL163:
-    draw(oEGO);
-    show.pic();
+    LABEL138:
+      get.posn(oEGO, v60, v61);
+      v61 = 106;
+      v96 = 2;
+      move.obj.v(oEGO, v60, v61, 96, f22);
+  }
+  if (vBEANSTALK_ROOM == 38) {
+    overlay.pic(v92);
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (f158 && !f23) {
   set(f23);
   set(f135);
   sound(5, f24);
 }
-LABEL182:
-  if (!f22 && f24) {
-    reset(f23);
-    reset(f24);
+if (!f22 && f24) {
+  reset(f23);
+  reset(f24);
+}
+if (f22) {
+  stop.sound();
+  set(f23);
+  reset(f158);
+  reset(f135);
+  set.view(oEGO, 114);
+  shake.screen(2);
+  set(fGAME_OVER);
+}
+if (said("examine", "flowers")) {
+  print("What a pretty bed of wild flowers.");
+}
+if (said("smell", "flowers")) {
+  if (posn(oEGO, 60, 61, 117, 113)) {
+    print("The flowers' fragrance is enticing.");
   }
-LABEL195:
-  if (f22) {
-    stop.sound();
-    set(f23);
-    reset(f158);
-    reset(f135);
-    set.view(oEGO, 114);
-    shake.screen(2);
-    set(fGAME_OVER);
-  }
-LABEL215:
-  if (said("examine", "flowers")) {
-    print("What a pretty bed of wild flowers.");
-  }
-LABEL227:
-  if (said("smell", "flowers")) {
-    if (posn(oEGO, 60, 61, 117, 113)) {
-      print("The flowers' fragrance is enticing.");
-      goto(LABEL254);
-    }
+  else {
     print("You will have to move closer to do that.");
   }
-LABEL254:
-  if (said("get", "flowers")) {
-    if (posn(oEGO, 60, 61, 117, 113)) {
-      print("It would be a shame to pick the lovely wild flowers.");
-      goto(LABEL281);
-    }
+}
+if (said("get", "flowers")) {
+  if (posn(oEGO, 60, 61, 117, 113)) {
+    print("It would be a shame to pick the lovely wild flowers.");
+  }
+  else {
     print("You will have to move closer to do that.");
   }
-LABEL281:
-  if (fCARRYING_MAGIC_BEANS && f155) {
-    if (said("plant", "magic beans")) {
-      reset(fCARRYING_MAGIC_BEANS);
-      vBEANSTALK_ROOM = 38;
-      set(fMAGIC_BEANS_PLANTED);
-      drop("beans");
-      vSCORE += 2;
-      print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
-      sound(SND_BEANSTALK, f25);
-      overlay.pic(v92);
-      show.pic();
-    }
+}
+if (fCARRYING_MAGIC_BEANS && f155) {
+  if (said("plant", "magic beans")) {
+    reset(fCARRYING_MAGIC_BEANS);
+    vBEANSTALK_ROOM = 38;
+    set(fMAGIC_BEANS_PLANTED);
+    drop("beans");
+    vSCORE += 2;
+    print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
+    sound(SND_BEANSTALK, f25);
+    overlay.pic(v92);
+    show.pic();
   }
-LABEL319:
-  if (vBEANSTALK_ROOM == 38 && !fEGO_INVISIBLE) {
-    if (said("climb", "beanstalk") && !fEGO_CLIMBING_BEANSTALK) {
-      if (posn(oEGO, 52, 76, 103, 97)) {
-        erase(oEGO);
-        set.view(oEGO, 74);
-        set(fEGO_CLIMBING_BEANSTALK);
-        position(oEGO, 71, 77);
-        set.priority(oEGO, 8);
-        draw(oEGO);
-        move.obj(oEGO, 71, 77, 0, f148);
-        goto(LABEL379);
-      }
+}
+if (vBEANSTALK_ROOM == 38 && !fEGO_INVISIBLE) {
+  if (said("climb", "beanstalk") && !fEGO_CLIMBING_BEANSTALK) {
+    if (posn(oEGO, 52, 76, 103, 97)) {
+      erase(oEGO);
+      set.view(oEGO, 74);
+      set(fEGO_CLIMBING_BEANSTALK);
+      position(oEGO, 71, 77);
+      set.priority(oEGO, 8);
+      draw(oEGO);
+      move.obj(oEGO, 71, 77, 0, f148);
+    }
+    else {
       print("You can't reach the beanstalk from here.");
     }
   }
-LABEL379:
-  if (vBEANSTALK_ROOM != 38) {
-    if (said("climb", "beanstalk")) {
-      print("There is no beanstalk here to climb.");
-    }
+}
+if (vBEANSTALK_ROOM != 38) {
+  if (said("climb", "beanstalk")) {
+    print("There is no beanstalk here to climb.");
   }
-LABEL399:
-  if (fEGO_CLIMBING_BEANSTALK) {
-    if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 60, 78, 93, 80)) {
-      erase(oEGO);
-      set.view(oEGO, 0);
-      reset(fEGO_CLIMBING_BEANSTALK);
-      position(oEGO, 70, 106);
-      release.priority(oEGO);
-      draw(oEGO);
-    }
-    if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 60, 78, 93, 80)) {
-      program.control();
-      set.priority(oEGO, 15);
-      get.posn(oEGO, v60, v61);
-      erase(oEGO);
-      set.view(oEGO, 105);
-      reset(fEGO_CLIMBING_BEANSTALK);
-      position.v(oEGO, v60, v61);
-      draw(oEGO);
-      v61 = 106;
-      v96 = 2;
-      move.obj.v(oEGO, v60, v61, 96, f20);
-      set(f135);
-      sound(5, f198);
-    }
-  }
-LABEL483:
-  v30--;
-  if (f20) {
-    stop.sound();
-    reset(f20);
-    observe.blocks(oEGO);
+}
+if (fEGO_CLIMBING_BEANSTALK) {
+  if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 60, 78, 93, 80)) {
+    erase(oEGO);
+    set.view(oEGO, 0);
+    reset(fEGO_CLIMBING_BEANSTALK);
+    position(oEGO, 70, 106);
     release.priority(oEGO);
-    stop.motion(oEGO);
-    set.view(oEGO, 103);
-    v30 = 20;
-    set(f98);
-    shake.screen(2);
-    print("Ouch!");
+    draw(oEGO);
+  }
+  if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 60, 78, 93, 80)) {
+    program.control();
+    set.priority(oEGO, 15);
+    get.posn(oEGO, v60, v61);
+    erase(oEGO);
+    set.view(oEGO, 105);
+    reset(fEGO_CLIMBING_BEANSTALK);
+    position.v(oEGO, v60, v61);
+    draw(oEGO);
+    v61 = 106;
+    v96 = 2;
+    move.obj.v(oEGO, v60, v61, 96, f20);
     set(f135);
+    sound(5, f198);
+  }
+}
+v30--;
+if (f20) {
+  stop.sound();
+  reset(f20);
+  observe.blocks(oEGO);
+  release.priority(oEGO);
+  stop.motion(oEGO);
+  set.view(oEGO, 103);
+  v30 = 20;
+  set(f98);
+  shake.screen(2);
+  print("Ouch!");
+  set(f135);
+  sound(4, fSOUND_END_MARKER);
+}
+if (fSOUND_END_MARKER) {
+  if (v30 > 0) {
+    reset(fSOUND_END_MARKER);
     sound(4, fSOUND_END_MARKER);
   }
-LABEL517:
-  if (fSOUND_END_MARKER) {
-    if (v30 > 0) {
-      reset(fSOUND_END_MARKER);
-      sound(4, fSOUND_END_MARKER);
-    }
-  }
-LABEL535:
-  if (v30 == 1) {
-    set.view(oEGO, 104);
-    end.of.loop(oEGO, f21);
-  }
-LABEL548:
-  if (f21) {
-    reset(f21);
-    reset(f98);
-    start.motion(oEGO);
-    set.view(oEGO, 0);
-    release.priority(oEGO);
-    player.control();
-  }
-LABEL566:
-  if (vEGO_EDGE_CODE != EDGE_NONE) {
-    reset(f155);
-  }
-LABEL576:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON && fEGO_CLIMBING_BEANSTALK) {
-    new.room(70);
-  }
-LABEL587:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK) {
-    new.room(43);
-  }
-LABEL599:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(37);
-  }
-LABEL608:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(39);
-  }
-LABEL617:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(27);
-  }
-LABEL626:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL634:
-  if (vBEANSTALK_ROOM == 38) {
-    call(LOGIC_BEANSTALK);
-  }
-LABEL643:
-  return;
+}
+if (v30 == 1) {
+  set.view(oEGO, 104);
+  end.of.loop(oEGO, f21);
+}
+if (f21) {
+  reset(f21);
+  reset(f98);
+  start.motion(oEGO);
+  set.view(oEGO, 0);
+  release.priority(oEGO);
+  player.control();
+}
+if (vEGO_EDGE_CODE != EDGE_NONE) {
+  reset(f155);
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON && fEGO_CLIMBING_BEANSTALK) {
+  new.room(70);
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK) {
+  new.room(43);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(37);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(39);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(27);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+if (vBEANSTALK_ROOM == 38) {
+  call(LOGIC_BEANSTALK);
+}
+return;
 
 LOGIC__FOOTER
-
