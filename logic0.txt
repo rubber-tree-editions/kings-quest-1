@@ -2,6 +2,11 @@
 
 LOGIC__HEADER
 
+// Note: Even though this is a global script, all code that refers to oGOAT
+//   is designed to be run in a room where object 13 refers to the goat.
+// In reality, object 13 may not always be the goat (e.g. Room 76).
+#define oGOAT o13
+
 if (vERROR_CODE > 0) {
   call(LOGIC_ERROR);
 }
@@ -319,7 +324,7 @@ if (fCARRYING_CARROT) {
       if (vROOM_NO == 10 || vROOM_NO == 11) {
         set.view(oEGO, 0);
       }
-      erase(o13);
+      erase(oGOAT);
       set(fGOAT_IS_GONE);
       reset(fGOAT_COMPANION);
     }
@@ -663,12 +668,12 @@ if (fGOAT_COMPANION) {
         get.posn(oEGO, vTEMP_X, vTEMP_Y);
         print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.");
         set.view(oEGO, 0);
-        set.view(o13, 62);
-        position.v(o13, vTEMP_X, vTEMP_Y);
-        draw(o13);
+        set.view(oGOAT, 62);
+        position.v(oGOAT, vTEMP_X, vTEMP_Y);
+        draw(oGOAT);
         vROOM_YOU_KILLED_THE_GOAT_IN = vROOM_NO;
         v98 = 0;
-        step.size(o13, v98);
+        step.size(oGOAT, v98);
         drop("dagger");
         vSCORE -= 5;
         reset(fCARRYING_DAGGER);
@@ -677,12 +682,12 @@ if (fGOAT_COMPANION) {
       }
       else {
         print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.");
-        erase(o13);
-        set.view(o13, 62);
-        draw(o13);
+        erase(oGOAT);
+        set.view(oGOAT, 62);
+        draw(oGOAT);
         vROOM_YOU_KILLED_THE_GOAT_IN = vROOM_NO;
         v98 = 0;
-        step.size(o13, v98);
+        step.size(oGOAT, v98);
         drop("dagger");
         vSCORE -= 5;
         reset(fCARRYING_DAGGER);
