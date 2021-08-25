@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     observe.blocks(oTROLL);
     set(f20);
     load.sound(SND_VILLAIN);
-    load.sound(10);
+    load.sound(SND_TROLL);
   }
   draw(oEGO);
   show.pic();
@@ -32,7 +32,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (f21 && fSOUND_END_MARKER) {
   if (!f31) {
     set(f31);
-    sound(10, f32);
+    sound(SND_TROLL, f32);
   }
   if (f32) {
     reset(f31);
