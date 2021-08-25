@@ -25,7 +25,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(48);
   }
   if (!fDANCING_LEPRECHAUNS) {
-    load.sound(21);
+    load.sound(SND_LEPRECHAUN_KING);
     load.view(47);
     load.view(79);
   }
@@ -89,7 +89,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (!fDANCING_LEPRECHAUNS) {
   if (!f26) {
     set(f26);
-    sound(21, f27);
+    sound(SND_LEPRECHAUN_KING, f27);
   }
   if (f27) {
     reset(f26);
