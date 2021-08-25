@@ -12,81 +12,67 @@ if (said("tp")) {
   get.num("new room: ", v78);
   new.room.v(v78);
 }
-LABEL24:
-  if (said("position")) {
-    get.num("x: ", v78);
-    get.num("y: ", v79);
-    erase(oEGO);
-    position.v(oEGO, v78, v79);
-    draw(oEGO);
+if (said("position")) {
+  get.num("x: ", v78);
+  get.num("y: ", v79);
+  erase(oEGO);
+  position.v(oEGO, v78, v79);
+  draw(oEGO);
+}
+if (said("get", "object")) {
+  get.num("object number: ", v78);
+  get.v(v78);
+}
+if (said("set", "var")) {
+  get.num("var number: ", v78);
+  get.num("var value: ", v79);
+  lindirectv(v78, v79);
+}
+if (said("object")) {
+  get.num("object #: ", v78);
+  obj.status.v(v78);
+}
+if (controller(cSHOWPRIORITY)) {
+  show.pri.screen();
+}
+if (said("show", "var")) {
+  get.num("var number: ", v73);
+  rindirect(v72, v73);
+  print("var %v73: %v72");
+}
+if (said("show", "flags")) {
+  get.num("flag number: ", v73);
+  if (v73) {
+    print("flag %v73 is set");
   }
-LABEL46:
-  if (said("get", "object")) {
-    get.num("object number: ", v78);
-    get.v(v78);
-  }
-LABEL61:
-  if (said("set", "var")) {
-    get.num("var number: ", v78);
-    get.num("var value: ", v79);
-    lindirectv(v78, v79);
-  }
-LABEL80:
-  if (said("object")) {
-    get.num("object #: ", v78);
-    obj.status.v(v78);
-  }
-LABEL93:
-  if (controller(cSHOWPRIORITY)) {
-    show.pri.screen();
-  }
-LABEL100:
-  if (said("show", "var")) {
-    get.num("var number: ", v73);
-    rindirect(v72, v73);
-    print("var %v73: %v72");
-  }
-LABEL118:
-  if (said("show", "flags")) {
-    get.num("flag number: ", v73);
-    if (v73) {
-      print("flag %v73 is set");
-      goto(LABEL144);
-    }
+  else {
     print("flag %v73 is not set");
   }
-LABEL144:
-  if (said("reset", "flags")) {
-    get.num("flag number: ", v73);
-    reset.v(v73);
-  }
-LABEL159:
-  if (said("set", "flags")) {
-    get.num("flag number: ", v73);
-    set.v(v73);
-  }
-LABEL174:
-  if (controller(cSHOWMEM)) {
-    show.mem();
-  }
-LABEL181:
-  if (vUNKNOWN_WORD_NO == 1) {
-    log("%m12%w1");
-  }
-LABEL190:
-  if (vUNKNOWN_WORD_NO == 2) {
-    log("%m12%w2");
-  }
-LABEL199:
-  if (vUNKNOWN_WORD_NO == 3) {
-    log("%m12%w3");
-  }
-LABEL208:
-  if (vUNKNOWN_WORD_NO == 0 && fPLAYER_ENTERED_COMMAND && !fSAID_ACCEPTED_USER_INPUT) {
-    log("No response to input.");
-  }
-LABEL222:
-  return;
+}
+if (said("reset", "flags")) {
+  get.num("flag number: ", v73);
+  reset.v(v73);
+}
+if (said("set", "flags")) {
+  get.num("flag number: ", v73);
+  set.v(v73);
+}
+if (controller(cSHOWMEM)) {
+  show.mem();
+}
+if (vUNKNOWN_WORD_NO == 1) {
+  log("%m12%w1");
+}
+if (vUNKNOWN_WORD_NO == 2) {
+  log("%m12%w2");
+}
+if (vUNKNOWN_WORD_NO == 3) {
+  log("%m12%w3");
+}
+if (vUNKNOWN_WORD_NO == 0 && fPLAYER_ENTERED_COMMAND && !fSAID_ACCEPTED_USER_INPUT) {
+  log("No response to input.");
+}
+return;
 
 #message 0 ""
 #message 1 "new room: "
@@ -107,4 +93,3 @@ LABEL222:
 #message 16 "No response to input."
 
 LOGIC__FOOTER
-

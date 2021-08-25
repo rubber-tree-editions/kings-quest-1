@@ -17,94 +17,79 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 105, 58, 0, 0);
   }
-  LABEL41:
-    if (vPREV_ROOM_NO == 6) {
-      position(oEGO, 121, 47);
-    }
-  LABEL52:
-    ignore.blocks(oEGO);
-    draw(oEGO);
-    show.pic();
+  if (vPREV_ROOM_NO == 6) {
+    position(oEGO, 121, 47);
+  }
+  ignore.blocks(oEGO);
+  draw(oEGO);
+  show.pic();
 }
 if (said("examine", "lake")) {
   print("The clear blue lake is surrounded by a pretty meadow.");
 }
-LABEL69:
-  if (!fEGO_ON_WATER) {
-    if (posn(oEGO, 96, 82, 115, 99) || posn(oEGO, 100, 108, 115, 120) || posn(oEGO, 30, 113, 67, 134) || posn(oEGO, 90, 121, 112, 130) || posn(oEGO, 30, 135, 67, 139) || posn(oEGO, 90, 131, 107, 142)) {
-      set(fEGO_ON_WATER);
-      set(f134);
-    }
+if (!fEGO_ON_WATER) {
+  if (posn(oEGO, 96, 82, 115, 99) || posn(oEGO, 100, 108, 115, 120) || posn(oEGO, 30, 113, 67, 134) || posn(oEGO, 90, 121, 112, 130) || posn(oEGO, 30, 135, 67, 139) || posn(oEGO, 90, 131, 107, 142)) {
+    set(fEGO_ON_WATER);
+    set(f134);
   }
-LABEL122:
-  if (v94 <= 0 && fEGO_ON_WATER) {
-    v76 = 255;
-    if (posn(oEGO, 115, 104, 125, 111) || posn(oEGO, 113, 112, 124, 119) || posn(oEGO, 100, 120, 122, 126) || posn(oEGO, 100, 127, 118, 136) || posn(oEGO, 100, 137, 115, 142)) {
-      v76 = 100;
-      v77 = 121;
-    }
-    if (posn(oEGO, 30, 131, 55, 146)) {
-      v76 = 25;
-      v77 = 123;
-    }
-    LABEL193:
-      if (v76 == 255) {
-        v76 = 0;
-        goto(LABEL218);
-      }
-    LABEL206:
-      get.posn(oEGO, v60, v61);
-      v76 -= v60;
-      v77 -= v61;
-      set(f134);
+}
+if (v94 <= 0 && fEGO_ON_WATER) {
+  v76 = 255;
+  if (posn(oEGO, 115, 104, 125, 111) || posn(oEGO, 113, 112, 124, 119) || posn(oEGO, 100, 120, 122, 126) || posn(oEGO, 100, 127, 118, 136) || posn(oEGO, 100, 137, 115, 142)) {
+    v76 = 100;
+    v77 = 121;
   }
-LABEL218:
-  if (!fBUCKET_FILLED) {
-    if (said("drink", "water") || said("get", "drink")) {
-      print("It tastes very refreshing to a thirsty wanderer.");
-    }
+  if (posn(oEGO, 30, 131, 55, 146)) {
+    v76 = 25;
+    v77 = 123;
   }
-LABEL245:
-  if (!fBUCKET_FILLED && fCARRYING_BUCKET && said("get", "water")) {
-    print("The crystal clear water fills up the bucket.");
-    get("water");
-    set(fBUCKET_FILLED);
-    if (!fFILL_BUCKET_POINTS) {
-      vSCORE += 2;
-    }
-    set(fFILL_BUCKET_POINTS);
+  if (v76 == 255) {
+    v76 = 0;
   }
-LABEL278:
-  if (vEGO_EDGE_CODE != EDGE_NONE) {
-    if (f66) {
-      reset(f66);
-      reset(fGOAT_COMPANION);
-      set(fGOAT_IS_GONE);
-    }
+  else {
+    get.posn(oEGO, v60, v61);
+    v76 -= v60;
+    v77 -= v61;
+    set(f134);
   }
-LABEL298:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(6);
+}
+if (!fBUCKET_FILLED) {
+  if (said("drink", "water") || said("get", "drink")) {
+    print("It tastes very refreshing to a thirsty wanderer.");
   }
-LABEL307:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(44);
+}
+if (!fBUCKET_FILLED && fCARRYING_BUCKET && said("get", "water")) {
+  print("The crystal clear water fills up the bucket.");
+  get("water");
+  set(fBUCKET_FILLED);
+  if (!fFILL_BUCKET_POINTS) {
+    vSCORE += 2;
   }
-LABEL316:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(42);
+  set(fFILL_BUCKET_POINTS);
+}
+if (vEGO_EDGE_CODE != EDGE_NONE) {
+  if (f66) {
+    reset(f66);
+    reset(fGOAT_COMPANION);
+    set(fGOAT_IS_GONE);
   }
-LABEL325:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(38);
-  }
-LABEL334:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL342:
-  call(LOGIC_SWIMMING);
-  return;
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(6);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(44);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(42);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(38);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+call(LOGIC_SWIMMING);
+return;
 
 LOGIC__FOOTER
-

@@ -41,88 +41,77 @@ if (f20) {
   set(f135);
   sound(5, f198);
 }
-LABEL104:
-  if (!f22 && f198 && !f27) {
-    reset(f198);
-    sound(5, f198);
-  }
-LABEL121:
-  if (f21) {
-    reset(f21);
-    erase(o1);
-  }
-LABEL131:
-  if (f22) {
-    stop.sound();
-    set(f27);
-    reset(f22);
-    program.control();
-    release.priority(oEGO);
-    set.view(oEGO, 103);
-    shake.screen(1);
-    print("OUCH");
+if (!f22 && f198 && !f27) {
+  reset(f198);
+  sound(5, f198);
+}
+if (f21) {
+  reset(f21);
+  erase(o1);
+}
+if (f22) {
+  stop.sound();
+  set(f27);
+  reset(f22);
+  program.control();
+  release.priority(oEGO);
+  set.view(oEGO, 103);
+  shake.screen(1);
+  print("OUCH");
+  sound(4, fSOUND_END_MARKER);
+  v30 = 18;
+}
+v30--;
+if (fSOUND_END_MARKER) {
+  if (v30 > 0) {
+    reset(fSOUND_END_MARKER);
     sound(4, fSOUND_END_MARKER);
-    v30 = 18;
   }
-LABEL158:
-  v30--;
-  if (fSOUND_END_MARKER) {
-    if (v30 > 0) {
-      reset(fSOUND_END_MARKER);
-      sound(4, fSOUND_END_MARKER);
-    }
+}
+if (v30 == 1) {
+  set.view(oEGO, 104);
+  end.of.loop(oEGO, f25);
+}
+if (f25) {
+  reset(f25);
+  set.view(oEGO, 0);
+  reset(f98);
+  player.control();
+  reset(f145);
+  reset(f209);
+}
+if (said("examine", "hole") || said("look inside", "hole")) {
+  if (posn(oEGO, 55, 105, 100, 142)) {
+    print("In the depths of the large hole you seem to sense a faint, green glow.");
   }
-LABEL178:
-  if (v30 == 1) {
-    set.view(oEGO, 104);
-    end.of.loop(oEGO, f25);
-  }
-LABEL191:
-  if (f25) {
-    reset(f25);
-    set.view(oEGO, 0);
-    reset(f98);
-    player.control();
-    reset(f145);
-    reset(f209);
-  }
-LABEL209:
-  if (said("examine", "hole") || said("look inside", "hole")) {
-    if (posn(oEGO, 55, 105, 100, 142)) {
-      print("In the depths of the large hole you seem to sense a faint, green glow.");
-      goto(LABEL244);
-    }
+  else {
     print("Don't be afraid... get closer.");
   }
-LABEL244:
-  if (fEGO_ON_WATER && !f199) {
-    set(f95);
-    stop.cycling(oEGO);
-    set(f199);
-    set.priority(oEGO, 5);
-    get.posn(oEGO, v60, v61);
-    v61 += 35;
-    v96 = 8;
-    move.obj.v(oEGO, v60, v61, 96, f23);
-    sound(5, f148);
-  }
-LABEL281:
-  if (f23) {
-    reset(f23);
-    reset(f95);
-    erase(oEGO);
-    new.room(73);
-  }
-LABEL295:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(47);
-  }
-LABEL304:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(33);
-  }
-LABEL313:
-  return;
+}
+if (fEGO_ON_WATER && !f199) {
+  set(f95);
+  stop.cycling(oEGO);
+  set(f199);
+  set.priority(oEGO, 5);
+  get.posn(oEGO, v60, v61);
+  v61 += 35;
+  v96 = 8;
+  move.obj.v(oEGO, v60, v61, 96, f23);
+  sound(5, f148);
+}
+if (f23) {
+  reset(f23);
+  reset(f95);
+  erase(oEGO);
+  new.room(73);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(47);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(33);
+}
+return;
 
 LOGIC__FOOTER
 
