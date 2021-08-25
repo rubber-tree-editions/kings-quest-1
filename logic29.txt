@@ -29,7 +29,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       load.view(5);
       load.view(116);
       load.sound(SND_VILLAIN);
-      load.sound(17);
+      load.sound(SND_SORCERER);
       animate.obj(oSORCERER);
       set.view(oSORCERER, 5);
       set(f20);
@@ -49,7 +49,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (f21 && fSOUND_END_MARKER) {
   if (!f25) {
     set(f25);
-    sound(17, f26);
+    sound(SND_SORCERER, f26);
   }
   if (f26) {
     reset(f25);
