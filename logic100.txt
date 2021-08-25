@@ -33,6 +33,11 @@ if (said("restart", "game") || controller(cRESTART)) {
   stop.sound();
   restart.game();
 }
+#ifdef RUBBER_TREE
+if (said("undo") || controller(cUNDO)) {
+  set(fUNDO);
+}
+#endif
 if (controller(cINVENTORY)) {
   stop.sound();
   status();
@@ -59,10 +64,18 @@ if (!fSAID_ACCEPTED_USER_INPUT) {
   if (said("anyword", "anyword") || said("anyword") || said("anyword", "anyword", "anyword")) {
     stop.sound();
     if (vROOM_NO == 65) {
+#ifdef RUBBER_TREE
+      print("As you will never get out of this cage alive, I can only permit you to: Restore Game, Restart Game, Undo or Take Inventory. Sorry.");
+#else
       print("As you will never get out of this cage alive, I can only permit you to: Restore Game, Restart Game or Take Inventory. Sorry.");
+#endif
     }
     else {
+#ifdef RUBBER_TREE
+      print("As you are dead, I can only permit you to: Restore Game,  Restart Game, Undo or Take Inventory. Sorry.");
+#else
       print("As you are dead, I can only permit you to: Restore Game,  Restart Game or Take Inventory. Sorry.");
+#endif
     }
   }
 }
