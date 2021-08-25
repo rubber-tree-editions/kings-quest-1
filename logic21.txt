@@ -156,8 +156,8 @@ LABEL372:
       if (!f21 && !fEGO_INVISIBLE) {
         set(f143);
         stop.motion(oEGO);
-        v102 = 3;
-        cycle.time(oEGO, v102);
+        vTEMP_CYCLE_TIME = 3;
+        cycle.time(oEGO, vTEMP_CYCLE_TIME);
         set.view(oEGO, 75);
         set(f98);
         end.of.loop(oEGO, f144);
@@ -169,8 +169,8 @@ LABEL443:
     reset(f144);
     reset(f98);
     start.motion(oEGO);
-    v103 = 1;
-    cycle.time(oEGO, v103);
+    vTEMP_CYCLE_TIME_2 = 1;
+    cycle.time(oEGO, vTEMP_CYCLE_TIME_2);
     set.view(oEGO, 0);
   }
 LABEL466:

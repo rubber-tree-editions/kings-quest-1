@@ -215,8 +215,8 @@ if (vROOM_NO != 21) {
       set(f143);
       stop.motion(oEGO);
       set.cel(oEGO, 0);
-      v102 = 2;
-      cycle.time(oEGO, v102);
+      vTEMP_CYCLE_TIME = 2;
+      cycle.time(oEGO, vTEMP_CYCLE_TIME);
       set.view(oEGO, 75);
       set(f98);
       end.of.loop(oEGO, f144);
@@ -229,8 +229,8 @@ if (vROOM_NO != 21) {
     reset(f143);
     reset(f144);
     reset(f98);
-    v103 = 1;
-    cycle.time(oEGO, v103);
+    vTEMP_CYCLE_TIME_2 = 1;
+    cycle.time(oEGO, vTEMP_CYCLE_TIME_2);
     start.motion(oEGO);
     set.view(oEGO, 0);
   }
