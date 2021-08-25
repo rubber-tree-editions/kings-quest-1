@@ -11,8 +11,8 @@ if (vROOM_NO == 0) {
   set(fJOYSTICK_SENSITIVITY_ENABLED);
   vJOYSTICK_SENSITIVITY = 3;
   vMAX_SCORE = 158;
-  v88 = 2;
-  vCYCLE_DELAY = v88;
+  vTEMP_CYCLE_DELAY = 2;
+  vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
   if (fRESTART_GAME_EXECUTED) {
     new.room(1);
   }
@@ -167,16 +167,16 @@ if (controller(cDEBUG)) {
   version();
 }
 if (said("fast")) {
-  v88 = 0;
-  vCYCLE_DELAY = v88;
+  vTEMP_CYCLE_DELAY = 0;
+  vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
 }
 if (said("normal")) {
-  v88 = 2;
-  vCYCLE_DELAY = v88;
+  vTEMP_CYCLE_DELAY = 2;
+  vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
 }
 if (said("slow")) {
-  v88 = 4;
-  vCYCLE_DELAY = v88;
+  vTEMP_CYCLE_DELAY = 4;
+  vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
 }
 if ((said("quit") || controller(cQUIT)) && vROOM_NO != 83) {
   quit(0);
