@@ -15,33 +15,28 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 110, 103, 0, 0);
   }
-  LABEL37:
-    random(0, 250, v62);
-    if (v62 < 185 && vWITCH_STATE != WITCHSTATE_DEAD) {
-      v30 = 4;
-      step.size(oWITCH, v30);
-      set(f20);
-      load.view(3);
-      load.view(91);
-      load.sound(SND_VILLAIN);
-      animate.obj(oWITCH);
-      set.view(oWITCH, 3);
-      ignore.horizon(oWITCH);
-      ignore.blocks(oWITCH);
-      set.loop(oWITCH, 1);
-    }
-  LABEL78:
-    if (f20) {
-      LABEL84:
-        random(0, 250, v70);
-        if (v70 > 90) {
-          goto(LABEL84);
-        }
-    }
-  LABEL98:
-    observe.blocks(oEGO);
-    draw(oEGO);
-    show.pic();
+  random(0, 250, v62);
+  if (v62 < 185 && vWITCH_STATE != WITCHSTATE_DEAD) {
+    v30 = 4;
+    step.size(oWITCH, v30);
+    set(f20);
+    load.view(3);
+    load.view(91);
+    load.sound(SND_VILLAIN);
+    animate.obj(oWITCH);
+    set.view(oWITCH, 3);
+    ignore.horizon(oWITCH);
+    ignore.blocks(oWITCH);
+    set.loop(oWITCH, 1);
+  }
+  if (f20) {
+    do {
+      random(0, 250, v70);
+    } while (v70 > 90);
+  }
+  observe.blocks(oEGO);
+  draw(oEGO);
+  show.pic();
 }
 v70--;
 if (v70 == 1) {
@@ -59,46 +54,40 @@ if (v70 == 1) {
     set(f22);
     print("There is a witch in the area, but since you have that menacing goat with you, she will keep her distance.");
   }
-  LABEL150:
-    if (fEGO_INVISIBLE) {
-      wander(oWITCH);
-      set(f22);
-      print("Lucky for you that you are invisible, the witch can't find you.");
-    }
-}
-LABEL162:
-  if (fSOUND_END_MARKER) {
-    reset(fSOUND_END_MARKER);
-    reset(f135);
+  if (fEGO_INVISIBLE) {
+    wander(oWITCH);
+    set(f22);
+    print("Lucky for you that you are invisible, the witch can't find you.");
   }
-LABEL172:
-  if (f24) {
-    reset(f24);
-    reset(f135);
-    if (fPROTECTED_BY_SPELL) {
-      print("The witch can feel your protective spell and bids a hasty retreat.");
-      wander(oWITCH);
-      set(f22);
-      goto(LABEL271);
-    }
-    if (fEGO_INVISIBLE) {
-      print("Lucky for you that you are invisible, the witch can't find you.");
-      wander(oWITCH);
-      set(f22);
-      goto(LABEL271);
-    }
-    if (fCARRYING_SHIELD) {
-      print("There is a witch in the area, but with the shield no harm will come to you.");
-      wander(oWITCH);
-      set(f22);
-      goto(LABEL271);
-    }
-    if (fEGO_DUCKING) {
-      print("The witch missed you, this time.");
-      wander(oWITCH);
-      set(f22);
-      goto(LABEL271);
-    }
+}
+if (fSOUND_END_MARKER) {
+  reset(fSOUND_END_MARKER);
+  reset(f135);
+}
+if (f24) {
+  reset(f24);
+  reset(f135);
+  if (fPROTECTED_BY_SPELL) {
+    print("The witch can feel your protective spell and bids a hasty retreat.");
+    wander(oWITCH);
+    set(f22);
+  }
+  else if (fEGO_INVISIBLE) {
+    print("Lucky for you that you are invisible, the witch can't find you.");
+    wander(oWITCH);
+    set(f22);
+  }
+  else if (fCARRYING_SHIELD) {
+    print("There is a witch in the area, but with the shield no harm will come to you.");
+    wander(oWITCH);
+    set(f22);
+  }
+  else if (fEGO_DUCKING) {
+    print("The witch missed you, this time.");
+    wander(oWITCH);
+    set(f22);
+  }
+  else {
     print("The witch swoops down, grabs you by the neck, and carries you off to a fate worse than death.");
     program.control();
     set(fCARRIED_BY_WITCH);
@@ -111,94 +100,81 @@ LABEL172:
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, v30, f23);
     set(f98);
   }
-LABEL271:
-  if (f22 && vOBJECT_EDGE_CODE != 0) {
-    reset(f22);
-    reset(f21);
-    erase(oWITCH);
+}
+if (f22 && vOBJECT_EDGE_CODE != 0) {
+  reset(f22);
+  reset(f21);
+  erase(oWITCH);
+}
+if (!f21) {
+  if (said("anyword", "witch")) {
+    print("There's no witch here.");
   }
-LABEL287:
-  if (!f21) {
-    if (said("anyword", "witch")) {
-      print("There's no witch here.");
-    }
+}
+if (f21) {
+  if (said("examine", "witch")) {
+    print("This is not your friendly-type witch.");
   }
-LABEL306:
-  if (f21) {
-    if (said("examine", "witch")) {
-      print("This is not your friendly-type witch.");
-    }
-    if (said("murder", "witch")) {
-      print("There is no way to kill a flying witch!");
-    }
-    LABEL336:
-      if (said("talk", "witch") || said("hello") || said("say", "hello")) {
-        print("The wicked witch is not interested in chitchat.");
-      }
-    LABEL360:
-      if (said("get", "witch")) {
-        print("Are you kidding?");
-      }
+  if (said("murder", "witch")) {
+    print("There is no way to kill a flying witch!");
   }
-LABEL372:
-  if (said("jump") || controller(cJUMP)) {
-    if (fEGO_INVISIBLE) {
-      print("There is no reason to jump now.");
+  if (said("talk", "witch") || said("hello") || said("say", "hello")) {
+    print("The wicked witch is not interested in chitchat.");
+  }
+  if (said("get", "witch")) {
+    print("Are you kidding?");
+  }
+}
+if (said("jump") || controller(cJUMP)) {
+  if (fEGO_INVISIBLE) {
+    print("There is no reason to jump now.");
+  }
+  if (f21 && !fEGO_INVISIBLE) {
+    if (!fCARRIED_BY_WITCH) {
+      print("Jumping here would put you in even greater danger from that witch!");
     }
-    if (f21 && !fEGO_INVISIBLE) {
-      if (!fCARRIED_BY_WITCH) {
-        print("Jumping here would put you in even greater danger from that witch!");
-        goto(LABEL415);
-      }
+    else {
       print("There is no way you can now.");
     }
-    LABEL415:
-      if (!f21 && !fEGO_INVISIBLE) {
-        set(f143);
-        stop.motion(oEGO);
-        vTEMP_CYCLE_TIME = 3;
-        cycle.time(oEGO, vTEMP_CYCLE_TIME);
-        set.view(oEGO, 75);
-        set(f98);
-        end.of.loop(oEGO, f144);
-      }
   }
-LABEL443:
-  if (f144) {
-    reset(f143);
-    reset(f144);
-    reset(f98);
-    start.motion(oEGO);
-    vTEMP_CYCLE_TIME_2 = 1;
-    cycle.time(oEGO, vTEMP_CYCLE_TIME_2);
-    set.view(oEGO, 0);
+  if (!f21 && !fEGO_INVISIBLE) {
+    set(f143);
+    stop.motion(oEGO);
+    vTEMP_CYCLE_TIME = 3;
+    cycle.time(oEGO, vTEMP_CYCLE_TIME);
+    set.view(oEGO, 75);
+    set(f98);
+    end.of.loop(oEGO, f144);
   }
-LABEL466:
-  if (f23) {
-    new.room(80);
-  }
-LABEL474:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON && !fCARRIED_BY_WITCH) {
-    new.room(28);
-  }
-LABEL486:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT && !fCARRIED_BY_WITCH) {
-    new.room(20);
-  }
-LABEL498:
-  if (vEGO_EDGE_CODE == EDGE_LEFT && !fCARRIED_BY_WITCH) {
-    new.room(22);
-  }
-LABEL510:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM && !fCARRIED_BY_WITCH) {
-    new.room(12);
-  }
-LABEL522:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL530:
-  return;
+}
+if (f144) {
+  reset(f143);
+  reset(f144);
+  reset(f98);
+  start.motion(oEGO);
+  vTEMP_CYCLE_TIME_2 = 1;
+  cycle.time(oEGO, vTEMP_CYCLE_TIME_2);
+  set.view(oEGO, 0);
+}
+if (f23) {
+  new.room(80);
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON && !fCARRIED_BY_WITCH) {
+  new.room(28);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT && !fCARRIED_BY_WITCH) {
+  new.room(20);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT && !fCARRIED_BY_WITCH) {
+  new.room(22);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM && !fCARRIED_BY_WITCH) {
+  new.room(12);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+return;
 
 LOGIC__FOOTER
 
