@@ -135,6 +135,7 @@
 
 // custom game flags
 #define fFINISHED1 f30
+#define fDROWNING f44
 #define fSPOKEN_TO_KING f60
 #define fPOINTS_FOR_FINDING_POUCH f61
 #define fMOVED_ROCK f62
@@ -212,6 +213,7 @@
 #define fRAT_ATE_CHEESE f140
 // unused: f141
 #define fCARRIED_BY_WITCH f142
+#define fSWIMMING f147
 #define fCARRYING_MAGIC_BEANS f154
 #define fEGO_CLIMBING_BEANSTALK f157
 #define fSOUND_END_MARKER f159

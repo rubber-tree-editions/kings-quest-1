@@ -7,13 +7,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(70);
   load.sound(13);
   set(f122);
-  reset(f147);
+  reset(fSWIMMING);
 }
 if (f174 || fGAME_OVER) {
   return;
 }
 if (fSWIMMING_IMPOSSIBLE_HERE && vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
-  set(f44);
+  set(fDROWNING);
   if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
     if (vROOM_NO == 1 || vROOM_NO == 2) {
       print("Unfortunately, with the moat population swimming is not possible.");
@@ -90,7 +90,7 @@ if (fEGO_ON_WATER) {
       vDROWN_GAME_OVER_COUNTDOWN = 50;
     }
   }
-  else if (!fSWIMMING_IMPOSSIBLE_HERE && vAQUATIC_ACTIVITY != AQUATICACTIVITY_SWIMMING && !f44) {
+  else if (!fSWIMMING_IMPOSSIBLE_HERE && vAQUATIC_ACTIVITY != AQUATICACTIVITY_SWIMMING && !fDROWNING) {
     if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
       set.view(oEGO, 70);
       start.motion(oEGO);
@@ -100,9 +100,9 @@ if (fEGO_ON_WATER) {
     }
   }
 }
-if (!f147 && !f44) {
+if (!fSWIMMING && !fDROWNING) {
   if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
-    set(f147);
+    set(fSWIMMING);
     if (!fEGO_ON_WATER) {
       print("You need to be in the water in order to swim.");
     }
@@ -112,11 +112,11 @@ if (!f147 && !f44) {
   }
 }
 else if (!controller(cSWIM)) {
-  reset(f147);
+  reset(fSWIMMING);
 }
 if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING && vDROWN_GAME_OVER_COUNTDOWN <= 0) {
   if (v93 == 0) {
-    set(f44);
+    set(fDROWNING);
     print("You splash around in the water for a while but seem  to have forgotten how to swim. Unfortunately, you drown.");
     vDROWN_GAME_OVER_COUNTDOWN = 50;
   }
