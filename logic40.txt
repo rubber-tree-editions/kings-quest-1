@@ -14,7 +14,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.logics(LOGIC_SWIMMING);
   call(LOGIC_SWIMMING);
   ignore.blocks(oEGO);
-  if (vGNOME_STATE <= GNOMESTATE_PRESENT) {
+  if (vGNOME_STATE == GNOMESTATE_PRESENT) {
     load.view(27);
     animate.obj(oGNOME);
     set.view(oGNOME, 27);
@@ -46,7 +46,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oGOLD_KEY, 28);
     position(oGOLD_KEY, 39, 118);
   }
-  if (vGNOME_STATE <= GNOMESTATE_PRESENT) {
+  if (vGNOME_STATE == GNOMESTATE_PRESENT) {
     draw(oGNOME);
     set(f23);
   }
@@ -133,7 +133,7 @@ if (f22) {
     stop.update(oMAGIC_BEANS);
     vGNOME_STATE = GNOMESTATE_LEFT_BEANS;
     print("That's right!!!  You've guessed it!!  Here are some magic beans for your outstanding accomplishment!");
-    if (vGNOME_NAME_GUESSES <= 0) {
+    if (vGNOME_NAME_GUESSES == 0) {
       vSCORE += 5;
     }
     if (vGNOME_NAME_GUESSES == 1) {
@@ -144,7 +144,7 @@ if (f22) {
     }
     goto(FINALCHECKS);
   }
-  if (vGNOME_NAME_GUESSES <= 0) {
+  if (vGNOME_NAME_GUESSES == 0) {
     if (said("anyword") || said("anyword", "anyword")) {
       accept.input();
       print("Where did you get that idea?  That's not even close!");
@@ -248,7 +248,7 @@ if (fEGO_ON_WATER && !f25) {
   set(f25);
   print("You slip down the bank into the river far below.  Your cries for help are not heard.");
 }
-if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
+if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   vEGO_WATER_X = 255;
   if (posn(oEGO, 0, 34, 34, 67)) {
     vEGO_WATER_X = 6;

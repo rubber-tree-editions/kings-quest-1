@@ -335,7 +335,7 @@ if (said("examine", "room") || said("examine", "clouds")) {
 if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
   v30--;
   if (v30 == 0) {
-    if (v31 > 0) {
+    if (v31 != 0) {
       v31--;
       v30 = 250;
     }

@@ -165,16 +165,16 @@ AFTERCOUNTDOWN:
   if (f24) {
     return;
   }
-  if (vEGO_EDGE_CODE == EDGE_HORIZON && v30 <= 0) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON && v30 == 0) {
     new.room(ROOM3_ROCK_OVER_HOLE);
   }
-  if (vEGO_EDGE_CODE == EDGE_RIGHT && v30 <= 0) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT && v30 == 0) {
     new.room(ROOM47_MUSHROOM);
   }
-  if (vEGO_EDGE_CODE == EDGE_LEFT && v30 <= 0) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT && v30 == 0) {
     new.room(ROOM45_OUTSIDE_WOODCUTTER_COTTAGE_BACK);
   }
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM && v30 <= 0) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM && v30 == 0) {
     new.room(ROOM35);
   }
   if (fGOAT_COMPANION) {

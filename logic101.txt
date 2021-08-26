@@ -114,7 +114,7 @@ if (!fSWIMMING && !fDROWNING) {
 else if (!controller(cSWIM)) {
   reset(fSWIMMING);
 }
-if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING && vDROWN_GAME_OVER_COUNTDOWN <= 0) {
+if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING && vDROWN_GAME_OVER_COUNTDOWN == 0) {
   if (v93 == 0) {
     set(fDROWNING);
     print("You splash around in the water for a while but seem  to have forgotten how to swim. Unfortunately, you drown.");

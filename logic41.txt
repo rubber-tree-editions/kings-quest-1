@@ -293,7 +293,7 @@ if (f28) {
   erase(oTROLL);
   reset(f21);
 }
-if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
+if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   vEGO_WATER_X = 255;
   if (posn(oEGO, 124, 102, 159, 152)) {
     vEGO_WATER_X = 136;

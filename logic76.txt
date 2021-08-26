@@ -73,7 +73,7 @@ if (f22) {
     print("You are already playing the fiddle.");
   }
 }
-if (v30 > 0) {
+if (v30 != 0) {
   v30--;
 }
 if (!fDANCING_LEPRECHAUNS && !f22) {

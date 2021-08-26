@@ -67,7 +67,7 @@ if (said("examine", "bridge")) {
 if (said("look under", "bridge")) {
   print("You glance under the old bridge, but see nothing unusual.");
 }
-if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
+if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   vEGO_WATER_X = 255;
   if (posn(oEGO, 126, 84, 159, 99)) {
     vEGO_WATER_X = 135;

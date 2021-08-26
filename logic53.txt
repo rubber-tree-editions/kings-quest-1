@@ -39,10 +39,10 @@ if (f26) {
 if (f195) {
   return;
 }
-if (v30 <= 0) {
+if (v30 == 0) {
   v70--;
   if (v70 == 1) {
-    if (v71 > 0) {
+    if (v71 != 0) {
       v71--;
       v70 = 250;
     }
@@ -52,7 +52,7 @@ if (v30 <= 0) {
     v30 = 250;
   }
 }
-if (v30 > 0) {
+if (v30 != 0) {
   v30--;
   if (v30 == 245) {
     set.view(oEGO, 0);
@@ -153,10 +153,10 @@ else {
 }
 if (posn(oEGO, 18, 80, 86, 113)) {
   if (said("examine", "king")) {
-    if (v30 <= 0 && vTREASURE_COUNT != 3 && !f126) {
+    if (v30 == 0 && vTREASURE_COUNT != 3 && !f126) {
       print("King Edward the Benevolent is a very wise, but elderly monarch.  His frail body is almost lost in the large throne.");
     }
-    if (!f21 && !fEGO_INVISIBLE && vTREASURE_COUNT == 3 && v30 <= 0) {
+    if (!f21 && !fEGO_INVISIBLE && vTREASURE_COUNT == 3 && v30 == 0) {
       print("The King, though very ill, seems happy to see you.");
     }
   }
@@ -170,7 +170,7 @@ if (posn(oEGO, 18, 80, 86, 113)) {
     else if (!fEGO_INVISIBLE && f21) {
       print("It is proper to stand directly in front of, and a few paces back from King Edward when addressing His Eminence.");
     }
-    else if (!f21 && !fEGO_INVISIBLE && v30 <= 0 && vTREASURE_COUNT != 3 && !f24) {
+    else if (!f21 && !fEGO_INVISIBLE && v30 == 0 && vTREASURE_COUNT != 3 && !f24) {
       set(f24);
       get.posn(oEGO, vTEMP_X, vTEMP_Y);
       vTEMP_X -= 7;
@@ -189,7 +189,7 @@ if (posn(oEGO, 18, 80, 86, 113)) {
         vSCORE += 3;
       }
     }
-    else if (!f21 && !fEGO_INVISIBLE && v30 <= 0 && vTREASURE_COUNT == 3 && !f25) {
+    else if (!f21 && !fEGO_INVISIBLE && v30 == 0 && vTREASURE_COUNT == 3 && !f25) {
       set(f25);
       get.posn(oEGO, vTEMP_X, vTEMP_Y);
       vTEMP_X -= 7;
@@ -213,20 +213,20 @@ if (posn(oEGO, 18, 80, 86, 113)) {
     }
   }
   if (said("talk", "king")) {
-    if (fSPOKEN_TO_KING && v30 <= 0 && !f126 && vTREASURE_COUNT != 3) {
+    if (fSPOKEN_TO_KING && v30 == 0 && !f126 && vTREASURE_COUNT != 3) {
       print("Go, Sir Graham!  Go and bring me back these treasures!");
     }
-    if (v30 <= 0 && vTREASURE_COUNT == 3) {
+    if (v30 == 0 && vTREASURE_COUNT == 3) {
       print("Welcome back from your quest, Sir Graham.");
     }
-    if (v30 <= 0 && f126) {
+    if (v30 == 0 && f126) {
       print("Why, Sir Graham, have you failed me and returned without accomplishing your task?  Go, and complete your quest!!");
       set(f125);
     }
-    if (v30 > 0) {
+    if (v30 != 0) {
       print("The king cannot talk right now.");
     }
-    if (!fSPOKEN_TO_KING && v30 <= 0 && !f126 && vTREASURE_COUNT != 3) {
+    if (!fSPOKEN_TO_KING && v30 == 0 && !f126 && vTREASURE_COUNT != 3) {
       set(fSPOKEN_TO_KING);
       set(f23);
       set(f125);
@@ -256,7 +256,7 @@ if (posn(oEGO, 18, 80, 86, 113)) {
   }
 }
 if (!posn(oEGO, 60, 85, 86, 113) && !f21) {
-  if (v30 <= 0) {
+  if (v30 == 0) {
     if (said("examine", "king")) {
       print("You are not close enough to see him clearly.");
     }
@@ -275,15 +275,15 @@ if (said("kneel", "king")) {
   print("That's not a bad idea, but the custom in Daventry is to bow.");
 }
 if (said("murder", "king")) {
-  if (v30 <= 0) {
+  if (v30 == 0) {
     print("To kill King Edward would mean immediate execution!");
   }
-  if (v30 > 0) {
+  if (v30 != 0) {
     print("Your concern for the old king won't allow you to move.");
   }
 }
 if (said("sit down", "throne")) {
-  if (v30 <= 0) {
+  if (v30 == 0) {
     print("The throne is already occupied.");
   }
   else {

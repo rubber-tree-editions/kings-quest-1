@@ -50,7 +50,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 v68--;
 if (v68 == 0) {
   v69--;
-  if (v69 > 0) {
+  if (v69 != 0) {
     v68 = 250;
   }
 }
