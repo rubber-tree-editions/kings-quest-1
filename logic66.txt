@@ -12,7 +12,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM19_BASE_MOUNTAIN_DOOR) {
     position(oEGO, 21, 162);
   }
-  if (vPREV_ROOM_NO == ROOM67) {
+  if (vPREV_ROOM_NO == ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM) {
     position(oEGO, 132, 46);
     set.loop(oEGO, 1);
     move.obj(oEGO, 132, 46, 0, f148);
@@ -51,7 +51,7 @@ if (f20) {
   set(fGAME_OVER);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM67);
+  new.room(ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM);
 }
 if (posn(oEGO, 16, 165, 31, 166)) {
   new.room(ROOM19_BASE_MOUNTAIN_DOOR);

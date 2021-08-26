@@ -21,7 +21,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.priority(oDOOR, 8);
   position(oDOOR, 101, 92);
   load.sound(SND_DOOR_OPENING);
-  if (vPREV_ROOM_NO == ROOM66) {
+  if (vPREV_ROOM_NO == ROOM66_MOUNTAIN_STAIRWAY_BOTTOM) {
     position(oEGO, 102, 98);
     vDOOR_STATE = DOORSTATE_OPEN;
   }
@@ -179,7 +179,7 @@ if (said("examine", "key hole")) {
   }
 }
 if (posn(oEGO, 99, 93, 114, 94)) {
-  new.room(ROOM66);
+  new.room(ROOM66_MOUNTAIN_STAIRWAY_BOTTOM);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM30_WALNUT_TREE);

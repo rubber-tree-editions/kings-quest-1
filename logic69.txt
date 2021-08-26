@@ -13,7 +13,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM59) {
     position(oEGO, 18, 97);
   }
-  if (vPREV_ROOM_NO == ROOM68) {
+  if (vPREV_ROOM_NO == ROOM68_MOUNTAIN_STAIRWAY_NEAR_TOP) {
     position(oEGO, 144, 155);
     set.loop(oEGO, 1);
     move.obj(oEGO, 144, 155, 0, f148);
@@ -52,7 +52,7 @@ if (posn(oEGO, 0, 0, 1, 167)) {
   new.room(ROOM59);
 }
 if (posn(oEGO, 138, 156, 155, 157)) {
-  new.room(ROOM68);
+  new.room(ROOM68_MOUNTAIN_STAIRWAY_NEAR_TOP);
 }
 return;
 

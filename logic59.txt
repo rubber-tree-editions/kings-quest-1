@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 150, 164);
     }
   }
-  if (vPREV_ROOM_NO == ROOM69) {
+  if (vPREV_ROOM_NO == ROOM69_MOUNTAIN_STAIRWAY_TOP) {
     position(oEGO, 116, 110);
   }
   draw(oEGO);
@@ -70,7 +70,7 @@ if (f20) {
   set(fGAME_OVER);
 }
 if (posn(oEGO, 135, 94, 136, 120)) {
-  new.room(ROOM69);
+  new.room(ROOM69_MOUNTAIN_STAIRWAY_TOP);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM58_GIANT_STOMPING_GROUND);
