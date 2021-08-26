@@ -217,7 +217,7 @@ if (!fCARRYING_CHEST) {
 }
 if (fCARRYING_SLINGSHOT) {
   distance(oEGO, oGIANT, v71);
-  if (said("use", "slingshot") || said("gingerbread", "slingshot")) {
+  if (said("use", "slingshot") || said("with", "slingshot")) {
     if (!fCARRYING_PEBBLES) {
       print("You need some kind of small rock to use the sling.");
     }

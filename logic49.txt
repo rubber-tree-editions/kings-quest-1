@@ -173,7 +173,7 @@ if (v30 == 1 && f23) {
   set(fGAME_OVER);
 }
 if (!f180 && !f20) {
-  if (said("climb", "rope") || said("gingerbread", "rope")) {
+  if (said("climb", "rope") || said("up", "rope")) {
     if (!f179 && !f177) {
       print("The rope is out of reach.");
     }
@@ -242,7 +242,7 @@ if (!f180 && !f20) {
     }
   }
 }
-if (said("climb", "well") || said("gingerbread", "well")) {
+if (said("climb", "well") || said("up", "well")) {
   print("You cannot climb the sides of the well.  They are too steep and slippery.");
 }
 if (said("examine", "well")) {
@@ -370,12 +370,12 @@ if (!fBUCKET_FILLED) {
   }
 }
 if (v94 != 2) {
-  if (said("dive", "water") || said("dive", "gingerbread") || said("dive")) {
+  if (said("dive", "water") || said("dive", "down") || said("dive")) {
     print("Now is not the time to try diving.");
   }
 }
 if (v94 == 2) {
-  if (said("dive", "water") || said("dive", "gingerbread") || said("dive")) {
+  if (said("dive", "water") || said("dive", "down") || said("dive")) {
     if (!f164) {
       set(f164);
       vSCORE += 2;
