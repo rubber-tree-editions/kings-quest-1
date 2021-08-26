@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   load.logics(LOGIC_SWIMMING);
   call(LOGIC_SWIMMING);
-  set(f68);
+  set(fSWIMMING_IMPOSSIBLE_HERE);
   if (vPREV_ROOM_NO == 23) {
     if (fEGO_ON_WATER) {
       set.view(oEGO, 0);
@@ -61,7 +61,7 @@ if (fEGO_ON_WATER && !f20) {
   print("This placid looking stream is actually quite dangerous.... the current is stronger than it looks.  You can't keep your head above water.");
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
-  reset(f68);
+  reset(fSWIMMING_IMPOSSIBLE_HERE);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(39);

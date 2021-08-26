@@ -23,10 +23,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 if (posn(oEGO, 79, 135, 132, 167) || posn(oEGO, 133, 146, 159, 167)) {
-  set(f68);
+  set(fSWIMMING_IMPOSSIBLE_HERE);
 }
 else {
-  reset(f68);
+  reset(fSWIMMING_IMPOSSIBLE_HERE);
 }
 if (said("examine", "lake")) {
   print("This is a beautiful little lake.");
@@ -84,7 +84,7 @@ if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
     set(fMANUAL_EGO_WATER_POS);
   }
 }
-if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && f68 && !f20) {
+if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && fSWIMMING_IMPOSSIBLE_HERE && !f20) {
   set(f20);
   vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
   set.view(oEGO, 93);
@@ -116,7 +116,7 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water"
   }
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
-  reset(f68);
+  reset(fSWIMMING_IMPOSSIBLE_HERE);
   if (f66) {
     reset(f66);
     reset(fGOAT_COMPANION);

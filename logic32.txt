@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   load.logics(LOGIC_SWIMMING);
   call(LOGIC_SWIMMING);
-  set(f68);
+  set(fSWIMMING_IMPOSSIBLE_HERE);
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();

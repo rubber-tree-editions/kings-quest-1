@@ -82,7 +82,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   observe.objs(oEGO);
   observe.blocks(oEGO);
   reset(f122);
-  reset(f68);
+  reset(fSWIMMING_IMPOSSIBLE_HERE);
   reset(f148);
   reset(fSOUND_END_MARKER);
   reset(f198);

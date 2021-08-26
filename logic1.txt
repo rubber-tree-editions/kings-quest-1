@@ -31,7 +31,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.horizon(oBANNERS);
   position(oBANNERS, 5, 17);
   set.priority(oBANNERS, 15);
-  set(f68);
+  set(fSWIMMING_IMPOSSIBLE_HERE);
   object.on.water(oGATOR1);
   object.on.water(oGATOR2);
   ignore.blocks(oEGO);
@@ -191,7 +191,7 @@ if (f22 && v34 == 1) {
 }
 v34--;
 if (vEGO_EDGE_CODE != EDGE_NONE) {
-  reset(f68);
+  reset(fSWIMMING_IMPOSSIBLE_HERE);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(16);

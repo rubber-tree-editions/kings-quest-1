@@ -58,7 +58,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oMAGIC_BEANS);
     stop.update(oMAGIC_BEANS);
   }
-  set(f68);
+  set(fSWIMMING_IMPOSSIBLE_HERE);
   draw(oEGO);
   show.pic();
 }

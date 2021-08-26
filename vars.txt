@@ -142,6 +142,7 @@
 // unused: f64
 // unused: f65
 #define fCARRYING_DAGGER f67
+#define fSWIMMING_IMPOSSIBLE_HERE f68
 #define fTAKEN_DAGGER f69
 #define fDAGGER_LOST f70
 #define fPOUCH_TAKEN f71

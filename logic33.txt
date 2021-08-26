@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 143, 166);
     }
   }
-  set(f68);
+  set(fSWIMMING_IMPOSSIBLE_HERE);
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();

@@ -12,7 +12,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (f174 || fGAME_OVER) {
   return;
 }
-if (f68 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
+if (fSWIMMING_IMPOSSIBLE_HERE && vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
   set(f44);
   if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
     if (vROOM_NO == 1 || vROOM_NO == 2) {
@@ -86,11 +86,11 @@ if (fEGO_ON_WATER) {
         print("Thrashing around in the water has caused you to lose the magic ring and become visible again.");
       }
     }
-    if (f68) {
+    if (fSWIMMING_IMPOSSIBLE_HERE) {
       vDROWN_GAME_OVER_COUNTDOWN = 50;
     }
   }
-  else if (!f68 && vAQUATIC_ACTIVITY != AQUATICACTIVITY_SWIMMING && !f44) {
+  else if (!fSWIMMING_IMPOSSIBLE_HERE && vAQUATIC_ACTIVITY != AQUATICACTIVITY_SWIMMING && !f44) {
     if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
       set.view(oEGO, 70);
       start.motion(oEGO);

@@ -36,10 +36,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 if (posn(oEGO, 0, 45, 31, 78)) {
-  set(f68);
+  set(fSWIMMING_IMPOSSIBLE_HERE);
 }
 else {
-  reset(f68);
+  reset(fSWIMMING_IMPOSSIBLE_HERE);
 }
 if (said("examine", "lake")) {
   print("This is a beautiful little lake.");
@@ -101,7 +101,7 @@ if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   }
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
-  reset(f68);
+  reset(fSWIMMING_IMPOSSIBLE_HERE);
   if (f66) {
     reset(f66);
     reset(fGOAT_COMPANION);

@@ -32,7 +32,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oPEBBLES);
     stop.update(oPEBBLES);
   }
-  set(f68);
+  set(fSWIMMING_IMPOSSIBLE_HERE);
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();

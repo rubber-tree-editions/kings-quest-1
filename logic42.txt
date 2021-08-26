@@ -44,12 +44,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 if (posn(oEGO, 0, 83, 159, 167)) {
-  set(f68);
+  set(fSWIMMING_IMPOSSIBLE_HERE);
 }
 else {
-  reset(f68);
+  reset(fSWIMMING_IMPOSSIBLE_HERE);
 }
-if (fEGO_ON_WATER && f68 && !f20) {
+if (fEGO_ON_WATER && fSWIMMING_IMPOSSIBLE_HERE && !f20) {
   set(f20);
   print("You have fallen in the raging current and are swept under.  I'm afraid your end has come.");
 }
@@ -154,7 +154,7 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET) {
   }
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
-  reset(f68);
+  reset(fSWIMMING_IMPOSSIBLE_HERE);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(7);
