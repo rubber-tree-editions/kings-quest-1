@@ -17,115 +17,104 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 123, 64, 0, 0);
   }
-  LABEL41:
-    if (vPREV_ROOM_NO == 29) {
-      get.posn(oEGO, vTEMP_X, vTEMP_Y);
-      if (vTEMP_X < 50) {
-        position(oEGO, 12, 54);
-        goto(LABEL70);
-      }
+  if (vPREV_ROOM_NO == 29) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_X < 50) {
+      position(oEGO, 12, 54);
+    }
+    else {
       position(oEGO, 122, 54);
     }
-  LABEL70:
-    if (vPREV_ROOM_NO == 13) {
-      if (posn(oEGO, 0, 164, 75, 167)) {
-        position(oEGO, 37, 165);
-        goto(LABEL98);
-      }
+  }
+  if (vPREV_ROOM_NO == 13) {
+    if (posn(oEGO, 0, 164, 75, 167)) {
+      position(oEGO, 37, 165);
+    }
+    else {
       position(oEGO, 120, 165);
     }
-  LABEL98:
-    ignore.blocks(oEGO);
-    draw(oEGO);
-    show.pic();
+  }
+  ignore.blocks(oEGO);
+  draw(oEGO);
+  show.pic();
 }
 if (said("examine", "lake")) {
   print("This is a small alpine lake.");
 }
-LABEL115:
-  if (said("examine", "stumps")) {
-    print("There seem to be beavers around here.");
+if (said("examine", "stumps")) {
+  print("There seem to be beavers around here.");
+}
+if (!fEGO_ON_WATER) {
+  if (posn(oEGO, 100, 109, 115, 135)) {
+    set(fEGO_ON_WATER);
+    set(f134);
   }
-LABEL127:
-  if (!fEGO_ON_WATER) {
-    if (posn(oEGO, 100, 109, 115, 135)) {
-      set(fEGO_ON_WATER);
-      set(f134);
+}
+if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
+  if (said("drink", "water") || said("get", "drink")) {
+    if (posn(oEGO, 15, 40, 138, 167)) {
+      print("The clear water quenches your thirst.");
     }
-  }
-LABEL148:
-  if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
-    if (said("drink", "water") || said("get", "drink")) {
-      if (posn(oEGO, 15, 40, 138, 167)) {
-        print("The clear water quenches your thirst.");
-        goto(LABEL196);
-      }
+    else {
       print("You are not close enough to the water.");
     }
   }
-LABEL196:
-  if (v94 <= 0 && fEGO_ON_WATER) {
-    v76 = 255;
-    if (posn(oEGO, 100, 100, 115, 135)) {
-      v76 = 100;
-      v77 = 130;
-    }
-    if (v76 == 255) {
-      v76 = 0;
-      goto(LABEL250);
-    }
-    LABEL238:
-      get.posn(oEGO, vTEMP_X, vTEMP_Y);
-      v76 -= vTEMP_X;
-      v77 -= vTEMP_Y;
-      set(f134);
+}
+if (v94 <= 0 && fEGO_ON_WATER) {
+  v76 = 255;
+  if (posn(oEGO, 100, 100, 115, 135)) {
+    v76 = 100;
+    v77 = 130;
   }
-LABEL250:
-  if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
-    if (posn(oEGO, 15, 40, 138, 167)) {
-      reset(f116);
-      print("You fill up your bucket with sparkling water.");
-      get("water");
-      set(fBUCKET_FILLED);
-      if (!fFILL_BUCKET_POINTS) {
-        vSCORE += 2;
-      }
-      set(fFILL_BUCKET_POINTS);
-      goto(LABEL303);
+  if (v76 == 255) {
+    v76 = 0;
+  }
+  else {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    v76 -= vTEMP_X;
+    v77 -= vTEMP_Y;
+    set(f134);
+  }
+}
+if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
+  if (posn(oEGO, 15, 40, 138, 167)) {
+    reset(f116);
+    print("You fill up your bucket with sparkling water.");
+    get("water");
+    set(fBUCKET_FILLED);
+    if (!fFILL_BUCKET_POINTS) {
+      vSCORE += 2;
     }
+    set(fFILL_BUCKET_POINTS);
+  }
+  else {
     print("You are not close enough to the water.");
   }
-LABEL303:
-  if (vEGO_EDGE_CODE != EDGE_NONE) {
-    if (f66) {
-      reset(f66);
-      reset(fGOAT_COMPANION);
-      set(fGOAT_IS_GONE);
-    }
+}
+if (vEGO_EDGE_CODE != EDGE_NONE) {
+  if (f66) {
+    reset(f66);
+    reset(fGOAT_COMPANION);
+    set(fGOAT_IS_GONE);
   }
-LABEL323:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(29);
-  }
-LABEL332:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(19);
-  }
-LABEL341:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(21);
-  }
-LABEL350:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(13);
-  }
-LABEL359:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL367:
-  call(LOGIC_SWIMMING);
-  return;
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(29);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(19);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(21);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(13);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+call(LOGIC_SWIMMING);
+return;
 
 LOGIC__FOOTER
 
