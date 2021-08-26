@@ -114,41 +114,41 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
   set(fEGO_ON_WATER);
 }
 if (v94 <= 0 && fEGO_ON_WATER) {
-  v76 = 255;
+  vEGO_WATER_X = 255;
   ignore.objs(oEGO);
   if (posn(oEGO, 0, 158, 28, 166)) {
-    v76 = 2;
-    v77 = 166;
+    vEGO_WATER_X = 2;
+    vEGO_WATER_Y = 166;
   }
   if (posn(oEGO, 29, 158, 56, 166)) {
-    v76 = 30;
-    v77 = 166;
+    vEGO_WATER_X = 30;
+    vEGO_WATER_Y = 166;
   }
   if (posn(oEGO, 57, 158, 84, 166)) {
-    v76 = 58;
-    v77 = 166;
+    vEGO_WATER_X = 58;
+    vEGO_WATER_Y = 166;
   }
   if (posn(oEGO, 85, 158, 111, 166)) {
-    v76 = 86;
-    v77 = 166;
+    vEGO_WATER_X = 86;
+    vEGO_WATER_Y = 166;
   }
   if (posn(oEGO, 89, 117, 108, 146)) {
     set.priority(oEGO, 5);
-    v76 = 90;
-    v77 = 133;
+    vEGO_WATER_X = 90;
+    vEGO_WATER_Y = 133;
   }
   if (posn(oEGO, 112, 136, 159, 167)) {
-    v76 = 122;
-    v77 = 166;
+    vEGO_WATER_X = 122;
+    vEGO_WATER_Y = 166;
   }
-  if (v76 == 255) {
-    v76 = 0;
+  if (vEGO_WATER_X == 255) {
+    vEGO_WATER_X = 0;
   }
   else {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
-    v76 -= vTEMP_X;
-    v77 -= vTEMP_Y;
-    set(f134);
+    vEGO_WATER_X -= vTEMP_X;
+    vEGO_WATER_Y -= vTEMP_Y;
+    set(fMANUAL_EGO_WATER_POS);
   }
 }
 if (fEGO_ON_WATER) {

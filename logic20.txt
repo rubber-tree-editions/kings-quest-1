@@ -47,7 +47,7 @@ if (said("examine", "stumps")) {
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 100, 109, 115, 135)) {
     set(fEGO_ON_WATER);
-    set(f134);
+    set(fMANUAL_EGO_WATER_POS);
   }
 }
 if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
@@ -61,19 +61,19 @@ if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
   }
 }
 if (v94 <= 0 && fEGO_ON_WATER) {
-  v76 = 255;
+  vEGO_WATER_X = 255;
   if (posn(oEGO, 100, 100, 115, 135)) {
-    v76 = 100;
-    v77 = 130;
+    vEGO_WATER_X = 100;
+    vEGO_WATER_Y = 130;
   }
-  if (v76 == 255) {
-    v76 = 0;
+  if (vEGO_WATER_X == 255) {
+    vEGO_WATER_X = 0;
   }
   else {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
-    v76 -= vTEMP_X;
-    v77 -= vTEMP_Y;
-    set(f134);
+    vEGO_WATER_X -= vTEMP_X;
+    vEGO_WATER_Y -= vTEMP_Y;
+    set(fMANUAL_EGO_WATER_POS);
   }
 }
 if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {

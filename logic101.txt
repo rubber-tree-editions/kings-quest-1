@@ -39,14 +39,14 @@ if (fEGO_ON_WATER) {
     stop.motion(oEGO);
     v93 = 250;
     v94 = 1;
-    if (f134) {
-      reposition(oEGO, v76, v77);
+    if (fMANUAL_EGO_WATER_POS) {
+      reposition(oEGO, vEGO_WATER_X, vEGO_WATER_Y);
     }
     else {
       object.on.water(oEGO);
     }
-    get.posn(oEGO, v76, v77);
-    if (v76 > 139) {
+    get.posn(oEGO, vEGO_WATER_X, vEGO_WATER_Y);
+    if (vEGO_WATER_X > 139) {
       erase(oEGO);
       set.view(oEGO, 93);
       draw(oEGO);
@@ -129,16 +129,16 @@ if (!fEGO_ON_WATER && v94 == 2) {
   v94 = 0;
   set.view(oEGO, 0);
   if (f136) {
-    reposition(oEGO, v76, v77);
+    reposition(oEGO, vEGO_WATER_X, vEGO_WATER_Y);
   }
   else {
     object.on.land(oEGO);
   }
 }
-reset(f134);
+reset(fMANUAL_EGO_WATER_POS);
 reset(f136);
-v76 = 0;
-v77 = 0;
+vEGO_WATER_X = 0;
+vEGO_WATER_Y = 0;
 v95--;
 if (v95 == 1) {
   erase(oEGO);

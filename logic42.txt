@@ -68,43 +68,43 @@ if (said("look under", "bridge")) {
   print("You glance under the old bridge, but see nothing unusual.");
 }
 if (v94 <= 0 && fEGO_ON_WATER) {
-  v76 = 255;
+  vEGO_WATER_X = 255;
   if (posn(oEGO, 126, 84, 159, 99)) {
-    v76 = 135;
-    v77 = 99;
+    vEGO_WATER_X = 135;
+    vEGO_WATER_Y = 99;
   }
   if (posn(oEGO, 144, 118, 159, 131)) {
-    v76 = 139;
-    v77 = 113;
+    vEGO_WATER_X = 139;
+    vEGO_WATER_Y = 113;
   }
   if (posn(oEGO, 0, 145, 16, 157)) {
-    v76 = 2;
-    v77 = 139;
+    vEGO_WATER_X = 2;
+    vEGO_WATER_Y = 139;
   }
   if (posn(oEGO, 18, 143, 54, 167) || posn(oEGO, 66, 143, 83, 167)) {
-    v76 = 45;
-    v77 = 163;
+    vEGO_WATER_X = 45;
+    vEGO_WATER_Y = 163;
   }
   if (posn(oEGO, 70, 129, 102, 142) || posn(oEGO, 57, 97, 83, 116)) {
-    v76 = 72;
-    v77 = 126;
+    vEGO_WATER_X = 72;
+    vEGO_WATER_Y = 126;
   }
   if (posn(oEGO, 34, 103, 56, 116)) {
-    v76 = 38;
-    v77 = 127;
+    vEGO_WATER_X = 38;
+    vEGO_WATER_Y = 127;
   }
   if (posn(oEGO, 0, 103, 33, 126)) {
-    v76 = 5;
-    v77 = 133;
+    vEGO_WATER_X = 5;
+    vEGO_WATER_Y = 133;
   }
-  if (v76 == 255) {
-    v76 = 0;
+  if (vEGO_WATER_X == 255) {
+    vEGO_WATER_X = 0;
   }
   else {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
-    v76 -= vTEMP_X;
-    v77 -= vTEMP_Y;
-    set(f134);
+    vEGO_WATER_X -= vTEMP_X;
+    vEGO_WATER_Y -= vTEMP_Y;
+    set(fMANUAL_EGO_WATER_POS);
   }
 }
 if (!fBUCKET_FILLED && (said("drink", "water") || said("get", "drink"))) {

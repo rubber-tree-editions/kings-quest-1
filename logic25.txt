@@ -298,31 +298,31 @@ if (f28) {
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 64, 84, 70, 90)) {
     set(fEGO_ON_WATER);
-    set(f134);
+    set(fMANUAL_EGO_WATER_POS);
   }
 }
 if (v94 <= 0 && fEGO_ON_WATER) {
-  v76 = 255;
+  vEGO_WATER_X = 255;
   if (posn(oEGO, 64, 54, 98, 88)) {
-    v76 = 78;
-    v77 = 85;
+    vEGO_WATER_X = 78;
+    vEGO_WATER_Y = 85;
   }
   if (posn(oEGO, 99, 55, 132, 88)) {
-    v76 = 116;
-    v77 = 83;
+    vEGO_WATER_X = 116;
+    vEGO_WATER_Y = 83;
   }
   if (posn(oEGO, 133, 54, 159, 89)) {
-    v76 = 138;
-    v77 = 84;
+    vEGO_WATER_X = 138;
+    vEGO_WATER_Y = 84;
   }
-  if (v76 == 255) {
-    v76 = 0;
+  if (vEGO_WATER_X == 255) {
+    vEGO_WATER_X = 0;
   }
   else {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
-    v76 -= vTEMP_X;
-    v77 -= vTEMP_Y;
-    set(f134);
+    vEGO_WATER_X -= vTEMP_X;
+    vEGO_WATER_Y -= vTEMP_Y;
+    set(fMANUAL_EGO_WATER_POS);
   }
 }
 if (fEGO_ON_WATER && !f29) {

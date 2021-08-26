@@ -49,27 +49,27 @@ if (fEGO_ON_WATER && !f20) {
   print("Your swimming attempt proved fatal!  The raging current drags you under... you are lost....");
 }
 if (v94 <= 0 && fEGO_ON_WATER) {
-  v76 = 255;
+  vEGO_WATER_X = 255;
   if (posn(oEGO, 83, 39, 127, 60)) {
-    v76 = 96;
-    v77 = 56;
+    vEGO_WATER_X = 96;
+    vEGO_WATER_Y = 56;
   }
   if (posn(oEGO, 82, 61, 129, 108)) {
-    v76 = 109;
-    v77 = 80;
+    vEGO_WATER_X = 109;
+    vEGO_WATER_Y = 80;
   }
   if (posn(oEGO, 130, 61, 159, 108)) {
-    v76 = 129;
-    v77 = 83;
+    vEGO_WATER_X = 129;
+    vEGO_WATER_Y = 83;
   }
-  if (v76 == 255) {
-    v76 = 0;
+  if (vEGO_WATER_X == 255) {
+    vEGO_WATER_X = 0;
   }
   else {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
-    v76 -= vTEMP_X;
-    v77 -= vTEMP_Y;
-    set(f134);
+    vEGO_WATER_X -= vTEMP_X;
+    vEGO_WATER_Y -= vTEMP_Y;
+    set(fMANUAL_EGO_WATER_POS);
   }
 }
 if (!fBUCKET_FILLED) {

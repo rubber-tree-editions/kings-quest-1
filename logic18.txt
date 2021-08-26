@@ -117,44 +117,44 @@ else {
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 129, 95, 159, 105) || posn(oEGO, 133, 80, 145, 94)) {
     set(fEGO_ON_WATER);
-    set(f134);
+    set(fMANUAL_EGO_WATER_POS);
   }
 }
 if (v94 <= 0 && fEGO_TOUCHED_TRIGGER_LINE) {
   set(fEGO_ON_WATER);
-  v76 = 255;
+  vEGO_WATER_X = 255;
   if (posn(oEGO, 128, 64, 159, 85)) {
-    v76 = 139;
-    v77 = 84;
+    vEGO_WATER_X = 139;
+    vEGO_WATER_Y = 84;
   }
   if (posn(oEGO, 97, 88, 118, 95)) {
-    v76 = 97;
-    v77 = 104;
+    vEGO_WATER_X = 97;
+    vEGO_WATER_Y = 104;
   }
-  if (v76 == 255) {
-    v76 = 0;
+  if (vEGO_WATER_X == 255) {
+    vEGO_WATER_X = 0;
   }
   else {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
-    v76 -= vTEMP_X;
-    v77 -= vTEMP_Y;
-    set(f134);
+    vEGO_WATER_X -= vTEMP_X;
+    vEGO_WATER_Y -= vTEMP_Y;
+    set(fMANUAL_EGO_WATER_POS);
   }
 }
 if (v94 <= 0 && fEGO_ON_WATER) {
-  v76 = 255;
+  vEGO_WATER_X = 255;
   if (posn(oEGO, 119, 86, 146, 95)) {
-    v76 = 120;
-    v77 = 104;
+    vEGO_WATER_X = 120;
+    vEGO_WATER_Y = 104;
   }
-  if (v76 == 255) {
-    v76 = 0;
+  if (vEGO_WATER_X == 255) {
+    vEGO_WATER_X = 0;
   }
   else {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
-    v76 -= vTEMP_X;
-    v77 -= vTEMP_Y;
-    set(f134);
+    vEGO_WATER_X -= vTEMP_X;
+    vEGO_WATER_Y -= vTEMP_Y;
+    set(fMANUAL_EGO_WATER_POS);
   }
 }
 if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
