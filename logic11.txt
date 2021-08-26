@@ -16,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oGATE);
   load.view(62);
   load.view(67);
-  if (!fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !fGOAT_IS_GONE) {
+  if (!fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN <= ROOM_NULL && !fGOAT_IS_GONE) {
     load.sound(11);
     load.view(14);
     v30 = 27;
@@ -319,21 +319,21 @@ if (vOBJECT_EDGE_CODE == 2 || vOBJECT_EDGE_CODE == 3) {
   }
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
-  if (fGOAT_GATE_OPEN && !fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN <= 0 && !fGOAT_IS_GONE) {
+  if (fGOAT_GATE_OPEN && !fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN <= ROOM_NULL && !fGOAT_IS_GONE) {
     set(fGOAT_IS_GONE);
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(22);
+  new.room(ROOM22);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(12);
+  new.room(ROOM12);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(10);
+  new.room(ROOM10);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(6);
+  new.room(ROOM6);
 }
 return;
 

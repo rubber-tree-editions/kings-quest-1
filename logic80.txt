@@ -31,10 +31,10 @@ if (said("anyword", "bird")) {
   print("Now is not a good time to bother the bird.");
 }
 if (f20) {
-  new.room(65);
+  new.room(ROOM65);
 }
 if (f21) {
-  new.room(48);
+  new.room(ROOM48);
 }
 return;
 

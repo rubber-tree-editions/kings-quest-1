@@ -11,13 +11,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.view(oEGO, 73);
   load.view(114);
   set(fEGO_ON_WATER);
-  if (vPREV_ROOM_NO == 49) {
+  if (vPREV_ROOM_NO == ROOM49) {
     position(oEGO, 75, 26);
   }
   else {
     position(oEGO, 38, 116);
   }
-  if (vPREV_ROOM_NO == 51) {
+  if (vPREV_ROOM_NO == ROOM51) {
     if (!f208) {
       set(f208);
       vSCORE += 2;
@@ -99,10 +99,10 @@ if (said("get", "can")) {
 }
 if (posn(oEGO, 31, 111, 32, 130)) {
   reset(fEGO_ON_WATER);
-  new.room(51);
+  new.room(ROOM51);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(49);
+  new.room(ROOM49);
 }
 return;
 

@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oMUSHROOM, 84, 80);
     set(f20);
   }
-  if (vPREV_ROOM_NO == 34) {
+  if (vPREV_ROOM_NO == ROOM34) {
     if (posn(oEGO, 77, 165, 112, 167)) {
       position(oEGO, 71, 164);
     }
@@ -202,13 +202,13 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water"
   }
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(48);
+  new.room(ROOM48);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(46);
+  new.room(ROOM46);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(34);
+  new.room(ROOM34);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

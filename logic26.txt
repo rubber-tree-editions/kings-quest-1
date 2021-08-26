@@ -18,7 +18,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.logics(LOGIC_SWIMMING);
   call(LOGIC_SWIMMING);
   set(fSWIMMING_IMPOSSIBLE_HERE);
-  if (vPREV_ROOM_NO == 23) {
+  if (vPREV_ROOM_NO == ROOM23) {
     if (fEGO_ON_WATER) {
       set.view(oEGO, 0);
       reset(f98);
@@ -64,16 +64,16 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   reset(fSWIMMING_IMPOSSIBLE_HERE);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(39);
+  new.room(ROOM39);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(27);
+  new.room(ROOM27);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(25);
+  new.room(ROOM25);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(23);
+  new.room(ROOM23);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

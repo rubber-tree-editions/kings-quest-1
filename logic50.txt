@@ -8,11 +8,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  if (vPREV_ROOM_NO == 51) {
+  if (vPREV_ROOM_NO == ROOM51) {
     position(oEGO, 152, 133);
     ignore.blocks(oEGO);
   }
-  if (vPREV_ROOM_NO == 22) {
+  if (vPREV_ROOM_NO == ROOM22) {
     position(oEGO, 3, 147);
   }
   if (vDRAGON_STATE != DRAGONSTATE_ABSENT) {
@@ -74,10 +74,10 @@ if (said("examine", "opening")) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(51);
+  new.room(ROOM51);
 }
 if (posn(oEGO, 0, 0, 1, 167)) {
-  new.room(22);
+  new.room(ROOM22);
 }
 return;
 

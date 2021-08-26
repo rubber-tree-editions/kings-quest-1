@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.sound(SND_DRAGON);
   }
   load.view(35);
-  if (vPREV_ROOM_NO == 52) {
+  if (vPREV_ROOM_NO == ROOM52) {
     set.view(oEGO, 0);
     reset(f98);
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
@@ -33,7 +33,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       vSCORE += 1;
     }
   }
-  if (vPREV_ROOM_NO == 50) {
+  if (vPREV_ROOM_NO == ROOM50) {
     position(oEGO, 9, 138);
   }
   if (!f165) {
@@ -345,10 +345,10 @@ if (f23) {
   erase(oDRAGON);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(52);
+  new.room(ROOM52);
 }
 if (posn(oEGO, 0, 0, 1, 167)) {
-  new.room(50);
+  new.room(ROOM50);
 }
 return;
 

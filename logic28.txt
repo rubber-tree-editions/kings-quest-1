@@ -32,16 +32,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   position(oDOOR, 45, 128);
   load.sound(SND_DOOR_OPENING);
   observe.blocks(oEGO);
-  if (vPREV_ROOM_NO == 65) {
+  if (vPREV_ROOM_NO == ROOM65) {
     position(oEGO, 48, 132);
   }
-  if (vPREV_ROOM_NO == 27) {
+  if (vPREV_ROOM_NO == ROOM27) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y > 94) {
       position(oEGO, 1, 155);
     }
   }
-  if (vPREV_ROOM_NO == 37 && fEGO_ON_WATER) {
+  if (vPREV_ROOM_NO == ROOM37 && fEGO_ON_WATER) {
     set.view(oEGO, 0);
     reset(f98);
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
@@ -128,7 +128,7 @@ if (!posn(oEGO, 40, 127, 70, 135)) {
   }
 }
 if (f20) {
-  new.room(65);
+  new.room(ROOM65);
 }
 if (said("examine", "doors")) {
   if (posn(oEGO, 1, 106, 158, 166)) {
@@ -158,16 +158,16 @@ if (said("eat", "fence")) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(37);
+  new.room(ROOM37);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(29);
+  new.room(ROOM29);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(27);
+  new.room(ROOM27);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(21);
+  new.room(ROOM21);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

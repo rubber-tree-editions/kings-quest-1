@@ -157,19 +157,19 @@ if (f144) {
   set.view(oEGO, 0);
 }
 if (f23) {
-  new.room(80);
+  new.room(ROOM80);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON && !fCARRIED_BY_WITCH) {
-  new.room(28);
+  new.room(ROOM28);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT && !fCARRIED_BY_WITCH) {
-  new.room(20);
+  new.room(ROOM20);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT && !fCARRIED_BY_WITCH) {
-  new.room(22);
+  new.room(ROOM22);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM && !fCARRIED_BY_WITCH) {
-  new.room(12);
+  new.room(ROOM12);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

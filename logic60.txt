@@ -43,10 +43,10 @@ if (f20) {
   set(fGAME_OVER);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(57);
+  new.room(ROOM57);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(61);
+  new.room(ROOM61);
 }
 return;
 

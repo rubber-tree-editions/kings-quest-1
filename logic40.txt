@@ -274,16 +274,16 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water"
 }
 FINALCHECKS:
   if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(41);
+    new.room(ROOM41);
   }
   if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(39);
+    new.room(ROOM39);
   }
   if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(33);
+    new.room(ROOM33);
   }
   if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(25);
+    new.room(ROOM25);
   }
   call(LOGIC_SWIMMING);
   return;

@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 39, 96, 0, 0);
   }
-  if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == 31) {
+  if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == ROOM31) {
     vTEMP_PIC = 84;
     set(f155);
     load.pic(vTEMP_PIC);
@@ -29,13 +29,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC_BEANSTALK);
     load.sound(SND_BEANSTALK);
   }
-  if (vPREV_ROOM_NO == 70 && fEGO_CLIMBING_BEANSTALK) {
+  if (vPREV_ROOM_NO == ROOM70 && fEGO_CLIMBING_BEANSTALK) {
     set.view(oEGO, 74);
     position(oEGO, 64, 51);
     move.obj(oEGO, 64, 51, 0, f148);
     set.priority(oEGO, 8);
   }
-  if (vPREV_ROOM_NO == 70 && f158) {
+  if (vPREV_ROOM_NO == ROOM70 && f158) {
     program.control();
     ignore.horizon(oEGO);
     set.priority(oEGO, 15);
@@ -61,7 +61,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (!fBOWL_TAKEN) {
     draw(oBOWL);
   }
-  if (vBEANSTALK_ROOM == 31) {
+  if (vBEANSTALK_ROOM == ROOM31) {
     overlay.pic(vTEMP_PIC);
   }
   draw(oEGO);
@@ -120,7 +120,7 @@ if (!fBOWL_TAKEN && said("get", "bowl")) {
 if (fCARRYING_MAGIC_BEANS && f155) {
   if (said("plant", "magic beans")) {
     reset(fCARRYING_MAGIC_BEANS);
-    vBEANSTALK_ROOM = 31;
+    vBEANSTALK_ROOM = ROOM31;
     set(fMAGIC_BEANS_PLANTED);
     drop("beans");
     vSCORE += 2;
@@ -130,7 +130,7 @@ if (fCARRYING_MAGIC_BEANS && f155) {
     show.pic();
   }
 }
-if (vBEANSTALK_ROOM == 31 && !fEGO_INVISIBLE) {
+if (vBEANSTALK_ROOM == ROOM31 && !fEGO_INVISIBLE) {
   if (said("climb", "beanstalk") && !fEGO_CLIMBING_BEANSTALK) {
     if (posn(oEGO, 52, 76, 103, 97)) {
       erase(oEGO);
@@ -146,7 +146,7 @@ if (vBEANSTALK_ROOM == 31 && !fEGO_INVISIBLE) {
     }
   }
 }
-if (vBEANSTALK_ROOM != 31) {
+if (vBEANSTALK_ROOM != ROOM31) {
   if (said("climb", "beanstalk")) {
     print("There is no beanstalk here to climb.");
   }
@@ -213,24 +213,24 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   reset(f155);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON && fEGO_CLIMBING_BEANSTALK) {
-  new.room(70);
+  new.room(ROOM70);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK) {
-  new.room(34);
+  new.room(ROOM34);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(32);
+  new.room(ROOM32);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(30);
+  new.room(ROOM30);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(18);
+  new.room(ROOM18);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);
 }
-if (vBEANSTALK_ROOM == 31) {
+if (vBEANSTALK_ROOM == ROOM31) {
   call(LOGIC_BEANSTALK);
 }
 return;

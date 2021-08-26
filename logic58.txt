@@ -378,13 +378,13 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(59);
+  new.room(ROOM59);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(57);
+  new.room(ROOM57);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(61);
+  new.room(ROOM61);
 }
 return;
 

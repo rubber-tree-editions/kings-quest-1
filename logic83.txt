@@ -347,7 +347,7 @@ if (have.key()) {
   clear.lines(21, 24, 0);
   stop.sound();
   v30 = 0;
-  new.room(1);
+  new.room(ROOM1);
 }
 return;
 

@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 74, 66, 0, 0);
   }
-  if (vPREV_ROOM_NO == 13) {
+  if (vPREV_ROOM_NO == ROOM13) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_X < 70) {
       position(oEGO, 70, 56);
@@ -113,16 +113,16 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(13);
+  new.room(ROOM13);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(3);
+  new.room(ROOM3);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(5);
+  new.room(ROOM5);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(45);
+  new.room(ROOM45);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

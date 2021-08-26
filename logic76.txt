@@ -8,10 +8,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  if (vPREV_ROOM_NO == 75) {
+  if (vPREV_ROOM_NO == ROOM75) {
     position(oEGO, 113, 146);
   }
-  if (vPREV_ROOM_NO == 77) {
+  if (vPREV_ROOM_NO == ROOM77) {
     position(oEGO, 73, 163);
   }
   if (fCARRYING_FIDDLE) {
@@ -144,10 +144,10 @@ if (fDANCING_LEPRECHAUNS) {
   }
 }
 if (posn(oEGO, 128, 133, 129, 154)) {
-  new.room(75);
+  new.room(ROOM75);
 }
 if (posn(oEGO, 0, 166, 159, 167)) {
-  new.room(77);
+  new.room(ROOM77);
 }
 return;
 

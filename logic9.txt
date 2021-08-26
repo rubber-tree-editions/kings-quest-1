@@ -78,16 +78,16 @@ if (!f20) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(24);
+  new.room(ROOM24);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(10);
+  new.room(ROOM10);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(16);
+  new.room(ROOM16);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(8);
+  new.room(ROOM8);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

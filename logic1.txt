@@ -38,12 +38,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oGATOR1);
   draw(oGATOR2);
   draw(oBANNERS);
-  if (vPREV_ROOM_NO == 0 || vPREV_ROOM_NO == 83) {
+  if (vPREV_ROOM_NO == ROOM_NULL || vPREV_ROOM_NO == ROOM83) {
     position(oEGO, 110, 100);
   }
   wander(oGATOR1);
   wander(oGATOR2);
-  if (vPREV_ROOM_NO == 8) {
+  if (vPREV_ROOM_NO == ROOM8) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y > 150) {
       position(oEGO, 148, 150);
@@ -51,7 +51,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(oEGO);
   call(LOGIC_SWIMMING);
-  if (vPREV_ROOM_NO == 83) {
+  if (vPREV_ROOM_NO == ROOM83) {
     submit.menu();
   }
   show.pic();
@@ -194,13 +194,13 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   reset(fSWIMMING_IMPOSSIBLE_HERE);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(16);
+  new.room(ROOM16);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(8);
+  new.room(ROOM8);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(2);
+  new.room(ROOM2);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

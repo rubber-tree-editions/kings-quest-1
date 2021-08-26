@@ -110,10 +110,10 @@ if (posn(oEGO, 12, 106, 57, 166) && !f21) {
   }
 }
 if (f148) {
-  new.room(14);
+  new.room(ROOM14);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(14);
+  new.room(ROOM14);
 }
 return;
 

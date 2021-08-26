@@ -9,13 +9,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.sound(SND_FALLING);
   load.view(105);
-  if (vPREV_ROOM_NO == 62) {
+  if (vPREV_ROOM_NO == ROOM62) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_X > 152) {
       position(oEGO, 150, 164);
     }
   }
-  if (vPREV_ROOM_NO == 69) {
+  if (vPREV_ROOM_NO == ROOM69) {
     position(oEGO, 116, 110);
   }
   draw(oEGO);
@@ -70,15 +70,15 @@ if (f20) {
   set(fGAME_OVER);
 }
 if (posn(oEGO, 135, 94, 136, 120)) {
-  new.room(69);
+  new.room(ROOM69);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(58);
+  new.room(ROOM58);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_X < 153) {
-    new.room(62);
+    new.room(ROOM62);
   }
 }
 return;

@@ -65,16 +65,16 @@ if (said("get", "four leaf clover")) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(25);
+  new.room(ROOM25);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(23);
+  new.room(ROOM23);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(17);
+  new.room(ROOM17);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(9);
+  new.room(ROOM9);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

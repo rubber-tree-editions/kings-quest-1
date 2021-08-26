@@ -147,16 +147,16 @@ if (said("get", "dagger")) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(14);
+  new.room(ROOM14);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(2);
+  new.room(ROOM2);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(4);
+  new.room(ROOM4);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(46);
+  new.room(ROOM46);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

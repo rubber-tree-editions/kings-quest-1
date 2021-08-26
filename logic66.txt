@@ -9,10 +9,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.sound(SND_FALLING);
   set.horizon(45);
-  if (vPREV_ROOM_NO == 19) {
+  if (vPREV_ROOM_NO == ROOM19) {
     position(oEGO, 21, 162);
   }
-  if (vPREV_ROOM_NO == 67) {
+  if (vPREV_ROOM_NO == ROOM67) {
     position(oEGO, 132, 46);
     set.loop(oEGO, 1);
     move.obj(oEGO, 132, 46, 0, f148);
@@ -51,10 +51,10 @@ if (f20) {
   set(fGAME_OVER);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(67);
+  new.room(ROOM67);
 }
 if (posn(oEGO, 16, 165, 31, 166)) {
-  new.room(19);
+  new.room(ROOM19);
 }
 return;
 

@@ -21,7 +21,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.priority(oDOOR, 8);
   position(oDOOR, 101, 92);
   load.sound(SND_DOOR_OPENING);
-  if (vPREV_ROOM_NO == 66) {
+  if (vPREV_ROOM_NO == ROOM66) {
     position(oEGO, 102, 98);
     vDOOR_STATE = DOORSTATE_OPEN;
   }
@@ -179,19 +179,19 @@ if (said("examine", "key hole")) {
   }
 }
 if (posn(oEGO, 99, 93, 114, 94)) {
-  new.room(66);
+  new.room(ROOM66);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(30);
+  new.room(ROOM30);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(18);
+  new.room(ROOM18);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(20);
+  new.room(ROOM20);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(14);
+  new.room(ROOM14);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

@@ -361,16 +361,16 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(42);
+  new.room(ROOM42);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(38);
+  new.room(ROOM38);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(40);
+  new.room(ROOM40);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(26);
+  new.room(ROOM26);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

@@ -13,12 +13,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 26, 64, 0, 0);
   }
-  if (vPREV_ROOM_NO == 37 && fEGO_ON_WATER) {
+  if (vPREV_ROOM_NO == ROOM37 && fEGO_ON_WATER) {
     set.view(oEGO, 0);
     reset(f98);
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
   }
-  if (vPREV_ROOM_NO == 79) {
+  if (vPREV_ROOM_NO == ROOM79) {
     position(oEGO, 118, 123);
   }
   draw(oEGO);
@@ -77,19 +77,19 @@ if (said("examine", "doors") || said("examine", "doorway") || said("look inside"
   }
 }
 if (posn(oEGO, 126, 119, 128, 127)) {
-  new.room(79);
+  new.room(ROOM79);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(5);
+  new.room(ROOM5);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(45);
+  new.room(ROOM45);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(43);
+  new.room(ROOM43);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(37);
+  new.room(ROOM37);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

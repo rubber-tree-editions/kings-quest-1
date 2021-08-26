@@ -63,7 +63,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oSWISS_CHEESE, 41, 61);
     set.priority(oSWISS_CHEESE, 8);
   }
-  if (vPREV_ROOM_NO == 80) {
+  if (vPREV_ROOM_NO == ROOM80) {
     load.view(105);
     load.view(103);
     load.view(104);
@@ -76,12 +76,12 @@ if (fROOM_SCRIPT_EXECUTED) {
     move.obj(oEGO, 80, 84, 6, f20);
     vWITCH_STATE = WITCHSTATE_AWAY_FROM_HOME;
   }
-  if (vPREV_ROOM_NO == 28) {
+  if (vPREV_ROOM_NO == ROOM28) {
     position(oEGO, 49, 163);
   }
   if (!fPROTECTED_BY_SPELL
     && vWITCH_STATE != WITCHSTATE_DEAD
-    && vPREV_ROOM_NO != 80
+    && vPREV_ROOM_NO != ROOM80
     && !fEGO_INVISIBLE
   ) {
     if (vWITCH_STATE == WITCHSTATE_AWAY_FROM_HOME) {
@@ -143,7 +143,7 @@ if (vWITCH_STATE == WITCHSTATE_DEAD) {
     print("The witch is dead.");
   }
 }
-if (vPREV_ROOM_NO == 80) {
+if (vPREV_ROOM_NO == ROOM80) {
   if (!f20 && !f33 && !f27) {
     sound(SND_FALLING, f198);
     set(f33);
@@ -448,10 +448,10 @@ if (said("examine", "stove")) {
 }
 if (said("examine", "cage")) {
   if (f25) {
-    if (vPREV_ROOM_NO == 80) {
+    if (vPREV_ROOM_NO == ROOM80) {
       print("This cage will be your new home for the rest of your life.");
     }
-    if (vPREV_ROOM_NO == 28) {
+    if (vPREV_ROOM_NO == ROOM28) {
       print("You look for a way to escape, but there is none.");
     }
   }
@@ -539,7 +539,7 @@ if (!fCARRYING_NOTE) {
   }
 }
 if (posn(oEGO, 39, 164, 56, 166)) {
-  new.room(28);
+  new.room(ROOM28);
 }
 return;
 

@@ -20,16 +20,16 @@ if (said("examine", "anyword")) {
   print("What are you doing that for?  There's nothing here.");
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(38);
+  new.room(ROOM38);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(28);
+  new.room(ROOM28);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(26);
+  new.room(ROOM26);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(22);
+  new.room(ROOM22);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

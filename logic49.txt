@@ -26,7 +26,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set(f20);
     move.obj(oEGO, 81, 164, 3, f21);
   }
-  if (vPREV_ROOM_NO == 12 && !f182) {
+  if (vPREV_ROOM_NO == ROOM12 && !f182) {
     if (!f162) {
       set(f162);
       vSCORE += 1;
@@ -37,7 +37,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       set.priority(oEGO, 15);
     }
   }
-  if (vPREV_ROOM_NO == 52) {
+  if (vPREV_ROOM_NO == ROOM52) {
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
     set.view(oEGO, 70);
     set(f23);
@@ -383,11 +383,11 @@ if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING) {
       set(f164);
       vSCORE += 2;
     }
-    new.room(52);
+    new.room(ROOM52);
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(12);
+  new.room(ROOM12);
 }
 call(LOGIC_SWIMMING);
 return;

@@ -12,10 +12,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  if (vPREV_ROOM_NO == 76) {
+  if (vPREV_ROOM_NO == ROOM76) {
     position(oEGO, 87, 67);
   }
-  if (vPREV_ROOM_NO == 78) {
+  if (vPREV_ROOM_NO == ROOM78) {
     position(oEGO, 9, 95);
   }
   if (!fSHIELD_TAKEN) {
@@ -333,10 +333,10 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(76);
+  new.room(ROOM76);
 }
 if (posn(oEGO, 0, 0, 1, 167)) {
-  new.room(78);
+  new.room(ROOM78);
 }
 return;
 

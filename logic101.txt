@@ -15,7 +15,7 @@ if (f174 || fGAME_OVER) {
 if (fSWIMMING_IMPOSSIBLE_HERE && vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
   set(fDROWNING);
   if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
-    if (vROOM_NO == 1 || vROOM_NO == 2) {
+    if (vROOM_NO == ROOM1 || vROOM_NO == ROOM2) {
       print("Unfortunately, with the moat population swimming is not possible.");
     }
     else {

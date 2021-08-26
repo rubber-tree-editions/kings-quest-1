@@ -9,12 +9,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.view(74);
   load.sound(SND_FALLING);
-  if (vPREV_ROOM_NO == 72 && fEGO_CLIMBING_BEANSTALK) {
+  if (vPREV_ROOM_NO == ROOM72 && fEGO_CLIMBING_BEANSTALK) {
     set.view(oEGO, 74);
     position(oEGO, 66, 40);
     move.obj(oEGO, 66, 40, 0, f148);
   }
-  if (vPREV_ROOM_NO == 72 && f158) {
+  if (vPREV_ROOM_NO == ROOM72 && f158) {
     program.control();
     set.view(oEGO, 105);
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
@@ -29,7 +29,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.priority(oEGO, 15);
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f20);
   }
-  if (vPREV_ROOM_NO == 70) {
+  if (vPREV_ROOM_NO == ROOM70) {
     set.view(oEGO, 74);
     position(oEGO, 69, 160);
     move.obj(oEGO, 69, 160, 0, f148);
@@ -75,10 +75,10 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !f158) {
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f20);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(72);
+  new.room(ROOM72);
 }
 if (f20 || posn(oEGO, 0, 166, 159, 167)) {
-  new.room(70);
+  new.room(ROOM70);
 }
 return;
 

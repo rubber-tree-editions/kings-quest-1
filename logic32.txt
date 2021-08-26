@@ -72,16 +72,16 @@ if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(33);
+  new.room(ROOM33);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(25);
+  new.room(ROOM25);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(31);
+  new.room(ROOM31);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(17);
+  new.room(ROOM17);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

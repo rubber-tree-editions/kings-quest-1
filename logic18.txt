@@ -32,7 +32,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       random(0, 250, v71);
     } while (v71 > 90);
   }
-  if (vPREV_ROOM_NO == 17 && fEGO_ON_WATER) {
+  if (vPREV_ROOM_NO == ROOM17 && fEGO_ON_WATER) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y < 111) {
       position(oEGO, 142, 122);
@@ -190,16 +190,16 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(31);
+  new.room(ROOM31);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(17);
+  new.room(ROOM17);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(19);
+  new.room(ROOM19);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(15);
+  new.room(ROOM15);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

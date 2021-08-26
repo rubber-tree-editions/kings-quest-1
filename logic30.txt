@@ -64,16 +64,16 @@ if (said("examine", "pine tree")) {
   print("If you've seen one pine tree, you've seen them all.");
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(35);
+  new.room(ROOM35);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(31);
+  new.room(ROOM31);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(29);
+  new.room(ROOM29);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(19);
+  new.room(ROOM19);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

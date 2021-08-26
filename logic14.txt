@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 21, 90, 0, 0);
   }
-  if (vPREV_ROOM_NO == 63) {
+  if (vPREV_ROOM_NO == ROOM63) {
     if (f131) {
       load.view(105);
       load.view(103);
@@ -95,7 +95,7 @@ if (said("climb", "tree") || said("climb", "oak", "tree") || said("climb", "oak"
   }
   else if (posn(oEGO, 85, 131, 140, 167)) {
     print("OK");
-    new.room(63);
+    new.room(ROOM63);
   }
   else if (posn(oEGO, 36, 56, 73, 90)) {
     print("This tree is too hard to climb.");
@@ -105,16 +105,16 @@ if (said("climb", "tree") || said("climb", "oak", "tree") || said("climb", "oak"
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(19);
+  new.room(ROOM19);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(15);
+  new.room(ROOM15);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(13);
+  new.room(ROOM13);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(3);
+  new.room(ROOM3);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

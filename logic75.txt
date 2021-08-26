@@ -9,12 +9,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  if (vPREV_ROOM_NO == 74) {
+  if (vPREV_ROOM_NO == ROOM74) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_X += 150;
     position.v(oEGO, vTEMP_X, vTEMP_Y);
   }
-  if (vPREV_ROOM_NO == 76) {
+  if (vPREV_ROOM_NO == ROOM76) {
     position(oEGO, 34, 125);
   }
   ignore.objs(oEGO);
@@ -35,7 +35,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(46);
   animate.obj(oDOOR);
   set.view(oDOOR, 46);
-  if (vPREV_ROOM_NO == 76) {
+  if (vPREV_ROOM_NO == ROOM76) {
     set.cel(oDOOR, 5);
   }
   else {
@@ -50,7 +50,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(oEGO);
   show.pic();
-  if (vPREV_ROOM_NO == 76) {
+  if (vPREV_ROOM_NO == ROOM76) {
     reverse.loop(oDOOR, f203);
     sound(SND_DOOR_OPENING, f148);
   }
@@ -252,7 +252,7 @@ if (said("open", "doors")) {
   }
 }
 if (f23) {
-  new.room(76);
+  new.room(ROOM76);
 }
 if (said("close", "doors")) {
   print("It is already closed.");
@@ -261,7 +261,7 @@ if (said("examine", "doors")) {
   print("The door is closed.");
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(74);
+  new.room(ROOM74);
 }
 return;
 

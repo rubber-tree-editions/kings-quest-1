@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.view(103);
   load.view(104);
-  if (vPREV_ROOM_NO == 48) {
+  if (vPREV_ROOM_NO == ROOM48) {
     position(oEGO, 90, 63);
     set.view(oEGO, 105);
     ignore.blocks(oEGO);
@@ -32,13 +32,13 @@ if (fROOM_SCRIPT_EXECUTED) {
       set(f24);
     }
   }
-  if (vPREV_ROOM_NO == 74) {
+  if (vPREV_ROOM_NO == ROOM74) {
     position(oEGO, 77, 165);
   }
   draw(oEGO);
   show.pic();
 }
-if (!f20 && !f22 && vPREV_ROOM_NO == 48) {
+if (!f20 && !f22 && vPREV_ROOM_NO == ROOM48) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   set(f22);
 }
@@ -85,7 +85,7 @@ if (f21) {
 }
 v30--;
 if (posn(oEGO, 0, 166, 159, 167)) {
-  new.room(74);
+  new.room(ROOM74);
 }
 return;
 

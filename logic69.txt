@@ -10,10 +10,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.view(105);
   load.sound(SND_FALLING);
-  if (vPREV_ROOM_NO == 59) {
+  if (vPREV_ROOM_NO == ROOM59) {
     position(oEGO, 18, 97);
   }
-  if (vPREV_ROOM_NO == 68) {
+  if (vPREV_ROOM_NO == ROOM68) {
     position(oEGO, 144, 155);
     set.loop(oEGO, 1);
     move.obj(oEGO, 144, 155, 0, f148);
@@ -49,10 +49,10 @@ if (f20) {
   set(fGAME_OVER);
 }
 if (posn(oEGO, 0, 0, 1, 167)) {
-  new.room(59);
+  new.room(ROOM59);
 }
 if (posn(oEGO, 138, 156, 155, 157)) {
-  new.room(68);
+  new.room(ROOM68);
 }
 return;
 

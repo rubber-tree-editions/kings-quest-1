@@ -166,16 +166,16 @@ AFTERCOUNTDOWN:
     return;
   }
   if (vEGO_EDGE_CODE == EDGE_HORIZON && v30 <= 0) {
-    new.room(3);
+    new.room(ROOM3);
   }
   if (vEGO_EDGE_CODE == EDGE_RIGHT && v30 <= 0) {
-    new.room(47);
+    new.room(ROOM47);
   }
   if (vEGO_EDGE_CODE == EDGE_LEFT && v30 <= 0) {
-    new.room(45);
+    new.room(ROOM45);
   }
   if (vEGO_EDGE_CODE == EDGE_BOTTOM && v30 <= 0) {
-    new.room(35);
+    new.room(ROOM35);
   }
   if (fGOAT_COMPANION) {
     call(LOGIC_GOAT);

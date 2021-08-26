@@ -63,7 +63,7 @@ if (controller(cPAUSE)) {
 if (!fSAID_ACCEPTED_USER_INPUT) {
   if (said("anyword", "anyword") || said("anyword") || said("anyword", "anyword", "anyword")) {
     stop.sound();
-    if (vROOM_NO == 65) {
+    if (vROOM_NO == ROOM65) {
 #ifdef RUBBER_TREE
       print("As you will never get out of this cage alive, I can only permit you to: Restore Game, Restart Game, Undo or Take Inventory. Sorry.");
 #else

@@ -9,7 +9,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(45);
-  if (vPREV_ROOM_NO == 47) {
+  if (vPREV_ROOM_NO == ROOM47) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_X > 130) {
       position(oEGO, 135, 47);
@@ -127,16 +127,16 @@ if (said("examine", "pebbles")) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(47);
+  new.room(ROOM47);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(33);
+  new.room(ROOM33);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(35);
+  new.room(ROOM35);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(31);
+  new.room(ROOM31);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

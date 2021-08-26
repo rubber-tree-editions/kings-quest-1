@@ -53,7 +53,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       set.cel(o3, 2);
     }
   }
-  if (vPREV_ROOM_NO == 49) {
+  if (vPREV_ROOM_NO == ROOM49) {
     if (f176) {
       set.view(oEGO, 143);
     }
@@ -66,7 +66,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.blocks(oEGO);
     move.obj(oEGO, 38, 140, 0, f148);
   }
-  if (vPREV_ROOM_NO == 5) {
+  if (vPREV_ROOM_NO == ROOM5) {
     if (fEGO_ON_WATER) {
       set.view(oEGO, 0);
       reset(f98);
@@ -244,7 +244,7 @@ if (f180) {
     reset(f180);
   }
   if (vTEMP_Y > 145) {
-    new.room(49);
+    new.room(ROOM49);
   }
   if (vTEMP_X < 35 || vTEMP_X > 44) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
@@ -262,7 +262,7 @@ if (f29 || f20) {
   reset(f20);
   erase(oEGO);
   set(f182);
-  new.room(49);
+  new.room(ROOM49);
 }
 if (f28) {
   reset(f28);
@@ -540,19 +540,19 @@ if (f176 && f179 && f180) {
 if (f25) {
   reset(f25);
   set(f177);
-  new.room(49);
+  new.room(ROOM49);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(21);
+  new.room(ROOM21);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(13);
+  new.room(ROOM13);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(11);
+  new.room(ROOM11);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(5);
+  new.room(ROOM5);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

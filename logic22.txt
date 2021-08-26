@@ -19,7 +19,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 18, 140, 0, 0);
   }
-  if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == 22) {
+  if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == ROOM22) {
     vTEMP_PIC = 84;
     set(f155);
     load.pic(vTEMP_PIC);
@@ -31,13 +31,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC_BEANSTALK);
     load.sound(SND_BEANSTALK);
   }
-  if (vPREV_ROOM_NO == 70 && fEGO_CLIMBING_BEANSTALK) {
+  if (vPREV_ROOM_NO == ROOM70 && fEGO_CLIMBING_BEANSTALK) {
     set.view(oEGO, 74);
     position(oEGO, 64, 41);
     move.obj(oEGO, 64, 41, 0, f148);
     set.priority(oEGO, 8);
   }
-  if (vPREV_ROOM_NO == 70 && f158) {
+  if (vPREV_ROOM_NO == ROOM70 && f158) {
     program.control();
     ignore.horizon(oEGO);
     set.priority(oEGO, 15);
@@ -70,10 +70,10 @@ if (fROOM_SCRIPT_EXECUTED) {
       random(0, 250, v70);
     } while (v70 > 90);
   }
-  if (vPREV_ROOM_NO == 50) {
+  if (vPREV_ROOM_NO == ROOM50) {
     position(oEGO, 142, 83);
   }
-  if (vBEANSTALK_ROOM == 22) {
+  if (vBEANSTALK_ROOM == ROOM22) {
     overlay.pic(vTEMP_PIC);
   }
   draw(oEGO);
@@ -192,7 +192,7 @@ if (f21) {
 if (fCARRYING_MAGIC_BEANS && f155) {
   if (said("plant", "magic beans")) {
     reset(fCARRYING_MAGIC_BEANS);
-    vBEANSTALK_ROOM = 22;
+    vBEANSTALK_ROOM = ROOM22;
     set(fMAGIC_BEANS_PLANTED);
     drop("beans");
     vSCORE += 2;
@@ -202,7 +202,7 @@ if (fCARRYING_MAGIC_BEANS && f155) {
     show.pic();
   }
 }
-if (vBEANSTALK_ROOM == 22 && !fEGO_INVISIBLE) {
+if (vBEANSTALK_ROOM == ROOM22 && !fEGO_INVISIBLE) {
   if (said("climb", "beanstalk") && !fEGO_CLIMBING_BEANSTALK) {
     if (posn(oEGO, 52, 76, 103, 97)) {
       erase(oEGO);
@@ -218,7 +218,7 @@ if (vBEANSTALK_ROOM == 22 && !fEGO_INVISIBLE) {
     }
   }
 }
-if (vBEANSTALK_ROOM != 22) {
+if (vBEANSTALK_ROOM != ROOM22) {
   if (said("climb", "beanstalk")) {
     print("There is no beanstalk here to climb.");
   }
@@ -286,31 +286,31 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
 }
 if (f25) {
   print("Where could this giant bird be taking you?");
-  new.room(80);
+  new.room(ROOM80);
   reset(f155);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON && fEGO_CLIMBING_BEANSTALK) {
-  new.room(70);
+  new.room(ROOM70);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK) {
-  new.room(27);
+  new.room(ROOM27);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(21);
+  new.room(ROOM21);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(23);
+  new.room(ROOM23);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(11);
+  new.room(ROOM11);
 }
 if (posn(oEGO, 148, 71, 149, 88)) {
-  new.room(50);
+  new.room(ROOM50);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);
 }
-if (vBEANSTALK_ROOM == 22) {
+if (vBEANSTALK_ROOM == ROOM22) {
   call(LOGIC_BEANSTALK);
 }
 return;

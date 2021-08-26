@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.view(oGOAT, 14);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   object.on.land(oGOAT);
-  if (vROOM_NO == 7 && vPREV_ROOM_NO == 8 && vTEMP_Y < 65) {
+  if (vROOM_NO == ROOM7 && vPREV_ROOM_NO == ROOM8 && vTEMP_Y < 65) {
     position(oGOAT, 1, 42);
     stop.motion(oGOAT);
     stop.cycling(oGOAT);
@@ -20,7 +20,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oGOAT);
     goto(ATRIVER);
   }
-  if (vROOM_NO == 17 && vPREV_ROOM_NO == 18 && vTEMP_Y < 65) {
+  if (vROOM_NO == ROOM17 && vPREV_ROOM_NO == ROOM18 && vTEMP_Y < 65) {
     position(oGOAT, 1, 45);
     stop.motion(oGOAT);
     stop.cycling(oGOAT);
@@ -30,7 +30,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oGOAT);
     goto(ATRIVER);
   }
-  if (vROOM_NO == 17 && vPREV_ROOM_NO == 32 && vTEMP_X < 50) {
+  if (vROOM_NO == ROOM17 && vPREV_ROOM_NO == ROOM32 && vTEMP_X < 50) {
     position(oGOAT, 1, 45);
     stop.motion(oGOAT);
     stop.cycling(oGOAT);
@@ -98,15 +98,15 @@ if (f207) {
   stop.cycling(oGOAT);
 }
 if (v40 > 20 && vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
-  if (vROOM_NO != 1
-    && vROOM_NO != 2
-    && vROOM_NO != 41
-    && vROOM_NO != 33
-    && vROOM_NO != 34
-    && vROOM_NO != 32
-    && vROOM_NO != 25
-    && vROOM_NO != 26
-    && vROOM_NO != 39
+  if (vROOM_NO != ROOM1
+    && vROOM_NO != ROOM2
+    && vROOM_NO != ROOM41
+    && vROOM_NO != ROOM33
+    && vROOM_NO != ROOM34
+    && vROOM_NO != ROOM32
+    && vROOM_NO != ROOM25
+    && vROOM_NO != ROOM26
+    && vROOM_NO != ROOM39
   ) {
     print("The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water.");
   }

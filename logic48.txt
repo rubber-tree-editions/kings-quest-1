@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.view(103);
   load.view(104);
-  if (vPREV_ROOM_NO == 80) {
+  if (vPREV_ROOM_NO == ROOM80) {
     set.view(oEGO, 89);
     animate.obj(o1);
     set.view(o1, 8);
@@ -103,13 +103,13 @@ if (f23) {
   reset(f23);
   reset(f95);
   erase(oEGO);
-  new.room(73);
+  new.room(ROOM73);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(47);
+  new.room(ROOM47);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(33);
+  new.room(ROOM33);
 }
 return;
 

@@ -6,11 +6,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  if (vPREV_ROOM_NO == 36) {
+  if (vPREV_ROOM_NO == ROOM36) {
     set.view(oEGO, 60);
     position(oEGO, 3, 81);
   }
-  if (vPREV_ROOM_NO == 77) {
+  if (vPREV_ROOM_NO == ROOM77) {
     position(oEGO, 146, 131);
     move.obj(oEGO, 146, 131, 0, f148);
   }
@@ -53,10 +53,10 @@ if (said("examine", "cave") || said("examine", "room")) {
   print("This is a small cave with stairs on one side and a very small hole on the other side.");
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(77);
+  new.room(ROOM77);
 }
 if (posn(oEGO, 0, 0, 1, 167)) {
-  new.room(36);
+  new.room(ROOM36);
 }
 return;
 

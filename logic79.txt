@@ -52,7 +52,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oBOWL);
     stop.update(oBOWL);
   }
-  if (vPREV_ROOM_NO == 44) {
+  if (vPREV_ROOM_NO == ROOM44) {
     position(oEGO, 24, 113);
   }
   draw(oEGO);
@@ -408,7 +408,7 @@ if (said("say", "hello") || said("say", "hello") || said("hello") || said("hello
   print("\"Hello\"");
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {
-  new.room(44);
+  new.room(ROOM44);
 }
 return;
 

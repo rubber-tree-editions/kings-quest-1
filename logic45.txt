@@ -55,16 +55,16 @@ if (said("climb", "window")) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(4);
+  new.room(ROOM4);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(46);
+  new.room(ROOM46);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(44);
+  new.room(ROOM44);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(36);
+  new.room(ROOM36);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);
