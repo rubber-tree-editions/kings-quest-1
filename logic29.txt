@@ -14,37 +14,31 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 80, 66, 0, 0);
   }
-  LABEL35:
-    if (vPREV_ROOM_NO == 20) {
-      if (!fEGO_INVISIBLE) {
-        set.view(oEGO, 0);
-        reset(f98);
-      }
+  if (vPREV_ROOM_NO == 20) {
+    if (!fEGO_INVISIBLE) {
+      set.view(oEGO, 0);
+      reset(f98);
     }
-  LABEL54:
-    random(0, 250, v62);
-    if (v62 < 185) {
-      v32 = 2;
-      step.size(oSORCERER, v32);
-      load.view(5);
-      load.view(116);
-      load.sound(SND_VILLAIN);
-      load.sound(SND_SORCERER);
-      animate.obj(oSORCERER);
-      set.view(oSORCERER, 5);
-      set(f20);
-    }
-  LABEL86:
-    if (f20) {
-      LABEL92:
-        random(0, 250, v70);
-        if (v70 > 90) {
-          goto(LABEL92);
-        }
-    }
-  LABEL106:
-    draw(oEGO);
-    show.pic();
+  }
+  random(0, 250, v62);
+  if (v62 < 185) {
+    v32 = 2;
+    step.size(oSORCERER, v32);
+    load.view(5);
+    load.view(116);
+    load.sound(SND_VILLAIN);
+    load.sound(SND_SORCERER);
+    animate.obj(oSORCERER);
+    set.view(oSORCERER, 5);
+    set(f20);
+  }
+  if (f20) {
+    do {
+      random(0, 250, v70);
+    } while (v70 > 90);
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (f21 && fSOUND_END_MARKER) {
   if (!f25) {
@@ -56,66 +50,60 @@ if (f21 && fSOUND_END_MARKER) {
     reset(f26);
   }
 }
-LABEL139:
-  v70--;
-  if (v70 == 1) {
-    position(oSORCERER, 40, 140);
-    set(f21);
-    sound(SND_VILLAIN, fSOUND_END_MARKER);
-    draw(oSORCERER);
-    if (!fGOAT_COMPANION) {
-      print("Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!");
-      follow.ego(oSORCERER, 7, f156);
-    }
-    if (fGOAT_COMPANION) {
-      wander(oSORCERER);
-      set(f22);
-      print("Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!");
-      print("The sorcerer sees the goat and decides to leave.");
-    }
+v70--;
+if (v70 == 1) {
+  position(oSORCERER, 40, 140);
+  set(f21);
+  sound(SND_VILLAIN, fSOUND_END_MARKER);
+  draw(oSORCERER);
+  if (!fGOAT_COMPANION) {
+    print("Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!");
+    follow.ego(oSORCERER, 7, f156);
   }
-LABEL186:
-  if (!f21) {
-    if (said("anyword", "sorcerer")) {
-      print("There's no sorcerer here.");
-    }
-    if (said("throw", "dagger") && fCARRYING_DAGGER && !fGOAT_COMPANION) {
-      print("OK.  But you just lost your dagger.");
-      reset(fCARRYING_DAGGER);
-      set(fDAGGER_LOST);
-      drop("dagger");
-      vSCORE -= 5;
-    }
+  if (fGOAT_COMPANION) {
+    wander(oSORCERER);
+    set(f22);
+    print("Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!");
+    print("The sorcerer sees the goat and decides to leave.");
   }
-LABEL231:
-  if (f21) {
-    if (said("examine", "sorcerer")) {
-      print("This sorcerer exudes mystery and danger.");
-    }
-    if (said("talk", "sorcerer") || said("hello") || said("say", "hello")) {
-      print("The sorcerer only speaks in the language of the Mystics.");
-    }
+}
+if (!f21) {
+  if (said("anyword", "sorcerer")) {
+    print("There's no sorcerer here.");
   }
-LABEL273:
-  if (f156) {
-    reset(f156);
-    if (fPROTECTED_BY_SPELL) {
-      print("This sorcerer's magic is no match for your fairy godmother's.");
-      wander(oSORCERER);
-      set(f22);
-      goto(LABEL347);
-    }
-    if (fEGO_INVISIBLE) {
-      print("Being invisible has protected you from this sorcerer.");
-      set(f27);
-      goto(LABEL347);
-    }
-    if (fCARRYING_SHIELD) {
-      print("The magic shield will protect you from this dangerous  sorcerer.");
-      wander(oSORCERER);
-      set(f22);
-      goto(LABEL347);
-    }
+  if (said("throw", "dagger") && fCARRYING_DAGGER && !fGOAT_COMPANION) {
+    print("OK.  But you just lost your dagger.");
+    reset(fCARRYING_DAGGER);
+    set(fDAGGER_LOST);
+    drop("dagger");
+    vSCORE -= 5;
+  }
+}
+if (f21) {
+  if (said("examine", "sorcerer")) {
+    print("This sorcerer exudes mystery and danger.");
+  }
+  if (said("talk", "sorcerer") || said("hello") || said("say", "hello")) {
+    print("The sorcerer only speaks in the language of the Mystics.");
+  }
+}
+if (f156) {
+  reset(f156);
+  if (fPROTECTED_BY_SPELL) {
+    print("This sorcerer's magic is no match for your fairy godmother's.");
+    wander(oSORCERER);
+    set(f22);
+  }
+  if (fEGO_INVISIBLE) {
+    print("Being invisible has protected you from this sorcerer.");
+    set(f27);
+  }
+  if (fCARRYING_SHIELD) {
+    print("The magic shield will protect you from this dangerous  sorcerer.");
+    wander(oSORCERER);
+    set(f22);
+  }
+  else {
     set(f24);
     v30 = 250;
     v31 = 2;
@@ -127,64 +115,54 @@ LABEL273:
     set(f145);
     set(f146);
   }
-LABEL347:
-  if (f23) {
-    reset(f23);
-    set.view(oSORCERER, 5);
-    start.cycling(oSORCERER);
-    wander(oSORCERER);
-    set(f22);
-  }
-LABEL364:
-  if (f22 && vOBJECT_EDGE_CODE != 0) {
-    erase(oSORCERER);
-    reset(f22);
-    reset(f21);
-  }
-LABEL380:
-  if (f27) {
-    erase(oSORCERER);
-    reset(f27);
-    reset(f21);
-  }
-LABEL392:
-  v30--;
-  if (v30 == 0 && v31 > 0) {
-    v31--;
-    v30 = 250;
-  }
-LABEL409:
-  if (v30 == 1 && v31 == 0) {
-    reset(f24);
-    print("The sorcerer's spell has expired; now you can move  again.  Whew!");
-    start.motion(oEGO);
-    player.control();
-  }
-LABEL426:
-  if (f24) {
-    goto(LABEL479);
-  }
-LABEL435:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(36);
-  }
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(30);
-  }
-LABEL453:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(28);
-  }
-LABEL462:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(20);
-  }
-LABEL471:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL479:
+}
+if (f23) {
+  reset(f23);
+  set.view(oSORCERER, 5);
+  start.cycling(oSORCERER);
+  wander(oSORCERER);
+  set(f22);
+}
+if (f22 && vOBJECT_EDGE_CODE != 0) {
+  erase(oSORCERER);
+  reset(f22);
+  reset(f21);
+}
+if (f27) {
+  erase(oSORCERER);
+  reset(f27);
+  reset(f21);
+}
+v30--;
+if (v30 == 0 && v31 > 0) {
+  v31--;
+  v30 = 250;
+}
+if (v30 == 1 && v31 == 0) {
+  reset(f24);
+  print("The sorcerer's spell has expired; now you can move  again.  Whew!");
+  start.motion(oEGO);
+  player.control();
+}
+if (f24) {
   return;
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(36);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(30);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(28);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(20);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+return;
 
 LOGIC__FOOTER
 

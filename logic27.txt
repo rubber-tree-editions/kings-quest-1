@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -15,35 +13,28 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 107, 131, 0, 0);
   }
-  LABEL37:
-    draw(oEGO);
-    show.pic();
+  draw(oEGO);
+  show.pic();
 }
 if (said("examine", "anyword")) {
   print("What are you doing that for?  There's nothing here.");
 }
-LABEL52:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(38);
-  }
-LABEL61:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(28);
-  }
-LABEL70:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(26);
-  }
-LABEL79:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(22);
-  }
-LABEL88:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL96:
-  return;
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(38);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(28);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(26);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(22);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+return;
 
 LOGIC__FOOTER
 

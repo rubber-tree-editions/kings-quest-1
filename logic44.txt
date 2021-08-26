@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -15,101 +13,88 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 26, 64, 0, 0);
   }
-  LABEL37:
-    if (vPREV_ROOM_NO == 37 && fEGO_ON_WATER) {
-      set.view(oEGO, 0);
-      reset(f98);
-      v94 = 0;
-    }
-  LABEL54:
-    if (vPREV_ROOM_NO == 79) {
-      position(oEGO, 118, 123);
-    }
-  LABEL65:
-    draw(oEGO);
-    show.pic();
+  if (vPREV_ROOM_NO == 37 && fEGO_ON_WATER) {
+    set.view(oEGO, 0);
+    reset(f98);
+    v94 = 0;
+  }
+  if (vPREV_ROOM_NO == 79) {
+    position(oEGO, 118, 123);
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (said("examine", "pump")) {
   print("It is an ancient, rusty water pump.  It probably doesn't even work.");
 }
-LABEL80:
-  if (said("examine", "axe")) {
-    print("The handle has been broken and repaired.  The head shows the signs of many sharpenings.");
+if (said("examine", "axe")) {
+  print("The handle has been broken and repaired.  The head shows the signs of many sharpenings.");
+}
+if (said("examine", "building")) {
+  print("It was made from rough, hand-hewn logs long ago.  Lately, the upkeep has faltered.  There are even holes in the  roof.");
+}
+if (said("examine", "stumps")) {
+  print("The trees were cut from these stumps years ago.");
+}
+if (said("use", "pump") || said("pump", "water")) {
+  if (posn(oEGO, 24, 115, 61, 149)) {
+    print("The rusty pump doesn't work.");
   }
-LABEL92:
-  if (said("examine", "building")) {
-    print("It was made from rough, hand-hewn logs long ago.  Lately, the upkeep has faltered.  There are even holes in the  roof.");
-  }
-LABEL104:
-  if (said("examine", "stumps")) {
-    print("The trees were cut from these stumps years ago.");
-  }
-LABEL116:
-  if (said("use", "pump") || said("pump", "water")) {
-    if (posn(oEGO, 24, 115, 61, 149)) {
-      print("The rusty pump doesn't work.");
-      goto(LABEL151);
-    }
+  else {
     print("You are not close enough.");
   }
-LABEL151:
-  if (said("get", "axe")) {
-    if (posn(oEGO, 61, 80, 88, 118)) {
-      print("The old axe is tightly wedged in the tree stump.  You cannot remove it no matter what you do.");
-      goto(LABEL178);
-    }
+}
+if (said("get", "axe")) {
+  if (posn(oEGO, 61, 80, 88, 118)) {
+    print("The old axe is tightly wedged in the tree stump.  You cannot remove it no matter what you do.");
+  }
+  else {
     print("You are not close enough.");
   }
-LABEL178:
-  if (said("use", "axe")) {
-    if (posn(oEGO, 61, 80, 88, 118)) {
-      print("How are you going to use the ax when you can't even get it out of this stump?");
-      goto(LABEL205);
-    }
+}
+if (said("use", "axe")) {
+  if (posn(oEGO, 61, 80, 88, 118)) {
+    print("How are you going to use the ax when you can't even get it out of this stump?");
+  }
+  else {
     print("You are not close enough.");
   }
-LABEL205:
-  if (said("open", "doors") || said("close", "doors")) {
-    if (posn(oEGO, 100, 111, 133, 136)) {
-      print("Upon closer inspection you realize this poor cabin doesn't even have a door.");
-      goto(LABEL240);
-    }
+}
+if (said("open", "doors") || said("close", "doors")) {
+  if (posn(oEGO, 100, 111, 133, 136)) {
+    print("Upon closer inspection you realize this poor cabin doesn't even have a door.");
+  }
+  else {
     print("You are not close enough.");
   }
-LABEL240:
-  if (said("examine", "doors") || said("examine", "doorway") || said("look inside", "doors")) {
-    if (posn(oEGO, 100, 111, 133, 136)) {
-      print("When you look in the doorway, you see a poor, starving woodcutter and his wife.");
-      goto(LABEL281);
-    }
+}
+if (said("examine", "doors") || said("examine", "doorway") || said("look inside", "doors")) {
+  if (posn(oEGO, 100, 111, 133, 136)) {
+    print("When you look in the doorway, you see a poor, starving woodcutter and his wife.");
+  }
+  else {
     print("You are not close enough.");
   }
-LABEL281:
-  if (posn(oEGO, 126, 119, 128, 127)) {
-    new.room(79);
-  }
-LABEL293:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(5);
-  }
-LABEL302:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(45);
-  }
-LABEL311:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(43);
-  }
-LABEL320:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(37);
-  }
-LABEL329:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL337:
-  return;
+}
+if (posn(oEGO, 126, 119, 128, 127)) {
+  new.room(79);
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(5);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(45);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(43);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(37);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+return;
 
 LOGIC__FOOTER
 

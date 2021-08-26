@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -15,71 +13,63 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 77, 83, 0, 0);
   }
-  LABEL37:
-    draw(oEGO);
-    show.pic();
+  draw(oEGO);
+  show.pic();
 }
 if (said("examine", "building")) {
   print("This old cottage is sagging and in great need of repair.");
 }
-LABEL52:
-  if (said("examine", "stumps")) {
-    print("The trees were cut from these stumps long ago.");
+if (said("examine", "stumps")) {
+  print("The trees were cut from these stumps long ago.");
+}
+if (said("talk", "woodcutter") || said("talk", "wife")) {
+  if (posn(oEGO, 11, 119, 45, 146)) {
+    print("You need to go inside to do that.");
   }
-LABEL64:
-  if (said("talk", "woodcutter") || said("talk", "wife")) {
-    if (posn(oEGO, 11, 119, 45, 146)) {
-      print("You need to go inside to do that.");
-      goto(LABEL99);
-    }
+  else {
     print("You can't do that now.");
   }
-LABEL99:
-  if (said("examine", "window") || said("look inside", "window")) {
-    if (posn(oEGO, 11, 119, 45, 146)) {
-      print("When you look in the window, you see a poor, starving woodcutter and his wife.");
-      goto(LABEL134);
-    }
+}
+if (said("examine", "window") || said("look inside", "window")) {
+  if (posn(oEGO, 11, 119, 45, 146)) {
+    print("When you look in the window, you see a poor, starving woodcutter and his wife.");
+  }
+  else {
     print("You could get a much better view if you were a little bit closer.");
   }
-LABEL134:
-  if (said("break", "window")) {
-    if (posn(oEGO, 11, 119, 45, 146)) {
-      print("There isn't a glass pane in this window.");
-      goto(LABEL161);
-    }
+}
+if (said("break", "window")) {
+  if (posn(oEGO, 11, 119, 45, 146)) {
+    print("There isn't a glass pane in this window.");
+  }
+  else {
     print("You are not close enough.");
   }
-LABEL161:
-  if (said("climb", "window")) {
-    if (posn(oEGO, 11, 119, 45, 146)) {
-      print("You should really try to find the door.");
-      goto(LABEL188);
-    }
+}
+if (said("climb", "window")) {
+  if (posn(oEGO, 11, 119, 45, 146)) {
+    print("You should really try to find the door.");
+  }
+  else {
     print("You are not close enough.");
   }
-LABEL188:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(4);
-  }
-LABEL197:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(46);
-  }
-LABEL206:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(44);
-  }
-LABEL215:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(36);
-  }
-LABEL224:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL232:
-  return;
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(4);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(46);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(44);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(36);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+return;
 
 LOGIC__FOOTER
 

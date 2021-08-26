@@ -45,11 +45,10 @@ if (fROOM_SCRIPT_EXECUTED) {
     else {
       position(oEGO, 65, 29);
     }
-    LABEL138:
-      get.posn(oEGO, vTEMP_X, vTEMP_Y);
-      vTEMP_Y = 106;
-      vTEMP_STEP = 2;
-      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f22);
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    vTEMP_Y = 106;
+    vTEMP_STEP = 2;
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f22);
   }
   if (vBEANSTALK_ROOM == 38) {
     overlay.pic(vTEMP_PIC);

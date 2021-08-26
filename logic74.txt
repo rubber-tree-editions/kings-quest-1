@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -16,23 +14,19 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == 73) {
     position(oEGO, 80, 70);
   }
-  LABEL41:
-    draw(oEGO);
-    show.pic();
+  draw(oEGO);
+  show.pic();
 }
 if (said("examine", "cave")) {
   print("The further you get from the light, the darker and mustier it becomes.");
 }
-LABEL56:
-  if (posn(oEGO, 65, 51, 100, 52)) {
-    new.room(73);
-  }
-LABEL68:
-  if (posn(oEGO, 0, 0, 1, 167)) {
-    new.room(75);
-  }
-LABEL80:
-  return;
+if (posn(oEGO, 65, 51, 100, 52)) {
+  new.room(73);
+}
+if (posn(oEGO, 0, 0, 1, 167)) {
+  new.room(75);
+}
+return;
 
 LOGIC__FOOTER
 

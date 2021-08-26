@@ -2,8 +2,6 @@
 
 LOGIC__HEADER
 
-
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -16,80 +14,71 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 79, 68, 0, 0);
   }
-  LABEL39:
-    draw(oEGO);
-    show.pic();
+  draw(oEGO);
+  show.pic();
 }
 if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) {
   if (said("get", "walnut")) {
     print("You already have one walnut, let's not be greedy.");
   }
 }
-LABEL64:
-  if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
-    if (said("examine", "walnut")) {
-      if (posn(oEGO, 9, 112, 98, 167)) {
-        print("These are some of the finest walnuts you have ever seen.");
-        goto(LABEL101);
-      }
+if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
+  if (said("examine", "walnut")) {
+    if (posn(oEGO, 9, 112, 98, 167)) {
+      print("These are some of the finest walnuts you have ever seen.");
+    }
+    else {
       print("They are very small and hard to see from here.");
     }
-    LABEL101:
-      if (said("get", "walnut")) {
-        if (fWALNUT_TAKEN) {
-          print("You look around and decide these plain walnuts won't do. You want a gold walnut!");
-        }
-        if (!fWALNUT_TAKEN) {
-          if (posn(oEGO, 9, 112, 98, 167)) {
-            print("You pluck a nice walnut from the tree.");
-            set(fCARRYING_WALNUT);
-            set(fWALNUT_TAKEN);
-            vSCORE += 3;
-            get("walnut");
-            goto(LABEL152);
-          }
-          print("The walnuts are over by the walnut tree.");
-        }
-      }
   }
-LABEL152:
-  if (said("examine", "tree") || said("examine", "walnut tree")) {
-    if (posn(oEGO, 0, 75, 159, 167)) {
-      print("The tree is loaded with walnuts.");
-      goto(LABEL187);
+  if (said("get", "walnut")) {
+    if (fWALNUT_TAKEN) {
+      print("You look around and decide these plain walnuts won't do. You want a gold walnut!");
     }
+    if (!fWALNUT_TAKEN) {
+      if (posn(oEGO, 9, 112, 98, 167)) {
+        print("You pluck a nice walnut from the tree.");
+        set(fCARRYING_WALNUT);
+        set(fWALNUT_TAKEN);
+        vSCORE += 3;
+        get("walnut");
+      }
+      else {
+        print("The walnuts are over by the walnut tree.");
+      }
+    }
+  }
+}
+if (said("examine", "tree") || said("examine", "walnut tree")) {
+  if (posn(oEGO, 0, 75, 159, 167)) {
+    print("The tree is loaded with walnuts.");
+  }
+  else {
     print("There is a large walnut tree surrounded by several pine trees.");
   }
-LABEL187:
-  if (said("examine", "room")) {
-    print("There is a large walnut tree surrounded by several pine trees.");
-  }
-LABEL199:
-  if (said("examine", "pine tree")) {
-    print("If you've seen one pine tree, you've seen them all.");
-  }
-LABEL211:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(35);
-  }
-LABEL220:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(31);
-  }
-LABEL229:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(29);
-  }
-LABEL238:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(19);
-  }
-LABEL247:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL255:
-  return;
+}
+if (said("examine", "room")) {
+  print("There is a large walnut tree surrounded by several pine trees.");
+}
+if (said("examine", "pine tree")) {
+  print("If you've seen one pine tree, you've seen them all.");
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(35);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(31);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(29);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(19);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+return;
 
 LOGIC__FOOTER
 

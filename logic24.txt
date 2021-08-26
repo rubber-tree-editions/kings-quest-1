@@ -15,79 +15,71 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 30, 75, 0, 0);
   }
-  LABEL37:
-    if (!fCLOVER_TAKEN) {
-      load.view(21);
-      animate.obj(oCLOVER);
-      set.view(oCLOVER, 21);
-      position(oCLOVER, 53, 134);
-      set(f20);
-    }
-  LABEL57:
-    if (f20) {
-      draw(oCLOVER);
-      stop.update(oCLOVER);
-    }
-  LABEL67:
-    draw(oEGO);
-    show.pic();
+  if (!fCLOVER_TAKEN) {
+    load.view(21);
+    animate.obj(oCLOVER);
+    set.view(oCLOVER, 21);
+    position(oCLOVER, 53, 134);
+    set(f20);
+  }
+  if (f20) {
+    draw(oCLOVER);
+    stop.update(oCLOVER);
+  }
+  draw(oEGO);
+  show.pic();
 }
 if (!fCARRYING_CLOVER) {
   if (said("examine", "four leaf clover") || said("examine", "ground")) {
     if (posn(oEGO, 0, 77, 118, 167)) {
       print("There is a small patch of clover under the tree.");
-      goto(LABEL112);
     }
-    print("Off in the distance you see a patch of clover.");
+    else {
+      print("Off in the distance you see a patch of clover.");
+    }
   }
 }
-LABEL112:
-  distance(oEGO, oCLOVER, v62);
-  if (said("get", "four leaf clover")) {
-    if (fCLOVER_TAKEN) {
-      if (fCARRYING_CLOVER) {
-        print("You already have the only fourleaf clover here.");
-        goto(LABEL145);
-      }
+distance(oEGO, oCLOVER, v62);
+if (said("get", "four leaf clover")) {
+  if (fCLOVER_TAKEN) {
+    if (fCARRYING_CLOVER) {
+      print("You already have the only fourleaf clover here.");
+    }
+    else {
       print("You had, and lost, the only fourleaf clover  around.  You really don't want a threeleaf clover.");
     }
-    LABEL145:
-      if (!fCLOVER_TAKEN) {
-        if (v62 < 25) {
-          print("The clover is soft, yet you sense a strange strength in it.");
-          get("fourleaf clover");
-          vSCORE += 2;
-          set(fCLOVER_TAKEN);
-          set(fCARRYING_CLOVER);
-          start.update(oCLOVER);
-          erase(oCLOVER);
-          goto(LABEL179);
-        }
-        print("You really don't want any of the threeleaf clovers.");
-      }
   }
-LABEL179:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(25);
+  if (!fCLOVER_TAKEN) {
+    if (v62 < 25) {
+      print("The clover is soft, yet you sense a strange strength in it.");
+      get("fourleaf clover");
+      vSCORE += 2;
+      set(fCLOVER_TAKEN);
+      set(fCARRYING_CLOVER);
+      start.update(oCLOVER);
+      erase(oCLOVER);
+    }
+    else {
+      print("You really don't want any of the threeleaf clovers.");
+    }
   }
-LABEL188:
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(23);
-  }
-LABEL197:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(17);
-  }
-LABEL206:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(9);
-  }
-LABEL215:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL223:
-  return;
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(25);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(23);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(17);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(9);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+return;
 
 LOGIC__FOOTER
 

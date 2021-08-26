@@ -15,36 +15,31 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 83, 142, 0, 0);
   }
-  LABEL37:
-    random(0, 250, v62);
-    if (v62 < 185) {
-      v30 = 4;
-      step.size(oWOLF, v30);
-      set(f23);
-      load.view(4);
-      load.view(96);
-      load.sound(SND_VILLAIN);
-      animate.obj(oWOLF);
-      set.view(oWOLF, 4);
+  random(0, 250, v62);
+  if (v62 < 185) {
+    v30 = 4;
+    step.size(oWOLF, v30);
+    set(f23);
+    load.view(4);
+    load.view(96);
+    load.sound(SND_VILLAIN);
+    animate.obj(oWOLF);
+    set.view(oWOLF, 4);
+  }
+  if (f23) {
+    do {
+      random(0, 250, v70);
+    } while (v70 > 90);
+  }
+  if (vPREV_ROOM_NO == 20 || vPREV_ROOM_NO == 4) {
+    if (fEGO_ON_WATER) {
+      set.view(oEGO, 0);
+      reset(f98);
+      v94 = 0;
     }
-  LABEL67:
-    if (f23) {
-      LABEL73:
-        random(0, 250, v70);
-        if (v70 > 90) {
-          goto(LABEL73);
-        }
-    }
-  LABEL87:
-    if (vPREV_ROOM_NO == 20 || vPREV_ROOM_NO == 4) {
-      if (fEGO_ON_WATER) {
-        set.view(oEGO, 0);
-        reset(f98);
-        v94 = 0;
-      }
-    }
-    draw(oEGO);
-    show.pic();
+  }
+  draw(oEGO);
+  show.pic();
 }
 v70--;
 if (v70 == 1) {
@@ -64,55 +59,47 @@ if (v70 == 1) {
     print("The wolf sees that menacing goat by your side and decides to keep his distance.");
   }
 }
-LABEL165:
-  if (fSOUND_END_MARKER) {
-    reset(fSOUND_END_MARKER);
-    reset(f135);
+if (fSOUND_END_MARKER) {
+  reset(fSOUND_END_MARKER);
+  reset(f135);
+}
+if (!f20) {
+  if (said("anyword", "wolf")) {
+    print("There's no wolf here.");
   }
-LABEL175:
-  if (!f20) {
-    if (said("anyword", "wolf")) {
-      print("There's no wolf here.");
-    }
+}
+if (f20) {
+  if (said("examine", "wolf")) {
+    print("Yes, it's a wolf and it's very fast.  Now do something!");
   }
-LABEL194:
-  if (f20) {
-    if (said("examine", "wolf")) {
-      print("Yes, it's a wolf and it's very fast.  Now do something!");
-    }
-    if (said("murder", "wolf")) {
-      print("You don't have time to do that right now!");
-    }
-    LABEL224:
-      if (said("pet", "wolf") || said("talk", "wolf")) {
-        print("Are you crazy?");
-      }
-    LABEL244:
-      if (said("hello") || said("say", "hello")) {
-        print("The wolf is in no mood for conversion.");
-      }
+  if (said("murder", "wolf")) {
+    print("You don't have time to do that right now!");
   }
-LABEL262:
-  if (f156) {
-    reset(f156);
-    if (fPROTECTED_BY_SPELL) {
-      print("You are very fortunate that your protective spell is still working.");
-      wander(oWOLF);
-      set(f22);
-      goto(LABEL329);
-    }
-    if (fEGO_INVISIBLE) {
-      print("Fortunately, you are invisible and the wolf can't see you.");
-      wander(oWOLF);
-      set(f22);
-      goto(LABEL329);
-    }
-    if (fCARRYING_SHIELD) {
-      print("You, fortunately, have the magic shield which will protect you.");
-      wander(oWOLF);
-      set(f22);
-      goto(LABEL329);
-    }
+  if (said("pet", "wolf") || said("talk", "wolf")) {
+    print("Are you crazy?");
+  }
+  if (said("hello") || said("say", "hello")) {
+    print("The wolf is in no mood for conversion.");
+  }
+}
+if (f156) {
+  reset(f156);
+  if (fPROTECTED_BY_SPELL) {
+    print("You are very fortunate that your protective spell is still working.");
+    wander(oWOLF);
+    set(f22);
+  }
+  if (fEGO_INVISIBLE) {
+    print("Fortunately, you are invisible and the wolf can't see you.");
+    wander(oWOLF);
+    set(f22);
+  }
+  if (fCARRYING_SHIELD) {
+    print("You, fortunately, have the magic shield which will protect you.");
+    wander(oWOLF);
+    set(f22);
+  }
+  else {
     program.control();
     print("It seems the wolf caught up with you and is discussing dinner arrangements.");
     erase(oWOLF);
@@ -121,37 +108,31 @@ LABEL262:
     set(f98);
     set(fGAME_OVER);
   }
-LABEL329:
-  if (f22 && vOBJECT_EDGE_CODE != 0) {
-    reset(f22);
-    reset(f20);
-    erase(oWOLF);
-  }
-LABEL345:
-  if (fGAME_OVER) {
-    goto(LABEL398);
-  }
-LABEL354:
-  if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(20);
-  }
-  if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(14);
-  }
-LABEL372:
-  if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(12);
-  }
-LABEL381:
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(4);
-  }
-LABEL390:
-  if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
-  }
-LABEL398:
+}
+if (f22 && vOBJECT_EDGE_CODE != 0) {
+  reset(f22);
+  reset(f20);
+  erase(oWOLF);
+}
+if (fGAME_OVER) {
   return;
+}
+if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  new.room(20);
+}
+if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  new.room(14);
+}
+if (vEGO_EDGE_CODE == EDGE_LEFT) {
+  new.room(12);
+}
+if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
+  new.room(4);
+}
+if (fGOAT_COMPANION) {
+  call(LOGIC_GOAT);
+}
+return;
 
 LOGIC__FOOTER
 
