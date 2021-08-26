@@ -28,7 +28,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == 42 && fEGO_ON_WATER) {
     set.view(oEGO, 0);
     reset(f98);
-    v94 = 0;
+    vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
   }
   block(0, 126, 69, 147);
   ignore.blocks(oEGO);
@@ -74,7 +74,7 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water"
 }
 if (fEGO_ON_WATER && posn(oEGO, 0, 60, 31, 76) && !f20) {
   set(f20);
-  v94 = 0;
+  vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
   set.view(oEGO, 93);
   print("The swift water pulls you down to your untimely demise.");
 }
@@ -84,7 +84,7 @@ if (!fEGO_ON_WATER) {
     set(fMANUAL_EGO_WATER_POS);
   }
 }
-if (v94 <= 0 && fEGO_ON_WATER) {
+if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   vEGO_WATER_X = 255;
   if (posn(oEGO, 0, 45, 31, 68)) {
     vEGO_WATER_X = 10;

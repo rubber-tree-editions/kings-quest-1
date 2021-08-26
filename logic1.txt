@@ -113,7 +113,7 @@ if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
 if (fEGO_TOUCHED_TRIGGER_LINE) {
   set(fEGO_ON_WATER);
 }
-if (v94 <= 0 && fEGO_ON_WATER) {
+if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   vEGO_WATER_X = 255;
   ignore.objs(oEGO);
   if (posn(oEGO, 0, 158, 28, 166)) {

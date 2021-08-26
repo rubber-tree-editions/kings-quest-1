@@ -53,7 +53,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == 43 && fEGO_ON_WATER) {
     reset(f98);
     set.view(oEGO, 0);
-    v94 = 0;
+    vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
   }
   if (vBEANSTALK_ROOM == 6) {
     overlay.pic(vTEMP_PIC);

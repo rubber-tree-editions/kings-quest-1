@@ -128,7 +128,7 @@ if (said("examine", "room")) {
     print("There is a large mushroom in the meadow next to the river.");
   }
 }
-if (v94 <= 0 && fEGO_ON_WATER) {
+if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   vEGO_WATER_X = 255;
   if (posn(oEGO, 7, 40, 62, 81)) {
     vEGO_WATER_X = 23;

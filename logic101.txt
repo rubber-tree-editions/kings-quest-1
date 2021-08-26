@@ -12,7 +12,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (f174 || fGAME_OVER) {
   return;
 }
-if (f68 && v94 == 1) {
+if (f68 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
   set(f44);
   if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
     if (vROOM_NO == 1 || vROOM_NO == 2) {
@@ -23,7 +23,7 @@ if (f68 && v94 == 1) {
     }
   }
 }
-if (v94 == 1) {
+if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
   if (!f45) {
     set(f45);
     sound(13, f46);
@@ -34,11 +34,11 @@ if (v94 == 1) {
   }
 }
 if (fEGO_ON_WATER) {
-  if (v94 == 0) {
+  if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
     set(f98);
     stop.motion(oEGO);
     v93 = 250;
-    v94 = 1;
+    vAQUATIC_ACTIVITY = AQUATICACTIVITY_DROWNING;
     if (fMANUAL_EGO_WATER_POS) {
       reposition(oEGO, vEGO_WATER_X, vEGO_WATER_Y);
     }
@@ -87,15 +87,15 @@ if (fEGO_ON_WATER) {
       }
     }
     if (f68) {
-      v95 = 50;
+      vDROWN_GAME_OVER_COUNTDOWN = 50;
     }
   }
-  else if (!f68 && v94 != 2 && !f44) {
+  else if (!f68 && vAQUATIC_ACTIVITY != AQUATICACTIVITY_SWIMMING && !f44) {
     if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
       set.view(oEGO, 70);
       start.motion(oEGO);
       stop.sound();
-      v94 = 2;
+      vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
       return;
     }
   }
@@ -106,7 +106,7 @@ if (!f147 && !f44) {
     if (!fEGO_ON_WATER) {
       print("You need to be in the water in order to swim.");
     }
-    else if (fEGO_ON_WATER && v94 == 2) {
+    else if (fEGO_ON_WATER && vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING) {
       print("You are already swimming!");
     }
   }
@@ -114,19 +114,19 @@ if (!f147 && !f44) {
 else if (!controller(cSWIM)) {
   reset(f147);
 }
-if (v94 == 1 && v95 <= 0) {
+if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING && vDROWN_GAME_OVER_COUNTDOWN <= 0) {
   if (v93 == 0) {
     set(f44);
     print("You splash around in the water for a while but seem  to have forgotten how to swim. Unfortunately, you drown.");
-    v95 = 50;
+    vDROWN_GAME_OVER_COUNTDOWN = 50;
   }
   else {
     v93--;
   }
 }
-if (!fEGO_ON_WATER && v94 == 2) {
+if (!fEGO_ON_WATER && vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING) {
   reset(f98);
-  v94 = 0;
+  vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
   set.view(oEGO, 0);
   if (f136) {
     reposition(oEGO, vEGO_WATER_X, vEGO_WATER_Y);
@@ -139,8 +139,8 @@ reset(fMANUAL_EGO_WATER_POS);
 reset(f136);
 vEGO_WATER_X = 0;
 vEGO_WATER_Y = 0;
-v95--;
-if (v95 == 1) {
+vDROWN_GAME_OVER_COUNTDOWN--;
+if (vDROWN_GAME_OVER_COUNTDOWN == 1) {
   erase(oEGO);
   stop.sound();
   set(fGAME_OVER);

@@ -38,7 +38,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   }
   if (vPREV_ROOM_NO == 52) {
-    v94 = 2;
+    vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
     set.view(oEGO, 70);
     set(f23);
     v30 = 250;
@@ -162,7 +162,7 @@ if (f22) {
   stop.sound();
   set.view(oEGO, 93);
 }
-if (v94 == 2 && !f23) {
+if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && !f23) {
   set(f23);
   v30 = 250;
 }
@@ -179,7 +179,7 @@ if (!f180 && !f20) {
     }
     if (f179) {
       erase(oEGO);
-      v94 = 0;
+      vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
       reset(f98);
       set.view(oEGO, 74);
       position(oEGO, 81, 113);
@@ -191,7 +191,7 @@ if (!f180 && !f20) {
     }
     if (f177 && !f181) {
       erase(oEGO);
-      v94 = 0;
+      vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
       reset(f98);
       set.view(oEGO, 74);
       position(oEGO, 81, 113);
@@ -316,7 +316,7 @@ if (fCARRYING_DAGGER) {
     if (!f177) {
       print("There is no reason to cut the rope.");
     }
-    if (v94 == 2 && f177) {
+    if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && f177) {
       print("You reach up out of the well water and cut the thick rope that holds the bucket.");
       start.update(o1);
       erase(o1);
@@ -335,7 +335,7 @@ if (fCARRYING_DAGGER) {
         }
       }
     }
-    if (v94 == 1) {
+    if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
       print("You have other things to think about right now.");
     }
     if (!f177 && !f179) {
@@ -348,7 +348,7 @@ if (!fBUCKET_FILLED) {
     print("This is murky well water.");
   }
   if (said("drink", "water")) {
-    if (v94 == 1 || v94 == 2) {
+    if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING || vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING) {
       print("The water does not taste as good as you expected.");
     }
     else {
@@ -356,7 +356,10 @@ if (!fBUCKET_FILLED) {
     }
   }
   if (said("get", "water")) {
-    if (fCARRYING_BUCKET && (v94 == 1 || v94 == 2)) {
+    if (fCARRYING_BUCKET && (
+      vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING
+      || vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING
+    )) {
       print("In the midst of your activities, you fill the bucket with well water.");
       set(fBUCKET_FILLED);
       if (!fFILL_BUCKET_POINTS) {
@@ -369,12 +372,12 @@ if (!fBUCKET_FILLED) {
     }
   }
 }
-if (v94 != 2) {
+if (vAQUATIC_ACTIVITY != AQUATICACTIVITY_SWIMMING) {
   if (said("dive", "water") || said("dive", "down") || said("dive")) {
     print("Now is not the time to try diving.");
   }
 }
-if (v94 == 2) {
+if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING) {
   if (said("dive", "water") || said("dive", "down") || said("dive")) {
     if (!f164) {
       set(f164);

@@ -35,7 +35,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (fEGO_ON_WATER) {
       set.view(oEGO, 0);
       reset(f98);
-      v94 = 0;
+      vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
     }
   }
   draw(oEGO);

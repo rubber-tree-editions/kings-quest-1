@@ -257,7 +257,7 @@ if (vROOM_NO != 21) {
         && !fEGO_ON_WATER
         && !f145
         && !fEGO_DUCKING
-        && v94 <= 0
+        && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
         && vROOM_NO != 29
         && vROOM_NO != 13
         && vROOM_NO != 53
@@ -306,7 +306,7 @@ if (said("duck") || controller(cDUCK)) {
       && !fEGO_TINY
       && !fEGO_ON_WATER
       && !f145
-      && v94 <= 0
+      && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
       && !f143
       && !f146
       && vROOM_NO != 29
@@ -468,7 +468,7 @@ if (fCARRYING_WALNUT) {
   }
 }
 if (vROOM_NO != 49 && said("dive", "anyword")) {
-  if (v94 > 0) {
+  if (vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE) {
     print("The water is very deep here. Without aid, it is impossible to swim under the water for any length of time.");
   }
   else {
@@ -547,7 +547,7 @@ if (fCARRYING_MUSHROOM) {
       && vROOM_NO != 65
       && vROOM_NO != 14
       && vROOM_NO != 63
-      && v94 <= 0
+      && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
       && vROOM_NO != 12
       && vROOM_NO != 73
       && vROOM_NO != 74
@@ -634,7 +634,7 @@ if (fCARRYING_RING) {
         vROOM_NO != 65
         && !fEGO_CLIMBING_BEANSTALK
         && !f158
-        && v94 <= 0
+        && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
         && vROOM_NO != 63
         && vROOM_NO != 80
         && vROOM_NO != 49
@@ -655,7 +655,7 @@ if (fCARRYING_RING) {
       if (vROOM_NO == 65
         || fEGO_CLIMBING_BEANSTALK
         || f158
-        || v94 > 0
+        || vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE
         || vROOM_NO == 63
         || vROOM_NO == 80
         || vROOM_NO == 49

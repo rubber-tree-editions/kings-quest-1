@@ -300,7 +300,7 @@ if (!fEGO_ON_WATER) {
     set(fMANUAL_EGO_WATER_POS);
   }
 }
-if (v94 <= 0 && fEGO_ON_WATER) {
+if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   vEGO_WATER_X = 255;
   if (posn(oEGO, 0, 83, 94, 167)) {
     vEGO_WATER_X = 34;
