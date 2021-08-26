@@ -43,7 +43,7 @@ if (controller(cINVENTORY)) {
   status();
 }
 if (controller(cHELP)) {
-  call(LOGIC_HELP);
+  call(LOGIC92_HELP);
 }
 if (controller(cTOGGLESOUND)) {
   toggle(fSOUND_ENABLED);

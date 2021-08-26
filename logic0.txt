@@ -8,7 +8,7 @@ LOGIC__HEADER
 #define oGOAT o13
 
 if (vERROR_CODE != 0) {
-  call(LOGIC_ERROR);
+  call(LOGIC98_ERROR);
 }
 if (vROOM_NO == ROOM_NULL) {
   set.game.id("KQ1");
@@ -55,7 +55,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   load.view.v(vEGO_VIEW_NO);
   set.view.v(oEGO, vEGO_VIEW_NO);
-  load.logics(LOGIC_DEFAULT_RESPONSES);
+  load.logics(LOGIC102_DEFAULT_RESPONSES);
   if (vROOM_NO != ROOM53_KING_EDWARD_THRONE_ROOM
     && vROOM_NO != ROOM58_GIANT_STOMPING_GROUND
     && vROOM_NO != ROOM49_INSIDE_WELL
@@ -111,18 +111,18 @@ if (fGAME_OVER) {
     disable.item(cJUMP);
     disable.item(cSWIM);
     disable.item(cDUCK);
-    load.logics(LOGIC_GAME_OVER);
+    load.logics(LOGIC100_GAME_OVER);
     load.sound(SND_GAME_OVER);
     vGAME_OVER_MESSAGE_COUNTDOWN = 40;
     set(fGAME_OVER_PREPARATION);
   }
   program.control();
   stop.motion(oEGO);
-  call(LOGIC_GAME_OVER);
+  call(LOGIC100_GAME_OVER);
   return;
 }
 if (controller(cHELP) && vROOM_NO != ROOM83_TITLE_SCREEN) {
-  call(LOGIC_HELP);
+  call(LOGIC92_HELP);
 }
 if (controller(cTOGGLESOUND)) {
   toggle(fSOUND_ENABLED);
@@ -203,7 +203,7 @@ else if (vEGO_DIR == DIR_NONE) {
   stop.cycling(oEGO);
 }
 if (controller(cDEBUG)) {
-  load.logics(LOGIC_DEBUG);
+  load.logics(LOGIC99_DEBUG);
   set(f190);
   print("VERSION 1.0U");
   version();
@@ -990,10 +990,10 @@ if (vTREASURE_COUNT == 3) {
   reset(f125);
 }
 if (f190) {
-  call(LOGIC_DEBUG);
+  call(LOGIC99_DEBUG);
 }
 call.v(vROOM_NO);
-call(LOGIC_DEFAULT_RESPONSES);
+call(LOGIC102_DEFAULT_RESPONSES);
 return;
 
 LOGIC__FOOTER
