@@ -32,7 +32,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   position(oDOOR, 45, 128);
   load.sound(SND_DOOR_OPENING);
   observe.blocks(oEGO);
-  if (vPREV_ROOM_NO == ROOM65) {
+  if (vPREV_ROOM_NO == ROOM65_IN_GINGERBREAD_HOUSE) {
     position(oEGO, 48, 132);
   }
   if (vPREV_ROOM_NO == ROOM27) {
@@ -128,7 +128,7 @@ if (!posn(oEGO, 40, 127, 70, 135)) {
   }
 }
 if (f20) {
-  new.room(ROOM65);
+  new.room(ROOM65_IN_GINGERBREAD_HOUSE);
 }
 if (said("examine", "doors")) {
   if (posn(oEGO, 1, 106, 158, 166)) {

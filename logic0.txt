@@ -22,19 +22,19 @@ if (vROOM_NO == ROOM_NULL) {
     new.room(ROOM1_CASTLE_EAST);
   }
   else {
-    new.room(ROOM83);
+    new.room(ROOM83_TITLE_SCREEN);
   }
 }
-if (vROOM_NO == ROOM52) {
+if (vROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
   set(fEGO_ON_WATER);
 }
 if (fROOM_SCRIPT_EXECUTED) {
   animate.obj(oEGO);
   load.view(0);
-  if (vROOM_NO == ROOM52) {
+  if (vROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
     vEGO_VIEW_NO = 0;
   }
-  if (vROOM_NO == ROOM65 && vPREV_ROOM_NO == ROOM80) {
+  if (vROOM_NO == ROOM65_IN_GINGERBREAD_HOUSE && vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
     vEGO_VIEW_NO = 105;
   }
   if (fEGO_DUCKING || f143) {
@@ -56,11 +56,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view.v(vEGO_VIEW_NO);
   set.view.v(oEGO, vEGO_VIEW_NO);
   load.logics(LOGIC_DEFAULT_RESPONSES);
-  if (vROOM_NO != ROOM53
-    && vROOM_NO != ROOM58
-    && vROOM_NO != ROOM49
+  if (vROOM_NO != ROOM53_KING_EDWARD_THRONE_ROOM
+    && vROOM_NO != ROOM58_GIANT_STOMPING_GROUND
+    && vROOM_NO != ROOM49_INSIDE_WELL
     && vROOM_NO != ROOM51
-    && vROOM_NO != ROOM52
+    && vROOM_NO != ROOM52_IN_WELL_UNDERWATER
     && vROOM_NO != ROOM12_TOP_OF_WELL
     && vROOM_NO != ROOM10_GOAT_PEN_WEST
     && vROOM_NO != ROOM11_GOAT_PEN_EAST
@@ -69,7 +69,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(87);
   }
   load.view(110);
-  if (vROOM_NO != ROOM83) {
+  if (vROOM_NO != ROOM83_TITLE_SCREEN) {
     configure.screen(1, 22, 0);
   }
   if (fCARRYING_MUSHROOM || fEGO_TINY) {
@@ -121,7 +121,7 @@ if (fGAME_OVER) {
   call(LOGIC_GAME_OVER);
   return;
 }
-if (controller(cHELP) && vROOM_NO != ROOM83) {
+if (controller(cHELP) && vROOM_NO != ROOM83_TITLE_SCREEN) {
   call(LOGIC_HELP);
 }
 if (controller(cTOGGLESOUND)) {
@@ -152,7 +152,7 @@ if (controller(cABOUT)) {
     "(C) 1986 Sierra On-Line, Inc."
   );
 }
-if (vROOM_NO > ROOM52
+if (vROOM_NO > ROOM52_IN_WELL_UNDERWATER
   || vROOM_NO == ROOM3_ROCK_OVER_HOLE
   || vROOM_NO == ROOM6_POUCH_STUMP
   || vROOM_NO == ROOM9_FAIRY_GODMOTHER_STOMPING_GROUND
@@ -220,24 +220,24 @@ if (said("slow")) {
   vTEMP_CYCLE_DELAY = 4;
   vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
 }
-if ((said("quit") || controller(cQUIT)) && vROOM_NO != ROOM83) {
+if ((said("quit") || controller(cQUIT)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
   quit(0);
 }
-if ((said("save", "game") || controller(cSAVE)) && vROOM_NO != ROOM83) {
+if ((said("save", "game") || controller(cSAVE)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
   save.game();
 }
-if ((said("restore", "game") || controller(cRESTORE)) && vROOM_NO != ROOM83) {
+if ((said("restore", "game") || controller(cRESTORE)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
   restore.game();
 }
-if ((said("restart", "game") || controller(cRESTART)) && vROOM_NO != ROOM83) {
+if ((said("restart", "game") || controller(cRESTART)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
   restart.game();
 }
 #ifdef RUBBER_TREE
-if ((said("undo") || controller(cUNDO)) && vROOM_NO != ROOM83) {
+if ((said("undo") || controller(cUNDO)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
   set(fUNDO);
 }
 #endif
-if (controller(cINVENTORY) && vROOM_NO != ROOM83) {
+if (controller(cINVENTORY) && vROOM_NO != ROOM83_TITLE_SCREEN) {
   status();
 }
 if (controller(cPREVINPUT)) {
@@ -253,22 +253,22 @@ if (vROOM_NO != ROOM21_WITCH_STOMPING_GROUND) {
         && !f158
         && !fEGO_INVISIBLE
         && !fEGO_TINY
-        && vROOM_NO != ROOM79
+        && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE
         && !fEGO_ON_WATER
         && !f145
         && !fEGO_DUCKING
         && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
         && vROOM_NO != ROOM29
         && vROOM_NO != ROOM13_WOLF_STOMPING_GROUND
-        && vROOM_NO != ROOM53
-        && vROOM_NO != ROOM58
-        && vROOM_NO != ROOM49
-        && vROOM_NO != ROOM52
-        && vROOM_NO != ROOM63
-        && vROOM_NO != ROOM80
+        && vROOM_NO != ROOM53_KING_EDWARD_THRONE_ROOM
+        && vROOM_NO != ROOM58_GIANT_STOMPING_GROUND
+        && vROOM_NO != ROOM49_INSIDE_WELL
+        && vROOM_NO != ROOM52_IN_WELL_UNDERWATER
+        && vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE
+        && vROOM_NO != ROOM80_IN_MID_AIR
         && vROOM_NO != ROOM48_LEPRECHAUN_HOLE
         && vROOM_NO != ROOM73
-        && vROOM_NO != ROOM65
+        && vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE
         && vROOM_NO != ROOM12_TOP_OF_WELL
         && vROOM_NO != ROOM14_BASE_GOLDEN_EGG_TREE
         && vROOM_NO != ROOM10_GOAT_PEN_WEST
@@ -311,16 +311,16 @@ if (said("duck") || controller(cDUCK)) {
       && !f146
       && vROOM_NO != ROOM29
       && vROOM_NO != ROOM12_TOP_OF_WELL
-      && vROOM_NO != ROOM53
-      && vROOM_NO != ROOM58
-      && vROOM_NO != ROOM49
-      && vROOM_NO != ROOM52
-      && vROOM_NO != ROOM63
-      && vROOM_NO != ROOM80
+      && vROOM_NO != ROOM53_KING_EDWARD_THRONE_ROOM
+      && vROOM_NO != ROOM58_GIANT_STOMPING_GROUND
+      && vROOM_NO != ROOM49_INSIDE_WELL
+      && vROOM_NO != ROOM52_IN_WELL_UNDERWATER
+      && vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE
+      && vROOM_NO != ROOM80_IN_MID_AIR
       && vROOM_NO != ROOM48_LEPRECHAUN_HOLE
       && vROOM_NO != ROOM73
-      && vROOM_NO != ROOM65
-      && vROOM_NO != ROOM79
+      && vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE
+      && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE
       && vROOM_NO != ROOM14_BASE_GOLDEN_EGG_TREE
       && vROOM_NO != ROOM10_GOAT_PEN_WEST
       && vROOM_NO != ROOM11_GOAT_PEN_EAST
@@ -370,7 +370,7 @@ if (fCARRYING_DAGGER) {
       && vROOM_NO != ROOM41
       && vROOM_NO != ROOM46_OGRE_STOMPING_GROUND
       && vROOM_NO != ROOM51
-      && vROOM_NO != ROOM58
+      && vROOM_NO != ROOM58_GIANT_STOMPING_GROUND
     ) {
       print("There is no reason to throw the dagger.");
     }
@@ -467,7 +467,7 @@ if (fCARRYING_WALNUT) {
     vSCORE += 3;
   }
 }
-if (vROOM_NO != ROOM49 && said("dive", "anyword")) {
+if (vROOM_NO != ROOM49_INSIDE_WELL && said("dive", "anyword")) {
   if (vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE) {
     print("The water is very deep here. Without aid, it is impossible to swim under the water for any length of time.");
   }
@@ -543,15 +543,15 @@ if (fCARRYING_MUSHROOM) {
       && !f175
       && vROOM_NO != ROOM21_WITCH_STOMPING_GROUND
       && vROOM_NO != ROOM22_CONDOR_AND_CAVE
-      && vROOM_NO != ROOM80
-      && vROOM_NO != ROOM65
+      && vROOM_NO != ROOM80_IN_MID_AIR
+      && vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE
       && vROOM_NO != ROOM14_BASE_GOLDEN_EGG_TREE
-      && vROOM_NO != ROOM63
+      && vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE
       && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
       && vROOM_NO != ROOM12_TOP_OF_WELL
       && vROOM_NO != ROOM73
       && vROOM_NO != ROOM74
-      && vROOM_NO != ROOM75
+      && vROOM_NO != ROOM75_RAT_STOMPING_GROUND
     ) {
       print("As soon as you swallow the first bite, you have this strange shrinking feeling...  It's true!  You are now no bigger than a mouse!");
       set.view(oEGO, 60);
@@ -561,7 +561,7 @@ if (fCARRYING_MUSHROOM) {
       set(fEATEN_MUSHROOM);
       set(fEGO_TINY);
       vSCORE -= 1;
-      if (vROOM_NO == ROOM78) {
+      if (vROOM_NO == ROOM78_IN_CAVE_WITH_TINY_HOLE) {
         vSCORE += 3;
       }
     }
@@ -572,7 +572,7 @@ if (fCARRYING_MUSHROOM) {
 }
 if (fEGO_TINY && v82 > 0) {
   v82--;
-  if (v82 == 1 && vROOM_NO != ROOM36 && vROOM_NO != ROOM78) {
+  if (v82 == 1 && vROOM_NO != ROOM36 && vROOM_NO != ROOM78_IN_CAVE_WITH_TINY_HOLE) {
     set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
     reset(fEGO_TINY);
@@ -631,17 +631,17 @@ if (fCARRYING_RING) {
     }
     if (fWEARING_RING && !fGOAT_COMPANION && !fEGO_INVISIBLE) {
       if (
-        vROOM_NO != ROOM65
+        vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE
         && !fEGO_CLIMBING_BEANSTALK
         && !f158
         && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
-        && vROOM_NO != ROOM63
-        && vROOM_NO != ROOM80
-        && vROOM_NO != ROOM49
+        && vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE
+        && vROOM_NO != ROOM80_IN_MID_AIR
+        && vROOM_NO != ROOM49_INSIDE_WELL
         && vROOM_NO != ROOM51
-        && vROOM_NO != ROOM52
+        && vROOM_NO != ROOM52_IN_WELL_UNDERWATER
         && vROOM_NO != ROOM12_TOP_OF_WELL
-        && vROOM_NO != ROOM79
+        && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE
         && !f209
         && !fCARRIED_BY_WITCH
         && !fEGO_TINY
@@ -652,17 +652,17 @@ if (fCARRYING_RING) {
         v90 = 250;
         v91 = 10;
       }
-      if (vROOM_NO == ROOM65
+      if (vROOM_NO == ROOM65_IN_GINGERBREAD_HOUSE
         || fEGO_CLIMBING_BEANSTALK
         || f158
         || vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE
-        || vROOM_NO == ROOM63
-        || vROOM_NO == ROOM80
-        || vROOM_NO == ROOM49
+        || vROOM_NO == ROOM63_UP_GOLDEN_EGG_TREE
+        || vROOM_NO == ROOM80_IN_MID_AIR
+        || vROOM_NO == ROOM49_INSIDE_WELL
         || vROOM_NO == ROOM51
-        || vROOM_NO == ROOM52
+        || vROOM_NO == ROOM52_IN_WELL_UNDERWATER
         || vROOM_NO == ROOM12_TOP_OF_WELL
-        || vROOM_NO == ROOM79
+        || vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE
         || f209
         || fCARRIED_BY_WITCH
         || fEGO_TINY
@@ -714,7 +714,7 @@ if (fCARRYING_MAGIC_BEANS) {
 if (fCARRYING_BOWL) {
   if (vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
     if (said("eat", "stew")) {
-      if (vROOM_NO == ROOM79) {
+      if (vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE) {
         print("It is very inconsiderate to eat in front of these poor, starving people.  The pains of guilt set in on you.");
       }
       else {
@@ -751,7 +751,7 @@ if (fCARRYING_BOWL) {
       }
     }
     if (said("fill") || said("fill", "bowl")) {
-      if (vROOM_NO == ROOM79) {
+      if (vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE) {
         print("The bowl fills with the delicious stew, but the woodcutters are unaware of it.");
       }
       else {
@@ -969,10 +969,10 @@ if (fCARRYING_FIDDLE) {
   if (said("examine", "fiddle")) {
     show.obj(INV_FIDDLE);
   }
-  if (vROOM_NO != ROOM76 && vROOM_NO != ROOM77) {
+  if (vROOM_NO != ROOM76_LEPRECHAUN_ANTECHAMBER && vROOM_NO != ROOM77_LEPRECHAUN_KING_THRONE_ROOM) {
     if (said("play", "fiddle")) {
       print("You play a lively, toe-tapping tune on the fiddle.");
-      if (vROOM_NO == ROOM79) {
+      if (vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE) {
         sound(SND_FIDDLE_TUNE, f148);
       }
     }

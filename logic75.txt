@@ -14,7 +14,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     vTEMP_X += 150;
     position.v(oEGO, vTEMP_X, vTEMP_Y);
   }
-  if (vPREV_ROOM_NO == ROOM76) {
+  if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
     position(oEGO, 34, 125);
   }
   ignore.objs(oEGO);
@@ -35,7 +35,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(46);
   animate.obj(oDOOR);
   set.view(oDOOR, 46);
-  if (vPREV_ROOM_NO == ROOM76) {
+  if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
     set.cel(oDOOR, 5);
   }
   else {
@@ -50,7 +50,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(oEGO);
   show.pic();
-  if (vPREV_ROOM_NO == ROOM76) {
+  if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
     reverse.loop(oDOOR, f203);
     sound(SND_DOOR_OPENING, f148);
   }
@@ -252,7 +252,7 @@ if (said("open", "doors")) {
   }
 }
 if (f23) {
-  new.room(ROOM76);
+  new.room(ROOM76_LEPRECHAUN_ANTECHAMBER);
 }
 if (said("close", "doors")) {
   print("It is already closed.");

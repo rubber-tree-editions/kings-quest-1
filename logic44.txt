@@ -18,7 +18,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     reset(f98);
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
   }
-  if (vPREV_ROOM_NO == ROOM79) {
+  if (vPREV_ROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE) {
     position(oEGO, 118, 123);
   }
   draw(oEGO);
@@ -77,7 +77,7 @@ if (said("examine", "doors") || said("examine", "doorway") || said("look inside"
   }
 }
 if (posn(oEGO, 126, 119, 128, 127)) {
-  new.room(ROOM79);
+  new.room(ROOM79_IN_WOODCUTTER_COTTAGE);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM5_SERENE_LAKE_WEST);

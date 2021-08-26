@@ -31,7 +31,7 @@ if (said("anyword", "bird")) {
   print("Now is not a good time to bother the bird.");
 }
 if (f20) {
-  new.room(ROOM65);
+  new.room(ROOM65_IN_GINGERBREAD_HOUSE);
 }
 if (f21) {
   new.room(ROOM48_LEPRECHAUN_HOLE);

@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 56, 83, 0, 0);
   }
-  if (vPREV_ROOM_NO == ROOM78) {
+  if (vPREV_ROOM_NO == ROOM78_IN_CAVE_WITH_TINY_HOLE) {
     vSCORE += 1;
     set.view(oEGO, 60);
     position(oEGO, 110, 131);
@@ -105,7 +105,7 @@ if (said("examine", "room")) {
 }
 FINALCHECKS:
   if (posn(oEGO, 111, 127, 119, 132)) {
-    new.room(ROOM78);
+    new.room(ROOM78_IN_CAVE_WITH_TINY_HOLE);
   }
   if (vEGO_EDGE_CODE == EDGE_HORIZON) {
     new.room(ROOM45_OUTSIDE_WOODCUTTER_COTTAGE_BACK);

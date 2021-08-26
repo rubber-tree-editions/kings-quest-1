@@ -126,16 +126,16 @@ if (!fCARRYING_MAGIC_BEANS) {
   }
 }
 if (!fCARRYING_BOWL) {
-  if (vROOM_NO != ROOM31_FREE_BOWL && vROOM_NO != ROOM79 && said("get", "bowl")) {
+  if (vROOM_NO != ROOM31_FREE_BOWL && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE && said("get", "bowl")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM31_FREE_BOWL && vROOM_NO != ROOM79 && said("examine", "bowl")) {
+  if (vROOM_NO != ROOM31_FREE_BOWL && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE && said("examine", "bowl")) {
     print("You do not have any stew.");
   }
   if (said("fill")) {
     print("Fill what?");
   }
-  if (vROOM_NO != ROOM79 && said("eat", "stew")) {
+  if (vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE && said("eat", "stew")) {
     print("You do not have it.");
   }
   if (said("anyword", "bowl")
@@ -162,10 +162,10 @@ if (!fCARRYING_PEBBLES) {
   }
 }
 if (!fCARRYING_CHEST) {
-  if (vROOM_NO != ROOM58 && (said("get", "chest") || said("get", "coins"))) {
+  if (vROOM_NO != ROOM58_GIANT_STOMPING_GROUND && (said("get", "chest") || said("get", "coins"))) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM58 && (said("examine", "chest") || said("examine", "coins"))) {
+  if (vROOM_NO != ROOM58_GIANT_STOMPING_GROUND && (said("examine", "chest") || said("examine", "coins"))) {
     print("You do not have it.");
   }
   if (said("anyword", "chest") && !said("examine", "chest") && !said("get", "chest")) {
@@ -187,10 +187,10 @@ if (!fCARRYING_GOLD_KEY) {
   }
 }
 if (!fCARRYING_NOTE) {
-  if (vROOM_NO != ROOM65 && said("get", "note")) {
+  if (vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE && said("get", "note")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM65 && said("examine", "note")) {
+  if (vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE && said("examine", "note")) {
     print("You do not have it.");
   }
   if (said("anyword", "note") && !said("get", "note") && !said("examine", "note")) {
@@ -198,10 +198,10 @@ if (!fCARRYING_NOTE) {
   }
 }
 if (!fCARRYING_SWISS_CHEESE) {
-  if (vROOM_NO != ROOM65 && said("get", "swiss cheese")) {
+  if (vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE && said("get", "swiss cheese")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM65 && said("examine", "swiss cheese")) {
+  if (vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE && said("examine", "swiss cheese")) {
     print("You do not have it.");
   }
   if (said("anyword", "swiss cheese")
@@ -237,10 +237,10 @@ if (!fCARRYING_SLINGSHOT) {
   }
 }
 if (!fCARRYING_SHIELD) {
-  if (vROOM_NO != ROOM77 && said("get", "shield")) {
+  if (vROOM_NO != ROOM77_LEPRECHAUN_KING_THRONE_ROOM && said("get", "shield")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM77 && said("examine", "shield")) {
+  if (vROOM_NO != ROOM77_LEPRECHAUN_KING_THRONE_ROOM && said("examine", "shield")) {
     print("You do not have it.");
   }
   if (said("anyword", "shield") && !said("get", "shield") && !said("examine", "shield")) {
@@ -248,10 +248,10 @@ if (!fCARRYING_SHIELD) {
   }
 }
 if (!fCARRYING_SCEPTRE) {
-  if (vROOM_NO != ROOM77 && said("get", "sceptre")) {
+  if (vROOM_NO != ROOM77_LEPRECHAUN_KING_THRONE_ROOM && said("get", "sceptre")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM77 && said("examine", "sceptre")) {
+  if (vROOM_NO != ROOM77_LEPRECHAUN_KING_THRONE_ROOM && said("examine", "sceptre")) {
     print("You do not have it.");
   }
   if (said("anyword", "sceptre") && !said("get", "sceptre") && !said("examine", "sceptre")) {
@@ -287,10 +287,10 @@ if (!fCARRYING_DIAMONDS) {
   }
 }
 if (!fCARRYING_GOLDEN_EGG) {
-  if (vROOM_NO != ROOM63 && said("get", "golden egg")) {
+  if (vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE && said("get", "golden egg")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM63 && said("examine", "golden egg")) {
+  if (vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE && said("examine", "golden egg")) {
     print("You do not have it.");
   }
   if (said("anyword", "golden egg")
@@ -301,10 +301,10 @@ if (!fCARRYING_GOLDEN_EGG) {
   }
 }
 if (!fCARRYING_FIDDLE) {
-  if (vROOM_NO != ROOM79 && said("get", "fiddle")) {
+  if (vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE && said("get", "fiddle")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM79 && said("examine", "fiddle")) {
+  if (vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE && said("examine", "fiddle")) {
     print("You do not have it.");
   }
   if (said("anyword", "fiddle") && !said("get", "fiddle") && !said("examine", "fiddle")) {

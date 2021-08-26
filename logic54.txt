@@ -6,12 +6,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  if (vPREV_ROOM_NO == ROOM53) {
+  if (vPREV_ROOM_NO == ROOM53_KING_EDWARD_THRONE_ROOM) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_X += 2;
     position.v(oEGO, vTEMP_X, vTEMP_Y);
   }
-  if (vPREV_ROOM_NO == ROOM55) {
+  if (vPREV_ROOM_NO == ROOM55_CASTLE_HALL) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_Y -= 2;
     position.v(oEGO, vTEMP_X, vTEMP_Y);
@@ -26,10 +26,10 @@ if (said("examine", "hall") || said("examine", "room") || said("examine", "build
   print("The long marble hall has a cold, dreary feeling.");
 }
 if (posn(oEGO, 0, 0, 1, 167)) {
-  new.room(ROOM53);
+  new.room(ROOM53_KING_EDWARD_THRONE_ROOM);
 }
 if (posn(oEGO, 0, 166, 159, 167)) {
-  new.room(ROOM55);
+  new.room(ROOM55_CASTLE_HALL);
 }
 return;
 

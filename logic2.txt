@@ -27,7 +27,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oCASTLE_DOORS);
     set.view(oCASTLE_DOORS, 9);
     position(oCASTLE_DOORS, 105, 120);
-    if (vPREV_ROOM_NO == ROOM55) {
+    if (vPREV_ROOM_NO == ROOM55_CASTLE_HALL) {
       set.cel(oCASTLE_DOORS, 2);
     }
     else {
@@ -56,7 +56,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oGATOR1);
   draw(oGATOR2);
   draw(oBANNERS);
-  if (vPREV_ROOM_NO == ROOM55) {
+  if (vPREV_ROOM_NO == ROOM55_CASTLE_HALL) {
     position(oEGO, 110, 122);
     set(f26);
   }
@@ -191,7 +191,7 @@ if (!fGOAT_COMPANION && !f125) {
   }
 }
 if (f24 && f28) {
-  new.room(ROOM55);
+  new.room(ROOM55_CASTLE_HALL);
 }
 if (said("drink", "water") && !fBUCKET_FILLED && !f116) {
   if (posn(oEGO, 0, 143, 159, 167) || posn(oEGO, 40, 108, 74, 142)) {

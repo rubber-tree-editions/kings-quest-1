@@ -54,7 +54,7 @@ else if (said("examine", "anyword")) {
   print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM58);
+  new.room(ROOM58_GIANT_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM56);

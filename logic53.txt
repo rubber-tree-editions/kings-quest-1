@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   v70 = 0;
   v71 = 0;
-  if (vPREV_ROOM_NO == ROOM54) {
+  if (vPREV_ROOM_NO == ROOM54_CASTLE_HALL_CORNER) {
     position(oEGO, 154, 120);
   }
   load.view(1);
@@ -323,7 +323,7 @@ if (f23) {
   graphics();
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM54);
+  new.room(ROOM54_CASTLE_HALL_CORNER);
 }
 return;
 

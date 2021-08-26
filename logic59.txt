@@ -73,7 +73,7 @@ if (posn(oEGO, 135, 94, 136, 120)) {
   new.room(ROOM69);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM58);
+  new.room(ROOM58_GIANT_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);

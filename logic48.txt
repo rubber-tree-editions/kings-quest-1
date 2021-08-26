@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.view(103);
   load.view(104);
-  if (vPREV_ROOM_NO == ROOM80) {
+  if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
     set.view(oEGO, 89);
     animate.obj(o1);
     set.view(o1, 8);

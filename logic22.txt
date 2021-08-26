@@ -286,7 +286,7 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
 }
 if (f25) {
   print("Where could this giant bird be taking you?");
-  new.room(ROOM80);
+  new.room(ROOM80_IN_MID_AIR);
   reset(f155);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON && fEGO_CLIMBING_BEANSTALK) {

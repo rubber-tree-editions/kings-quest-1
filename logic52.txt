@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.view(oEGO, 73);
   load.view(114);
   set(fEGO_ON_WATER);
-  if (vPREV_ROOM_NO == ROOM49) {
+  if (vPREV_ROOM_NO == ROOM49_INSIDE_WELL) {
     position(oEGO, 75, 26);
   }
   else {
@@ -102,7 +102,7 @@ if (posn(oEGO, 31, 111, 32, 130)) {
   new.room(ROOM51);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM49);
+  new.room(ROOM49_INSIDE_WELL);
 }
 return;
 

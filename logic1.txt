@@ -38,7 +38,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oGATOR1);
   draw(oGATOR2);
   draw(oBANNERS);
-  if (vPREV_ROOM_NO == ROOM_NULL || vPREV_ROOM_NO == ROOM83) {
+  if (vPREV_ROOM_NO == ROOM_NULL || vPREV_ROOM_NO == ROOM83_TITLE_SCREEN) {
     position(oEGO, 110, 100);
   }
   wander(oGATOR1);
@@ -51,7 +51,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(oEGO);
   call(LOGIC_SWIMMING);
-  if (vPREV_ROOM_NO == ROOM83) {
+  if (vPREV_ROOM_NO == ROOM83_TITLE_SCREEN) {
     submit.menu();
   }
   show.pic();

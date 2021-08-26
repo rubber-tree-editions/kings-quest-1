@@ -37,7 +37,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       set.priority(oEGO, 15);
     }
   }
-  if (vPREV_ROOM_NO == ROOM52) {
+  if (vPREV_ROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
     set.view(oEGO, 70);
     set(f23);
@@ -383,7 +383,7 @@ if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING) {
       set(f164);
       vSCORE += 2;
     }
-    new.room(ROOM52);
+    new.room(ROOM52_IN_WELL_UNDERWATER);
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {

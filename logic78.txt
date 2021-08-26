@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oEGO, 60);
     position(oEGO, 3, 81);
   }
-  if (vPREV_ROOM_NO == ROOM77) {
+  if (vPREV_ROOM_NO == ROOM77_LEPRECHAUN_KING_THRONE_ROOM) {
     position(oEGO, 146, 131);
     move.obj(oEGO, 146, 131, 0, f148);
   }
@@ -53,7 +53,7 @@ if (said("examine", "cave") || said("examine", "room")) {
   print("This is a small cave with stairs on one side and a very small hole on the other side.");
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM77);
+  new.room(ROOM77_LEPRECHAUN_KING_THRONE_ROOM);
 }
 if (posn(oEGO, 0, 0, 1, 167)) {
   new.room(ROOM36);

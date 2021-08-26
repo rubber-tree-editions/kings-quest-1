@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.sound(SND_DRAGON);
   }
   load.view(35);
-  if (vPREV_ROOM_NO == ROOM52) {
+  if (vPREV_ROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
     set.view(oEGO, 0);
     reset(f98);
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
@@ -345,7 +345,7 @@ if (f23) {
   erase(oDRAGON);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM52);
+  new.room(ROOM52_IN_WELL_UNDERWATER);
 }
 if (posn(oEGO, 0, 0, 1, 167)) {
   new.room(ROOM50);

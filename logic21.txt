@@ -157,7 +157,7 @@ if (f144) {
   set.view(oEGO, 0);
 }
 if (f23) {
-  new.room(ROOM80);
+  new.room(ROOM80_IN_MID_AIR);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON && !fCARRIED_BY_WITCH) {
   new.room(ROOM28_OUTSIDE_GINGERBREAD_HOUSE);

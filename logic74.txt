@@ -6,7 +6,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  if (vPREV_ROOM_NO == ROOM75) {
+  if (vPREV_ROOM_NO == ROOM75_RAT_STOMPING_GROUND) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_X += 2;
     position.v(oEGO, vTEMP_X, vTEMP_Y);
@@ -24,7 +24,7 @@ if (posn(oEGO, 65, 51, 100, 52)) {
   new.room(ROOM73);
 }
 if (posn(oEGO, 0, 0, 1, 167)) {
-  new.room(ROOM75);
+  new.room(ROOM75_RAT_STOMPING_GROUND);
 }
 return;
 

@@ -43,7 +43,7 @@ if (f20) {
   set(fGAME_OVER);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM58);
+  new.room(ROOM58_GIANT_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM62);

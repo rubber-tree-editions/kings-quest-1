@@ -7,7 +7,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(70);
-  if (vPREV_ROOM_NO == ROOM54) {
+  if (vPREV_ROOM_NO == ROOM54_CASTLE_HALL_CORNER) {
     position(oEGO, 79, 71);
   }
   if (vPREV_ROOM_NO == ROOM2_CASTLE_WEST) {
@@ -29,7 +29,7 @@ if (said("get", "knight")) {
   print("The armor is firmly mounted to the wall.");
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM54);
+  new.room(ROOM54_CASTLE_HALL_CORNER);
 }
 if (posn(oEGO, 0, 166, 159, 167)) {
   new.room(ROOM2_CASTLE_WEST);

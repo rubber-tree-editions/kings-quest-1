@@ -53,7 +53,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       set.cel(o3, 2);
     }
   }
-  if (vPREV_ROOM_NO == ROOM49) {
+  if (vPREV_ROOM_NO == ROOM49_INSIDE_WELL) {
     if (f176) {
       set.view(oEGO, 143);
     }
@@ -244,7 +244,7 @@ if (f180) {
     reset(f180);
   }
   if (vTEMP_Y > 145) {
-    new.room(ROOM49);
+    new.room(ROOM49_INSIDE_WELL);
   }
   if (vTEMP_X < 35 || vTEMP_X > 44) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
@@ -262,7 +262,7 @@ if (f29 || f20) {
   reset(f20);
   erase(oEGO);
   set(f182);
-  new.room(ROOM49);
+  new.room(ROOM49_INSIDE_WELL);
 }
 if (f28) {
   reset(f28);
@@ -540,7 +540,7 @@ if (f176 && f179 && f180) {
 if (f25) {
   reset(f25);
   set(f177);
-  new.room(ROOM49);
+  new.room(ROOM49_INSIDE_WELL);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM21_WITCH_STOMPING_GROUND);

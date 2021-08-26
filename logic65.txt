@@ -63,7 +63,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oSWISS_CHEESE, 41, 61);
     set.priority(oSWISS_CHEESE, 8);
   }
-  if (vPREV_ROOM_NO == ROOM80) {
+  if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
     load.view(105);
     load.view(103);
     load.view(104);
@@ -81,7 +81,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (!fPROTECTED_BY_SPELL
     && vWITCH_STATE != WITCHSTATE_DEAD
-    && vPREV_ROOM_NO != ROOM80
+    && vPREV_ROOM_NO != ROOM80_IN_MID_AIR
     && !fEGO_INVISIBLE
   ) {
     if (vWITCH_STATE == WITCHSTATE_AWAY_FROM_HOME) {
@@ -143,7 +143,7 @@ if (vWITCH_STATE == WITCHSTATE_DEAD) {
     print("The witch is dead.");
   }
 }
-if (vPREV_ROOM_NO == ROOM80) {
+if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
   if (!f20 && !f33 && !f27) {
     sound(SND_FALLING, f198);
     set(f33);
@@ -448,7 +448,7 @@ if (said("examine", "stove")) {
 }
 if (said("examine", "cage")) {
   if (f25) {
-    if (vPREV_ROOM_NO == ROOM80) {
+    if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
       print("This cage will be your new home for the rest of your life.");
     }
     if (vPREV_ROOM_NO == ROOM28_OUTSIDE_GINGERBREAD_HOUSE) {
