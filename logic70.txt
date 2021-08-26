@@ -85,14 +85,14 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM71);
 }
 if (f20 || posn(oEGO, 0, 166, 159, 167)) {
-  if (vBEANSTALK_ROOM == ROOM6) {
-    new.room(ROOM6);
+  if (vBEANSTALK_ROOM == ROOM6_POUCH_STUMP) {
+    new.room(ROOM6_POUCH_STUMP);
   }
-  if (vBEANSTALK_ROOM == ROOM22) {
-    new.room(ROOM22);
+  if (vBEANSTALK_ROOM == ROOM22_CONDOR_AND_CAVE) {
+    new.room(ROOM22_CONDOR_AND_CAVE);
   }
-  if (vBEANSTALK_ROOM == ROOM31) {
-    new.room(ROOM31);
+  if (vBEANSTALK_ROOM == ROOM31_FREE_BOWL) {
+    new.room(ROOM31_FREE_BOWL);
   }
   if (vBEANSTALK_ROOM == ROOM35) {
     new.room(ROOM35);

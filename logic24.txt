@@ -68,13 +68,13 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM25);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM23);
+  new.room(ROOM23_MIRRORLIKE_LAKE);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM17);
+  new.room(ROOM17_CLIFFS_LAKE_EAST);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM9);
+  new.room(ROOM9_FAIRY_GODMOTHER_STOMPING_GROUND);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

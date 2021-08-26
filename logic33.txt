@@ -130,10 +130,10 @@ if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM48);
+  new.room(ROOM48_LEPRECHAUN_HOLE);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM40);
+  new.room(ROOM40_GNOME_LEAN_TO);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM34);

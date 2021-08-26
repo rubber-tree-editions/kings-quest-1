@@ -66,7 +66,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.blocks(oEGO);
     move.obj(oEGO, 38, 140, 0, f148);
   }
-  if (vPREV_ROOM_NO == ROOM5) {
+  if (vPREV_ROOM_NO == ROOM5_SERENE_LAKE_WEST) {
     if (fEGO_ON_WATER) {
       set.view(oEGO, 0);
       reset(f98);
@@ -543,16 +543,16 @@ if (f25) {
   new.room(ROOM49);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM21);
+  new.room(ROOM21_WITCH_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM13);
+  new.room(ROOM13_WOLF_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM11);
+  new.room(ROOM11_GOAT_PEN_EAST);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM5);
+  new.room(ROOM5_SERENE_LAKE_WEST);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

@@ -160,16 +160,16 @@ if (f23) {
   new.room(ROOM80);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON && !fCARRIED_BY_WITCH) {
-  new.room(ROOM28);
+  new.room(ROOM28_OUTSIDE_GINGERBREAD_HOUSE);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT && !fCARRIED_BY_WITCH) {
-  new.room(ROOM20);
+  new.room(ROOM20_ALPINE_LAKE);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT && !fCARRIED_BY_WITCH) {
-  new.room(ROOM22);
+  new.room(ROOM22_CONDOR_AND_CAVE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM && !fCARRIED_BY_WITCH) {
-  new.room(ROOM12);
+  new.room(ROOM12_TOP_OF_WELL);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

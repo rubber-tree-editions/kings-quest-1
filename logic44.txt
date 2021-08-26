@@ -80,10 +80,10 @@ if (posn(oEGO, 126, 119, 128, 127)) {
   new.room(ROOM79);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM5);
+  new.room(ROOM5_SERENE_LAKE_WEST);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM45);
+  new.room(ROOM45_OUTSIDE_WOODCUTTER_COTTAGE_BACK);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM43);

@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.view(oGOAT, 14);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   object.on.land(oGOAT);
-  if (vROOM_NO == ROOM7 && vPREV_ROOM_NO == ROOM8 && vTEMP_Y < 65) {
+  if (vROOM_NO == ROOM7_WATERFALL_LAKE_EAST && vPREV_ROOM_NO == ROOM8_WATERFALL_LAKE_WEST && vTEMP_Y < 65) {
     position(oGOAT, 1, 42);
     stop.motion(oGOAT);
     stop.cycling(oGOAT);
@@ -20,7 +20,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oGOAT);
     goto(ATRIVER);
   }
-  if (vROOM_NO == ROOM17 && vPREV_ROOM_NO == ROOM18 && vTEMP_Y < 65) {
+  if (vROOM_NO == ROOM17_CLIFFS_LAKE_EAST && vPREV_ROOM_NO == ROOM18_CLIFFS_LAKE_WEST && vTEMP_Y < 65) {
     position(oGOAT, 1, 45);
     stop.motion(oGOAT);
     stop.cycling(oGOAT);
@@ -30,7 +30,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oGOAT);
     goto(ATRIVER);
   }
-  if (vROOM_NO == ROOM17 && vPREV_ROOM_NO == ROOM32 && vTEMP_X < 50) {
+  if (vROOM_NO == ROOM17_CLIFFS_LAKE_EAST && vPREV_ROOM_NO == ROOM32 && vTEMP_X < 50) {
     position(oGOAT, 1, 45);
     stop.motion(oGOAT);
     stop.cycling(oGOAT);
@@ -98,8 +98,8 @@ if (f207) {
   stop.cycling(oGOAT);
 }
 if (v40 > 20 && vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
-  if (vROOM_NO != ROOM1
-    && vROOM_NO != ROOM2
+  if (vROOM_NO != ROOM1_CASTLE_EAST
+    && vROOM_NO != ROOM2_CASTLE_WEST
     && vROOM_NO != ROOM41
     && vROOM_NO != ROOM33
     && vROOM_NO != ROOM34

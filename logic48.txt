@@ -106,7 +106,7 @@ if (f23) {
   new.room(ROOM73);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM47);
+  new.room(ROOM47_MUSHROOM);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM33);

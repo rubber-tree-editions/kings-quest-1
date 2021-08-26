@@ -202,10 +202,10 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water"
   }
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM48);
+  new.room(ROOM48_LEPRECHAUN_HOLE);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM46);
+  new.room(ROOM46_OGRE_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM34);

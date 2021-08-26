@@ -26,7 +26,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 122, 54);
     }
   }
-  if (vPREV_ROOM_NO == ROOM13) {
+  if (vPREV_ROOM_NO == ROOM13_WOLF_STOMPING_GROUND) {
     if (posn(oEGO, 0, 164, 75, 167)) {
       position(oEGO, 37, 165);
     }
@@ -102,13 +102,13 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM29);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM19);
+  new.room(ROOM19_BASE_MOUNTAIN_DOOR);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM21);
+  new.room(ROOM21_WITCH_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM13);
+  new.room(ROOM13_WOLF_STOMPING_GROUND);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

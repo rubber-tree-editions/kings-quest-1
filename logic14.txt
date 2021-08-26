@@ -105,16 +105,16 @@ if (said("climb", "tree") || said("climb", "oak", "tree") || said("climb", "oak"
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM19);
+  new.room(ROOM19_BASE_MOUNTAIN_DOOR);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM15);
+  new.room(ROOM15_CARROT_PATCH_WEST);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM13);
+  new.room(ROOM13_WOLF_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM3);
+  new.room(ROOM3_ROCK_OVER_HOLE);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

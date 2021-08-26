@@ -55,13 +55,13 @@ if (said("climb", "window")) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM4);
+  new.room(ROOM4_SERENE_LAKE_EAST);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM46);
+  new.room(ROOM46_OGRE_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM44);
+  new.room(ROOM44_OUTSIDE_WOODCUTTER_COTTAGE_FRONT);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM36);

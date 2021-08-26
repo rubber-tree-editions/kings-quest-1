@@ -19,7 +19,7 @@ if (vROOM_NO == ROOM_NULL) {
   vTEMP_CYCLE_DELAY = 2;
   vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
   if (fRESTART_GAME_EXECUTED) {
-    new.room(ROOM1);
+    new.room(ROOM1_CASTLE_EAST);
   }
   else {
     new.room(ROOM83);
@@ -43,12 +43,12 @@ if (fROOM_SCRIPT_EXECUTED) {
     reset(f98);
     vEGO_VIEW_NO = 0;
   }
-  if (vPREV_ROOM_NO == ROOM10 && vROOM_NO != ROOM11) {
+  if (vPREV_ROOM_NO == ROOM10_GOAT_PEN_WEST && vROOM_NO != ROOM11_GOAT_PEN_EAST) {
     if (fGOAT_COMPANION) {
       vEGO_VIEW_NO = 0;
     }
   }
-  if (vPREV_ROOM_NO == ROOM11 && vROOM_NO != ROOM10) {
+  if (vPREV_ROOM_NO == ROOM11_GOAT_PEN_EAST && vROOM_NO != ROOM10_GOAT_PEN_WEST) {
     if (fGOAT_COMPANION) {
       vEGO_VIEW_NO = 0;
     }
@@ -61,9 +61,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     && vROOM_NO != ROOM49
     && vROOM_NO != ROOM51
     && vROOM_NO != ROOM52
-    && vROOM_NO != ROOM12
-    && vROOM_NO != ROOM10
-    && vROOM_NO != ROOM11
+    && vROOM_NO != ROOM12_TOP_OF_WELL
+    && vROOM_NO != ROOM10_GOAT_PEN_WEST
+    && vROOM_NO != ROOM11_GOAT_PEN_EAST
   ) {
     load.view(75);
     load.view(87);
@@ -153,32 +153,32 @@ if (controller(cABOUT)) {
   );
 }
 if (vROOM_NO > ROOM52
-  || vROOM_NO == ROOM3
-  || vROOM_NO == ROOM6
-  || vROOM_NO == ROOM9
-  || vROOM_NO == ROOM10
-  || vROOM_NO == ROOM11
-  || vROOM_NO == ROOM12
-  || vROOM_NO == ROOM13
-  || vROOM_NO == ROOM14
-  || vROOM_NO == ROOM15
-  || vROOM_NO == ROOM16
-  || vROOM_NO == ROOM19
-  || vROOM_NO == ROOM21
-  || vROOM_NO == ROOM22
-  || vROOM_NO == ROOM24
+  || vROOM_NO == ROOM3_ROCK_OVER_HOLE
+  || vROOM_NO == ROOM6_POUCH_STUMP
+  || vROOM_NO == ROOM9_FAIRY_GODMOTHER_STOMPING_GROUND
+  || vROOM_NO == ROOM10_GOAT_PEN_WEST
+  || vROOM_NO == ROOM11_GOAT_PEN_EAST
+  || vROOM_NO == ROOM12_TOP_OF_WELL
+  || vROOM_NO == ROOM13_WOLF_STOMPING_GROUND
+  || vROOM_NO == ROOM14_BASE_GOLDEN_EGG_TREE
+  || vROOM_NO == ROOM15_CARROT_PATCH_WEST
+  || vROOM_NO == ROOM16_CARROT_PATCH_EAST
+  || vROOM_NO == ROOM19_BASE_MOUNTAIN_DOOR
+  || vROOM_NO == ROOM21_WITCH_STOMPING_GROUND
+  || vROOM_NO == ROOM22_CONDOR_AND_CAVE
+  || vROOM_NO == ROOM24_CLOVER_PATCH
   || vROOM_NO == ROOM27
-  || vROOM_NO == ROOM28
+  || vROOM_NO == ROOM28_OUTSIDE_GINGERBREAD_HOUSE
   || vROOM_NO == ROOM29
-  || vROOM_NO == ROOM30
-  || vROOM_NO == ROOM31
+  || vROOM_NO == ROOM30_WALNUT_TREE
+  || vROOM_NO == ROOM31_FREE_BOWL
   || vROOM_NO == ROOM35
   || vROOM_NO == ROOM36
   || vROOM_NO == ROOM38
-  || vROOM_NO == ROOM44
-  || vROOM_NO == ROOM45
-  || vROOM_NO == ROOM46
-  || vROOM_NO == ROOM48
+  || vROOM_NO == ROOM44_OUTSIDE_WOODCUTTER_COTTAGE_FRONT
+  || vROOM_NO == ROOM45_OUTSIDE_WOODCUTTER_COTTAGE_BACK
+  || vROOM_NO == ROOM46_OGRE_STOMPING_GROUND
+  || vROOM_NO == ROOM48_LEPRECHAUN_HOLE
   || vROOM_NO == ROOM50
   || vROOM_NO == ROOM51
 ) {
@@ -246,7 +246,7 @@ if (controller(cPREVINPUT)) {
 if (controller(cPAUSE)) {
   pause();
 }
-if (vROOM_NO != ROOM21) {
+if (vROOM_NO != ROOM21_WITCH_STOMPING_GROUND) {
   if (said("jump") || controller(cJUMP)) {
     if (!f143
         && !fEGO_CLIMBING_BEANSTALK
@@ -259,20 +259,20 @@ if (vROOM_NO != ROOM21) {
         && !fEGO_DUCKING
         && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
         && vROOM_NO != ROOM29
-        && vROOM_NO != ROOM13
+        && vROOM_NO != ROOM13_WOLF_STOMPING_GROUND
         && vROOM_NO != ROOM53
         && vROOM_NO != ROOM58
         && vROOM_NO != ROOM49
         && vROOM_NO != ROOM52
         && vROOM_NO != ROOM63
         && vROOM_NO != ROOM80
-        && vROOM_NO != ROOM48
+        && vROOM_NO != ROOM48_LEPRECHAUN_HOLE
         && vROOM_NO != ROOM73
         && vROOM_NO != ROOM65
-        && vROOM_NO != ROOM12
-        && vROOM_NO != ROOM14
-        && vROOM_NO != ROOM10
-        && vROOM_NO != ROOM11
+        && vROOM_NO != ROOM12_TOP_OF_WELL
+        && vROOM_NO != ROOM14_BASE_GOLDEN_EGG_TREE
+        && vROOM_NO != ROOM10_GOAT_PEN_WEST
+        && vROOM_NO != ROOM11_GOAT_PEN_EAST
         && vROOM_NO != ROOM51
     ) {
       set(f143);
@@ -310,21 +310,21 @@ if (said("duck") || controller(cDUCK)) {
       && !f143
       && !f146
       && vROOM_NO != ROOM29
-      && vROOM_NO != ROOM12
+      && vROOM_NO != ROOM12_TOP_OF_WELL
       && vROOM_NO != ROOM53
       && vROOM_NO != ROOM58
       && vROOM_NO != ROOM49
       && vROOM_NO != ROOM52
       && vROOM_NO != ROOM63
       && vROOM_NO != ROOM80
-      && vROOM_NO != ROOM48
+      && vROOM_NO != ROOM48_LEPRECHAUN_HOLE
       && vROOM_NO != ROOM73
       && vROOM_NO != ROOM65
       && vROOM_NO != ROOM79
-      && vROOM_NO != ROOM14
-      && vROOM_NO != ROOM10
-      && vROOM_NO != ROOM11
-      && vROOM_NO != ROOM13
+      && vROOM_NO != ROOM14_BASE_GOLDEN_EGG_TREE
+      && vROOM_NO != ROOM10_GOAT_PEN_WEST
+      && vROOM_NO != ROOM11_GOAT_PEN_EAST
+      && vROOM_NO != ROOM13_WOLF_STOMPING_GROUND
       && !fCARRIED_BY_WITCH
   ) {
     set(fEGO_DUCKING);
@@ -363,12 +363,12 @@ if (fCARRYING_DAGGER) {
     print("You already have it.");
   }
   if (said("throw", "dagger")) {
-    if (vROOM_NO != ROOM18
+    if (vROOM_NO != ROOM18_CLIFFS_LAKE_WEST
       && vROOM_NO != ROOM25
       && vROOM_NO != ROOM29
       && vROOM_NO != ROOM39
       && vROOM_NO != ROOM41
-      && vROOM_NO != ROOM46
+      && vROOM_NO != ROOM46_OGRE_STOMPING_GROUND
       && vROOM_NO != ROOM51
       && vROOM_NO != ROOM58
     ) {
@@ -425,7 +425,7 @@ if (fCARRYING_CARROT) {
       reset(fCARRYING_CARROT);
       reset(fPOINTS_FOR_CARROT);
       vSCORE -= 2;
-      if (vROOM_NO == ROOM10 || vROOM_NO == ROOM11) {
+      if (vROOM_NO == ROOM10_GOAT_PEN_WEST || vROOM_NO == ROOM11_GOAT_PEN_EAST) {
         set.view(oEGO, 0);
       }
       erase(oGOAT);
@@ -456,7 +456,7 @@ if (fCARRYING_WALNUT) {
     show.obj(INV_WALNUT);
   }
   if (said("open", "walnut") || said("crack", "walnut")) {
-    if (vROOM_NO == ROOM30) {
+    if (vROOM_NO == ROOM30_WALNUT_TREE) {
       sound(SND_GOLDEN_WALNUT, f148);
     }
     print("When you open the walnut, you discover the nut inside is pure gold!");
@@ -541,14 +541,14 @@ if (fCARRYING_MUSHROOM) {
       && !f180
       && !f181
       && !f175
-      && vROOM_NO != ROOM21
-      && vROOM_NO != ROOM22
+      && vROOM_NO != ROOM21_WITCH_STOMPING_GROUND
+      && vROOM_NO != ROOM22_CONDOR_AND_CAVE
       && vROOM_NO != ROOM80
       && vROOM_NO != ROOM65
-      && vROOM_NO != ROOM14
+      && vROOM_NO != ROOM14_BASE_GOLDEN_EGG_TREE
       && vROOM_NO != ROOM63
       && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
-      && vROOM_NO != ROOM12
+      && vROOM_NO != ROOM12_TOP_OF_WELL
       && vROOM_NO != ROOM73
       && vROOM_NO != ROOM74
       && vROOM_NO != ROOM75
@@ -640,7 +640,7 @@ if (fCARRYING_RING) {
         && vROOM_NO != ROOM49
         && vROOM_NO != ROOM51
         && vROOM_NO != ROOM52
-        && vROOM_NO != ROOM12
+        && vROOM_NO != ROOM12_TOP_OF_WELL
         && vROOM_NO != ROOM79
         && !f209
         && !fCARRIED_BY_WITCH
@@ -661,7 +661,7 @@ if (fCARRYING_RING) {
         || vROOM_NO == ROOM49
         || vROOM_NO == ROOM51
         || vROOM_NO == ROOM52
-        || vROOM_NO == ROOM12
+        || vROOM_NO == ROOM12_TOP_OF_WELL
         || vROOM_NO == ROOM79
         || f209
         || fCARRIED_BY_WITCH
@@ -703,7 +703,7 @@ if (fCARRYING_MAGIC_BEANS) {
     reset(fCARRYING_MAGIC_BEANS);
   }
   if (said("plant", "magic beans")) {
-    if (vROOM_NO != ROOM6 && vROOM_NO != ROOM22 && vROOM_NO != ROOM31 && vROOM_NO != ROOM35 && vROOM_NO != ROOM38) {
+    if (vROOM_NO != ROOM6_POUCH_STUMP && vROOM_NO != ROOM22_CONDOR_AND_CAVE && vROOM_NO != ROOM31_FREE_BOWL && vROOM_NO != ROOM35 && vROOM_NO != ROOM38) {
       print("That is not a bad idea, but this is not a very suitable place to plant these beans.  Why don't you try it elsewhere?");
     }
     else {
@@ -797,12 +797,12 @@ if (fCARRYING_CHEST) {
   }
 }
 if (!fGOAT_COMPANION) {
-  if (vROOM_YOU_KILLED_THE_GOAT_IN <= ROOM_NULL && vROOM_NO != ROOM10 && vROOM_NO != ROOM11) {
+  if (vROOM_YOU_KILLED_THE_GOAT_IN <= ROOM_NULL && vROOM_NO != ROOM10_GOAT_PEN_WEST && vROOM_NO != ROOM11_GOAT_PEN_EAST) {
     if (said("anyword", "goat")) {
       print("There is no goat here.");
     }
   }
-  if (vROOM_YOU_KILLED_THE_GOAT_IN > ROOM_NULL && vROOM_NO != ROOM10 && vROOM_NO != ROOM11) {
+  if (vROOM_YOU_KILLED_THE_GOAT_IN > ROOM_NULL && vROOM_NO != ROOM10_GOAT_PEN_WEST && vROOM_NO != ROOM11_GOAT_PEN_EAST) {
     if (said("anyword", "goat")) {
       print("You've already killed the goat.");
     }
@@ -814,7 +814,7 @@ if (fGOAT_COMPANION) {
   }
   if (fCARRYING_DAGGER && said("murder", "goat")) {
     if (vROOM_NO != ROOM25 && vROOM_NO != ROOM39 && vROOM_NO != ROOM41) {
-      if (vROOM_NO == ROOM10 || vROOM_NO == ROOM11) {
+      if (vROOM_NO == ROOM10_GOAT_PEN_WEST || vROOM_NO == ROOM11_GOAT_PEN_EAST) {
         get.posn(oEGO, vTEMP_X, vTEMP_Y);
         print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.");
         set.view(oEGO, 0);

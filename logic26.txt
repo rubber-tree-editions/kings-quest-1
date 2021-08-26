@@ -18,7 +18,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.logics(LOGIC_SWIMMING);
   call(LOGIC_SWIMMING);
   set(fSWIMMING_IMPOSSIBLE_HERE);
-  if (vPREV_ROOM_NO == ROOM23) {
+  if (vPREV_ROOM_NO == ROOM23_MIRRORLIKE_LAKE) {
     if (fEGO_ON_WATER) {
       set.view(oEGO, 0);
       reset(f98);
@@ -73,7 +73,7 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM25);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM23);
+  new.room(ROOM23_MIRRORLIKE_LAKE);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

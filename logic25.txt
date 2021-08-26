@@ -369,7 +369,7 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM40);
+  new.room(ROOM40_GNOME_LEAN_TO);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM26);
@@ -378,7 +378,7 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM32);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM24);
+  new.room(ROOM24_CLOVER_PATCH);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

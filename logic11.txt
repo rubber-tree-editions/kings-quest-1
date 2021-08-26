@@ -324,16 +324,16 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM22);
+  new.room(ROOM22_CONDOR_AND_CAVE);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM12);
+  new.room(ROOM12_TOP_OF_WELL);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM10);
+  new.room(ROOM10_GOAT_PEN_WEST);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM6);
+  new.room(ROOM6_POUCH_STUMP);
 }
 return;
 

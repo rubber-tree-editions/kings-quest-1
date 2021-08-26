@@ -108,7 +108,7 @@ FINALCHECKS:
     new.room(ROOM78);
   }
   if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(ROOM45);
+    new.room(ROOM45_OUTSIDE_WOODCUTTER_COTTAGE_BACK);
   }
   if (vEGO_EDGE_CODE == EDGE_RIGHT) {
     new.room(ROOM35);

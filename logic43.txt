@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 105, 58, 0, 0);
   }
-  if (vPREV_ROOM_NO == ROOM6) {
+  if (vPREV_ROOM_NO == ROOM6_POUCH_STUMP) {
     position(oEGO, 121, 47);
   }
   ignore.blocks(oEGO);
@@ -86,13 +86,13 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM6);
+  new.room(ROOM6_POUCH_STUMP);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM44);
+  new.room(ROOM44_OUTSIDE_WOODCUTTER_COTTAGE_FRONT);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM42);
+  new.room(ROOM42_STONE_BRIDGE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM38);

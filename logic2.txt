@@ -60,7 +60,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oEGO, 110, 122);
     set(f26);
   }
-  if (vPREV_ROOM_NO == ROOM3) {
+  if (vPREV_ROOM_NO == ROOM3_ROCK_OVER_HOLE) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y > 150) {
       position(oEGO, 2, 150);
@@ -302,13 +302,13 @@ FINALCHECKS:
     reset(fSWIMMING_IMPOSSIBLE_HERE);
   }
   if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(ROOM15);
+    new.room(ROOM15_CARROT_PATCH_WEST);
   }
   if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(ROOM1);
+    new.room(ROOM1_CASTLE_EAST);
   }
   if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(ROOM3);
+    new.room(ROOM3_ROCK_OVER_HOLE);
   }
   if (fGOAT_COMPANION) {
     call(LOGIC_GOAT);

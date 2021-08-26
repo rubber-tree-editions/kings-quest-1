@@ -358,16 +358,16 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM8);
+  new.room(ROOM8_WATERFALL_LAKE_WEST);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM42);
+  new.room(ROOM42_STONE_BRIDGE);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM48);
+  new.room(ROOM48_LEPRECHAUN_HOLE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM40);
+  new.room(ROOM40_GNOME_LEAN_TO);
 }
 call(LOGIC_SWIMMING);
 if (fGOAT_COMPANION) {

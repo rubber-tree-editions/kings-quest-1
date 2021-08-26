@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 20, 87, 0, 0);
   }
-  if (vPREV_ROOM_NO == ROOM7) {
+  if (vPREV_ROOM_NO == ROOM7_WATERFALL_LAKE_EAST) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_X > 99) {
       position(oEGO, 99, 52);
@@ -157,7 +157,7 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   reset(fSWIMMING_IMPOSSIBLE_HERE);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM7);
+  new.room(ROOM7_WATERFALL_LAKE_EAST);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM43);

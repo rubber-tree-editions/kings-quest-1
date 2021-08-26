@@ -76,7 +76,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     move.obj(oEGO, 80, 84, 6, f20);
     vWITCH_STATE = WITCHSTATE_AWAY_FROM_HOME;
   }
-  if (vPREV_ROOM_NO == ROOM28) {
+  if (vPREV_ROOM_NO == ROOM28_OUTSIDE_GINGERBREAD_HOUSE) {
     position(oEGO, 49, 163);
   }
   if (!fPROTECTED_BY_SPELL
@@ -451,7 +451,7 @@ if (said("examine", "cage")) {
     if (vPREV_ROOM_NO == ROOM80) {
       print("This cage will be your new home for the rest of your life.");
     }
-    if (vPREV_ROOM_NO == ROOM28) {
+    if (vPREV_ROOM_NO == ROOM28_OUTSIDE_GINGERBREAD_HOUSE) {
       print("You look for a way to escape, but there is none.");
     }
   }
@@ -539,7 +539,7 @@ if (!fCARRYING_NOTE) {
   }
 }
 if (posn(oEGO, 39, 164, 56, 166)) {
-  new.room(ROOM28);
+  new.room(ROOM28_OUTSIDE_GINGERBREAD_HOUSE);
 }
 return;
 

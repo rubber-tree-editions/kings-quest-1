@@ -19,7 +19,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 18, 140, 0, 0);
   }
-  if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == ROOM22) {
+  if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == ROOM22_CONDOR_AND_CAVE) {
     vTEMP_PIC = 84;
     set(f155);
     load.pic(vTEMP_PIC);
@@ -73,7 +73,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM50) {
     position(oEGO, 142, 83);
   }
-  if (vBEANSTALK_ROOM == ROOM22) {
+  if (vBEANSTALK_ROOM == ROOM22_CONDOR_AND_CAVE) {
     overlay.pic(vTEMP_PIC);
   }
   draw(oEGO);
@@ -192,7 +192,7 @@ if (f21) {
 if (fCARRYING_MAGIC_BEANS && f155) {
   if (said("plant", "magic beans")) {
     reset(fCARRYING_MAGIC_BEANS);
-    vBEANSTALK_ROOM = ROOM22;
+    vBEANSTALK_ROOM = ROOM22_CONDOR_AND_CAVE;
     set(fMAGIC_BEANS_PLANTED);
     drop("beans");
     vSCORE += 2;
@@ -202,7 +202,7 @@ if (fCARRYING_MAGIC_BEANS && f155) {
     show.pic();
   }
 }
-if (vBEANSTALK_ROOM == ROOM22 && !fEGO_INVISIBLE) {
+if (vBEANSTALK_ROOM == ROOM22_CONDOR_AND_CAVE && !fEGO_INVISIBLE) {
   if (said("climb", "beanstalk") && !fEGO_CLIMBING_BEANSTALK) {
     if (posn(oEGO, 52, 76, 103, 97)) {
       erase(oEGO);
@@ -218,7 +218,7 @@ if (vBEANSTALK_ROOM == ROOM22 && !fEGO_INVISIBLE) {
     }
   }
 }
-if (vBEANSTALK_ROOM != ROOM22) {
+if (vBEANSTALK_ROOM != ROOM22_CONDOR_AND_CAVE) {
   if (said("climb", "beanstalk")) {
     print("There is no beanstalk here to climb.");
   }
@@ -296,13 +296,13 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK) {
   new.room(ROOM27);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM21);
+  new.room(ROOM21_WITCH_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM23);
+  new.room(ROOM23_MIRRORLIKE_LAKE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM11);
+  new.room(ROOM11_GOAT_PEN_EAST);
 }
 if (posn(oEGO, 148, 71, 149, 88)) {
   new.room(ROOM50);
@@ -310,7 +310,7 @@ if (posn(oEGO, 148, 71, 149, 88)) {
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);
 }
-if (vBEANSTALK_ROOM == ROOM22) {
+if (vBEANSTALK_ROOM == ROOM22_CONDOR_AND_CAVE) {
   call(LOGIC_BEANSTALK);
 }
 return;

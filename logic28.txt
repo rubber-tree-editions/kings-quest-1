@@ -167,7 +167,7 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM27);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM21);
+  new.room(ROOM21_WITCH_STOMPING_GROUND);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

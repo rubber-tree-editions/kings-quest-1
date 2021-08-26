@@ -14,7 +14,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 80, 66, 0, 0);
   }
-  if (vPREV_ROOM_NO == ROOM20) {
+  if (vPREV_ROOM_NO == ROOM20_ALPINE_LAKE) {
     if (!fEGO_INVISIBLE) {
       set.view(oEGO, 0);
       reset(f98);
@@ -151,13 +151,13 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM36);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM30);
+  new.room(ROOM30_WALNUT_TREE);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM28);
+  new.room(ROOM28_OUTSIDE_GINGERBREAD_HOUSE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM20);
+  new.room(ROOM20_ALPINE_LAKE);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

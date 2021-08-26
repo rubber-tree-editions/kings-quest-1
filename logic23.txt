@@ -100,13 +100,13 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM26);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM22);
+  new.room(ROOM22_CONDOR_AND_CAVE);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM24);
+  new.room(ROOM24_CLOVER_PATCH);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM10);
+  new.room(ROOM10_GOAT_PEN_WEST);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

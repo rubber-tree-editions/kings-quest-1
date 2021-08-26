@@ -78,16 +78,16 @@ if (!f20) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM24);
+  new.room(ROOM24_CLOVER_PATCH);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM10);
+  new.room(ROOM10_GOAT_PEN_WEST);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM16);
+  new.room(ROOM16_CARROT_PATCH_EAST);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM8);
+  new.room(ROOM8_WATERFALL_LAKE_WEST);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

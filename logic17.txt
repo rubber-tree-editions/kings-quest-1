@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 109, 141, 0, 0);
   }
-  if (vPREV_ROOM_NO == ROOM18 && fEGO_ON_WATER) {
+  if (vPREV_ROOM_NO == ROOM18_CLIFFS_LAKE_WEST && fEGO_ON_WATER) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y < 111) {
       position(oEGO, 4, 121);
@@ -32,7 +32,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 109, 66);
     }
   }
-  if (vPREV_ROOM_NO == ROOM16) {
+  if (vPREV_ROOM_NO == ROOM16_CARROT_PATCH_EAST) {
     if (posn(oEGO, 0, 164, 88, 167)) {
       position(oEGO, 88, 165);
     }
@@ -145,13 +145,13 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM32);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM24);
+  new.room(ROOM24_CLOVER_PATCH);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM18);
+  new.room(ROOM18_CLIFFS_LAKE_WEST);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM16);
+  new.room(ROOM16_CARROT_PATCH_EAST);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

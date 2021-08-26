@@ -23,13 +23,13 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM38);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM28);
+  new.room(ROOM28_OUTSIDE_GINGERBREAD_HOUSE);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM26);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM22);
+  new.room(ROOM22_CONDOR_AND_CAVE);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

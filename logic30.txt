@@ -67,13 +67,13 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM35);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM31);
+  new.room(ROOM31_FREE_BOWL);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM29);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM19);
+  new.room(ROOM19_BASE_MOUNTAIN_DOOR);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

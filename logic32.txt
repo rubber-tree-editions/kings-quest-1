@@ -78,10 +78,10 @@ if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM25);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM31);
+  new.room(ROOM31_FREE_BOWL);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM17);
+  new.room(ROOM17_CLIFFS_LAKE_EAST);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

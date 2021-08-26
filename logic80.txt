@@ -34,7 +34,7 @@ if (f20) {
   new.room(ROOM65);
 }
 if (f21) {
-  new.room(ROOM48);
+  new.room(ROOM48_LEPRECHAUN_HOLE);
 }
 return;
 

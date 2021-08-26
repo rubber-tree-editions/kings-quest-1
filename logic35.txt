@@ -323,7 +323,7 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON && fEGO_CLIMBING_BEANSTALK) {
   new.room(ROOM70);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK) {
-  new.room(ROOM46);
+  new.room(ROOM46_OGRE_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM34);
@@ -332,7 +332,7 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM36);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM30);
+  new.room(ROOM30_WALNUT_TREE);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

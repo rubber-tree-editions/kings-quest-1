@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 39, 96, 0, 0);
   }
-  if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == ROOM31) {
+  if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == ROOM31_FREE_BOWL) {
     vTEMP_PIC = 84;
     set(f155);
     load.pic(vTEMP_PIC);
@@ -61,7 +61,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (!fBOWL_TAKEN) {
     draw(oBOWL);
   }
-  if (vBEANSTALK_ROOM == ROOM31) {
+  if (vBEANSTALK_ROOM == ROOM31_FREE_BOWL) {
     overlay.pic(vTEMP_PIC);
   }
   draw(oEGO);
@@ -120,7 +120,7 @@ if (!fBOWL_TAKEN && said("get", "bowl")) {
 if (fCARRYING_MAGIC_BEANS && f155) {
   if (said("plant", "magic beans")) {
     reset(fCARRYING_MAGIC_BEANS);
-    vBEANSTALK_ROOM = ROOM31;
+    vBEANSTALK_ROOM = ROOM31_FREE_BOWL;
     set(fMAGIC_BEANS_PLANTED);
     drop("beans");
     vSCORE += 2;
@@ -130,7 +130,7 @@ if (fCARRYING_MAGIC_BEANS && f155) {
     show.pic();
   }
 }
-if (vBEANSTALK_ROOM == ROOM31 && !fEGO_INVISIBLE) {
+if (vBEANSTALK_ROOM == ROOM31_FREE_BOWL && !fEGO_INVISIBLE) {
   if (said("climb", "beanstalk") && !fEGO_CLIMBING_BEANSTALK) {
     if (posn(oEGO, 52, 76, 103, 97)) {
       erase(oEGO);
@@ -146,7 +146,7 @@ if (vBEANSTALK_ROOM == ROOM31 && !fEGO_INVISIBLE) {
     }
   }
 }
-if (vBEANSTALK_ROOM != ROOM31) {
+if (vBEANSTALK_ROOM != ROOM31_FREE_BOWL) {
   if (said("climb", "beanstalk")) {
     print("There is no beanstalk here to climb.");
   }
@@ -222,15 +222,15 @@ if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM32);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM30);
+  new.room(ROOM30_WALNUT_TREE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM18);
+  new.room(ROOM18_CLIFFS_LAKE_WEST);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);
 }
-if (vBEANSTALK_ROOM == ROOM31) {
+if (vBEANSTALK_ROOM == ROOM31_FREE_BOWL) {
   call(LOGIC_BEANSTALK);
 }
 return;

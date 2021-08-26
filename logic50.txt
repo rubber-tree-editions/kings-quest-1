@@ -12,7 +12,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oEGO, 152, 133);
     ignore.blocks(oEGO);
   }
-  if (vPREV_ROOM_NO == ROOM22) {
+  if (vPREV_ROOM_NO == ROOM22_CONDOR_AND_CAVE) {
     position(oEGO, 3, 147);
   }
   if (vDRAGON_STATE != DRAGONSTATE_ABSENT) {
@@ -77,7 +77,7 @@ if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM51);
 }
 if (posn(oEGO, 0, 0, 1, 167)) {
-  new.room(ROOM22);
+  new.room(ROOM22_CONDOR_AND_CAVE);
 }
 return;
 

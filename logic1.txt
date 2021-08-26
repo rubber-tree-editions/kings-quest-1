@@ -43,7 +43,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   wander(oGATOR1);
   wander(oGATOR2);
-  if (vPREV_ROOM_NO == ROOM8) {
+  if (vPREV_ROOM_NO == ROOM8_WATERFALL_LAKE_WEST) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y > 150) {
       position(oEGO, 148, 150);
@@ -194,13 +194,13 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   reset(fSWIMMING_IMPOSSIBLE_HERE);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM16);
+  new.room(ROOM16_CARROT_PATCH_EAST);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM8);
+  new.room(ROOM8_WATERFALL_LAKE_WEST);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM2);
+  new.room(ROOM2_CASTLE_WEST);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

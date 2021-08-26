@@ -147,16 +147,16 @@ if (said("get", "dagger")) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM14);
+  new.room(ROOM14_BASE_GOLDEN_EGG_TREE);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM2);
+  new.room(ROOM2_CASTLE_WEST);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM4);
+  new.room(ROOM4_SERENE_LAKE_EAST);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM46);
+  new.room(ROOM46_OGRE_STOMPING_GROUND);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

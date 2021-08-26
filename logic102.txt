@@ -32,17 +32,17 @@ if (said("look for", "anyword") || said("look for", "anyword", "anyword")) {
   print("Well.  Go look for it.");
 }
 if (!fCARRYING_DAGGER && !fDAGGER_LOST) {
-  if (vROOM_NO != ROOM3 && said("get", "dagger")) {
+  if (vROOM_NO != ROOM3_ROCK_OVER_HOLE && said("get", "dagger")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM3 && said("examine", "dagger")) {
+  if (vROOM_NO != ROOM3_ROCK_OVER_HOLE && said("examine", "dagger")) {
     print("You do not have it.");
   }
   if (said("anyword", "dagger") && !said("get", "dagger") && !said("examine", "dagger")) {
     print("You do not have it.");
   }
 }
-if (!fCARRYING_CARROT && vROOM_NO != ROOM15 && vROOM_NO != ROOM16) {
+if (!fCARRYING_CARROT && vROOM_NO != ROOM15_CARROT_PATCH_WEST && vROOM_NO != ROOM16_CARROT_PATCH_EAST) {
   if (said("anyword", "carrot") && !said("get", "carrot")) {
     print("You do not have a carrot.");
   }
@@ -51,10 +51,10 @@ if (!fCARRYING_CARROT && vROOM_NO != ROOM15 && vROOM_NO != ROOM16) {
   }
 }
 if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
-  if (vROOM_NO != ROOM30 && said("get", "walnut")) {
+  if (vROOM_NO != ROOM30_WALNUT_TREE && said("get", "walnut")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM30 && said("examine", "walnut")) {
+  if (vROOM_NO != ROOM30_WALNUT_TREE && said("examine", "walnut")) {
     print("You do not have it.");
   }
   if (said("anyword", "walnut") && !said("get", "walnut") && !said("examine", "walnut")) {
@@ -62,13 +62,13 @@ if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
   }
 }
 if (!fCARRYING_BUCKET) {
-  if (vROOM_NO != ROOM12 && said("get", "water")) {
+  if (vROOM_NO != ROOM12_TOP_OF_WELL && said("get", "water")) {
     print("You have no container for water.");
   }
-  if (vROOM_NO != ROOM12 && said("get", "bucket")) {
+  if (vROOM_NO != ROOM12_TOP_OF_WELL && said("get", "bucket")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM12 && (
+  if (vROOM_NO != ROOM12_TOP_OF_WELL && (
     said("examine", "bucket")
     || said("climb", "bucket")
     || said("go", "bucket")
@@ -86,11 +86,11 @@ if (!fCARRYING_BUCKET) {
     print("You do not have it.");
   }
 }
-if (!fCARRYING_MUSHROOM && vROOM_NO != ROOM47) {
-  if (vROOM_NO != ROOM47 && said("get", "mushroom")) {
+if (!fCARRYING_MUSHROOM && vROOM_NO != ROOM47_MUSHROOM) {
+  if (vROOM_NO != ROOM47_MUSHROOM && said("get", "mushroom")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM47 && said("examine", "mushroom")) {
+  if (vROOM_NO != ROOM47_MUSHROOM && said("examine", "mushroom")) {
     print("You do not have it.");
   }
   if (said("eat", "mushroom")) {
@@ -112,10 +112,10 @@ if (!fCARRYING_RING) {
   }
 }
 if (!fCARRYING_MAGIC_BEANS) {
-  if (vROOM_NO != ROOM40 && said("get", "magic beans")) {
+  if (vROOM_NO != ROOM40_GNOME_LEAN_TO && said("get", "magic beans")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM40 && said("examine", "magic beans")) {
+  if (vROOM_NO != ROOM40_GNOME_LEAN_TO && said("examine", "magic beans")) {
     print("You do not have it.");
   }
   if (said("anyword", "magic beans")
@@ -126,10 +126,10 @@ if (!fCARRYING_MAGIC_BEANS) {
   }
 }
 if (!fCARRYING_BOWL) {
-  if (vROOM_NO != ROOM31 && vROOM_NO != ROOM79 && said("get", "bowl")) {
+  if (vROOM_NO != ROOM31_FREE_BOWL && vROOM_NO != ROOM79 && said("get", "bowl")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM31 && vROOM_NO != ROOM79 && said("examine", "bowl")) {
+  if (vROOM_NO != ROOM31_FREE_BOWL && vROOM_NO != ROOM79 && said("examine", "bowl")) {
     print("You do not have any stew.");
   }
   if (said("fill")) {
@@ -176,10 +176,10 @@ if (!fCARRYING_CHEST) {
   }
 }
 if (!fCARRYING_GOLD_KEY) {
-  if (vROOM_NO != ROOM40 && said("get", "gold key")) {
+  if (vROOM_NO != ROOM40_GNOME_LEAN_TO && said("get", "gold key")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM40 && said("examine", "gold key")) {
+  if (vROOM_NO != ROOM40_GNOME_LEAN_TO && said("examine", "gold key")) {
     print("You do not have it.");
   }
   if (said("anyword", "gold key") && !said("get", "gold key") && !said("examine", "gold key")) {
@@ -212,10 +212,10 @@ if (!fCARRYING_SWISS_CHEESE) {
   }
 }
 if (!fCARRYING_CLOVER) {
-  if (vROOM_NO != ROOM24 && said("get", "four leaf clover")) {
+  if (vROOM_NO != ROOM24_CLOVER_PATCH && said("get", "four leaf clover")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM24 && said("examine", "four leaf clover")) {
+  if (vROOM_NO != ROOM24_CLOVER_PATCH && said("examine", "four leaf clover")) {
     print("You do not have it.");
   }
   if (said("anyword", "four leaf clover")
@@ -259,10 +259,10 @@ if (!fCARRYING_SCEPTRE) {
   }
 }
 if (!fCARRYING_POUCH) {
-  if (vROOM_NO != ROOM6 && said("get", "bag of jewels")) {
+  if (vROOM_NO != ROOM6_POUCH_STUMP && said("get", "bag of jewels")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM6 && said("examine", "bag of jewels")) {
+  if (vROOM_NO != ROOM6_POUCH_STUMP && said("examine", "bag of jewels")) {
     print("You do not have it.");
   }
   if (said("anyword", "bag of jewels")
@@ -273,10 +273,10 @@ if (!fCARRYING_POUCH) {
   }
 }
 if (!fCARRYING_DIAMONDS) {
-  if (vROOM_NO != ROOM6 && said("get", "pouch of diamonds")) {
+  if (vROOM_NO != ROOM6_POUCH_STUMP && said("get", "pouch of diamonds")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM6 && said("examine", "pouch of diamonds")) {
+  if (vROOM_NO != ROOM6_POUCH_STUMP && said("examine", "pouch of diamonds")) {
     print("You do not have it.");
   }
   if (said("anyword", "pouch of diamonds")

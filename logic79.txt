@@ -52,7 +52,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oBOWL);
     stop.update(oBOWL);
   }
-  if (vPREV_ROOM_NO == ROOM44) {
+  if (vPREV_ROOM_NO == ROOM44_OUTSIDE_WOODCUTTER_COTTAGE_FRONT) {
     position(oEGO, 24, 113);
   }
   draw(oEGO);
@@ -408,7 +408,7 @@ if (said("say", "hello") || said("say", "hello") || said("hello") || said("hello
   print("\"Hello\"");
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {
-  new.room(ROOM44);
+  new.room(ROOM44_OUTSIDE_WOODCUTTER_COTTAGE_FRONT);
 }
 return;
 

@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.view(103);
   load.view(104);
-  if (vPREV_ROOM_NO == ROOM48) {
+  if (vPREV_ROOM_NO == ROOM48_LEPRECHAUN_HOLE) {
     position(oEGO, 90, 63);
     set.view(oEGO, 105);
     ignore.blocks(oEGO);
@@ -38,7 +38,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (!f20 && !f22 && vPREV_ROOM_NO == ROOM48) {
+if (!f20 && !f22 && vPREV_ROOM_NO == ROOM48_LEPRECHAUN_HOLE) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   set(f22);
 }

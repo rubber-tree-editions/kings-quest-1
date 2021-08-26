@@ -31,7 +31,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       random(0, 250, v70);
     } while (v70 > 90);
   }
-  if (vPREV_ROOM_NO == ROOM20 || vPREV_ROOM_NO == ROOM4) {
+  if (vPREV_ROOM_NO == ROOM20_ALPINE_LAKE || vPREV_ROOM_NO == ROOM4_SERENE_LAKE_EAST) {
     if (fEGO_ON_WATER) {
       set.view(oEGO, 0);
       reset(f98);
@@ -118,16 +118,16 @@ if (fGAME_OVER) {
   return;
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM20);
+  new.room(ROOM20_ALPINE_LAKE);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM14);
+  new.room(ROOM14_BASE_GOLDEN_EGG_TREE);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM12);
+  new.room(ROOM12_TOP_OF_WELL);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM4);
+  new.room(ROOM4_SERENE_LAKE_EAST);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

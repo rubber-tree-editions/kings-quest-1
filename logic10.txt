@@ -21,7 +21,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 140, 80, 0, 0);
   }
-  if (vPREV_ROOM_NO == ROOM11 && fINSIDE_GOAT_FENCE) {
+  if (vPREV_ROOM_NO == ROOM11_GOAT_PEN_EAST && fINSIDE_GOAT_FENCE) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y > 125) {
       position(oEGO, 150, 128);
@@ -258,16 +258,16 @@ if (fEGO_INVISIBLE) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM23);
+  new.room(ROOM23_MIRRORLIKE_LAKE);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM11);
+  new.room(ROOM11_GOAT_PEN_EAST);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM9);
+  new.room(ROOM9_FAIRY_GODMOTHER_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM7);
+  new.room(ROOM7_WATERFALL_LAKE_EAST);
 }
 return;
 

@@ -15,18 +15,18 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 36, 59, 0, 0);
   }
-  if (vPREV_ROOM_NO == ROOM4) {
+  if (vPREV_ROOM_NO == ROOM4_SERENE_LAKE_EAST) {
     if (posn(oEGO, 145, 55, 159, 80)) {
       position(oEGO, 140, 75);
     }
   }
-  if (vPREV_ROOM_NO == ROOM12) {
+  if (vPREV_ROOM_NO == ROOM12_TOP_OF_WELL) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_X > 105) {
       position(oEGO, 108, 56);
     }
   }
-  if (vPREV_ROOM_NO == ROOM44) {
+  if (vPREV_ROOM_NO == ROOM44_OUTSIDE_WOODCUTTER_COTTAGE_FRONT) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_X > 90) {
       position(oEGO, 82, 165);
@@ -123,16 +123,16 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM12);
+  new.room(ROOM12_TOP_OF_WELL);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM4);
+  new.room(ROOM4_SERENE_LAKE_EAST);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM6);
+  new.room(ROOM6_POUCH_STUMP);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM44);
+  new.room(ROOM44_OUTSIDE_WOODCUTTER_COTTAGE_FRONT);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC_GOAT);

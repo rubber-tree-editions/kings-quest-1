@@ -124,13 +124,13 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM9);
+  new.room(ROOM9_FAIRY_GODMOTHER_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM7);
+  new.room(ROOM7_WATERFALL_LAKE_EAST);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM1);
+  new.room(ROOM1_CASTLE_EAST);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM41);

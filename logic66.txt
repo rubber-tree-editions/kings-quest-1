@@ -9,7 +9,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.sound(SND_FALLING);
   set.horizon(45);
-  if (vPREV_ROOM_NO == ROOM19) {
+  if (vPREV_ROOM_NO == ROOM19_BASE_MOUNTAIN_DOOR) {
     position(oEGO, 21, 162);
   }
   if (vPREV_ROOM_NO == ROOM67) {
@@ -54,7 +54,7 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM67);
 }
 if (posn(oEGO, 16, 165, 31, 166)) {
-  new.room(ROOM19);
+  new.room(ROOM19_BASE_MOUNTAIN_DOOR);
 }
 return;
 
