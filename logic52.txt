@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   else {
     position(oEGO, 38, 116);
   }
-  if (vPREV_ROOM_NO == ROOM51) {
+  if (vPREV_ROOM_NO == ROOM51_DRAGON_STOMPING_GROUND) {
     if (!f208) {
       set(f208);
       vSCORE += 2;
@@ -99,7 +99,7 @@ if (said("get", "can")) {
 }
 if (posn(oEGO, 31, 111, 32, 130)) {
   reset(fEGO_ON_WATER);
-  new.room(ROOM51);
+  new.room(ROOM51_DRAGON_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM49_INSIDE_WELL);

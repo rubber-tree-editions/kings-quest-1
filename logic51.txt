@@ -9,7 +9,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  if (!f165) {
+  if (!fTAKEN_MIRROR) {
     load.view(34);
   }
   if (vDRAGON_STATE == DRAGONSTATE_DEAD) {
@@ -36,7 +36,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM50) {
     position(oEGO, 9, 138);
   }
-  if (!f165) {
+  if (!fTAKEN_MIRROR) {
     animate.obj(oMAGIC_MIRROR);
     set.view(oMAGIC_MIRROR, 34);
     position(oMAGIC_MIRROR, 38, 108);
@@ -112,30 +112,30 @@ if (f20 && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
   set(fGAME_OVER);
 }
 if (said("examine", "room")) {
-  if (!f165 && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
+  if (!fTAKEN_MIRROR && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     print("The ferocious fire-breathing dragon is protecting the magic mirror.");
   }
-  if (!f165 && vDRAGON_STATE == DRAGONSTATE_DEAD) {
+  if (!fTAKEN_MIRROR && vDRAGON_STATE == DRAGONSTATE_DEAD) {
     print("There is a dead dragon, a large boulder, and a seemingly ordinary mirror in the cave.");
   }
-  if (!f165 && vDRAGON_STATE == DRAGONSTATE_ABSENT) {
+  if (!fTAKEN_MIRROR && vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     print("There is a large granite boulder and a magic mirror!! in the cave.");
   }
 }
 if (said("examine", "cave")) {
-  if (!f165 && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
+  if (!fTAKEN_MIRROR && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     print("A green, scaly dragon breathing hot fire and smoke is protecting the mirror.");
   }
-  if (f165 && vDRAGON_STATE == DRAGONSTATE_DEAD) {
+  if (fTAKEN_MIRROR && vDRAGON_STATE == DRAGONSTATE_DEAD) {
     print("In this large cavern, there is a slimy dead dragon, an opening on one side, and a large boulder in the other.");
   }
-  if (!f165 && vDRAGON_STATE == DRAGONSTATE_DEAD) {
+  if (!fTAKEN_MIRROR && vDRAGON_STATE == DRAGONSTATE_DEAD) {
     print("There is a dead dragon, a large boulder, and a seemingly ordinary mirror in the cave.");
   }
-  if (!f165 && vDRAGON_STATE == DRAGONSTATE_ABSENT) {
+  if (!fTAKEN_MIRROR && vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     print("There is a large granite boulder and a magic mirror!! in the cave.");
   }
-  if (f165 && vDRAGON_STATE == DRAGONSTATE_ABSENT) {
+  if (fTAKEN_MIRROR && vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     print("The cavern is empty, save for a couple of openings on either side.");
   }
 }
@@ -225,12 +225,12 @@ if (fCARRYING_BUCKET) {
     }
   }
 }
-if (!fCARRYING_MIRROR && f165) {
+if (!fCARRYING_MIRROR && fTAKEN_MIRROR) {
   if (said("anyword", "mirror")) {
     print("There is no mirror here.");
   }
 }
-if (!fCARRYING_MIRROR && !f165) {
+if (!fCARRYING_MIRROR && !fTAKEN_MIRROR) {
   if (said("steal", "mirror") && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     print("With that dragon here?  No way!");
   }
@@ -251,7 +251,7 @@ if (!fCARRYING_MIRROR && !f165) {
         start.update(oMAGIC_MIRROR);
         erase(oMAGIC_MIRROR);
         set(fCARRYING_MIRROR);
-        set(f165);
+        set(fTAKEN_MIRROR);
         get("magic mirror");
         print("Carefully, you pick up the magic mirror.");
         vTREASURE_COUNT++;

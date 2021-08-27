@@ -312,10 +312,10 @@ if (!fCARRYING_FIDDLE) {
   }
 }
 if (!fCARRYING_MIRROR) {
-  if (vROOM_NO != ROOM51 && said("get", "mirror")) {
+  if (vROOM_NO != ROOM51_DRAGON_STOMPING_GROUND && said("get", "mirror")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM51 && said("examine", "mirror")) {
+  if (vROOM_NO != ROOM51_DRAGON_STOMPING_GROUND && said("examine", "mirror")) {
     print("You do not have it.");
   }
   if (said("anyword", "mirror") && !said("get", "mirror") && !said("examine", "mirror")) {

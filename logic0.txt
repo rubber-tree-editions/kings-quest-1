@@ -59,7 +59,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_NO != ROOM53_KING_EDWARD_THRONE_ROOM
     && vROOM_NO != ROOM58_GIANT_STOMPING_GROUND
     && vROOM_NO != ROOM49_INSIDE_WELL
-    && vROOM_NO != ROOM51
+    && vROOM_NO != ROOM51_DRAGON_STOMPING_GROUND
     && vROOM_NO != ROOM52_IN_WELL_UNDERWATER
     && vROOM_NO != ROOM12_TOP_OF_WELL
     && vROOM_NO != ROOM10_GOAT_PEN_WEST
@@ -180,7 +180,7 @@ if (vROOM_NO > ROOM52_IN_WELL_UNDERWATER
   || vROOM_NO == ROOM46_OGRE_STOMPING_GROUND
   || vROOM_NO == ROOM48_LEPRECHAUN_HOLE
   || vROOM_NO == ROOM50
-  || vROOM_NO == ROOM51
+  || vROOM_NO == ROOM51_DRAGON_STOMPING_GROUND
 ) {
   if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
     print("You need to be in water to swim.");
@@ -273,7 +273,7 @@ if (vROOM_NO != ROOM21_WITCH_STOMPING_GROUND) {
         && vROOM_NO != ROOM14_BASE_GOLDEN_EGG_TREE
         && vROOM_NO != ROOM10_GOAT_PEN_WEST
         && vROOM_NO != ROOM11_GOAT_PEN_EAST
-        && vROOM_NO != ROOM51
+        && vROOM_NO != ROOM51_DRAGON_STOMPING_GROUND
     ) {
       set(f143);
       stop.motion(oEGO);
@@ -369,7 +369,7 @@ if (fCARRYING_DAGGER) {
       && vROOM_NO != ROOM39
       && vROOM_NO != ROOM41
       && vROOM_NO != ROOM46_OGRE_STOMPING_GROUND
-      && vROOM_NO != ROOM51
+      && vROOM_NO != ROOM51_DRAGON_STOMPING_GROUND
       && vROOM_NO != ROOM58_GIANT_STOMPING_GROUND
     ) {
       print("There is no reason to throw the dagger.");
@@ -638,7 +638,7 @@ if (fCARRYING_RING) {
         && vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE
         && vROOM_NO != ROOM80_IN_MID_AIR
         && vROOM_NO != ROOM49_INSIDE_WELL
-        && vROOM_NO != ROOM51
+        && vROOM_NO != ROOM51_DRAGON_STOMPING_GROUND
         && vROOM_NO != ROOM52_IN_WELL_UNDERWATER
         && vROOM_NO != ROOM12_TOP_OF_WELL
         && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE
@@ -659,7 +659,7 @@ if (fCARRYING_RING) {
         || vROOM_NO == ROOM63_UP_GOLDEN_EGG_TREE
         || vROOM_NO == ROOM80_IN_MID_AIR
         || vROOM_NO == ROOM49_INSIDE_WELL
-        || vROOM_NO == ROOM51
+        || vROOM_NO == ROOM51_DRAGON_STOMPING_GROUND
         || vROOM_NO == ROOM52_IN_WELL_UNDERWATER
         || vROOM_NO == ROOM12_TOP_OF_WELL
         || vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE
