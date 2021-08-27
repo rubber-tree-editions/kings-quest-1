@@ -28,8 +28,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     reset(f98);
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
     position(oEGO, 133, 136);
-    if (!f167) {
-      set(f167);
+    if (!fPOINTS_FOR_FINDING_DRAGON) {
+      set(fPOINTS_FOR_FINDING_DRAGON);
       vSCORE += 1;
     }
   }

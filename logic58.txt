@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oFLUNG_PEBBLE);
     set.view(oFLUNG_PEBBLE, 102);
   }
-  if (!fCARRYING_CHEST && !f169) {
+  if (!fCARRYING_CHEST && !fCHEST_TAKEN) {
     load.view(37);
     animate.obj(oCHEST);
     set.view(oCHEST, 37);
@@ -32,7 +32,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(68);
     load.view(77);
   }
-  if (fCARRYING_CHEST || f169) {
+  if (fCARRYING_CHEST || fCHEST_TAKEN) {
     load.view(68);
     load.view(66);
     load.view(77);
@@ -165,7 +165,7 @@ if (said("talk", "giant") || said("hello") || said("say", "hello")) {
     print("A dead giant does not have a lot to say.");
   }
 }
-if (!fCARRYING_CHEST && !f169) {
+if (!fCARRYING_CHEST && !fCHEST_TAKEN) {
   if (said("examine", "chest")) {
     print("The magic chest appears to have been fashioned from ebony and rimmed on the edges with gold.");
   }
@@ -175,7 +175,7 @@ if (!fCARRYING_CHEST) {
     if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
       print("The giant is protecting the magic chest.");
     }
-    if (f169) {
+    if (fCHEST_TAKEN) {
       print("There is no chest around here to get.");
     }
     distance(oEGO, oGIANT, v70);
@@ -190,7 +190,7 @@ if (!fCARRYING_CHEST) {
         draw(oGIANT);
         print("Very carefully, you slip the magic chest from the sleeping giant's arms.");
         set(fCARRYING_CHEST);
-        set(f169);
+        set(fCHEST_TAKEN);
         vSCORE += 8;
         get("chest");
         vTREASURE_COUNT++;
@@ -206,7 +206,7 @@ if (!fCARRYING_CHEST) {
         erase(oCHEST);
         print("It's easy to take a magic chest from a dead giant.");
         set(fCARRYING_CHEST);
-        set(f169);
+        set(fCHEST_TAKEN);
         vSCORE += 8;
         get("chest");
         vTREASURE_COUNT++;
@@ -225,7 +225,7 @@ if (fCARRYING_SLINGSHOT) {
       print("There is no way you can get the chest from here!");
     }
     if (fCARRYING_PEBBLES
-      && !f169
+      && !fCHEST_TAKEN
       && !fEGO_INVISIBLE
       && vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST
       && v71 > 19
@@ -244,7 +244,7 @@ if (fCARRYING_SLINGSHOT) {
       vSCORE -= 1;
     }
     if (fCARRYING_PEBBLES
-      && f169
+      && fCHEST_TAKEN
       && !fEGO_INVISIBLE
       && vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST
       && v71 > 19
@@ -261,7 +261,7 @@ if (fCARRYING_SLINGSHOT) {
       drop("pebbles");
       vSCORE -= 1;
     }
-    if (fCARRYING_PEBBLES && !f169 && fEGO_INVISIBLE) {
+    if (fCARRYING_PEBBLES && !fCHEST_TAKEN && fEGO_INVISIBLE) {
       if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST
         || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST
       ) {

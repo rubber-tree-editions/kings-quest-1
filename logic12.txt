@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.objs(o1);
   set.priority(o1, 11);
   set.cel(o1, 4);
-  if (!f176) {
+  if (!fBUCKET_ROPE_CUT) {
     load.view(72);
     load.view(16);
     animate.obj(o2);
@@ -32,10 +32,10 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.blocks(o2);
     position(o2, 37, 120);
     set.priority(o2, 11);
-    if (!f177) {
+    if (!fBUCKET_LOWERED) {
       set.cel(o2, 0);
     }
-    if (f177) {
+    if (fBUCKET_LOWERED) {
       set.cel(o2, 7);
     }
   }
@@ -54,7 +54,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   }
   if (vPREV_ROOM_NO == ROOM49_INSIDE_WELL) {
-    if (f176) {
+    if (fBUCKET_ROPE_CUT) {
       set.view(oEGO, 143);
     }
     else {
@@ -75,11 +75,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(o1);
   stop.update(o1);
-  if (!f176) {
+  if (!fBUCKET_ROPE_CUT) {
     draw(o2);
     stop.update(o2);
   }
-  if (f176 && !f178) {
+  if (fBUCKET_ROPE_CUT && !f178) {
     draw(o3);
     stop.cycling(o3);
   }
@@ -101,7 +101,7 @@ if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
 }
 if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
   if (posn(oEGO, 10, 100, 75, 150)) {
-    if (f177 || f179) {
+    if (fBUCKET_LOWERED || f179) {
       if (said("climb", "rope")
         || said("climb", "well")
         || said("go", "well")
@@ -109,7 +109,7 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         || said("slide", "rope")
       ) {
         erase(oEGO);
-        if (f176) {
+        if (fBUCKET_ROPE_CUT) {
           set.view(oEGO, 143);
         }
         else {
@@ -123,7 +123,7 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         move.obj(oEGO, 39, 132, 0, f148);
       }
     }
-    if (!f177 && !f179) {
+    if (!fBUCKET_LOWERED && !f179) {
       if (said("climb", "well")) {
         print("The sides of this well are too slippery to climb down.");
       }
@@ -131,7 +131,7 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         print("The rope does not go down the well very far.");
       }
     }
-    if (!f176 && !f177) {
+    if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
       if (said("climb", "bucket")
         || said("go", "bucket")
         || said("go", "well")
@@ -155,17 +155,17 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         print("After you are in the old bucket, your weight causes it to slowly descend.");
       }
     }
-    if (f177 && !f176) {
+    if (fBUCKET_LOWERED && !fBUCKET_ROPE_CUT) {
       if (said("climb", "bucket") || said("go", "bucket")) {
         print("The old bucket is at the bottom of the well.");
       }
     }
-    if (f176) {
+    if (fBUCKET_ROPE_CUT) {
       if (said("climb", "bucket") || said("go", "bucket")) {
         print("There is no bucket here.");
       }
     }
-    if (f176 && !f179) {
+    if (fBUCKET_ROPE_CUT && !f179) {
       if (said("go", "well") || said("go down", "well")) {
         set(f26);
         set(f28);
@@ -281,17 +281,17 @@ if (f28) {
   set(f135);
   sound(SND_FALLING, fSOUND_END_MARKER);
 }
-if (f176 || f177) {
+if (fBUCKET_ROPE_CUT || fBUCKET_LOWERED) {
   if (!fCARRYING_BUCKET && (said("get", "bucket") || said("examine", "bucket"))) {
     print("There is no bucket here.");
   }
 }
-if (f176) {
+if (fBUCKET_ROPE_CUT) {
   if (said("lower", "bucket") || said("raise", "bucket")) {
     print("The bucket is not here.");
   }
 }
-if (!f176 && !f177) {
+if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
   if (!fCARRYING_BUCKET && said("get", "bucket")) {
     if (posn(oEGO, 10, 109, 71, 153)) {
       print("The old bucket is securely fastened to a strong rope.");
@@ -302,7 +302,7 @@ if (!f176 && !f177) {
   }
   if (!fCARRYING_BUCKET && said("examine", "bucket")) {
     if (posn(oEGO, 10, 109, 71, 153)) {
-      if (f163) {
+      if (fBUCKET_ON_WELL_HAS_WATER) {
         print("The old bucket holds a full load of water.");
       }
       else {
@@ -314,7 +314,7 @@ if (!f176 && !f177) {
     }
   }
 }
-if (!f176 && f177) {
+if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED) {
   if (said("lower", "bucket")) {
     if (posn(oEGO, 10, 109, 71, 153)) {
       print("The old bucket is already at the bottom of the well.");
@@ -324,7 +324,7 @@ if (!f176 && f177) {
     }
   }
 }
-if (!f176 && !f177) {
+if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
   if (said("raise", "bucket") || said("raise", "rope")) {
     if (posn(oEGO, 10, 109, 71, 153)) {
       print("The bucket is already at the top of the well.");
@@ -344,7 +344,7 @@ if (f22) {
   stop.update(o2);
   stop.update(o1);
 }
-if (!f176 && !f177) {
+if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
   if (said("lower", "bucket") || said("lower", "rope")) {
     if (posn(oEGO, 60, 108, 77, 140)) {
       print("The old bucket disappears into the darkness.");
@@ -353,19 +353,19 @@ if (!f176 && !f177) {
       end.of.loop(o2, f21);
       sound(SND_WELL_HANDLE_TURNING, f30);
       start.cycling(o1);
-      set(f177);
+      set(fBUCKET_LOWERED);
     }
     else {
       print("You will find that very difficult to do from here.");
     }
   }
 }
-if (!f176 && f177 && f180) {
+if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED && f180) {
   if (said("raise", "bucket")) {
     print("You will find that very difficult to do from here.");
   }
 }
-if (!f176 && f177 && !f180) {
+if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED && !f180) {
   if (said("raise", "bucket") || said("raise", "rope")) {
     if (posn(oEGO, 60, 108, 77, 140)) {
       print("The old bucket emerges from the depths of the well.");
@@ -373,12 +373,12 @@ if (!f176 && f177 && !f180) {
       start.update(o1);
       random(0, 250, v62);
       if (v62 < 30) {
-        set(f163);
+        set(fBUCKET_ON_WELL_HAS_WATER);
       }
       reverse.loop(o2, f22);
       start.cycling(o1);
       sound(SND_WELL_HANDLE_TURNING, f30);
-      reset(f177);
+      reset(fBUCKET_LOWERED);
     }
     else {
       print("You will find that very difficult to do from here.");
@@ -424,25 +424,25 @@ if (said("cut", "rope") || said("cut", "rope", "dagger")) {
     print("You will need longer arms to cut that rope from here.");
   }
   if (fCARRYING_DAGGER && posn(oEGO, 10, 109, 71, 153)) {
-    if (f176 && !f179) {
+    if (fBUCKET_ROPE_CUT && !f179) {
       print("You cut a piece of rope and it falls into the well.");
     }
     if (f178) {
       print("There is no useful rope left to cut.");
     }
-    if (f176 && f179) {
+    if (fBUCKET_ROPE_CUT && f179) {
       erase(o3);
       print("The long piece of rope falls to the bottom of the well.");
       set(f178);
       reset(f179);
     }
-    if (!f176 && !f177) {
+    if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
       start.update(o2);
       erase(o2);
       draw(o3);
       stop.cycling(o3);
       set(fCARRYING_BUCKET);
-      if (f163) {
+      if (fBUCKET_ON_WELL_HAS_WATER) {
         get("water");
         set(fBUCKET_FILLED);
         if (!fFILL_BUCKET_POINTS) {
@@ -450,16 +450,16 @@ if (said("cut", "rope") || said("cut", "rope", "dagger")) {
           set(fFILL_BUCKET_POINTS);
         }
       }
-      set(f176);
+      set(fBUCKET_ROPE_CUT);
       get("water bucket");
       print("With the rope cut, you are able to take the bucket.");
       vSCORE += 2;
     }
-    if (!f176 && f177) {
+    if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED) {
       start.update(o2);
       erase(o2);
-      reset(f177);
-      set(f176);
+      reset(fBUCKET_LOWERED);
+      set(fBUCKET_ROPE_CUT);
       set(f178);
       print("The bucket and rope are now at the bottom of the well.");
     }
@@ -470,7 +470,7 @@ if (f178) {
     print("There is not enough rope left to lower.");
   }
 }
-if (f176 && f179) {
+if (fBUCKET_ROPE_CUT && f179) {
   if (said("lower", "rope")) {
     if (posn(oEGO, 60, 108, 77, 129)) {
       print("The rope has already been lowered.");
@@ -480,7 +480,7 @@ if (f176 && f179) {
     }
   }
 }
-if (f176 && !f179) {
+if (fBUCKET_ROPE_CUT && !f179) {
   if (said("lower", "rope")) {
     if (posn(oEGO, 60, 108, 77, 129)) {
       start.cycling(o3);
@@ -501,7 +501,7 @@ if (f24) {
   stop.update(o1);
   stop.cycling(o3);
 }
-if (f176 && !f179) {
+if (fBUCKET_ROPE_CUT && !f179) {
   if (said("raise", "rope")) {
     if (posn(oEGO, 10, 109, 71, 153)) {
       print("The rope is already at the top of the well.");
@@ -511,7 +511,7 @@ if (f176 && !f179) {
     }
   }
 }
-if (f176 && f179 && !f180) {
+if (fBUCKET_ROPE_CUT && f179 && !f180) {
   if (said("raise", "rope")) {
     if (posn(oEGO, 10, 109, 71, 153)) {
       start.cycling(o3);
@@ -532,14 +532,14 @@ if (f23) {
   stop.update(o1);
   stop.cycling(o3);
 }
-if (f176 && f179 && f180) {
+if (fBUCKET_ROPE_CUT && f179 && f180) {
   if (said("raise", "rope")) {
     print("You can't raise the rope from here!");
   }
 }
 if (f25) {
   reset(f25);
-  set(f177);
+  set(fBUCKET_LOWERED);
   new.room(ROOM49_INSIDE_WELL);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {

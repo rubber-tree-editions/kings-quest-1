@@ -48,7 +48,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(99, 0, 0, 84, 119, 4, 4);
     discard.view(99);
   }
-  if (f177) {
+  if (fBUCKET_LOWERED) {
     if (f181) {
       animate.obj(o1);
       set.view(o1, 72);
@@ -89,7 +89,7 @@ if (fSOUND_END_MARKER) {
 }
 if (f180) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
-  if (vTEMP_Y > 115 && f177) {
+  if (vTEMP_Y > 115 && fBUCKET_LOWERED) {
     reset(f180);
     set(f182);
     set.view(oEGO, 105);
@@ -174,7 +174,7 @@ if (v30 == 1 && f23) {
 }
 if (!f180 && !f20) {
   if (said("climb", "rope") || said("up", "rope")) {
-    if (!f179 && !f177) {
+    if (!f179 && !fBUCKET_LOWERED) {
       print("The rope is out of reach.");
     }
     if (f179) {
@@ -189,7 +189,7 @@ if (!f180 && !f20) {
       set(f180);
       reset(f23);
     }
-    if (f177 && !f181) {
+    if (fBUCKET_LOWERED && !f181) {
       erase(oEGO);
       vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
       reset(f98);
@@ -250,7 +250,7 @@ if (said("examine", "well")) {
 }
 if (!fCARRYING_BUCKET) {
   if (said("examine", "bucket")) {
-    if (f177) {
+    if (fBUCKET_LOWERED) {
       print("Although you can only see the bottom of the bucket, it looks like a very nice bucket.");
     }
     else {
@@ -258,14 +258,14 @@ if (!fCARRYING_BUCKET) {
     }
   }
   if (said("get", "bucket")) {
-    if (f177) {
+    if (fBUCKET_LOWERED) {
       print("How are you going to get the bucket?");
     }
     else {
       print("The bucket is not here.");
     }
   }
-  if (said("go", "bucket") && f177 && !f181) {
+  if (said("go", "bucket") && fBUCKET_LOWERED && !f181) {
     print("I don't think that getting in the bucket right now will do you very much good.");
   }
 }
@@ -307,26 +307,26 @@ if (!fCARRYING_DAGGER) {
 }
 if (fCARRYING_DAGGER) {
   if (said("cut", "rope")) {
-    if (f180 && f177) {
+    if (f180 && fBUCKET_LOWERED) {
       print("Just before slitting the rope, you realize that it is not a very wise move at this time.");
     }
     if (f181) {
       print("Just before slitting the rope, you realize that it is not a very wise move at this time.");
     }
-    if (!f177) {
+    if (!fBUCKET_LOWERED) {
       print("There is no reason to cut the rope.");
     }
-    if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && f177) {
+    if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && fBUCKET_LOWERED) {
       print("You reach up out of the well water and cut the thick rope that holds the bucket.");
       start.update(o1);
       erase(o1);
       set(fCARRYING_BUCKET);
-      set(f176);
-      reset(f177);
+      set(fBUCKET_ROPE_CUT);
+      reset(fBUCKET_LOWERED);
       set(f179);
       vSCORE += 2;
       get("water bucket");
-      if (f163) {
+      if (fBUCKET_ON_WELL_HAS_WATER) {
         set(fBUCKET_FILLED);
         get("water");
         if (!fFILL_BUCKET_POINTS) {
@@ -338,7 +338,7 @@ if (fCARRYING_DAGGER) {
     if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
       print("You have other things to think about right now.");
     }
-    if (!f177 && !f179) {
+    if (!fBUCKET_LOWERED && !f179) {
       print("The rope is out of reach.");
     }
   }
@@ -379,8 +379,8 @@ if (vAQUATIC_ACTIVITY != AQUATICACTIVITY_SWIMMING) {
 }
 if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING) {
   if (said("dive", "water") || said("dive", "down") || said("dive")) {
-    if (!f164) {
-      set(f164);
+    if (!fPOINTS_FOR_DIVING_IN_WELL) {
+      set(fPOINTS_FOR_DIVING_IN_WELL);
       vSCORE += 2;
     }
     new.room(ROOM52_IN_WELL_UNDERWATER);
