@@ -13,8 +13,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
   }
-  load.logics(LOGIC_SWIMMING);
-  call(LOGIC_SWIMMING);
+  load.logics(LOGIC101_SWIMMING);
+  call(LOGIC101_SWIMMING);
   set(fSWIMMING_IMPOSSIBLE_HERE);
   if (!f150 && !f151) {
     load.view(65);
@@ -369,7 +369,7 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM40_GNOME_LEAN_TO);
 }
-call(LOGIC_SWIMMING);
+call(LOGIC101_SWIMMING);
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }

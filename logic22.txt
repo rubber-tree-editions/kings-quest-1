@@ -28,7 +28,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(104);
     load.view(74);
     load.view(105);
-    load.logics(LOGIC_BEANSTALK);
+    load.logics(LOGIC104_BEANSTALK);
     load.sound(SND_BEANSTALK);
   }
   if (vPREV_ROOM_NO == ROOM70 && fEGO_CLIMBING_BEANSTALK) {
@@ -311,7 +311,7 @@ if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
 if (vBEANSTALK_ROOM == ROOM22_CONDOR_AND_CAVE) {
-  call(LOGIC_BEANSTALK);
+  call(LOGIC104_BEANSTALK);
 }
 return;
 

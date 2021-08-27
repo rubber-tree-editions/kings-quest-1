@@ -14,8 +14,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 14, 144, 0, 0);
   }
-  load.logics(LOGIC_SWIMMING);
-  call(LOGIC_SWIMMING);
+  load.logics(LOGIC101_SWIMMING);
+  call(LOGIC101_SWIMMING);
   if (!fMUSHROOM_TAKEN) {
     load.view(60);
     load.view(84);
@@ -213,7 +213,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-call(LOGIC_SWIMMING);
+call(LOGIC101_SWIMMING);
 return;
 
 LOGIC__FOOTER

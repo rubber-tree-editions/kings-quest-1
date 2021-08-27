@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  load.logics(LOGIC_SWIMMING);
+  load.logics(LOGIC101_SWIMMING);
   set.horizon(50);
   load.sound(SND_CASTLE_DOOR_FANFARE);
   if (fGOAT_COMPANION) {
@@ -67,7 +67,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   }
   draw(oEGO);
-  call(LOGIC_SWIMMING);
+  call(LOGIC101_SWIMMING);
   wander(oGATOR1);
   wander(oGATOR2);
   show.pic();
@@ -313,7 +313,7 @@ FINALCHECKS:
   if (fGOAT_COMPANION) {
     call(LOGIC103_GOAT);
   }
-  call(LOGIC_SWIMMING);
+  call(LOGIC101_SWIMMING);
   return;
 
 LOGIC__FOOTER

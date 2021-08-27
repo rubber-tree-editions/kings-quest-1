@@ -15,8 +15,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 110, 110, 0, 0);
   }
-  load.logics(LOGIC_SWIMMING);
-  call(LOGIC_SWIMMING);
+  load.logics(LOGIC101_SWIMMING);
+  call(LOGIC101_SWIMMING);
   set(fSWIMMING_IMPOSSIBLE_HERE);
   if (vPREV_ROOM_NO == ROOM23_MIRRORLIKE_LAKE) {
     if (fEGO_ON_WATER) {
@@ -78,7 +78,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-call(LOGIC_SWIMMING);
+call(LOGIC101_SWIMMING);
 return;
 
 LOGIC__FOOTER

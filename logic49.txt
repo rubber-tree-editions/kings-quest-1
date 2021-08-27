@@ -9,8 +9,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   load.sound(SND_FALLING);
-  load.logics(LOGIC_SWIMMING);
-  call(LOGIC_SWIMMING);
+  load.logics(LOGIC101_SWIMMING);
+  call(LOGIC101_SWIMMING);
   load.view(72);
   load.view(16);
   load.view(74);
@@ -389,7 +389,7 @@ if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING) {
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM12_TOP_OF_WELL);
 }
-call(LOGIC_SWIMMING);
+call(LOGIC101_SWIMMING);
 return;
 
 LOGIC__FOOTER

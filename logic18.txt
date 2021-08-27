@@ -15,8 +15,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 26, 138, 0, 0);
   }
-  load.logics(LOGIC_SWIMMING);
-  call(LOGIC_SWIMMING);
+  load.logics(LOGIC101_SWIMMING);
+  call(LOGIC101_SWIMMING);
   random(0, 250, v62);
   if (v62 < 85 && !fIMPRESSED_ELF) {
     load.view(7);
@@ -204,7 +204,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-call(LOGIC_SWIMMING);
+call(LOGIC101_SWIMMING);
 return;
 
 LOGIC__FOOTER
