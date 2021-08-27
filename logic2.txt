@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.horizon(50);
   load.sound(SND_CASTLE_DOOR_FANFARE);
   if (fGOAT_COMPANION) {
-    load.logics(LOGIC_GOAT);
+    load.logics(LOGIC103_GOAT);
     load.view(9);
     add.to.pic(9, 0, 0, 105, 120, 0, 0);
   }
@@ -311,7 +311,7 @@ FINALCHECKS:
     new.room(ROOM3_ROCK_OVER_HOLE);
   }
   if (fGOAT_COMPANION) {
-    call(LOGIC_GOAT);
+    call(LOGIC103_GOAT);
   }
   call(LOGIC_SWIMMING);
   return;

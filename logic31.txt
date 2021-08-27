@@ -12,7 +12,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.sound(SND_FALLING);
   set.horizon(50);
   if (fGOAT_COMPANION) {
-    load.logics(LOGIC_GOAT);
+    load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 39, 96, 0, 0);
@@ -228,7 +228,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM18_CLIFFS_LAKE_WEST);
 }
 if (fGOAT_COMPANION) {
-  call(LOGIC_GOAT);
+  call(LOGIC103_GOAT);
 }
 if (vBEANSTALK_ROOM == ROOM31_FREE_BOWL) {
   call(LOGIC_BEANSTALK);

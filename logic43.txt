@@ -12,7 +12,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.logics(LOGIC_SWIMMING);
   call(LOGIC_SWIMMING);
   if (fGOAT_COMPANION) {
-    load.logics(LOGIC_GOAT);
+    load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 105, 58, 0, 0);
@@ -98,7 +98,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM38);
 }
 if (fGOAT_COMPANION) {
-  call(LOGIC_GOAT);
+  call(LOGIC103_GOAT);
 }
 call(LOGIC_SWIMMING);
 return;

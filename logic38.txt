@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.sound(SND_OUCH);
   load.sound(SND_FALLING);
   if (fGOAT_COMPANION) {
-    load.logics(LOGIC_GOAT);
+    load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 36, 84, 0, 0);
@@ -204,7 +204,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM27);
 }
 if (fGOAT_COMPANION) {
-  call(LOGIC_GOAT);
+  call(LOGIC103_GOAT);
 }
 if (vBEANSTALK_ROOM == ROOM38) {
   call(LOGIC_BEANSTALK);
