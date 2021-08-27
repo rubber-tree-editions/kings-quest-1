@@ -180,8 +180,8 @@ if (!fGOAT_COMPANION && !f125) {
         vSCORE += 1;
         goto(FINALCHECKS);
       }
-      if (!f206) {
-        set(f206);
+      if (!fPOINTS_FOR_ENTERING_CASTLE_AGAIN) {
+        set(fPOINTS_FOR_ENTERING_CASTLE_AGAIN);
         vSCORE += 1;
       }
     }
