@@ -78,7 +78,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (fGOAT_COMPANION || vROOM_YOU_KILLED_THE_GOAT_IN != ROOM_NULL) {
     load.view(62);
   }
-  reset(f190);
+  reset(fDEBUG_MODE);
   observe.objs(oEGO);
   observe.blocks(oEGO);
   reset(f122);
@@ -204,7 +204,7 @@ else if (vEGO_DIR == DIR_NONE) {
 }
 if (controller(cDEBUG)) {
   load.logics(LOGIC99_DEBUG);
-  set(f190);
+  set(fDEBUG_MODE);
   print("VERSION 1.0U");
   version();
 }
@@ -989,7 +989,7 @@ if (fCARRYING_MIRROR) {
 if (vTREASURE_COUNT == 3) {
   reset(f125);
 }
-if (f190) {
+if (fDEBUG_MODE) {
   call(LOGIC99_DEBUG);
 }
 call.v(vROOM_NO);
