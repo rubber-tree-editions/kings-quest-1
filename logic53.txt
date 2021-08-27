@@ -203,8 +203,8 @@ if (posn(oEGO, 18, 80, 86, 113)) {
       draw(oEGO);
       end.of.loop(oEGO, f22);
       set(f98);
-      if (!fPOINTS_FOR_BOWING_TO_KING) {
-        set(fPOINTS_FOR_BOWING_TO_KING);
+      if (!fPOINTS_FOR_BOWING_TO_KING_AFTER_MISSION) {
+        set(fPOINTS_FOR_BOWING_TO_KING_AFTER_MISSION);
         vSCORE += 3;
       }
     }
