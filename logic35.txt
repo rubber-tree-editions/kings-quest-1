@@ -154,7 +154,7 @@ if (f156) {
       vSCORE -= 8;
       drop("magic mirror");
       set(fLOST_VITAL_TREASURE);
-      reset(f125);
+      reset(fNO_BUSINESS_WITH_KING);
       vTREASURE_COUNT--;
     }
     if (fCARRYING_SHIELD) {
@@ -163,7 +163,7 @@ if (f156) {
       vSCORE -= 8;
       drop("shield");
       set(fLOST_VITAL_TREASURE);
-      reset(f125);
+      reset(fNO_BUSINESS_WITH_KING);
       vTREASURE_COUNT--;
     }
     if (fCARRYING_CHEST) {
@@ -172,7 +172,7 @@ if (f156) {
       vSCORE -= 8;
       drop("chest");
       set(fLOST_VITAL_TREASURE);
-      reset(f125);
+      reset(fNO_BUSINESS_WITH_KING);
       vTREASURE_COUNT--;
     }
     if (fCARRYING_DIAMONDS) {

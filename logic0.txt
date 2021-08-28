@@ -987,7 +987,7 @@ if (fCARRYING_MIRROR) {
   }
 }
 if (vTREASURE_COUNT == 3) {
-  reset(f125);
+  reset(fNO_BUSINESS_WITH_KING);
 }
 if (fDEBUG_MODE) {
   call(LOGIC99_DEBUG);

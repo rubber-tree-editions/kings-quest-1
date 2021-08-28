@@ -221,7 +221,7 @@ if (posn(oEGO, 18, 80, 86, 113)) {
     }
     if (v30 == 0 && f126) {
       print("Why, Sir Graham, have you failed me and returned without accomplishing your task?  Go, and complete your quest!!");
-      set(f125);
+      set(fNO_BUSINESS_WITH_KING);
     }
     if (v30 != 0) {
       print("The king cannot talk right now.");
@@ -229,7 +229,7 @@ if (posn(oEGO, 18, 80, 86, 113)) {
     if (!fSPOKEN_TO_KING && v30 == 0 && !f126 && vTREASURE_COUNT != 3) {
       set(fSPOKEN_TO_KING);
       set(f23);
-      set(f125);
+      set(fNO_BUSINESS_WITH_KING);
       set.text.attribute(15, 0);
       text.screen();
       display(0, 4, "When you speak to King Edward,");

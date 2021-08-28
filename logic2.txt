@@ -142,7 +142,7 @@ if (fGOAT_COMPANION) {
     goto(FINALCHECKS);
   }
 }
-if (f125) {
+if (fNO_BUSINESS_WITH_KING) {
   if (said("open", "doors")) {
     if (posn(oEGO, 105, 120, 121, 128)) {
       if (vTREASURE_COUNT == 3) {
@@ -166,7 +166,7 @@ if (said("knock", "doors")) {
     print("You cannot reach the door from here.");
   }
 }
-if (!fGOAT_COMPANION && !f125) {
+if (!fGOAT_COMPANION && !fNO_BUSINESS_WITH_KING) {
   if (said("open", "doors")) {
     if (posn(oEGO, 105, 120, 121, 128)) {
       set(f27);
