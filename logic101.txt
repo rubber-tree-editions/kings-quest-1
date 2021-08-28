@@ -6,7 +6,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(93);
   load.view(70);
   load.sound(13);
-  set(f122);
+  set(fSWIMMING_LOGIC_LOADED);
   reset(fSWIMMING);
 }
 if (f174 || fGAME_OVER) {

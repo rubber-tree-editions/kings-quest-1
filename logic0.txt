@@ -81,7 +81,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   reset(fDEBUG_MODE);
   observe.objs(oEGO);
   observe.blocks(oEGO);
-  reset(f122);
+  reset(fSWIMMING_LOGIC_LOADED);
   reset(fSWIMMING_IMPOSSIBLE_HERE);
   reset(f148);
   reset(fSOUND_END_MARKER);
