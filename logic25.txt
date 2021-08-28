@@ -329,7 +329,7 @@ if (fEGO_ON_WATER && !f29) {
   set(f29);
   print("This placid looking stream is actually quite dangerous... the current is stronger than it looks.  You can't keep your head above water.");
 }
-if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
+if (!fBUCKET_FILLED && !fEGO_ON_WATER && !fDRANK_WATER) {
   if (said("drink", "water") || said("get", "drink")) {
     if (posn(oEGO, 1, 46, 158, 102)) {
       print("The steep embankment prevents you from doing that.");

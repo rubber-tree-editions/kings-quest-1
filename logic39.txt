@@ -324,7 +324,7 @@ if (fEGO_ON_WATER && !f29) {
   set(f29);
   print("It seems to me that by now you would have learned to be more careful.  You are stuck in the mud at the bottom of this river and sinking fast.");
 }
-if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
+if (!fBUCKET_FILLED && !fEGO_ON_WATER && !fDRANK_WATER) {
   if (said("drink", "water") || said("get", "drink")) {
     if (posn(oEGO, 15, 40, 90, 166)) {
       print("Caution and steep banks advise against getting water here.");

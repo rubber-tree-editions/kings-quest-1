@@ -321,7 +321,7 @@ if (fEGO_ON_WATER && !f29) {
   set(f29);
   print("You have slipped down the muddy bank and lodged in the  river's bed.  Good knight.");
 }
-if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
+if (!fBUCKET_FILLED && !fEGO_ON_WATER && !fDRANK_WATER) {
   if (said("drink", "water") || said("get", "drink")) {
     if (posn(oEGO, 1, 84, 158, 166)) {
       print("Don't do it!  The bank is steep, muddy, and dangerous.");

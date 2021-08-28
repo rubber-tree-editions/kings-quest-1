@@ -85,7 +85,7 @@ if (said("get", "flowers") || said("steal", "flowers")) {
 if (said("examine", "alligators")) {
   print("The alligators are swimming in the moat.");
 }
-if (said("drink", "water") && !fBUCKET_FILLED && !f116) {
+if (said("drink", "water") && !fBUCKET_FILLED && !fDRANK_WATER) {
   if (posn(oEGO, 0, 146, 159, 167) || posn(oEGO, 87, 110, 117, 145)) {
     print("There are alligators in this water.  I don't think you want to try drinking it.");
   }
@@ -96,7 +96,7 @@ if (said("drink", "water") && !fBUCKET_FILLED && !f116) {
 if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
   if (said("get", "water")) {
     if (posn(oEGO, 0, 146, 159, 167) || posn(oEGO, 87, 110, 117, 145)) {
-      reset(f116);
+      reset(fDRANK_WATER);
       print("You fill the bucket with the murky water from the moat.");
       get("water");
       set(fBUCKET_FILLED);

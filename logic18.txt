@@ -157,7 +157,7 @@ if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
     set(fMANUAL_EGO_WATER_POS);
   }
 }
-if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
+if (!fBUCKET_FILLED && !fEGO_ON_WATER && !fDRANK_WATER) {
   if (said("drink", "water") || said("get", "drink")) {
     if (posn(oEGO, 81, 87, 159, 167)) {
       print("There is nothing to compare with that refreshing taste.");
@@ -169,7 +169,7 @@ if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
 }
 if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
   if (posn(oEGO, 81, 87, 159, 167)) {
-    reset(f116);
+    reset(fDRANK_WATER);
     print("The cold water gushes into the old bucket.");
     get("water");
     set(fBUCKET_FILLED);

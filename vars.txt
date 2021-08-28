@@ -136,6 +136,7 @@
 // custom game flags
 #define fFINISHED1 f30
 #define fDROWNING f44
+// unused: f50-f59
 #define fSPOKEN_TO_KING f60
 #define fPOINTS_FOR_FINDING_POUCH f61
 #define fMOVED_ROCK f62
@@ -192,6 +193,7 @@
 #define fCARRYING_SCEPTRE f113
 #define fDWARF_OR_TROLL_HAS_SCEPTRE f114
 #define fLOST_RING f115
+#define fDRANK_WATER f116
 #define fPOINTS_FOR_CARROT f117
 #define fCARROT_EATEN f118
 // unused: f119

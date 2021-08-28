@@ -193,7 +193,7 @@ if (!fGOAT_COMPANION && !f125) {
 if (f24 && f28) {
   new.room(ROOM55_CASTLE_HALL);
 }
-if (said("drink", "water") && !fBUCKET_FILLED && !f116) {
+if (said("drink", "water") && !fBUCKET_FILLED && !fDRANK_WATER) {
   if (posn(oEGO, 0, 143, 159, 167) || posn(oEGO, 40, 108, 74, 142)) {
     print("As you kneel by the edge of the moat and see just how filthy the water is, your thirst strangely leaves you.");
   }
@@ -204,7 +204,7 @@ if (said("drink", "water") && !fBUCKET_FILLED && !f116) {
 if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
   if (said("get", "water")) {
     if (posn(oEGO, 0, 143, 159, 167) || posn(oEGO, 40, 108, 74, 142)) {
-      reset(f116);
+      reset(fDRANK_WATER);
       print("Although you notice the water is unclean, you fill the bucket.");
       get("water");
       set(fBUCKET_FILLED);

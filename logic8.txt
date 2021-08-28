@@ -90,7 +90,7 @@ if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && fSWIMMING_IMPOSSIBLE_HERE &
   set.view(oEGO, 93);
   print("The swift water pulls you down to your untimely demise.");
 }
-if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
+if (!fBUCKET_FILLED && !fEGO_ON_WATER && !fDRANK_WATER) {
   if (said("drink", "water") || said("get", "drink")) {
     if (posn(oEGO, 76, 43, 159, 167)) {
       print("The water is clear and refreshing.");
@@ -102,7 +102,7 @@ if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
 }
 if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
   if (posn(oEGO, 76, 43, 159, 167)) {
-    reset(f116);
+    reset(fDRANK_WATER);
     print("The bucket is soon filled with clear water.");
     get("water");
     set(fBUCKET_FILLED);

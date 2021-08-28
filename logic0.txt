@@ -496,7 +496,7 @@ if (fCARRYING_BUCKET && fBUCKET_FILLED && !fEGO_ON_WATER) {
     show.obj(INV_BUCKET_OF_WATER);
   }
   if (said("drink", "water") || said("get", "drink")) {
-    set(f116);
+    set(fDRANK_WATER);
     print("You drain the bucket of water to quench your thirst.");
     reset(fBUCKET_FILLED);
     drop("water");
@@ -510,7 +510,7 @@ if (fEGO_ON_WATER && (said("drink", "water") || said("get", "drink"))) {
 if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
   if (fEGO_ON_WATER) {
     if (said("get", "water") || said("fill", "bucket")) {
-      reset(f116);
+      reset(fDRANK_WATER);
       print("With difficulty, you fill the bucket while swimming.");
       get("water");
       set(fBUCKET_FILLED);

@@ -33,7 +33,7 @@ if (said("examine", "lake")) {
 if (said("examine", "cattails")) {
   print("These cattails are soft and fuzzy.");
 }
-if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
+if (!fBUCKET_FILLED && !fEGO_ON_WATER && !fDRANK_WATER) {
   if (said("drink", "water") || said("get", "drink")) {
     if (posn(oEGO, 0, 40, 57, 56)
       || posn(oEGO, 0, 57, 76, 70)
@@ -53,7 +53,7 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water"
     || posn(oEGO, 0, 90, 106, 133)
     || posn(oEGO, 0, 134, 106, 167)
   ) {
-    reset(f116);
+    reset(fDRANK_WATER);
     print("The clear water washes into the bucket.");
     get("water");
     set(fBUCKET_FILLED);

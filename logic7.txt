@@ -47,7 +47,7 @@ if (said("examine", "lake")) {
 if (said("examine", "waterfall")) {
   print("There is a small waterfall splashing nearby.");
 }
-if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
+if (!fBUCKET_FILLED && !fEGO_ON_WATER && !fDRANK_WATER) {
   if (said("drink", "water") || said("get", "drink")) {
     if (posn(oEGO, 0, 36, 84, 167)) {
       print("The clear water quenches your thirst.");
@@ -59,7 +59,7 @@ if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
 }
 if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
   if (posn(oEGO, 0, 36, 84, 167)) {
-    reset(f116);
+    reset(fDRANK_WATER);
     print("The lake's waters pour into the bucket.");
     get("water");
     set(fBUCKET_FILLED);

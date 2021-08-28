@@ -50,7 +50,7 @@ if (!fEGO_ON_WATER) {
     set(fMANUAL_EGO_WATER_POS);
   }
 }
-if (!fBUCKET_FILLED && !fEGO_ON_WATER && !f116) {
+if (!fBUCKET_FILLED && !fEGO_ON_WATER && !fDRANK_WATER) {
   if (said("drink", "water") || said("get", "drink")) {
     if (posn(oEGO, 15, 40, 138, 167)) {
       print("The clear water quenches your thirst.");
@@ -78,7 +78,7 @@ if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
 }
 if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
   if (posn(oEGO, 15, 40, 138, 167)) {
-    reset(f116);
+    reset(fDRANK_WATER);
     print("You fill up your bucket with sparkling water.");
     get("water");
     set(fBUCKET_FILLED);
