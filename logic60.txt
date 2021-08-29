@@ -22,23 +22,23 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
   program.control();
   stop.cycling(oEGO);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
-  get.priority(oEGO, v30);
-  set.priority.v(oEGO, v30);
+  get.priority(oEGO, rv0);
+  set.priority.v(oEGO, rv0);
   vTEMP_Y += 8;
   vTEMP_STEP = 4;
   sound(SND_FALLING, fSOUND_END_MARKER);
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f21);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf1);
 }
-if (f21) {
-  reset(f21);
+if (rf1) {
+  reset(rf1);
   erase(oEGO);
 }
 if (fSOUND_END_MARKER) {
   reset(fSOUND_END_MARKER);
-  set(f20);
+  set(rf0);
 }
-if (f20) {
-  reset(f20);
+if (rf0) {
+  reset(rf0);
   print("You should know that it is not possible to walk on clouds!");
   set(fGAME_OVER);
 }

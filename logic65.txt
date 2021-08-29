@@ -71,9 +71,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.blocks(oEGO);
     position(oEGO, 80, 45);
     set(f98);
-    set(f25);
+    set(rf5);
     program.control();
-    move.obj(oEGO, 80, 84, 6, f20);
+    move.obj(oEGO, 80, 84, 6, rf0);
     vWITCH_STATE = WITCHSTATE_AWAY_FROM_HOME;
   }
   if (vPREV_ROOM_NO == ROOM28_OUTSIDE_GINGERBREAD_HOUSE) {
@@ -90,14 +90,14 @@ if (fROOM_SCRIPT_EXECUTED) {
         load.view(43);
         animate.obj(oWITCH);
         set.view(oWITCH, 43);
-        v30 = 250;
-        v31 = 3;
+        rv0 = 250;
+        rv1 = 3;
       }
     }
   }
   if (vWITCH_STATE == WITCHSTATE_AT_HOME) {
     if (!fPROTECTED_BY_SPELL && !fEGO_INVISIBLE) {
-      set(f27);
+      set(rf7);
       load.view(43);
       animate.obj(oWITCH);
       set.view(oWITCH, 43);
@@ -122,14 +122,14 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (fEGO_INVISIBLE) {
     print("Be thankful that you are invisible or the witch may have stuck around to try and catch you!");
   }
-  if (f27) {
+  if (rf7) {
     draw(oWITCH);
-    follow.ego(oWITCH, 10, f26);
+    follow.ego(oWITCH, 10, rf6);
     print("Surprise!  Surprise!  The wicked witch is home and now she's after you!");
   }
 }
-if (f27 && !f32) {
-  set(f32);
+if (rf7 && !rf12) {
+  set(rf12);
   sound(SND_VILLAIN, f148);
 }
 if (fGOAT_COMPANION) {
@@ -144,54 +144,54 @@ if (vWITCH_STATE == WITCHSTATE_DEAD) {
   }
 }
 if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
-  if (!f20 && !f33 && !f27) {
+  if (!rf0 && !rf13 && !rf7) {
     sound(SND_FALLING, f198);
-    set(f33);
+    set(rf13);
   }
 }
 if (f198) {
-  if (!f20 && !f34) {
+  if (!rf0 && !rf14) {
     reset(f198);
-    reset(f33);
+    reset(rf13);
   }
 }
-v32--;
-if (f20) {
+rv2--;
+if (rf0) {
   stop.sound();
-  set(f34);
-  reset(f20);
+  set(rf14);
+  reset(rf0);
   observe.blocks(oEGO);
   set.view(oEGO, 103);
   shake.screen(1);
   print("OUCH!");
-  v32 = 20;
+  rv2 = 20;
   set(f98);
   sound(SND_OUCH, fSOUND_END_MARKER);
 }
 if (fSOUND_END_MARKER) {
-  if (v32 != 0) {
+  if (rv2 != 0) {
     reset(fSOUND_END_MARKER);
     sound(SND_OUCH, fSOUND_END_MARKER);
   }
 }
-if (v32 == 1) {
+if (rv2 == 1) {
   set.view(oEGO, 104);
-  end.of.loop(oEGO, f22);
+  end.of.loop(oEGO, rf2);
   print("As the wicked witch flew over her house, she dropped you... into her cage!  If you can't get out, you may become the secret ingredient in this witches' brew!");
   player.control();
 }
-v33--;
-if (f22) {
-  reset(f22);
+rv3--;
+if (rf2) {
+  reset(rf2);
   reset(f98);
   set.view(oEGO, 0);
-  v33 = 100;
+  rv3 = 100;
 }
-if (v33 == 1) {
-  if (f27 || f29) {
+if (rv3 == 1) {
+  if (rf7 || rf9) {
     print("With a flash, you hear her joyously exclaim, \"This has made me feel like flying!\"");
     erase(oWITCH);
-    reset(f27);
+    reset(rf7);
   }
   else {
     print("Try as you will to escape, your labor will be in vain.");
@@ -200,74 +200,74 @@ if (v33 == 1) {
   stop.cycling(oEGO);
   set(fGAME_OVER);
 }
-if (f27) {
-  distance(oEGO, oWITCH, v34);
-  if (v34 == 30 && !f30) {
-    set(f30);
+if (rf7) {
+  distance(oEGO, oWITCH, rv4);
+  if (rv4 == 30 && !rf10) {
+    set(rf10);
     stop.motion(oEGO);
     print("Rats!  She has cast some spell to keep you from escaping!. The witch remarks, \"Oh, how nice of you to come for dinner (cackle, cackle)\"");
   }
-  if (f26) {
-    reset(f26);
+  if (rf6) {
+    reset(rf6);
     print("She pokes and pinches you, then states, \"This one is too scrawny, so it's into the cage until you fatten up (smack, yum)!\"");
     erase(oEGO);
     position(oEGO, 80, 80);
     draw(oEGO);
     start.motion(oEGO);
-    set(f22);
-    set(f25);
+    set(rf2);
+    set(rf5);
   }
 }
-v30--;
-if (v30 == 0) {
-  if (v31 != 0) {
-    v31--;
-    v30 = 250;
+rv0--;
+if (rv0 == 0) {
+  if (rv1 != 0) {
+    rv1--;
+    rv0 = 250;
   }
 }
-if (v30 == 1 && v31 == 3) {
+if (rv0 == 1 && rv1 == 3) {
   print("Off in the distance you hear a high, squeaky voice say, \"I can smell someone tasty in my house.\"");
 }
-if (v30 == 1 && v31 == 2) {
+if (rv0 == 1 && rv1 == 2) {
   position(oWITCH, 49, 160);
   draw(oWITCH);
   sound(SND_VILLAIN, f148);
-  set(f29);
+  set(rf9);
   if (posn(oEGO, 105, 1, 158, 166)) {
-    move.obj(oWITCH, 26, 120, 2, f21);
-    set(f31);
+    move.obj(oWITCH, 26, 120, 2, rf1);
+    set(rf11);
     print("The witch mutters, \"I am going to get my oven ready to cook someone for dinner (yum).\"");
   }
 }
-if (f29 && !f21 && !f31) {
-  v30 = 0;
-  v31 = 0;
-  if (posn(oEGO, 105, 1, 158, 166) && !f23) {
+if (rf9 && !rf1 && !rf11) {
+  rv0 = 0;
+  rv1 = 0;
+  if (posn(oEGO, 105, 1, 158, 166) && !rf3) {
     wander(oWITCH);
   }
   else {
-    if (!f23) {
-      set(f23);
+    if (!rf3) {
+      set(rf3);
       ignore.blocks(oWITCH);
-      follow.ego(oWITCH, 10, f26);
+      follow.ego(oWITCH, 10, rf6);
     }
-    distance(oEGO, oWITCH, v34);
-    if (v34 < 30 && !f30 && !posn(oEGO, 105, 132, 158, 166)) {
-      set(f30);
+    distance(oEGO, oWITCH, rv4);
+    if (rv4 < 30 && !rf10 && !posn(oEGO, 105, 132, 158, 166)) {
+      set(rf10);
       stop.motion(oEGO);
       print("Rats!  She has cast some spell to keep you from escaping!. The witch remarks, \"Oh, how nice of you to come for dinner (cackle, cackle)\"");
     }
-    if (f26) {
-      reset(f26);
+    if (rf6) {
+      reset(rf6);
       print("She pokes and pinches you, then states, \"This one is too scrawny, so it's into the cage until you fatten up (smack, yum)!\"");
       reposition.to(oEGO, 80, 80);
       start.motion(oEGO);
-      set(f22);
-      set(f25);
+      set(rf2);
+      set(rf5);
     }
   }
 }
-if (f21) {
+if (rf1) {
   if (said("examine", "witch")) {
     print("This ugly old witch is one of the most hideous sights you have ever seen.  I would never trust her.");
   }
@@ -277,10 +277,10 @@ if (f21) {
       erase(oWITCH);
       print("Courageously, you manage to push the witch into the oven where she flashes and melts away into a harmless blob. Congratulations!");
       vWITCH_STATE = WITCHSTATE_DEAD;
-      v30 = 0;
-      v31 = 0;
-      reset(f29);
-      reset(f21);
+      rv0 = 0;
+      rv1 = 0;
+      reset(rf9);
+      reset(rf1);
       vSCORE += 7;
     }
   }
@@ -289,25 +289,25 @@ if (f21) {
       print("You are in no position to do that!");
     }
   }
-  if (v30 == 1 && v31 == 3) {
+  if (rv0 == 1 && rv1 == 3) {
     print("The witch mumbles, \"After I get the oven nice and hot, I will be ready to have someone for dinner (giggle).\"");
   }
-  if (v30 == 1 && v31 == 2) {
+  if (rv0 == 1 && rv1 == 2) {
     print("The witch mutters, \"The oven is heating up nicely.  I wonder who will be my dinner guest!\"");
   }
-  if (v30 == 1 && v31 == 0) {
-    v30 = 0;
-    v31 = 0;
+  if (rv0 == 1 && rv1 == 0) {
+    rv0 = 0;
+    rv1 = 0;
     print("The witch says, \"My oven is now the perfect temperature. It is time to invite someone for dinner (cackle, cackle)!\"");
-    reset(f21);
-    reset(f31);
+    reset(rf1);
+    reset(rf11);
     if (posn(oEGO, 100, 1, 158, 166)) {
       wander(oWITCH);
     }
   }
 }
-if (!f21) {
-  if (f29 || f27) {
+if (!rf1) {
+  if (rf9 || rf7) {
     if (said("shove", "witch")) {
       print("You are in no position to do that!");
     }
@@ -320,13 +320,13 @@ if (!f21) {
   }
 }
 if (vWITCH_STATE != WITCHSTATE_DEAD) {
-  if (!f29 && !f27) {
+  if (!rf9 && !rf7) {
     if (said("anyword", "witch")) {
       print("There is no witch here...RIGHT NOW!!");
     }
   }
 }
-if (f29 || f27) {
+if (rf9 || rf7) {
   if (said("talk", "witch")) {
     print("Now is not a good time to try and start a conversation!");
   }
@@ -367,7 +367,7 @@ if (posn(oEGO, 23, 89, 55, 100)) {
     }
     if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE) {
       start.cycling(oCUPBOARD);
-      end.of.loop(oCUPBOARD, f24);
+      end.of.loop(oCUPBOARD, rf4);
       vCUPBOARD_STATE = CUPBOARDSTATE_OPEN_WITH_CHEESE;
       if (!fPOINTS_FOR_FINDING_CHEESE) {
         set(fPOINTS_FOR_FINDING_CHEESE);
@@ -434,8 +434,8 @@ if (!posn(oEGO, 23, 89, 55, 100)) {
     }
   }
 }
-if (f24) {
-  reset(f24);
+if (rf4) {
+  reset(rf4);
   draw(oSWISS_CHEESE);
 }
 if (said("examine", "stove")) {
@@ -447,7 +447,7 @@ if (said("examine", "stove")) {
   }
 }
 if (said("examine", "cage")) {
-  if (f25) {
+  if (rf5) {
     if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
       print("This cage will be your new home for the rest of your life.");
     }
@@ -455,7 +455,7 @@ if (said("examine", "cage")) {
       print("You look for a way to escape, but there is none.");
     }
   }
-  if (!f25) {
+  if (!rf5) {
     if (posn(oEGO, 4, 88, 106, 160)) {
       print("It is made from rusty, but strong, iron bars.");
     }

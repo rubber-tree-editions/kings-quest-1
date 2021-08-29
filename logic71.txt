@@ -27,7 +27,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     vTEMP_Y = 166;
     vTEMP_STEP = 4;
     set.priority(oEGO, 15);
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f20);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf0);
   }
   if (vPREV_ROOM_NO == ROOM70) {
     set.view(oEGO, 74);
@@ -37,13 +37,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (f158 && !f20 && !f21) {
+if (f158 && !rf0 && !rf1) {
   sound(SND_FALLING, fSOUND_END_MARKER);
-  set(f21);
+  set(rf1);
 }
 if (fSOUND_END_MARKER) {
-  if (!f20) {
-    reset(f21);
+  if (!rf0) {
+    reset(rf1);
     reset(fSOUND_END_MARKER);
   }
 }
@@ -72,12 +72,12 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !f158) {
   set(f98);
   vTEMP_Y = 166;
   vTEMP_STEP = 4;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f20);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf0);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM72);
 }
-if (f20 || posn(oEGO, 0, 166, 159, 167)) {
+if (rf0 || posn(oEGO, 0, 166, 159, 167)) {
   new.room(ROOM70);
 }
 return;

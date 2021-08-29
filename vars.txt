@@ -43,8 +43,24 @@
 #define vSELECTED_INV_ITEM v25
 #define vVIDEO_MODE v26
 
-// game vars
-#define vTEMP_1 v31
+// room vars: cleared to zero on every room load
+#define rv0 v30
+#define rv1 v31
+#define rv2 v32
+#define rv3 v33
+#define rv4 v34
+#define rv5 v35
+#define rv6 v36
+#define rv7 v37
+#define rv8 v38
+#define rv9 v39
+#define rv10 v40
+#define rv11 v41
+#define rv12 v42
+#define rv13 v43
+#define rv14 v44
+
+// global vars
 #define vTEMP_COUNTER v45
 // unused: v50-v59
 #define vTEMP_X v60
@@ -143,9 +159,34 @@
 #define fENABLE_NON_BLOCKING_WINDOWS f15
 #define fGAME_RESTART_FLAG f16
 
+// local game flags: reset on every room load
+#define rf0 f20
+#define rf1 f21
+#define rf2 f22
+#define rf3 f23
+#define rf4 f24
+#define rf5 f25
+#define rf6 f26
+#define rf7 f27
+#define rf8 f28
+#define rf9 f29
+#define rf10 f30
+#define rf11 f31
+#define rf12 f32
+#define rf13 f33
+#define rf14 f34
+#define rf15 f35
+#define rf16 f36
+#define rf17 f37
+#define rf18 f38
+#define rf19 f39
+#define rf20 f40
+#define rf21 f41
+#define rf22 f42
+#define rf23 f43
+#define rfDROWNING f44
+
 // custom game flags
-#define fFINISHED1 f30
-#define fDROWNING f44
 // unused: f50-f59
 #define fSPOKEN_TO_KING f60
 #define fPOINTS_FOR_FINDING_POUCH f61

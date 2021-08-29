@@ -95,13 +95,13 @@ if (said("examine", "table")) {
     print("There is a bowl of stew sitting on the old oak table.");
   }
 }
-v30--;
+rv0--;
 if (said("talk", "woodcutter")) {
   print("\"Welcome to my humble abode.\"");
-  if (!f20) {
-    set(f20);
+  if (!rf0) {
+    set(rf0);
     start.cycling(oWOODCUTTER);
-    v30 = 18;
+    rv0 = 18;
   }
 }
 if (said("talk", "wife")) {
@@ -111,23 +111,23 @@ if (said("talk", "wife")) {
   else {
     print("\"Make yourself at home in our humble home.\"");
   }
-  if (!f21) {
-    set(f21);
+  if (!rf1) {
+    set(rf1);
     start.cycling(oWIFE);
-    v30 = 18;
+    rv0 = 18;
   }
 }
-if (v30 == 1) {
-  if (f20) {
-    reset(f20);
+if (rv0 == 1) {
+  if (rf0) {
+    reset(rf0);
     stop.cycling(oWOODCUTTER);
   }
-  if (f21) {
-    reset(f21);
+  if (rf1) {
+    reset(rf1);
     stop.cycling(oWIFE);
   }
-  if (f24) {
-    reset(f24);
+  if (rf4) {
+    reset(rf4);
     stop.cycling(oWOODCUTTER);
     stop.cycling(oWIFE);
   }
@@ -137,11 +137,11 @@ if (said("help", "woodcutter") || said("help", "wife") || said("help", "people")
 }
 if (said("murder", "woodcutter") || said("murder", "wife") || said("murder", "people")) {
   print("What an abominable idea!  You should be ashamed of yourself for even suggesting such a thing!");
-  if (!f24) {
-    set(f24);
+  if (!rf4) {
+    set(rf4);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    v30 = 18;
+    rv0 = 18;
   }
 }
 if (said("examine", "cupboard")) {
@@ -155,21 +155,21 @@ if (said("examine", "window")) {
 }
 if (said("break", "window")) {
   print("You should have more sympathy for these poor folks!");
-  if (!f24) {
-    set(f24);
+  if (!rf4) {
+    set(rf4);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    v30 = 18;
+    rv0 = 18;
   }
 }
 if (fGIVEN_BOWL_TO_WOODCUTTER) {
   if (said("get", "bowl")) {
     print("You have given the bowl to these poor people and it is now theirs.  You have no right to take it back.");
-    if (!f24) {
-      set(f24);
+    if (!rf4) {
+      set(rf4);
       start.cycling(oWOODCUTTER);
       start.cycling(oWIFE);
-      v30 = 18;
+      rv0 = 18;
     }
   }
   if (said("examine", "bowl")) {
@@ -188,11 +188,11 @@ if (fCARRYING_DIAMONDS || fCARRYING_GOLDEN_EGG || fCARRYING_GOLD_WALNUT || fCARR
 }
 if (fCARRYING_DIAMONDS && said("give", "pouch of diamonds")) {
   print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
-  if (!f24) {
-    set(f24);
+  if (!rf4) {
+    set(rf4);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    v30 = 18;
+    rv0 = 18;
   }
   reset(fCARRYING_DIAMONDS);
   drop("pouch of diamonds");
@@ -200,11 +200,11 @@ if (fCARRYING_DIAMONDS && said("give", "pouch of diamonds")) {
 }
 if (fCARRYING_GOLDEN_EGG && said("give", "golden egg")) {
   print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
-  if (!f24) {
-    set(f24);
+  if (!rf4) {
+    set(rf4);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    v30 = 18;
+    rv0 = 18;
   }
   reset(fCARRYING_GOLDEN_EGG);
   drop("gold egg");
@@ -212,11 +212,11 @@ if (fCARRYING_GOLDEN_EGG && said("give", "golden egg")) {
 }
 if (fCARRYING_GOLD_WALNUT && said("give", "walnut")) {
   print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
-  if (!f24) {
-    set(f24);
+  if (!rf4) {
+    set(rf4);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    v30 = 18;
+    rv0 = 18;
   }
   reset(fCARRYING_GOLD_WALNUT);
   drop("gold walnut");
@@ -224,11 +224,11 @@ if (fCARRYING_GOLD_WALNUT && said("give", "walnut")) {
 }
 if (fCARRYING_SCEPTRE && said("give", "sceptre")) {
   print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
-  if (!f24) {
-    set(f24);
+  if (!rf4) {
+    set(rf4);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    v30 = 18;
+    rv0 = 18;
   }
   reset(fCARRYING_SCEPTRE);
   drop("sceptre");
@@ -236,11 +236,11 @@ if (fCARRYING_SCEPTRE && said("give", "sceptre")) {
 }
 if (fCARRYING_CARROT && said("give", "carrot")) {
   print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
-  if (!f24) {
-    set(f24);
+  if (!rf4) {
+    set(rf4);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    v30 = 18;
+    rv0 = 18;
   }
   reset(fCARRYING_CARROT);
   drop("carrot");
@@ -248,11 +248,11 @@ if (fCARRYING_CARROT && said("give", "carrot")) {
 }
 if (fCARRYING_MAGIC_BEANS && said("give", "magic beans")) {
   print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
-  if (!f24) {
-    set(f24);
+  if (!rf4) {
+    set(rf4);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    v30 = 18;
+    rv0 = 18;
   }
   reset(fCARRYING_MAGIC_BEANS);
   drop("beans");
@@ -277,11 +277,11 @@ if (fCARRYING_BOWL) {
       set.view(oBOWL, 25);
       draw(oBOWL);
       print("Puzzled, the couple wonders why you have given them a bowl.");
-      if (!f24) {
-        set(f24);
+      if (!rf4) {
+        set(rf4);
         start.cycling(oWOODCUTTER);
         start.cycling(oWIFE);
-        v30 = 18;
+        rv0 = 18;
       }
     }
   }
@@ -310,11 +310,11 @@ if (fCARRYING_BOWL) {
       draw(oBOWL);
       print("The woodcutter family is very grateful that you have given them a bowl of stew.  Now they will have at least one last meal.  As a token of their gratitude, they offer their last earthly possession, the woodcutter's fiddle.");
       set(fWOODCUTTER_GIVEN_STEW);
-      if (!f24) {
-        set(f24);
+      if (!rf4) {
+        set(rf4);
         start.cycling(oWOODCUTTER);
         start.cycling(oWIFE);
-        v30 = 18;
+        rv0 = 18;
       }
     }
   }
@@ -341,11 +341,11 @@ if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_EMPTY) {
       vSCORE += 2;
     }
     set(fWOODCUTTER_GIVEN_STEW);
-    if (!f24) {
-      set(f24);
+    if (!rf4) {
+      set(rf4);
       start.cycling(oWOODCUTTER);
       start.cycling(oWIFE);
-      v30 = 18;
+      rv0 = 18;
     }
   }
 }
@@ -395,11 +395,11 @@ if (fEGO_ON_WATER && !f199) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_Y = 166;
   vTEMP_STEP = 6;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f23);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf3);
   sound(SND_FALLING, fSOUND_END_MARKER);
 }
-if (f23) {
-  reset(f23);
+if (rf3) {
+  reset(rf3);
   erase(oEGO);
   print("These poor people can't even afford to repair the floor!  Sorry about that.");
   set(fGAME_OVER);

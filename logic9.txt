@@ -8,7 +8,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  v32 = 4;
+  rv2 = 4;
   set.horizon(46);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
@@ -21,35 +21,35 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(6);
     animate.obj(oFAIRY_GODMOTHER);
     set.view(oFAIRY_GODMOTHER, 6);
-    v31 = 45;
+    rv1 = 45;
     load.sound(SND_FAIRY_GODMOTHER);
   }
   draw(oEGO);
   show.pic();
 }
-v31--;
-if (v31 == 1) {
+rv1--;
+if (rv1 == 1) {
   position(oFAIRY_GODMOTHER, 50, 80);
   draw(oFAIRY_GODMOTHER);
   print("\"Gentle Sir Graham, I am your fairy godmother.  Your quest is indeed noble.  My small part to aid you can be no bigger than this magic spell, protective but for a little while.\"");
-  follow.ego(oFAIRY_GODMOTHER, 25, f21);
-  set(f20);
+  follow.ego(oFAIRY_GODMOTHER, 25, rf1);
+  set(rf0);
   set(fPROTECTED_BY_SPELL);
-  v30 = 250;
+  rv0 = 250;
   vSPELL_COUNTDOWN_HI = 100;
   vSPELL_COUNTDOWN_LO = 250;
 }
-if (f20) {
+if (rf0) {
   set(f135);
-  v30--;
-  v32--;
-  if (v32 == 1) {
-    sound(SND_FAIRY_GODMOTHER, f22);
+  rv0--;
+  rv2--;
+  if (rv2 == 1) {
+    sound(SND_FAIRY_GODMOTHER, rf2);
   }
-  if (f22) {
-    reset(f22);
+  if (rf2) {
+    reset(rf2);
     stop.sound();
-    v32 = 4;
+    rv2 = 4;
   }
   if (said("examine", "fairy godmother")) {
     print("She is your fairy godmother.");
@@ -60,19 +60,19 @@ if (f20) {
   if (said("anyword", "fairy godmother") || said("hello") || said("say", "hello")) {
     print("There is no need to say, or do, anything.");
   }
-  if (f21) {
+  if (rf1) {
     wander(oFAIRY_GODMOTHER);
   }
 }
-if (f20 && v30 == 1) {
+if (rf0 && rv0 == 1) {
   print("\"I will be watching over you, Sir Graham.\"");
   erase(oFAIRY_GODMOTHER);
-  reset(f20);
-  v32 = 0;
+  reset(rf0);
+  rv2 = 0;
   stop.sound();
   reset(f135);
 }
-if (!f20) {
+if (!rf0) {
   if (said("anyword", "fairy godmother")) {
     print("There is no fairy here.");
   }

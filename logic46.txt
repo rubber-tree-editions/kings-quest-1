@@ -18,16 +18,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   random(0, 250, v62);
   if (v62 < 175) {
     load.sound(SND_VILLAIN);
-    v31 = 2;
-    step.size(oOGRE, v31);
+    rv1 = 2;
+    step.size(oOGRE, rv1);
     load.view(94);
     load.view(95);
     load.view(2);
     animate.obj(oOGRE);
     set.view(oOGRE, 2);
-    set(f20);
+    set(rf0);
   }
-  if (f20) {
+  if (rf0) {
     do {
       random(0, 250, v70);
     } while (v70 > 90);
@@ -40,7 +40,7 @@ if (v70 == 1) {
   set(f145);
   set(f146);
   position(oOGRE, 40, 51);
-  set(f21);
+  set(rf1);
   set(f135);
   sound(SND_VILLAIN, fSOUND_END_MARKER);
   draw(oOGRE);
@@ -50,7 +50,7 @@ if (v70 == 1) {
   }
   if (fGOAT_COMPANION) {
     wander(oOGRE);
-    set(f23);
+    set(rf3);
     print("Watch out!!!  There is an ogre nearby!  He will crush you in his strong arms if he catches you.");
     print("Lucky for you that ogres are afraid of goats. This one decides to leave you alone.");
   }
@@ -59,7 +59,7 @@ if (fSOUND_END_MARKER) {
   reset(fSOUND_END_MARKER);
   reset(f135);
 }
-if (!f21) {
+if (!rf1) {
   reset(f145);
   reset(f146);
   if (said("anyword", "ogre")) {
@@ -78,42 +78,42 @@ if (f156) {
   if (fEGO_INVISIBLE) {
     print("Fortunately, you are invisible and the ogre can't see you.");
     wander(oOGRE);
-    set(f23);
+    set(rf3);
     goto(AFTERCOUNTDOWN);
   }
   if (fPROTECTED_BY_SPELL) {
     print("You are very fortunate that your protective spell is still working.");
     wander(oOGRE);
-    set(f23);
+    set(rf3);
     goto(AFTERCOUNTDOWN);
   }
   if (fCARRYING_SHIELD) {
     print("With the magic shield, no harm will come to you.");
     wander(oOGRE);
-    set(f23);
+    set(rf3);
     goto(AFTERCOUNTDOWN);
   }
   if (fEGO_TINY) {
     print("The ogre's vision is not keen enough to see you.");
     wander(oOGRE);
-    set(f23);
+    set(rf3);
     goto(AFTERCOUNTDOWN);
   }
-  set(f24);
-  v30 = 10;
+  set(rf4);
+  rv0 = 10;
   program.control();
   stop.motion(oEGO);
   erase(oOGRE);
   set.view(oEGO, 94);
 }
-v30--;
+rv0--;
 AFTERCOUNTDOWN:
-  if (f23 && vOBJECT_EDGE_CODE != 0) {
+  if (rf3 && vOBJECT_EDGE_CODE != 0) {
     erase(oOGRE);
-    reset(f23);
-    reset(f21);
+    reset(rf3);
+    reset(rf1);
   }
-  if (v30 == 1) {
+  if (rv0 == 1) {
     print("You were warned to be careful around this fierce creature!  Maybe next time you will be able to elude the beast.");
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     erase(oEGO);
@@ -127,7 +127,7 @@ AFTERCOUNTDOWN:
     stop.cycling(oOGRE);
     set(fGAME_OVER);
   }
-  if (f21) {
+  if (rf1) {
     if (said("examine", "ogre")) {
       print("That is a ferocious looking beast.  Please keep your distance!");
     }
@@ -162,19 +162,19 @@ AFTERCOUNTDOWN:
     reset(f145);
     reset(f146);
   }
-  if (f24) {
+  if (rf4) {
     return;
   }
-  if (vEGO_EDGE_CODE == EDGE_HORIZON && v30 == 0) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON && rv0 == 0) {
     new.room(ROOM3_ROCK_OVER_HOLE);
   }
-  if (vEGO_EDGE_CODE == EDGE_RIGHT && v30 == 0) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT && rv0 == 0) {
     new.room(ROOM47_MUSHROOM);
   }
-  if (vEGO_EDGE_CODE == EDGE_LEFT && v30 == 0) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT && rv0 == 0) {
     new.room(ROOM45_OUTSIDE_WOODCUTTER_COTTAGE_BACK);
   }
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM && v30 == 0) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM && rv0 == 0) {
     new.room(ROOM35);
   }
   if (fGOAT_COMPANION) {

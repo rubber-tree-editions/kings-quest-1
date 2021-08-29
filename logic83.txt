@@ -8,7 +8,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   configure.screen(0, 21, 0);
   draw.pic(vROOM_NO);
   prevent.input();
-  v30 = 250;
+  rv0 = 250;
   set(fSOUND_ENABLED);
   display(22, 1, "(c) copyright SIERRA On-Line Inc.  1986");
   display(24, 5, "Press any key to continue.");
@@ -71,37 +71,37 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.menu.item("Toggle Sound   <F2>", cTOGGLESOUND);
   show.pic();
 }
-if (!f21) {
-  set(f21);
-  sound(SND_TITLE_MUSIC, f20);
+if (!rf1) {
+  set(rf1);
+  sound(SND_TITLE_MUSIC, rf0);
 }
-v30--;
-if (v30 == 245) {
+rv0--;
+if (rv0 == 245) {
   display(18, 12, "Designed and    ");
 }
-if (v30 == 240) {
+if (rv0 == 240) {
   display(17, 12, "Designed and    ");
   display(18, 12, "    Written by: ");
 }
-if (v30 == 235) {
+if (rv0 == 235) {
   display(16, 12, "Designed and    ");
   display(17, 12, "    Written by: ");
   display(18, 12, "Roberta Williams");
 }
-if (v30 == 230) {
+if (rv0 == 230) {
   display(15, 12, "Designed and    ");
   display(16, 12, "    Written by: ");
   display(17, 12, "Roberta Williams");
   display(18, 12, "                ");
 }
-if (v30 == 225) {
+if (rv0 == 225) {
   display(14, 12, "Designed and    ");
   display(15, 12, "    Written by: ");
   display(16, 12, "Roberta Williams");
   display(17, 12, "                ");
   display(18, 12, "Orig. Version by");
 }
-if (v30 == 220) {
+if (rv0 == 220) {
   display(13, 12, "Designed and    ");
   display(14, 12, "    Written by: ");
   display(15, 12, "Roberta Williams");
@@ -109,7 +109,7 @@ if (v30 == 220) {
   display(17, 12, "Orig. Version by");
   display(18, 12, " Charles Tingley");
 }
-if (v30 == 215) {
+if (rv0 == 215) {
   display(12, 12, "Designed and    ");
   display(13, 12, "    Written by: ");
   display(14, 12, "Roberta Williams");
@@ -118,7 +118,7 @@ if (v30 == 215) {
   display(17, 12, " Charles Tingley");
   display(18, 12, "  Ken MacNeill  ");
 }
-if (v30 == 210) {
+if (rv0 == 210) {
   display(11, 12, "Designed and    ");
   display(12, 12, "    Written by: ");
   display(13, 12, "Roberta Williams");
@@ -128,7 +128,7 @@ if (v30 == 210) {
   display(17, 12, "  Ken MacNeill  ");
   display(18, 12, "   Chris Iden   ");
 }
-if (v30 == 205) {
+if (rv0 == 205) {
   display(10, 12, "Designed and    ");
   display(11, 12, "    Written by: ");
   display(12, 12, "Roberta Williams");
@@ -139,7 +139,7 @@ if (v30 == 205) {
   display(17, 12, "   Chris Iden   ");
   display(18, 12, "                ");
 }
-if (v30 == 200) {
+if (rv0 == 200) {
   display(9, 12, "Designed and    ");
   display(10, 12, "    Written by: ");
   display(11, 12, "Roberta Williams");
@@ -151,7 +151,7 @@ if (v30 == 200) {
   display(17, 12, "                ");
   display(18, 12, "Graphics by:    ");
 }
-if (v30 == 195) {
+if (rv0 == 195) {
   display(8, 12, "Designed and    ");
   display(9, 12, "    Written by: ");
   display(10, 12, "Roberta Williams");
@@ -164,7 +164,7 @@ if (v30 == 195) {
   display(17, 12, "Graphics by:    ");
   display(18, 12, " Doug MacNeill  ");
 }
-if (v30 == 190) {
+if (rv0 == 190) {
   display(7, 12, "Designed and    ");
   display(8, 12, "    Written by: ");
   display(9, 12, "Roberta Williams");
@@ -178,7 +178,7 @@ if (v30 == 190) {
   display(17, 12, " Doug MacNeill  ");
   display(18, 12, "  Greg Rowland  ");
 }
-if (v30 == 185) {
+if (rv0 == 185) {
   display(6, 12, "Designed and    ");
   display(7, 12, "    Written by: ");
   display(8, 12, "Roberta Williams");
@@ -193,7 +193,7 @@ if (v30 == 185) {
   display(17, 12, "  Greg Rowland  ");
   display(18, 12, "                ");
 }
-if (v30 == 180) {
+if (rv0 == 180) {
   display(6, 12, "    Written by: ");
   display(7, 12, "Roberta Williams");
   display(8, 12, "                ");
@@ -208,7 +208,7 @@ if (v30 == 180) {
   display(17, 12, "                ");
   display(18, 12, "New Version by: ");
 }
-if (v30 == 175) {
+if (rv0 == 175) {
   display(6, 12, "Roberta Williams");
   display(7, 12, "                ");
   display(8, 12, "Orig. Version by");
@@ -223,7 +223,7 @@ if (v30 == 175) {
   display(17, 12, "New Version by: ");
   display(18, 12, " Jeff Stephenson");
 }
-if (v30 == 170) {
+if (rv0 == 170) {
   display(6, 12, "                ");
   display(7, 12, "Orig. Version by");
   display(8, 12, " Charles Tingley");
@@ -238,7 +238,7 @@ if (v30 == 170) {
   display(17, 12, " Jeff Stephenson");
   display(18, 12, "  Sol Ackerman  ");
 }
-if (v30 == 165) {
+if (rv0 == 165) {
   display(6, 12, "Orig. Version by");
   display(7, 12, " Charles Tingley");
   display(8, 12, "  Ken MacNeill  ");
@@ -253,7 +253,7 @@ if (v30 == 165) {
   display(17, 12, "  Sol Ackerman  ");
   display(18, 12, "   Chris Iden   ");
 }
-if (v30 == 160) {
+if (rv0 == 160) {
   display(6, 12, " Charles Tingley");
   display(7, 12, "  Ken MacNeill  ");
   display(8, 12, "   Chris Iden   ");
@@ -268,7 +268,7 @@ if (v30 == 160) {
   display(17, 12, "   Chris Iden   ");
   display(18, 12, "                ");
 }
-if (v30 == 155) {
+if (rv0 == 155) {
   display(6, 12, "  Ken MacNeill  ");
   display(7, 12, "   Chris Iden   ");
   display(8, 12, "                ");
@@ -283,7 +283,7 @@ if (v30 == 155) {
   display(17, 12, "                ");
   display(18, 12, "Thanks to:      ");
 }
-if (v30 == 150) {
+if (rv0 == 150) {
   display(6, 12, "   Chris Iden   ");
   display(7, 12, "                ");
   display(8, 12, "Graphics by:    ");
@@ -298,7 +298,7 @@ if (v30 == 150) {
   display(17, 12, "Thanks to:      ");
   display(18, 12, " Linda Ackerman  ");
 }
-if (v30 == 145) {
+if (rv0 == 145) {
   display(6, 12, "                ");
   display(7, 12, "Graphics by:    ");
   display(8, 12, " Doug MacNeill  ");
@@ -313,7 +313,7 @@ if (v30 == 145) {
   display(17, 12, " Linda Ackerman  ");
   display(18, 12, "  Mark Crowe     ");
 }
-if (v30 == 140) {
+if (rv0 == 140) {
   display(6, 12, "Graphics by:    ");
   display(7, 12, " Doug MacNeill  ");
   display(8, 12, "  Greg Rowland  ");
@@ -328,7 +328,7 @@ if (v30 == 140) {
   display(17, 12, "  Mark Crowe     ");
   display(18, 12, "   Robert Heitman");
 }
-if (v30 == 135) {
+if (rv0 == 135) {
   display(6, 12, " Doug MacNeill  ");
   display(7, 12, "  Greg Rowland  ");
   display(8, 12, "                ");
@@ -346,7 +346,7 @@ if (v30 == 135) {
 if (have.key()) {
   clear.lines(21, 24, 0);
   stop.sound();
-  v30 = 0;
+  rv0 = 0;
   new.room(ROOM1_CASTLE_EAST);
 }
 return;

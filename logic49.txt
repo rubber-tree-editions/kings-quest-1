@@ -23,8 +23,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.blocks(oEGO);
     set.priority(oEGO, 15);
     set(f98);
-    set(f20);
-    move.obj(oEGO, 81, 164, 3, f21);
+    set(rf0);
+    move.obj(oEGO, 81, 164, 3, rf1);
   }
   if (vPREV_ROOM_NO == ROOM12_TOP_OF_WELL && !f182) {
     if (!f162) {
@@ -40,8 +40,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
     set.view(oEGO, 70);
-    set(f23);
-    v30 = 250;
+    set(rf3);
+    rv0 = 250;
     position(oEGO, 75, 163);
   }
   if (f179) {
@@ -77,13 +77,13 @@ if (fEGO_ON_WATER) {
 else {
   ignore.blocks(oEGO);
 }
-if (f182 && !f21 && !f22 && !f24) {
+if (f182 && !rf1 && !rf2 && !rf4) {
   sound(SND_FALLING, fSOUND_END_MARKER);
-  set(f24);
+  set(rf4);
 }
 if (fSOUND_END_MARKER) {
-  if (!f21 && !f22) {
-    reset(f24);
+  if (!rf1 && !rf2) {
+    reset(rf4);
     reset(fSOUND_END_MARKER);
   }
 }
@@ -97,9 +97,9 @@ if (f180) {
     ignore.objs(oEGO);
     set.priority(oEGO, 15);
     set(f98);
-    set(f20);
+    set(rf0);
     vTEMP_STEP = 3;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f22);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf2);
   }
   if (vTEMP_Y > 115 && f179) {
     reset(f180);
@@ -109,9 +109,9 @@ if (f180) {
     ignore.objs(oEGO);
     set.priority(oEGO, 15);
     set(f98);
-    set(f20);
+    set(rf0);
     vTEMP_STEP = 3;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f22);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf2);
   }
   if (vTEMP_X < 79 || vTEMP_X > 83) {
     if (vTEMP_Y > 70) {
@@ -122,30 +122,30 @@ if (f180) {
       ignore.objs(oEGO);
       set.priority(oEGO, 15);
       set(f98);
-      set(f20);
+      set(rf0);
       vTEMP_STEP = 3;
-      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f22);
+      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf2);
     }
     else {
       reset(f180);
       set(f182);
-      set(f25);
+      set(rf5);
       set.view(oEGO, 105);
       vTEMP_Y = 164;
       ignore.objs(oEGO);
       set.priority(oEGO, 15);
       set(f98);
-      set(f20);
+      set(rf0);
       vTEMP_STEP = 3;
-      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f21);
+      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf1);
     }
   }
 }
-if (f21) {
-  reset(f21);
+if (rf1) {
+  reset(rf1);
   stop.sound();
   erase(oEGO);
-  if (f182 && !f25) {
+  if (f182 && !rf5) {
     print("You should be more careful before trying that next time!");
   }
   else {
@@ -153,26 +153,26 @@ if (f21) {
   }
   set(fGAME_OVER);
 }
-if (f22) {
-  reset(f20);
-  reset(f22);
+if (rf2) {
+  reset(rf0);
+  reset(rf2);
   reset(f98);
   reset(f182);
   release.priority(oEGO);
   stop.sound();
   set.view(oEGO, 93);
 }
-if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && !f23) {
-  set(f23);
-  v30 = 250;
+if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && !rf3) {
+  set(rf3);
+  rv0 = 250;
 }
-v30--;
-if (v30 == 1 && f23) {
+rv0--;
+if (rv0 == 1 && rf3) {
   erase(oEGO);
   print("Your arms are like lead... from swimming.  You find it impossible... to swim any longer.  You sink to the bottom... of the well....");
   set(fGAME_OVER);
 }
-if (!f180 && !f20) {
+if (!f180 && !rf0) {
   if (said("climb", "rope") || said("up", "rope")) {
     if (!f179 && !fBUCKET_LOWERED) {
       print("The rope is out of reach.");
@@ -187,7 +187,7 @@ if (!f180 && !f20) {
       draw(oEGO);
       move.obj(oEGO, 81, 113, 0, f148);
       set(f180);
-      reset(f23);
+      reset(rf3);
     }
     if (fBUCKET_LOWERED && !f181) {
       erase(oEGO);
@@ -199,7 +199,7 @@ if (!f180 && !f20) {
       draw(oEGO);
       move.obj(oEGO, 81, 113, 0, f148);
       set(f180);
-      reset(f23);
+      reset(rf3);
     }
     if (f181) {
       start.update(o1);
@@ -231,7 +231,7 @@ if (!f180 && !f20) {
       position(o1, 79, 150);
       position(oEGO, 81, 124);
       set(f98);
-      move.obj(oEGO, 81, 164, 3, f22);
+      move.obj(oEGO, 81, 164, 3, rf2);
       set.cel(o1, 0);
       draw(o1);
       stop.update(o1);

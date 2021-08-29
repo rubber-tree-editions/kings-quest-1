@@ -119,7 +119,7 @@ if (posn(oEGO, 40, 127, 70, 135)) {
   if (said("open", "doors")) {
     start.update(oDOOR);
     sound(SND_DOOR_OPENING, f148);
-    end.of.loop(oDOOR, f20);
+    end.of.loop(oDOOR, rf0);
   }
 }
 if (!posn(oEGO, 40, 127, 70, 135)) {
@@ -127,7 +127,7 @@ if (!posn(oEGO, 40, 127, 70, 135)) {
     print("You will have to move closer to do that.");
   }
 }
-if (f20) {
+if (rf0) {
   new.room(ROOM65_IN_GINGERBREAD_HOUSE);
 }
 if (said("examine", "doors")) {

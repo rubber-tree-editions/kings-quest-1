@@ -49,8 +49,8 @@ if (posn(oEGO, 0, 83, 159, 167)) {
 else {
   reset(fSWIMMING_IMPOSSIBLE_HERE);
 }
-if (fEGO_ON_WATER && fSWIMMING_IMPOSSIBLE_HERE && !f20) {
-  set(f20);
+if (fEGO_ON_WATER && fSWIMMING_IMPOSSIBLE_HERE && !rf0) {
+  set(rf0);
   print("You have fallen in the raging current and are swept under.  I'm afraid your end has come.");
 }
 if (said("examine", "water")) {

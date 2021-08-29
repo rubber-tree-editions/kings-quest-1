@@ -84,8 +84,8 @@ if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
     set(fMANUAL_EGO_WATER_POS);
   }
 }
-if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && fSWIMMING_IMPOSSIBLE_HERE && !f20) {
-  set(f20);
+if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && fSWIMMING_IMPOSSIBLE_HERE && !rf0) {
+  set(rf0);
   vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
   set.view(oEGO, 93);
   print("The swift water pulls you down to your untimely demise.");

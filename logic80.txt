@@ -10,13 +10,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(91);
     set.view(oEGO, 91);
     position(oEGO, 1, 60);
-    move.obj(oEGO, 130, 60, 0, f20);
+    move.obj(oEGO, 130, 60, 0, rf0);
   }
   else {
     load.view(89);
     set.view(oEGO, 89);
     position(oEGO, 1, 60);
-    move.obj(oEGO, 135, 60, 0, f21);
+    move.obj(oEGO, 135, 60, 0, rf1);
   }
   draw(oEGO);
   show.pic();
@@ -30,10 +30,10 @@ if (said("anyword", "witch")) {
 if (said("anyword", "bird")) {
   print("Now is not a good time to bother the bird.");
 }
-if (f20) {
+if (rf0) {
   new.room(ROOM65_IN_GINGERBREAD_HOUSE);
 }
-if (f21) {
+if (rf1) {
   new.room(ROOM48_LEPRECHAUN_HOLE);
 }
 return;

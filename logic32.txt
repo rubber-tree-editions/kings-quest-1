@@ -20,8 +20,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (fEGO_ON_WATER && !f20) {
-  set(f20);
+if (fEGO_ON_WATER && !rf0) {
+  set(rf0);
   print("Oh No!  That's such a dangerous river... the current is too strong... you won't be able to escape!");
 }
 if (said("examine", "stream")) {

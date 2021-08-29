@@ -56,8 +56,8 @@ if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
     }
   }
 }
-if (fEGO_ON_WATER && !f20) {
-  set(f20);
+if (fEGO_ON_WATER && !rf0) {
+  set(rf0);
   print("This placid looking stream is actually quite dangerous.... the current is stronger than it looks.  You can't keep your head above water.");
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {

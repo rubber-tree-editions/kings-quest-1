@@ -22,7 +22,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oMUSHROOM);
     set.view(oMUSHROOM, 84);
     position(oMUSHROOM, 84, 80);
-    set(f20);
+    set(rf0);
   }
   if (vPREV_ROOM_NO == ROOM34) {
     if (posn(oEGO, 77, 165, 112, 167)) {
@@ -32,8 +32,8 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 142, 164);
     }
   }
-  if (f20) {
-    reset(f20);
+  if (rf0) {
+    reset(rf0);
     draw(oMUSHROOM);
   }
   set(fSWIMMING_IMPOSSIBLE_HERE);
@@ -41,8 +41,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (fEGO_ON_WATER && !f21) {
-  set(f21);
+if (fEGO_ON_WATER && !rf1) {
+  set(rf1);
   print("This is sad.  You are not the first to fail your quest in the Raging River... I hope you may be the last.");
 }
 if (said("examine", "water")) {

@@ -148,8 +148,8 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         stop.cycling(o2);
         draw(o2);
         set(f181);
-        sound(SND_WELL_HANDLE_TURNING, f30);
-        end.of.loop(o2, f25);
+        sound(SND_WELL_HANDLE_TURNING, rf10);
+        end.of.loop(o2, rf5);
         start.update(o1);
         start.cycling(o1);
         print("After you are in the old bucket, your weight causes it to slowly descend.");
@@ -167,13 +167,13 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
     }
     if (fBUCKET_ROPE_CUT && !f179) {
       if (said("go", "well") || said("go down", "well")) {
-        set(f26);
-        set(f28);
+        set(rf6);
+        set(rf8);
       }
     }
     if (said("jump", "well")) {
-      set(f27);
-      set(f28);
+      set(rf7);
+      set(rf8);
     }
     if (said("untie", "rope")) {
       print("The knots on the rope are too tight to untie.");
@@ -250,32 +250,32 @@ if (f180) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_Y = 145;
     vTEMP_STEP = 3;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f29);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf9);
     print("You should be more careful the next time you try  climbing ropes.");
     set(f135);
     sound(SND_FALLING, fSOUND_END_MARKER);
     reset(f180);
   }
 }
-if (f29 || f20) {
-  reset(f29);
-  reset(f20);
+if (rf9 || rf0) {
+  reset(rf9);
+  reset(rf0);
   erase(oEGO);
   set(f182);
   new.room(ROOM49_INSIDE_WELL);
 }
-if (f28) {
-  reset(f28);
+if (rf8) {
+  reset(rf8);
   erase(oEGO);
   position(oEGO, 38, 125);
   set.priority(oEGO, 11);
   ignore.blocks(oEGO);
   draw(oEGO);
-  move.obj(oEGO, 38, 145, 3, f20);
-  if (f26) {
+  move.obj(oEGO, 38, 145, 3, rf0);
+  if (rf6) {
     print("Carefully... Oh no!  The sides were too slippery... you've fallen into the well!");
   }
-  if (f27) {
+  if (rf7) {
     print("What a mistake you made!  This well is too deep to jump into.");
   }
   set(f135);
@@ -334,13 +334,13 @@ if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
     }
   }
 }
-if (f21) {
-  reset(f21);
+if (rf1) {
+  reset(rf1);
   stop.update(o2);
   stop.update(o1);
 }
-if (f22) {
-  reset(f22);
+if (rf2) {
+  reset(rf2);
   stop.update(o2);
   stop.update(o1);
 }
@@ -350,8 +350,8 @@ if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
       print("The old bucket disappears into the darkness.");
       start.update(o2);
       start.update(o1);
-      end.of.loop(o2, f21);
-      sound(SND_WELL_HANDLE_TURNING, f30);
+      end.of.loop(o2, rf1);
+      sound(SND_WELL_HANDLE_TURNING, rf10);
       start.cycling(o1);
       set(fBUCKET_LOWERED);
     }
@@ -375,9 +375,9 @@ if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED && !f180) {
       if (v62 < 30) {
         set(fBUCKET_ON_WELL_HAS_WATER);
       }
-      reverse.loop(o2, f22);
+      reverse.loop(o2, rf2);
       start.cycling(o1);
-      sound(SND_WELL_HANDLE_TURNING, f30);
+      sound(SND_WELL_HANDLE_TURNING, rf10);
       reset(fBUCKET_LOWERED);
     }
     else {
@@ -486,8 +486,8 @@ if (fBUCKET_ROPE_CUT && !f179) {
       start.cycling(o3);
       start.update(o1);
       print("The rope descends into the darkness.");
-      sound(SND_WELL_HANDLE_TURNING, f30);
-      end.of.loop(o3, f24);
+      sound(SND_WELL_HANDLE_TURNING, rf10);
+      end.of.loop(o3, rf4);
       start.cycling(o1);
       set(f179);
     }
@@ -496,8 +496,8 @@ if (fBUCKET_ROPE_CUT && !f179) {
     }
   }
 }
-if (f24) {
-  reset(f24);
+if (rf4) {
+  reset(rf4);
   stop.update(o1);
   stop.cycling(o3);
 }
@@ -517,8 +517,8 @@ if (fBUCKET_ROPE_CUT && f179 && !f180) {
       start.cycling(o3);
       start.update(o1);
       print("The rope emerges from the well.");
-      reverse.loop(o3, f23);
-      sound(SND_WELL_HANDLE_TURNING, f30);
+      reverse.loop(o3, rf3);
+      sound(SND_WELL_HANDLE_TURNING, rf10);
       start.cycling(o1);
       reset(f179);
     }
@@ -527,8 +527,8 @@ if (fBUCKET_ROPE_CUT && f179 && !f180) {
     }
   }
 }
-if (f23) {
-  reset(f23);
+if (rf3) {
+  reset(rf3);
   stop.update(o1);
   stop.cycling(o3);
 }
@@ -537,8 +537,8 @@ if (fBUCKET_ROPE_CUT && f179 && f180) {
     print("You can't raise the rope from here!");
   }
 }
-if (f25) {
-  reset(f25);
+if (rf5) {
+  reset(rf5);
   set(fBUCKET_LOWERED);
   new.room(ROOM49_INSIDE_WELL);
 }

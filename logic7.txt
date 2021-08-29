@@ -72,8 +72,8 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water"
     print("You are not close enough to the lake.");
   }
 }
-if (fEGO_ON_WATER && posn(oEGO, 0, 60, 31, 76) && !f20) {
-  set(f20);
+if (fEGO_ON_WATER && posn(oEGO, 0, 60, 31, 76) && !rf0) {
+  set(rf0);
   vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
   set.view(oEGO, 93);
   print("The swift water pulls you down to your untimely demise.");

@@ -20,9 +20,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oCLOVER);
     set.view(oCLOVER, 21);
     position(oCLOVER, 53, 134);
-    set(f20);
+    set(rf0);
   }
-  if (f20) {
+  if (rf0) {
     draw(oCLOVER);
     stop.update(oCLOVER);
   }

@@ -48,7 +48,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_Y = 106;
     vTEMP_STEP = 2;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f21);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf1);
   }
   if (vPREV_ROOM_NO == ROOM43 && fEGO_ON_WATER) {
     reset(f98);
@@ -61,18 +61,18 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (f158 && !f23) {
-  set(f23);
+if (f158 && !rf3) {
+  set(rf3);
   set(f135);
-  sound(SND_FALLING, f24);
+  sound(SND_FALLING, rf4);
 }
-if (!f21 && f24) {
-  reset(f23);
-  reset(f24);
+if (!rf1 && rf4) {
+  reset(rf3);
+  reset(rf4);
 }
-if (f21) {
+if (rf1) {
   stop.sound();
-  set(f23);
+  set(rf3);
   reset(f158);
   reset(f135);
   set.view(oEGO, 114);
@@ -143,7 +143,7 @@ if (fCARRYING_MAGIC_BEANS && f155) {
     drop("beans");
     vSCORE += 2;
     print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
-    sound(SND_BEANSTALK, f25);
+    sound(SND_BEANSTALK, rf5);
     overlay.pic(vTEMP_PIC);
     show.pic();
   }
@@ -189,20 +189,20 @@ if (fEGO_CLIMBING_BEANSTALK) {
     draw(oEGO);
     vTEMP_Y = 106;
     vTEMP_STEP = 2;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f20);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf0);
     set(f135);
     sound(SND_FALLING, f198);
   }
 }
-v30--;
-if (f20) {
+rv0--;
+if (rf0) {
   stop.sound();
-  reset(f20);
+  reset(rf0);
   observe.blocks(oEGO);
   release.priority(oEGO);
   stop.motion(oEGO);
   set.view(oEGO, 103);
-  v30 = 20;
+  rv0 = 20;
   set(f98);
   shake.screen(2);
   print("Ouch!");
@@ -210,17 +210,17 @@ if (f20) {
   sound(SND_OUCH, fSOUND_END_MARKER);
 }
 if (fSOUND_END_MARKER) {
-  if (v30 != 0) {
+  if (rv0 != 0) {
     reset(fSOUND_END_MARKER);
     sound(SND_OUCH, fSOUND_END_MARKER);
   }
 }
-if (v30 == 1) {
+if (rv0 == 1) {
   set.view(oEGO, 104);
-  end.of.loop(oEGO, f22);
+  end.of.loop(oEGO, rf2);
 }
-if (f22) {
-  reset(f22);
+if (rf2) {
+  reset(rf2);
   reset(f98);
   start.motion(oEGO);
   set.view(oEGO, 0);

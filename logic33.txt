@@ -28,8 +28,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (fEGO_ON_WATER && !f20) {
-  set(f20);
+if (fEGO_ON_WATER && !rf0) {
+  set(rf0);
   print("Your swimming attempt proved fatal!  The raging current drags you under....");
 }
 if (said("examine", "stream")) {

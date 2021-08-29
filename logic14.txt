@@ -25,8 +25,8 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 84, 41);
       set.priority(oEGO, 12);
       program.control();
-      move.obj(oEGO, 84, 132, 4, f20);
-      set(f209);
+      move.obj(oEGO, 84, 132, 4, rf0);
+      set(rf09);
     }
     else {
       position(oEGO, 84, 132);
@@ -35,47 +35,47 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (f131 && !f22) {
-  set(f22);
+if (f131 && !rf2) {
+  set(rf2);
   set(f135);
   sound(SND_FALLING, f198);
 }
-if (!f20 && f198) {
+if (!rf0 && f198) {
   reset(f198);
-  reset(f22);
+  reset(rf2);
 }
-v30--;
-if (f20) {
-  reset(f20);
+rv0--;
+if (rf0) {
+  reset(rf0);
   reset(f131);
   observe.blocks(oEGO);
   release.priority(oEGO);
   stop.motion(oEGO);
   set.view(oEGO, 103);
-  v30 = 20;
+  rv0 = 20;
   set(f98);
   shake.screen(2);
   print("OUCH!");
   sound(SND_OUCH, fSOUND_END_MARKER);
 }
 if (fSOUND_END_MARKER) {
-  if (v30 != 0) {
+  if (rv0 != 0) {
     reset(fSOUND_END_MARKER);
     sound(SND_OUCH, fSOUND_END_MARKER);
   }
 }
-if (v30 == 1) {
-  v30 = 0;
+if (rv0 == 1) {
+  rv0 = 0;
   reset(f135);
   set.view(oEGO, 104);
-  end.of.loop(oEGO, f21);
+  end.of.loop(oEGO, rf1);
 }
-if (f21) {
-  reset(f21);
+if (rf1) {
+  reset(rf1);
   reset(f98);
   set.view(oEGO, 0);
   start.motion(oEGO);
-  reset(f209);
+  reset(rf09);
   player.control();
 }
 if (said("examine", "tree")) {

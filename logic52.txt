@@ -18,8 +18,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oEGO, 38, 116);
   }
   if (vPREV_ROOM_NO == ROOM51_DRAGON_STOMPING_GROUND) {
-    if (!f208) {
-      set(f208);
+    if (!rf08) {
+      set(rf08);
       vSCORE += 2;
     }
   }
@@ -54,21 +54,21 @@ if (vCOUNTDOWN_LO == 0) {
     vCOUNTDOWN_LO = 250;
   }
 }
-if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI == 0 && !f21) {
-  set(f21);
+if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI == 0 && !rf1) {
+  set(rf1);
   set.view(oEGO, 114);
   print("Not even you can hold your breath forever.  The well bottom has become your eternal resting place.");
   ignore.blocks(oEGO);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y < 141) {
-    move.obj(oEGO, 65, 140, 1, f20);
+    move.obj(oEGO, 65, 140, 1, rf0);
   }
   if (vTEMP_Y > 140) {
-    set(f20);
+    set(rf0);
   }
 }
-if (f20) {
-  reset(f20);
+if (rf0) {
+  reset(rf0);
   set(fGAME_OVER);
 }
 if (said("examine", "water")) {

@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     vSCORE += 2;
   }
   if (!fTAKEN_GOLDEN_EGG) {
-    set(f20);
+    set(rf0);
     load.view(39);
     animate.obj(oGOLDEN_EGG);
     set.view(oGOLDEN_EGG, 39);
@@ -25,7 +25,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.priority(oEGO, 6);
   position(oEGO, 35, 164);
   observe.blocks(oEGO);
-  if (f20) {
+  if (rf0) {
     draw(oGOLDEN_EGG);
     stop.update(oGOLDEN_EGG);
   }
@@ -69,8 +69,8 @@ if (!fTAKEN_GOLDEN_EGG) {
     }
   }
 }
-if (fEGO_ON_WATER && !posn(oEGO, 12, 106, 57, 166) && !f21) {
-  set(f21);
+if (fEGO_ON_WATER && !posn(oEGO, 12, 106, 57, 166) && !rf1) {
+  set(rf1);
   set(f131);
   ignore.blocks(oEGO);
   set.view(oEGO, 105);
@@ -81,8 +81,8 @@ if (fEGO_ON_WATER && !posn(oEGO, 12, 106, 57, 166) && !f21) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f148);
 }
-if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !f21) {
-  set(f21);
+if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !rf1) {
+  set(rf1);
   set(f131);
   ignore.blocks(oEGO);
   set.priority(oEGO, 4);
@@ -94,9 +94,9 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !f21) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f148);
 }
-if (posn(oEGO, 12, 106, 57, 166) && !f21) {
+if (posn(oEGO, 12, 106, 57, 166) && !rf1) {
   if (fEGO_TOUCHED_TRIGGER_LINE || fEGO_ON_WATER) {
-    set(f21);
+    set(rf1);
     set(f131);
     ignore.blocks(oEGO);
     set.priority(oEGO, 5);

@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.sound(SND_FALLING);
   load.sound(SND_GIANT);
   load.sound(SND_KILL_GIANT);
-  v33 = 0;
+  rv3 = 0;
   if (fCARRYING_SLINGSHOT) {
     load.view(102);
     animate.obj(oFLUNG_PEBBLE);
@@ -41,17 +41,17 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oGIANT);
     set.view(oGIANT, 36);
     position(oGIANT, 91, 71);
-    follow.ego(oGIANT, 10, f22);
-    set(f23);
-    v30 = 250;
-    v31 = 2;
+    follow.ego(oGIANT, 10, rf2);
+    set(rf3);
+    rv0 = 250;
+    rv1 = 2;
   }
   if (vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
     animate.obj(oGIANT);
     set.view(oGIANT, 66);
     position(oGIANT, 91, 71);
-    follow.ego(oGIANT, 10, f22);
-    set(f23);
+    follow.ego(oGIANT, 10, rf2);
+    set(rf3);
   }
   if (vGIANT_STATE == GIANTSTATE_DEAD_WITH_CHEST) {
     animate.obj(oGIANT);
@@ -59,7 +59,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oGIANT, 73, 113);
     set.cel(oGIANT, 3);
     stop.cycling(oGIANT);
-    step.size(oGIANT, v33);
+    step.size(oGIANT, rv3);
     animate.obj(oCHEST);
     set.view(oCHEST, 37);
     position(oCHEST, 75, 114);
@@ -71,41 +71,41 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oGIANT, 73, 113);
     set.cel(oGIANT, 3);
     stop.cycling(oGIANT);
-    step.size(oGIANT, v33);
+    step.size(oGIANT, rv3);
   }
   draw(oGIANT);
   draw(oEGO);
   show.pic();
 }
 if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
-  if (!f26) {
-    set(f26);
+  if (!rf6) {
+    set(rf6);
     sound(SND_VILLAIN, f148);
   }
 }
-if (f22 && f23) {
+if (rf2 && rf3) {
   if (fEGO_INVISIBLE) {
-    reset(f22);
-    reset(f23);
+    reset(rf2);
+    reset(rf3);
     print("The giant cannot see you since you are invisible.");
     wander(oGIANT);
   }
   else if (fCARRYING_SHIELD) {
-    reset(f22);
-    reset(f23);
+    reset(rf2);
+    reset(rf3);
     print("You are fortunate that you have the magic shield or this giant would cause problems for you.");
     wander(oGIANT);
   }
   else if (fPROTECTED_BY_SPELL) {
-    reset(f22);
-    reset(f23);
+    reset(rf2);
+    reset(rf3);
     print("The fairy godmother's spell is protecting you.");
     wander(oGIANT);
   }
   else if (!fCARRYING_SHIELD && !fEGO_INVISIBLE && !fPROTECTED_BY_SPELL) {
     if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
-      reset(f22);
-      reset(f23);
+      reset(rf2);
+      reset(rf3);
       set.view(oEGO, 114);
       print("Be a little more careful next time.  This giant is mean!");
       wander(oGIANT);
@@ -127,10 +127,10 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
 }
 if (fSOUND_END_MARKER) {
   reset(fSOUND_END_MARKER);
-  set(f20);
+  set(rf0);
 }
-if (f20) {
-  reset(f20);
+if (rf0) {
+  reset(rf0);
   print("You know you can't walk on clouds.");
   set(fGAME_OVER);
 }
@@ -231,13 +231,13 @@ if (fCARRYING_SLINGSHOT) {
       && v71 > 19
       && !f199
     ) {
-      reset(f23);
+      reset(rf3);
       get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
       position.v(oFLUNG_PEBBLE, vTEMP_X_2, vTEMP_Y_2);
       erase(oEGO);
       draw(oFLUNG_PEBBLE);
       sound(SND_KILL_GIANT, f148);
-      end.of.loop(oFLUNG_PEBBLE, f24);
+      end.of.loop(oFLUNG_PEBBLE, rf4);
       print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.");
       reset(fCARRYING_PEBBLES);
       drop("pebbles");
@@ -249,13 +249,13 @@ if (fCARRYING_SLINGSHOT) {
       && vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST
       && v71 > 19
     ) {
-      reset(f23);
+      reset(rf3);
       get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
       position.v(oFLUNG_PEBBLE, vTEMP_X_2, vTEMP_Y_2);
       erase(oEGO);
       draw(oFLUNG_PEBBLE);
       sound(SND_KILL_GIANT, f148);
-      end.of.loop(oFLUNG_PEBBLE, f25);
+      end.of.loop(oFLUNG_PEBBLE, rf5);
       print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.");
       reset(fCARRYING_PEBBLES);
       drop("pebbles");
@@ -277,15 +277,15 @@ if (fCARRYING_SLINGSHOT) {
     }
   }
 }
-if (f24) {
-  reset(f24);
+if (rf4) {
+  reset(rf4);
   erase(oFLUNG_PEBBLE);
   set.view(oEGO, 0);
   position.v(oEGO, vTEMP_X_2, vTEMP_Y_2);
   draw(oEGO);
   erase(oGIANT);
   set.view(oGIANT, 77);
-  step.size(oGIANT, v33);
+  step.size(oGIANT, rv3);
   draw(oGIANT);
   end.of.loop(oGIANT, f148);
   get.posn(oGIANT, vTEMP_X, vTEMP_Y);
@@ -294,15 +294,15 @@ if (f24) {
   vGIANT_STATE = GIANTSTATE_DEAD_WITH_CHEST;
   vSCORE += 3;
 }
-if (f25) {
-  reset(f25);
+if (rf5) {
+  reset(rf5);
   erase(oFLUNG_PEBBLE);
   set.view(oEGO, 0);
   position.v(oEGO, vTEMP_X_2, vTEMP_Y_2);
   draw(oEGO);
   erase(oGIANT);
   set.view(oGIANT, 77);
-  step.size(oGIANT, v33);
+  step.size(oGIANT, rv3);
   draw(oGIANT);
   end.of.loop(oGIANT, f148);
   vGIANT_STATE = GIANTSTATE_DEAD_NO_CHEST;
@@ -333,37 +333,37 @@ if (said("examine", "room") || said("examine", "clouds")) {
   print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
 }
 if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
-  v30--;
-  if (v30 == 0) {
-    if (v31 != 0) {
-      v31--;
-      v30 = 250;
+  rv0--;
+  if (rv0 == 0) {
+    if (rv1 != 0) {
+      rv1--;
+      rv0 = 250;
     }
   }
 }
-if (v30 == 1 && v31 == 0) {
-  reset(f23);
-  v30 = 0;
+if (rv0 == 1 && rv1 == 0) {
+  reset(rf3);
+  rv0 = 0;
   stop.motion(oGIANT);
   erase(oGIANT);
   set.view(oGIANT, 52);
-  step.size(oGIANT, v33);
+  step.size(oGIANT, rv3);
   draw(oGIANT);
   vGIANT_STATE = GIANTSTATE_ASLEEP_WITH_CHEST;
-  if (!f205) {
-    set(f205);
+  if (!rf05) {
+    set(rf05);
     vSCORE += 7;
   }
   print("What luck!  The huge giant fell fast asleep!");
 }
 if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST || vGIANT_STATE == GIANTSTATE_ASLEEP_NO_CHEST) {
-  if (!f28) {
-    set(f28);
-    sound(SND_GIANT, f27);
+  if (!rf8) {
+    set(rf8);
+    sound(SND_GIANT, rf7);
   }
-  if (f27) {
-    reset(f27);
-    reset(f28);
+  if (rf7) {
+    reset(rf7);
+    reset(rf8);
   }
 }
 if (fGAME_OVER) {

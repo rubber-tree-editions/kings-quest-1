@@ -44,8 +44,8 @@ if (said("examine", "across") || said("examine", "across", "stream")) {
   print("You notice an enchanting meadow.");
   set(fSAID_ACCEPTED_USER_INPUT);
 }
-if (fEGO_ON_WATER && !f20) {
-  set(f20);
+if (fEGO_ON_WATER && !rf0) {
+  set(rf0);
   print("Your swimming attempt proved fatal!  The raging current drags you under... you are lost....");
 }
 if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {

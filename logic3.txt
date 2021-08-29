@@ -72,7 +72,7 @@ if (!fSAID_ACCEPTED_USER_INPUT) {
   }
 }
 if (said("shove", "rocks")) {
-  if (!fMOVED_ROCK && !f20) {
+  if (!fMOVED_ROCK && !rf0) {
     if (!posn(oEGO, 115, 114, 133, 133) && !posn(oEGO, 118, 134, 133, 148)) {
       print("It will be very difficult to move the rock from here.");
     }
@@ -82,13 +82,13 @@ if (said("shove", "rocks")) {
       move.obj(oROCK, 118, 145, 0, fMOVED_ROCK);
       print("With a heave and a ho, you manage to move the rock... revealing a dark hole underneath it.");
       vSCORE += 2;
-      set(f20);
+      set(rf0);
     }
     if (posn(oEGO, 118, 134, 133, 148)) {
       ignore.objs(oROCK);
       draw(oHOLE);
       stop.update(oHOLE);
-      set(f21);
+      set(rf1);
       set.priority(oROCK, 15);
       move.obj(oROCK, 118, 145, 0, fMOVED_ROCK);
       print("This moving rock rolls downhill and you, unfortunately,  are in the way.");

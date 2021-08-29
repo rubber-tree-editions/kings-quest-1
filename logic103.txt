@@ -16,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     stop.cycling(oGOAT);
     ignore.horizon(oGOAT);
     ignore.blocks(oGOAT);
-    set(f40);
+    set(rf20);
     draw(oGOAT);
     goto(ATRIVER);
   }
@@ -26,7 +26,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     stop.cycling(oGOAT);
     ignore.horizon(oGOAT);
     ignore.blocks(oGOAT);
-    set(f43);
+    set(rf23);
     draw(oGOAT);
     goto(ATRIVER);
   }
@@ -36,7 +36,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     stop.cycling(oGOAT);
     ignore.horizon(oGOAT);
     ignore.blocks(oGOAT);
-    set(f43);
+    set(rf23);
     draw(oGOAT);
     goto(ATRIVER);
   }
@@ -50,10 +50,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   v107 = 1;
   step.size(oGOAT, v107);
   draw(oGOAT);
-  follow.ego(oGOAT, 10, f207);
+  follow.ego(oGOAT, 10, rf07);
 }
-distance(oEGO, oGOAT, v40);
-if (v40 > 35) {
+distance(oEGO, oGOAT, rv10);
+if (rv10 > 35) {
   v107 = 2;
   step.size(oGOAT, v107);
 }
@@ -70,7 +70,7 @@ if (fGAME_OVER) {
   stop.cycling(oGOAT);
   return;
 }
-if (f40 || f43) {
+if (rf20 || rf23) {
   goto(ATRIVER);
 }
 if (f76) {
@@ -78,26 +78,26 @@ if (f76) {
   return;
 }
 observe.blocks(oGOAT);
-v41--;
-if (v41 == 1) {
-  if (v40 < 21) {
-    set(f207);
+rv11--;
+if (rv11 == 1) {
+  if (rv10 < 21) {
+    set(rf07);
   }
-  else if (!f207 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
-    v41 = 0;
+  else if (!rf07 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
+    rv11 = 0;
     start.cycling(oGOAT);
     start.motion(oGOAT);
-    follow.ego(oGOAT, 10, f207);
+    follow.ego(oGOAT, 10, rf07);
   }
 }
-if (f207) {
-  reset(f207);
-  v41 = 9;
+if (rf07) {
+  reset(rf07);
+  rv11 = 9;
   normal.motion(oGOAT);
   stop.motion(oGOAT);
   stop.cycling(oGOAT);
 }
-if (v40 > 20 && vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
+if (rv10 > 20 && vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
   if (vROOM_NO != ROOM1_CASTLE_EAST
     && vROOM_NO != ROOM2_CASTLE_WEST
     && vROOM_NO != ROOM41
@@ -114,12 +114,12 @@ if (v40 > 20 && vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
   start.cycling(oGOAT);
   wander(oGOAT);
 }
-if (fGOAT_WONT_SWIM && v40 < 25 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
+if (fGOAT_WONT_SWIM && rv10 < 25 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
   reset(fGOAT_WONT_SWIM);
-  follow.ego(oGOAT, 10, f207);
+  follow.ego(oGOAT, 10, rf07);
 }
-if (fEGO_INVISIBLE && !f42) {
-  set(f42);
+if (fEGO_INVISIBLE && !rf22) {
+  set(rf22);
   print("The goat, not being able to see you, wanders off.");
   reset(fGOAT_COMPANION);
   wander(oGOAT);
@@ -129,12 +129,12 @@ if (fEGO_INVISIBLE && !f42) {
 }
 return;
 ATRIVER:
-  distance(oEGO, oGOAT, v40);
-  if (f43 && vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
+  distance(oEGO, oGOAT, rv10);
+  if (rf23 && vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
     set(fGOAT_WONT_SWIM);
     print("The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water.");
   }
-  if (f43 && fGOAT_WONT_SWIM && v40 < 25 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
+  if (rf23 && fGOAT_WONT_SWIM && rv10 < 25 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
     reset(fGOAT_WONT_SWIM);
   }
   return;

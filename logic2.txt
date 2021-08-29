@@ -58,7 +58,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oBANNERS);
   if (vPREV_ROOM_NO == ROOM55_CASTLE_HALL) {
     position(oEGO, 110, 122);
-    set(f26);
+    set(rf6);
   }
   if (vPREV_ROOM_NO == ROOM3_ROCK_OVER_HOLE) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
@@ -72,12 +72,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   wander(oGATOR2);
   show.pic();
 }
-if (f26) {
-  reset(f26);
+if (rf6) {
+  reset(rf6);
   start.update(oCASTLE_DOORS);
-  reverse.loop(oCASTLE_DOORS, f25);
+  reverse.loop(oCASTLE_DOORS, rf5);
 }
-if (f25 && !f27) {
+if (rf5 && !rf7) {
   stop.update(oCASTLE_DOORS);
 }
 if (said("pet", "alligators")) {
@@ -108,7 +108,7 @@ if (said("examine", "alligators")) {
   print("These alligators have protected the castle from many a trespasser.");
 }
 if (said("go", "building")) {
-  if (f25) {
+  if (rf5) {
     print("You must enter the castle through the door, and the  door is closed.");
   }
 }
@@ -169,10 +169,10 @@ if (said("knock", "doors")) {
 if (!fGOAT_COMPANION && !fNO_BUSINESS_WITH_KING) {
   if (said("open", "doors")) {
     if (posn(oEGO, 105, 120, 121, 128)) {
-      set(f27);
+      set(rf7);
       start.update(oCASTLE_DOORS);
-      sound(SND_CASTLE_DOOR_FANFARE, f28);
-      end.of.loop(oCASTLE_DOORS, f24);
+      sound(SND_CASTLE_DOOR_FANFARE, rf8);
+      end.of.loop(oCASTLE_DOORS, rf4);
       set.priority(oEGO, 15);
       print("The huge doors swing open slowly.");
       if (!f193) {
@@ -190,7 +190,7 @@ if (!fGOAT_COMPANION && !fNO_BUSINESS_WITH_KING) {
     }
   }
 }
-if (f24 && f28) {
+if (rf4 && rf8) {
   new.room(ROOM55_CASTLE_HALL);
 }
 if (said("drink", "water") && !fBUCKET_FILLED && !fDRANK_WATER) {
@@ -264,39 +264,39 @@ if (fEGO_ON_WATER) {
     print("The moats slippery sides prevent you from getting out.");
   }
 }
-if (fEGO_ON_WATER && !f23) {
+if (fEGO_ON_WATER && !rf3) {
   program.control();
   stop.motion(oEGO);
-  follow.ego(oGATOR1, 18, f20);
-  follow.ego(oGATOR2, 18, f21);
-  set(f23);
+  follow.ego(oGATOR1, 18, rf0);
+  follow.ego(oGATOR2, 18, rf1);
+  set(rf3);
 }
-if (posn(oEGO, 61, 135, 63, 137) && !f22) {
+if (posn(oEGO, 61, 135, 63, 137) && !rf2) {
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
-  set(f22);
-  v31 = 45;
+  set(rf2);
+  rv1 = 45;
 }
-if (f20 && !f22) {
+if (rf0 && !rf2) {
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
-  set(f22);
-  v31 = 45;
+  set(rf2);
+  rv1 = 45;
 }
-if (f21 && !f22) {
+if (rf1 && !rf2) {
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
-  set(f22);
-  v31 = 45;
+  set(rf2);
+  rv1 = 45;
 }
-if (f22 && v31 < 1) {
+if (rf2 && rv1 < 1) {
   erase(oEGO);
-  if (f20) {
+  if (rf0) {
     erase(oGATOR1);
   }
-  if (f21) {
+  if (rf1) {
     erase(oGATOR2);
   }
   set(fGAME_OVER);
 }
-v31--;
+rv1--;
 FINALCHECKS:
   if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(fSWIMMING_IMPOSSIBLE_HERE);

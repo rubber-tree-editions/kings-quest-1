@@ -156,40 +156,40 @@ if (fEGO_ON_WATER) {
     print("The moats slippery sides prevent you from getting out.");
   }
 }
-if (fEGO_ON_WATER && !f23) {
+if (fEGO_ON_WATER && !rf3) {
   program.control();
   stop.motion(oEGO);
-  follow.ego(oGATOR1, 18, f20);
-  follow.ego(oGATOR2, 18, f21);
-  set(f23);
+  follow.ego(oGATOR1, 18, rf0);
+  follow.ego(oGATOR2, 18, rf1);
+  set(rf3);
 }
-if (posn(oEGO, 89, 132, 91, 134) && !f22) {
+if (posn(oEGO, 89, 132, 91, 134) && !rf2) {
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
-  set(f22);
-  v34 = 45;
+  set(rf2);
+  rv4 = 45;
 }
-if (f20 && !f22) {
+if (rf0 && !rf2) {
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
-  set(f22);
-  v34 = 45;
+  set(rf2);
+  rv4 = 45;
 }
-if (f21 && !f22) {
+if (rf1 && !rf2) {
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
-  set(f22);
-  v34 = 45;
+  set(rf2);
+  rv4 = 45;
 }
-if (f22 && v34 == 1) {
-  v34 = 0;
+if (rf2 && rv4 == 1) {
+  rv4 = 0;
   erase(oEGO);
-  if (f20) {
+  if (rf0) {
     erase(oGATOR1);
   }
-  if (f21) {
+  if (rf1) {
     erase(oGATOR2);
   }
   set(fGAME_OVER);
 }
-v34--;
+rv4--;
 if (vEGO_EDGE_CODE != EDGE_NONE) {
   reset(fSWIMMING_IMPOSSIBLE_HERE);
 }

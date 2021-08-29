@@ -33,14 +33,14 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.objs(oGOLD_KEY);
   }
   if (vGNOME_STATE == GNOMESTATE_LEFT_BEANS && vTAKEN_GNOME_GIFT != GNOMEGIFT_BEANS) {
-    set(f20);
+    set(rf0);
     load.view(29);
     animate.obj(oMAGIC_BEANS);
     set.view(oMAGIC_BEANS, 29);
     position(oMAGIC_BEANS, 39, 118);
   }
   if (vGNOME_STATE == GNOMESTATE_LEFT_KEY && vTAKEN_GNOME_GIFT != GNOMEGIFT_KEY) {
-    set(f21);
+    set(rf1);
     load.view(28);
     animate.obj(oGOLD_KEY);
     set.view(oGOLD_KEY, 28);
@@ -48,13 +48,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (vGNOME_STATE == GNOMESTATE_PRESENT) {
     draw(oGNOME);
-    set(f23);
+    set(rf3);
   }
-  if (f21) {
+  if (rf1) {
     draw(oGOLD_KEY);
     stop.update(oGOLD_KEY);
   }
-  if (f20) {
+  if (rf0) {
     draw(oMAGIC_BEANS);
     stop.update(oMAGIC_BEANS);
   }
@@ -65,13 +65,13 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (said("examine", "building")) {
   print("The gnome's lean-to doesn't look very sturdy.");
 }
-if (f23 && !f24) {
+if (rf3 && !rf4) {
   print("You see a crotchety old gnome pacing around his lean-to.");
-  set(f24);
+  set(rf4);
 }
-if (f23) {
+if (rf3) {
   distance(oEGO, oGNOME, v62);
-  if (f22) {
+  if (rf2) {
     if (said("talk", "gnome") || said("hello") || said("say", "hello")) {
       if (v62 < 50) {
         print("You still haven't guessed my name!");
@@ -82,10 +82,10 @@ if (f23) {
       goto(FINALCHECKS);
     }
   }
-  if (!f22) {
+  if (!rf2) {
     if (said("talk", "gnome") || said("hello") || said("say", "hello")) {
       if (v62 < 50) {
-        set(f22);
+        set(rf2);
         print("The old gnome tells you he has something that may be very useful to you.  Your task is to guess his name in three guesses and his gift will be yours.  Good luck!  What is your first guess?");
       }
       else {
@@ -108,7 +108,7 @@ if (f23) {
     goto(FINALCHECKS);
   }
 }
-if (f22) {
+if (rf2) {
   if (said("rumplestiltskin") && vGNOME_NAME_GUESSES != 2) {
     print("That is very close but not quite right!");
     vGNOME_NAME_GUESSES++;
@@ -126,10 +126,10 @@ if (f22) {
   }
   if (said("ifnkovhgroghprm")) {
     erase(oGNOME);
-    reset(f22);
-    reset(f23);
+    reset(rf2);
+    reset(rf3);
     draw(oMAGIC_BEANS);
-    set(f20);
+    set(rf0);
     stop.update(oMAGIC_BEANS);
     vGNOME_STATE = GNOMESTATE_LEFT_BEANS;
     print("That's right!!!  You've guessed it!!  Here are some magic beans for your outstanding accomplishment!");
@@ -165,10 +165,10 @@ if (f22) {
     if (said("anyword") || said("anyword", "anyword")) {
       accept.input();
       erase(oGNOME);
-      reset(f22);
-      reset(f23);
+      reset(rf2);
+      reset(rf3);
       draw(oGOLD_KEY);
-      set(f21);
+      set(rf1);
       stop.update(oGOLD_KEY);
       vGNOME_STATE = GNOMESTATE_LEFT_KEY;
       print("You didn't guess the gnome's name, but he left you a gold key anyway.  Better luck next time!");
@@ -177,11 +177,11 @@ if (f22) {
     }
   }
 }
-if (!f23) {
+if (!rf3) {
   if (said("anyword", "gnome")) {
     print("There is no gnome here.");
   }
-  if (f20) {
+  if (rf0) {
     distance(oEGO, oMAGIC_BEANS, v70);
     if (said("examine", "magic beans")) {
       if (v70 > 40) {
@@ -197,7 +197,7 @@ if (!f23) {
       }
       else {
         print("Being careful that you get every one of them, you place the beans in your pocket.");
-        reset(f20);
+        reset(rf0);
         start.update(oMAGIC_BEANS);
         erase(oMAGIC_BEANS);
         set(fCARRYING_MAGIC_BEANS);
@@ -207,7 +207,7 @@ if (!f23) {
       }
     }
   }
-  if (f21) {
+  if (rf1) {
     distance(oEGO, oGOLD_KEY, v71);
     if (said("examine", "gold key")) {
       if (v71 > 40) {
@@ -223,7 +223,7 @@ if (!f23) {
       }
       else {
         print("It is heavy and cold.");
-        reset(f21);
+        reset(rf1);
         start.update(oGOLD_KEY);
         erase(oGOLD_KEY);
         set(fCARRYING_GOLD_KEY);
@@ -234,18 +234,18 @@ if (!f23) {
     }
   }
 }
-if (!f20 && !fCARRYING_MAGIC_BEANS) {
+if (!rf0 && !fCARRYING_MAGIC_BEANS) {
   if (said("anyword", "magic beans")) {
     print("There are no beans here.");
   }
 }
-if (!f21 && !fCARRYING_GOLD_KEY) {
+if (!rf1 && !fCARRYING_GOLD_KEY) {
   if (said("anyword", "gold key")) {
     print("The key to your problems is elsewhere.");
   }
 }
-if (fEGO_ON_WATER && !f25) {
-  set(f25);
+if (fEGO_ON_WATER && !rf5) {
+  set(rf5);
   print("You slip down the bank into the river far below.  Your cries for help are not heard.");
 }
 if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {

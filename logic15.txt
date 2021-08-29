@@ -45,12 +45,12 @@ if (posn(oEGO, 87, 54, 159, 65)
   || posn(oEGO, 46, 92, 159, 116)
   || posn(oEGO, 32, 117, 159, 147)
 ) {
-  set(f20);
+  set(rf0);
 }
 else {
-  reset(f20);
+  reset(rf0);
 }
-if (f20) {
+if (rf0) {
   if (!fCARRYING_CARROT && said("examine", "carrot")) {
     print("There are many large, plump carrots in the garden.");
   }
@@ -65,7 +65,7 @@ if (f20) {
     }
   }
 }
-if (!f20) {
+if (!rf0) {
   if (!fCARRYING_CARROT && said("examine", "carrot")) {
     print("The carrots are buried in the ground.  You must get  closer to see them.");
   }

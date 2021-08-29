@@ -41,7 +41,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       wander(o2);
     }
     else {
-      follow.ego(o2, 5, f20);
+      follow.ego(o2, 5, rf0);
     }
   }
   draw(oEGO);
@@ -58,8 +58,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   }
 }
-if (f20) {
-  reset(f20);
+if (rf0) {
+  reset(rf0);
   print("The leprechaun catches you and holds you with his small,  but strong arms.  I don't think the leprechaun will ever let go.");
   stop.motion(oEGO);
   set(f95);
@@ -68,21 +68,21 @@ if (f20) {
   stop.cycling(o2);
   set(fGAME_OVER);
 }
-if (f22) {
+if (rf2) {
   if (said("play", "fiddle")) {
     print("You are already playing the fiddle.");
   }
 }
-if (v30 != 0) {
-  v30--;
+if (rv0 != 0) {
+  rv0--;
 }
-if (!fDANCING_LEPRECHAUNS && !f22) {
+if (!fDANCING_LEPRECHAUNS && !rf2) {
   if (fCARRYING_FIDDLE && said("play", "fiddle")) {
-    set(f21);
-    set(f22);
-    v30 = 45;
+    set(rf1);
+    set(rf2);
+    rv0 = 45;
     draw(o1);
-    sound(SND_FIDDLE_TUNE, f23);
+    sound(SND_FIDDLE_TUNE, rf3);
     start.cycling(o13);
     wander(o13);
     erase(o2);
@@ -94,21 +94,21 @@ if (!fDANCING_LEPRECHAUNS && !f22) {
     vSCORE += 3;
   }
 }
-if (v30 > 1 && f23) {
-  reset(f23);
-  sound(SND_FIDDLE_TUNE, f23);
+if (rv0 > 1 && rf3) {
+  reset(rf3);
+  sound(SND_FIDDLE_TUNE, rf3);
 }
-if (v30 == 1) {
-  v30 = 0;
+if (rv0 == 1) {
+  rv0 = 0;
   stop.sound();
-  reset(f21);
-  reset(f22);
+  reset(rf1);
+  reset(rf2);
   erase(o13);
   erase(o2);
   erase(o1);
   print("Totally involved in the music, they dance right out of the room.");
 }
-if (f21) {
+if (rf1) {
   if (vOBJECT_TOUCHING_EDGE == 13) {
     erase(o13);
   }

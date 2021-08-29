@@ -25,24 +25,24 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (said("examine", "stairway") || said("examine", "room")) {
   print("The stairs are moss-covered and slippery.");
 }
-if (fEGO_TOUCHED_TRIGGER_LINE && !f21) {
-  set(f21);
+if (fEGO_TOUCHED_TRIGGER_LINE && !rf1) {
+  set(rf1);
   if (!fEGO_INVISIBLE) {
     set.view(oEGO, 105);
   }
   start.cycling(oEGO);
   set(f98);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
-  get.priority(oEGO, v30);
-  set.priority.v(oEGO, v30);
+  get.priority(oEGO, rv0);
+  set.priority.v(oEGO, rv0);
   print("Darn!  You slipped on the steep stairs.");
   vTEMP_Y = 165;
   vTEMP_STEP = 4;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f20);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf0);
   sound(SND_FALLING, fSOUND_END_MARKER);
 }
-if (f20) {
-  reset(f20);
+if (rf0) {
+  reset(rf0);
   erase(oEGO);
   set(fGAME_OVER);
 }
