@@ -52,12 +52,12 @@ if (fEGO_ON_WATER) {
       draw(oEGO);
       if (fEGO_TINY) {
         reset(fEGO_TINY);
-        v82 = 0;
+        vTINY_COUNTDOWN = 0;
         print("It appears you have become normal size again.");
       }
       if (fEGO_INVISIBLE) {
-        v90 = 0;
-        v91 = 0;
+        vINVISIBLE_COUNTDOWN_LO = 0;
+        vINVISIBLE_COUNTDOWN_HI = 0;
         reset(fEGO_INVISIBLE);
         reset(fCARRYING_RING);
         reset(fWEARING_RING);
@@ -71,12 +71,12 @@ if (fEGO_ON_WATER) {
       set.view(oEGO, 93);
       if (fEGO_TINY) {
         reset(fEGO_TINY);
-        v82 = 0;
+        vTINY_COUNTDOWN = 0;
         print("It appears you have become normal size again.");
       }
       if (fEGO_INVISIBLE) {
-        v90 = 0;
-        v91 = 0;
+        vINVISIBLE_COUNTDOWN_LO = 0;
+        vINVISIBLE_COUNTDOWN_HI = 0;
         reset(fEGO_INVISIBLE);
         reset(fCARRYING_RING);
         reset(fWEARING_RING);

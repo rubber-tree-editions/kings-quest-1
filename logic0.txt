@@ -92,16 +92,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   v62 = 0;
   v70 = 0;
   v71 = 0;
-  v45 = 20;
+  vTEMP_COUNTER = 20;
   do {
-    reset.v(v45);
-    v45++;
-  } while (v45 < 45);
-  v45 = 30;
+    reset.v(vTEMP_COUNTER);
+    vTEMP_COUNTER++;
+  } while (vTEMP_COUNTER < 45);
+  vTEMP_COUNTER = 30;
   do {
-    lindirect(v45, 0);
-    v45++;
-  } while (v45 < 45);
+    lindirect(vTEMP_COUNTER, 0);
+    vTEMP_COUNTER++;
+  } while (vTEMP_COUNTER < 45);
   set.string(sPROMPT, ">");
   set.cursor.char("_");
 }
@@ -555,7 +555,7 @@ if (fCARRYING_MUSHROOM) {
     ) {
       print("As soon as you swallow the first bite, you have this strange shrinking feeling...  It's true!  You are now no bigger than a mouse!");
       set.view(oEGO, 60);
-      v82 = 200;
+      vTINY_COUNTDOWN = 200;
       drop("mushroom");
       reset(fCARRYING_MUSHROOM);
       set(fEATEN_MUSHROOM);
@@ -570,9 +570,9 @@ if (fCARRYING_MUSHROOM) {
     }
   }
 }
-if (fEGO_TINY && v82 != 0) {
-  v82--;
-  if (v82 == 1 && vROOM_NO != ROOM36 && vROOM_NO != ROOM78_IN_CAVE_WITH_TINY_HOLE) {
+if (fEGO_TINY && vTINY_COUNTDOWN != 0) {
+  vTINY_COUNTDOWN--;
+  if (vTINY_COUNTDOWN == 1 && vROOM_NO != ROOM36 && vROOM_NO != ROOM78_IN_CAVE_WITH_TINY_HOLE) {
     set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
     reset(fEGO_TINY);
@@ -615,8 +615,8 @@ if (fCARRYING_RING) {
       reset(fEGO_INVISIBLE);
       reset(fWEARING_RING);
       set(fLOST_RING);
-      v90 = 0;
-      v91 = 0;
+      vINVISIBLE_COUNTDOWN_LO = 0;
+      vINVISIBLE_COUNTDOWN_HI = 0;
     }
   }
   if (said("rub", "ring")) {
@@ -649,8 +649,8 @@ if (fCARRYING_RING) {
         set.view(oEGO, 110);
         print("When you rub the magic ring, you mysteriously disappear, except for your footprints.");
         set(fEGO_INVISIBLE);
-        v90 = 250;
-        v91 = 10;
+        vINVISIBLE_COUNTDOWN_LO = 250;
+        vINVISIBLE_COUNTDOWN_HI = 10;
       }
       if (vROOM_NO == ROOM65_IN_GINGERBREAD_HOUSE
         || fEGO_CLIMBING_BEANSTALK
@@ -673,16 +673,16 @@ if (fCARRYING_RING) {
   }
 }
 if (fEGO_INVISIBLE) {
-  v90--;
-  if (v90 == 0) {
-    if (v91 != 0) {
-      v91--;
-      v90 = 250;
+  vINVISIBLE_COUNTDOWN_LO--;
+  if (vINVISIBLE_COUNTDOWN_LO == 0) {
+    if (vINVISIBLE_COUNTDOWN_HI != 0) {
+      vINVISIBLE_COUNTDOWN_HI--;
+      vINVISIBLE_COUNTDOWN_LO = 250;
     }
   }
 }
-if (v90 == 1 && v91 == 0) {
-  v90 = 0;
+if (vINVISIBLE_COUNTDOWN_LO == 1 && vINVISIBLE_COUNTDOWN_HI == 0) {
+  vINVISIBLE_COUNTDOWN_LO = 0;
   set.view(oEGO, 0);
   reset(fCARRYING_RING);
   drop("ring");

@@ -5,8 +5,8 @@ LOGIC__HEADER
 #define oBIRD o1
 
 if (fROOM_SCRIPT_EXECUTED) {
-  v68 = 0;
-  v69 = 0;
+  vCOUNTDOWN_LO = 0;
+  vCOUNTDOWN_HI = 0;
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
@@ -107,8 +107,8 @@ v70--;
 if (v70 == 1 && !f158 && !fEGO_CLIMBING_BEANSTALK) {
   set(f21);
   position(oBIRD, 7, 35);
-  v68 = 250;
-  v69 = 3;
+  vCOUNTDOWN_LO = 250;
+  vCOUNTDOWN_HI = 3;
   draw(oBIRD);
   if (!fGOAT_COMPANION) {
     print("High up in the sky you see a very large, friendly bird.");
@@ -120,12 +120,12 @@ if (v70 == 1 && !f158 && !fEGO_CLIMBING_BEANSTALK) {
     set(f22);
   }
 }
-v68--;
-if (v68 == 0 && v69 != 0) {
-  v69--;
-  v68 = 250;
+vCOUNTDOWN_LO--;
+if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI != 0) {
+  vCOUNTDOWN_HI--;
+  vCOUNTDOWN_LO = 250;
 }
-if (v68 == 1 && v69 == 0) {
+if (vCOUNTDOWN_LO == 1 && vCOUNTDOWN_HI == 0) {
   wander(oBIRD);
   set(f22);
 }

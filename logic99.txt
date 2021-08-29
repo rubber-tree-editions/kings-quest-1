@@ -37,7 +37,7 @@ if (controller(cSHOWPRIORITY)) {
 }
 if (said("show", "var")) {
   get.num("var number: ", v73);
-  rindirect(v72, v73);
+  rindirect(vDEBUG_VAR_VALUE, v73);
   print("var %v73: %v72");
 }
 if (said("show", "flags")) {

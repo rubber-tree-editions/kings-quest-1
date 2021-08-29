@@ -23,7 +23,7 @@ if (fEGO_TINY) {
 else {
   observe.blocks(oEGO);
 }
-if (v82 == 1 && fEGO_TINY) {
+if (vTINY_COUNTDOWN == 1 && fEGO_TINY) {
   if (posn(oEGO, 1, 75, 12, 82)) {
     reset(fEGO_TINY);
     print("You feel a stretching sensation... Oh, you're back to your original size.  You can't get out of the small cave!");

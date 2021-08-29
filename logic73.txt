@@ -28,7 +28,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
     if (fEGO_TINY) {
       reset(fEGO_TINY);
-      v82 = 0;
+      vTINY_COUNTDOWN = 0;
       set(f24);
     }
   }

@@ -23,8 +23,8 @@ if (fROOM_SCRIPT_EXECUTED) {
       vSCORE += 2;
     }
   }
-  v68 = 250;
-  v69 = 3;
+  vCOUNTDOWN_LO = 250;
+  vCOUNTDOWN_HI = 3;
   if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
     set(fBUCKET_FILLED);
     get("water");
@@ -43,18 +43,18 @@ if (fROOM_SCRIPT_EXECUTED) {
     reset(fEGO_INVISIBLE);
     reset(fWEARING_RING);
     set(fLOST_RING);
-    v90 = 0;
-    v91 = 0;
+    vINVISIBLE_COUNTDOWN_LO = 0;
+    vINVISIBLE_COUNTDOWN_HI = 0;
   }
 }
-v68--;
-if (v68 == 0) {
-  v69--;
-  if (v69 != 0) {
-    v68 = 250;
+vCOUNTDOWN_LO--;
+if (vCOUNTDOWN_LO == 0) {
+  vCOUNTDOWN_HI--;
+  if (vCOUNTDOWN_HI != 0) {
+    vCOUNTDOWN_LO = 250;
   }
 }
-if (v68 == 0 && v69 == 0 && !f21) {
+if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI == 0 && !f21) {
   set(f21);
   set.view(oEGO, 114);
   print("Not even you can hold your breath forever.  The well bottom has become your eternal resting place.");

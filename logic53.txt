@@ -58,8 +58,8 @@ if (v30 != 0) {
     set.view(oEGO, 0);
     if (fEGO_INVISIBLE) {
       print("The spell to make you invisible has expired and you are once again visible.");
-      v90 = 0;
-      v91 = 0;
+      vINVISIBLE_COUNTDOWN_LO = 0;
+      vINVISIBLE_COUNTDOWN_HI = 0;
       reset(fEGO_INVISIBLE);
       drop("ring");
       vSCORE -= 3;

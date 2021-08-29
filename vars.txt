@@ -45,6 +45,8 @@
 
 // game vars
 #define vTEMP_1 v31
+#define vTEMP_COUNTER v45
+// unused: v50-v59
 #define vTEMP_X v60
 #define vTEMP_Y v61
 #define vTEMP_RESULT v62
@@ -55,6 +57,10 @@
   #define DOORSTATE_LOCKED 0
   #define DOORSTATE_CLOSED 1
   #define DOORSTATE_OPEN 2
+// unused: v67
+#define vCOUNTDOWN_LO v68
+#define vCOUNTDOWN_HI v69
+#define vDEBUG_VAR_VALUE v72
 #define vTREASURE_COUNT v74
 #define vDRAGON_STATE v75
   #define DRAGONSTATE_NORMAL 0
@@ -69,14 +75,15 @@
   #define WITCHSTATE_AT_HOME 1
   #define WITCHSTATE_AWAY_FROM_HOME 2
   #define WITCHSTATE_DEAD 3
+#define vTINY_COUNTDOWN v82
 #define vGNOME_STATE v83
   #define GNOMESTATE_PRESENT 0
   #define GNOMESTATE_LEFT_BEANS 1
   #define GNOMESTATE_LEFT_KEY 2
+#define vGNOME_NAME_GUESSES v84
 #define vTAKEN_GNOME_GIFT v85
   #define GNOMEGIFT_KEY 1
   #define GNOMEGIFT_BEANS 2
-#define vGNOME_NAME_GUESSES v84
 #define vGIANT_STATE v86
   #define GIANTSTATE_AWAKE_WITH_CHEST 0
   #define GIANTSTATE_ASLEEP_WITH_CHEST 1
@@ -93,6 +100,8 @@
 #define vBOWL_STATE v89
   #define BOWLSTATE_EMPTY 0
   #define BOWLSTATE_FULL_OF_STEW 1
+#define vINVISIBLE_COUNTDOWN_LO v90
+#define vINVISIBLE_COUNTDOWN_HI v91
 #define vTEMP_PIC v92
 #define vAQUATIC_ACTIVITY v94
   #define AQUATICACTIVITY_NONE 0
@@ -102,6 +111,7 @@
 #define vTEMP_STEP v96
 #define vGAME_OVER_MESSAGE_COUNTDOWN v97
 #define vTEMP_STEP_SIZE v98
+// unused: v99
 #define vTEMP_X_2 v100
 #define vTEMP_Y_2 v101
 #define vTEMP_CYCLE_TIME v102
