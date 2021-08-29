@@ -184,7 +184,7 @@
 #define rf21 f41
 #define rf22 f42
 #define rf23 f43
-#define rfDROWNING f44
+#define rf24 f44
 
 // custom game flags
 // unused: f50-f59

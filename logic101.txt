@@ -1,5 +1,7 @@
 #include "vars.txt"
 
+#define rfDROWNING rf44
+
 LOGIC__HEADER
 
 if (fROOM_SCRIPT_EXECUTED) {
