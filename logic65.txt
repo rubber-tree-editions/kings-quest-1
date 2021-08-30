@@ -2,6 +2,28 @@
 
 LOGIC__HEADER
 
+#define rfFALLEN_TO_EARTH rf0
+#define rfWITCH_AT_OVEN rf1
+#define rfEGO_FINISHED_ANIM rf2
+#define rfWITCH_IS_AFTER_YOU rf3
+#define rfCUPBOARD_FINISHED_OPENING rf4
+#define rfIN_CAGE rf5
+#define rfWITCH_CAUGHT_YOU rf6
+#define rfUNPROTECTED_BY_MAGIC rf7
+// unused: rf8
+#define rfWITCH_IS_HERE rf9
+#define rfWITCH_CAST_SPELL rf10
+#define rfWITCH_MOVING_TO_OVEN rf11
+#define rfPLAYED_VILLAIN_SOUND rf12
+#define rfPLAYING_FALLING_SOUND rf13
+#define rfSAID_OUCH rf14
+
+#define rvCOUNTDOWN_LO rv0
+#define rvCOUNTDOWN_HI rv1
+#define rvCOUNTDOWN2 rv2
+#define rvCOUNTDOWN3 rv3
+#define rvDISTANCE_TO_WITCH rv4
+
 #define oNOTE o1
 #define oCUPBOARD o2
 #define oSWISS_CHEESE o3
@@ -71,9 +93,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.blocks(oEGO);
     position(oEGO, 80, 45);
     set(f98);
-    set(rf5);
+    set(rfIN_CAGE);
     program.control();
-    move.obj(oEGO, 80, 84, 6, rf0);
+    move.obj(oEGO, 80, 84, 6, rfFALLEN_TO_EARTH);
     vWITCH_STATE = WITCHSTATE_AWAY_FROM_HOME;
   }
   if (vPREV_ROOM_NO == ROOM28_OUTSIDE_GINGERBREAD_HOUSE) {
@@ -90,14 +112,14 @@ if (fROOM_SCRIPT_EXECUTED) {
         load.view(43);
         animate.obj(oWITCH);
         set.view(oWITCH, 43);
-        rv0 = 250;
-        rv1 = 3;
+        rvCOUNTDOWN_LO = 250;
+        rvCOUNTDOWN_HI = 3;
       }
     }
   }
   if (vWITCH_STATE == WITCHSTATE_AT_HOME) {
     if (!fPROTECTED_BY_SPELL && !fEGO_INVISIBLE) {
-      set(rf7);
+      set(rfUNPROTECTED_BY_MAGIC);
       load.view(43);
       animate.obj(oWITCH);
       set.view(oWITCH, 43);
@@ -122,14 +144,14 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (fEGO_INVISIBLE) {
     print("Be thankful that you are invisible or the witch may have stuck around to try and catch you!");
   }
-  if (rf7) {
+  if (rfUNPROTECTED_BY_MAGIC) {
     draw(oWITCH);
-    follow.ego(oWITCH, 10, rf6);
+    follow.ego(oWITCH, 10, rfWITCH_CAUGHT_YOU);
     print("Surprise!  Surprise!  The wicked witch is home and now she's after you!");
   }
 }
-if (rf7 && !rf12) {
-  set(rf12);
+if (rfUNPROTECTED_BY_MAGIC && !rfPLAYED_VILLAIN_SOUND) {
+  set(rfPLAYED_VILLAIN_SOUND);
   sound(SND_VILLAIN, f148);
 }
 if (fGOAT_COMPANION) {
@@ -144,54 +166,54 @@ if (vWITCH_STATE == WITCHSTATE_DEAD) {
   }
 }
 if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
-  if (!rf0 && !rf13 && !rf7) {
+  if (!rfFALLEN_TO_EARTH && !rfPLAYING_FALLING_SOUND && !rfUNPROTECTED_BY_MAGIC) {
     sound(SND_FALLING, f198);
-    set(rf13);
+    set(rfPLAYING_FALLING_SOUND);
   }
 }
 if (f198) {
-  if (!rf0 && !rf14) {
+  if (!rfFALLEN_TO_EARTH && !rfSAID_OUCH) {
     reset(f198);
-    reset(rf13);
+    reset(rfPLAYING_FALLING_SOUND);
   }
 }
-rv2--;
-if (rf0) {
+rvCOUNTDOWN2--;
+if (rfFALLEN_TO_EARTH) {
   stop.sound();
-  set(rf14);
-  reset(rf0);
+  set(rfSAID_OUCH);
+  reset(rfFALLEN_TO_EARTH);
   observe.blocks(oEGO);
   set.view(oEGO, 103);
   shake.screen(1);
   print("OUCH!");
-  rv2 = 20;
+  rvCOUNTDOWN2 = 20;
   set(f98);
   sound(SND_OUCH, fSOUND_END_MARKER);
 }
 if (fSOUND_END_MARKER) {
-  if (rv2 != 0) {
+  if (rvCOUNTDOWN2 != 0) {
     reset(fSOUND_END_MARKER);
     sound(SND_OUCH, fSOUND_END_MARKER);
   }
 }
-if (rv2 == 1) {
+if (rvCOUNTDOWN2 == 1) {
   set.view(oEGO, 104);
-  end.of.loop(oEGO, rf2);
+  end.of.loop(oEGO, rfEGO_FINISHED_ANIM);
   print("As the wicked witch flew over her house, she dropped you... into her cage!  If you can't get out, you may become the secret ingredient in this witches' brew!");
   player.control();
 }
-rv3--;
-if (rf2) {
-  reset(rf2);
+rvCOUNTDOWN3--;
+if (rfEGO_FINISHED_ANIM) {
+  reset(rfEGO_FINISHED_ANIM);
   reset(f98);
   set.view(oEGO, 0);
-  rv3 = 100;
+  rvCOUNTDOWN3 = 100;
 }
-if (rv3 == 1) {
-  if (rf7 || rf9) {
+if (rvCOUNTDOWN3 == 1) {
+  if (rfUNPROTECTED_BY_MAGIC || rfWITCH_IS_HERE) {
     print("With a flash, you hear her joyously exclaim, \"This has made me feel like flying!\"");
     erase(oWITCH);
-    reset(rf7);
+    reset(rfUNPROTECTED_BY_MAGIC);
   }
   else {
     print("Try as you will to escape, your labor will be in vain.");
@@ -200,74 +222,74 @@ if (rv3 == 1) {
   stop.cycling(oEGO);
   set(fGAME_OVER);
 }
-if (rf7) {
-  distance(oEGO, oWITCH, rv4);
-  if (rv4 == 30 && !rf10) {
-    set(rf10);
+if (rfUNPROTECTED_BY_MAGIC) {
+  distance(oEGO, oWITCH, rvDISTANCE_TO_WITCH);
+  if (rvDISTANCE_TO_WITCH == 30 && !rfWITCH_CAST_SPELL) {
+    set(rfWITCH_CAST_SPELL);
     stop.motion(oEGO);
     print("Rats!  She has cast some spell to keep you from escaping!. The witch remarks, \"Oh, how nice of you to come for dinner (cackle, cackle)\"");
   }
-  if (rf6) {
-    reset(rf6);
+  if (rfWITCH_CAUGHT_YOU) {
+    reset(rfWITCH_CAUGHT_YOU);
     print("She pokes and pinches you, then states, \"This one is too scrawny, so it's into the cage until you fatten up (smack, yum)!\"");
     erase(oEGO);
     position(oEGO, 80, 80);
     draw(oEGO);
     start.motion(oEGO);
-    set(rf2);
-    set(rf5);
+    set(rfEGO_FINISHED_ANIM);
+    set(rfIN_CAGE);
   }
 }
-rv0--;
-if (rv0 == 0) {
-  if (rv1 != 0) {
-    rv1--;
-    rv0 = 250;
+rvCOUNTDOWN_LO--;
+if (rvCOUNTDOWN_LO == 0) {
+  if (rvCOUNTDOWN_HI != 0) {
+    rvCOUNTDOWN_HI--;
+    rvCOUNTDOWN_LO = 250;
   }
 }
-if (rv0 == 1 && rv1 == 3) {
+if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 3) {
   print("Off in the distance you hear a high, squeaky voice say, \"I can smell someone tasty in my house.\"");
 }
-if (rv0 == 1 && rv1 == 2) {
+if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 2) {
   position(oWITCH, 49, 160);
   draw(oWITCH);
   sound(SND_VILLAIN, f148);
-  set(rf9);
+  set(rfWITCH_IS_HERE);
   if (posn(oEGO, 105, 1, 158, 166)) {
-    move.obj(oWITCH, 26, 120, 2, rf1);
-    set(rf11);
+    move.obj(oWITCH, 26, 120, 2, rfWITCH_AT_OVEN);
+    set(rfWITCH_MOVING_TO_OVEN);
     print("The witch mutters, \"I am going to get my oven ready to cook someone for dinner (yum).\"");
   }
 }
-if (rf9 && !rf1 && !rf11) {
-  rv0 = 0;
-  rv1 = 0;
-  if (posn(oEGO, 105, 1, 158, 166) && !rf3) {
+if (rfWITCH_IS_HERE && !rfWITCH_AT_OVEN && !rfWITCH_MOVING_TO_OVEN) {
+  rvCOUNTDOWN_LO = 0;
+  rvCOUNTDOWN_HI = 0;
+  if (posn(oEGO, 105, 1, 158, 166) && !rfWITCH_IS_AFTER_YOU) {
     wander(oWITCH);
   }
   else {
-    if (!rf3) {
-      set(rf3);
+    if (!rfWITCH_IS_AFTER_YOU) {
+      set(rfWITCH_IS_AFTER_YOU);
       ignore.blocks(oWITCH);
-      follow.ego(oWITCH, 10, rf6);
+      follow.ego(oWITCH, 10, rfWITCH_CAUGHT_YOU);
     }
-    distance(oEGO, oWITCH, rv4);
-    if (rv4 < 30 && !rf10 && !posn(oEGO, 105, 132, 158, 166)) {
-      set(rf10);
+    distance(oEGO, oWITCH, rvDISTANCE_TO_WITCH);
+    if (rvDISTANCE_TO_WITCH < 30 && !rfWITCH_CAST_SPELL && !posn(oEGO, 105, 132, 158, 166)) {
+      set(rfWITCH_CAST_SPELL);
       stop.motion(oEGO);
       print("Rats!  She has cast some spell to keep you from escaping!. The witch remarks, \"Oh, how nice of you to come for dinner (cackle, cackle)\"");
     }
-    if (rf6) {
-      reset(rf6);
+    if (rfWITCH_CAUGHT_YOU) {
+      reset(rfWITCH_CAUGHT_YOU);
       print("She pokes and pinches you, then states, \"This one is too scrawny, so it's into the cage until you fatten up (smack, yum)!\"");
       reposition.to(oEGO, 80, 80);
       start.motion(oEGO);
-      set(rf2);
-      set(rf5);
+      set(rfEGO_FINISHED_ANIM);
+      set(rfIN_CAGE);
     }
   }
 }
-if (rf1) {
+if (rfWITCH_AT_OVEN) {
   if (said("examine", "witch")) {
     print("This ugly old witch is one of the most hideous sights you have ever seen.  I would never trust her.");
   }
@@ -277,10 +299,10 @@ if (rf1) {
       erase(oWITCH);
       print("Courageously, you manage to push the witch into the oven where she flashes and melts away into a harmless blob. Congratulations!");
       vWITCH_STATE = WITCHSTATE_DEAD;
-      rv0 = 0;
-      rv1 = 0;
-      reset(rf9);
-      reset(rf1);
+      rvCOUNTDOWN_LO = 0;
+      rvCOUNTDOWN_HI = 0;
+      reset(rfWITCH_IS_HERE);
+      reset(rfWITCH_AT_OVEN);
       vSCORE += 7;
     }
   }
@@ -289,25 +311,25 @@ if (rf1) {
       print("You are in no position to do that!");
     }
   }
-  if (rv0 == 1 && rv1 == 3) {
+  if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 3) {
     print("The witch mumbles, \"After I get the oven nice and hot, I will be ready to have someone for dinner (giggle).\"");
   }
-  if (rv0 == 1 && rv1 == 2) {
+  if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 2) {
     print("The witch mutters, \"The oven is heating up nicely.  I wonder who will be my dinner guest!\"");
   }
-  if (rv0 == 1 && rv1 == 0) {
-    rv0 = 0;
-    rv1 = 0;
+  if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 0) {
+    rvCOUNTDOWN_LO = 0;
+    rvCOUNTDOWN_HI = 0;
     print("The witch says, \"My oven is now the perfect temperature. It is time to invite someone for dinner (cackle, cackle)!\"");
-    reset(rf1);
-    reset(rf11);
+    reset(rfWITCH_AT_OVEN);
+    reset(rfWITCH_MOVING_TO_OVEN);
     if (posn(oEGO, 100, 1, 158, 166)) {
       wander(oWITCH);
     }
   }
 }
-if (!rf1) {
-  if (rf9 || rf7) {
+if (!rfWITCH_AT_OVEN) {
+  if (rfWITCH_IS_HERE || rfUNPROTECTED_BY_MAGIC) {
     if (said("shove", "witch")) {
       print("You are in no position to do that!");
     }
@@ -320,13 +342,13 @@ if (!rf1) {
   }
 }
 if (vWITCH_STATE != WITCHSTATE_DEAD) {
-  if (!rf9 && !rf7) {
+  if (!rfWITCH_IS_HERE && !rfUNPROTECTED_BY_MAGIC) {
     if (said("anyword", "witch")) {
       print("There is no witch here...RIGHT NOW!!");
     }
   }
 }
-if (rf9 || rf7) {
+if (rfWITCH_IS_HERE || rfUNPROTECTED_BY_MAGIC) {
   if (said("talk", "witch")) {
     print("Now is not a good time to try and start a conversation!");
   }
@@ -367,7 +389,7 @@ if (posn(oEGO, 23, 89, 55, 100)) {
     }
     if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE) {
       start.cycling(oCUPBOARD);
-      end.of.loop(oCUPBOARD, rf4);
+      end.of.loop(oCUPBOARD, rfCUPBOARD_FINISHED_OPENING);
       vCUPBOARD_STATE = CUPBOARDSTATE_OPEN_WITH_CHEESE;
       if (!fPOINTS_FOR_FINDING_CHEESE) {
         set(fPOINTS_FOR_FINDING_CHEESE);
@@ -434,8 +456,8 @@ if (!posn(oEGO, 23, 89, 55, 100)) {
     }
   }
 }
-if (rf4) {
-  reset(rf4);
+if (rfCUPBOARD_FINISHED_OPENING) {
+  reset(rfCUPBOARD_FINISHED_OPENING);
   draw(oSWISS_CHEESE);
 }
 if (said("examine", "stove")) {
@@ -447,7 +469,7 @@ if (said("examine", "stove")) {
   }
 }
 if (said("examine", "cage")) {
-  if (rf5) {
+  if (rfIN_CAGE) {
     if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
       print("This cage will be your new home for the rest of your life.");
     }
@@ -455,7 +477,7 @@ if (said("examine", "cage")) {
       print("You look for a way to escape, but there is none.");
     }
   }
-  if (!rf5) {
+  if (!rfIN_CAGE) {
     if (posn(oEGO, 4, 88, 106, 160)) {
       print("It is made from rusty, but strong, iron bars.");
     }
