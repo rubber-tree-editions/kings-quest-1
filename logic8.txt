@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define rfPULLED_UNDERWATER rf0
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -84,8 +86,8 @@ if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
     set(fMANUAL_EGO_WATER_POS);
   }
 }
-if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && fSWIMMING_IMPOSSIBLE_HERE && !rf0) {
-  set(rf0);
+if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && fSWIMMING_IMPOSSIBLE_HERE && !rfPULLED_UNDERWATER) {
+  set(rfPULLED_UNDERWATER);
   vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
   set.view(oEGO, 93);
   print("The swift water pulls you down to your untimely demise.");

@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define rfDEAD_AND_SUNK rf0
+#define rfDEAD rf1
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -54,21 +57,21 @@ if (vCOUNTDOWN_LO == 0) {
     vCOUNTDOWN_LO = 250;
   }
 }
-if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI == 0 && !rf1) {
-  set(rf1);
+if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI == 0 && !rfDEAD) {
+  set(rfDEAD);
   set.view(oEGO, 114);
   print("Not even you can hold your breath forever.  The well bottom has become your eternal resting place.");
   ignore.blocks(oEGO);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y < 141) {
-    move.obj(oEGO, 65, 140, 1, rf0);
+    move.obj(oEGO, 65, 140, 1, rfDEAD_AND_SUNK);
   }
   if (vTEMP_Y > 140) {
-    set(rf0);
+    set(rfDEAD_AND_SUNK);
   }
 }
-if (rf0) {
-  reset(rf0);
+if (rfDEAD_AND_SUNK) {
+  reset(rfDEAD_AND_SUNK);
   set(fGAME_OVER);
 }
 if (said("examine", "water")) {

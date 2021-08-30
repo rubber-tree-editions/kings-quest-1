@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define rfPULLED_UNDERWATER rf0
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -56,8 +56,8 @@ if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
     }
   }
 }
-if (fEGO_ON_WATER && !rf0) {
-  set(rf0);
+if (fEGO_ON_WATER && !rfPULLED_UNDERWATER) {
+  set(rfPULLED_UNDERWATER);
   print("This placid looking stream is actually quite dangerous.... the current is stronger than it looks.  You can't keep your head above water.");
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {

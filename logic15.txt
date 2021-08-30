@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define rfON_CARROT_PATCH rf0
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -45,12 +47,12 @@ if (posn(oEGO, 87, 54, 159, 65)
   || posn(oEGO, 46, 92, 159, 116)
   || posn(oEGO, 32, 117, 159, 147)
 ) {
-  set(rf0);
+  set(rfON_CARROT_PATCH);
 }
 else {
-  reset(rf0);
+  reset(rfON_CARROT_PATCH);
 }
-if (rf0) {
+if (rfON_CARROT_PATCH) {
   if (!fCARRYING_CARROT && said("examine", "carrot")) {
     print("There are many large, plump carrots in the garden.");
   }
@@ -65,7 +67,7 @@ if (rf0) {
     }
   }
 }
-if (!rf0) {
+if (!rfON_CARROT_PATCH) {
   if (!fCARRYING_CARROT && said("examine", "carrot")) {
     print("The carrots are buried in the ground.  You must get  closer to see them.");
   }

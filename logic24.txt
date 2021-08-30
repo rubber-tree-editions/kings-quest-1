@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define rfSHOW_CLOVER rf0
+
 #define oCLOVER o1
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -20,9 +22,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oCLOVER);
     set.view(oCLOVER, 21);
     position(oCLOVER, 53, 134);
-    set(rf0);
+    set(rfSHOW_CLOVER);
   }
-  if (rf0) {
+  if (rfSHOW_CLOVER) {
     draw(oCLOVER);
     stop.update(oCLOVER);
   }

@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define rfFALLEN_THROUGH_THE_CLOUDS rf0
+#define rfHIDE_EGO rf1
+
 if (fROOM_SCRIPT_EXECUTED) {
   ignore.horizon(oEGO);
   load.pic(vROOM_NO);
@@ -43,7 +46,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !f95 && posn(oEGO, 0, 84, 159, 167)) {
   set(f95);
   stop.cycling(oEGO);
   sound(SND_FALLING, fSOUND_END_MARKER);
-  move.obj(oEGO, 153, 166, 5, rf1);
+  move.obj(oEGO, 153, 166, 5, rfHIDE_EGO);
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
   reset(fEGO_TOUCHED_TRIGGER_LINE);
@@ -56,16 +59,16 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   erase(oEGO);
 }
-if (rf1) {
-  reset(rf1);
+if (rfHIDE_EGO) {
+  reset(rfHIDE_EGO);
   erase(oEGO);
 }
 if (fSOUND_END_MARKER) {
   reset(fSOUND_END_MARKER);
-  set(rf0);
+  set(rfFALLEN_THROUGH_THE_CLOUDS);
 }
-if (rf0) {
-  reset(rf0);
+if (rfFALLEN_THROUGH_THE_CLOUDS) {
+  reset(rfFALLEN_THROUGH_THE_CLOUDS);
   print("Oops, you've missed the edge and fallen through the  clouds.");
   set(fGAME_OVER);
 }

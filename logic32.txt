@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define rfPULLED_UNDERWATER rf0
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -20,8 +22,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (fEGO_ON_WATER && !rf0) {
-  set(rf0);
+if (fEGO_ON_WATER && !rfPULLED_UNDERWATER) {
+  set(rfPULLED_UNDERWATER);
   print("Oh No!  That's such a dangerous river... the current is too strong... you won't be able to escape!");
 }
 if (said("examine", "stream")) {

@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define rfROCK_MOVING_SAFE rf0
+#define rfROCK_MOVING_DEADLY rf1
+
 #define oROCK o1
 #define oHOLE o2
 
@@ -72,7 +75,7 @@ if (!fSAID_ACCEPTED_USER_INPUT) {
   }
 }
 if (said("shove", "rocks")) {
-  if (!fMOVED_ROCK && !rf0) {
+  if (!fMOVED_ROCK && !rfROCK_MOVING_SAFE) {
     if (!posn(oEGO, 115, 114, 133, 133) && !posn(oEGO, 118, 134, 133, 148)) {
       print("It will be very difficult to move the rock from here.");
     }
@@ -82,13 +85,13 @@ if (said("shove", "rocks")) {
       move.obj(oROCK, 118, 145, 0, fMOVED_ROCK);
       print("With a heave and a ho, you manage to move the rock... revealing a dark hole underneath it.");
       vSCORE += 2;
-      set(rf0);
+      set(rfROCK_MOVING_SAFE);
     }
     if (posn(oEGO, 118, 134, 133, 148)) {
       ignore.objs(oROCK);
       draw(oHOLE);
       stop.update(oHOLE);
-      set(rf1);
+      set(rfROCK_MOVING_DEADLY);
       set.priority(oROCK, 15);
       move.obj(oROCK, 118, 145, 0, fMOVED_ROCK);
       print("This moving rock rolls downhill and you, unfortunately,  are in the way.");

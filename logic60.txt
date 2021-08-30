@@ -2,6 +2,11 @@
 
 LOGIC__HEADER
 
+#define rfFALLING_SOUND_PLAYED rf0
+#define rfHIDE_EGO rf1
+
+#define rvTEMP_PRIORITY rv0
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -22,23 +27,23 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
   program.control();
   stop.cycling(oEGO);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
-  get.priority(oEGO, rv0);
-  set.priority.v(oEGO, rv0);
+  get.priority(oEGO, rvTEMP_PRIORITY);
+  set.priority.v(oEGO, rvTEMP_PRIORITY);
   vTEMP_Y += 8;
   vTEMP_STEP = 4;
   sound(SND_FALLING, fSOUND_END_MARKER);
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf1);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfHIDE_EGO);
 }
-if (rf1) {
-  reset(rf1);
+if (rfHIDE_EGO) {
+  reset(rfHIDE_EGO);
   erase(oEGO);
 }
 if (fSOUND_END_MARKER) {
   reset(fSOUND_END_MARKER);
-  set(rf0);
+  set(rfFALLING_SOUND_PLAYED);
 }
-if (rf0) {
-  reset(rf0);
+if (rfFALLING_SOUND_PLAYED) {
+  reset(rfFALLING_SOUND_PLAYED);
   print("You should know that it is not possible to walk on clouds!");
   set(fGAME_OVER);
 }

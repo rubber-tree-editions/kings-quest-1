@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define rfPULLED_UNDERWATER rf0
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -72,8 +74,8 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water"
     print("You are not close enough to the lake.");
   }
 }
-if (fEGO_ON_WATER && posn(oEGO, 0, 60, 31, 76) && !rf0) {
-  set(rf0);
+if (fEGO_ON_WATER && posn(oEGO, 0, 60, 31, 76) && !rfPULLED_UNDERWATER) {
+  set(rfPULLED_UNDERWATER);
   vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
   set.view(oEGO, 93);
   print("The swift water pulls you down to your untimely demise.");

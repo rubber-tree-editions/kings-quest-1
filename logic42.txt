@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define rfPULLED_UNDERWATER rf0
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -49,8 +51,8 @@ if (posn(oEGO, 0, 83, 159, 167)) {
 else {
   reset(fSWIMMING_IMPOSSIBLE_HERE);
 }
-if (fEGO_ON_WATER && fSWIMMING_IMPOSSIBLE_HERE && !rf0) {
-  set(rf0);
+if (fEGO_ON_WATER && fSWIMMING_IMPOSSIBLE_HERE && !rfPULLED_UNDERWATER) {
+  set(rfPULLED_UNDERWATER);
   print("You have fallen in the raging current and are swept under.  I'm afraid your end has come.");
 }
 if (said("examine", "water")) {

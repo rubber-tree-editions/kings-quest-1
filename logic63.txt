@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define rfSHOW_GOLDEN_EGG rf0
+#define rfFALLING_OUT_OF_THE_TREE rf1
+
 #define oGOLDEN_EGG o1
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -15,7 +18,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     vSCORE += 2;
   }
   if (!fTAKEN_GOLDEN_EGG) {
-    set(rf0);
+    set(rfSHOW_GOLDEN_EGG);
     load.view(39);
     animate.obj(oGOLDEN_EGG);
     set.view(oGOLDEN_EGG, 39);
@@ -25,7 +28,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.priority(oEGO, 6);
   position(oEGO, 35, 164);
   observe.blocks(oEGO);
-  if (rf0) {
+  if (rfSHOW_GOLDEN_EGG) {
     draw(oGOLDEN_EGG);
     stop.update(oGOLDEN_EGG);
   }
@@ -69,8 +72,8 @@ if (!fTAKEN_GOLDEN_EGG) {
     }
   }
 }
-if (fEGO_ON_WATER && !posn(oEGO, 12, 106, 57, 166) && !rf1) {
-  set(rf1);
+if (fEGO_ON_WATER && !posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT_OF_THE_TREE) {
+  set(rfFALLING_OUT_OF_THE_TREE);
   set(f131);
   ignore.blocks(oEGO);
   set.view(oEGO, 105);
@@ -81,8 +84,8 @@ if (fEGO_ON_WATER && !posn(oEGO, 12, 106, 57, 166) && !rf1) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f148);
 }
-if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !rf1) {
-  set(rf1);
+if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT_OF_THE_TREE) {
+  set(rfFALLING_OUT_OF_THE_TREE);
   set(f131);
   ignore.blocks(oEGO);
   set.priority(oEGO, 4);
@@ -94,9 +97,9 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !rf1) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f148);
 }
-if (posn(oEGO, 12, 106, 57, 166) && !rf1) {
+if (posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT_OF_THE_TREE) {
   if (fEGO_TOUCHED_TRIGGER_LINE || fEGO_ON_WATER) {
-    set(rf1);
+    set(rfFALLING_OUT_OF_THE_TREE);
     set(f131);
     ignore.blocks(oEGO);
     set.priority(oEGO, 5);

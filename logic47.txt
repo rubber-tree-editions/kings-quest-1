@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define rfSHOW_MUSHROOM rf0
+#define rfPULLED_UNDERWATER rf1
+
 #define oMUSHROOM o1
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -22,7 +25,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oMUSHROOM);
     set.view(oMUSHROOM, 84);
     position(oMUSHROOM, 84, 80);
-    set(rf0);
+    set(rfSHOW_MUSHROOM);
   }
   if (vPREV_ROOM_NO == ROOM34) {
     if (posn(oEGO, 77, 165, 112, 167)) {
@@ -32,8 +35,8 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 142, 164);
     }
   }
-  if (rf0) {
-    reset(rf0);
+  if (rfSHOW_MUSHROOM) {
+    reset(rfSHOW_MUSHROOM);
     draw(oMUSHROOM);
   }
   set(fSWIMMING_IMPOSSIBLE_HERE);
@@ -41,8 +44,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (fEGO_ON_WATER && !rf1) {
-  set(rf1);
+if (fEGO_ON_WATER && !rfPULLED_UNDERWATER) {
+  set(rfPULLED_UNDERWATER);
   print("This is sad.  You are not the first to fail your quest in the Raging River... I hope you may be the last.");
 }
 if (said("examine", "water")) {

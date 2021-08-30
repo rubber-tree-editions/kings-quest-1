@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define rfTO_WITCHS_HOUSE rf0
+#define rfTO_LEPRECHAUN_HOLE rf1
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -10,13 +13,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(91);
     set.view(oEGO, 91);
     position(oEGO, 1, 60);
-    move.obj(oEGO, 130, 60, 0, rf0);
+    move.obj(oEGO, 130, 60, 0, rfTO_WITCHS_HOUSE);
   }
   else {
     load.view(89);
     set.view(oEGO, 89);
     position(oEGO, 1, 60);
-    move.obj(oEGO, 135, 60, 0, rf1);
+    move.obj(oEGO, 135, 60, 0, rfTO_LEPRECHAUN_HOLE);
   }
   draw(oEGO);
   show.pic();
@@ -30,10 +33,10 @@ if (said("anyword", "witch")) {
 if (said("anyword", "bird")) {
   print("Now is not a good time to bother the bird.");
 }
-if (rf0) {
+if (rfTO_WITCHS_HOUSE) {
   new.room(ROOM65_IN_GINGERBREAD_HOUSE);
 }
-if (rf1) {
+if (rfTO_LEPRECHAUN_HOLE) {
   new.room(ROOM48_LEPRECHAUN_HOLE);
 }
 return;

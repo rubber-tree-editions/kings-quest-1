@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define rfDOOR_OPENED rf0
+#define rfDOOR_CLOSED rf1
+
 #define oDOOR o1
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -132,7 +135,7 @@ if (posn(oEGO, 90, 93, 125, 114)) {
     if (said("open", "doors") || said("turn", "knob")) {
       start.update(oDOOR);
       sound(SND_DOOR_OPENING, f148);
-      end.of.loop(oDOOR, rf0);
+      end.of.loop(oDOOR, rfDOOR_OPENED);
       vDOOR_STATE = DOORSTATE_OPEN;
     }
   }
@@ -142,19 +145,19 @@ if (posn(oEGO, 90, 93, 125, 114)) {
     }
     if (vDOOR_STATE == DOORSTATE_OPEN) {
       start.update(oDOOR);
-      reverse.loop(oDOOR, rf1);
+      reverse.loop(oDOOR, rfDOOR_CLOSED);
       vDOOR_STATE = DOORSTATE_CLOSED;
     }
   }
 }
-if (rf0) {
-  reset(rf0);
+if (rfDOOR_OPENED) {
+  reset(rfDOOR_OPENED);
   ignore.objs(oDOOR);
   ignore.blocks(oEGO);
   stop.update(oDOOR);
 }
-if (rf1) {
-  reset(rf1);
+if (rfDOOR_CLOSED) {
+  reset(rfDOOR_CLOSED);
   observe.objs(oDOOR);
   observe.blocks(oEGO);
   stop.update(oDOOR);
