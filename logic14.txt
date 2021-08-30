@@ -26,7 +26,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       set.priority(oEGO, 12);
       program.control();
       move.obj(oEGO, 84, 132, 4, rf0);
-      set(rf09);
+      set(f209);
     }
     else {
       position(oEGO, 84, 132);
@@ -75,7 +75,7 @@ if (rf1) {
   reset(f98);
   set.view(oEGO, 0);
   start.motion(oEGO);
-  reset(rf09);
+  reset(f209);
   player.control();
 }
 if (said("examine", "tree")) {

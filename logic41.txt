@@ -113,7 +113,7 @@ if (rf3) {
   ignore.objs(oGOAT);
   reset(rf3);
   move.obj(oTROLL, 100, 124, 0, f148);
-  move.obj(oGOAT, 100, 124, 1, rf03);
+  move.obj(oGOAT, 100, 124, 1, f203);
 }
 distance(oTROLL, oGOAT, v62);
 if (v62 < 15 && !f150) {

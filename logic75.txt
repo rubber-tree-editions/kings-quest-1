@@ -51,15 +51,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
   if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
-    reverse.loop(oDOOR, rf03);
+    reverse.loop(oDOOR, f203);
     sound(SND_DOOR_OPENING, f148);
   }
   else {
     stop.update(oDOOR);
   }
 }
-if (rf03) {
-  reset(rf03);
+if (f203) {
+  reset(f203);
   stop.update(oDOOR);
 }
 if (rf0) {

@@ -97,7 +97,7 @@ if (rf8) {
   shake.screen(2);
   set(fGAME_OVER);
 }
-if (posn(oEGO, 141, 71, 159, 89) || rf09 || fEGO_CLIMBING_BEANSTALK || f158 || fEGO_INVISIBLE) {
+if (posn(oEGO, 141, 71, 159, 89) || f209 || fEGO_CLIMBING_BEANSTALK || f158 || fEGO_INVISIBLE) {
   set(f145);
 }
 else {
@@ -152,7 +152,7 @@ if (v71 > 20 && v71 < 30 && vTEMP_Y_2 > rv3 && f143 && !rf2) {
   program.control();
   erase(oBIRD);
   set.view(oEGO, 89);
-  set(rf09);
+  set(f209);
   ignore.horizon(oEGO);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_X = 130;

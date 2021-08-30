@@ -78,7 +78,7 @@ if (rf5) {
   reset(f98);
   player.control();
   reset(f145);
-  reset(rf09);
+  reset(f209);
 }
 if (said("examine", "hole") || said("look inside", "hole")) {
   if (posn(oEGO, 55, 105, 100, 142)) {

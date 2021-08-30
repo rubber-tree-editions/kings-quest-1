@@ -50,7 +50,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   v107 = 1;
   step.size(oGOAT, v107);
   draw(oGOAT);
-  follow.ego(oGOAT, 10, rf07);
+  follow.ego(oGOAT, 10, f207);
 }
 distance(oEGO, oGOAT, rv10);
 if (rv10 > 35) {
@@ -81,17 +81,17 @@ observe.blocks(oGOAT);
 rv11--;
 if (rv11 == 1) {
   if (rv10 < 21) {
-    set(rf07);
+    set(f207);
   }
-  else if (!rf07 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
+  else if (!f207 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
     rv11 = 0;
     start.cycling(oGOAT);
     start.motion(oGOAT);
-    follow.ego(oGOAT, 10, rf07);
+    follow.ego(oGOAT, 10, f207);
   }
 }
-if (rf07) {
-  reset(rf07);
+if (f207) {
+  reset(f207);
   rv11 = 9;
   normal.motion(oGOAT);
   stop.motion(oGOAT);
@@ -116,7 +116,7 @@ if (rv10 > 20 && vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) 
 }
 if (fGOAT_WONT_SWIM && rv10 < 25 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
   reset(fGOAT_WONT_SWIM);
-  follow.ego(oGOAT, 10, rf07);
+  follow.ego(oGOAT, 10, f207);
 }
 if (fEGO_INVISIBLE && !rf22) {
   set(rf22);
