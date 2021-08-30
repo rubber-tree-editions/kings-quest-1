@@ -2,6 +2,15 @@
 
 LOGIC__HEADER
 
+#define rfFELL_OFF_BEANSTALK_LOW rf0
+#define rfFELL_FROM_SKY rf1
+#define rfEGO_STOPPED_ANIMATING rf2
+#define rfPLAYING_FALLING_SOUND rf3
+#define rfPLAYED_FALLING_SOUND rf4
+#define rfPLAYED_BEANSTALK_SOUND rf5
+
+#define rvCOUNTDOWN rv0
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -48,7 +57,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_Y = 106;
     vTEMP_STEP = 2;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf1);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_FROM_SKY);
   }
   if (vPREV_ROOM_NO == ROOM43 && fEGO_ON_WATER) {
     reset(f98);
@@ -61,18 +70,18 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (fFALLING_TO_EARTH && !rf3) {
-  set(rf3);
+if (fFALLING_TO_EARTH && !rfPLAYING_FALLING_SOUND) {
+  set(rfPLAYING_FALLING_SOUND);
   set(f135);
-  sound(SND_FALLING, rf4);
+  sound(SND_FALLING, rfPLAYED_FALLING_SOUND);
 }
-if (!rf1 && rf4) {
-  reset(rf3);
-  reset(rf4);
+if (!rfFELL_FROM_SKY && rfPLAYED_FALLING_SOUND) {
+  reset(rfPLAYING_FALLING_SOUND);
+  reset(rfPLAYED_FALLING_SOUND);
 }
-if (rf1) {
+if (rfFELL_FROM_SKY) {
   stop.sound();
-  set(rf3);
+  set(rfPLAYING_FALLING_SOUND);
   reset(fFALLING_TO_EARTH);
   reset(f135);
   set.view(oEGO, 114);
@@ -143,7 +152,7 @@ if (fCARRYING_MAGIC_BEANS && f155) {
     drop("beans");
     vSCORE += 2;
     print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
-    sound(SND_BEANSTALK, rf5);
+    sound(SND_BEANSTALK, rfPLAYED_BEANSTALK_SOUND);
     overlay.pic(vTEMP_PIC);
     show.pic();
   }
@@ -189,20 +198,20 @@ if (fEGO_CLIMBING_BEANSTALK) {
     draw(oEGO);
     vTEMP_Y = 106;
     vTEMP_STEP = 2;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf0);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_OFF_BEANSTALK_LOW);
     set(f135);
     sound(SND_FALLING, f198);
   }
 }
-rv0--;
-if (rf0) {
+rvCOUNTDOWN--;
+if (rfFELL_OFF_BEANSTALK_LOW) {
   stop.sound();
-  reset(rf0);
+  reset(rfFELL_OFF_BEANSTALK_LOW);
   observe.blocks(oEGO);
   release.priority(oEGO);
   stop.motion(oEGO);
   set.view(oEGO, 103);
-  rv0 = 20;
+  rvCOUNTDOWN = 20;
   set(f98);
   shake.screen(2);
   print("Ouch!");
@@ -210,17 +219,17 @@ if (rf0) {
   sound(SND_OUCH, fSOUND_END_MARKER);
 }
 if (fSOUND_END_MARKER) {
-  if (rv0 != 0) {
+  if (rvCOUNTDOWN != 0) {
     reset(fSOUND_END_MARKER);
     sound(SND_OUCH, fSOUND_END_MARKER);
   }
 }
-if (rv0 == 1) {
+if (rvCOUNTDOWN == 1) {
   set.view(oEGO, 104);
-  end.of.loop(oEGO, rf2);
+  end.of.loop(oEGO, rfEGO_STOPPED_ANIMATING);
 }
-if (rf2) {
-  reset(rf2);
+if (rfEGO_STOPPED_ANIMATING) {
+  reset(rfEGO_STOPPED_ANIMATING);
   reset(f98);
   start.motion(oEGO);
   set.view(oEGO, 0);

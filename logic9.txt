@@ -2,13 +2,21 @@
 
 LOGIC__HEADER
 
+#define rfFAIRY_GODMOTHER_IS_HERE rf0
+#define rfFAIRY_GODMOTHER_CAUGHT_YOU rf1
+#define rfFAIRY_GODMOTHER_SOUND_PLAYED rf2
+
+#define rvFAIRY_GODMOTHER_LEAVING_COUNTDOWN rv0
+#define rvFAIRY_GODMOTHER_SPEAKS_COUNTDOWN rv1
+#define rvFAIRY_GODMOTHER_SOUND_COUNTDOWN rv4
+
 #define oFAIRY_GODMOTHER o1
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  rv2 = 4;
+  rvFAIRY_GODMOTHER_SOUND_COUNTDOWN = 4;
   set.horizon(46);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
@@ -21,35 +29,35 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(6);
     animate.obj(oFAIRY_GODMOTHER);
     set.view(oFAIRY_GODMOTHER, 6);
-    rv1 = 45;
+    rvFAIRY_GODMOTHER_SPEAKS_COUNTDOWN = 45;
     load.sound(SND_FAIRY_GODMOTHER);
   }
   draw(oEGO);
   show.pic();
 }
-rv1--;
-if (rv1 == 1) {
+rvFAIRY_GODMOTHER_SPEAKS_COUNTDOWN--;
+if (rvFAIRY_GODMOTHER_SPEAKS_COUNTDOWN == 1) {
   position(oFAIRY_GODMOTHER, 50, 80);
   draw(oFAIRY_GODMOTHER);
   print("\"Gentle Sir Graham, I am your fairy godmother.  Your quest is indeed noble.  My small part to aid you can be no bigger than this magic spell, protective but for a little while.\"");
-  follow.ego(oFAIRY_GODMOTHER, 25, rf1);
-  set(rf0);
+  follow.ego(oFAIRY_GODMOTHER, 25, rfFAIRY_GODMOTHER_CAUGHT_YOU);
+  set(rfFAIRY_GODMOTHER_IS_HERE);
   set(fPROTECTED_BY_SPELL);
-  rv0 = 250;
+  rvFAIRY_GODMOTHER_LEAVING_COUNTDOWN = 250;
   vSPELL_COUNTDOWN_HI = 100;
   vSPELL_COUNTDOWN_LO = 250;
 }
-if (rf0) {
+if (rfFAIRY_GODMOTHER_IS_HERE) {
   set(f135);
-  rv0--;
-  rv2--;
-  if (rv2 == 1) {
-    sound(SND_FAIRY_GODMOTHER, rf2);
+  rvFAIRY_GODMOTHER_LEAVING_COUNTDOWN--;
+  rvFAIRY_GODMOTHER_SOUND_COUNTDOWN--;
+  if (rvFAIRY_GODMOTHER_SOUND_COUNTDOWN == 1) {
+    sound(SND_FAIRY_GODMOTHER, rfFAIRY_GODMOTHER_SOUND_PLAYED);
   }
-  if (rf2) {
-    reset(rf2);
+  if (rfFAIRY_GODMOTHER_SOUND_PLAYED) {
+    reset(rfFAIRY_GODMOTHER_SOUND_PLAYED);
     stop.sound();
-    rv2 = 4;
+    rvFAIRY_GODMOTHER_SOUND_COUNTDOWN = 4;
   }
   if (said("examine", "fairy godmother")) {
     print("She is your fairy godmother.");
@@ -60,19 +68,19 @@ if (rf0) {
   if (said("anyword", "fairy godmother") || said("hello") || said("say", "hello")) {
     print("There is no need to say, or do, anything.");
   }
-  if (rf1) {
+  if (rfFAIRY_GODMOTHER_CAUGHT_YOU) {
     wander(oFAIRY_GODMOTHER);
   }
 }
-if (rf0 && rv0 == 1) {
+if (rfFAIRY_GODMOTHER_IS_HERE && rvFAIRY_GODMOTHER_LEAVING_COUNTDOWN == 1) {
   print("\"I will be watching over you, Sir Graham.\"");
   erase(oFAIRY_GODMOTHER);
-  reset(rf0);
-  rv2 = 0;
+  reset(rfFAIRY_GODMOTHER_IS_HERE);
+  rvFAIRY_GODMOTHER_SOUND_COUNTDOWN = 0;
   stop.sound();
   reset(f135);
 }
-if (!rf0) {
+if (!rfFAIRY_GODMOTHER_IS_HERE) {
   if (said("anyword", "fairy godmother")) {
     print("There is no fairy here.");
   }

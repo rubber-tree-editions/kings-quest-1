@@ -2,6 +2,13 @@
 
 LOGIC__HEADER
 
+#define rfGOAT_IS_HERE rf0
+// unused: rf1
+#define rfPLAYING_GOAT_SOUND rf2
+#define rfPLAYED_GOAT_SOUND rf3
+
+#define rvCOUNTDOWN rv0
+
 #define oGOAT o13
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -14,7 +21,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.sound(11);
     load.view(14);
     load.view(62);
-    rv0 = 27;
+    rvCOUNTDOWN = 27;
     animate.obj(oGOAT);
     set.view(oGOAT, 14);
   }
@@ -33,30 +40,30 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (rf0 && !fGOAT_COMPANION) {
-  if (!rf2) {
-    set(rf2);
-    sound(11, rf3);
+if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
+  if (!rfPLAYING_GOAT_SOUND) {
+    set(rfPLAYING_GOAT_SOUND);
+    sound(11, rfPLAYED_GOAT_SOUND);
   }
-  if (rf3) {
-    reset(rf2);
-    reset(rf3);
+  if (rfPLAYED_GOAT_SOUND) {
+    reset(rfPLAYING_GOAT_SOUND);
+    reset(rfPLAYED_GOAT_SOUND);
   }
 }
-if (!rf0) {
+if (!rfGOAT_IS_HERE) {
   if (said("anyword", "goat")) {
     print("There is no goat in the immediate area.");
   }
 }
-rv0--;
-if (rv0 == 1) {
-  set(rf0);
+rvCOUNTDOWN--;
+if (rvCOUNTDOWN == 1) {
+  set(rfGOAT_IS_HERE);
   position(oGOAT, 140, 80);
   draw(oGOAT);
   wander(oGOAT);
-  rv0 = 0;
+  rvCOUNTDOWN = 0;
 }
-if (rf0 && !fGOAT_COMPANION) {
+if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
   if (said("hello")
     || said("hello", "goat")
     || said("say", "hello")
@@ -147,7 +154,7 @@ if (said("examine", "goat pen")) {
   }
 }
 if (said("look inside", "goat pen")) {
-  if (rf0) {
+  if (rfGOAT_IS_HERE) {
     print("You see a grey billy goat inside the pen.");
   }
   else {
@@ -164,7 +171,7 @@ if (said("climb", "goat pen")) {
   print("There should be a gate around here somewhere.");
 }
 distance(oEGO, oGOAT, v70);
-if (fINSIDE_GOAT_FENCE && rf0) {
+if (fINSIDE_GOAT_FENCE && rfGOAT_IS_HERE) {
   if (said("feed", "carrot")
     || said("feed", "goat", "carrot")
     || said("feed", "carrot", "goat")
@@ -190,7 +197,7 @@ if (fINSIDE_GOAT_FENCE && rf0) {
     }
   }
 }
-if (fINSIDE_GOAT_FENCE && rf0) {
+if (fINSIDE_GOAT_FENCE && rfGOAT_IS_HERE) {
   if (fCARRYING_CARROT && !fGOAT_COMPANION && !fEGO_INVISIBLE) {
     if (said("show", "carrot")
       || said("show", "carrot", "goat")
@@ -214,7 +221,7 @@ if (fINSIDE_GOAT_FENCE && rf0) {
     }
   }
 }
-if (!fINSIDE_GOAT_FENCE && rf0) {
+if (!fINSIDE_GOAT_FENCE && rfGOAT_IS_HERE) {
   if (!fCARRYING_CARROT) {
     if (said("anyword", "carrot")) {
       print("You do not have the carrot.");
