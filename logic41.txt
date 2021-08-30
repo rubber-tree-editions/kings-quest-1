@@ -2,6 +2,24 @@
 
 LOGIC__HEADER
 
+#define rfTROLL_NEARBY rf0
+#define rfTROLL_IS_HERE rf1
+#define rfTROLL_CAUGHT_YOU rf2
+#define rfGOAT_AT_BRIDGE rf3
+// unused: rf4
+#define rfTROLL_IS_AFTER_YOU rf5
+#define rfGOAT_APPROACHING_TROLL rf6
+#define rfTROLL_TOOK_A_TREASURE rf7
+#define rfTROLL_LEFT rf8
+#define rfSTUCK_IN_RIVER rf9
+#define rfHIDE_GOAT rf10
+#define rfGOAT_LEAVING rf11
+#define rfTROLL_SOUND_PLAYING rf12
+#define rfTROLL_SOUND_PLAYED rf13
+
+#define rvTROLL_STEP_SIZE rv0
+#define rvDISTANCE_FROM_EGO_TO_GOAT rv1
+
 #define oTROLL o1
 #define oGOAT o13
 
@@ -22,24 +40,24 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oTROLL, 65);
     position(oTROLL, 95, 154);
     observe.blocks(oTROLL);
-    set(rf0);
+    set(rfTROLL_NEARBY);
     load.sound(SND_VILLAIN);
     load.sound(SND_TROLL);
   }
   draw(oEGO);
   show.pic();
 }
-if (rf1 && fSOUND_END_MARKER) {
-  if (!rf12) {
-    set(rf12);
-    sound(SND_TROLL, rf13);
+if (rfTROLL_IS_HERE && fSOUND_END_MARKER) {
+  if (!rfTROLL_SOUND_PLAYING) {
+    set(rfTROLL_SOUND_PLAYING);
+    sound(SND_TROLL, rfTROLL_SOUND_PLAYED);
   }
-  if (rf13) {
-    reset(rf12);
-    reset(rf13);
+  if (rfTROLL_SOUND_PLAYED) {
+    reset(rfTROLL_SOUND_PLAYING);
+    reset(rfTROLL_SOUND_PLAYED);
   }
 }
-if (rf1) {
+if (rfTROLL_IS_HERE) {
   if (posn(oEGO, 84, 117, 131, 124)) {
     observe.blocks(oEGO);
   }
@@ -47,14 +65,14 @@ if (rf1) {
     ignore.blocks(oEGO);
   }
 }
-if (!rf1) {
+if (!rfTROLL_IS_HERE) {
   ignore.blocks(oEGO);
 }
-if (rf1 && !rf5) {
-  set(rf5);
-  follow.ego(oTROLL, 1, rf2);
+if (rfTROLL_IS_HERE && !rfTROLL_IS_AFTER_YOU) {
+  set(rfTROLL_IS_AFTER_YOU);
+  follow.ego(oTROLL, 1, rfTROLL_CAUGHT_YOU);
 }
-if (!rf1) {
+if (!rfTROLL_IS_HERE) {
   if (said("anyword", "troll")) {
     print("Good news: no troll.");
   }
@@ -85,11 +103,11 @@ if (!rf1) {
     }
   }
 }
-if (rf0 && fEGO_TOUCHED_TRIGGER_LINE) {
-  reset(rf0);
-  set(rf1);
-  rv0 = 2;
-  step.size(oTROLL, rv0);
+if (rfTROLL_NEARBY && fEGO_TOUCHED_TRIGGER_LINE) {
+  reset(rfTROLL_NEARBY);
+  set(rfTROLL_IS_HERE);
+  rvTROLL_STEP_SIZE = 2;
+  step.size(oTROLL, rvTROLL_STEP_SIZE);
   sound(SND_VILLAIN, fSOUND_END_MARKER);
   draw(oTROLL);
   if (fEGO_INVISIBLE) {
@@ -99,19 +117,19 @@ if (rf0 && fEGO_TOUCHED_TRIGGER_LINE) {
     print("As you approach the bridge, a mean, ugly troll appears.  He will not let you cross his bridge.");
   }
 }
-if (rf1 && fGOAT_COMPANION && !rf6) {
-  distance(oEGO, oGOAT, rv1);
-  if (rv1 > 25) {
+if (rfTROLL_IS_HERE && fGOAT_COMPANION && !rfGOAT_APPROACHING_TROLL) {
+  distance(oEGO, oGOAT, rvDISTANCE_FROM_EGO_TO_GOAT);
+  if (rvDISTANCE_FROM_EGO_TO_GOAT > 25) {
     reposition.to(oGOAT, 98, 90);
   }
   print("It is a well known fact that goats hate trolls intensely. You should move aside and let the goat take care of this nasty troll.");
-  set(rf6);
+  set(rfGOAT_APPROACHING_TROLL);
   set(f76);
-  move.obj(oGOAT, 98, 95, 0, rf3);
+  move.obj(oGOAT, 98, 95, 0, rfGOAT_AT_BRIDGE);
 }
-if (rf3) {
+if (rfGOAT_AT_BRIDGE) {
   ignore.objs(oGOAT);
-  reset(rf3);
+  reset(rfGOAT_AT_BRIDGE);
   move.obj(oTROLL, 100, 124, 0, f148);
   move.obj(oGOAT, 100, 124, 1, f203);
 }
@@ -119,24 +137,24 @@ distance(oTROLL, oGOAT, v62);
 if (v62 < 15 && !fGOAT_KILLED_TROLL) {
   print("The old goat seeing the troll, the archenemy of all goats, charges the troll and butts him into oblivion!  The bridge is now yours.");
   set(fGOAT_KILLED_TROLL);
-  reset(rf1);
+  reset(rfTROLL_IS_HERE);
   reset(fGOAT_COMPANION);
   erase(oTROLL);
   set(fGOAT_IS_GONE);
   get.posn(oGOAT, vTEMP_X, vTEMP_Y);
   vTEMP_Y = 80;
-  move.obj.v(oGOAT, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf11);
+  move.obj.v(oGOAT, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfGOAT_LEAVING);
   vSCORE += 4;
 }
-if (rf11) {
-  reset(rf11);
-  move.obj(oGOAT, 135, 80, 1, rf10);
+if (rfGOAT_LEAVING) {
+  reset(rfGOAT_LEAVING);
+  move.obj(oGOAT, 135, 80, 1, rfHIDE_GOAT);
 }
-if (rf10) {
-  reset(rf10);
+if (rfHIDE_GOAT) {
+  reset(rfHIDE_GOAT);
   erase(oGOAT);
 }
-if (rf1 && !fGOAT_COMPANION) {
+if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
   if (said("examine", "troll")) {
     if (posn(oEGO, 78, 90, 148, 166)) {
       print("This troll is big, strong, and mean-looking.  Don't mess with this troll!");
@@ -215,7 +233,7 @@ if (rf1 && !fGOAT_COMPANION) {
         set(fTROLL_TOOK_TREASURE);
         set(fDWARF_OR_TROLL_HAS_DIAMONDS);
         vSCORE -= 6;
-        set(rf7);
+        set(rfTROLL_TOOK_A_TREASURE);
       }
       else {
         print("You would have to throw it from here!");
@@ -234,7 +252,7 @@ if (rf1 && !fGOAT_COMPANION) {
         set(fTROLL_TOOK_TREASURE);
         set(fDWARF_OR_TROLL_HAS_SCEPTRE);
         vSCORE -= 6;
-        set(rf7);
+        set(rfTROLL_TOOK_A_TREASURE);
       }
       else {
         print("You would have to throw it from here!");
@@ -253,7 +271,7 @@ if (rf1 && !fGOAT_COMPANION) {
         set(fTROLL_TOOK_TREASURE);
         set(fDWARF_OR_TROLL_HAS_EGG);
         vSCORE -= 6;
-        set(rf7);
+        set(rfTROLL_TOOK_A_TREASURE);
       }
       else {
         print("You would have to throw it from here!");
@@ -275,7 +293,7 @@ if (rf1 && !fGOAT_COMPANION) {
         set(fTROLL_TOOK_TREASURE);
         set(fDWARF_OR_TROLL_HAS_WALNUT);
         vSCORE -= 6;
-        set(rf7);
+        set(rfTROLL_TOOK_A_TREASURE);
       }
       else {
         print("You would have to throw it from here!");
@@ -283,15 +301,15 @@ if (rf1 && !fGOAT_COMPANION) {
     }
   }
 }
-if (rf7) {
+if (rfTROLL_TOOK_A_TREASURE) {
   print("Grasping the precious treasure in a dirt-covered paw, the troll disappears under the bridge.");
-  reset(rf7);
-  move.obj(oTROLL, 99, 153, 0, rf8);
+  reset(rfTROLL_TOOK_A_TREASURE);
+  move.obj(oTROLL, 99, 153, 0, rfTROLL_LEFT);
 }
-if (rf8) {
-  reset(rf8);
+if (rfTROLL_LEFT) {
+  reset(rfTROLL_LEFT);
   erase(oTROLL);
-  reset(rf1);
+  reset(rfTROLL_IS_HERE);
 }
 if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   vEGO_WATER_X = 255;
@@ -317,8 +335,8 @@ if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
     set(fMANUAL_EGO_WATER_POS);
   }
 }
-if (fEGO_ON_WATER && !rf9) {
-  set(rf9);
+if (fEGO_ON_WATER && !rfSTUCK_IN_RIVER) {
+  set(rfSTUCK_IN_RIVER);
   print("You have slipped down the muddy bank and lodged in the  river's bed.  Good knight.");
 }
 if (!fBUCKET_FILLED && !fEGO_ON_WATER && !fDRANK_WATER) {
@@ -351,7 +369,7 @@ if (said("examine", "stream")) {
 if (vEGO_EDGE_CODE != EDGE_NONE) {
   observe.blocks(oEGO);
   reset(fSWIMMING_IMPOSSIBLE_HERE);
-  if (rf1 && fGOAT_COMPANION) {
+  if (rfTROLL_IS_HERE && fGOAT_COMPANION) {
     reset(fGOAT_COMPANION);
     set(fGOAT_KILLED_TROLL);
     set(fGOAT_IS_GONE);
