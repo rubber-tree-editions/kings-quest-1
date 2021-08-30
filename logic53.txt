@@ -2,6 +2,20 @@
 
 LOGIC__HEADER
 
+#define rfFINISHED_MOVING_ASIDE2 rf0
+#define rfNEAR_THRONE rf1
+#define rfEGO_FINISHED_BOWING rf2
+#define rfWAIT_FOR_KEY rf3
+#define rfBOWING rf4
+#define rfBOWING2 rf5
+#define rfKING_EDWARD_DEAD rf6
+#define rfEGO_ON_THE_THRONE rf7
+#define rfFINISHED_MOVING_ASIDE rf8
+
+#define rvCOUNTDOWN rv0
+#define rvEGO_CYCLE_TIME rv1
+#define rvKING_CYCLE_TIME rv2
+
 #define oKING o14
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -31,7 +45,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     v71 = 1;
   }
 }
-if (rf6) {
+if (rfKING_EDWARD_DEAD) {
   if (said("examine", "king")) {
     print("You are the only King here!");
   }
@@ -39,7 +53,7 @@ if (rf6) {
 if (f195) {
   return;
 }
-if (rv0 == 0) {
+if (rvCOUNTDOWN == 0) {
   v70--;
   if (v70 == 1) {
     if (v71 != 0) {
@@ -49,12 +63,12 @@ if (rv0 == 0) {
   }
   if (v70 == 1 && v71 == 0) {
     v70 = 0;
-    rv0 = 250;
+    rvCOUNTDOWN = 250;
   }
 }
-if (rv0 != 0) {
-  rv0--;
-  if (rv0 == 245) {
+if (rvCOUNTDOWN != 0) {
+  rvCOUNTDOWN--;
+  if (rvCOUNTDOWN == 245) {
     set.view(oEGO, 0);
     if (fEGO_INVISIBLE) {
       print("The spell to make you invisible has expired and you are once again visible.");
@@ -68,74 +82,74 @@ if (rv0 != 0) {
     ignore.blocks(oEGO);
     get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
     if (vTEMP_X_2 < 60 && vTEMP_Y_2 < 88) {
-      move.obj(oEGO, 67, 82, 0, rf8);
+      move.obj(oEGO, 67, 82, 0, rfFINISHED_MOVING_ASIDE);
     }
     else {
-      move.obj(oEGO, 60, 105, 0, rf0);
+      move.obj(oEGO, 60, 105, 0, rfFINISHED_MOVING_ASIDE2);
     }
     print("You move aside as the King steps from his throne.");
   }
-  if (rf8) {
-    reset(rf8);
-    move.obj(oEGO, 60, 105, 0, rf0);
+  if (rfFINISHED_MOVING_ASIDE) {
+    reset(rfFINISHED_MOVING_ASIDE);
+    move.obj(oEGO, 60, 105, 0, rfFINISHED_MOVING_ASIDE2);
   }
-  if (rf0) {
-    reset(rf0);
+  if (rfFINISHED_MOVING_ASIDE2) {
+    reset(rfFINISHED_MOVING_ASIDE2);
     set(f95);
     set.loop(oEGO, 3);
     stop.motion(oEGO);
     stop.cycling(oEGO);
-    rv0 = 200;
+    rvCOUNTDOWN = 200;
   }
   if (f95) {
-    if (rv0 == 195) {
+    if (rvCOUNTDOWN == 195) {
       erase(oKING);
       set.view(oKING, 98);
       position(oKING, 40, 90);
       draw(oKING);
       start.cycling(oKING);
       ignore.blocks(oKING);
-      rv2 = 2;
-      cycle.time(oKING, rv2);
+      rvKING_CYCLE_TIME = 2;
+      cycle.time(oKING, rvKING_CYCLE_TIME);
       move.obj(oKING, 55, 95, 0, f148);
       print("As you approach the throne, the King himself rises to commend  you for a job well done.");
       if (said("examine", "king")) {
         print("The King is walking towards you to commend you.");
       }
     }
-    if (rv0 == 165) {
+    if (rvCOUNTDOWN == 165) {
       erase(oKING);
       set.view(oKING, 85);
       draw(oKING);
-      end.of.loop(oKING, rf6);
+      end.of.loop(oKING, rfKING_EDWARD_DEAD);
       print("\"Oh!... Oh!!\"  the King proclaims in pain!");
       if (said("examine", "king")) {
         print("Your heart also aches with pain as you watch the King.");
       }
     }
-    if (rv0 == 135) {
+    if (rvCOUNTDOWN == 135) {
       print("From the seemingly lifeless King you hear these words:   \"Well done, Sir Graham.  You have been a good and faithful servant.  Your reward is well deserved.  My kingdom is now yours.\"");
       if (said("examine", "king")) {
         print("The King is lying motionless on the ground.");
       }
     }
-    if (rv0 == 115) {
+    if (rvCOUNTDOWN == 115) {
       set.view(oEGO, 1);
       print("With those words, King Edward the Benevolent dies.");
     }
-    if (rv0 == 105) {
+    if (rvCOUNTDOWN == 105) {
       program.control();
       print("The experiences of your quest will be invaluable to you as you begin your reign as King of Daventry!!");
       reset(f95);
       start.cycling(oEGO);
       ignore.objs(oEGO);
       ignore.blocks(oEGO);
-      move.obj(oEGO, 40, 90, 0, rf7);
+      move.obj(oEGO, 40, 90, 0, rfEGO_ON_THE_THRONE);
     }
   }
 }
-if (rf7) {
-  reset(rf7);
+if (rfEGO_ON_THE_THRONE) {
+  reset(rfEGO_ON_THE_THRONE);
   erase(oEGO);
   position(oEGO, 30, 85);
   set.view(oEGO, 142);
@@ -146,17 +160,17 @@ if (rf7) {
   set(f195);
 }
 if (posn(oEGO, 18, 80, 67, 107)) {
-  set(rf1);
+  set(rfNEAR_THRONE);
 }
 else {
-  reset(rf1);
+  reset(rfNEAR_THRONE);
 }
 if (posn(oEGO, 18, 80, 86, 113)) {
   if (said("examine", "king")) {
-    if (rv0 == 0 && vTREASURE_COUNT != 3 && !f126) {
+    if (rvCOUNTDOWN == 0 && vTREASURE_COUNT != 3 && !f126) {
       print("King Edward the Benevolent is a very wise, but elderly monarch.  His frail body is almost lost in the large throne.");
     }
-    if (!rf1 && !fEGO_INVISIBLE && vTREASURE_COUNT == 3 && rv0 == 0) {
+    if (!rfNEAR_THRONE && !fEGO_INVISIBLE && vTREASURE_COUNT == 3 && rvCOUNTDOWN == 0) {
       print("The King, though very ill, seems happy to see you.");
     }
   }
@@ -167,11 +181,11 @@ if (posn(oEGO, 18, 80, 86, 113)) {
     if (fEGO_INVISIBLE) {
       print("You bow, but you are the only one who knows it.");
     }
-    else if (!fEGO_INVISIBLE && rf1) {
+    else if (!fEGO_INVISIBLE && rfNEAR_THRONE) {
       print("It is proper to stand directly in front of, and a few paces back from King Edward when addressing His Eminence.");
     }
-    else if (!rf1 && !fEGO_INVISIBLE && rv0 == 0 && vTREASURE_COUNT != 3 && !rf4) {
-      set(rf4);
+    else if (!rfNEAR_THRONE && !fEGO_INVISIBLE && rvCOUNTDOWN == 0 && vTREASURE_COUNT != 3 && !rfBOWING) {
+      set(rfBOWING);
       get.posn(oEGO, vTEMP_X, vTEMP_Y);
       vTEMP_X -= 7;
       erase(oEGO);
@@ -179,18 +193,18 @@ if (posn(oEGO, 18, 80, 86, 113)) {
       set.view(oEGO, 71);
       set.cel(oEGO, 0);
       position.v(oEGO, vTEMP_X, vTEMP_Y);
-      rv1 = 2;
-      cycle.time(oEGO, rv1);
+      rvEGO_CYCLE_TIME = 2;
+      cycle.time(oEGO, rvEGO_CYCLE_TIME);
       draw(oEGO);
-      end.of.loop(oEGO, rf2);
+      end.of.loop(oEGO, rfEGO_FINISHED_BOWING);
       set(f98);
       if (!fPOINTS_FOR_BOWING_TO_THE_KING) {
         set(fPOINTS_FOR_BOWING_TO_THE_KING);
         vSCORE += 3;
       }
     }
-    else if (!rf1 && !fEGO_INVISIBLE && rv0 == 0 && vTREASURE_COUNT == 3 && !rf5) {
-      set(rf5);
+    else if (!rfNEAR_THRONE && !fEGO_INVISIBLE && rvCOUNTDOWN == 0 && vTREASURE_COUNT == 3 && !rfBOWING2) {
+      set(rfBOWING2);
       get.posn(oEGO, vTEMP_X, vTEMP_Y);
       vTEMP_X -= 7;
       erase(oEGO);
@@ -198,10 +212,10 @@ if (posn(oEGO, 18, 80, 86, 113)) {
       set.view(oEGO, 71);
       set.cel(oEGO, 0);
       position.v(oEGO, vTEMP_X, vTEMP_Y);
-      rv1 = 2;
-      cycle.time(oEGO, rv1);
+      rvEGO_CYCLE_TIME = 2;
+      cycle.time(oEGO, rvEGO_CYCLE_TIME);
       draw(oEGO);
-      end.of.loop(oEGO, rf2);
+      end.of.loop(oEGO, rfEGO_FINISHED_BOWING);
       set(f98);
       if (!fPOINTS_FOR_BOWING_TO_KING_AFTER_MISSION) {
         set(fPOINTS_FOR_BOWING_TO_KING_AFTER_MISSION);
@@ -213,22 +227,22 @@ if (posn(oEGO, 18, 80, 86, 113)) {
     }
   }
   if (said("talk", "king")) {
-    if (fSPOKEN_TO_KING && rv0 == 0 && !f126 && vTREASURE_COUNT != 3) {
+    if (fSPOKEN_TO_KING && rvCOUNTDOWN == 0 && !f126 && vTREASURE_COUNT != 3) {
       print("Go, Sir Graham!  Go and bring me back these treasures!");
     }
-    if (rv0 == 0 && vTREASURE_COUNT == 3) {
+    if (rvCOUNTDOWN == 0 && vTREASURE_COUNT == 3) {
       print("Welcome back from your quest, Sir Graham.");
     }
-    if (rv0 == 0 && f126) {
+    if (rvCOUNTDOWN == 0 && f126) {
       print("Why, Sir Graham, have you failed me and returned without accomplishing your task?  Go, and complete your quest!!");
       set(fNO_BUSINESS_WITH_KING);
     }
-    if (rv0 != 0) {
+    if (rvCOUNTDOWN != 0) {
       print("The king cannot talk right now.");
     }
-    if (!fSPOKEN_TO_KING && rv0 == 0 && !f126 && vTREASURE_COUNT != 3) {
+    if (!fSPOKEN_TO_KING && rvCOUNTDOWN == 0 && !f126 && vTREASURE_COUNT != 3) {
       set(fSPOKEN_TO_KING);
-      set(rf3);
+      set(rfWAIT_FOR_KEY);
       set(fNO_BUSINESS_WITH_KING);
       set.text.attribute(15, 0);
       text.screen();
@@ -255,8 +269,8 @@ if (posn(oEGO, 18, 80, 86, 113)) {
     }
   }
 }
-if (!posn(oEGO, 60, 85, 86, 113) && !rf1) {
-  if (rv0 == 0) {
+if (!posn(oEGO, 60, 85, 86, 113) && !rfNEAR_THRONE) {
+  if (rvCOUNTDOWN == 0) {
     if (said("examine", "king")) {
       print("You are not close enough to see him clearly.");
     }
@@ -275,15 +289,15 @@ if (said("kneel", "king")) {
   print("That's not a bad idea, but the custom in Daventry is to bow.");
 }
 if (said("murder", "king")) {
-  if (rv0 == 0) {
+  if (rvCOUNTDOWN == 0) {
     print("To kill King Edward would mean immediate execution!");
   }
-  if (rv0 != 0) {
+  if (rvCOUNTDOWN != 0) {
     print("Your concern for the old king won't allow you to move.");
   }
 }
 if (said("sit down", "throne")) {
-  if (rv0 == 0) {
+  if (rvCOUNTDOWN == 0) {
     print("The throne is already occupied.");
   }
   else {
@@ -296,8 +310,8 @@ if (said("examine", "room") || said("examine", "building")) {
 if (said("hello") || said("say", "hello")) {
   print("That is no way to try and address King Edward.");
 }
-if (rf2) {
-  reset(rf2);
+if (rfEGO_FINISHED_BOWING) {
+  reset(rfEGO_FINISHED_BOWING);
   reset(f98);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_X += 7;
@@ -305,21 +319,21 @@ if (rf2) {
   set.loop(oEGO, 1);
   set.view(oEGO, 0);
   position.v(oEGO, vTEMP_X, vTEMP_Y);
-  rv1 = 1;
-  cycle.time(oEGO, rv1);
+  rvEGO_CYCLE_TIME = 1;
+  cycle.time(oEGO, rvEGO_CYCLE_TIME);
   draw(oEGO);
   start.motion(oEGO);
   print("When you bow to King Edward, his pleased smile warms you.");
-  if (fPOINTS_FOR_BOWING_TO_KING) {
-    rv0 = 250;
+  if (fPOINTS_FOR_BOWING_TO_KING_AFTER_MISSION) {
+    rvCOUNTDOWN = 250;
     v70 = 0;
     v71 = 0;
   }
 }
-if (rf3) {
+if (rfWAIT_FOR_KEY) {
   vKEY_PRESSED = 0;
   while (!have.key()) { }
-  reset(rf3);
+  reset(rfWAIT_FOR_KEY);
   graphics();
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
