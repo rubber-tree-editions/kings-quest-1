@@ -2,6 +2,19 @@
 
 LOGIC__HEADER
 
+#define rfINIT_RANDOMIZER rf0
+#define rfSORCERER_IS_HERE rf1
+#define rfPROTECTED rf2
+#define rfSORCERER_FINISHED_SPELLCASTING rf3
+#define rfUNDER_SORCERERS_SPELL rf4
+#define rfPLAYING_SORCERER_SOUND rf5
+#define rfPLAYED_SORCERER_SOUND rf6
+#define rfINVISIBLE rf7
+
+#define rvCOUNTDOWN_LO rv0
+#define rvCOUNTDOWN_HI rv1
+#define rvSORCERER_STEP_SIZE rv2
+
 #define oSORCERER o1
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -22,17 +35,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   random(0, 250, v62);
   if (v62 < 185) {
-    rv2 = 2;
-    step.size(oSORCERER, rv2);
+    rvSORCERER_STEP_SIZE = 2;
+    step.size(oSORCERER, rvSORCERER_STEP_SIZE);
     load.view(5);
     load.view(116);
     load.sound(SND_VILLAIN);
     load.sound(SND_SORCERER);
     animate.obj(oSORCERER);
     set.view(oSORCERER, 5);
-    set(rf0);
+    set(rfINIT_RANDOMIZER);
   }
-  if (rf0) {
+  if (rfINIT_RANDOMIZER) {
     do {
       random(0, 250, v70);
     } while (v70 > 90);
@@ -40,20 +53,20 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (rf1 && fSOUND_END_MARKER) {
-  if (!rf5) {
-    set(rf5);
-    sound(SND_SORCERER, rf6);
+if (rfSORCERER_IS_HERE && fSOUND_END_MARKER) {
+  if (!rfPLAYING_SORCERER_SOUND) {
+    set(rfPLAYING_SORCERER_SOUND);
+    sound(SND_SORCERER, rfPLAYED_SORCERER_SOUND);
   }
-  if (rf6) {
-    reset(rf5);
-    reset(rf6);
+  if (rfPLAYED_SORCERER_SOUND) {
+    reset(rfPLAYING_SORCERER_SOUND);
+    reset(rfPLAYED_SORCERER_SOUND);
   }
 }
 v70--;
 if (v70 == 1) {
   position(oSORCERER, 40, 140);
-  set(rf1);
+  set(rfSORCERER_IS_HERE);
   sound(SND_VILLAIN, fSOUND_END_MARKER);
   draw(oSORCERER);
   if (!fGOAT_COMPANION) {
@@ -62,12 +75,12 @@ if (v70 == 1) {
   }
   if (fGOAT_COMPANION) {
     wander(oSORCERER);
-    set(rf2);
+    set(rfPROTECTED);
     print("Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!");
     print("The sorcerer sees the goat and decides to leave.");
   }
 }
-if (!rf1) {
+if (!rfSORCERER_IS_HERE) {
   if (said("anyword", "sorcerer")) {
     print("There's no sorcerer here.");
   }
@@ -79,7 +92,7 @@ if (!rf1) {
     vSCORE -= 5;
   }
 }
-if (rf1) {
+if (rfSORCERER_IS_HERE) {
   if (said("examine", "sorcerer")) {
     print("This sorcerer exudes mystery and danger.");
   }
@@ -92,59 +105,59 @@ if (f156) {
   if (fPROTECTED_BY_SPELL) {
     print("This sorcerer's magic is no match for your fairy godmother's.");
     wander(oSORCERER);
-    set(rf2);
+    set(rfPROTECTED);
   }
   if (fEGO_INVISIBLE) {
     print("Being invisible has protected you from this sorcerer.");
-    set(rf7);
+    set(rfINVISIBLE);
   }
   if (fCARRYING_SHIELD) {
     print("The magic shield will protect you from this dangerous  sorcerer.");
     wander(oSORCERER);
-    set(rf2);
+    set(rfPROTECTED);
   }
   else {
-    set(rf4);
-    rv0 = 250;
-    rv1 = 2;
+    set(rfUNDER_SORCERERS_SPELL);
+    rvCOUNTDOWN_LO = 250;
+    rvCOUNTDOWN_HI = 2;
     program.control();
     stop.motion(oEGO);
     set.view(oSORCERER, 116);
-    end.of.loop(oSORCERER, rf3);
+    end.of.loop(oSORCERER, rfSORCERER_FINISHED_SPELLCASTING);
     print("The sorcerer casts a spell, freezing you to the spot. I hope no dangerous creatures drop by!");
     set(f145);
     set(f146);
   }
 }
-if (rf3) {
-  reset(rf3);
+if (rfSORCERER_FINISHED_SPELLCASTING) {
+  reset(rfSORCERER_FINISHED_SPELLCASTING);
   set.view(oSORCERER, 5);
   start.cycling(oSORCERER);
   wander(oSORCERER);
-  set(rf2);
+  set(rfPROTECTED);
 }
-if (rf2 && vOBJECT_EDGE_CODE != 0) {
+if (rfPROTECTED && vOBJECT_EDGE_CODE != 0) {
   erase(oSORCERER);
-  reset(rf2);
-  reset(rf1);
+  reset(rfPROTECTED);
+  reset(rfSORCERER_IS_HERE);
 }
-if (rf7) {
+if (rfINVISIBLE) {
   erase(oSORCERER);
-  reset(rf7);
-  reset(rf1);
+  reset(rfINVISIBLE);
+  reset(rfSORCERER_IS_HERE);
 }
-rv0--;
-if (rv0 == 0 && rv1 != 0) {
-  rv1--;
-  rv0 = 250;
+rvCOUNTDOWN_LO--;
+if (rvCOUNTDOWN_LO == 0 && rvCOUNTDOWN_HI != 0) {
+  rvCOUNTDOWN_HI--;
+  rvCOUNTDOWN_LO = 250;
 }
-if (rv0 == 1 && rv1 == 0) {
-  reset(rf4);
+if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 0) {
+  reset(rfUNDER_SORCERERS_SPELL);
   print("The sorcerer's spell has expired; now you can move  again.  Whew!");
   start.motion(oEGO);
   player.control();
 }
-if (rf4) {
+if (rfUNDER_SORCERERS_SPELL) {
   return;
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
