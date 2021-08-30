@@ -16,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
   set(fSWIMMING_IMPOSSIBLE_HERE);
-  if (!f150 && !f151) {
+  if (!fGOAT_KILLED_TROLL && !fTROLL_TOOK_TREASURE) {
     load.view(65);
     animate.obj(oTROLL);
     set.view(oTROLL, 65);
@@ -116,9 +116,9 @@ if (rf3) {
   move.obj(oGOAT, 100, 124, 1, f203);
 }
 distance(oTROLL, oGOAT, v62);
-if (v62 < 15 && !f150) {
+if (v62 < 15 && !fGOAT_KILLED_TROLL) {
   print("The old goat seeing the troll, the archenemy of all goats, charges the troll and butts him into oblivion!  The bridge is now yours.");
-  set(f150);
+  set(fGOAT_KILLED_TROLL);
   reset(rf1);
   reset(fGOAT_COMPANION);
   erase(oTROLL);
@@ -212,7 +212,7 @@ if (rf1 && !fGOAT_COMPANION) {
         print("OK");
         drop("pouch of diamonds");
         reset(fCARRYING_DIAMONDS);
-        set(f151);
+        set(fTROLL_TOOK_TREASURE);
         set(fDWARF_OR_TROLL_HAS_DIAMONDS);
         vSCORE -= 6;
         set(rf7);
@@ -231,7 +231,7 @@ if (rf1 && !fGOAT_COMPANION) {
         print("OK");
         drop("sceptre");
         reset(fCARRYING_SCEPTRE);
-        set(f151);
+        set(fTROLL_TOOK_TREASURE);
         set(fDWARF_OR_TROLL_HAS_SCEPTRE);
         vSCORE -= 6;
         set(rf7);
@@ -250,7 +250,7 @@ if (rf1 && !fGOAT_COMPANION) {
         print("OK");
         drop("gold egg");
         reset(fCARRYING_GOLDEN_EGG);
-        set(f151);
+        set(fTROLL_TOOK_TREASURE);
         set(fDWARF_OR_TROLL_HAS_EGG);
         vSCORE -= 6;
         set(rf7);
@@ -272,7 +272,7 @@ if (rf1 && !fGOAT_COMPANION) {
         print("OK");
         drop("gold walnut");
         reset(fCARRYING_GOLD_WALNUT);
-        set(f151);
+        set(fTROLL_TOOK_TREASURE);
         set(fDWARF_OR_TROLL_HAS_WALNUT);
         vSCORE -= 6;
         set(rf7);
@@ -353,7 +353,7 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   reset(fSWIMMING_IMPOSSIBLE_HERE);
   if (rf1 && fGOAT_COMPANION) {
     reset(fGOAT_COMPANION);
-    set(f150);
+    set(fGOAT_KILLED_TROLL);
     set(fGOAT_IS_GONE);
   }
 }

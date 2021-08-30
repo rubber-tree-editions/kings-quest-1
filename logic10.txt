@@ -197,14 +197,14 @@ if (fINSIDE_GOAT_FENCE && rf0) {
       || said("show", "goat", "carrot")
     ) {
       if (v70 < 50) {
-        if (!f151) {
+        if (!fTROLL_TOOK_TREASURE) {
           print("When you tempt the old goat with the carrot, he starts to follow you.");
           set(fGOAT_COMPANION);
           erase(oGOAT);
           set.view(oEGO, 67);
           vSCORE += 5;
         }
-        if (f151) {
+        if (fTROLL_TOOK_TREASURE) {
           print("The old goat shows some interest in the carrot.");
         }
       }
