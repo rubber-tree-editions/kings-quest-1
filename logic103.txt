@@ -2,6 +2,14 @@
 
 LOGIC__HEADER
 
+#define rfAPPROACHING_WATERFALL_LAKE_EDGE rf20
+// unused: rf21
+#define rfGOAT_WANDERING_OFF rf22
+#define rfAPPROACHING_CLIFFS_LAKE_EDGE rf23
+
+#define rvDISTANCE_FROM_EGO_TO_GOAT rv10
+#define rvCOUNTDOWN rv11
+
 #define oGOAT o13
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -16,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     stop.cycling(oGOAT);
     ignore.horizon(oGOAT);
     ignore.blocks(oGOAT);
-    set(rf20);
+    set(rfAPPROACHING_WATERFALL_LAKE_EDGE);
     draw(oGOAT);
     goto(ATRIVER);
   }
@@ -26,7 +34,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     stop.cycling(oGOAT);
     ignore.horizon(oGOAT);
     ignore.blocks(oGOAT);
-    set(rf23);
+    set(rfAPPROACHING_CLIFFS_LAKE_EDGE);
     draw(oGOAT);
     goto(ATRIVER);
   }
@@ -36,7 +44,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     stop.cycling(oGOAT);
     ignore.horizon(oGOAT);
     ignore.blocks(oGOAT);
-    set(rf23);
+    set(rfAPPROACHING_CLIFFS_LAKE_EDGE);
     draw(oGOAT);
     goto(ATRIVER);
   }
@@ -52,8 +60,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oGOAT);
   follow.ego(oGOAT, 10, f207);
 }
-distance(oEGO, oGOAT, rv10);
-if (rv10 > 35) {
+distance(oEGO, oGOAT, rvDISTANCE_FROM_EGO_TO_GOAT);
+if (rvDISTANCE_FROM_EGO_TO_GOAT > 35) {
   v107 = 2;
   step.size(oGOAT, v107);
 }
@@ -70,7 +78,7 @@ if (fGAME_OVER) {
   stop.cycling(oGOAT);
   return;
 }
-if (rf20 || rf23) {
+if (rfAPPROACHING_WATERFALL_LAKE_EDGE || rfAPPROACHING_CLIFFS_LAKE_EDGE) {
   goto(ATRIVER);
 }
 if (f76) {
@@ -78,13 +86,13 @@ if (f76) {
   return;
 }
 observe.blocks(oGOAT);
-rv11--;
-if (rv11 == 1) {
-  if (rv10 < 21) {
+rvCOUNTDOWN--;
+if (rvCOUNTDOWN == 1) {
+  if (rvDISTANCE_FROM_EGO_TO_GOAT < 21) {
     set(f207);
   }
   else if (!f207 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
-    rv11 = 0;
+    rvCOUNTDOWN = 0;
     start.cycling(oGOAT);
     start.motion(oGOAT);
     follow.ego(oGOAT, 10, f207);
@@ -92,12 +100,12 @@ if (rv11 == 1) {
 }
 if (f207) {
   reset(f207);
-  rv11 = 9;
+  rvCOUNTDOWN = 9;
   normal.motion(oGOAT);
   stop.motion(oGOAT);
   stop.cycling(oGOAT);
 }
-if (rv10 > 20 && vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
+if (rvDISTANCE_FROM_EGO_TO_GOAT > 20 && vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
   if (vROOM_NO != ROOM1_CASTLE_EAST
     && vROOM_NO != ROOM2_CASTLE_WEST
     && vROOM_NO != ROOM41
@@ -114,12 +122,12 @@ if (rv10 > 20 && vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) 
   start.cycling(oGOAT);
   wander(oGOAT);
 }
-if (fGOAT_WONT_SWIM && rv10 < 25 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
+if (fGOAT_WONT_SWIM && rvDISTANCE_FROM_EGO_TO_GOAT < 25 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
   reset(fGOAT_WONT_SWIM);
   follow.ego(oGOAT, 10, f207);
 }
-if (fEGO_INVISIBLE && !rf22) {
-  set(rf22);
+if (fEGO_INVISIBLE && !rfGOAT_WANDERING_OFF) {
+  set(rfGOAT_WANDERING_OFF);
   print("The goat, not being able to see you, wanders off.");
   reset(fGOAT_COMPANION);
   wander(oGOAT);
@@ -129,12 +137,12 @@ if (fEGO_INVISIBLE && !rf22) {
 }
 return;
 ATRIVER:
-  distance(oEGO, oGOAT, rv10);
-  if (rf23 && vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
+  distance(oEGO, oGOAT, rvDISTANCE_FROM_EGO_TO_GOAT);
+  if (rfAPPROACHING_CLIFFS_LAKE_EDGE && vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
     set(fGOAT_WONT_SWIM);
     print("The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water.");
   }
-  if (rf23 && fGOAT_WONT_SWIM && rv10 < 25 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
+  if (rfAPPROACHING_CLIFFS_LAKE_EDGE && fGOAT_WONT_SWIM && rvDISTANCE_FROM_EGO_TO_GOAT < 25 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
     reset(fGOAT_WONT_SWIM);
   }
   return;
