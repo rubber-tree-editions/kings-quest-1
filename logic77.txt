@@ -2,6 +2,17 @@
 
 LOGIC__HEADER
 
+#define rfDANCING_LEPRECHAUNS rf0
+#define rfLEPRECHAUN_AFTER_YOU rf1
+#define rfLEPRECHAUN_CAUGHT_YOU rf2
+#define rfKING_LEAVING_WAYPOINT rf3
+#define rfKING_LEFT rf4
+#define rfTOLD_ABOUT_KINGS_MAGIC rf5
+#define rfPLAYING_KING_SOUND rf6
+#define rfPLAYED_KING_SOUND rf7
+
+#define rvCOUNTDOWN rv0
+
 #define oSHIELD o1
 #define oLEPRECHAUN o2
 #define oSCEPTRE o3
@@ -53,8 +64,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.blocks(oLEPRECHAUN_KING);
     draw(oLEPRECHAUN_KING);
     if (fDANCING_LEPRECHAUNS) {
-      set(rf0);
-      rv0 = 27;
+      set(rfDANCING_LEPRECHAUNS);
+      rvCOUNTDOWN = 27;
     }
   }
   if (!fDANCING_LEPRECHAUNS) {
@@ -62,8 +73,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oLEPRECHAUN, 47);
     position(oLEPRECHAUN, 56, 108);
     if (!fCARRYING_CLOVER) {
-      set(rf1);
-      follow.ego(oLEPRECHAUN, 5, rf2);
+      set(rfLEPRECHAUN_AFTER_YOU);
+      follow.ego(oLEPRECHAUN, 5, rfLEPRECHAUN_CAUGHT_YOU);
     }
     else {
       wander(oLEPRECHAUN);
@@ -87,67 +98,67 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 if (!fDANCING_LEPRECHAUNS) {
-  if (!rf6) {
-    set(rf6);
-    sound(SND_LEPRECHAUN_KING, rf7);
+  if (!rfPLAYING_KING_SOUND) {
+    set(rfPLAYING_KING_SOUND);
+    sound(SND_LEPRECHAUN_KING, rfPLAYED_KING_SOUND);
   }
-  if (rf7) {
-    reset(rf6);
-    reset(rf7);
+  if (rfPLAYED_KING_SOUND) {
+    reset(rfPLAYING_KING_SOUND);
+    reset(rfPLAYED_KING_SOUND);
   }
 }
 if (!fDANCING_LEPRECHAUNS && fCARRYING_CLOVER) {
   observe.blocks(oEGO);
   if (posn(oEGO, 80, 110, 139, 141)) {
-    if (!rf5) {
+    if (!rfTOLD_ABOUT_KINGS_MAGIC) {
       print("The King's magic prevents you from getting close enough to harm him.");
-      set(rf5);
+      set(rfTOLD_ABOUT_KINGS_MAGIC);
     }
   }
 }
 if (fDANCING_LEPRECHAUNS && !f187) {
   ignore.blocks(oEGO);
   if (posn(oEGO, 31, 110, 158, 98)) {
-    if (!rf5) {
+    if (!rfTOLD_ABOUT_KINGS_MAGIC) {
       print("The King's magic prevents you from getting close enough to harm him.");
-      set(rf5);
+      set(rfTOLD_ABOUT_KINGS_MAGIC);
     }
   }
 }
 if (fDANCING_LEPRECHAUNS && f187) {
   ignore.blocks(oEGO);
 }
-rv0--;
-if (rf0 && rv0 == 1) {
-  rv0 = 0;
+rvCOUNTDOWN--;
+if (rfDANCING_LEPRECHAUNS && rvCOUNTDOWN == 1) {
+  rvCOUNTDOWN = 0;
   erase(oLEPRECHAUN_KING);
   set.view(oLEPRECHAUN_KING, 81);
   position(oLEPRECHAUN_KING, 115, 117);
   set.loop(oLEPRECHAUN_KING, 1);
   draw(oLEPRECHAUN_KING);
-  move.obj(oLEPRECHAUN_KING, 33, 114, 0, rf3);
+  move.obj(oLEPRECHAUN_KING, 33, 114, 0, rfKING_LEAVING_WAYPOINT);
   animate.obj(oSCEPTRE);
   set.view(oSCEPTRE, 48);
   position(oSCEPTRE, 115, 106);
   draw(oSCEPTRE);
   print("After his followers have danced away, the King of the leprechauns realizes he can lead best by following, and leaves, forgetting his beautiful sceptre.");
 }
-if (rf3) {
-  reset(rf3);
-  move.obj(oLEPRECHAUN_KING, 5, 85, 0, rf4);
+if (rfKING_LEAVING_WAYPOINT) {
+  reset(rfKING_LEAVING_WAYPOINT);
+  move.obj(oLEPRECHAUN_KING, 5, 85, 0, rfKING_LEFT);
 }
-if (rf4) {
+if (rfKING_LEFT) {
   set(f187);
-  reset(rf0);
-  reset(rf4);
+  reset(rfDANCING_LEPRECHAUNS);
+  reset(rfKING_LEFT);
   erase(oLEPRECHAUN_KING);
 }
-if (rf1) {
-  reset(rf1);
+if (rfLEPRECHAUN_AFTER_YOU) {
+  reset(rfLEPRECHAUN_AFTER_YOU);
   print("I hope you can escape from the leprechauns, but it doesn't look good for you.");
 }
-if (rf2) {
-  reset(rf2);
+if (rfLEPRECHAUN_CAUGHT_YOU) {
+  reset(rfLEPRECHAUN_CAUGHT_YOU);
   print("The leprechaun, with much support from his peers, catches you and refuses to let go.  I think you will be here for a long, long time.");
   stop.motion(oEGO);
   set(f95);
@@ -167,7 +178,7 @@ if (fCARRYING_FIDDLE) {
   }
 }
 if (said("examine", "throne")) {
-  if (!rf0 && !fDANCING_LEPRECHAUNS) {
+  if (!rfDANCING_LEPRECHAUNS && !fDANCING_LEPRECHAUNS) {
     print("The King of the leprechauns is sitting on the stone throne.");
   }
   else {
@@ -196,7 +207,7 @@ if (fDANCING_LEPRECHAUNS) {
   }
 }
 if (!f187) {
-  if (!rf0) {
+  if (!rfDANCING_LEPRECHAUNS) {
     if (said("examine", "king")
       || said("examine", "king", "leprechauns")
       || said("examine", "leprechauns", "king")
@@ -209,7 +220,7 @@ if (!f187) {
       }
     }
   }
-  if (rf0) {
+  if (rfDANCING_LEPRECHAUNS) {
     if (said("examine", "king")
       || said("examine", "king", "leprechauns")
       || said("examine", "leprechauns", "king")
@@ -230,7 +241,7 @@ if (said("examine", "cave") || said("examine", "room")) {
   if (fSHIELD_TAKEN && fSCEPTRE_TAKEN) {
     print("This is the throne room of the leprechaun King.");
   }
-  if (rf0 || f187) {
+  if (rfDANCING_LEPRECHAUNS || f187) {
     if (fSHIELD_TAKEN && !fSCEPTRE_TAKEN) {
       print("This is the throne room of the leprechaun King.  There is a sceptre next to the throne.");
     }
@@ -238,7 +249,7 @@ if (said("examine", "cave") || said("examine", "room")) {
       print("This is the throne room of the leprechaun King.  There is a shield and a sceptre near the throne.");
     }
   }
-  if (!rf0 && !f187) {
+  if (!rfDANCING_LEPRECHAUNS && !f187) {
     if (!fSHIELD_TAKEN) {
       print("This is the throne room of the leprechaun King.  There is a shield next to the throne.");
     }
@@ -299,7 +310,7 @@ if (fSCEPTRE_TAKEN && !fCARRYING_SCEPTRE) {
 }
 if (!fSCEPTRE_TAKEN) {
   if (posn(oEGO, 103, 100, 142, 142)) {
-    if (f187 || rf0) {
+    if (f187 || rfDANCING_LEPRECHAUNS) {
       if (said("examine", "sceptre")) {
         print("The sceptre is fashioned from gold and silver, and accented with emeralds.");
       }
@@ -312,7 +323,7 @@ if (!fSCEPTRE_TAKEN) {
         vSCORE += 6;
       }
     }
-    if (!f187 && !rf0) {
+    if (!f187 && !rfDANCING_LEPRECHAUNS) {
       if (said("examine", "sceptre")) {
         print("I see no sceptre right here.");
       }
@@ -328,7 +339,7 @@ if (!fSCEPTRE_TAKEN) {
   }
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
-  if (rf0) {
+  if (rfDANCING_LEPRECHAUNS) {
     set(f187);
   }
 }
