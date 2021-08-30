@@ -2,7 +2,18 @@
 
 LOGIC__HEADER
 
+#define rfBIRD_DROPPED_YOU rf0
+#define rfBIRD_LEFT rf1
+#define rfHITTING_THE_GROUND rf2
+#define rfFALLEN_IN_HOLE rf3
+// unused: rf4
+#define rfEGO_STOPPED_ANIMATING rf5
+// unused: rf6
+#define rfFALLEN_TO_EARTH rf7
 
+#define rvCOUNTDOWN rv0
+
+#define oBIRD o1
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -17,63 +28,63 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(104);
   if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
     set.view(oEGO, 89);
-    animate.obj(o1);
-    set.view(o1, 8);
+    animate.obj(oBIRD);
+    set.view(oBIRD, 8);
     position(oEGO, 2, 50);
-    move.obj(oEGO, 100, 50, 0, rf0);
-    set.priority(o1, 14);
+    move.obj(oEGO, 100, 50, 0, rfBIRD_DROPPED_YOU);
+    set.priority(oBIRD, 14);
     set.priority(oEGO, 15);
   }
   draw(oEGO);
   show.pic();
 }
-if (rf0) {
-  reset(rf0);
+if (rfBIRD_DROPPED_YOU) {
+  reset(rfBIRD_DROPPED_YOU);
   erase(oEGO);
   position(oEGO, 108, 53);
   set.view(oEGO, 105);
   set(f98);
-  position(o1, 100, 48);
-  draw(o1);
+  position(oBIRD, 100, 48);
+  draw(oBIRD);
   draw(oEGO);
-  move.obj(o1, 130, 48, 2, rf1);
-  move.obj(oEGO, 108, 107, 4, rf2);
+  move.obj(oBIRD, 130, 48, 2, rfBIRD_LEFT);
+  move.obj(oEGO, 108, 107, 4, rfHITTING_THE_GROUND);
   set(f135);
   sound(SND_FALLING, f198);
 }
-if (!rf2 && f198 && !rf7) {
+if (!rfHITTING_THE_GROUND && f198 && !rfFALLEN_TO_EARTH) {
   reset(f198);
   sound(SND_FALLING, f198);
 }
-if (rf1) {
-  reset(rf1);
-  erase(o1);
+if (rfBIRD_LEFT) {
+  reset(rfBIRD_LEFT);
+  erase(oBIRD);
 }
-if (rf2) {
+if (rfHITTING_THE_GROUND) {
   stop.sound();
-  set(rf7);
-  reset(rf2);
+  set(rfFALLEN_TO_EARTH);
+  reset(rfHITTING_THE_GROUND);
   program.control();
   release.priority(oEGO);
   set.view(oEGO, 103);
   shake.screen(1);
   print("OUCH");
   sound(SND_OUCH, fSOUND_END_MARKER);
-  rv0 = 18;
+  rvCOUNTDOWN = 18;
 }
-rv0--;
+rvCOUNTDOWN--;
 if (fSOUND_END_MARKER) {
-  if (rv0 != 0) {
+  if (rvCOUNTDOWN != 0) {
     reset(fSOUND_END_MARKER);
     sound(SND_OUCH, fSOUND_END_MARKER);
   }
 }
-if (rv0 == 1) {
+if (rvCOUNTDOWN == 1) {
   set.view(oEGO, 104);
-  end.of.loop(oEGO, rf5);
+  end.of.loop(oEGO, rfEGO_STOPPED_ANIMATING);
 }
-if (rf5) {
-  reset(rf5);
+if (rfEGO_STOPPED_ANIMATING) {
+  reset(rfEGO_STOPPED_ANIMATING);
   set.view(oEGO, 0);
   reset(f98);
   player.control();
@@ -96,11 +107,11 @@ if (fEGO_ON_WATER && !f199) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_Y += 35;
   vTEMP_STEP = 8;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf3);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_IN_HOLE);
   sound(SND_FALLING, f148);
 }
-if (rf3) {
-  reset(rf3);
+if (rfFALLEN_IN_HOLE) {
+  reset(rfFALLEN_IN_HOLE);
   reset(f95);
   erase(oEGO);
   new.room(ROOM73);

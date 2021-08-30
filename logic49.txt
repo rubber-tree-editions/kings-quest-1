@@ -2,7 +2,14 @@
 
 LOGIC__HEADER
 
+#define rfFALLING_DOWN_WELL rf0
+#define rfFALLEN_DOWN_WELL rf1
+#define rfFALLEN_OFF_ROPE rf2
+#define rfSWIMMING rf3
+#define rfPLAYING_FALLING_SOUND rf4
+#define rfFELL_FROM_ROPE rf5
 
+#define rvCOUNTDOWN rv0
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -23,8 +30,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.blocks(oEGO);
     set.priority(oEGO, 15);
     set(f98);
-    set(rf0);
-    move.obj(oEGO, 81, 164, 3, rf1);
+    set(rfFALLING_DOWN_WELL);
+    move.obj(oEGO, 81, 164, 3, rfFALLEN_DOWN_WELL);
   }
   if (vPREV_ROOM_NO == ROOM12_TOP_OF_WELL && !f182) {
     if (!f162) {
@@ -40,8 +47,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
     set.view(oEGO, 70);
-    set(rf3);
-    rv0 = 250;
+    set(rfSWIMMING);
+    rvCOUNTDOWN = 250;
     position(oEGO, 75, 163);
   }
   if (f179) {
@@ -77,13 +84,13 @@ if (fEGO_ON_WATER) {
 else {
   ignore.blocks(oEGO);
 }
-if (f182 && !rf1 && !rf2 && !rf4) {
+if (f182 && !rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE && !rfPLAYING_FALLING_SOUND) {
   sound(SND_FALLING, fSOUND_END_MARKER);
-  set(rf4);
+  set(rfPLAYING_FALLING_SOUND);
 }
 if (fSOUND_END_MARKER) {
-  if (!rf1 && !rf2) {
-    reset(rf4);
+  if (!rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE) {
+    reset(rfPLAYING_FALLING_SOUND);
     reset(fSOUND_END_MARKER);
   }
 }
@@ -97,9 +104,9 @@ if (fON_WELL_ROPE) {
     ignore.objs(oEGO);
     set.priority(oEGO, 15);
     set(f98);
-    set(rf0);
+    set(rfFALLING_DOWN_WELL);
     vTEMP_STEP = 3;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf2);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_OFF_ROPE);
   }
   if (vTEMP_Y > 115 && f179) {
     reset(fON_WELL_ROPE);
@@ -109,9 +116,9 @@ if (fON_WELL_ROPE) {
     ignore.objs(oEGO);
     set.priority(oEGO, 15);
     set(f98);
-    set(rf0);
+    set(rfFALLING_DOWN_WELL);
     vTEMP_STEP = 3;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf2);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_OFF_ROPE);
   }
   if (vTEMP_X < 79 || vTEMP_X > 83) {
     if (vTEMP_Y > 70) {
@@ -122,30 +129,30 @@ if (fON_WELL_ROPE) {
       ignore.objs(oEGO);
       set.priority(oEGO, 15);
       set(f98);
-      set(rf0);
+      set(rfFALLING_DOWN_WELL);
       vTEMP_STEP = 3;
-      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf2);
+      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_OFF_ROPE);
     }
     else {
       reset(fON_WELL_ROPE);
       set(f182);
-      set(rf5);
+      set(rfFELL_FROM_ROPE);
       set.view(oEGO, 105);
       vTEMP_Y = 164;
       ignore.objs(oEGO);
       set.priority(oEGO, 15);
       set(f98);
-      set(rf0);
+      set(rfFALLING_DOWN_WELL);
       vTEMP_STEP = 3;
-      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf1);
+      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_DOWN_WELL);
     }
   }
 }
-if (rf1) {
-  reset(rf1);
+if (rfFALLEN_DOWN_WELL) {
+  reset(rfFALLEN_DOWN_WELL);
   stop.sound();
   erase(oEGO);
-  if (f182 && !rf5) {
+  if (f182 && !rfFELL_FROM_ROPE) {
     print("You should be more careful before trying that next time!");
   }
   else {
@@ -153,26 +160,26 @@ if (rf1) {
   }
   set(fGAME_OVER);
 }
-if (rf2) {
-  reset(rf0);
-  reset(rf2);
+if (rfFALLEN_OFF_ROPE) {
+  reset(rfFALLING_DOWN_WELL);
+  reset(rfFALLEN_OFF_ROPE);
   reset(f98);
   reset(f182);
   release.priority(oEGO);
   stop.sound();
   set.view(oEGO, 93);
 }
-if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && !rf3) {
-  set(rf3);
-  rv0 = 250;
+if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && !rfSWIMMING) {
+  set(rfSWIMMING);
+  rvCOUNTDOWN = 250;
 }
-rv0--;
-if (rv0 == 1 && rf3) {
+rvCOUNTDOWN--;
+if (rvCOUNTDOWN == 1 && rfSWIMMING) {
   erase(oEGO);
   print("Your arms are like lead... from swimming.  You find it impossible... to swim any longer.  You sink to the bottom... of the well....");
   set(fGAME_OVER);
 }
-if (!fON_WELL_ROPE && !rf0) {
+if (!fON_WELL_ROPE && !rfFALLING_DOWN_WELL) {
   if (said("climb", "rope") || said("up", "rope")) {
     if (!f179 && !fBUCKET_LOWERED) {
       print("The rope is out of reach.");
@@ -187,7 +194,7 @@ if (!fON_WELL_ROPE && !rf0) {
       draw(oEGO);
       move.obj(oEGO, 81, 113, 0, f148);
       set(fON_WELL_ROPE);
-      reset(rf3);
+      reset(rfSWIMMING);
     }
     if (fBUCKET_LOWERED && !fIN_WELL_BUCKET) {
       erase(oEGO);
@@ -199,7 +206,7 @@ if (!fON_WELL_ROPE && !rf0) {
       draw(oEGO);
       move.obj(oEGO, 81, 113, 0, f148);
       set(fON_WELL_ROPE);
-      reset(rf3);
+      reset(rfSWIMMING);
     }
     if (fIN_WELL_BUCKET) {
       start.update(o1);
@@ -231,7 +238,7 @@ if (!fON_WELL_ROPE && !rf0) {
       position(o1, 79, 150);
       position(oEGO, 81, 124);
       set(f98);
-      move.obj(oEGO, 81, 164, 3, rf2);
+      move.obj(oEGO, 81, 164, 3, rfFALLEN_OFF_ROPE);
       set.cel(o1, 0);
       draw(o1);
       stop.update(o1);

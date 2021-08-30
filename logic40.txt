@@ -2,6 +2,13 @@
 
 LOGIC__HEADER
 
+#define rfSHOW_BEANS rf0
+#define rfSHOW_KEY rf1
+#define rfGUESSING_GNOMES_NAME rf2
+#define rfGNOME_IS_HERE rf3
+#define rfGNOME_INTRODUCED rf4
+#define rfFALLEN_IN_RIVER rf5
+
 #define oGNOME o1
 #define oMAGIC_BEANS o2
 #define oGOLD_KEY o3
@@ -33,14 +40,14 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.objs(oGOLD_KEY);
   }
   if (vGNOME_STATE == GNOMESTATE_LEFT_BEANS && vTAKEN_GNOME_GIFT != GNOMEGIFT_BEANS) {
-    set(rf0);
+    set(rfSHOW_BEANS);
     load.view(29);
     animate.obj(oMAGIC_BEANS);
     set.view(oMAGIC_BEANS, 29);
     position(oMAGIC_BEANS, 39, 118);
   }
   if (vGNOME_STATE == GNOMESTATE_LEFT_KEY && vTAKEN_GNOME_GIFT != GNOMEGIFT_KEY) {
-    set(rf1);
+    set(rfSHOW_KEY);
     load.view(28);
     animate.obj(oGOLD_KEY);
     set.view(oGOLD_KEY, 28);
@@ -48,13 +55,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (vGNOME_STATE == GNOMESTATE_PRESENT) {
     draw(oGNOME);
-    set(rf3);
+    set(rfGNOME_IS_HERE);
   }
-  if (rf1) {
+  if (rfSHOW_KEY) {
     draw(oGOLD_KEY);
     stop.update(oGOLD_KEY);
   }
-  if (rf0) {
+  if (rfSHOW_BEANS) {
     draw(oMAGIC_BEANS);
     stop.update(oMAGIC_BEANS);
   }
@@ -65,13 +72,13 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (said("examine", "building")) {
   print("The gnome's lean-to doesn't look very sturdy.");
 }
-if (rf3 && !rf4) {
+if (rfGNOME_IS_HERE && !rfGNOME_INTRODUCED) {
   print("You see a crotchety old gnome pacing around his lean-to.");
-  set(rf4);
+  set(rfGNOME_INTRODUCED);
 }
-if (rf3) {
+if (rfGNOME_IS_HERE) {
   distance(oEGO, oGNOME, v62);
-  if (rf2) {
+  if (rfGUESSING_GNOMES_NAME) {
     if (said("talk", "gnome") || said("hello") || said("say", "hello")) {
       if (v62 < 50) {
         print("You still haven't guessed my name!");
@@ -82,10 +89,10 @@ if (rf3) {
       goto(FINALCHECKS);
     }
   }
-  if (!rf2) {
+  if (!rfGUESSING_GNOMES_NAME) {
     if (said("talk", "gnome") || said("hello") || said("say", "hello")) {
       if (v62 < 50) {
-        set(rf2);
+        set(rfGUESSING_GNOMES_NAME);
         print("The old gnome tells you he has something that may be very useful to you.  Your task is to guess his name in three guesses and his gift will be yours.  Good luck!  What is your first guess?");
       }
       else {
@@ -108,7 +115,7 @@ if (rf3) {
     goto(FINALCHECKS);
   }
 }
-if (rf2) {
+if (rfGUESSING_GNOMES_NAME) {
   if (said("rumplestiltskin") && vGNOME_NAME_GUESSES != 2) {
     print("That is very close but not quite right!");
     vGNOME_NAME_GUESSES++;
@@ -126,10 +133,10 @@ if (rf2) {
   }
   if (said("ifnkovhgroghprm")) {
     erase(oGNOME);
-    reset(rf2);
-    reset(rf3);
+    reset(rfGUESSING_GNOMES_NAME);
+    reset(rfGNOME_IS_HERE);
     draw(oMAGIC_BEANS);
-    set(rf0);
+    set(rfSHOW_BEANS);
     stop.update(oMAGIC_BEANS);
     vGNOME_STATE = GNOMESTATE_LEFT_BEANS;
     print("That's right!!!  You've guessed it!!  Here are some magic beans for your outstanding accomplishment!");
@@ -165,10 +172,10 @@ if (rf2) {
     if (said("anyword") || said("anyword", "anyword")) {
       accept.input();
       erase(oGNOME);
-      reset(rf2);
-      reset(rf3);
+      reset(rfGUESSING_GNOMES_NAME);
+      reset(rfGNOME_IS_HERE);
       draw(oGOLD_KEY);
-      set(rf1);
+      set(rfSHOW_KEY);
       stop.update(oGOLD_KEY);
       vGNOME_STATE = GNOMESTATE_LEFT_KEY;
       print("You didn't guess the gnome's name, but he left you a gold key anyway.  Better luck next time!");
@@ -177,11 +184,11 @@ if (rf2) {
     }
   }
 }
-if (!rf3) {
+if (!rfGNOME_IS_HERE) {
   if (said("anyword", "gnome")) {
     print("There is no gnome here.");
   }
-  if (rf0) {
+  if (rfSHOW_BEANS) {
     distance(oEGO, oMAGIC_BEANS, v70);
     if (said("examine", "magic beans")) {
       if (v70 > 40) {
@@ -197,7 +204,7 @@ if (!rf3) {
       }
       else {
         print("Being careful that you get every one of them, you place the beans in your pocket.");
-        reset(rf0);
+        reset(rfSHOW_BEANS);
         start.update(oMAGIC_BEANS);
         erase(oMAGIC_BEANS);
         set(fCARRYING_MAGIC_BEANS);
@@ -207,7 +214,7 @@ if (!rf3) {
       }
     }
   }
-  if (rf1) {
+  if (rfSHOW_KEY) {
     distance(oEGO, oGOLD_KEY, v71);
     if (said("examine", "gold key")) {
       if (v71 > 40) {
@@ -223,7 +230,7 @@ if (!rf3) {
       }
       else {
         print("It is heavy and cold.");
-        reset(rf1);
+        reset(rfSHOW_KEY);
         start.update(oGOLD_KEY);
         erase(oGOLD_KEY);
         set(fCARRYING_GOLD_KEY);
@@ -234,18 +241,18 @@ if (!rf3) {
     }
   }
 }
-if (!rf0 && !fCARRYING_MAGIC_BEANS) {
+if (!rfSHOW_BEANS && !fCARRYING_MAGIC_BEANS) {
   if (said("anyword", "magic beans")) {
     print("There are no beans here.");
   }
 }
-if (!rf1 && !fCARRYING_GOLD_KEY) {
+if (!rfSHOW_KEY && !fCARRYING_GOLD_KEY) {
   if (said("anyword", "gold key")) {
     print("The key to your problems is elsewhere.");
   }
 }
-if (fEGO_ON_WATER && !rf5) {
-  set(rf5);
+if (fEGO_ON_WATER && !rfFALLEN_IN_RIVER) {
+  set(rfFALLEN_IN_RIVER);
   print("You slip down the bank into the river far below.  Your cries for help are not heard.");
 }
 if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
