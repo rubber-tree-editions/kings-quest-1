@@ -2,6 +2,23 @@
 
 LOGIC__HEADER
 
+#define rfINIT_RANDOMIZER rf0
+#define rfBIRD_IS_HERE rf1
+#define rfBIRD_AFRAID_OF_GOAT rf2
+// unused: rf3
+#define rfFALLING_SOUND_PLAYED rf4
+#define rfTAKEN_BY_BIRD rf5
+#define rfFELL_OFF_BEANSTALK_LOW rf6
+#define rfEGO_STOPPED_ANIMATING rf7
+#define rfFELL_FROM_SKY rf8
+#define rfPLAYING_FALLING_SOUND rf9
+#define rfPLAYED_BEANSTALK_SOUND rf10
+
+#define rvCOUNTDOWN rv0
+#define rvBIRD_STEP_SIZE rv1
+#define rvBIRD_X rv2
+#define rvBIRD_Y rv3
+
 #define oBIRD o1
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -52,20 +69,20 @@ if (fROOM_SCRIPT_EXECUTED) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_Y = 106;
     vTEMP_STEP = 2;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf8);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_FROM_SKY);
   }
   random(0, 250, v62);
   if (v62 < 125 && !fTAKEN_BY_GIANT_BIRD) {
-    rv1 = 4;
-    step.size(oBIRD, rv1);
-    set(rf0);
+    rvBIRD_STEP_SIZE = 4;
+    step.size(oBIRD, rvBIRD_STEP_SIZE);
+    set(rfINIT_RANDOMIZER);
     load.view(8);
     load.view(89);
     animate.obj(oBIRD);
     set.view(oBIRD, 8);
     set.priority(oBIRD, 15);
   }
-  if (rf0) {
+  if (rfINIT_RANDOMIZER) {
     do {
       random(0, 250, v70);
     } while (v70 > 90);
@@ -79,18 +96,18 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (f158 && !rf9) {
-  set(rf9);
+if (f158 && !rfPLAYING_FALLING_SOUND) {
+  set(rfPLAYING_FALLING_SOUND);
   set(f135);
-  sound(SND_FALLING, rf4);
+  sound(SND_FALLING, rfFALLING_SOUND_PLAYED);
 }
-if (!rf8 && rf4) {
-  reset(rf9);
-  reset(rf4);
+if (!rfFELL_FROM_SKY && rfFALLING_SOUND_PLAYED) {
+  reset(rfPLAYING_FALLING_SOUND);
+  reset(rfFALLING_SOUND_PLAYED);
 }
-if (rf8) {
+if (rfFELL_FROM_SKY) {
   stop.sound();
-  set(rf9);
+  set(rfPLAYING_FALLING_SOUND);
   reset(f158);
   reset(f135);
   set.view(oEGO, 114);
@@ -105,7 +122,7 @@ else {
 }
 v70--;
 if (v70 == 1 && !f158 && !fEGO_CLIMBING_BEANSTALK) {
-  set(rf1);
+  set(rfBIRD_IS_HERE);
   position(oBIRD, 7, 35);
   vCOUNTDOWN_LO = 250;
   vCOUNTDOWN_HI = 3;
@@ -117,7 +134,7 @@ if (v70 == 1 && !f158 && !fEGO_CLIMBING_BEANSTALK) {
   if (fGOAT_COMPANION) {
     print("High up in the sky you see a very large, friendly bird, but it is afraid to come near you because of the goat.");
     wander(oBIRD);
-    set(rf2);
+    set(rfBIRD_AFRAID_OF_GOAT);
   }
 }
 vCOUNTDOWN_LO--;
@@ -127,9 +144,9 @@ if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI != 0) {
 }
 if (vCOUNTDOWN_LO == 1 && vCOUNTDOWN_HI == 0) {
   wander(oBIRD);
-  set(rf2);
+  set(rfBIRD_AFRAID_OF_GOAT);
 }
-if (!rf2 && rf1) {
+if (!rfBIRD_AFRAID_OF_GOAT && rfBIRD_IS_HERE) {
   get.posn(oBIRD, vTEMP_X_3, vTEMP_Y_3);
   if (vTEMP_Y_3 > 110) {
     vTEMP_DIR = DIR_NORTH;
@@ -137,16 +154,16 @@ if (!rf2 && rf1) {
     wander(oBIRD);
   }
 }
-if (rf2 && vOBJECT_EDGE_CODE != 0) {
-  reset(rf2);
-  reset(rf1);
+if (rfBIRD_AFRAID_OF_GOAT && vOBJECT_EDGE_CODE != 0) {
+  reset(rfBIRD_AFRAID_OF_GOAT);
+  reset(rfBIRD_IS_HERE);
   erase(oBIRD);
 }
 distance(oEGO, oBIRD, v71);
 get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
-get.posn(oBIRD, rv2, rv3);
-rv3 += 20;
-if (v71 > 20 && v71 < 30 && vTEMP_Y_2 > rv3 && f143 && !rf2) {
+get.posn(oBIRD, rvBIRD_X, rvBIRD_Y);
+rvBIRD_Y += 20;
+if (v71 > 20 && v71 < 30 && vTEMP_Y_2 > rvBIRD_Y && f143 && !rfBIRD_AFRAID_OF_GOAT) {
   reset(f143);
   set(f145);
   program.control();
@@ -157,14 +174,14 @@ if (v71 > 20 && v71 < 30 && vTEMP_Y_2 > rv3 && f143 && !rf2) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_X = 130;
   set.priority(oEGO, 15);
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, rv1, rf5);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, rvBIRD_STEP_SIZE, rfTAKEN_BY_BIRD);
   set(f98);
   if (!fTAKEN_BY_GIANT_BIRD) {
     set(fTAKEN_BY_GIANT_BIRD);
     vSCORE += 3;
   }
 }
-if (!rf1 && said("anyword", "bird")) {
+if (!rfBIRD_IS_HERE && said("anyword", "bird")) {
   print("There is no bird.");
 }
 if (said("examine", "cave")) {
@@ -175,7 +192,7 @@ if (said("examine", "cave")) {
     print("You vaguely see the outline of a cave entrance.");
   }
 }
-if (rf1) {
+if (rfBIRD_IS_HERE) {
   if (said("examine", "bird")) {
     print("This is a big condor.  Its graceful flight appears effortless.");
   }
@@ -197,7 +214,7 @@ if (fCARRYING_MAGIC_BEANS && f155) {
     drop("beans");
     vSCORE += 2;
     print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
-    sound(SND_BEANSTALK, rf10);
+    sound(SND_BEANSTALK, rfPLAYED_BEANSTALK_SOUND);
     overlay.pic(vTEMP_PIC);
     show.pic();
   }
@@ -243,20 +260,20 @@ if (fEGO_CLIMBING_BEANSTALK) {
     draw(oEGO);
     vTEMP_Y = 106;
     vTEMP_STEP = 2;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf6);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_OFF_BEANSTALK_LOW);
     set(f135);
     sound(SND_FALLING, f198);
   }
 }
-rv0--;
-if (rf6) {
+rvCOUNTDOWN--;
+if (rfFELL_OFF_BEANSTALK_LOW) {
   stop.sound();
-  reset(rf6);
+  reset(rfFELL_OFF_BEANSTALK_LOW);
   observe.blocks(oEGO);
   release.priority(oEGO);
   stop.motion(oEGO);
   set.view(oEGO, 103);
-  rv0 = 20;
+  rvCOUNTDOWN = 20;
   set(f98);
   shake.screen(2);
   print("Ouch!");
@@ -264,17 +281,17 @@ if (rf6) {
   sound(SND_OUCH, fSOUND_END_MARKER);
 }
 if (fSOUND_END_MARKER) {
-  if (rv0 != 0) {
+  if (rvCOUNTDOWN != 0) {
     reset(fSOUND_END_MARKER);
     sound(SND_OUCH, fSOUND_END_MARKER);
   }
 }
-if (rv0 == 1) {
+if (rvCOUNTDOWN == 1) {
   set.view(oEGO, 104);
-  end.of.loop(oEGO, rf7);
+  end.of.loop(oEGO, rfEGO_STOPPED_ANIMATING);
 }
-if (rf7) {
-  reset(rf7);
+if (rfEGO_STOPPED_ANIMATING) {
+  reset(rfEGO_STOPPED_ANIMATING);
   reset(f98);
   start.motion(oEGO);
   set.view(oEGO, 0);
@@ -284,7 +301,7 @@ if (rf7) {
 if (vEGO_EDGE_CODE != EDGE_NONE) {
   reset(f155);
 }
-if (rf5) {
+if (rfTAKEN_BY_BIRD) {
   print("Where could this giant bird be taking you?");
   new.room(ROOM80_IN_MID_AIR);
   reset(f155);
