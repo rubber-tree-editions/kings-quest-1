@@ -2,6 +2,14 @@
 
 LOGIC__HEADER
 
+#define rfWOODCUTTER_GESTICULATING rf0
+#define rfWIFE_GESTICULATING rf1
+// unused: rf2
+#define rfFELL_THROUGH_FLOOR rf3
+#define rfBOTH_GESTICULATING rf4
+
+#define rvGESTICULATION_COUNTDOWN rv0
+
 #define oBOWL o1
 #define oWOODCUTTER o2
 #define oFIDDLE o3
@@ -95,13 +103,13 @@ if (said("examine", "table")) {
     print("There is a bowl of stew sitting on the old oak table.");
   }
 }
-rv0--;
+rvGESTICULATION_COUNTDOWN--;
 if (said("talk", "woodcutter")) {
   print("\"Welcome to my humble abode.\"");
-  if (!rf0) {
-    set(rf0);
+  if (!rfWOODCUTTER_GESTICULATING) {
+    set(rfWOODCUTTER_GESTICULATING);
     start.cycling(oWOODCUTTER);
-    rv0 = 18;
+    rvGESTICULATION_COUNTDOWN = 18;
   }
 }
 if (said("talk", "wife")) {
@@ -111,23 +119,23 @@ if (said("talk", "wife")) {
   else {
     print("\"Make yourself at home in our humble home.\"");
   }
-  if (!rf1) {
-    set(rf1);
+  if (!rfWIFE_GESTICULATING) {
+    set(rfWIFE_GESTICULATING);
     start.cycling(oWIFE);
-    rv0 = 18;
+    rvGESTICULATION_COUNTDOWN = 18;
   }
 }
-if (rv0 == 1) {
-  if (rf0) {
-    reset(rf0);
+if (rvGESTICULATION_COUNTDOWN == 1) {
+  if (rfWOODCUTTER_GESTICULATING) {
+    reset(rfWOODCUTTER_GESTICULATING);
     stop.cycling(oWOODCUTTER);
   }
-  if (rf1) {
-    reset(rf1);
+  if (rfWIFE_GESTICULATING) {
+    reset(rfWIFE_GESTICULATING);
     stop.cycling(oWIFE);
   }
-  if (rf4) {
-    reset(rf4);
+  if (rfBOTH_GESTICULATING) {
+    reset(rfBOTH_GESTICULATING);
     stop.cycling(oWOODCUTTER);
     stop.cycling(oWIFE);
   }
@@ -137,11 +145,11 @@ if (said("help", "woodcutter") || said("help", "wife") || said("help", "people")
 }
 if (said("murder", "woodcutter") || said("murder", "wife") || said("murder", "people")) {
   print("What an abominable idea!  You should be ashamed of yourself for even suggesting such a thing!");
-  if (!rf4) {
-    set(rf4);
+  if (!rfBOTH_GESTICULATING) {
+    set(rfBOTH_GESTICULATING);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    rv0 = 18;
+    rvGESTICULATION_COUNTDOWN = 18;
   }
 }
 if (said("examine", "cupboard")) {
@@ -155,21 +163,21 @@ if (said("examine", "window")) {
 }
 if (said("break", "window")) {
   print("You should have more sympathy for these poor folks!");
-  if (!rf4) {
-    set(rf4);
+  if (!rfBOTH_GESTICULATING) {
+    set(rfBOTH_GESTICULATING);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    rv0 = 18;
+    rvGESTICULATION_COUNTDOWN = 18;
   }
 }
 if (fGIVEN_BOWL_TO_WOODCUTTER) {
   if (said("get", "bowl")) {
     print("You have given the bowl to these poor people and it is now theirs.  You have no right to take it back.");
-    if (!rf4) {
-      set(rf4);
+    if (!rfBOTH_GESTICULATING) {
+      set(rfBOTH_GESTICULATING);
       start.cycling(oWOODCUTTER);
       start.cycling(oWIFE);
-      rv0 = 18;
+      rvGESTICULATION_COUNTDOWN = 18;
     }
   }
   if (said("examine", "bowl")) {
@@ -188,11 +196,11 @@ if (fCARRYING_DIAMONDS || fCARRYING_GOLDEN_EGG || fCARRYING_GOLD_WALNUT || fCARR
 }
 if (fCARRYING_DIAMONDS && said("give", "pouch of diamonds")) {
   print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
-  if (!rf4) {
-    set(rf4);
+  if (!rfBOTH_GESTICULATING) {
+    set(rfBOTH_GESTICULATING);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    rv0 = 18;
+    rvGESTICULATION_COUNTDOWN = 18;
   }
   reset(fCARRYING_DIAMONDS);
   drop("pouch of diamonds");
@@ -200,11 +208,11 @@ if (fCARRYING_DIAMONDS && said("give", "pouch of diamonds")) {
 }
 if (fCARRYING_GOLDEN_EGG && said("give", "golden egg")) {
   print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
-  if (!rf4) {
-    set(rf4);
+  if (!rfBOTH_GESTICULATING) {
+    set(rfBOTH_GESTICULATING);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    rv0 = 18;
+    rvGESTICULATION_COUNTDOWN = 18;
   }
   reset(fCARRYING_GOLDEN_EGG);
   drop("gold egg");
@@ -212,11 +220,11 @@ if (fCARRYING_GOLDEN_EGG && said("give", "golden egg")) {
 }
 if (fCARRYING_GOLD_WALNUT && said("give", "walnut")) {
   print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
-  if (!rf4) {
-    set(rf4);
+  if (!rfBOTH_GESTICULATING) {
+    set(rfBOTH_GESTICULATING);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    rv0 = 18;
+    rvGESTICULATION_COUNTDOWN = 18;
   }
   reset(fCARRYING_GOLD_WALNUT);
   drop("gold walnut");
@@ -224,11 +232,11 @@ if (fCARRYING_GOLD_WALNUT && said("give", "walnut")) {
 }
 if (fCARRYING_SCEPTRE && said("give", "sceptre")) {
   print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
-  if (!rf4) {
-    set(rf4);
+  if (!rfBOTH_GESTICULATING) {
+    set(rfBOTH_GESTICULATING);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    rv0 = 18;
+    rvGESTICULATION_COUNTDOWN = 18;
   }
   reset(fCARRYING_SCEPTRE);
   drop("sceptre");
@@ -236,11 +244,11 @@ if (fCARRYING_SCEPTRE && said("give", "sceptre")) {
 }
 if (fCARRYING_CARROT && said("give", "carrot")) {
   print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
-  if (!rf4) {
-    set(rf4);
+  if (!rfBOTH_GESTICULATING) {
+    set(rfBOTH_GESTICULATING);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    rv0 = 18;
+    rvGESTICULATION_COUNTDOWN = 18;
   }
   reset(fCARRYING_CARROT);
   drop("carrot");
@@ -248,11 +256,11 @@ if (fCARRYING_CARROT && said("give", "carrot")) {
 }
 if (fCARRYING_MAGIC_BEANS && said("give", "magic beans")) {
   print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
-  if (!rf4) {
-    set(rf4);
+  if (!rfBOTH_GESTICULATING) {
+    set(rfBOTH_GESTICULATING);
     start.cycling(oWOODCUTTER);
     start.cycling(oWIFE);
-    rv0 = 18;
+    rvGESTICULATION_COUNTDOWN = 18;
   }
   reset(fCARRYING_MAGIC_BEANS);
   drop("beans");
@@ -277,11 +285,11 @@ if (fCARRYING_BOWL) {
       set.view(oBOWL, 25);
       draw(oBOWL);
       print("Puzzled, the couple wonders why you have given them a bowl.");
-      if (!rf4) {
-        set(rf4);
+      if (!rfBOTH_GESTICULATING) {
+        set(rfBOTH_GESTICULATING);
         start.cycling(oWOODCUTTER);
         start.cycling(oWIFE);
-        rv0 = 18;
+        rvGESTICULATION_COUNTDOWN = 18;
       }
     }
   }
@@ -310,11 +318,11 @@ if (fCARRYING_BOWL) {
       draw(oBOWL);
       print("The woodcutter family is very grateful that you have given them a bowl of stew.  Now they will have at least one last meal.  As a token of their gratitude, they offer their last earthly possession, the woodcutter's fiddle.");
       set(fWOODCUTTER_GIVEN_STEW);
-      if (!rf4) {
-        set(rf4);
+      if (!rfBOTH_GESTICULATING) {
+        set(rfBOTH_GESTICULATING);
         start.cycling(oWOODCUTTER);
         start.cycling(oWIFE);
-        rv0 = 18;
+        rvGESTICULATION_COUNTDOWN = 18;
       }
     }
   }
@@ -341,11 +349,11 @@ if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_EMPTY) {
       vSCORE += 2;
     }
     set(fWOODCUTTER_GIVEN_STEW);
-    if (!rf4) {
-      set(rf4);
+    if (!rfBOTH_GESTICULATING) {
+      set(rfBOTH_GESTICULATING);
       start.cycling(oWOODCUTTER);
       start.cycling(oWIFE);
-      rv0 = 18;
+      rvGESTICULATION_COUNTDOWN = 18;
     }
   }
 }
@@ -395,11 +403,11 @@ if (fEGO_ON_WATER && !f199) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_Y = 166;
   vTEMP_STEP = 6;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf3);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_THROUGH_FLOOR);
   sound(SND_FALLING, fSOUND_END_MARKER);
 }
-if (rf3) {
-  reset(rf3);
+if (rfFELL_THROUGH_FLOOR) {
+  reset(rfFELL_THROUGH_FLOOR);
   erase(oEGO);
   print("These poor people can't even afford to repair the floor!  Sorry about that.");
   set(fGAME_OVER);
