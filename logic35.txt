@@ -2,6 +2,22 @@
 
 LOGIC__HEADER
 
+#define rfINIT_RANDOMIZER rf0
+#define rfDWARF_IS_HERE rf1
+// unused: rf2
+#define rfHAD_DWARF_ENCOUNTER rf3
+#define rfFELL_FROM_BEANSTALK_LOW rf4
+#define rfEGO_FINISHED_ANIMATING rf5
+#define rfFALLEN_FROM_SKY rf6
+#define rfPLAYING_FALLING_SOUND rf7
+#define rfPLAYED_FALLING_SOUND rf8
+#define rfPLAYED_BEANSTALK_SOUND rf9
+#define rfPLAYING_DWARF_SOUND rf10
+#define rfPLAYED_DWARF_SOUND rf11
+
+#define rvCOUNTDOWN rv0
+#define rvDWARF_STEP_SIZE rv1
+
 #define oDWARF o1
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -50,20 +66,20 @@ if (fROOM_SCRIPT_EXECUTED) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_Y = 106;
     vTEMP_STEP = 2;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf6);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_FROM_SKY);
   }
   random(0, 250, v62);
   if (v62 < 85) {
-    rv1 = 4;
-    step.size(oDWARF, rv1);
+    rvDWARF_STEP_SIZE = 4;
+    step.size(oDWARF, rvDWARF_STEP_SIZE);
     load.view(111);
     animate.obj(oDWARF);
     set.view(oDWARF, 111);
-    set(rf0);
+    set(rfINIT_RANDOMIZER);
     load.sound(SND_VILLAIN);
     load.sound(SND_DWARF);
   }
-  if (rf0) {
+  if (rfINIT_RANDOMIZER) {
     do {
       random(0, 250, v70);
     } while (v70 > 90);
@@ -74,28 +90,28 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (rf1 && fSOUND_END_MARKER) {
-  if (!rf10) {
-    set(rf10);
-    sound(SND_DWARF, rf11);
+if (rfDWARF_IS_HERE && fSOUND_END_MARKER) {
+  if (!rfPLAYING_DWARF_SOUND) {
+    set(rfPLAYING_DWARF_SOUND);
+    sound(SND_DWARF, rfPLAYED_DWARF_SOUND);
   }
-  if (rf11) {
-    reset(rf10);
-    reset(rf11);
+  if (rfPLAYED_DWARF_SOUND) {
+    reset(rfPLAYING_DWARF_SOUND);
+    reset(rfPLAYED_DWARF_SOUND);
   }
 }
-if (f158 && !rf7) {
-  set(rf7);
+if (f158 && !rfPLAYING_FALLING_SOUND) {
+  set(rfPLAYING_FALLING_SOUND);
   set(f135);
-  sound(SND_FALLING, rf8);
+  sound(SND_FALLING, rfPLAYED_FALLING_SOUND);
 }
-if (!rf6 && rf8) {
-  reset(rf7);
-  reset(rf8);
+if (!rfFALLEN_FROM_SKY && rfPLAYED_FALLING_SOUND) {
+  reset(rfPLAYING_FALLING_SOUND);
+  reset(rfPLAYED_FALLING_SOUND);
 }
-if (rf6) {
+if (rfFALLEN_FROM_SKY) {
   stop.sound();
-  set(rf7);
+  set(rfPLAYING_FALLING_SOUND);
   reset(f158);
   reset(f135);
   set.view(oEGO, 114);
@@ -105,7 +121,7 @@ if (rf6) {
 v70--;
 if (v70 == 1 && !f158 && !fEGO_CLIMBING_BEANSTALK) {
   position(oDWARF, 16, 79);
-  set(rf1);
+  set(rfDWARF_IS_HERE);
   sound(SND_VILLAIN, fSOUND_END_MARKER);
   draw(oDWARF);
   if (!fGOAT_COMPANION) {
@@ -114,17 +130,17 @@ if (v70 == 1 && !f158 && !fEGO_CLIMBING_BEANSTALK) {
   }
   if (fGOAT_COMPANION) {
     wander(oDWARF);
-    set(rf3);
+    set(rfHAD_DWARF_ENCOUNTER);
     print("There is a small dwarf close by.  It would be a good idea to be careful.");
     print("The dwarf sees the goat and decides to leave.");
   }
 }
-if (!rf1) {
+if (!rfDWARF_IS_HERE) {
   if (said("anyword", "dwarf")) {
     print("There is no dwarf here.");
   }
 }
-if (rf1) {
+if (rfDWARF_IS_HERE) {
   if (said("examine", "dwarf")) {
     print("Dwarfs are quick, little guys who will try to take your treasure.");
   }
@@ -140,12 +156,12 @@ if (f156) {
   if (fPROTECTED_BY_SPELL) {
     print("It's a good thing you are protected by a spell.  That little dwarf likes to steal treasures.");
     wander(oDWARF);
-    set(rf3);
+    set(rfHAD_DWARF_ENCOUNTER);
   }
   else if (fEGO_INVISIBLE) {
     print("Being invisible has protected you from the dwarf.");
     wander(oDWARF);
-    set(rf3);
+    set(rfHAD_DWARF_ENCOUNTER);
   }
   else {
     if (fCARRYING_MIRROR) {
@@ -208,19 +224,19 @@ if (f156) {
     else {
       print("The quick, little dwarf came by to see what you had -- nothing interested him.");
       wander(oDWARF);
-      set(rf3);
+      set(rfHAD_DWARF_ENCOUNTER);
       goto(END_OF_DWARF_LOGIC);
     }
     print("That little dwarf caught you by surprise.  Is your treasure still OK?");
     wander(oDWARF);
-    set(rf3);
+    set(rfHAD_DWARF_ENCOUNTER);
 END_OF_DWARF_LOGIC:
   }
 }
-if (rf3 && vOBJECT_EDGE_CODE != 0) {
+if (rfHAD_DWARF_ENCOUNTER && vOBJECT_EDGE_CODE != 0) {
   erase(oDWARF);
-  reset(rf3);
-  reset(rf1);
+  reset(rfHAD_DWARF_ENCOUNTER);
+  reset(rfDWARF_IS_HERE);
 }
 if (fCARRYING_MAGIC_BEANS && f155) {
   if (said("plant", "magic beans")) {
@@ -230,7 +246,7 @@ if (fCARRYING_MAGIC_BEANS && f155) {
     drop("beans");
     vSCORE += 2;
     print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
-    sound(SND_BEANSTALK, rf9);
+    sound(SND_BEANSTALK, rfPLAYED_BEANSTALK_SOUND);
     overlay.pic(vTEMP_PIC);
     show.pic();
   }
@@ -278,20 +294,20 @@ if (fEGO_CLIMBING_BEANSTALK) {
     draw(oEGO);
     vTEMP_Y = 106;
     vTEMP_STEP = 2;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf4);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_FROM_BEANSTALK_LOW);
     set(f135);
     sound(SND_FALLING, f198);
   }
 }
-rv0--;
-if (rf4) {
+rvCOUNTDOWN--;
+if (rfFELL_FROM_BEANSTALK_LOW) {
   stop.sound();
-  reset(rf4);
+  reset(rfFELL_FROM_BEANSTALK_LOW);
   observe.blocks(oEGO);
   release.priority(oEGO);
   stop.motion(oEGO);
   set.view(oEGO, 103);
-  rv0 = 20;
+  rvCOUNTDOWN = 20;
   set(f98);
   shake.screen(2);
   print("Ouch!");
@@ -299,17 +315,17 @@ if (rf4) {
   sound(SND_OUCH, fSOUND_END_MARKER);
 }
 if (fSOUND_END_MARKER) {
-  if (rv0 != 0) {
+  if (rvCOUNTDOWN != 0) {
     reset(fSOUND_END_MARKER);
     sound(SND_OUCH, fSOUND_END_MARKER);
   }
 }
-if (rv0 == 1) {
+if (rvCOUNTDOWN == 1) {
   set.view(oEGO, 104);
-  end.of.loop(oEGO, rf5);
+  end.of.loop(oEGO, rfEGO_FINISHED_ANIMATING);
 }
-if (rf5) {
-  reset(rf5);
+if (rfEGO_FINISHED_ANIMATING) {
+  reset(rfEGO_FINISHED_ANIMATING);
   reset(f98);
   start.motion(oEGO);
   set.view(oEGO, 0);
