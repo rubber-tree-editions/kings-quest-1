@@ -250,7 +250,7 @@ if (vROOM_NO != ROOM21_WITCH_STOMPING_GROUND) {
   if (said("jump") || controller(cJUMP)) {
     if (!f143
         && !fEGO_CLIMBING_BEANSTALK
-        && !f158
+        && !fFALLING_TO_EARTH
         && !fEGO_INVISIBLE
         && !fEGO_TINY
         && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE
@@ -301,7 +301,7 @@ if (vROOM_NO != ROOM21_WITCH_STOMPING_GROUND) {
 if (said("duck") || controller(cDUCK)) {
   if (!fEGO_DUCKING
       && !fEGO_CLIMBING_BEANSTALK
-      && !f158
+      && !fFALLING_TO_EARTH
       && !fEGO_INVISIBLE
       && !fEGO_TINY
       && !fEGO_ON_WATER
@@ -536,11 +536,11 @@ if (fCARRYING_MUSHROOM) {
       print("You try, but being invisible makes it impossible.");
     }
     if (!fEGO_CLIMBING_BEANSTALK
-      && !f158
+      && !fFALLING_TO_EARTH
       && !fEGO_INVISIBLE
-      && !f180
-      && !f181
-      && !f175
+      && !fON_WELL_ROPE
+      && !fIN_WELL_BUCKET
+      && !f175_UNUSED
       && vROOM_NO != ROOM21_WITCH_STOMPING_GROUND
       && vROOM_NO != ROOM22_CONDOR_AND_CAVE
       && vROOM_NO != ROOM80_IN_MID_AIR
@@ -633,7 +633,7 @@ if (fCARRYING_RING) {
       if (
         vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE
         && !fEGO_CLIMBING_BEANSTALK
-        && !f158
+        && !fFALLING_TO_EARTH
         && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE
         && vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE
         && vROOM_NO != ROOM80_IN_MID_AIR
@@ -654,7 +654,7 @@ if (fCARRYING_RING) {
       }
       if (vROOM_NO == ROOM65_IN_GINGERBREAD_HOUSE
         || fEGO_CLIMBING_BEANSTALK
-        || f158
+        || fFALLING_TO_EARTH
         || vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE
         || vROOM_NO == ROOM63_UP_GOLDEN_EGG_TREE
         || vROOM_NO == ROOM80_IN_MID_AIR

@@ -22,7 +22,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (f158 && !rf2 && !rf3) {
+if (fFALLING_TO_EARTH && !rf2 && !rf3) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   set(rf3);
 }
@@ -131,7 +131,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && fEGO_CLIMBING_BEANSTALK) {
   print("Whoops!  You fall toward a distant earth.");
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   reset(fEGO_CLIMBING_BEANSTALK);
-  set(f158);
+  set(fFALLING_TO_EARTH);
   erase(oEGO);
   set.view(oEGO, 105);
   if (vTEMP_X > 75) {

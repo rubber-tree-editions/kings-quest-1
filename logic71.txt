@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oEGO, 66, 40);
     move.obj(oEGO, 66, 40, 0, f148);
   }
-  if (vPREV_ROOM_NO == ROOM72 && f158) {
+  if (vPREV_ROOM_NO == ROOM72 && fFALLING_TO_EARTH) {
     program.control();
     set.view(oEGO, 105);
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
@@ -40,7 +40,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (f158 && !rfFALLEN_OFF_SCREEN && !rfFALLING_SOUND_PLAYING) {
+if (fFALLING_TO_EARTH && !rfFALLEN_OFF_SCREEN && !rfFALLING_SOUND_PLAYING) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   set(rfFALLING_SOUND_PLAYING);
 }
@@ -53,12 +53,12 @@ if (fSOUND_END_MARKER) {
 if (said("examine", "beanstalk")) {
   print("You can no longer see the bottom... it seems to go  on forever!");
 }
-if (fEGO_TOUCHED_TRIGGER_LINE && !f158) {
+if (fEGO_TOUCHED_TRIGGER_LINE && !fFALLING_TO_EARTH) {
   program.control();
   print("You have to be careful when you get so high on the foliage!");
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   reset(fEGO_CLIMBING_BEANSTALK);
-  set(f158);
+  set(fFALLING_TO_EARTH);
   erase(oEGO);
   set.view(oEGO, 105);
   if (vTEMP_X > 75) {

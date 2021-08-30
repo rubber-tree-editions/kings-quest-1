@@ -31,7 +31,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       set(f162);
       vSCORE += 1;
     }
-    if (f180) {
+    if (fON_WELL_ROPE) {
       set.view(oEGO, 74);
       position(oEGO, 81, 48);
       set.priority(oEGO, 15);
@@ -49,7 +49,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     discard.view(99);
   }
   if (fBUCKET_LOWERED) {
-    if (f181) {
+    if (fIN_WELL_BUCKET) {
       animate.obj(o1);
       set.view(o1, 72);
       position(o1, 79, 150);
@@ -87,10 +87,10 @@ if (fSOUND_END_MARKER) {
     reset(fSOUND_END_MARKER);
   }
 }
-if (f180) {
+if (fON_WELL_ROPE) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y > 115 && fBUCKET_LOWERED) {
-    reset(f180);
+    reset(fON_WELL_ROPE);
     set(f182);
     set.view(oEGO, 105);
     vTEMP_Y = 164;
@@ -102,7 +102,7 @@ if (f180) {
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf2);
   }
   if (vTEMP_Y > 115 && f179) {
-    reset(f180);
+    reset(fON_WELL_ROPE);
     set(f182);
     set.view(oEGO, 105);
     vTEMP_Y = 164;
@@ -115,7 +115,7 @@ if (f180) {
   }
   if (vTEMP_X < 79 || vTEMP_X > 83) {
     if (vTEMP_Y > 70) {
-      reset(f180);
+      reset(fON_WELL_ROPE);
       set(f182);
       set.view(oEGO, 105);
       vTEMP_Y = 164;
@@ -127,7 +127,7 @@ if (f180) {
       move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf2);
     }
     else {
-      reset(f180);
+      reset(fON_WELL_ROPE);
       set(f182);
       set(rf5);
       set.view(oEGO, 105);
@@ -172,7 +172,7 @@ if (rv0 == 1 && rf3) {
   print("Your arms are like lead... from swimming.  You find it impossible... to swim any longer.  You sink to the bottom... of the well....");
   set(fGAME_OVER);
 }
-if (!f180 && !rf0) {
+if (!fON_WELL_ROPE && !rf0) {
   if (said("climb", "rope") || said("up", "rope")) {
     if (!f179 && !fBUCKET_LOWERED) {
       print("The rope is out of reach.");
@@ -186,10 +186,10 @@ if (!f180 && !rf0) {
       set.priority(oEGO, 15);
       draw(oEGO);
       move.obj(oEGO, 81, 113, 0, f148);
-      set(f180);
+      set(fON_WELL_ROPE);
       reset(rf3);
     }
-    if (fBUCKET_LOWERED && !f181) {
+    if (fBUCKET_LOWERED && !fIN_WELL_BUCKET) {
       erase(oEGO);
       vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
       reset(f98);
@@ -198,10 +198,10 @@ if (!f180 && !rf0) {
       set.priority(oEGO, 15);
       draw(oEGO);
       move.obj(oEGO, 81, 113, 0, f148);
-      set(f180);
+      set(fON_WELL_ROPE);
       reset(rf3);
     }
-    if (f181) {
+    if (fIN_WELL_BUCKET) {
       start.update(o1);
       erase(o1);
       set.view(o1, 16);
@@ -214,11 +214,11 @@ if (!f180 && !rf0) {
       set.priority(oEGO, 15);
       draw(oEGO);
       move.obj(oEGO, 81, 113, 0, f148);
-      set(f180);
-      reset(f181);
+      set(fON_WELL_ROPE);
+      reset(fIN_WELL_BUCKET);
     }
   }
-  if (f181) {
+  if (fIN_WELL_BUCKET) {
     if (said("go", "water")
       || said("exit", "bucket")
       || said("go", "water")
@@ -237,8 +237,8 @@ if (!f180 && !rf0) {
       stop.update(o1);
       set.priority(oEGO, 15);
       draw(oEGO);
-      set(f180);
-      reset(f181);
+      set(fON_WELL_ROPE);
+      reset(fIN_WELL_BUCKET);
     }
   }
 }
@@ -265,12 +265,12 @@ if (!fCARRYING_BUCKET) {
       print("The bucket is not here.");
     }
   }
-  if (said("go", "bucket") && fBUCKET_LOWERED && !f181) {
+  if (said("go", "bucket") && fBUCKET_LOWERED && !fIN_WELL_BUCKET) {
     print("I don't think that getting in the bucket right now will do you very much good.");
   }
 }
 if (said("untie", "rope")) {
-  if (f180 || f181) {
+  if (fON_WELL_ROPE || fIN_WELL_BUCKET) {
     print("The knot is tied very tightly.");
   }
   else {
@@ -278,7 +278,7 @@ if (said("untie", "rope")) {
   }
 }
 if (said("get", "rope")) {
-  if (f180 || f181) {
+  if (fON_WELL_ROPE || fIN_WELL_BUCKET) {
     print("The rope is secured to the well with a very tight knot.");
   }
   else {
@@ -286,7 +286,7 @@ if (said("get", "rope")) {
   }
 }
 if (said("break", "rope")) {
-  if (f180 || f181) {
+  if (fON_WELL_ROPE || fIN_WELL_BUCKET) {
     print("The thick rope resists your efforts.");
   }
   else {
@@ -307,10 +307,10 @@ if (!fCARRYING_DAGGER) {
 }
 if (fCARRYING_DAGGER) {
   if (said("cut", "rope")) {
-    if (f180 && fBUCKET_LOWERED) {
+    if (fON_WELL_ROPE && fBUCKET_LOWERED) {
       print("Just before slitting the rope, you realize that it is not a very wise move at this time.");
     }
-    if (f181) {
+    if (fIN_WELL_BUCKET) {
       print("Just before slitting the rope, you realize that it is not a very wise move at this time.");
     }
     if (!fBUCKET_LOWERED) {

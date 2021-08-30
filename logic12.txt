@@ -60,7 +60,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     else {
       set.view(oEGO, 74);
     }
-    set(f180);
+    set(fON_WELL_ROPE);
     position(oEGO, 38, 140);
     set.priority(oEGO, 11);
     ignore.blocks(oEGO);
@@ -117,7 +117,7 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         }
         position(oEGO, 39, 131);
         draw(oEGO);
-        set(f180);
+        set(fON_WELL_ROPE);
         set.priority(oEGO, 11);
         ignore.blocks(oEGO);
         move.obj(oEGO, 39, 132, 0, f148);
@@ -147,7 +147,7 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         erase(o2);
         stop.cycling(o2);
         draw(o2);
-        set(f181);
+        set(fIN_WELL_BUCKET);
         sound(SND_WELL_HANDLE_TURNING, rf10);
         end.of.loop(o2, rf5);
         start.update(o1);
@@ -232,7 +232,7 @@ if (fEGO_INVISIBLE) {
     }
   }
 }
-if (f180) {
+if (fON_WELL_ROPE) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y < 131) {
     erase(oEGO);
@@ -241,7 +241,7 @@ if (f180) {
     draw(oEGO);
     release.priority(oEGO);
     observe.blocks(oEGO);
-    reset(f180);
+    reset(fON_WELL_ROPE);
   }
   if (vTEMP_Y > 145) {
     new.room(ROOM49_INSIDE_WELL);
@@ -254,7 +254,7 @@ if (f180) {
     print("You should be more careful the next time you try  climbing ropes.");
     set(f135);
     sound(SND_FALLING, fSOUND_END_MARKER);
-    reset(f180);
+    reset(fON_WELL_ROPE);
   }
 }
 if (rf9 || rf0) {
@@ -360,12 +360,12 @@ if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
     }
   }
 }
-if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED && f180) {
+if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED && fON_WELL_ROPE) {
   if (said("raise", "bucket")) {
     print("You will find that very difficult to do from here.");
   }
 }
-if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED && !f180) {
+if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED && !fON_WELL_ROPE) {
   if (said("raise", "bucket") || said("raise", "rope")) {
     if (posn(oEGO, 60, 108, 77, 140)) {
       print("The old bucket emerges from the depths of the well.");
@@ -511,7 +511,7 @@ if (fBUCKET_ROPE_CUT && !f179) {
     }
   }
 }
-if (fBUCKET_ROPE_CUT && f179 && !f180) {
+if (fBUCKET_ROPE_CUT && f179 && !fON_WELL_ROPE) {
   if (said("raise", "rope")) {
     if (posn(oEGO, 10, 109, 71, 153)) {
       start.cycling(o3);
@@ -532,7 +532,7 @@ if (rf3) {
   stop.update(o1);
   stop.cycling(o3);
 }
-if (fBUCKET_ROPE_CUT && f179 && f180) {
+if (fBUCKET_ROPE_CUT && f179 && fON_WELL_ROPE) {
   if (said("raise", "rope")) {
     print("You can't raise the rope from here!");
   }

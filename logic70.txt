@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oEGO, 69, 40);
     move.obj(oEGO, 69, 40, 0, f148);
   }
-  if (vPREV_ROOM_NO == ROOM71 && f158) {
+  if (vPREV_ROOM_NO == ROOM71 && fFALLING_TO_EARTH) {
     program.control();
     set.view(oEGO, 105);
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
@@ -40,7 +40,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (f158 && !rfFALLEN_OFF_SCREEN && !rfFALLING_SOUND_PLAYING) {
+if (fFALLING_TO_EARTH && !rfFALLEN_OFF_SCREEN && !rfFALLING_SOUND_PLAYING) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   set(rfFALLING_SOUND_PLAYING);
 }
@@ -59,11 +59,11 @@ if (fGOAT_COMPANION) {
 if (said("examine", "beanstalk")) {
   print("The beanstalk disappears up into the clouds.");
 }
-if (fEGO_TOUCHED_TRIGGER_LINE && !f158) {
+if (fEGO_TOUCHED_TRIGGER_LINE && !fFALLING_TO_EARTH) {
   program.control();
   print("With a wrong move, you fall dizzyingly to the ground.");
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
-  set(f158);
+  set(fFALLING_TO_EARTH);
   erase(oEGO);
   set.view(oEGO, 105);
   if (vTEMP_X > 75) {
