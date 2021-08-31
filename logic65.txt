@@ -14,8 +14,8 @@ LOGIC__HEADER
 #define rfWITCH_IS_HERE rf9
 #define rfWITCH_CAST_SPELL rf10
 #define rfWITCH_MOVING_TO_OVEN rf11
-#define rfPLAYED_VILLAIN_SOUND rf12
-#define rfPLAYING_FALLING_SOUND rf13
+#define rfPLAYED_SND_VILLAIN rf12
+#define rfPLAYING_SND_FALLING rf13
 #define rfSAID_OUCH rf14
 
 #define rvCOUNTDOWN_LO rv0
@@ -150,8 +150,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     print("Surprise!  Surprise!  The wicked witch is home and now she's after you!");
   }
 }
-if (rfUNPROTECTED_BY_MAGIC && !rfPLAYED_VILLAIN_SOUND) {
-  set(rfPLAYED_VILLAIN_SOUND);
+if (rfUNPROTECTED_BY_MAGIC && !rfPLAYED_SND_VILLAIN) {
+  set(rfPLAYED_SND_VILLAIN);
   sound(SND_VILLAIN, f148);
 }
 if (fGOAT_COMPANION) {
@@ -166,15 +166,15 @@ if (vWITCH_STATE == WITCHSTATE_DEAD) {
   }
 }
 if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
-  if (!rfFALLEN_TO_EARTH && !rfPLAYING_FALLING_SOUND && !rfUNPROTECTED_BY_MAGIC) {
+  if (!rfFALLEN_TO_EARTH && !rfPLAYING_SND_FALLING && !rfUNPROTECTED_BY_MAGIC) {
     sound(SND_FALLING, f198);
-    set(rfPLAYING_FALLING_SOUND);
+    set(rfPLAYING_SND_FALLING);
   }
 }
 if (f198) {
   if (!rfFALLEN_TO_EARTH && !rfSAID_OUCH) {
     reset(f198);
-    reset(rfPLAYING_FALLING_SOUND);
+    reset(rfPLAYING_SND_FALLING);
   }
 }
 rvCOUNTDOWN2--;

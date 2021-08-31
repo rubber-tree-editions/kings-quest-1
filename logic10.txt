@@ -4,8 +4,8 @@ LOGIC__HEADER
 
 #define rfGOAT_IS_HERE rf0
 // unused: rf1
-#define rfPLAYING_GOAT_SOUND rf2
-#define rfPLAYED_GOAT_SOUND rf3
+#define rfPLAYING_SND_GOAT rf2
+#define rfPLAYED_SND_GOAT rf3
 
 #define rvCOUNTDOWN rv0
 
@@ -41,13 +41,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
-  if (!rfPLAYING_GOAT_SOUND) {
-    set(rfPLAYING_GOAT_SOUND);
-    sound(SND_GOAT, rfPLAYED_GOAT_SOUND);
+  if (!rfPLAYING_SND_GOAT) {
+    set(rfPLAYING_SND_GOAT);
+    sound(SND_GOAT, rfPLAYED_SND_GOAT);
   }
-  if (rfPLAYED_GOAT_SOUND) {
-    reset(rfPLAYING_GOAT_SOUND);
-    reset(rfPLAYED_GOAT_SOUND);
+  if (rfPLAYED_SND_GOAT) {
+    reset(rfPLAYING_SND_GOAT);
+    reset(rfPLAYED_SND_GOAT);
   }
 }
 if (!rfGOAT_IS_HERE) {

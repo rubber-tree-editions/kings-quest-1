@@ -9,11 +9,11 @@ LOGIC__HEADER
 #define rfFELL_FROM_BEANSTALK_LOW rf4
 #define rfEGO_FINISHED_ANIMATING rf5
 #define rfFALLEN_FROM_SKY rf6
-#define rfPLAYING_FALLING_SOUND rf7
-#define rfPLAYED_FALLING_SOUND rf8
-#define rfPLAYED_BEANSTALK_SOUND rf9
-#define rfPLAYING_DWARF_SOUND rf10
-#define rfPLAYED_DWARF_SOUND rf11
+#define rfPLAYING_SND_FALLING rf7
+#define rfPLAYED_SND_FALLING rf8
+#define rfPLAYED_SND_BEANSTALK rf9
+#define rfPLAYING_SND_DWARF rf10
+#define rfPLAYED_SND_DWARF rf11
 
 #define rvCOUNTDOWN rv0
 #define rvDWARF_STEP_SIZE rv1
@@ -91,27 +91,27 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 if (rfDWARF_IS_HERE && fSOUND_END_MARKER) {
-  if (!rfPLAYING_DWARF_SOUND) {
-    set(rfPLAYING_DWARF_SOUND);
-    sound(SND_DWARF, rfPLAYED_DWARF_SOUND);
+  if (!rfPLAYING_SND_DWARF) {
+    set(rfPLAYING_SND_DWARF);
+    sound(SND_DWARF, rfPLAYED_SND_DWARF);
   }
-  if (rfPLAYED_DWARF_SOUND) {
-    reset(rfPLAYING_DWARF_SOUND);
-    reset(rfPLAYED_DWARF_SOUND);
+  if (rfPLAYED_SND_DWARF) {
+    reset(rfPLAYING_SND_DWARF);
+    reset(rfPLAYED_SND_DWARF);
   }
 }
-if (fFALLING_TO_EARTH && !rfPLAYING_FALLING_SOUND) {
-  set(rfPLAYING_FALLING_SOUND);
+if (fFALLING_TO_EARTH && !rfPLAYING_SND_FALLING) {
+  set(rfPLAYING_SND_FALLING);
   set(f135);
-  sound(SND_FALLING, rfPLAYED_FALLING_SOUND);
+  sound(SND_FALLING, rfPLAYED_SND_FALLING);
 }
-if (!rfFALLEN_FROM_SKY && rfPLAYED_FALLING_SOUND) {
-  reset(rfPLAYING_FALLING_SOUND);
-  reset(rfPLAYED_FALLING_SOUND);
+if (!rfFALLEN_FROM_SKY && rfPLAYED_SND_FALLING) {
+  reset(rfPLAYING_SND_FALLING);
+  reset(rfPLAYED_SND_FALLING);
 }
 if (rfFALLEN_FROM_SKY) {
   stop.sound();
-  set(rfPLAYING_FALLING_SOUND);
+  set(rfPLAYING_SND_FALLING);
   reset(fFALLING_TO_EARTH);
   reset(f135);
   set.view(oEGO, 114);
@@ -246,7 +246,7 @@ if (fCARRYING_MAGIC_BEANS && f155) {
     drop("beans");
     vSCORE += 2;
     print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
-    sound(SND_BEANSTALK, rfPLAYED_BEANSTALK_SOUND);
+    sound(SND_BEANSTALK, rfPLAYED_SND_BEANSTALK);
     overlay.pic(vTEMP_PIC);
     show.pic();
   }

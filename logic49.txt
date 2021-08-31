@@ -6,7 +6,7 @@ LOGIC__HEADER
 #define rfFALLEN_DOWN_WELL rf1
 #define rfFALLEN_OFF_ROPE rf2
 #define rfSWIMMING rf3
-#define rfPLAYING_FALLING_SOUND rf4
+#define rfPLAYING_SND_FALLING rf4
 #define rfFELL_FROM_ROPE rf5
 
 #define rvCOUNTDOWN rv0
@@ -84,13 +84,13 @@ if (fEGO_ON_WATER) {
 else {
   ignore.blocks(oEGO);
 }
-if (f182 && !rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE && !rfPLAYING_FALLING_SOUND) {
+if (f182 && !rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE && !rfPLAYING_SND_FALLING) {
   sound(SND_FALLING, fSOUND_END_MARKER);
-  set(rfPLAYING_FALLING_SOUND);
+  set(rfPLAYING_SND_FALLING);
 }
 if (fSOUND_END_MARKER) {
   if (!rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE) {
-    reset(rfPLAYING_FALLING_SOUND);
+    reset(rfPLAYING_SND_FALLING);
     reset(fSOUND_END_MARKER);
   }
 }

@@ -2,8 +2,8 @@
 
 LOGIC__HEADER
 
-#define rfTITLE_MUSIC_PLAYED rf0
-#define rfTITLE_MUSIC_PLAYING rf1
+#define rfPLAYED_SND_TITLE_MUSIC rf0
+#define rfPLAYING_SND_TITLE_MUSIC rf1
 
 #define rvCOUNTDOWN rv0
 
@@ -76,9 +76,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.menu.item("Toggle Sound   <F2>", cTOGGLESOUND);
   show.pic();
 }
-if (!rfTITLE_MUSIC_PLAYING) {
-  set(rfTITLE_MUSIC_PLAYING);
-  sound(SND_TITLE_MUSIC, rfTITLE_MUSIC_PLAYED);
+if (!rfPLAYING_SND_TITLE_MUSIC) {
+  set(rfPLAYING_SND_TITLE_MUSIC);
+  sound(SND_TITLE_MUSIC, rfPLAYED_SND_TITLE_MUSIC);
 }
 rvCOUNTDOWN--;
 if (rvCOUNTDOWN == 245) {

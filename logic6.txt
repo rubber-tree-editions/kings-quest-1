@@ -5,9 +5,9 @@ LOGIC__HEADER
 #define rfFELL_OFF_BEANSTALK_LOW rf0
 #define rfFELL_FROM_SKY rf1
 #define rfEGO_STOPPED_ANIMATING rf2
-#define rfPLAYING_FALLING_SOUND rf3
-#define rfPLAYED_FALLING_SOUND rf4
-#define rfPLAYED_BEANSTALK_SOUND rf5
+#define rfPLAYING_SND_FALLING rf3
+#define rfPLAYED_SND_FALLING rf4
+#define rfPLAYED_SND_BEANSTALK rf5
 
 #define rvCOUNTDOWN rv0
 
@@ -70,18 +70,18 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (fFALLING_TO_EARTH && !rfPLAYING_FALLING_SOUND) {
-  set(rfPLAYING_FALLING_SOUND);
+if (fFALLING_TO_EARTH && !rfPLAYING_SND_FALLING) {
+  set(rfPLAYING_SND_FALLING);
   set(f135);
-  sound(SND_FALLING, rfPLAYED_FALLING_SOUND);
+  sound(SND_FALLING, rfPLAYED_SND_FALLING);
 }
-if (!rfFELL_FROM_SKY && rfPLAYED_FALLING_SOUND) {
-  reset(rfPLAYING_FALLING_SOUND);
-  reset(rfPLAYED_FALLING_SOUND);
+if (!rfFELL_FROM_SKY && rfPLAYED_SND_FALLING) {
+  reset(rfPLAYING_SND_FALLING);
+  reset(rfPLAYED_SND_FALLING);
 }
 if (rfFELL_FROM_SKY) {
   stop.sound();
-  set(rfPLAYING_FALLING_SOUND);
+  set(rfPLAYING_SND_FALLING);
   reset(fFALLING_TO_EARTH);
   reset(f135);
   set.view(oEGO, 114);
@@ -152,7 +152,7 @@ if (fCARRYING_MAGIC_BEANS && f155) {
     drop("beans");
     vSCORE += 2;
     print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
-    sound(SND_BEANSTALK, rfPLAYED_BEANSTALK_SOUND);
+    sound(SND_BEANSTALK, rfPLAYED_SND_BEANSTALK);
     overlay.pic(vTEMP_PIC);
     show.pic();
   }
