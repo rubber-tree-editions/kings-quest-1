@@ -2,6 +2,14 @@
 
 LOGIC__HEADER
 
+#define rfRAT_IS_HERE rf0
+#define rfRAT_CAUGHT_YOU rf1
+#define rfWARNED_RAT_CAN_SMELL_YOU rf2
+#define rfDOOR_OPEN rf3
+#define rfRAT_LEFT rf4
+
+#define rvRAT_STEP_SIZE rv0
+
 #define oRAT o1
 #define oDOOR o2
 
@@ -25,11 +33,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oRAT);
     set.view(oRAT, 45);
     position(oRAT, 36, 127);
-    set(rf0);
-    follow.ego(oRAT, 15, rf1);
+    set(rfRAT_IS_HERE);
+    follow.ego(oRAT, 15, rfRAT_CAUGHT_YOU);
     observe.blocks(oRAT);
-    rv0 = 3;
-    step.size(oRAT, rv0);
+    rvRAT_STEP_SIZE = 3;
+    step.size(oRAT, rvRAT_STEP_SIZE);
   }
   load.sound(SND_DOOR_OPENING);
   load.view(46);
@@ -45,7 +53,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.priority(oDOOR, 9);
   position(oDOOR, 25, 119);
   draw(oDOOR);
-  if (rf0) {
+  if (rfRAT_IS_HERE) {
     draw(oRAT);
   }
   draw(oEGO);
@@ -62,8 +70,8 @@ if (f203) {
   reset(f203);
   stop.update(oDOOR);
 }
-if (rf0) {
-  reset(rf0);
+if (rfRAT_IS_HERE) {
+  reset(rfRAT_IS_HERE);
   sound(SND_VILLAIN, f148);
 }
 if (posn(oEGO, 0, 0, 54, 167)) {
@@ -72,8 +80,8 @@ if (posn(oEGO, 0, 0, 54, 167)) {
 else {
   ignore.blocks(oEGO);
 }
-if (fEGO_INVISIBLE && !rf2) {
-  set(rf2);
+if (fEGO_INVISIBLE && !rfWARNED_RAT_CAN_SMELL_YOU) {
+  set(rfWARNED_RAT_CAN_SMELL_YOU);
   print("Being invisible won't hide you from this rat's keen sense of smell.");
 }
 if (fRAT_IS_GONE) {
@@ -133,7 +141,7 @@ if (!fRAT_IS_GONE) {
     ) {
       if (fCARRYING_DIAMONDS && v70 < 35) {
         print("The huge rat takes the treasure you have offered and scuttles away.");
-        move.obj(oRAT, 46, 105, 0, rf4);
+        move.obj(oRAT, 46, 105, 0, rfRAT_LEFT);
         drop("pouch of diamonds");
         reset(fCARRYING_DIAMONDS);
         set(fDWARF_OR_TROLL_HAS_DIAMONDS);
@@ -149,7 +157,7 @@ if (!fRAT_IS_GONE) {
     || said("give", "golden egg", "rat")) {
     if (fCARRYING_GOLDEN_EGG && v70 < 35) {
       print("The huge rat takes the treasure you have offered and scuttles away.");
-      move.obj(oRAT, 46, 105, 0, rf4);
+      move.obj(oRAT, 46, 105, 0, rfRAT_LEFT);
       drop("gold egg");
       reset(fCARRYING_GOLDEN_EGG);
       set(fDWARF_OR_TROLL_HAS_EGG);
@@ -171,7 +179,7 @@ if (!fRAT_IS_GONE) {
     if (fCARRYING_GOLD_WALNUT) {
       if (v70 < 35) {
         print("The huge rat takes the treasure you have offered and scuttles away.");
-        move.obj(oRAT, 46, 105, 0, rf4);
+        move.obj(oRAT, 46, 105, 0, rfRAT_LEFT);
         drop("gold walnut");
         reset(fCARRYING_GOLD_WALNUT);
         set(fDWARF_OR_TROLL_HAS_WALNUT);
@@ -188,7 +196,7 @@ if (!fRAT_IS_GONE) {
   ) {
     if (fCARRYING_SCEPTRE && v70 < 35) {
       print("The huge rat takes the treasure you have offered and scuttles away.");
-      move.obj(oRAT, 46, 105, 0, rf4);
+      move.obj(oRAT, 46, 105, 0, rfRAT_LEFT);
       drop("sceptre");
       reset(fCARRYING_SCEPTRE);
       set(fDWARF_OR_TROLL_HAS_SCEPTRE);
@@ -211,7 +219,7 @@ if (!fRAT_IS_GONE) {
     if (fCARRYING_SWISS_CHEESE) {
       if (v70 < 35) {
         print("The rat drools at the sight of the cheese... and snatches it from your hand.  You might want to count your fingers.");
-        move.obj(oRAT, 46, 105, 0, rf4);
+        move.obj(oRAT, 46, 105, 0, rfRAT_LEFT);
         drop("cheese");
         reset(fCARRYING_SWISS_CHEESE);
         set(fRAT_ATE_CHEESE);
@@ -224,8 +232,8 @@ if (!fRAT_IS_GONE) {
     }
   }
 }
-if (rf4) {
-  reset(rf4);
+if (rfRAT_LEFT) {
+  reset(rfRAT_LEFT);
   erase(oRAT);
   set(fRAT_IS_GONE);
   print("The rat scrambles to the wall and seems to magically merge with it.");
@@ -233,7 +241,7 @@ if (rf4) {
 if (said("count", "fingers") || said("examine", "fingers")) {
   print("You count your fingers and are relieved to see you still have all of them.");
 }
-if (rf1) {
+if (rfRAT_CAUGHT_YOU) {
   set.view(oEGO, 95);
   print("Be careful around this rat next time!  He's dangerous!!");
   wander(oRAT);
@@ -245,13 +253,13 @@ if (said("open", "doors")) {
     start.update(oDOOR);
     sound(SND_DOOR_OPENING, f148);
     print("The door slowly opens.");
-    end.of.loop(oDOOR, rf3);
+    end.of.loop(oDOOR, rfRAT_LEFT);
   }
   else {
     print("Get closer if you want to try.");
   }
 }
-if (rf3) {
+if (rfRAT_LEFT) {
   new.room(ROOM76_LEPRECHAUN_ANTECHAMBER);
 }
 if (said("close", "doors")) {

@@ -2,7 +2,12 @@
 
 LOGIC__HEADER
 
+#define rfLEPRECHAUN_CAUGHT_YOU rf0
+#define rfLEPRECHAUNS_DANCING_AWAY rf1
+#define rfPLAYING_FIDDLE rf2
+#define rfPLAYED_SND_FIDDLE_TUNE rf3
 
+#define rvCOUNTDOWN rv0
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -41,7 +46,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       wander(o2);
     }
     else {
-      follow.ego(o2, 5, rf0);
+      follow.ego(o2, 5, rfLEPRECHAUN_CAUGHT_YOU);
     }
   }
   draw(oEGO);
@@ -58,8 +63,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   }
 }
-if (rf0) {
-  reset(rf0);
+if (rfLEPRECHAUN_CAUGHT_YOU) {
+  reset(rfLEPRECHAUN_CAUGHT_YOU);
   print("The leprechaun catches you and holds you with his small,  but strong arms.  I don't think the leprechaun will ever let go.");
   stop.motion(oEGO);
   set(f95);
@@ -68,21 +73,21 @@ if (rf0) {
   stop.cycling(o2);
   set(fGAME_OVER);
 }
-if (rf2) {
+if (rfPLAYING_FIDDLE) {
   if (said("play", "fiddle")) {
     print("You are already playing the fiddle.");
   }
 }
-if (rv0 != 0) {
-  rv0--;
+if (rvCOUNTDOWN != 0) {
+  rvCOUNTDOWN--;
 }
-if (!fDANCING_LEPRECHAUNS && !rf2) {
+if (!fDANCING_LEPRECHAUNS && !rfPLAYING_FIDDLE) {
   if (fCARRYING_FIDDLE && said("play", "fiddle")) {
-    set(rf1);
-    set(rf2);
-    rv0 = 45;
+    set(rfLEPRECHAUNS_DANCING_AWAY);
+    set(rfPLAYING_FIDDLE);
+    rvCOUNTDOWN = 45;
     draw(o1);
-    sound(SND_FIDDLE_TUNE, rf3);
+    sound(SND_FIDDLE_TUNE, rfPLAYED_SND_FIDDLE_TUNE);
     start.cycling(o13);
     wander(o13);
     erase(o2);
@@ -94,21 +99,21 @@ if (!fDANCING_LEPRECHAUNS && !rf2) {
     vSCORE += 3;
   }
 }
-if (rv0 > 1 && rf3) {
-  reset(rf3);
-  sound(SND_FIDDLE_TUNE, rf3);
+if (rvCOUNTDOWN > 1 && rfPLAYED_SND_FIDDLE_TUNE) {
+  reset(rfPLAYED_SND_FIDDLE_TUNE);
+  sound(SND_FIDDLE_TUNE, rfPLAYED_SND_FIDDLE_TUNE);
 }
-if (rv0 == 1) {
-  rv0 = 0;
+if (rvCOUNTDOWN == 1) {
+  rvCOUNTDOWN = 0;
   stop.sound();
-  reset(rf1);
-  reset(rf2);
+  reset(rfLEPRECHAUNS_DANCING_AWAY);
+  reset(rfPLAYING_FIDDLE);
   erase(o13);
   erase(o2);
   erase(o1);
   print("Totally involved in the music, they dance right out of the room.");
 }
-if (rf1) {
+if (rfLEPRECHAUNS_DANCING_AWAY) {
   if (vOBJECT_TOUCHING_EDGE == 13) {
     erase(o13);
   }

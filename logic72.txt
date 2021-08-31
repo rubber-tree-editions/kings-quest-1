@@ -2,7 +2,12 @@
 
 LOGIC__HEADER
 
+#define rfFELL_THROUGH_CLOUDS rf0
+#define rfFALLING rf1
+#define rfFELL_OFF_BEANSTALK rf2
+#define rfPLAYING_FALLING_SOUND rf3
 
+#define rvLOCK_PRIORITY rv0
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -22,13 +27,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (fFALLING_TO_EARTH && !rf2 && !rf3) {
+if (fFALLING_TO_EARTH && !rfFELL_OFF_BEANSTALK && !rfPLAYING_FALLING_SOUND) {
   sound(SND_FALLING, fSOUND_END_MARKER);
-  set(rf3);
+  set(rfPLAYING_FALLING_SOUND);
 }
 if (fSOUND_END_MARKER) {
-  if (!rf2) {
-    reset(rf3);
+  if (!rfFELL_OFF_BEANSTALK) {
+    reset(rfPLAYING_FALLING_SOUND);
     reset(fSOUND_END_MARKER);
   }
 }
@@ -72,37 +77,37 @@ if (fEGO_TOUCHED_TRIGGER_LINE
   && !posn(oEGO, 65, 100, 82, 120)
   && !fEGO_CLIMBING_BEANSTALK
 ) {
-  set(rf1);
+  set(rfFALLING);
   if (!fEGO_INVISIBLE) {
     set.view(oEGO, 105);
   }
   start.cycling(oEGO);
   set(f98);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
-  get.priority(oEGO, rv0);
-  set.priority.v(oEGO, rv0);
+  get.priority(oEGO, rvLOCK_PRIORITY);
+  set.priority.v(oEGO, rvLOCK_PRIORITY);
   vTEMP_Y = 165;
   vTEMP_STEP = 4;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf0);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_THROUGH_CLOUDS);
   sound(SND_FALLING, f198);
 }
-if (fEGO_TOUCHED_TRIGGER_LINE && !rf1 && posn(oEGO, 65, 100, 82, 120) && fEGO_INVISIBLE) {
-  set(rf1);
+if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING && posn(oEGO, 65, 100, 82, 120) && fEGO_INVISIBLE) {
+  set(rfFALLING);
   if (!fEGO_INVISIBLE) {
     set.view(oEGO, 105);
   }
   start.cycling(oEGO);
   set(f98);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
-  get.priority(oEGO, rv0);
-  set.priority.v(oEGO, rv0);
+  get.priority(oEGO, rvLOCK_PRIORITY);
+  set.priority.v(oEGO, rvLOCK_PRIORITY);
   vTEMP_Y = 165;
   vTEMP_STEP = 4;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf0);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_THROUGH_CLOUDS);
   sound(SND_FALLING, f198);
 }
-if (rf0) {
-  reset(rf0);
+if (rfFELL_THROUGH_CLOUDS) {
+  reset(rfFELL_THROUGH_CLOUDS);
   erase(oEGO);
   print("Whoops!  You fall toward a distant earth.");
   set(fGAME_OVER);
@@ -148,10 +153,10 @@ if (fEGO_TOUCHED_TRIGGER_LINE && fEGO_CLIMBING_BEANSTALK) {
   set(f98);
   vTEMP_Y = 166;
   vTEMP_STEP = 4;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf2);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_OFF_BEANSTALK);
 }
 FINALCHECKS:
-  if (rf2 || posn(oEGO, 0, 166, 159, 167)) {
+  if (rfFELL_OFF_BEANSTALK || posn(oEGO, 0, 166, 159, 167)) {
     new.room(ROOM71);
   }
   if (vEGO_EDGE_CODE == EDGE_RIGHT) {

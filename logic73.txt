@@ -2,6 +2,14 @@
 
 LOGIC__HEADER
 
+#define rfFELL_INTO_CAVE rf0
+#define rfEGO_FINISHED_ANIMATING rf1
+#define rfPLAYING_SND_FALLING rf2
+#define rfLOST_INVISIBILITY_DURING_FALL rf3
+#define rfBECAME_FULL_SIZE_DURING_FALL rf4
+
+#define rvCOUNTDOWN rv0
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -17,9 +25,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.blocks(oEGO);
     set(f98);
     start.cycling(oEGO);
-    move.obj(oEGO, 90, 142, 4, rf0);
+    move.obj(oEGO, 90, 142, 4, rfFELL_INTO_CAVE);
     if (fEGO_INVISIBLE) {
-      set(rf3);
+      set(rfLOST_INVISIBILITY_DURING_FALL);
       reset(fEGO_INVISIBLE);
       reset(fCARRYING_RING);
       drop("ring");
@@ -29,7 +37,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (fEGO_TINY) {
       reset(fEGO_TINY);
       vTINY_COUNTDOWN = 0;
-      set(rf4);
+      set(rfBECAME_FULL_SIZE_DURING_FALL);
     }
   }
   if (vPREV_ROOM_NO == ROOM74) {
@@ -38,9 +46,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (!rf0 && !rf2 && vPREV_ROOM_NO == ROOM48_LEPRECHAUN_HOLE) {
+if (!rfFELL_INTO_CAVE && !rfPLAYING_SND_FALLING && vPREV_ROOM_NO == ROOM48_LEPRECHAUN_HOLE) {
   sound(SND_FALLING, fSOUND_END_MARKER);
-  set(rf2);
+  set(rfPLAYING_SND_FALLING);
 }
 if (said("examine", "hole")) {
   print("The warm sunlight falls through the hole in the ceiling.  Unfortunately, you can't reach it.");
@@ -48,42 +56,42 @@ if (said("examine", "hole")) {
 if (said("examine", "cave")) {
   print("The dark tunnel leads off to the south.");
 }
-if (rf0) {
-  reset(rf0);
+if (rfFELL_INTO_CAVE) {
+  reset(rfFELL_INTO_CAVE);
   stop.sound();
   observe.blocks(oEGO);
   set.view(oEGO, 103);
   program.control();
   shake.screen(1);
   print("OUCH!");
-  rv0 = 36;
+  rvCOUNTDOWN = 36;
   sound(SND_OUCH, fSOUND_END_MARKER);
 }
 if (fSOUND_END_MARKER) {
-  if (rv0 != 0) {
+  if (rvCOUNTDOWN != 0) {
     reset(fSOUND_END_MARKER);
     sound(SND_OUCH, fSOUND_END_MARKER);
   }
 }
-if (rv0 == 1) {
+if (rvCOUNTDOWN == 1) {
   set.view(oEGO, 104);
-  end.of.loop(oEGO, rf1);
+  end.of.loop(oEGO, rfEGO_FINISHED_ANIMATING);
 }
-if (rf1) {
-  reset(rf1);
+if (rfEGO_FINISHED_ANIMATING) {
+  reset(rfEGO_FINISHED_ANIMATING);
   set.view(oEGO, 0);
   reset(f98);
   player.control();
-  if (rf3) {
-    reset(rf3);
+  if (rfLOST_INVISIBILITY_DURING_FALL) {
+    reset(rfLOST_INVISIBILITY_DURING_FALL);
     print("While falling through the hole, the magic ring fell off your finger.  Dangerous creatures can see you now!");
   }
-  if (rf4) {
-    reset(rf4);
+  if (rfBECAME_FULL_SIZE_DURING_FALL) {
+    reset(rfBECAME_FULL_SIZE_DURING_FALL);
     print("When you fell through the hole, you felt a streching sensation and are back to your normal size.");
   }
 }
-rv0--;
+rvCOUNTDOWN--;
 if (posn(oEGO, 0, 166, 159, 167)) {
   new.room(ROOM74);
 }
