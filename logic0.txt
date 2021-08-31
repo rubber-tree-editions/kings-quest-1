@@ -83,7 +83,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   observe.blocks(oEGO);
   reset(fSWIMMING_LOGIC_LOADED);
   reset(fSWIMMING_IMPOSSIBLE_HERE);
-  reset(f148);
+  reset(fMISC_END_MARKER);
   reset(fSOUND_END_MARKER);
   reset(f198);
   reset(f199);
@@ -457,7 +457,7 @@ if (fCARRYING_WALNUT) {
   }
   if (said("open", "walnut") || said("crack", "walnut")) {
     if (vROOM_NO == ROOM30_WALNUT_TREE) {
-      sound(SND_GOLDEN_WALNUT, f148);
+      sound(SND_GOLDEN_WALNUT, fMISC_END_MARKER);
     }
     print("When you open the walnut, you discover the nut inside is pure gold!");
     reset(fCARRYING_WALNUT);
@@ -973,7 +973,7 @@ if (fCARRYING_FIDDLE) {
     if (said("play", "fiddle")) {
       print("You play a lively, toe-tapping tune on the fiddle.");
       if (vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE) {
-        sound(SND_FIDDLE_TUNE, f148);
+        sound(SND_FIDDLE_TUNE, fMISC_END_MARKER);
       }
     }
   }

@@ -51,7 +51,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM70 && fEGO_CLIMBING_BEANSTALK) {
     set.view(oEGO, 74);
     position(oEGO, 64, 41);
-    move.obj(oEGO, 64, 41, 0, f148);
+    move.obj(oEGO, 64, 41, 0, fMISC_END_MARKER);
     set.priority(oEGO, 8);
   }
   if (vPREV_ROOM_NO == ROOM70 && fFALLING_TO_EARTH) {
@@ -228,7 +228,7 @@ if (vBEANSTALK_ROOM == ROOM22_CONDOR_AND_CAVE && !fEGO_INVISIBLE) {
       position(oEGO, 71, 77);
       set.priority(oEGO, 8);
       draw(oEGO);
-      move.obj(oEGO, 71, 77, 0, f148);
+      move.obj(oEGO, 71, 77, 0, fMISC_END_MARKER);
     }
     else {
       print("You can't reach the beanstalk from here.");

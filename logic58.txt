@@ -95,7 +95,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
   if (!rfVILLAIN_SOUND_PLAYED) {
     set(rfVILLAIN_SOUND_PLAYED);
-    sound(SND_VILLAIN, f148);
+    sound(SND_VILLAIN, fMISC_END_MARKER);
   }
 }
 if (rfGIANT_CAUGHT_YOU && rfGIANT_IS_AFTER_YOU) {
@@ -251,7 +251,7 @@ if (fCARRYING_SLINGSHOT) {
       position.v(oFLUNG_PEBBLE, vTEMP_X_2, vTEMP_Y_2);
       erase(oEGO);
       draw(oFLUNG_PEBBLE);
-      sound(SND_KILL_GIANT, f148);
+      sound(SND_KILL_GIANT, fMISC_END_MARKER);
       end.of.loop(oFLUNG_PEBBLE, rfPEBBLE_HIT_GIANT_WITH_CHEST);
       print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.");
       reset(fCARRYING_PEBBLES);
@@ -269,7 +269,7 @@ if (fCARRYING_SLINGSHOT) {
       position.v(oFLUNG_PEBBLE, vTEMP_X_2, vTEMP_Y_2);
       erase(oEGO);
       draw(oFLUNG_PEBBLE);
-      sound(SND_KILL_GIANT, f148);
+      sound(SND_KILL_GIANT, fMISC_END_MARKER);
       end.of.loop(oFLUNG_PEBBLE, rfPEBBLE_HIT_GIANT_NO_CHEST);
       print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.");
       reset(fCARRYING_PEBBLES);
@@ -302,7 +302,7 @@ if (rfPEBBLE_HIT_GIANT_WITH_CHEST) {
   set.view(oGIANT, 77);
   step.size(oGIANT, rvZERO);
   draw(oGIANT);
-  end.of.loop(oGIANT, f148);
+  end.of.loop(oGIANT, fMISC_END_MARKER);
   get.posn(oGIANT, vTEMP_X, vTEMP_Y);
   position.v(oCHEST, vTEMP_X, vTEMP_Y);
   draw(oCHEST);
@@ -319,7 +319,7 @@ if (rfPEBBLE_HIT_GIANT_NO_CHEST) {
   set.view(oGIANT, 77);
   step.size(oGIANT, rvZERO);
   draw(oGIANT);
-  end.of.loop(oGIANT, f148);
+  end.of.loop(oGIANT, fMISC_END_MARKER);
   vGIANT_STATE = GIANTSTATE_DEAD_NO_CHEST;
 }
 if (fCARRYING_DAGGER) {

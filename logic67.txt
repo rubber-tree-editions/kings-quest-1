@@ -17,12 +17,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM66_MOUNTAIN_STAIRWAY_BOTTOM) {
     position(oEGO, 9, 152);
     set.loop(oEGO, 0);
-    move.obj(oEGO, 9, 152, 0, f148);
+    move.obj(oEGO, 9, 152, 0, fMISC_END_MARKER);
   }
   if (vPREV_ROOM_NO == ROOM68_MOUNTAIN_STAIRWAY_NEAR_TOP) {
     position(oEGO, 120, 41);
     set.loop(oEGO, 1);
-    move.obj(oEGO, 120, 41, 0, f148);
+    move.obj(oEGO, 120, 41, 0, fMISC_END_MARKER);
   }
   draw(oEGO);
   show.pic();

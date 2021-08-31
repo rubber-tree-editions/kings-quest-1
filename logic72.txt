@@ -22,7 +22,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM71) {
     set.view(oEGO, 74);
     position(oEGO, 66, 165);
-    move.obj(oEGO, 66, 165, 0, f148);
+    move.obj(oEGO, 66, 165, 0, fMISC_END_MARKER);
   }
   draw(oEGO);
   show.pic();
@@ -119,7 +119,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 65, 100, 82, 120) && !fEGO_INVISIBLE
     set.view(oEGO, 0);
     position(oEGO, 85, 112);
     draw(oEGO);
-    move.obj(oEGO, 85, 112, 0, f148);
+    move.obj(oEGO, 85, 112, 0, fMISC_END_MARKER);
     goto(FINALCHECKS);
   }
   if (!fEGO_CLIMBING_BEANSTALK) {
@@ -128,7 +128,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 65, 100, 82, 120) && !fEGO_INVISIBLE
     set.view(oEGO, 74);
     position(oEGO, 70, 123);
     draw(oEGO);
-    move.obj(oEGO, 70, 123, 0, f148);
+    move.obj(oEGO, 70, 123, 0, fMISC_END_MARKER);
   }
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && fEGO_CLIMBING_BEANSTALK) {

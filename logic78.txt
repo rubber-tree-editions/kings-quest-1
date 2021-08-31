@@ -12,7 +12,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (vPREV_ROOM_NO == ROOM77_LEPRECHAUN_KING_THRONE_ROOM) {
     position(oEGO, 146, 131);
-    move.obj(oEGO, 146, 131, 0, f148);
+    move.obj(oEGO, 146, 131, 0, fMISC_END_MARKER);
   }
   draw(oEGO);
   show.pic();

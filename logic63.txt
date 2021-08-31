@@ -82,7 +82,7 @@ if (fEGO_ON_WATER && !posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT_OF_THE_TREE
   vTEMP_Y = 166;
   vTEMP_STEP = 3;
   sound(SND_FALLING, fSOUND_END_MARKER);
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f148);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, fMISC_END_MARKER);
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT_OF_THE_TREE) {
   set(rfFALLING_OUT_OF_THE_TREE);
@@ -95,7 +95,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT
   vTEMP_Y = 166;
   vTEMP_STEP = 3;
   sound(SND_FALLING, fSOUND_END_MARKER);
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f148);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, fMISC_END_MARKER);
 }
 if (posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT_OF_THE_TREE) {
   if (fEGO_TOUCHED_TRIGGER_LINE || fEGO_ON_WATER) {
@@ -109,10 +109,10 @@ if (posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT_OF_THE_TREE) {
     vTEMP_Y = 166;
     vTEMP_STEP = 3;
     sound(SND_FALLING, fSOUND_END_MARKER);
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, f148);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, fMISC_END_MARKER);
   }
 }
-if (f148) {
+if (fMISC_END_MARKER) {
   new.room(ROOM14_BASE_GOLDEN_EGG_TREE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {

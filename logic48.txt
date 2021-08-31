@@ -108,7 +108,7 @@ if (fEGO_ON_WATER && !f199) {
   vTEMP_Y += 35;
   vTEMP_STEP = 8;
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_IN_HOLE);
-  sound(SND_FALLING, f148);
+  sound(SND_FALLING, fMISC_END_MARKER);
 }
 if (rfFALLEN_IN_HOLE) {
   reset(rfFALLEN_IN_HOLE);

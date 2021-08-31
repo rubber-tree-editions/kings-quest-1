@@ -130,7 +130,7 @@ if (rfTROLL_IS_HERE && fGOAT_COMPANION && !rfGOAT_APPROACHING_TROLL) {
 if (rfGOAT_AT_BRIDGE) {
   ignore.objs(oGOAT);
   reset(rfGOAT_AT_BRIDGE);
-  move.obj(oTROLL, 100, 124, 0, f148);
+  move.obj(oTROLL, 100, 124, 0, fMISC_END_MARKER);
   move.obj(oGOAT, 100, 124, 1, f203);
 }
 distance(oTROLL, oGOAT, v62);

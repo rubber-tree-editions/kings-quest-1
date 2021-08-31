@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
     if (!fEGO_ON_WATER && vTEMP_Y < 70) {
       position(oEGO, 2, 47);
-      move.obj(oEGO, 2, 47, 1, f148);
+      move.obj(oEGO, 2, 47, 1, fMISC_END_MARKER);
     }
   }
   if (vPREV_ROOM_NO == ROOM42_STONE_BRIDGE && fEGO_ON_WATER) {

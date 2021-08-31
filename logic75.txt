@@ -60,7 +60,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
   if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
     reverse.loop(oDOOR, f203);
-    sound(SND_DOOR_OPENING, f148);
+    sound(SND_DOOR_OPENING, fMISC_END_MARKER);
   }
   else {
     stop.update(oDOOR);
@@ -72,7 +72,7 @@ if (f203) {
 }
 if (rfRAT_IS_HERE) {
   reset(rfRAT_IS_HERE);
-  sound(SND_VILLAIN, f148);
+  sound(SND_VILLAIN, fMISC_END_MARKER);
 }
 if (posn(oEGO, 0, 0, 54, 167)) {
   observe.blocks(oEGO);
@@ -251,7 +251,7 @@ distance(oEGO, oDOOR, v71);
 if (said("open", "doors")) {
   if (v71 < 25) {
     start.update(oDOOR);
-    sound(SND_DOOR_OPENING, f148);
+    sound(SND_DOOR_OPENING, fMISC_END_MARKER);
     print("The door slowly opens.");
     end.of.loop(oDOOR, rfRAT_LEFT);
   }

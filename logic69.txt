@@ -19,7 +19,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM68_MOUNTAIN_STAIRWAY_NEAR_TOP) {
     position(oEGO, 144, 155);
     set.loop(oEGO, 1);
-    move.obj(oEGO, 144, 155, 0, f148);
+    move.obj(oEGO, 144, 155, 0, fMISC_END_MARKER);
   }
   draw(oEGO);
   show.pic();

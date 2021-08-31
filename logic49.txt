@@ -63,7 +63,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       set.cel(o1, 0);
       draw(o1);
       add.to.pic(99, 0, 0, 84, 119, 4, 4);
-      end.of.loop(o1, f148);
+      end.of.loop(o1, fMISC_END_MARKER);
       goto(SHOWPIC);
     }
     add.to.pic(99, 0, 0, 84, 119, 4, 4);
@@ -192,7 +192,7 @@ if (!fON_WELL_ROPE && !rfFALLING_DOWN_WELL) {
       position(oEGO, 81, 113);
       set.priority(oEGO, 15);
       draw(oEGO);
-      move.obj(oEGO, 81, 113, 0, f148);
+      move.obj(oEGO, 81, 113, 0, fMISC_END_MARKER);
       set(fON_WELL_ROPE);
       reset(rfSWIMMING);
     }
@@ -204,7 +204,7 @@ if (!fON_WELL_ROPE && !rfFALLING_DOWN_WELL) {
       position(oEGO, 81, 113);
       set.priority(oEGO, 15);
       draw(oEGO);
-      move.obj(oEGO, 81, 113, 0, f148);
+      move.obj(oEGO, 81, 113, 0, fMISC_END_MARKER);
       set(fON_WELL_ROPE);
       reset(rfSWIMMING);
     }
@@ -220,7 +220,7 @@ if (!fON_WELL_ROPE && !rfFALLING_DOWN_WELL) {
       stop.update(o1);
       set.priority(oEGO, 15);
       draw(oEGO);
-      move.obj(oEGO, 81, 113, 0, f148);
+      move.obj(oEGO, 81, 113, 0, fMISC_END_MARKER);
       set(fON_WELL_ROPE);
       reset(fIN_WELL_BUCKET);
     }

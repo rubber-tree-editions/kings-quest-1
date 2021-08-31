@@ -111,7 +111,7 @@ if (rvCOUNTDOWN != 0) {
       ignore.blocks(oKING);
       rvKING_CYCLE_TIME = 2;
       cycle.time(oKING, rvKING_CYCLE_TIME);
-      move.obj(oKING, 55, 95, 0, f148);
+      move.obj(oKING, 55, 95, 0, fMISC_END_MARKER);
       print("As you approach the throne, the King himself rises to commend  you for a job well done.");
       if (said("examine", "king")) {
         print("The King is walking towards you to commend you.");

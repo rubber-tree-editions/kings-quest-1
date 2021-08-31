@@ -5,7 +5,7 @@ LOGIC__HEADER
 vGAME_OVER_MESSAGE_COUNTDOWN--;
 if (vGAME_OVER_MESSAGE_COUNTDOWN == 1) {
   vGAME_OVER_MESSAGE_COUNTDOWN = 0;
-  sound(SND_GAME_OVER, f148);
+  sound(SND_GAME_OVER, fMISC_END_MARKER);
   if (vSCORE < 50) {
     print("We, at Sierra, wish to thank you for playing King's Quest. We are very sorry that you did not succeed and hope you will fare better next time. Good luck.");
   }

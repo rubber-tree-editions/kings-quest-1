@@ -120,7 +120,7 @@ if (posn(oEGO, 40, 127, 70, 135)) {
   }
   if (said("open", "doors")) {
     start.update(oDOOR);
-    sound(SND_DOOR_OPENING, f148);
+    sound(SND_DOOR_OPENING, fMISC_END_MARKER);
     end.of.loop(oDOOR, rfDOOR_OPENED);
   }
 }

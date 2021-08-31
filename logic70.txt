@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM71 && fEGO_CLIMBING_BEANSTALK) {
     set.view(oEGO, 74);
     position(oEGO, 69, 40);
-    move.obj(oEGO, 69, 40, 0, f148);
+    move.obj(oEGO, 69, 40, 0, fMISC_END_MARKER);
   }
   if (vPREV_ROOM_NO == ROOM71 && fFALLING_TO_EARTH) {
     program.control();
@@ -35,7 +35,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO < ROOM50) {
     set.view(oEGO, 74);
     position(oEGO, 69, 160);
-    move.obj(oEGO, 69, 160, 0, f148);
+    move.obj(oEGO, 69, 160, 0, fMISC_END_MARKER);
   }
   draw(oEGO);
   show.pic();

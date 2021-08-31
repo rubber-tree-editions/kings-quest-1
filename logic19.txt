@@ -134,7 +134,7 @@ if (posn(oEGO, 90, 93, 125, 114)) {
   if (vDOOR_STATE == DOORSTATE_CLOSED) {
     if (said("open", "doors") || said("turn", "knob")) {
       start.update(oDOOR);
-      sound(SND_DOOR_OPENING, f148);
+      sound(SND_DOOR_OPENING, fMISC_END_MARKER);
       end.of.loop(oDOOR, rfDOOR_OPENED);
       vDOOR_STATE = DOORSTATE_OPEN;
     }

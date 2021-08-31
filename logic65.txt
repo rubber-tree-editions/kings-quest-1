@@ -152,7 +152,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 if (rfUNPROTECTED_BY_MAGIC && !rfPLAYED_SND_VILLAIN) {
   set(rfPLAYED_SND_VILLAIN);
-  sound(SND_VILLAIN, f148);
+  sound(SND_VILLAIN, fMISC_END_MARKER);
 }
 if (fGOAT_COMPANION) {
   reset(fGOAT_COMPANION);
@@ -253,7 +253,7 @@ if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 3) {
 if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 2) {
   position(oWITCH, 49, 160);
   draw(oWITCH);
-  sound(SND_VILLAIN, f148);
+  sound(SND_VILLAIN, fMISC_END_MARKER);
   set(rfWITCH_IS_HERE);
   if (posn(oEGO, 105, 1, 158, 166)) {
     move.obj(oWITCH, 26, 120, 2, rfWITCH_AT_OVEN);
@@ -384,7 +384,7 @@ if (posn(oEGO, 23, 89, 55, 100)) {
     }
     if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE) {
       start.cycling(oCUPBOARD);
-      end.of.loop(oCUPBOARD, f148);
+      end.of.loop(oCUPBOARD, fMISC_END_MARKER);
       vCUPBOARD_STATE = CUPBOARDSTATE_OPEN_NO_CHEESE;
     }
     if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE) {
@@ -404,11 +404,11 @@ if (posn(oEGO, 23, 89, 55, 100)) {
       print("It is already closed.");
     }
     if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_NO_CHEESE) {
-      reverse.loop(oCUPBOARD, f148);
+      reverse.loop(oCUPBOARD, fMISC_END_MARKER);
       vCUPBOARD_STATE = CUPBOARDSTATE_CLOSED_NO_CHEESE;
     }
     if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_WITH_CHEESE) {
-      reverse.loop(oCUPBOARD, f148);
+      reverse.loop(oCUPBOARD, fMISC_END_MARKER);
       erase(oSWISS_CHEESE);
       vCUPBOARD_STATE = CUPBOARDSTATE_CLOSED_WITH_CHEESE;
     }
