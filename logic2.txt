@@ -187,8 +187,8 @@ if (!fGOAT_COMPANION && !fNO_BUSINESS_WITH_KING) {
       end.of.loop(oCASTLE_DOORS, rfDOORS_FINISHED_OPENING);
       set.priority(oEGO, 15);
       print("The huge doors swing open slowly.");
-      if (!f193) {
-        set(f193);
+      if (!fPOINTS_FOR_ENTERING_CASTLE) {
+        set(fPOINTS_FOR_ENTERING_CASTLE);
         vSCORE += 1;
         goto(FINALCHECKS);
       }

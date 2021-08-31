@@ -21,8 +21,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oEGO, 38, 116);
   }
   if (vPREV_ROOM_NO == ROOM51_DRAGON_STOMPING_GROUND) {
-    if (!f208) {
-      set(f208);
+    if (!fPOINTS_FOR_LEAVING_DRAGONS_LAIR) {
+      set(fPOINTS_FOR_LEAVING_DRAGONS_LAIR);
       vSCORE += 2;
     }
   }

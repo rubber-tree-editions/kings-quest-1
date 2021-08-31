@@ -218,7 +218,7 @@ if (rvCOUNTDOWN3 == 1) {
   else {
     print("Try as you will to escape, your labor will be in vain.");
   }
-  set(f95);
+  set(fSCRIPTED_MOTION);
   stop.cycling(oEGO);
   set(fGAME_OVER);
 }

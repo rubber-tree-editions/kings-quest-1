@@ -74,7 +74,7 @@ if (!fTAKEN_GOLDEN_EGG) {
 }
 if (fEGO_ON_WATER && !posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT_OF_THE_TREE) {
   set(rfFALLING_OUT_OF_THE_TREE);
-  set(f131);
+  set(fFALLING_OUT_OF_TREE);
   ignore.blocks(oEGO);
   set.view(oEGO, 105);
   print("Apparently you lost your grip while climbing this tree and you fall to the hard earth below.");
@@ -86,7 +86,7 @@ if (fEGO_ON_WATER && !posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT_OF_THE_TREE
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT_OF_THE_TREE) {
   set(rfFALLING_OUT_OF_THE_TREE);
-  set(f131);
+  set(fFALLING_OUT_OF_TREE);
   ignore.blocks(oEGO);
   set.priority(oEGO, 4);
   set.view(oEGO, 105);
@@ -100,7 +100,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT
 if (posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT_OF_THE_TREE) {
   if (fEGO_TOUCHED_TRIGGER_LINE || fEGO_ON_WATER) {
     set(rfFALLING_OUT_OF_THE_TREE);
-    set(f131);
+    set(fFALLING_OUT_OF_TREE);
     ignore.blocks(oEGO);
     set.priority(oEGO, 5);
     set.view(oEGO, 105);

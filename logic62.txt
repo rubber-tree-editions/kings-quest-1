@@ -73,7 +73,7 @@ if (!fSLINGSHOT_TAKEN) {
   }
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {
-  set(f95);
+  set(fSCRIPTED_MOTION);
   program.control();
   stop.cycling(oEGO);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);

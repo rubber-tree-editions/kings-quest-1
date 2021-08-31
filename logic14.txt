@@ -22,7 +22,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 21, 90, 0, 0);
   }
   if (vPREV_ROOM_NO == ROOM63_UP_GOLDEN_EGG_TREE) {
-    if (f131) {
+    if (fFALLING_OUT_OF_TREE) {
       load.view(105);
       load.view(103);
       load.view(104);
@@ -41,9 +41,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (f131 && !rfPLAYING_SND_FALLING) {
+if (fFALLING_OUT_OF_TREE && !rfPLAYING_SND_FALLING) {
   set(rfPLAYING_SND_FALLING);
-  set(f135);
+  set(f135_UNKNOWN);
   sound(SND_FALLING, fSOUND_END_MARKER_2);
 }
 if (!rfFELL_OUT_OF_TREE && fSOUND_END_MARKER_2) {
@@ -53,7 +53,7 @@ if (!rfFELL_OUT_OF_TREE && fSOUND_END_MARKER_2) {
 rvCOUNTDOWN--;
 if (rfFELL_OUT_OF_TREE) {
   reset(rfFELL_OUT_OF_TREE);
-  reset(f131);
+  reset(fFALLING_OUT_OF_TREE);
   observe.blocks(oEGO);
   release.priority(oEGO);
   stop.motion(oEGO);
@@ -72,7 +72,7 @@ if (fSOUND_END_MARKER) {
 }
 if (rvCOUNTDOWN == 1) {
   rvCOUNTDOWN = 0;
-  reset(f135);
+  reset(f135_UNKNOWN);
   set.view(oEGO, 104);
   end.of.loop(oEGO, rfEGO_STOPPED_ANIMATING);
 }

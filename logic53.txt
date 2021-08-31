@@ -95,13 +95,13 @@ if (rvCOUNTDOWN != 0) {
   }
   if (rfFINISHED_MOVING_ASIDE2) {
     reset(rfFINISHED_MOVING_ASIDE2);
-    set(f95);
+    set(fSCRIPTED_MOTION);
     set.loop(oEGO, 3);
     stop.motion(oEGO);
     stop.cycling(oEGO);
     rvCOUNTDOWN = 200;
   }
-  if (f95) {
+  if (fSCRIPTED_MOTION) {
     if (rvCOUNTDOWN == 195) {
       erase(oKING);
       set.view(oKING, 98);
@@ -140,7 +140,7 @@ if (rvCOUNTDOWN != 0) {
     if (rvCOUNTDOWN == 105) {
       program.control();
       print("The experiences of your quest will be invaluable to you as you begin your reign as King of Daventry!!");
-      reset(f95);
+      reset(fSCRIPTED_MOTION);
       start.cycling(oEGO);
       ignore.objs(oEGO);
       ignore.blocks(oEGO);

@@ -161,7 +161,7 @@ if (rfLEPRECHAUN_CAUGHT_YOU) {
   reset(rfLEPRECHAUN_CAUGHT_YOU);
   print("The leprechaun, with much support from his peers, catches you and refuses to let go.  I think you will be here for a long, long time.");
   stop.motion(oEGO);
-  set(f95);
+  set(fSCRIPTED_MOTION);
   stop.cycling(oEGO);
   stop.motion(oLEPRECHAUN);
   stop.cycling(oLEPRECHAUN);

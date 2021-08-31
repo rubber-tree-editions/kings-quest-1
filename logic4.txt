@@ -106,8 +106,8 @@ if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   }
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
-  if (f66) {
-    reset(f66);
+  if (f66_UNKNOWN) {
+    reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
   }

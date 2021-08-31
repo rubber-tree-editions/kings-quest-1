@@ -52,7 +52,7 @@ v70--;
 if (v70 == 1) {
   set(rfWOLF_IS_HERE);
   position(oWOLF, 7, 68);
-  set(f135);
+  set(f135_UNKNOWN);
   sound(SND_VILLAIN, fSOUND_END_MARKER);
   draw(oWOLF);
   if (!fGOAT_COMPANION) {
@@ -68,7 +68,7 @@ if (v70 == 1) {
 }
 if (fSOUND_END_MARKER) {
   reset(fSOUND_END_MARKER);
-  reset(f135);
+  reset(f135_UNKNOWN);
 }
 if (!rfWOLF_IS_HERE) {
   if (said("anyword", "wolf")) {

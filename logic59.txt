@@ -42,8 +42,8 @@ if (said("examine", "tree")) {
 if (said("examine", "flowers")) {
   print("These are unusual looking flowers.");
 }
-if (fEGO_TOUCHED_TRIGGER_LINE && !f95 && posn(oEGO, 0, 84, 159, 167)) {
-  set(f95);
+if (fEGO_TOUCHED_TRIGGER_LINE && !fSCRIPTED_MOTION && posn(oEGO, 0, 84, 159, 167)) {
+  set(fSCRIPTED_MOTION);
   stop.cycling(oEGO);
   sound(SND_FALLING, fSOUND_END_MARKER);
   move.obj(oEGO, 153, 166, 5, rfHIDE_EGO);

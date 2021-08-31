@@ -26,7 +26,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == ROOM6_POUCH_STUMP) {
     vTEMP_PIC = 84;
-    set(f155);
+    set(fINIT_BEANSTALK);
     load.pic(vTEMP_PIC);
     load.view(114);
     load.view(103);
@@ -72,7 +72,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 if (fFALLING_TO_EARTH && !rfPLAYING_SND_FALLING) {
   set(rfPLAYING_SND_FALLING);
-  set(f135);
+  set(f135_UNKNOWN);
   sound(SND_FALLING, rfPLAYED_SND_FALLING);
 }
 if (!rfFELL_FROM_SKY && rfPLAYED_SND_FALLING) {
@@ -83,7 +83,7 @@ if (rfFELL_FROM_SKY) {
   stop.sound();
   set(rfPLAYING_SND_FALLING);
   reset(fFALLING_TO_EARTH);
-  reset(f135);
+  reset(f135_UNKNOWN);
   set.view(oEGO, 114);
   shake.screen(2);
   set(fGAME_OVER);
@@ -144,7 +144,7 @@ if (said("get", "bag of jewels") && !fCARRYING_POUCH) {
     print("You have to find it first.");
   }
 }
-if (fCARRYING_MAGIC_BEANS && f155) {
+if (fCARRYING_MAGIC_BEANS && fINIT_BEANSTALK) {
   if (said("plant", "magic beans")) {
     reset(fCARRYING_MAGIC_BEANS);
     vBEANSTALK_ROOM = ROOM6_POUCH_STUMP;
@@ -199,7 +199,7 @@ if (fEGO_CLIMBING_BEANSTALK) {
     vTEMP_Y = 106;
     vTEMP_STEP = 2;
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_OFF_BEANSTALK_LOW);
-    set(f135);
+    set(f135_UNKNOWN);
     sound(SND_FALLING, fSOUND_END_MARKER_2);
   }
 }
@@ -215,7 +215,7 @@ if (rfFELL_OFF_BEANSTALK_LOW) {
   set(fCYCLE_EGO_ANIMATION);
   shake.screen(2);
   print("Ouch!");
-  set(f135);
+  set(f135_UNKNOWN);
   sound(SND_OUCH, fSOUND_END_MARKER);
 }
 if (fSOUND_END_MARKER) {
@@ -237,7 +237,7 @@ if (rfEGO_STOPPED_ANIMATING) {
   player.control();
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
-  reset(f155);
+  reset(fINIT_BEANSTALK);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON && fEGO_CLIMBING_BEANSTALK) {
   new.room(ROOM70);

@@ -51,7 +51,7 @@ if (v70 == 1) {
   set(rfWITCH_IS_HERE);
   position(oWITCH, 80, 40);
   draw(oWITCH);
-  set(f135);
+  set(f135_UNKNOWN);
   sound(SND_VILLAIN, fSOUND_END_MARKER);
   if (!fGOAT_COMPANION) {
     print("It's a witch swooping through the sky... She's trying to catch you!  Look out!");
@@ -70,11 +70,11 @@ if (v70 == 1) {
 }
 if (fSOUND_END_MARKER) {
   reset(fSOUND_END_MARKER);
-  reset(f135);
+  reset(f135_UNKNOWN);
 }
 if (rfWITCH_GOT_YOU) {
   reset(rfWITCH_GOT_YOU);
-  reset(f135);
+  reset(f135_UNKNOWN);
   if (fPROTECTED_BY_SPELL) {
     print("The witch can feel your protective spell and bids a hasty retreat.");
     wander(oWITCH);

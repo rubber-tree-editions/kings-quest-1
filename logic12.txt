@@ -55,17 +55,17 @@ if (fROOM_SCRIPT_EXECUTED) {
       set.cel(oBUCKET, 7);
     }
   }
-  if (!f178) {
+  if (!fROPE_GONE) {
     load.view(17);
     animate.obj(oROPE);
     set.view(oROPE, 17);
     ignore.blocks(oROPE);
     position(oROPE, 43, 147);
     set.priority(oROPE, 11);
-    if (!f179) {
+    if (!fROPE_DANGLING_IN_WELL) {
       set.cel(oROPE, 0);
     }
-    if (f179) {
+    if (fROPE_DANGLING_IN_WELL) {
       set.cel(oROPE, 2);
     }
   }
@@ -95,7 +95,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oBUCKET);
     stop.update(oBUCKET);
   }
-  if (fBUCKET_ROPE_CUT && !f178) {
+  if (fBUCKET_ROPE_CUT && !fROPE_GONE) {
     draw(oROPE);
     stop.cycling(oROPE);
   }
@@ -117,7 +117,7 @@ if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
 }
 if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
   if (posn(oEGO, 10, 100, 75, 150)) {
-    if (fBUCKET_LOWERED || f179) {
+    if (fBUCKET_LOWERED || fROPE_DANGLING_IN_WELL) {
       if (said("climb", "rope")
         || said("climb", "well")
         || said("go", "well")
@@ -139,7 +139,7 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         move.obj(oEGO, 39, 132, 0, fMISC_END_MARKER);
       }
     }
-    if (!fBUCKET_LOWERED && !f179) {
+    if (!fBUCKET_LOWERED && !fROPE_DANGLING_IN_WELL) {
       if (said("climb", "well")) {
         print("The sides of this well are too slippery to climb down.");
       }
@@ -181,7 +181,7 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         print("There is no bucket here.");
       }
     }
-    if (fBUCKET_ROPE_CUT && !f179) {
+    if (fBUCKET_ROPE_CUT && !fROPE_DANGLING_IN_WELL) {
       if (said("go", "well") || said("go down", "well")) {
         set(rfCLIMBED_INTO_WELL);
         set(rfENTERED_WELL);
@@ -268,7 +268,7 @@ if (fON_WELL_ROPE) {
     vTEMP_STEP = 3;
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_OFF_ROPE);
     print("You should be more careful the next time you try  climbing ropes.");
-    set(f135);
+    set(f135_UNKNOWN);
     sound(SND_FALLING, fSOUND_END_MARKER);
     reset(fON_WELL_ROPE);
   }
@@ -277,7 +277,7 @@ if (rfFELL_OFF_ROPE || rfFALLEN_INTO_WELL) {
   reset(rfFELL_OFF_ROPE);
   reset(rfFALLEN_INTO_WELL);
   erase(oEGO);
-  set(f182);
+  set(fFALLING_DOWN_WELL);
   new.room(ROOM49_INSIDE_WELL);
 }
 if (rfENTERED_WELL) {
@@ -294,7 +294,7 @@ if (rfENTERED_WELL) {
   if (rfJUMPED_INTO_WELL) {
     print("What a mistake you made!  This well is too deep to jump into.");
   }
-  set(f135);
+  set(f135_UNKNOWN);
   sound(SND_FALLING, fSOUND_END_MARKER);
 }
 if (fBUCKET_ROPE_CUT || fBUCKET_LOWERED) {
@@ -411,7 +411,7 @@ if (!posn(oEGO, 10, 109, 71, 153)) {
     print("This well is one of the most ancient sites in the entire kingdom.  History and mystery seem to echo from its  every stone.");
   }
 }
-if (!f178) {
+if (!fROPE_GONE) {
   if (said("examine", "rope")) {
     if (posn(oEGO, 10, 109, 71, 153)) {
       print("It is thick and firmly attached.  It could easily carry heavy weights.");
@@ -421,7 +421,7 @@ if (!f178) {
     }
   }
 }
-if (said("get", "rope") && !f178) {
+if (said("get", "rope") && !fROPE_GONE) {
   if (posn(oEGO, 10, 109, 71, 153)) {
     print("The rope is securely fastened to the well.");
   }
@@ -429,7 +429,7 @@ if (said("get", "rope") && !f178) {
     print("You are not close enough to even try.");
   }
 }
-if (said("get", "rope") && f178) {
+if (said("get", "rope") && fROPE_GONE) {
   print("There is no useful rope to get.");
 }
 if (said("cut", "rope") || said("cut", "rope", "dagger")) {
@@ -440,17 +440,17 @@ if (said("cut", "rope") || said("cut", "rope", "dagger")) {
     print("You will need longer arms to cut that rope from here.");
   }
   if (fCARRYING_DAGGER && posn(oEGO, 10, 109, 71, 153)) {
-    if (fBUCKET_ROPE_CUT && !f179) {
+    if (fBUCKET_ROPE_CUT && !fROPE_DANGLING_IN_WELL) {
       print("You cut a piece of rope and it falls into the well.");
     }
-    if (f178) {
+    if (fROPE_GONE) {
       print("There is no useful rope left to cut.");
     }
-    if (fBUCKET_ROPE_CUT && f179) {
+    if (fBUCKET_ROPE_CUT && fROPE_DANGLING_IN_WELL) {
       erase(oROPE);
       print("The long piece of rope falls to the bottom of the well.");
-      set(f178);
-      reset(f179);
+      set(fROPE_GONE);
+      reset(fROPE_DANGLING_IN_WELL);
     }
     if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
       start.update(oBUCKET);
@@ -476,17 +476,17 @@ if (said("cut", "rope") || said("cut", "rope", "dagger")) {
       erase(oBUCKET);
       reset(fBUCKET_LOWERED);
       set(fBUCKET_ROPE_CUT);
-      set(f178);
+      set(fROPE_GONE);
       print("The bucket and rope are now at the bottom of the well.");
     }
   }
 }
-if (f178) {
+if (fROPE_GONE) {
   if (said("lower", "rope") || said("lower", "bucket")) {
     print("There is not enough rope left to lower.");
   }
 }
-if (fBUCKET_ROPE_CUT && f179) {
+if (fBUCKET_ROPE_CUT && fROPE_DANGLING_IN_WELL) {
   if (said("lower", "rope")) {
     if (posn(oEGO, 60, 108, 77, 129)) {
       print("The rope has already been lowered.");
@@ -496,7 +496,7 @@ if (fBUCKET_ROPE_CUT && f179) {
     }
   }
 }
-if (fBUCKET_ROPE_CUT && !f179) {
+if (fBUCKET_ROPE_CUT && !fROPE_DANGLING_IN_WELL) {
   if (said("lower", "rope")) {
     if (posn(oEGO, 60, 108, 77, 129)) {
       start.cycling(oROPE);
@@ -505,7 +505,7 @@ if (fBUCKET_ROPE_CUT && !f179) {
       sound(SND_WELL_HANDLE_TURNING, rfPLAYED_SND_WELL_HANDLE_TURNING);
       end.of.loop(oROPE, rfROPE_DESCENDED);
       start.cycling(oHANDLE);
-      set(f179);
+      set(fROPE_DANGLING_IN_WELL);
     }
     else {
       print("You are not close enough to do that.");
@@ -517,7 +517,7 @@ if (rfROPE_DESCENDED) {
   stop.update(oHANDLE);
   stop.cycling(oROPE);
 }
-if (fBUCKET_ROPE_CUT && !f179) {
+if (fBUCKET_ROPE_CUT && !fROPE_DANGLING_IN_WELL) {
   if (said("raise", "rope")) {
     if (posn(oEGO, 10, 109, 71, 153)) {
       print("The rope is already at the top of the well.");
@@ -527,7 +527,7 @@ if (fBUCKET_ROPE_CUT && !f179) {
     }
   }
 }
-if (fBUCKET_ROPE_CUT && f179 && !fON_WELL_ROPE) {
+if (fBUCKET_ROPE_CUT && fROPE_DANGLING_IN_WELL && !fON_WELL_ROPE) {
   if (said("raise", "rope")) {
     if (posn(oEGO, 10, 109, 71, 153)) {
       start.cycling(oROPE);
@@ -536,7 +536,7 @@ if (fBUCKET_ROPE_CUT && f179 && !fON_WELL_ROPE) {
       reverse.loop(oROPE, rfROPE_ASCENDED);
       sound(SND_WELL_HANDLE_TURNING, rfPLAYED_SND_WELL_HANDLE_TURNING);
       start.cycling(oHANDLE);
-      reset(f179);
+      reset(fROPE_DANGLING_IN_WELL);
     }
     else {
       print("You are not close enough to do that.");
@@ -548,7 +548,7 @@ if (rfROPE_ASCENDED) {
   stop.update(oHANDLE);
   stop.cycling(oROPE);
 }
-if (fBUCKET_ROPE_CUT && f179 && fON_WELL_ROPE) {
+if (fBUCKET_ROPE_CUT && fROPE_DANGLING_IN_WELL && fON_WELL_ROPE) {
   if (said("raise", "rope")) {
     print("You can't raise the rope from here!");
   }

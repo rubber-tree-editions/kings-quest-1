@@ -41,7 +41,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 84, 159, 167)) {
   set(fFALLING);
-  set(f95);
+  set(fSCRIPTED_MOTION);
   program.control();
   stop.cycling(oEGO);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);

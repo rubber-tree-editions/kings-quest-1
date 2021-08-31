@@ -396,7 +396,7 @@ if (!fFIDDLE_TAKEN) {
 }
 if (fEGO_ON_WATER && !fFALLING) {
   ignore.blocks(oEGO);
-  set(f95);
+  set(fSCRIPTED_MOTION);
   stop.cycling(oEGO);
   set(fFALLING);
   set.priority(oEGO, 5);

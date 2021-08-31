@@ -49,7 +49,7 @@ if (rfBIRD_DROPPED_YOU) {
   draw(oEGO);
   move.obj(oBIRD, 130, 48, 2, rfBIRD_LEFT);
   move.obj(oEGO, 108, 107, 4, rfHITTING_THE_GROUND);
-  set(f135);
+  set(f135_UNKNOWN);
   sound(SND_FALLING, fSOUND_END_MARKER_2);
 }
 if (!rfHITTING_THE_GROUND && fSOUND_END_MARKER_2 && !rfFALLEN_TO_EARTH) {
@@ -100,7 +100,7 @@ if (said("examine", "hole") || said("look inside", "hole")) {
   }
 }
 if (fEGO_ON_WATER && !fFALLING) {
-  set(f95);
+  set(fSCRIPTED_MOTION);
   stop.cycling(oEGO);
   set(fFALLING);
   set.priority(oEGO, 5);
@@ -112,7 +112,7 @@ if (fEGO_ON_WATER && !fFALLING) {
 }
 if (rfFALLEN_IN_HOLE) {
   reset(rfFALLEN_IN_HOLE);
-  reset(f95);
+  reset(fSCRIPTED_MOTION);
   erase(oEGO);
   new.room(ROOM73);
 }

@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(74);
   load.view(105);
   load.view(99);
-  if (f182) {
+  if (fFALLING_DOWN_WELL) {
     set.view(oEGO, 105);
     position(oEGO, 81, 48);
     ignore.objs(oEGO);
@@ -33,7 +33,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set(rfFALLING_DOWN_WELL);
     move.obj(oEGO, 81, 164, 3, rfFALLEN_DOWN_WELL);
   }
-  if (vPREV_ROOM_NO == ROOM12_TOP_OF_WELL && !f182) {
+  if (vPREV_ROOM_NO == ROOM12_TOP_OF_WELL && !fFALLING_DOWN_WELL) {
     if (!f162) {
       set(f162);
       vSCORE += 1;
@@ -51,7 +51,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     rvCOUNTDOWN = 250;
     position(oEGO, 75, 163);
   }
-  if (f179) {
+  if (fROPE_DANGLING_IN_WELL) {
     add.to.pic(99, 0, 0, 84, 119, 4, 4);
     discard.view(99);
   }
@@ -84,7 +84,7 @@ if (fEGO_ON_WATER) {
 else {
   ignore.blocks(oEGO);
 }
-if (f182 && !rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE && !rfPLAYING_SND_FALLING) {
+if (fFALLING_DOWN_WELL && !rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE && !rfPLAYING_SND_FALLING) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   set(rfPLAYING_SND_FALLING);
 }
@@ -98,7 +98,7 @@ if (fON_WELL_ROPE) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y > 115 && fBUCKET_LOWERED) {
     reset(fON_WELL_ROPE);
-    set(f182);
+    set(fFALLING_DOWN_WELL);
     set.view(oEGO, 105);
     vTEMP_Y = 164;
     ignore.objs(oEGO);
@@ -108,9 +108,9 @@ if (fON_WELL_ROPE) {
     vTEMP_STEP = 3;
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_OFF_ROPE);
   }
-  if (vTEMP_Y > 115 && f179) {
+  if (vTEMP_Y > 115 && fROPE_DANGLING_IN_WELL) {
     reset(fON_WELL_ROPE);
-    set(f182);
+    set(fFALLING_DOWN_WELL);
     set.view(oEGO, 105);
     vTEMP_Y = 164;
     ignore.objs(oEGO);
@@ -123,7 +123,7 @@ if (fON_WELL_ROPE) {
   if (vTEMP_X < 79 || vTEMP_X > 83) {
     if (vTEMP_Y > 70) {
       reset(fON_WELL_ROPE);
-      set(f182);
+      set(fFALLING_DOWN_WELL);
       set.view(oEGO, 105);
       vTEMP_Y = 164;
       ignore.objs(oEGO);
@@ -135,7 +135,7 @@ if (fON_WELL_ROPE) {
     }
     else {
       reset(fON_WELL_ROPE);
-      set(f182);
+      set(fFALLING_DOWN_WELL);
       set(rfFELL_FROM_ROPE);
       set.view(oEGO, 105);
       vTEMP_Y = 164;
@@ -152,7 +152,7 @@ if (rfFALLEN_DOWN_WELL) {
   reset(rfFALLEN_DOWN_WELL);
   stop.sound();
   erase(oEGO);
-  if (f182 && !rfFELL_FROM_ROPE) {
+  if (fFALLING_DOWN_WELL && !rfFELL_FROM_ROPE) {
     print("You should be more careful before trying that next time!");
   }
   else {
@@ -164,7 +164,7 @@ if (rfFALLEN_OFF_ROPE) {
   reset(rfFALLING_DOWN_WELL);
   reset(rfFALLEN_OFF_ROPE);
   reset(fCYCLE_EGO_ANIMATION);
-  reset(f182);
+  reset(fFALLING_DOWN_WELL);
   release.priority(oEGO);
   stop.sound();
   set.view(oEGO, 93);
@@ -181,10 +181,10 @@ if (rvCOUNTDOWN == 1 && rfSWIMMING) {
 }
 if (!fON_WELL_ROPE && !rfFALLING_DOWN_WELL) {
   if (said("climb", "rope") || said("up", "rope")) {
-    if (!f179 && !fBUCKET_LOWERED) {
+    if (!fROPE_DANGLING_IN_WELL && !fBUCKET_LOWERED) {
       print("The rope is out of reach.");
     }
-    if (f179) {
+    if (fROPE_DANGLING_IN_WELL) {
       erase(oEGO);
       vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
       reset(fCYCLE_EGO_ANIMATION);
@@ -330,7 +330,7 @@ if (fCARRYING_DAGGER) {
       set(fCARRYING_BUCKET);
       set(fBUCKET_ROPE_CUT);
       reset(fBUCKET_LOWERED);
-      set(f179);
+      set(fROPE_DANGLING_IN_WELL);
       vSCORE += 2;
       get("water bucket");
       if (fBUCKET_ON_WELL_HAS_WATER) {
@@ -345,7 +345,7 @@ if (fCARRYING_DAGGER) {
     if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
       print("You have other things to think about right now.");
     }
-    if (!fBUCKET_LOWERED && !f179) {
+    if (!fBUCKET_LOWERED && !fROPE_DANGLING_IN_WELL) {
       print("The rope is out of reach.");
     }
   }
