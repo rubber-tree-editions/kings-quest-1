@@ -37,9 +37,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_NO == ROOM65_IN_GINGERBREAD_HOUSE && vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
     vEGO_VIEW_NO = 105;
   }
-  if (fEGO_DUCKING || f143) {
+  if (fEGO_DUCKING || fJUMPING) {
     reset(fEGO_DUCKING);
-    reset(f143);
+    reset(fJUMPING);
     reset(f98);
     vEGO_VIEW_NO = 0;
   }
@@ -248,7 +248,7 @@ if (controller(cPAUSE)) {
 }
 if (vROOM_NO != ROOM21_WITCH_STOMPING_GROUND) {
   if (said("jump") || controller(cJUMP)) {
-    if (!f143
+    if (!fJUMPING
         && !fEGO_CLIMBING_BEANSTALK
         && !fFALLING_TO_EARTH
         && !fEGO_INVISIBLE
@@ -275,22 +275,22 @@ if (vROOM_NO != ROOM21_WITCH_STOMPING_GROUND) {
         && vROOM_NO != ROOM11_GOAT_PEN_EAST
         && vROOM_NO != ROOM51_DRAGON_STOMPING_GROUND
     ) {
-      set(f143);
+      set(fJUMPING);
       stop.motion(oEGO);
       set.cel(oEGO, 0);
       vTEMP_CYCLE_TIME = 2;
       cycle.time(oEGO, vTEMP_CYCLE_TIME);
       set.view(oEGO, 75);
       set(f98);
-      end.of.loop(oEGO, f144);
+      end.of.loop(oEGO, fJUMPED);
     }
     else {
       print("There is no reason to do that now.");
     }
   }
-  if (f144) {
-    reset(f143);
-    reset(f144);
+  if (fJUMPED) {
+    reset(fJUMPING);
+    reset(fJUMPED);
     reset(f98);
     vTEMP_CYCLE_TIME_2 = 1;
     cycle.time(oEGO, vTEMP_CYCLE_TIME_2);
@@ -307,7 +307,7 @@ if (said("duck") || controller(cDUCK)) {
       && !fEGO_ON_WATER
       && !f145
       && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE
-      && !f143
+      && !fJUMPING
       && !f146
       && vROOM_NO != ROOM29
       && vROOM_NO != ROOM12_TOP_OF_WELL

@@ -146,18 +146,18 @@ if (said("jump") || controller(cJUMP)) {
     }
   }
   if (!rfWITCH_IS_HERE && !fEGO_INVISIBLE) {
-    set(f143);
+    set(fJUMPING);
     stop.motion(oEGO);
     vTEMP_CYCLE_TIME = 3;
     cycle.time(oEGO, vTEMP_CYCLE_TIME);
     set.view(oEGO, 75);
     set(f98);
-    end.of.loop(oEGO, f144);
+    end.of.loop(oEGO, fJUMPED);
   }
 }
-if (f144) {
-  reset(f143);
-  reset(f144);
+if (fJUMPED) {
+  reset(fJUMPING);
+  reset(fJUMPED);
   reset(f98);
   start.motion(oEGO);
   vTEMP_CYCLE_TIME_2 = 1;

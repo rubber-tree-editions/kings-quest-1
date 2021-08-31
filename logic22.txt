@@ -163,8 +163,8 @@ distance(oEGO, oBIRD, v71);
 get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
 get.posn(oBIRD, rvBIRD_X, rvBIRD_Y);
 rvBIRD_Y += 20;
-if (v71 > 20 && v71 < 30 && vTEMP_Y_2 > rvBIRD_Y && f143 && !rfBIRD_AFRAID_OF_GOAT) {
-  reset(f143);
+if (v71 > 20 && v71 < 30 && vTEMP_Y_2 > rvBIRD_Y && fJUMPING && !rfBIRD_AFRAID_OF_GOAT) {
+  reset(fJUMPING);
   set(f145);
   program.control();
   erase(oBIRD);
