@@ -19,7 +19,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {
   ignore.blocks(oEGO);
-  set(f199);
+  set(fFALLING);
   reset(fEGO_TOUCHED_TRIGGER_LINE);
   program.control();
   if (!fEGO_INVISIBLE) {
@@ -34,7 +34,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
   vTEMP_STEP = 4;
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_THROUGH_CLOUDS);
 }
-if (!rfFELL_THROUGH_CLOUDS && f199 && !rfPLAYING_SND_FALLING) {
+if (!rfFELL_THROUGH_CLOUDS && fFALLING && !rfPLAYING_SND_FALLING) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   set(rfPLAYING_SND_FALLING);
 }
@@ -46,7 +46,7 @@ if (fSOUND_END_MARKER) {
 }
 if (rfFELL_THROUGH_CLOUDS) {
   erase(oEGO);
-  reset(f199);
+  reset(fFALLING);
   reset(rfFELL_THROUGH_CLOUDS);
   stop.sound();
   print("You'll have to keep yourself out of the clouds!");

@@ -167,13 +167,13 @@ if (vWITCH_STATE == WITCHSTATE_DEAD) {
 }
 if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
   if (!rfFALLEN_TO_EARTH && !rfPLAYING_SND_FALLING && !rfUNPROTECTED_BY_MAGIC) {
-    sound(SND_FALLING, f198);
+    sound(SND_FALLING, fSOUND_END_MARKER_2);
     set(rfPLAYING_SND_FALLING);
   }
 }
-if (f198) {
+if (fSOUND_END_MARKER_2) {
   if (!rfFALLEN_TO_EARTH && !rfSAID_OUCH) {
-    reset(f198);
+    reset(fSOUND_END_MARKER_2);
     reset(rfPLAYING_SND_FALLING);
   }
 }

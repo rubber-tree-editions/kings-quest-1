@@ -85,10 +85,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   reset(fSWIMMING_IMPOSSIBLE_HERE);
   reset(fMISC_END_MARKER);
   reset(fSOUND_END_MARKER);
-  reset(f198);
-  reset(f199);
-  reset(f156);
-  reset(f145);
+  reset(fSOUND_END_MARKER_2);
+  reset(fFALLING);
+  reset(fVILLAIN_GOT_YOU);
+  reset(fTENSE_SITUATION);
   v62 = 0;
   v70 = 0;
   v71 = 0;
@@ -255,7 +255,7 @@ if (vROOM_NO != ROOM21_WITCH_STOMPING_GROUND) {
         && !fEGO_TINY
         && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE
         && !fEGO_ON_WATER
-        && !f145
+        && !fTENSE_SITUATION
         && !fEGO_DUCKING
         && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE
         && vROOM_NO != ROOM29
@@ -305,10 +305,10 @@ if (said("duck") || controller(cDUCK)) {
       && !fEGO_INVISIBLE
       && !fEGO_TINY
       && !fEGO_ON_WATER
-      && !f145
+      && !fTENSE_SITUATION
       && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE
       && !fJUMPING
-      && !f146
+      && !fTHREAT_OF_SORCERER_OR_OGRE
       && vROOM_NO != ROOM29
       && vROOM_NO != ROOM12_TOP_OF_WELL
       && vROOM_NO != ROOM53_KING_EDWARD_THRONE_ROOM
@@ -330,23 +330,23 @@ if (said("duck") || controller(cDUCK)) {
     set(fEGO_DUCKING);
     set.view(oEGO, 87);
     set(fCYCLE_EGO_ANIMATION);
-    end.of.loop(oEGO, f201);
+    end.of.loop(oEGO, fDUCKED);
   }
-  else if (!f202) {
+  else if (!fFULLY_DUCKED) {
     print("There is no reason to do that now.");
   }
 }
-if (f201) {
+if (fDUCKED) {
   stop.cycling(oEGO);
   stop.motion(oEGO);
-  set(f202);
-  reset(f201);
+  set(fFULLY_DUCKED);
+  reset(fDUCKED);
   reset(fCYCLE_EGO_ANIMATION);
 }
-if (f202) {
+if (fFULLY_DUCKED) {
   if (said("stand up") || controller(cDUCK)) {
     reset(fEGO_DUCKING);
-    reset(f202);
+    reset(fFULLY_DUCKED);
     start.motion(oEGO);
     set.view(oEGO, 0);
     start.cycling(oEGO);
@@ -642,7 +642,7 @@ if (fCARRYING_RING) {
         && vROOM_NO != ROOM52_IN_WELL_UNDERWATER
         && vROOM_NO != ROOM12_TOP_OF_WELL
         && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE
-        && !f209
+        && !fPLAYER_NOT_IN_CONTROL
         && !fCARRIED_BY_WITCH
         && !fEGO_TINY
       ) {
@@ -663,7 +663,7 @@ if (fCARRYING_RING) {
         || vROOM_NO == ROOM52_IN_WELL_UNDERWATER
         || vROOM_NO == ROOM12_TOP_OF_WELL
         || vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE
-        || f209
+        || fPLAYER_NOT_IN_CONTROL
         || fCARRIED_BY_WITCH
         || fEGO_TINY
       ) {

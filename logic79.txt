@@ -394,11 +394,11 @@ if (!fFIDDLE_TAKEN) {
     }
   }
 }
-if (fEGO_ON_WATER && !f199) {
+if (fEGO_ON_WATER && !fFALLING) {
   ignore.blocks(oEGO);
   set(f95);
   stop.cycling(oEGO);
-  set(f199);
+  set(fFALLING);
   set.priority(oEGO, 5);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_Y = 166;

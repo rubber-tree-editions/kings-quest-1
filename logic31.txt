@@ -182,7 +182,7 @@ if (fEGO_CLIMBING_BEANSTALK) {
     vTEMP_STEP = 2;
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_FROM_BEANSTALK_LOW);
     set(f135);
-    sound(SND_FALLING, f198);
+    sound(SND_FALLING, fSOUND_END_MARKER_2);
   }
 }
 rvCOUNTDOWN--;

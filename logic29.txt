@@ -71,7 +71,7 @@ if (v70 == 1) {
   draw(oSORCERER);
   if (!fGOAT_COMPANION) {
     print("Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!");
-    follow.ego(oSORCERER, 7, f156);
+    follow.ego(oSORCERER, 7, fVILLAIN_GOT_YOU);
   }
   if (fGOAT_COMPANION) {
     wander(oSORCERER);
@@ -100,8 +100,8 @@ if (rfSORCERER_IS_HERE) {
     print("The sorcerer only speaks in the language of the Mystics.");
   }
 }
-if (f156) {
-  reset(f156);
+if (fVILLAIN_GOT_YOU) {
+  reset(fVILLAIN_GOT_YOU);
   if (fPROTECTED_BY_SPELL) {
     print("This sorcerer's magic is no match for your fairy godmother's.");
     wander(oSORCERER);
@@ -125,8 +125,8 @@ if (f156) {
     set.view(oSORCERER, 116);
     end.of.loop(oSORCERER, rfSORCERER_FINISHED_SPELLCASTING);
     print("The sorcerer casts a spell, freezing you to the spot. I hope no dangerous creatures drop by!");
-    set(f145);
-    set(f146);
+    set(fTENSE_SITUATION);
+    set(fTHREAT_OF_SORCERER_OR_OGRE);
   }
 }
 if (rfSORCERER_FINISHED_SPELLCASTING) {

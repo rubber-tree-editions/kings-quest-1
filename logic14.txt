@@ -32,7 +32,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       set.priority(oEGO, 12);
       program.control();
       move.obj(oEGO, 84, 132, 4, rfFELL_OUT_OF_TREE);
-      set(f209);
+      set(fPLAYER_NOT_IN_CONTROL);
     }
     else {
       position(oEGO, 84, 132);
@@ -44,10 +44,10 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (f131 && !rfPLAYING_SND_FALLING) {
   set(rfPLAYING_SND_FALLING);
   set(f135);
-  sound(SND_FALLING, f198);
+  sound(SND_FALLING, fSOUND_END_MARKER_2);
 }
-if (!rfFELL_OUT_OF_TREE && f198) {
-  reset(f198);
+if (!rfFELL_OUT_OF_TREE && fSOUND_END_MARKER_2) {
+  reset(fSOUND_END_MARKER_2);
   reset(rfPLAYING_SND_FALLING);
 }
 rvCOUNTDOWN--;
@@ -81,7 +81,7 @@ if (rfEGO_STOPPED_ANIMATING) {
   reset(fCYCLE_EGO_ANIMATION);
   set.view(oEGO, 0);
   start.motion(oEGO);
-  reset(f209);
+  reset(fPLAYER_NOT_IN_CONTROL);
   player.control();
 }
 if (said("examine", "tree")) {

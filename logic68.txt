@@ -80,7 +80,7 @@ if (!rfDONT_CALCULATE_DISTANCE) {
 if (rfDWARF_MADE_ENTRANCE) {
   set(rfDONT_CALCULATE_DISTANCE);
   reset(rfDWARF_MADE_ENTRANCE);
-  follow.ego(oDWARF, 10, f156);
+  follow.ego(oDWARF, 10, fVILLAIN_GOT_YOU);
 }
 if (said("examine", "stairway") || said("examine", "room")) {
   print("The stairs seem to go on forever.");
@@ -131,10 +131,10 @@ if (rfFELL) {
 if (v71 > 0 && v71 < 11) {
   set(rfDONT_CALCULATE_DISTANCE);
   v71 = 0;
-  set(f156);
+  set(fVILLAIN_GOT_YOU);
 }
-if (f156) {
-  reset(f156);
+if (fVILLAIN_GOT_YOU) {
+  reset(fVILLAIN_GOT_YOU);
   v71 = 0;
   set(rfDONT_CALCULATE_DISTANCE);
   normal.motion(oDWARF);

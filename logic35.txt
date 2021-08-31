@@ -126,7 +126,7 @@ if (v70 == 1 && !fFALLING_TO_EARTH && !fEGO_CLIMBING_BEANSTALK) {
   draw(oDWARF);
   if (!fGOAT_COMPANION) {
     print("There is a small dwarf close by.  It would be a good idea to be careful.");
-    follow.ego(oDWARF, 7, f156);
+    follow.ego(oDWARF, 7, fVILLAIN_GOT_YOU);
   }
   if (fGOAT_COMPANION) {
     wander(oDWARF);
@@ -151,8 +151,8 @@ if (rfDWARF_IS_HERE) {
     print("No time to talk to him.  He's in too much of a hurry!");
   }
 }
-if (f156) {
-  reset(f156);
+if (fVILLAIN_GOT_YOU) {
+  reset(fVILLAIN_GOT_YOU);
   if (fPROTECTED_BY_SPELL) {
     print("It's a good thing you are protected by a spell.  That little dwarf likes to steal treasures.");
     wander(oDWARF);
@@ -296,7 +296,7 @@ if (fEGO_CLIMBING_BEANSTALK) {
     vTEMP_STEP = 2;
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_FROM_BEANSTALK_LOW);
     set(f135);
-    sound(SND_FALLING, f198);
+    sound(SND_FALLING, fSOUND_END_MARKER_2);
   }
 }
 rvCOUNTDOWN--;

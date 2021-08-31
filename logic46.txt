@@ -46,8 +46,8 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 v70--;
 if (v70 == 1) {
-  set(f145);
-  set(f146);
+  set(fTENSE_SITUATION);
+  set(fTHREAT_OF_SORCERER_OR_OGRE);
   position(oOGRE, 40, 51);
   set(rfOGRE_IS_HERE);
   set(f135);
@@ -55,7 +55,7 @@ if (v70 == 1) {
   draw(oOGRE);
   if (!fGOAT_COMPANION) {
     print("Watch out!!!  There is an ogre nearby!  He will crush you in his strong arms if he catches you.");
-    follow.ego(oOGRE, 7, f156);
+    follow.ego(oOGRE, 7, fVILLAIN_GOT_YOU);
   }
   if (fGOAT_COMPANION) {
     wander(oOGRE);
@@ -69,8 +69,8 @@ if (fSOUND_END_MARKER) {
   reset(f135);
 }
 if (!rfOGRE_IS_HERE) {
-  reset(f145);
-  reset(f146);
+  reset(fTENSE_SITUATION);
+  reset(fTHREAT_OF_SORCERER_OR_OGRE);
   if (said("anyword", "ogre")) {
     print("There is no ogre here.");
   }
@@ -82,8 +82,8 @@ if (!rfOGRE_IS_HERE) {
     vSCORE -= 5;
   }
 }
-if (f156) {
-  reset(f156);
+if (fVILLAIN_GOT_YOU) {
+  reset(fVILLAIN_GOT_YOU);
   if (fEGO_INVISIBLE) {
     print("Fortunately, you are invisible and the ogre can't see you.");
     wander(oOGRE);
@@ -168,8 +168,8 @@ AFTERCOUNTDOWN:
     }
   }
   if (vEGO_EDGE_CODE != EDGE_NONE) {
-    reset(f145);
-    reset(f146);
+    reset(fTENSE_SITUATION);
+    reset(fTHREAT_OF_SORCERER_OR_OGRE);
   }
   if (rfNO_ESCAPE) {
     return;

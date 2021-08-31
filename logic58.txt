@@ -129,7 +129,7 @@ if (rfGIANT_CAUGHT_YOU && rfGIANT_IS_AFTER_YOU) {
   }
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {
-  set(f199);
+  set(fFALLING);
   reset(fEGO_TOUCHED_TRIGGER_LINE);
   program.control();
   if (!fEGO_INVISIBLE) {
@@ -244,7 +244,7 @@ if (fCARRYING_SLINGSHOT) {
       && !fEGO_INVISIBLE
       && vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST
       && v71 > 19
-      && !f199
+      && !fFALLING
     ) {
       reset(rfGIANT_IS_AFTER_YOU);
       get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);

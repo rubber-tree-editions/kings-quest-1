@@ -50,11 +50,11 @@ if (rfBIRD_DROPPED_YOU) {
   move.obj(oBIRD, 130, 48, 2, rfBIRD_LEFT);
   move.obj(oEGO, 108, 107, 4, rfHITTING_THE_GROUND);
   set(f135);
-  sound(SND_FALLING, f198);
+  sound(SND_FALLING, fSOUND_END_MARKER_2);
 }
-if (!rfHITTING_THE_GROUND && f198 && !rfFALLEN_TO_EARTH) {
-  reset(f198);
-  sound(SND_FALLING, f198);
+if (!rfHITTING_THE_GROUND && fSOUND_END_MARKER_2 && !rfFALLEN_TO_EARTH) {
+  reset(fSOUND_END_MARKER_2);
+  sound(SND_FALLING, fSOUND_END_MARKER_2);
 }
 if (rfBIRD_LEFT) {
   reset(rfBIRD_LEFT);
@@ -88,8 +88,8 @@ if (rfEGO_STOPPED_ANIMATING) {
   set.view(oEGO, 0);
   reset(fCYCLE_EGO_ANIMATION);
   player.control();
-  reset(f145);
-  reset(f209);
+  reset(fTENSE_SITUATION);
+  reset(fPLAYER_NOT_IN_CONTROL);
 }
 if (said("examine", "hole") || said("look inside", "hole")) {
   if (posn(oEGO, 55, 105, 100, 142)) {
@@ -99,10 +99,10 @@ if (said("examine", "hole") || said("look inside", "hole")) {
     print("Don't be afraid... get closer.");
   }
 }
-if (fEGO_ON_WATER && !f199) {
+if (fEGO_ON_WATER && !fFALLING) {
   set(f95);
   stop.cycling(oEGO);
-  set(f199);
+  set(fFALLING);
   set.priority(oEGO, 5);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_Y += 35;

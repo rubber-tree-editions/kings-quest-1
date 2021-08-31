@@ -114,11 +114,11 @@ if (rfFELL_FROM_SKY) {
   shake.screen(2);
   set(fGAME_OVER);
 }
-if (posn(oEGO, 141, 71, 159, 89) || f209 || fEGO_CLIMBING_BEANSTALK || fFALLING_TO_EARTH || fEGO_INVISIBLE) {
-  set(f145);
+if (posn(oEGO, 141, 71, 159, 89) || fPLAYER_NOT_IN_CONTROL || fEGO_CLIMBING_BEANSTALK || fFALLING_TO_EARTH || fEGO_INVISIBLE) {
+  set(fTENSE_SITUATION);
 }
 else {
-  reset(f145);
+  reset(fTENSE_SITUATION);
 }
 v70--;
 if (v70 == 1 && !fFALLING_TO_EARTH && !fEGO_CLIMBING_BEANSTALK) {
@@ -165,11 +165,11 @@ get.posn(oBIRD, rvBIRD_X, rvBIRD_Y);
 rvBIRD_Y += 20;
 if (v71 > 20 && v71 < 30 && vTEMP_Y_2 > rvBIRD_Y && fJUMPING && !rfBIRD_AFRAID_OF_GOAT) {
   reset(fJUMPING);
-  set(f145);
+  set(fTENSE_SITUATION);
   program.control();
   erase(oBIRD);
   set.view(oEGO, 89);
-  set(f209);
+  set(fPLAYER_NOT_IN_CONTROL);
   ignore.horizon(oEGO);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_X = 130;
@@ -262,7 +262,7 @@ if (fEGO_CLIMBING_BEANSTALK) {
     vTEMP_STEP = 2;
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_OFF_BEANSTALK_LOW);
     set(f135);
-    sound(SND_FALLING, f198);
+    sound(SND_FALLING, fSOUND_END_MARKER_2);
   }
 }
 rvCOUNTDOWN--;
