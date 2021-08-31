@@ -2,6 +2,22 @@
 
 LOGIC__HEADER
 
+#define rfFALLEN_INTO_WELL rf0
+#define rfBUCKET_DESCENDED rf1
+#define rfBUCKET_ASCENDED rf2
+#define rfROPE_ASCENDED rf3
+#define rfROPE_DESCENDED rf4
+#define rfBUCKET_DESCENDED_WITH_YOU_IN_IT rf5
+#define rfCLIMBED_INTO_WELL rf6
+#define rfJUMPED_INTO_WELL rf7
+#define rfENTERED_WELL rf8
+#define rfFELL_OFF_ROPE rf9
+#define rfPLAYED_SND_WELL_HANDLE_TURNING rf10
+
+#define oHANDLE o1
+#define oBUCKET o2
+#define oROPE o3
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -18,39 +34,39 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(74);
   load.view(143);
   load.view(18);
-  animate.obj(o1);
-  set.view(o1, 18);
-  position(o1, 66, 96);
-  ignore.objs(o1);
-  set.priority(o1, 11);
-  set.cel(o1, 4);
+  animate.obj(oHANDLE);
+  set.view(oHANDLE, 18);
+  position(oHANDLE, 66, 96);
+  ignore.objs(oHANDLE);
+  set.priority(oHANDLE, 11);
+  set.cel(oHANDLE, 4);
   if (!fBUCKET_ROPE_CUT) {
     load.view(72);
     load.view(16);
-    animate.obj(o2);
-    set.view(o2, 16);
-    ignore.blocks(o2);
-    position(o2, 37, 120);
-    set.priority(o2, 11);
+    animate.obj(oBUCKET);
+    set.view(oBUCKET, 16);
+    ignore.blocks(oBUCKET);
+    position(oBUCKET, 37, 120);
+    set.priority(oBUCKET, 11);
     if (!fBUCKET_LOWERED) {
-      set.cel(o2, 0);
+      set.cel(oBUCKET, 0);
     }
     if (fBUCKET_LOWERED) {
-      set.cel(o2, 7);
+      set.cel(oBUCKET, 7);
     }
   }
   if (!f178) {
     load.view(17);
-    animate.obj(o3);
-    set.view(o3, 17);
-    ignore.blocks(o3);
-    position(o3, 43, 147);
-    set.priority(o3, 11);
+    animate.obj(oROPE);
+    set.view(oROPE, 17);
+    ignore.blocks(oROPE);
+    position(oROPE, 43, 147);
+    set.priority(oROPE, 11);
     if (!f179) {
-      set.cel(o3, 0);
+      set.cel(oROPE, 0);
     }
     if (f179) {
-      set.cel(o3, 2);
+      set.cel(oROPE, 2);
     }
   }
   if (vPREV_ROOM_NO == ROOM49_INSIDE_WELL) {
@@ -73,15 +89,15 @@ if (fROOM_SCRIPT_EXECUTED) {
       vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
     }
   }
-  draw(o1);
-  stop.update(o1);
+  draw(oHANDLE);
+  stop.update(oHANDLE);
   if (!fBUCKET_ROPE_CUT) {
-    draw(o2);
-    stop.update(o2);
+    draw(oBUCKET);
+    stop.update(oBUCKET);
   }
   if (fBUCKET_ROPE_CUT && !f178) {
-    draw(o3);
-    stop.cycling(o3);
+    draw(oROPE);
+    stop.cycling(oROPE);
   }
   draw(oEGO);
   show.pic();
@@ -138,20 +154,20 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         || said("go down", "well")
       ) {
         erase(oEGO);
-        set.view(o2, 72);
-        position(o2, 38, 145);
-        set.priority(o2, 11);
-        ignore.blocks(o2);
-        set.cel(o2, 0);
-        start.update(o2);
-        erase(o2);
-        stop.cycling(o2);
-        draw(o2);
+        set.view(oBUCKET, 72);
+        position(oBUCKET, 38, 145);
+        set.priority(oBUCKET, 11);
+        ignore.blocks(oBUCKET);
+        set.cel(oBUCKET, 0);
+        start.update(oBUCKET);
+        erase(oBUCKET);
+        stop.cycling(oBUCKET);
+        draw(oBUCKET);
         set(fIN_WELL_BUCKET);
-        sound(SND_WELL_HANDLE_TURNING, rf10);
-        end.of.loop(o2, rf5);
-        start.update(o1);
-        start.cycling(o1);
+        sound(SND_WELL_HANDLE_TURNING, rfPLAYED_SND_WELL_HANDLE_TURNING);
+        end.of.loop(oBUCKET, rfBUCKET_DESCENDED_WITH_YOU_IN_IT);
+        start.update(oHANDLE);
+        start.cycling(oHANDLE);
         print("After you are in the old bucket, your weight causes it to slowly descend.");
       }
     }
@@ -167,13 +183,13 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
     }
     if (fBUCKET_ROPE_CUT && !f179) {
       if (said("go", "well") || said("go down", "well")) {
-        set(rf6);
-        set(rf8);
+        set(rfCLIMBED_INTO_WELL);
+        set(rfENTERED_WELL);
       }
     }
     if (said("jump", "well")) {
-      set(rf7);
-      set(rf8);
+      set(rfJUMPED_INTO_WELL);
+      set(rfENTERED_WELL);
     }
     if (said("untie", "rope")) {
       print("The knots on the rope are too tight to untie.");
@@ -250,32 +266,32 @@ if (fON_WELL_ROPE) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_Y = 145;
     vTEMP_STEP = 3;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf9);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_OFF_ROPE);
     print("You should be more careful the next time you try  climbing ropes.");
     set(f135);
     sound(SND_FALLING, fSOUND_END_MARKER);
     reset(fON_WELL_ROPE);
   }
 }
-if (rf9 || rf0) {
-  reset(rf9);
-  reset(rf0);
+if (rfFELL_OFF_ROPE || rfFALLEN_INTO_WELL) {
+  reset(rfFELL_OFF_ROPE);
+  reset(rfFALLEN_INTO_WELL);
   erase(oEGO);
   set(f182);
   new.room(ROOM49_INSIDE_WELL);
 }
-if (rf8) {
-  reset(rf8);
+if (rfENTERED_WELL) {
+  reset(rfENTERED_WELL);
   erase(oEGO);
   position(oEGO, 38, 125);
   set.priority(oEGO, 11);
   ignore.blocks(oEGO);
   draw(oEGO);
-  move.obj(oEGO, 38, 145, 3, rf0);
-  if (rf6) {
+  move.obj(oEGO, 38, 145, 3, rfFALLEN_INTO_WELL);
+  if (rfCLIMBED_INTO_WELL) {
     print("Carefully... Oh no!  The sides were too slippery... you've fallen into the well!");
   }
-  if (rf7) {
+  if (rfJUMPED_INTO_WELL) {
     print("What a mistake you made!  This well is too deep to jump into.");
   }
   set(f135);
@@ -334,25 +350,25 @@ if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
     }
   }
 }
-if (rf1) {
-  reset(rf1);
-  stop.update(o2);
-  stop.update(o1);
+if (rfBUCKET_DESCENDED) {
+  reset(rfBUCKET_DESCENDED);
+  stop.update(oBUCKET);
+  stop.update(oHANDLE);
 }
-if (rf2) {
-  reset(rf2);
-  stop.update(o2);
-  stop.update(o1);
+if (rfBUCKET_ASCENDED) {
+  reset(rfBUCKET_ASCENDED);
+  stop.update(oBUCKET);
+  stop.update(oHANDLE);
 }
 if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
   if (said("lower", "bucket") || said("lower", "rope")) {
     if (posn(oEGO, 60, 108, 77, 140)) {
       print("The old bucket disappears into the darkness.");
-      start.update(o2);
-      start.update(o1);
-      end.of.loop(o2, rf1);
-      sound(SND_WELL_HANDLE_TURNING, rf10);
-      start.cycling(o1);
+      start.update(oBUCKET);
+      start.update(oHANDLE);
+      end.of.loop(oBUCKET, rfBUCKET_DESCENDED);
+      sound(SND_WELL_HANDLE_TURNING, rfPLAYED_SND_WELL_HANDLE_TURNING);
+      start.cycling(oHANDLE);
       set(fBUCKET_LOWERED);
     }
     else {
@@ -369,15 +385,15 @@ if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED && !fON_WELL_ROPE) {
   if (said("raise", "bucket") || said("raise", "rope")) {
     if (posn(oEGO, 60, 108, 77, 140)) {
       print("The old bucket emerges from the depths of the well.");
-      start.update(o2);
-      start.update(o1);
+      start.update(oBUCKET);
+      start.update(oHANDLE);
       random(0, 250, v62);
       if (v62 < 30) {
         set(fBUCKET_ON_WELL_HAS_WATER);
       }
-      reverse.loop(o2, rf2);
-      start.cycling(o1);
-      sound(SND_WELL_HANDLE_TURNING, rf10);
+      reverse.loop(oBUCKET, rfBUCKET_ASCENDED);
+      start.cycling(oHANDLE);
+      sound(SND_WELL_HANDLE_TURNING, rfPLAYED_SND_WELL_HANDLE_TURNING);
       reset(fBUCKET_LOWERED);
     }
     else {
@@ -431,16 +447,16 @@ if (said("cut", "rope") || said("cut", "rope", "dagger")) {
       print("There is no useful rope left to cut.");
     }
     if (fBUCKET_ROPE_CUT && f179) {
-      erase(o3);
+      erase(oROPE);
       print("The long piece of rope falls to the bottom of the well.");
       set(f178);
       reset(f179);
     }
     if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
-      start.update(o2);
-      erase(o2);
-      draw(o3);
-      stop.cycling(o3);
+      start.update(oBUCKET);
+      erase(oBUCKET);
+      draw(oROPE);
+      stop.cycling(oROPE);
       set(fCARRYING_BUCKET);
       if (fBUCKET_ON_WELL_HAS_WATER) {
         get("water");
@@ -456,8 +472,8 @@ if (said("cut", "rope") || said("cut", "rope", "dagger")) {
       vSCORE += 2;
     }
     if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED) {
-      start.update(o2);
-      erase(o2);
+      start.update(oBUCKET);
+      erase(oBUCKET);
       reset(fBUCKET_LOWERED);
       set(fBUCKET_ROPE_CUT);
       set(f178);
@@ -483,12 +499,12 @@ if (fBUCKET_ROPE_CUT && f179) {
 if (fBUCKET_ROPE_CUT && !f179) {
   if (said("lower", "rope")) {
     if (posn(oEGO, 60, 108, 77, 129)) {
-      start.cycling(o3);
-      start.update(o1);
+      start.cycling(oROPE);
+      start.update(oHANDLE);
       print("The rope descends into the darkness.");
-      sound(SND_WELL_HANDLE_TURNING, rf10);
-      end.of.loop(o3, rf4);
-      start.cycling(o1);
+      sound(SND_WELL_HANDLE_TURNING, rfPLAYED_SND_WELL_HANDLE_TURNING);
+      end.of.loop(oROPE, rfROPE_DESCENDED);
+      start.cycling(oHANDLE);
       set(f179);
     }
     else {
@@ -496,10 +512,10 @@ if (fBUCKET_ROPE_CUT && !f179) {
     }
   }
 }
-if (rf4) {
-  reset(rf4);
-  stop.update(o1);
-  stop.cycling(o3);
+if (rfROPE_DESCENDED) {
+  reset(rfROPE_DESCENDED);
+  stop.update(oHANDLE);
+  stop.cycling(oROPE);
 }
 if (fBUCKET_ROPE_CUT && !f179) {
   if (said("raise", "rope")) {
@@ -514,12 +530,12 @@ if (fBUCKET_ROPE_CUT && !f179) {
 if (fBUCKET_ROPE_CUT && f179 && !fON_WELL_ROPE) {
   if (said("raise", "rope")) {
     if (posn(oEGO, 10, 109, 71, 153)) {
-      start.cycling(o3);
-      start.update(o1);
+      start.cycling(oROPE);
+      start.update(oHANDLE);
       print("The rope emerges from the well.");
-      reverse.loop(o3, rf3);
-      sound(SND_WELL_HANDLE_TURNING, rf10);
-      start.cycling(o1);
+      reverse.loop(oROPE, rfROPE_ASCENDED);
+      sound(SND_WELL_HANDLE_TURNING, rfPLAYED_SND_WELL_HANDLE_TURNING);
+      start.cycling(oHANDLE);
       reset(f179);
     }
     else {
@@ -527,18 +543,18 @@ if (fBUCKET_ROPE_CUT && f179 && !fON_WELL_ROPE) {
     }
   }
 }
-if (rf3) {
-  reset(rf3);
-  stop.update(o1);
-  stop.cycling(o3);
+if (rfROPE_ASCENDED) {
+  reset(rfROPE_ASCENDED);
+  stop.update(oHANDLE);
+  stop.cycling(oROPE);
 }
 if (fBUCKET_ROPE_CUT && f179 && fON_WELL_ROPE) {
   if (said("raise", "rope")) {
     print("You can't raise the rope from here!");
   }
 }
-if (rf5) {
-  reset(rf5);
+if (rfBUCKET_DESCENDED_WITH_YOU_IN_IT) {
+  reset(rfBUCKET_DESCENDED_WITH_YOU_IN_IT);
   set(fBUCKET_LOWERED);
   new.room(ROOM49_INSIDE_WELL);
 }
