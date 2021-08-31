@@ -2,6 +2,14 @@
 
 LOGIC__HEADER
 
+#define rfINIT_RANDOMIZER rf0
+#define rfWITCH_IS_HERE rf1
+#define rfPROTECTED rf2
+#define rfCARRIED_OFF rf3
+#define rfWITCH_GOT_YOU rf4
+
+#define rvWITCH_STEP_SIZE rv0
+
 #define oWITCH o1
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -17,9 +25,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   random(0, 250, v62);
   if (v62 < 185 && vWITCH_STATE != WITCHSTATE_DEAD) {
-    rv0 = 4;
-    step.size(oWITCH, rv0);
-    set(rf0);
+    rvWITCH_STEP_SIZE = 4;
+    step.size(oWITCH, rvWITCH_STEP_SIZE);
+    set(rfINIT_RANDOMIZER);
     load.view(3);
     load.view(91);
     load.sound(SND_VILLAIN);
@@ -29,7 +37,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.blocks(oWITCH);
     set.loop(oWITCH, 1);
   }
-  if (rf0) {
+  if (rfINIT_RANDOMIZER) {
     do {
       random(0, 250, v70);
     } while (v70 > 90);
@@ -40,23 +48,23 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 v70--;
 if (v70 == 1) {
-  set(rf1);
+  set(rfWITCH_IS_HERE);
   position(oWITCH, 80, 40);
   draw(oWITCH);
   set(f135);
   sound(SND_VILLAIN, fSOUND_END_MARKER);
   if (!fGOAT_COMPANION) {
     print("It's a witch swooping through the sky... She's trying to catch you!  Look out!");
-    follow.ego(oWITCH, 20, rf4);
+    follow.ego(oWITCH, 20, rfWITCH_GOT_YOU);
   }
   if (fGOAT_COMPANION) {
     wander(oWITCH);
-    set(rf2);
+    set(rfPROTECTED);
     print("There is a witch in the area, but since you have that menacing goat with you, she will keep her distance.");
   }
   if (fEGO_INVISIBLE) {
     wander(oWITCH);
-    set(rf2);
+    set(rfPROTECTED);
     print("Lucky for you that you are invisible, the witch can't find you.");
   }
 }
@@ -64,28 +72,28 @@ if (fSOUND_END_MARKER) {
   reset(fSOUND_END_MARKER);
   reset(f135);
 }
-if (rf4) {
-  reset(rf4);
+if (rfWITCH_GOT_YOU) {
+  reset(rfWITCH_GOT_YOU);
   reset(f135);
   if (fPROTECTED_BY_SPELL) {
     print("The witch can feel your protective spell and bids a hasty retreat.");
     wander(oWITCH);
-    set(rf2);
+    set(rfPROTECTED);
   }
   else if (fEGO_INVISIBLE) {
     print("Lucky for you that you are invisible, the witch can't find you.");
     wander(oWITCH);
-    set(rf2);
+    set(rfPROTECTED);
   }
   else if (fCARRYING_SHIELD) {
     print("There is a witch in the area, but with the shield no harm will come to you.");
     wander(oWITCH);
-    set(rf2);
+    set(rfPROTECTED);
   }
   else if (fEGO_DUCKING) {
     print("The witch missed you, this time.");
     wander(oWITCH);
-    set(rf2);
+    set(rfPROTECTED);
   }
   else {
     print("The witch swoops down, grabs you by the neck, and carries you off to a fate worse than death.");
@@ -97,21 +105,21 @@ if (rf4) {
     ignore.horizon(oEGO);
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_X = 130;
-    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, rv0, rf3);
+    move.obj.v(oEGO, vTEMP_X, vTEMP_Y, rvWITCH_STEP_SIZE, rfCARRIED_OFF);
     set(f98);
   }
 }
-if (rf2 && vOBJECT_EDGE_CODE != 0) {
-  reset(rf2);
-  reset(rf1);
+if (rfPROTECTED && vOBJECT_EDGE_CODE != 0) {
+  reset(rfPROTECTED);
+  reset(rfWITCH_IS_HERE);
   erase(oWITCH);
 }
-if (!rf1) {
+if (!rfWITCH_IS_HERE) {
   if (said("anyword", "witch")) {
     print("There's no witch here.");
   }
 }
-if (rf1) {
+if (rfWITCH_IS_HERE) {
   if (said("examine", "witch")) {
     print("This is not your friendly-type witch.");
   }
@@ -129,7 +137,7 @@ if (said("jump") || controller(cJUMP)) {
   if (fEGO_INVISIBLE) {
     print("There is no reason to jump now.");
   }
-  if (rf1 && !fEGO_INVISIBLE) {
+  if (rfWITCH_IS_HERE && !fEGO_INVISIBLE) {
     if (!fCARRIED_BY_WITCH) {
       print("Jumping here would put you in even greater danger from that witch!");
     }
@@ -137,7 +145,7 @@ if (said("jump") || controller(cJUMP)) {
       print("There is no way you can now.");
     }
   }
-  if (!rf1 && !fEGO_INVISIBLE) {
+  if (!rfWITCH_IS_HERE && !fEGO_INVISIBLE) {
     set(f143);
     stop.motion(oEGO);
     vTEMP_CYCLE_TIME = 3;
@@ -156,7 +164,7 @@ if (f144) {
   cycle.time(oEGO, vTEMP_CYCLE_TIME_2);
   set.view(oEGO, 0);
 }
-if (rf3) {
+if (rfCARRIED_OFF) {
   new.room(ROOM80_IN_MID_AIR);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON && !fCARRIED_BY_WITCH) {

@@ -2,7 +2,18 @@
 
 LOGIC__HEADER
 
+#define rfDRAGON_GOT_YOU rf0
+#define rfDRAGON_AT_BOULDER rf1
+#define rfBOULDER_MOVED rf2
+#define rfDRAGON_LEFT rf3
+#define rfPLAYING_SND_VILLAIN rf4
+#define rfPLAYED_SND_VILLAIN rf5
+
+#define rvDRAGON_STEP_SIZE rv0
+#define rvDRAGON_CURRENT_LOOP rv1
+
 #define oMAGIC_MIRROR o1
+#define oBOULDER o2
 #define oDRAGON o3
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -44,20 +55,20 @@ if (fROOM_SCRIPT_EXECUTED) {
     stop.update(oMAGIC_MIRROR);
   }
   if (vDRAGON_STATE == DRAGONSTATE_ABSENT) {
-    animate.obj(o2);
-    set.view(o2, 35);
-    ignore.blocks(o2);
-    position(o2, 8, 127);
-    draw(o2);
-    stop.cycling(o2);
+    animate.obj(oBOULDER);
+    set.view(oBOULDER, 35);
+    ignore.blocks(oBOULDER);
+    position(oBOULDER, 8, 127);
+    draw(oBOULDER);
+    stop.cycling(oBOULDER);
   }
   if (vDRAGON_STATE != DRAGONSTATE_ABSENT) {
-    animate.obj(o2);
-    set.view(o2, 35);
-    ignore.blocks(o2);
-    position(o2, 3, 127);
-    draw(o2);
-    stop.cycling(o2);
+    animate.obj(oBOULDER);
+    set.view(oBOULDER, 35);
+    ignore.blocks(oBOULDER);
+    position(oBOULDER, 3, 127);
+    draw(oBOULDER);
+    stop.cycling(oBOULDER);
     animate.obj(oDRAGON);
     if (vDRAGON_STATE == DRAGONSTATE_DEAD) {
       add.to.pic(61, 0, 0, 40, 152, 0, 0);
@@ -65,11 +76,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
       set.view(oDRAGON, 33);
       position(oDRAGON, 40, 120);
-      rv0 = 3;
-      step.size(oDRAGON, rv0);
+      rvDRAGON_STEP_SIZE = 3;
+      step.size(oDRAGON, rvDRAGON_STEP_SIZE);
       draw(oDRAGON);
       observe.blocks(oDRAGON);
-      follow.ego(oDRAGON, 20, rf0);
+      follow.ego(oDRAGON, 20, rfDRAGON_GOT_YOU);
     }
   }
   draw(oEGO);
@@ -87,21 +98,21 @@ if (vTEMP_X < 16) {
     observe.blocks(oEGO);
   }
 }
-if (vDRAGON_STATE == DRAGONSTATE_NORMAL && !rf4) {
-  set(rf4);
-  sound(SND_VILLAIN, rf5);
+if (vDRAGON_STATE == DRAGONSTATE_NORMAL && !rfPLAYING_SND_VILLAIN) {
+  set(rfPLAYING_SND_VILLAIN);
+  sound(SND_VILLAIN, rfPLAYED_SND_VILLAIN);
 }
-if (vDRAGON_STATE == DRAGONSTATE_NORMAL && rf5) {
-  current.loop(oDRAGON, rv1);
-  if (rv1 == 0) {
+if (vDRAGON_STATE == DRAGONSTATE_NORMAL && rfPLAYED_SND_VILLAIN) {
+  current.loop(oDRAGON, rvDRAGON_CURRENT_LOOP);
+  if (rvDRAGON_CURRENT_LOOP == 0) {
     sound(SND_DRAGON, f148);
   }
   else {
     stop.sound();
   }
 }
-if (rf0 && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
-  reset(rf0);
+if (rfDRAGON_GOT_YOU && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
+  reset(rfDRAGON_GOT_YOU);
   set.view(oEGO, 82);
   if (fCARRYING_SHIELD) {
     print("Your shield melted from the intensity of the dragon's flames!  You should know about these fire-breathing dragons!  Maybe next time you will be a little more careful!");
@@ -309,7 +320,7 @@ if (!posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     vSCORE -= 2;
     vSCORE += 7;
     reset(fFILL_BUCKET_POINTS);
-    move.obj(oDRAGON, 40, 137, 0, rf1);
+    move.obj(oDRAGON, 40, 137, 0, rfDRAGON_AT_BOULDER);
     vDRAGON_STATE = DRAGONSTATE_ABSENT;
   }
   if (fCARRYING_DAGGER && said("throw", "dagger")) {
@@ -321,27 +332,27 @@ if (!posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     vSCORE += 3;
     erase(oDRAGON);
     set.view(oDRAGON, 61);
-    rv0 = 0;
-    step.size(oDRAGON, rv0);
+    rvDRAGON_STEP_SIZE = 0;
+    step.size(oDRAGON, rvDRAGON_STEP_SIZE);
     draw(oDRAGON);
     stop.motion(oDRAGON);
     stop.cycling(oDRAGON);
     vDRAGON_STATE = DRAGONSTATE_DEAD;
   }
 }
-if (rf1) {
-  reset(rf1);
-  start.cycling(o2);
-  end.of.loop(o2, rf2);
+if (rfDRAGON_AT_BOULDER) {
+  reset(rfDRAGON_AT_BOULDER);
+  start.cycling(oBOULDER);
+  end.of.loop(oBOULDER, rfBOULDER_MOVED);
 }
-if (rf2) {
+if (rfBOULDER_MOVED) {
   ignore.blocks(oDRAGON);
-  reset(rf2);
-  stop.cycling(o2);
-  move.obj(oDRAGON, 4, 137, 0, rf3);
+  reset(rfBOULDER_MOVED);
+  stop.cycling(oBOULDER);
+  move.obj(oDRAGON, 4, 137, 0, rfDRAGON_LEFT);
 }
-if (rf3) {
-  reset(rf3);
+if (rfDRAGON_LEFT) {
+  reset(rfDRAGON_LEFT);
   erase(oDRAGON);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
