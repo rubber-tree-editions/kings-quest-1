@@ -18,7 +18,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.horizon(41);
   load.view(67);
   if (!fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN == ROOM_NULL && !fGOAT_IS_GONE) {
-    load.sound(11);
+    load.sound(SND_GOAT);
     load.view(14);
     load.view(62);
     rvCOUNTDOWN = 27;
@@ -43,7 +43,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
   if (!rfPLAYING_GOAT_SOUND) {
     set(rfPLAYING_GOAT_SOUND);
-    sound(11, rfPLAYED_GOAT_SOUND);
+    sound(SND_GOAT, rfPLAYED_GOAT_SOUND);
   }
   if (rfPLAYED_GOAT_SOUND) {
     reset(rfPLAYING_GOAT_SOUND);
