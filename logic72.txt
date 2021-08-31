@@ -82,7 +82,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE
     set.view(oEGO, 105);
   }
   start.cycling(oEGO);
-  set(f98);
+  set(fCYCLE_EGO_ANIMATION);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   get.priority(oEGO, rvLOCK_PRIORITY);
   set.priority.v(oEGO, rvLOCK_PRIORITY);
@@ -97,7 +97,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING && posn(oEGO, 65, 100, 82, 120) && f
     set.view(oEGO, 105);
   }
   start.cycling(oEGO);
-  set(f98);
+  set(fCYCLE_EGO_ANIMATION);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   get.priority(oEGO, rvLOCK_PRIORITY);
   set.priority.v(oEGO, rvLOCK_PRIORITY);
@@ -150,7 +150,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && fEGO_CLIMBING_BEANSTALK) {
     draw(oEGO);
   }
   start.cycling(oEGO);
-  set(f98);
+  set(fCYCLE_EGO_ANIMATION);
   vTEMP_Y = 166;
   vTEMP_STEP = 4;
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_OFF_BEANSTALK);

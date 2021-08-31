@@ -36,7 +36,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(35);
   if (vPREV_ROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
     set.view(oEGO, 0);
-    reset(f98);
+    reset(fCYCLE_EGO_ANIMATION);
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
     position(oEGO, 133, 136);
     if (!fPOINTS_FOR_FINDING_DRAGON) {

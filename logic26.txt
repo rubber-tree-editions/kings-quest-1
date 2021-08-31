@@ -21,7 +21,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM23_MIRRORLIKE_LAKE) {
     if (fEGO_ON_WATER) {
       set.view(oEGO, 0);
-      reset(f98);
+      reset(fCYCLE_EGO_ANIMATION);
       vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
     }
   }

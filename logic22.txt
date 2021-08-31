@@ -175,7 +175,7 @@ if (v71 > 20 && v71 < 30 && vTEMP_Y_2 > rvBIRD_Y && fJUMPING && !rfBIRD_AFRAID_O
   vTEMP_X = 130;
   set.priority(oEGO, 15);
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, rvBIRD_STEP_SIZE, rfTAKEN_BY_BIRD);
-  set(f98);
+  set(fCYCLE_EGO_ANIMATION);
   if (!fTAKEN_BY_GIANT_BIRD) {
     set(fTAKEN_BY_GIANT_BIRD);
     vSCORE += 3;
@@ -274,7 +274,7 @@ if (rfFELL_OFF_BEANSTALK_LOW) {
   stop.motion(oEGO);
   set.view(oEGO, 103);
   rvCOUNTDOWN = 20;
-  set(f98);
+  set(fCYCLE_EGO_ANIMATION);
   shake.screen(2);
   print("Ouch!");
   set(f135);
@@ -292,7 +292,7 @@ if (rvCOUNTDOWN == 1) {
 }
 if (rfEGO_STOPPED_ANIMATING) {
   reset(rfEGO_STOPPED_ANIMATING);
-  reset(f98);
+  reset(fCYCLE_EGO_ANIMATION);
   start.motion(oEGO);
   set.view(oEGO, 0);
   release.priority(oEGO);

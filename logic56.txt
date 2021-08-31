@@ -31,7 +31,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
     set.view(oEGO, 105);
   }
   start.cycling(oEGO);
-  set(f98);
+  set(fCYCLE_EGO_ANIMATION);
   get.priority(oEGO, rvLOCK_PRIORITY);
   set.priority.v(oEGO, rvLOCK_PRIORITY);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);

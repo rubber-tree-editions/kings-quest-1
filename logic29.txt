@@ -30,7 +30,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM20_ALPINE_LAKE) {
     if (!fEGO_INVISIBLE) {
       set.view(oEGO, 0);
-      reset(f98);
+      reset(fCYCLE_EGO_ANIMATION);
     }
   }
   random(0, 250, v62);

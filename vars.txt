@@ -223,6 +223,7 @@
 #define fMAGIC_BEANS_PLANTED f94
 #define fSLINGSHOT_TAKEN f96
 #define fCARRYING_SLINGSHOT f97
+#define fCYCLE_EGO_ANIMATION f98
 
 #ifdef RUBBER_TREE
   #define fUNDO f99

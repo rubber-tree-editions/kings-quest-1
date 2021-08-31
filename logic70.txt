@@ -77,7 +77,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !fFALLING_TO_EARTH) {
     draw(oEGO);
   }
   start.cycling(oEGO);
-  set(f98);
+  set(fCYCLE_EGO_ANIMATION);
   vTEMP_Y = 166;
   vTEMP_STEP = 4;
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_OFF_SCREEN);

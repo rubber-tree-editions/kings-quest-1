@@ -29,7 +29,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (vPREV_ROOM_NO == ROOM42_STONE_BRIDGE && fEGO_ON_WATER) {
     set.view(oEGO, 0);
-    reset(f98);
+    reset(fCYCLE_EGO_ANIMATION);
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
   }
   block(0, 126, 69, 147);

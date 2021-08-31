@@ -197,7 +197,7 @@ if (posn(oEGO, 18, 80, 86, 113)) {
       cycle.time(oEGO, rvEGO_CYCLE_TIME);
       draw(oEGO);
       end.of.loop(oEGO, rfEGO_FINISHED_BOWING);
-      set(f98);
+      set(fCYCLE_EGO_ANIMATION);
       if (!fPOINTS_FOR_BOWING_TO_THE_KING) {
         set(fPOINTS_FOR_BOWING_TO_THE_KING);
         vSCORE += 3;
@@ -216,7 +216,7 @@ if (posn(oEGO, 18, 80, 86, 113)) {
       cycle.time(oEGO, rvEGO_CYCLE_TIME);
       draw(oEGO);
       end.of.loop(oEGO, rfEGO_FINISHED_BOWING);
-      set(f98);
+      set(fCYCLE_EGO_ANIMATION);
       if (!fPOINTS_FOR_BOWING_TO_KING_AFTER_MISSION) {
         set(fPOINTS_FOR_BOWING_TO_KING_AFTER_MISSION);
         vSCORE += 3;
@@ -312,7 +312,7 @@ if (said("hello") || said("say", "hello")) {
 }
 if (rfEGO_FINISHED_BOWING) {
   reset(rfEGO_FINISHED_BOWING);
-  reset(f98);
+  reset(fCYCLE_EGO_ANIMATION);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_X += 7;
   erase(oEGO);

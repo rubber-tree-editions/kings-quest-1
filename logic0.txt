@@ -40,7 +40,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (fEGO_DUCKING || fJUMPING) {
     reset(fEGO_DUCKING);
     reset(fJUMPING);
-    reset(f98);
+    reset(fCYCLE_EGO_ANIMATION);
     vEGO_VIEW_NO = 0;
   }
   if (vPREV_ROOM_NO == ROOM10_GOAT_PEN_WEST && vROOM_NO != ROOM11_GOAT_PEN_EAST) {
@@ -196,7 +196,7 @@ else {
 vSAVED_EGO_X = vTEMP_X_2;
 vSAVED_EGO_Y = vTEMP_Y_2;
 vSAVED_EGO_DIR = vEGO_DIR;
-if (f98) {
+if (fCYCLE_EGO_ANIMATION) {
   start.cycling(oEGO);
 }
 else if (vEGO_DIR == DIR_NONE) {
@@ -281,7 +281,7 @@ if (vROOM_NO != ROOM21_WITCH_STOMPING_GROUND) {
       vTEMP_CYCLE_TIME = 2;
       cycle.time(oEGO, vTEMP_CYCLE_TIME);
       set.view(oEGO, 75);
-      set(f98);
+      set(fCYCLE_EGO_ANIMATION);
       end.of.loop(oEGO, fJUMPED);
     }
     else {
@@ -291,7 +291,7 @@ if (vROOM_NO != ROOM21_WITCH_STOMPING_GROUND) {
   if (fJUMPED) {
     reset(fJUMPING);
     reset(fJUMPED);
-    reset(f98);
+    reset(fCYCLE_EGO_ANIMATION);
     vTEMP_CYCLE_TIME_2 = 1;
     cycle.time(oEGO, vTEMP_CYCLE_TIME_2);
     start.motion(oEGO);
@@ -329,7 +329,7 @@ if (said("duck") || controller(cDUCK)) {
   ) {
     set(fEGO_DUCKING);
     set.view(oEGO, 87);
-    set(f98);
+    set(fCYCLE_EGO_ANIMATION);
     end.of.loop(oEGO, f201);
   }
   else if (!f202) {
@@ -341,7 +341,7 @@ if (f201) {
   stop.motion(oEGO);
   set(f202);
   reset(f201);
-  reset(f98);
+  reset(fCYCLE_EGO_ANIMATION);
 }
 if (f202) {
   if (said("stand up") || controller(cDUCK)) {

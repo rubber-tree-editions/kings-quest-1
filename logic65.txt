@@ -92,7 +92,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oEGO, 105);
     ignore.blocks(oEGO);
     position(oEGO, 80, 45);
-    set(f98);
+    set(fCYCLE_EGO_ANIMATION);
     set(rfIN_CAGE);
     program.control();
     move.obj(oEGO, 80, 84, 6, rfFALLEN_TO_EARTH);
@@ -187,7 +187,7 @@ if (rfFALLEN_TO_EARTH) {
   shake.screen(1);
   print("OUCH!");
   rvCOUNTDOWN2 = 20;
-  set(f98);
+  set(fCYCLE_EGO_ANIMATION);
   sound(SND_OUCH, fSOUND_END_MARKER);
 }
 if (fSOUND_END_MARKER) {
@@ -205,7 +205,7 @@ if (rvCOUNTDOWN2 == 1) {
 rvCOUNTDOWN3--;
 if (rfEGO_FINISHED_ANIM) {
   reset(rfEGO_FINISHED_ANIM);
-  reset(f98);
+  reset(fCYCLE_EGO_ANIMATION);
   set.view(oEGO, 0);
   rvCOUNTDOWN3 = 100;
 }

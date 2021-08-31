@@ -43,7 +43,7 @@ if (rfBIRD_DROPPED_YOU) {
   erase(oEGO);
   position(oEGO, 108, 53);
   set.view(oEGO, 105);
-  set(f98);
+  set(fCYCLE_EGO_ANIMATION);
   position(oBIRD, 100, 48);
   draw(oBIRD);
   draw(oEGO);
@@ -86,7 +86,7 @@ if (rvCOUNTDOWN == 1) {
 if (rfEGO_STOPPED_ANIMATING) {
   reset(rfEGO_STOPPED_ANIMATING);
   set.view(oEGO, 0);
-  reset(f98);
+  reset(fCYCLE_EGO_ANIMATION);
   player.control();
   reset(f145);
   reset(f209);

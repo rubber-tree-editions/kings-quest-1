@@ -60,7 +60,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_FROM_SKY);
   }
   if (vPREV_ROOM_NO == ROOM43 && fEGO_ON_WATER) {
-    reset(f98);
+    reset(fCYCLE_EGO_ANIMATION);
     set.view(oEGO, 0);
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
   }
@@ -212,7 +212,7 @@ if (rfFELL_OFF_BEANSTALK_LOW) {
   stop.motion(oEGO);
   set.view(oEGO, 103);
   rvCOUNTDOWN = 20;
-  set(f98);
+  set(fCYCLE_EGO_ANIMATION);
   shake.screen(2);
   print("Ouch!");
   set(f135);
@@ -230,7 +230,7 @@ if (rvCOUNTDOWN == 1) {
 }
 if (rfEGO_STOPPED_ANIMATING) {
   reset(rfEGO_STOPPED_ANIMATING);
-  reset(f98);
+  reset(fCYCLE_EGO_ANIMATION);
   start.motion(oEGO);
   set.view(oEGO, 0);
   release.priority(oEGO);

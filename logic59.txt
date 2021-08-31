@@ -55,7 +55,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
     set.view(oEGO, 105);
   }
   start.cycling(oEGO);
-  set(f98);
+  set(fCYCLE_EGO_ANIMATION);
   sound(SND_FALLING, fSOUND_END_MARKER);
   erase(oEGO);
 }

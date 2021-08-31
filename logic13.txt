@@ -41,7 +41,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM20_ALPINE_LAKE || vPREV_ROOM_NO == ROOM4_SERENE_LAKE_EAST) {
     if (fEGO_ON_WATER) {
       set.view(oEGO, 0);
-      reset(f98);
+      reset(fCYCLE_EGO_ANIMATION);
       vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
     }
   }
@@ -112,7 +112,7 @@ if (f156) {
     erase(oWOLF);
     set.view(oEGO, 96);
     start.cycling(oEGO);
-    set(f98);
+    set(fCYCLE_EGO_ANIMATION);
     set(fGAME_OVER);
   }
 }

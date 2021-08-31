@@ -170,7 +170,7 @@ if (rfFELL_FROM_BEANSTALK_LOW) {
   stop.motion(oEGO);
   set.view(oEGO, 103);
   rvCOUNTDOWN = 20;
-  set(f98);
+  set(fCYCLE_EGO_ANIMATION);
   shake.screen(2);
   print("Ouch!");
   set(f135);
@@ -188,7 +188,7 @@ if (rvCOUNTDOWN == 1) {
 }
 if (rfEGO_STOPPED_ANIMATING) {
   reset(rfEGO_STOPPED_ANIMATING);
-  reset(f98);
+  reset(fCYCLE_EGO_ANIMATION);
   start.motion(oEGO);
   set.view(oEGO, 0);
   release.priority(oEGO);

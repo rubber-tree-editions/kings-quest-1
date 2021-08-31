@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oEGO, 90, 63);
     set.view(oEGO, 105);
     ignore.blocks(oEGO);
-    set(f98);
+    set(fCYCLE_EGO_ANIMATION);
     start.cycling(oEGO);
     move.obj(oEGO, 90, 142, 4, rfFELL_INTO_CAVE);
     if (fEGO_INVISIBLE) {
@@ -80,7 +80,7 @@ if (rvCOUNTDOWN == 1) {
 if (rfEGO_FINISHED_ANIMATING) {
   reset(rfEGO_FINISHED_ANIMATING);
   set.view(oEGO, 0);
-  reset(f98);
+  reset(fCYCLE_EGO_ANIMATION);
   player.control();
   if (rfLOST_INVISIBILITY_DURING_FALL) {
     reset(rfLOST_INVISIBILITY_DURING_FALL);

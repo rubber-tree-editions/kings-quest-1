@@ -106,7 +106,7 @@ if (rfWITCH_GOT_YOU) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_X = 130;
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, rvWITCH_STEP_SIZE, rfCARRIED_OFF);
-    set(f98);
+    set(fCYCLE_EGO_ANIMATION);
   }
 }
 if (rfPROTECTED && vOBJECT_EDGE_CODE != 0) {
@@ -151,14 +151,14 @@ if (said("jump") || controller(cJUMP)) {
     vTEMP_CYCLE_TIME = 3;
     cycle.time(oEGO, vTEMP_CYCLE_TIME);
     set.view(oEGO, 75);
-    set(f98);
+    set(fCYCLE_EGO_ANIMATION);
     end.of.loop(oEGO, fJUMPED);
   }
 }
 if (fJUMPED) {
   reset(fJUMPING);
   reset(fJUMPED);
-  reset(f98);
+  reset(fCYCLE_EGO_ANIMATION);
   start.motion(oEGO);
   vTEMP_CYCLE_TIME_2 = 1;
   cycle.time(oEGO, vTEMP_CYCLE_TIME_2);
