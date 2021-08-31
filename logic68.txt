@@ -2,6 +2,18 @@
 
 LOGIC__HEADER
 
+#define rfFELL rf0
+#define rfDWARF_FINISHED_ANIMATING rf1
+#define rfFALLING rf2
+#define rfINIT_RANDOMIZER rf3
+#define rfDWARF_IS_HERE rf4
+#define rfDWARF_MADE_ENTRANCE rf5
+#define rfDONT_CALCULATE_DISTANCE rf6
+#define rfPLAYING_SND_DWARF rf7
+#define rfPLAYED_SND_DWARF rf8
+
+#define rvLOCK_PRIORITY rv0
+
 #define oDWARF o1
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -17,11 +29,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(115);
     animate.obj(oDWARF);
     set.view(oDWARF, 111);
-    set(rf3);
+    set(rfINIT_RANDOMIZER);
     observe.blocks(oDWARF);
     ignore.horizon(oDWARF);
   }
-  if (rf3) {
+  if (rfINIT_RANDOMIZER) {
     do {
       random(0, 250, v70);
     } while (v70 > 90);
@@ -40,14 +52,14 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (rf4) {
-  if (!rf7) {
-    set(rf7);
-    sound(SND_DWARF, rf8);
+if (rfDWARF_IS_HERE) {
+  if (!rfPLAYING_SND_DWARF) {
+    set(rfPLAYING_SND_DWARF);
+    sound(SND_DWARF, rfPLAYED_SND_DWARF);
   }
-  if (rf8) {
-    reset(rf7);
-    reset(rf8);
+  if (rfPLAYED_SND_DWARF) {
+    reset(rfPLAYING_SND_DWARF);
+    reset(rfPLAYED_SND_DWARF);
   }
 }
 v70--;
@@ -59,22 +71,22 @@ if (v70 == 1) {
     position(oDWARF, 30, 27);
   }
   draw(oDWARF);
-  set(rf4);
-  move.obj(oDWARF, 130, 127, 2, rf5);
+  set(rfDWARF_IS_HERE);
+  move.obj(oDWARF, 130, 127, 2, rfDWARF_MADE_ENTRANCE);
 }
-if (!rf6) {
+if (!rfDONT_CALCULATE_DISTANCE) {
   distance(oEGO, oDWARF, v71);
 }
-if (rf5) {
-  set(rf6);
-  reset(rf5);
+if (rfDWARF_MADE_ENTRANCE) {
+  set(rfDONT_CALCULATE_DISTANCE);
+  reset(rfDWARF_MADE_ENTRANCE);
   follow.ego(oDWARF, 10, f156);
 }
 if (said("examine", "stairway") || said("examine", "room")) {
   print("The stairs seem to go on forever.");
 }
 if (said("examine", "dwarf")) {
-  if (rf4) {
+  if (rfDWARF_IS_HERE) {
     print("This is a shy little dwarf.  He is too quick to catch.");
   }
   else {
@@ -82,21 +94,21 @@ if (said("examine", "dwarf")) {
   }
 }
 if (said("talk", "dwarf") || said("hello") || said("say", "hello")) {
-  if (rf4) {
+  if (rfDWARF_IS_HERE) {
     print("The dwarf is not here for idle conversion.");
   }
   else {
     print("There is nobody here but you.");
   }
 }
-if (fEGO_TOUCHED_TRIGGER_LINE && !rf2) {
-  set(rf2);
+if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING) {
+  set(rfFALLING);
   ignore.blocks(oEGO);
   start.cycling(oEGO);
   set(f98);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
-  get.priority(oEGO, rv0);
-  set.priority.v(oEGO, rv0);
+  get.priority(oEGO, rvLOCK_PRIORITY);
+  set.priority.v(oEGO, rvLOCK_PRIORITY);
   if (!fEGO_INVISIBLE) {
     set.view(oEGO, 105);
   }
@@ -108,36 +120,36 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !rf2) {
     vTEMP_Y = 165;
   }
   vTEMP_STEP = 4;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf0);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL);
   sound(SND_FALLING, fSOUND_END_MARKER);
 }
-if (rf0) {
-  reset(rf0);
+if (rfFELL) {
+  reset(rfFELL);
   erase(oEGO);
   set(fGAME_OVER);
 }
 if (v71 > 0 && v71 < 11) {
-  set(rf6);
+  set(rfDONT_CALCULATE_DISTANCE);
   v71 = 0;
   set(f156);
 }
 if (f156) {
   reset(f156);
   v71 = 0;
-  set(rf6);
+  set(rfDONT_CALCULATE_DISTANCE);
   normal.motion(oDWARF);
   ignore.blocks(oDWARF);
   if (fPROTECTED_BY_SPELL) {
     print("It's a good thing you are protected by a spell.  That little dwarf likes to steal treasures.");
     set.view(oDWARF, 115);
-    reset(rf4);
-    end.of.loop(oDWARF, rf1);
+    reset(rfDWARF_IS_HERE);
+    end.of.loop(oDWARF, rfDWARF_FINISHED_ANIMATING);
   }
   if (fEGO_INVISIBLE) {
     print("Being invisible has protected you, and your treasures, from the dwarf.");
     set.view(oDWARF, 115);
-    reset(rf4);
-    end.of.loop(oDWARF, rf1);
+    reset(rfDWARF_IS_HERE);
+    end.of.loop(oDWARF, rfDWARF_FINISHED_ANIMATING);
   }
   else {
     if (fCARRYING_MIRROR) {
@@ -199,19 +211,19 @@ if (f156) {
     }
     else {
       set.view(oDWARF, 115);
-      reset(rf4);
+      reset(rfDWARF_IS_HERE);
       print("The quick, little dwarf came by to see what you had-- nothing interested him.");
-      end.of.loop(oDWARF, rf1);
+      end.of.loop(oDWARF, rfDWARF_FINISHED_ANIMATING);
       goto(END_OF_DWARF_LOGIC);
     }
     set.view(oDWARF, 115);
-    reset(rf4);
+    reset(rfDWARF_IS_HERE);
     print("That little dwarf caught you by surprise.  Is your treasure still OK?");
-    end.of.loop(oDWARF, rf1);
+    end.of.loop(oDWARF, rfDWARF_FINISHED_ANIMATING);
 END_OF_DWARF_LOGIC:
   }
 }
-if (rf1) {
+if (rfDWARF_FINISHED_ANIMATING) {
   erase(oDWARF);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {

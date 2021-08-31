@@ -2,6 +2,11 @@
 
 LOGIC__HEADER
 
+#define rfFELL_THROUGH_CLOUDS rf0
+#define rfPLAYING_SND_FALLING rf1
+
+#define rvLOCK_PRIORITY rv0
+
 if (fROOM_SCRIPT_EXECUTED) {
   ignore.horizon(oEGO);
   load.pic(vROOM_NO);
@@ -27,12 +32,12 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
   }
   start.cycling(oEGO);
   set(f98);
-  get.priority(oEGO, rv0);
-  set.priority.v(oEGO, rv0);
+  get.priority(oEGO, rvLOCK_PRIORITY);
+  set.priority.v(oEGO, rvLOCK_PRIORITY);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_Y += 40;
   vTEMP_STEP = 4;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf0);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_THROUGH_CLOUDS);
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 84, 159, 167)) {
   set(f199);
@@ -40,26 +45,26 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 84, 159, 167)) {
   program.control();
   stop.cycling(oEGO);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
-  get.priority(oEGO, rv0);
-  set.priority.v(oEGO, rv0);
+  get.priority(oEGO, rvLOCK_PRIORITY);
+  set.priority.v(oEGO, rvLOCK_PRIORITY);
   vTEMP_Y += 9;
   vTEMP_STEP = 4;
-  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rf0);
+  move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_THROUGH_CLOUDS);
 }
-if (!rf0 && f199 && !rf1) {
+if (!rfFELL_THROUGH_CLOUDS && f199 && !rfPLAYING_SND_FALLING) {
   sound(SND_FALLING, fSOUND_END_MARKER);
-  set(rf1);
+  set(rfPLAYING_SND_FALLING);
 }
 if (fSOUND_END_MARKER) {
-  if (!rf0) {
+  if (!rfFELL_THROUGH_CLOUDS) {
     reset(fSOUND_END_MARKER);
-    reset(rf1);
+    reset(rfPLAYING_SND_FALLING);
   }
 }
-if (rf0) {
+if (rfFELL_THROUGH_CLOUDS) {
   erase(oEGO);
   reset(f199);
-  reset(rf0);
+  reset(rfFELL_THROUGH_CLOUDS);
   stop.sound();
   print("You should know you can't walk on clouds.");
   set(fGAME_OVER);
