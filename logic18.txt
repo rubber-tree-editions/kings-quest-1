@@ -2,6 +2,10 @@
 
 LOGIC__HEADER
 
+#define rfELF_IS_HERE rf0
+#define rfELF_LEFT rf1
+#define rfINIT_RANDOMIZER rf2
+
 #define oELF o1
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -25,9 +29,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oELF, 26, 60);
     observe.blocks(oELF);
     object.on.land(oELF);
-    set(rf2);
+    set(rfINIT_RANDOMIZER);
   }
-  if (rf2) {
+  if (rfINIT_RANDOMIZER) {
     do {
       random(0, 250, v71);
     } while (v71 > 90);
@@ -43,18 +47,18 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 v71--;
 if (v71 == 1) {
-  reset(rf2);
+  reset(rfINIT_RANDOMIZER);
   draw(oELF);
-  set(rf0);
+  set(rfELF_IS_HERE);
   wander(oELF);
   print("Wandering on the banks of the lake, you see a cute little elf.");
 }
 if (said("examine", "lake")) {
   print("This is a clear mountain lake with some steep cliffs surrounding it.");
 }
-if (!rf0) {
+if (!rfELF_IS_HERE) {
   if (said("anyword", "elf")) {
-    if (rf1 && said("talk", "elf")) {
+    if (rfELF_LEFT && said("talk", "elf")) {
       print("The elf has left since you were not very cordial to him.");
     }
     else {
@@ -64,11 +68,11 @@ if (!rf0) {
   if (said("examine", "room")) {
     print("There is a clear mountain lake and some trees here.");
   }
-  if (rf1 && said("talk", "elf")) {
+  if (rfELF_LEFT && said("talk", "elf")) {
     print("The elf has left since you were not very cordial to him.");
   }
 }
-if (rf0) {
+if (rfELF_IS_HERE) {
   distance(oEGO, oELF, v70);
   if (said("examine", "room")) {
     print("There is a very pretty lake nearby with a small little elf running along its shore.");
@@ -80,27 +84,27 @@ if (rf0) {
     print("Silly!  You can't get close enough to do that.");
   }
   if (said("murder", "elf") || said("catch", "elf")) {
-    set(rf1);
+    set(rfELF_LEFT);
     erase(oELF);
-    reset(rf0);
+    reset(rfELF_IS_HERE);
     print("I'm surprised at you!  That is very impolite!");
   }
   if (fCARRYING_DAGGER) {
     if (said("throw", "dagger") || said("throw", "dagger", "elf")) {
-      set(rf1);
+      set(rfELF_LEFT);
       erase(oELF);
-      reset(rf0);
+      reset(rfELF_IS_HERE);
       print("I'm surprised at you!  That is very impolite!");
     }
   }
-  if (!rf1 && (said("talk", "elf") || said("hello") || said("say", "hello"))) {
+  if (!rfELF_LEFT && (said("talk", "elf") || said("hello") || said("say", "hello"))) {
     if (v70 < 40) {
       print("The elf, impressed by your friendliness, gives you a magic ring.  \"Kind person, know that once, only once, this ring will make you invisible,\" he says and then disappears.");
       get("ring");
       set(fCARRYING_RING);
       vSCORE += 3;
       erase(oELF);
-      reset(rf0);
+      reset(rfELF_IS_HERE);
       set(fIMPRESSED_ELF);
     }
     else {
