@@ -39,7 +39,7 @@ if (fEGO_ON_WATER) {
   if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
     set(fCYCLE_EGO_ANIMATION);
     stop.motion(oEGO);
-    v93 = 250;
+    vDROWN_MESSAGE_COUNTDOWN = 250;
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_DROWNING;
     if (fMANUAL_EGO_WATER_POS) {
       reposition(oEGO, vEGO_WATER_X, vEGO_WATER_Y);
@@ -117,13 +117,13 @@ else if (!controller(cSWIM)) {
   reset(fSWIMMING);
 }
 if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING && vDROWN_GAME_OVER_COUNTDOWN == 0) {
-  if (v93 == 0) {
+  if (vDROWN_MESSAGE_COUNTDOWN == 0) {
     set(rfDROWNING);
     print("You splash around in the water for a while but seem  to have forgotten how to swim. Unfortunately, you drown.");
     vDROWN_GAME_OVER_COUNTDOWN = 50;
   }
   else {
-    v93--;
+    vDROWN_MESSAGE_COUNTDOWN--;
   }
 }
 if (!fEGO_ON_WATER && vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING) {
