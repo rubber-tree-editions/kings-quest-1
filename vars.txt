@@ -79,6 +79,7 @@
 #define vTEMP_RESULT_2 v70
 #define vTEMP_RESULT_3 v71
 #define vDEBUG_VAR_VALUE v72
+#define vDEBUG_VAR_OR_FLAG_ID v73
 #define vTREASURE_COUNT v74
 #define vDRAGON_STATE v75
   #define DRAGONSTATE_NORMAL 0

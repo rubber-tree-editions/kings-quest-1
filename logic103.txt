@@ -55,19 +55,19 @@ if (fROOM_SCRIPT_EXECUTED) {
     vTEMP_Y -= 1;
   }
   position.v(oGOAT, vTEMP_X, vTEMP_Y);
-  v107 = 1;
-  step.size(oGOAT, v107);
+  vTEMP_STEP_SIZE_2 = 1;
+  step.size(oGOAT, vTEMP_STEP_SIZE_2);
   draw(oGOAT);
   follow.ego(oGOAT, 10, f207);
 }
 distance(oEGO, oGOAT, rvDISTANCE_FROM_EGO_TO_GOAT);
 if (rvDISTANCE_FROM_EGO_TO_GOAT > 35) {
-  v107 = 2;
-  step.size(oGOAT, v107);
+  vTEMP_STEP_SIZE_2 = 2;
+  step.size(oGOAT, vTEMP_STEP_SIZE_2);
 }
 else {
-  v107 = 1;
-  step.size(oGOAT, v107);
+  vTEMP_STEP_SIZE_2 = 1;
+  step.size(oGOAT, vTEMP_STEP_SIZE_2);
 }
 if (!fGOAT_COMPANION) {
   return;

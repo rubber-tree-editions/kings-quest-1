@@ -36,13 +36,13 @@ if (controller(cSHOWPRIORITY)) {
   show.pri.screen();
 }
 if (said("show", "var")) {
-  get.num("var number: ", v73);
-  rindirect(vDEBUG_VAR_VALUE, v73);
+  get.num("var number: ", vDEBUG_VAR_OR_FLAG_ID);
+  rindirect(vDEBUG_VAR_VALUE, vDEBUG_VAR_OR_FLAG_ID);
   print("var %v73: %v72");
 }
 if (said("show", "flags")) {
-  get.num("flag number: ", v73);
-  if (v73) {
+  get.num("flag number: ", vDEBUG_VAR_OR_FLAG_ID);
+  if (vDEBUG_VAR_OR_FLAG_ID) {
     print("flag %v73 is set");
   }
   else {
@@ -50,12 +50,12 @@ if (said("show", "flags")) {
   }
 }
 if (said("reset", "flags")) {
-  get.num("flag number: ", v73);
-  reset.v(v73);
+  get.num("flag number: ", vDEBUG_VAR_OR_FLAG_ID);
+  reset.v(vDEBUG_VAR_OR_FLAG_ID);
 }
 if (said("set", "flags")) {
-  get.num("flag number: ", v73);
-  set.v(v73);
+  get.num("flag number: ", vDEBUG_VAR_OR_FLAG_ID);
+  set.v(vDEBUG_VAR_OR_FLAG_ID);
 }
 if (controller(cSHOWMEM)) {
   show.mem();
