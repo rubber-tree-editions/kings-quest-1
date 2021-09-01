@@ -7,11 +7,11 @@ LOGIC__HEADER
 if (fROOM_SCRIPT_EXECUTED) {
   load.view(93);
   load.view(70);
-  load.sound(13);
+  load.sound(SND_SPLASHING);
   set(fSWIMMING_LOGIC_LOADED);
   reset(fSWIMMING);
 }
-if (f174 || fGAME_OVER) {
+if (f174_UNKNOWN || fGAME_OVER) {
   return;
 }
 if (fSWIMMING_IMPOSSIBLE_HERE && vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
@@ -26,13 +26,13 @@ if (fSWIMMING_IMPOSSIBLE_HERE && vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) 
   }
 }
 if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
-  if (!f45) {
-    set(f45);
-    sound(13, f46);
+  if (!fPLAYING_SND_SPLASHING) {
+    set(fPLAYING_SND_SPLASHING);
+    sound(SND_SPLASHING, fPLAYED_SND_SPLASHING);
   }
-  if (f46) {
-    reset(f46);
-    reset(f45);
+  if (fPLAYED_SND_SPLASHING) {
+    reset(fPLAYED_SND_SPLASHING);
+    reset(fPLAYING_SND_SPLASHING);
   }
 }
 if (fEGO_ON_WATER) {
@@ -130,7 +130,7 @@ if (!fEGO_ON_WATER && vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING) {
   reset(fCYCLE_EGO_ANIMATION);
   vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
   set.view(oEGO, 0);
-  if (f136) {
+  if (f136_UNKNOWN) {
     reposition(oEGO, vEGO_WATER_X, vEGO_WATER_Y);
   }
   else {
@@ -138,7 +138,7 @@ if (!fEGO_ON_WATER && vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING) {
   }
 }
 reset(fMANUAL_EGO_WATER_POS);
-reset(f136);
+reset(f136_UNKNOWN);
 vEGO_WATER_X = 0;
 vEGO_WATER_Y = 0;
 vDROWN_GAME_OVER_COUNTDOWN--;

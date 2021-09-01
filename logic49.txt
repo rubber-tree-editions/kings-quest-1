@@ -34,8 +34,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     move.obj(oEGO, 81, 164, 3, rfFALLEN_DOWN_WELL);
   }
   if (vPREV_ROOM_NO == ROOM12_TOP_OF_WELL && !fFALLING_DOWN_WELL) {
-    if (!f162) {
-      set(f162);
+    if (!fPOINTS_FOR_CONTROLLED_WELL_ENTRY) {
+      set(fPOINTS_FOR_CONTROLLED_WELL_ENTRY);
       vSCORE += 1;
     }
     if (fON_WELL_ROPE) {

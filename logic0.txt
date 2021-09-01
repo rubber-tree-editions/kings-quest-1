@@ -540,7 +540,7 @@ if (fCARRYING_MUSHROOM) {
       && !fEGO_INVISIBLE
       && !fON_WELL_ROPE
       && !fIN_WELL_BUCKET
-      && !f175_UNUSED
+      && !f175_UNKNOWN
       && vROOM_NO != ROOM21_WITCH_STOMPING_GROUND
       && vROOM_NO != ROOM22_CONDOR_AND_CAVE
       && vROOM_NO != ROOM80_IN_MID_AIR

@@ -50,7 +50,7 @@ if (rfKING_EDWARD_DEAD) {
     print("You are the only King here!");
   }
 }
-if (f195) {
+if (fYOU_WON) {
   return;
 }
 if (rvCOUNTDOWN == 0) {
@@ -157,7 +157,7 @@ if (rfEGO_ON_THE_THRONE) {
   stop.motion(oEGO);
   prevent.input();
   print("    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stevenson                 Mark Crowe            Bob Ballew   Mikel Knight             Susan Lee          ");
-  set(f195);
+  set(fYOU_WON);
 }
 if (posn(oEGO, 18, 80, 67, 107)) {
   set(rfNEAR_THRONE);
@@ -167,7 +167,7 @@ else {
 }
 if (posn(oEGO, 18, 80, 86, 113)) {
   if (said("examine", "king")) {
-    if (rvCOUNTDOWN == 0 && vTREASURE_COUNT != 3 && !f126) {
+    if (rvCOUNTDOWN == 0 && vTREASURE_COUNT != 3 && !fLOST_VITAL_TREASURE) {
       print("King Edward the Benevolent is a very wise, but elderly monarch.  His frail body is almost lost in the large throne.");
     }
     if (!rfNEAR_THRONE && !fEGO_INVISIBLE && vTREASURE_COUNT == 3 && rvCOUNTDOWN == 0) {
@@ -227,20 +227,20 @@ if (posn(oEGO, 18, 80, 86, 113)) {
     }
   }
   if (said("talk", "king")) {
-    if (fSPOKEN_TO_KING && rvCOUNTDOWN == 0 && !f126 && vTREASURE_COUNT != 3) {
+    if (fSPOKEN_TO_KING && rvCOUNTDOWN == 0 && !fLOST_VITAL_TREASURE && vTREASURE_COUNT != 3) {
       print("Go, Sir Graham!  Go and bring me back these treasures!");
     }
     if (rvCOUNTDOWN == 0 && vTREASURE_COUNT == 3) {
       print("Welcome back from your quest, Sir Graham.");
     }
-    if (rvCOUNTDOWN == 0 && f126) {
+    if (rvCOUNTDOWN == 0 && fLOST_VITAL_TREASURE) {
       print("Why, Sir Graham, have you failed me and returned without accomplishing your task?  Go, and complete your quest!!");
       set(fNO_BUSINESS_WITH_KING);
     }
     if (rvCOUNTDOWN != 0) {
       print("The king cannot talk right now.");
     }
-    if (!fSPOKEN_TO_KING && rvCOUNTDOWN == 0 && !f126 && vTREASURE_COUNT != 3) {
+    if (!fSPOKEN_TO_KING && rvCOUNTDOWN == 0 && !fLOST_VITAL_TREASURE && vTREASURE_COUNT != 3) {
       set(fSPOKEN_TO_KING);
       set(rfWAIT_FOR_KEY);
       set(fNO_BUSINESS_WITH_KING);

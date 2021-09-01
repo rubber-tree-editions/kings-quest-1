@@ -365,8 +365,8 @@ if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 0) {
   step.size(oGIANT, rvZERO);
   draw(oGIANT);
   vGIANT_STATE = GIANTSTATE_ASLEEP_WITH_CHEST;
-  if (!f205) {
-    set(f205);
+  if (!fPOINTS_FOR_TIRING_OUT_GIANT) {
+    set(fPOINTS_FOR_TIRING_OUT_GIANT);
     vSCORE += 7;
   }
   print("What luck!  The huge giant fell fast asleep!");

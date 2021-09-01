@@ -123,7 +123,7 @@ if (rfTROLL_IS_HERE && fGOAT_COMPANION && !rfGOAT_APPROACHING_TROLL) {
   }
   print("It is a well known fact that goats hate trolls intensely.   You should move aside and let the goat take care of this nasty troll.");
   set(rfGOAT_APPROACHING_TROLL);
-  set(f76);
+  set(fSCRIPTED_GOAT_MOVEMENT);
   move.obj(oGOAT, 80, 71, 0, rfGOAT_AT_BRIDGE);
 }
 if (rfGOAT_AT_BRIDGE) {
