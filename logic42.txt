@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 99, 52);
     }
   }
-  if (vPREV_ROOM_NO == ROOM39) {
+  if (vPREV_ROOM_NO == ROOM39_WEATHER_BEATEN_BRIDGE) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_X < 56) {
       position(oEGO, 6, 165);
@@ -32,7 +32,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 109, 165);
     }
   }
-  if (vPREV_ROOM_NO == ROOM43) {
+  if (vPREV_ROOM_NO == ROOM43_CLEAR_BLUE_LAKE) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y < 123) {
       position(oEGO, 140, 58);
@@ -162,13 +162,13 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM7_WATERFALL_LAKE_EAST);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM43);
+  new.room(ROOM43_CLEAR_BLUE_LAKE);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM41);
+  new.room(ROOM41_OPEN_SIDED_BRIDGE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM39);
+  new.room(ROOM39_WEATHER_BEATEN_BRIDGE);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);

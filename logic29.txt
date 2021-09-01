@@ -161,7 +161,7 @@ if (rfUNDER_SORCERERS_SPELL) {
   return;
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM36);
+  new.room(ROOM36_ROCK_WITH_TINY_HOLE);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM30_WALNUT_TREE);

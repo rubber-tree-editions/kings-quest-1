@@ -13,7 +13,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 26, 64, 0, 0);
   }
-  if (vPREV_ROOM_NO == ROOM37 && fEGO_ON_WATER) {
+  if (vPREV_ROOM_NO == ROOM37_SWAMP && fEGO_ON_WATER) {
     set.view(oEGO, 0);
     reset(fCYCLE_EGO_ANIMATION);
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
@@ -86,10 +86,10 @@ if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM45_OUTSIDE_WOODCUTTER_COTTAGE_BACK);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM43);
+  new.room(ROOM43_CLEAR_BLUE_LAKE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM37);
+  new.room(ROOM37_SWAMP);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);

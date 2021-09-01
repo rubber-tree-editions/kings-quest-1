@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 123, 64, 0, 0);
   }
-  if (vPREV_ROOM_NO == ROOM29) {
+  if (vPREV_ROOM_NO == ROOM29_SORCERER_STOMPING_GROUND) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_X < 50) {
       position(oEGO, 12, 54);
@@ -99,7 +99,7 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM29);
+  new.room(ROOM29_SORCERER_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM19_BASE_MOUNTAIN_DOOR);

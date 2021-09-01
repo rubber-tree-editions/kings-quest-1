@@ -64,13 +64,13 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   reset(fSWIMMING_IMPOSSIBLE_HERE);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM39);
+  new.room(ROOM39_WEATHER_BEATEN_BRIDGE);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM27);
+  new.room(ROOM27_BIG_FOREGROUND_TREE);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM25);
+  new.room(ROOM25_RICKETY_BRIDGE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM23_MIRRORLIKE_LAKE);

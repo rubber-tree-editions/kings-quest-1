@@ -6,7 +6,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  if (vPREV_ROOM_NO == ROOM36) {
+  if (vPREV_ROOM_NO == ROOM36_ROCK_WITH_TINY_HOLE) {
     set.view(oEGO, 60);
     position(oEGO, 3, 81);
   }
@@ -56,7 +56,7 @@ if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM77_LEPRECHAUN_KING_THRONE_ROOM);
 }
 if (posn(oEGO, 0, 0, 1, 167)) {
-  new.room(ROOM36);
+  new.room(ROOM36_ROCK_WITH_TINY_HOLE);
 }
 return;
 

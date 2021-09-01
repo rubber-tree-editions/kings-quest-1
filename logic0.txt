@@ -59,7 +59,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_NO != ROOM53_KING_EDWARD_THRONE_ROOM
     && vROOM_NO != ROOM58_GIANT_STOMPING_GROUND
     && vROOM_NO != ROOM49_INSIDE_WELL
-    && vROOM_NO != ROOM51_DRAGON_STOMPING_GROUND
+    && vROOM_NO != ROOM51_DRAGONS_LAIR
     && vROOM_NO != ROOM52_IN_WELL_UNDERWATER
     && vROOM_NO != ROOM12_TOP_OF_WELL
     && vROOM_NO != ROOM10_GOAT_PEN_WEST
@@ -167,20 +167,20 @@ if (vROOM_NO > ROOM52_IN_WELL_UNDERWATER
   || vROOM_NO == ROOM21_WITCH_STOMPING_GROUND
   || vROOM_NO == ROOM22_CONDOR_AND_CAVE
   || vROOM_NO == ROOM24_CLOVER_PATCH
-  || vROOM_NO == ROOM27
+  || vROOM_NO == ROOM27_BIG_FOREGROUND_TREE
   || vROOM_NO == ROOM28_OUTSIDE_GINGERBREAD_HOUSE
-  || vROOM_NO == ROOM29
+  || vROOM_NO == ROOM29_SORCERER_STOMPING_GROUND
   || vROOM_NO == ROOM30_WALNUT_TREE
   || vROOM_NO == ROOM31_FREE_BOWL
-  || vROOM_NO == ROOM35
-  || vROOM_NO == ROOM36
-  || vROOM_NO == ROOM38
+  || vROOM_NO == ROOM35_DWARF_MEADOW
+  || vROOM_NO == ROOM36_ROCK_WITH_TINY_HOLE
+  || vROOM_NO == ROOM38_WILD_FLOWER_BED
   || vROOM_NO == ROOM44_OUTSIDE_WOODCUTTER_COTTAGE_FRONT
   || vROOM_NO == ROOM45_OUTSIDE_WOODCUTTER_COTTAGE_BACK
   || vROOM_NO == ROOM46_OGRE_STOMPING_GROUND
   || vROOM_NO == ROOM48_LEPRECHAUN_HOLE
-  || vROOM_NO == ROOM50
-  || vROOM_NO == ROOM51_DRAGON_STOMPING_GROUND
+  || vROOM_NO == ROOM50_CAVE_ADJOINING_DRAGONS_LAIR
+  || vROOM_NO == ROOM51_DRAGONS_LAIR
 ) {
   if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
     print("You need to be in water to swim.");
@@ -258,7 +258,7 @@ if (vROOM_NO != ROOM21_WITCH_STOMPING_GROUND) {
         && !fTENSE_SITUATION
         && !fEGO_DUCKING
         && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE
-        && vROOM_NO != ROOM29
+        && vROOM_NO != ROOM29_SORCERER_STOMPING_GROUND
         && vROOM_NO != ROOM13_WOLF_STOMPING_GROUND
         && vROOM_NO != ROOM53_KING_EDWARD_THRONE_ROOM
         && vROOM_NO != ROOM58_GIANT_STOMPING_GROUND
@@ -273,7 +273,7 @@ if (vROOM_NO != ROOM21_WITCH_STOMPING_GROUND) {
         && vROOM_NO != ROOM14_BASE_GOLDEN_EGG_TREE
         && vROOM_NO != ROOM10_GOAT_PEN_WEST
         && vROOM_NO != ROOM11_GOAT_PEN_EAST
-        && vROOM_NO != ROOM51_DRAGON_STOMPING_GROUND
+        && vROOM_NO != ROOM51_DRAGONS_LAIR
     ) {
       set(fJUMPING);
       stop.motion(oEGO);
@@ -309,7 +309,7 @@ if (said("duck") || controller(cDUCK)) {
       && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE
       && !fJUMPING
       && !fTHREAT_OF_SORCERER_OR_OGRE
-      && vROOM_NO != ROOM29
+      && vROOM_NO != ROOM29_SORCERER_STOMPING_GROUND
       && vROOM_NO != ROOM12_TOP_OF_WELL
       && vROOM_NO != ROOM53_KING_EDWARD_THRONE_ROOM
       && vROOM_NO != ROOM58_GIANT_STOMPING_GROUND
@@ -364,12 +364,12 @@ if (fCARRYING_DAGGER) {
   }
   if (said("throw", "dagger")) {
     if (vROOM_NO != ROOM18_CLIFFS_LAKE_WEST
-      && vROOM_NO != ROOM25
-      && vROOM_NO != ROOM29
-      && vROOM_NO != ROOM39
-      && vROOM_NO != ROOM41
+      && vROOM_NO != ROOM25_RICKETY_BRIDGE
+      && vROOM_NO != ROOM29_SORCERER_STOMPING_GROUND
+      && vROOM_NO != ROOM39_WEATHER_BEATEN_BRIDGE
+      && vROOM_NO != ROOM41_OPEN_SIDED_BRIDGE
       && vROOM_NO != ROOM46_OGRE_STOMPING_GROUND
-      && vROOM_NO != ROOM51_DRAGON_STOMPING_GROUND
+      && vROOM_NO != ROOM51_DRAGONS_LAIR
       && vROOM_NO != ROOM58_GIANT_STOMPING_GROUND
     ) {
       print("There is no reason to throw the dagger.");
@@ -572,7 +572,7 @@ if (fCARRYING_MUSHROOM) {
 }
 if (fEGO_TINY && vTINY_COUNTDOWN != 0) {
   vTINY_COUNTDOWN--;
-  if (vTINY_COUNTDOWN == 1 && vROOM_NO != ROOM36 && vROOM_NO != ROOM78_IN_CAVE_WITH_TINY_HOLE) {
+  if (vTINY_COUNTDOWN == 1 && vROOM_NO != ROOM36_ROCK_WITH_TINY_HOLE && vROOM_NO != ROOM78_IN_CAVE_WITH_TINY_HOLE) {
     set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
     reset(fEGO_TINY);
@@ -638,7 +638,7 @@ if (fCARRYING_RING) {
         && vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE
         && vROOM_NO != ROOM80_IN_MID_AIR
         && vROOM_NO != ROOM49_INSIDE_WELL
-        && vROOM_NO != ROOM51_DRAGON_STOMPING_GROUND
+        && vROOM_NO != ROOM51_DRAGONS_LAIR
         && vROOM_NO != ROOM52_IN_WELL_UNDERWATER
         && vROOM_NO != ROOM12_TOP_OF_WELL
         && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE
@@ -659,7 +659,7 @@ if (fCARRYING_RING) {
         || vROOM_NO == ROOM63_UP_GOLDEN_EGG_TREE
         || vROOM_NO == ROOM80_IN_MID_AIR
         || vROOM_NO == ROOM49_INSIDE_WELL
-        || vROOM_NO == ROOM51_DRAGON_STOMPING_GROUND
+        || vROOM_NO == ROOM51_DRAGONS_LAIR
         || vROOM_NO == ROOM52_IN_WELL_UNDERWATER
         || vROOM_NO == ROOM12_TOP_OF_WELL
         || vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE
@@ -703,7 +703,7 @@ if (fCARRYING_MAGIC_BEANS) {
     reset(fCARRYING_MAGIC_BEANS);
   }
   if (said("plant", "magic beans")) {
-    if (vROOM_NO != ROOM6_POUCH_STUMP && vROOM_NO != ROOM22_CONDOR_AND_CAVE && vROOM_NO != ROOM31_FREE_BOWL && vROOM_NO != ROOM35 && vROOM_NO != ROOM38) {
+    if (vROOM_NO != ROOM6_POUCH_STUMP && vROOM_NO != ROOM22_CONDOR_AND_CAVE && vROOM_NO != ROOM31_FREE_BOWL && vROOM_NO != ROOM35_DWARF_MEADOW && vROOM_NO != ROOM38_WILD_FLOWER_BED) {
       print("That is not a bad idea, but this is not a very suitable place to plant these beans.  Why don't you try it elsewhere?");
     }
     else {
@@ -813,7 +813,7 @@ if (fGOAT_COMPANION) {
     print("You don't have any way to kill the old goat.");
   }
   if (fCARRYING_DAGGER && said("murder", "goat")) {
-    if (vROOM_NO != ROOM25 && vROOM_NO != ROOM39 && vROOM_NO != ROOM41) {
+    if (vROOM_NO != ROOM25_RICKETY_BRIDGE && vROOM_NO != ROOM39_WEATHER_BEATEN_BRIDGE && vROOM_NO != ROOM41_OPEN_SIDED_BRIDGE) {
       if (vROOM_NO == ROOM10_GOAT_PEN_WEST || vROOM_NO == ROOM11_GOAT_PEN_EAST) {
         get.posn(oEGO, vTEMP_X, vTEMP_Y);
         print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.");

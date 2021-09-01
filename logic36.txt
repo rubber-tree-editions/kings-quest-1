@@ -111,13 +111,13 @@ FINALCHECKS:
     new.room(ROOM45_OUTSIDE_WOODCUTTER_COTTAGE_BACK);
   }
   if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(ROOM35);
+    new.room(ROOM35_DWARF_MEADOW);
   }
   if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(ROOM37);
+    new.room(ROOM37_SWAMP);
   }
   if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(ROOM29);
+    new.room(ROOM29_SORCERER_STOMPING_GROUND);
   }
   if (fGOAT_COMPANION) {
     call(LOGIC103_GOAT);

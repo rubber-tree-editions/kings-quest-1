@@ -95,7 +95,7 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM42_STONE_BRIDGE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM38);
+  new.room(ROOM38_WILD_FLOWER_BED);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);

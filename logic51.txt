@@ -44,7 +44,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       vSCORE += 1;
     }
   }
-  if (vPREV_ROOM_NO == ROOM50) {
+  if (vPREV_ROOM_NO == ROOM50_CAVE_ADJOINING_DRAGONS_LAIR) {
     position(oEGO, 9, 138);
   }
   if (!fTAKEN_MIRROR) {
@@ -359,7 +359,7 @@ if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM52_IN_WELL_UNDERWATER);
 }
 if (posn(oEGO, 0, 0, 1, 167)) {
-  new.room(ROOM50);
+  new.room(ROOM50_CAVE_ADJOINING_DRAGONS_LAIR);
 }
 return;
 

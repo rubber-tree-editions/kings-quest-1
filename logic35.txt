@@ -33,7 +33,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 24, 110, 0, 0);
   }
-  if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == ROOM35) {
+  if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == ROOM35_DWARF_MEADOW) {
     vTEMP_PIC = 84;
     set(fINIT_BEANSTALK);
     load.pic(vTEMP_PIC);
@@ -84,7 +84,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       random(0, 250, vTEMP_RESULT_2);
     } while (vTEMP_RESULT_2 > 90);
   }
-  if (vBEANSTALK_ROOM == ROOM35) {
+  if (vBEANSTALK_ROOM == ROOM35_DWARF_MEADOW) {
     overlay.pic(vTEMP_PIC);
   }
   draw(oEGO);
@@ -241,7 +241,7 @@ if (rfHAD_DWARF_ENCOUNTER && vOBJECT_EDGE_CODE != 0) {
 if (fCARRYING_MAGIC_BEANS && fINIT_BEANSTALK) {
   if (said("plant", "magic beans")) {
     reset(fCARRYING_MAGIC_BEANS);
-    vBEANSTALK_ROOM = ROOM35;
+    vBEANSTALK_ROOM = ROOM35_DWARF_MEADOW;
     set(fMAGIC_BEANS_PLANTED);
     drop("beans");
     vSCORE += 2;
@@ -251,7 +251,7 @@ if (fCARRYING_MAGIC_BEANS && fINIT_BEANSTALK) {
     show.pic();
   }
 }
-if (vBEANSTALK_ROOM == ROOM35 && !fEGO_INVISIBLE) {
+if (vBEANSTALK_ROOM == ROOM35_DWARF_MEADOW && !fEGO_INVISIBLE) {
   if (said("climb", "beanstalk") && !fEGO_CLIMBING_BEANSTALK) {
     if (posn(oEGO, 52, 76, 103, 97)) {
       erase(oEGO);
@@ -268,7 +268,7 @@ if (vBEANSTALK_ROOM == ROOM35 && !fEGO_INVISIBLE) {
     }
   }
 }
-if (vBEANSTALK_ROOM != ROOM35) {
+if (vBEANSTALK_ROOM != ROOM35_DWARF_MEADOW) {
   if (said("climb", "beanstalk")) {
     print("There is no beanstalk here to climb.");
   }
@@ -342,10 +342,10 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK) {
   new.room(ROOM46_OGRE_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM34);
+  new.room(ROOM34_PEBBLY_RIVER_BANK);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM36);
+  new.room(ROOM36_ROCK_WITH_TINY_HOLE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM30_WALNUT_TREE);
@@ -353,7 +353,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-if (vBEANSTALK_ROOM == ROOM35) {
+if (vBEANSTALK_ROOM == ROOM35_DWARF_MEADOW) {
   call(LOGIC104_BEANSTALK);
 }
 return;

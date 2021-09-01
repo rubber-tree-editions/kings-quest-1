@@ -184,7 +184,7 @@ AFTERCOUNTDOWN:
     new.room(ROOM45_OUTSIDE_WOODCUTTER_COTTAGE_BACK);
   }
   if (vEGO_EDGE_CODE == EDGE_BOTTOM && rvCOUNTDOWN == 0) {
-    new.room(ROOM35);
+    new.room(ROOM35_DWARF_MEADOW);
   }
   if (fGOAT_COMPANION) {
     call(LOGIC103_GOAT);

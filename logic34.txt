@@ -132,10 +132,10 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM47_MUSHROOM);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM33);
+  new.room(ROOM33_RAGING_RIVER_SPLIT_BY_BOULDER);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM35);
+  new.room(ROOM35_DWARF_MEADOW);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM31_FREE_BOWL);

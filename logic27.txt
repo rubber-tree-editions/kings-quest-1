@@ -20,13 +20,13 @@ if (said("examine", "anyword")) {
   print("What are you doing that for?  There's nothing here.");
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM38);
+  new.room(ROOM38_WILD_FLOWER_BED);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM28_OUTSIDE_GINGERBREAD_HOUSE);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM26);
+  new.room(ROOM26_EMPTY_STUMP);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM22_CONDOR_AND_CAVE);

@@ -59,7 +59,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     vTEMP_STEP = 2;
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_FROM_SKY);
   }
-  if (vPREV_ROOM_NO == ROOM43 && fEGO_ON_WATER) {
+  if (vPREV_ROOM_NO == ROOM43_CLEAR_BLUE_LAKE && fEGO_ON_WATER) {
     reset(fCYCLE_EGO_ANIMATION);
     set.view(oEGO, 0);
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
@@ -252,7 +252,7 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM7_WATERFALL_LAKE_EAST);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM43);
+  new.room(ROOM43_CLEAR_BLUE_LAKE);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);

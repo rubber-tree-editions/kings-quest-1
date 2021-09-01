@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 47, 60, 0, 0);
   }
-  if (vPREV_ROOM_NO == ROOM41) {
+  if (vPREV_ROOM_NO == ROOM41_OPEN_SIDED_BRIDGE) {
     position(oEGO, 45, 166);
   }
   ignore.blocks(oEGO);
@@ -135,7 +135,7 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM1_CASTLE_EAST);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM41);
+  new.room(ROOM41_OPEN_SIDED_BRIDGE);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);

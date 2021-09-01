@@ -151,10 +151,10 @@ if (!fCARRYING_BOWL) {
   }
 }
 if (!fCARRYING_PEBBLES) {
-  if (vROOM_NO != ROOM34 && said("get", "pebbles")) {
+  if (vROOM_NO != ROOM34_PEBBLY_RIVER_BANK && said("get", "pebbles")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM34 && said("examine", "pebbles")) {
+  if (vROOM_NO != ROOM34_PEBBLY_RIVER_BANK && said("examine", "pebbles")) {
     print("You do not have it.");
   }
   if (said("anyword", "pebbles") && !said("get", "pebbles") && !said("examine", "pebbles")) {
@@ -312,10 +312,10 @@ if (!fCARRYING_FIDDLE) {
   }
 }
 if (!fCARRYING_MIRROR) {
-  if (vROOM_NO != ROOM51_DRAGON_STOMPING_GROUND && said("get", "mirror")) {
+  if (vROOM_NO != ROOM51_DRAGONS_LAIR && said("get", "mirror")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM51_DRAGON_STOMPING_GROUND && said("examine", "mirror")) {
+  if (vROOM_NO != ROOM51_DRAGONS_LAIR && said("examine", "mirror")) {
     print("You do not have it.");
   }
   if (said("anyword", "mirror") && !said("get", "mirror") && !said("examine", "mirror")) {

@@ -32,7 +32,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.priority(oEGO, 15);
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_OFF_SCREEN);
   }
-  if (vPREV_ROOM_NO < ROOM50) {
+  if (vPREV_ROOM_NO < ROOM50_CAVE_ADJOINING_DRAGONS_LAIR) {
     set.view(oEGO, 74);
     position(oEGO, 69, 160);
     move.obj(oEGO, 69, 160, 0, fMISC_END_MARKER);
@@ -95,11 +95,11 @@ if (rfFALLEN_OFF_SCREEN || posn(oEGO, 0, 166, 159, 167)) {
   if (vBEANSTALK_ROOM == ROOM31_FREE_BOWL) {
     new.room(ROOM31_FREE_BOWL);
   }
-  if (vBEANSTALK_ROOM == ROOM35) {
-    new.room(ROOM35);
+  if (vBEANSTALK_ROOM == ROOM35_DWARF_MEADOW) {
+    new.room(ROOM35_DWARF_MEADOW);
   }
-  if (vBEANSTALK_ROOM == ROOM38) {
-    new.room(ROOM38);
+  if (vBEANSTALK_ROOM == ROOM38_WILD_FLOWER_BED) {
+    new.room(ROOM38_WILD_FLOWER_BED);
   }
 }
 return;

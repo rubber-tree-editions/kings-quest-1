@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 4, 121);
     }
   }
-  if (vPREV_ROOM_NO == ROOM32) {
+  if (vPREV_ROOM_NO == ROOM32_EAST_OF_FREE_BOWL) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_X < 50) {
       position(oEGO, 2, 59);
@@ -142,7 +142,7 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM32);
+  new.room(ROOM32_EAST_OF_FREE_BOWL);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM24_CLOVER_PATCH);

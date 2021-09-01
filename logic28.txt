@@ -37,13 +37,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM65_IN_GINGERBREAD_HOUSE) {
     position(oEGO, 48, 132);
   }
-  if (vPREV_ROOM_NO == ROOM27) {
+  if (vPREV_ROOM_NO == ROOM27_BIG_FOREGROUND_TREE) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y > 94) {
       position(oEGO, 1, 155);
     }
   }
-  if (vPREV_ROOM_NO == ROOM37 && fEGO_ON_WATER) {
+  if (vPREV_ROOM_NO == ROOM37_SWAMP && fEGO_ON_WATER) {
     set.view(oEGO, 0);
     reset(fCYCLE_EGO_ANIMATION);
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
@@ -160,13 +160,13 @@ if (said("eat", "fence")) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM37);
+  new.room(ROOM37_SWAMP);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM29);
+  new.room(ROOM29_SORCERER_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM27);
+  new.room(ROOM27_BIG_FOREGROUND_TREE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM21_WITCH_STOMPING_GROUND);

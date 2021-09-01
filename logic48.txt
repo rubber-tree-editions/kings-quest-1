@@ -120,7 +120,7 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM47_MUSHROOM);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM33);
+  new.room(ROOM33_RAGING_RIVER_SPLIT_BY_BOULDER);
 }
 return;
 

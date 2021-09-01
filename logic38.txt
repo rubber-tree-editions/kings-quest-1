@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 36, 84, 0, 0);
   }
-  if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == ROOM38) {
+  if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == ROOM38_WILD_FLOWER_BED) {
     vTEMP_PIC = 84;
     set(fINIT_BEANSTALK);
     load.pic(vTEMP_PIC);
@@ -59,7 +59,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     vTEMP_STEP = 2;
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_FROM_SKY);
   }
-  if (vBEANSTALK_ROOM == ROOM38) {
+  if (vBEANSTALK_ROOM == ROOM38_WILD_FLOWER_BED) {
     overlay.pic(vTEMP_PIC);
   }
   draw(oEGO);
@@ -105,7 +105,7 @@ if (said("get", "flowers")) {
 if (fCARRYING_MAGIC_BEANS && fINIT_BEANSTALK) {
   if (said("plant", "magic beans")) {
     reset(fCARRYING_MAGIC_BEANS);
-    vBEANSTALK_ROOM = ROOM38;
+    vBEANSTALK_ROOM = ROOM38_WILD_FLOWER_BED;
     set(fMAGIC_BEANS_PLANTED);
     drop("beans");
     vSCORE += 2;
@@ -115,7 +115,7 @@ if (fCARRYING_MAGIC_BEANS && fINIT_BEANSTALK) {
     show.pic();
   }
 }
-if (vBEANSTALK_ROOM == ROOM38 && !fEGO_INVISIBLE) {
+if (vBEANSTALK_ROOM == ROOM38_WILD_FLOWER_BED && !fEGO_INVISIBLE) {
   if (said("climb", "beanstalk") && !fEGO_CLIMBING_BEANSTALK) {
     if (posn(oEGO, 52, 76, 103, 97)) {
       erase(oEGO);
@@ -131,7 +131,7 @@ if (vBEANSTALK_ROOM == ROOM38 && !fEGO_INVISIBLE) {
     }
   }
 }
-if (vBEANSTALK_ROOM != ROOM38) {
+if (vBEANSTALK_ROOM != ROOM38_WILD_FLOWER_BED) {
   if (said("climb", "beanstalk")) {
     print("There is no beanstalk here to climb.");
   }
@@ -201,21 +201,21 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON && fEGO_CLIMBING_BEANSTALK) {
   new.room(ROOM70);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK) {
-  new.room(ROOM43);
+  new.room(ROOM43_CLEAR_BLUE_LAKE);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM37);
+  new.room(ROOM37_SWAMP);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM39);
+  new.room(ROOM39_WEATHER_BEATEN_BRIDGE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM27);
+  new.room(ROOM27_BIG_FOREGROUND_TREE);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-if (vBEANSTALK_ROOM == ROOM38) {
+if (vBEANSTALK_ROOM == ROOM38_WILD_FLOWER_BED) {
   call(LOGIC104_BEANSTALK);
 }
 return;

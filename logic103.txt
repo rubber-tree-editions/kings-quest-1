@@ -38,7 +38,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oGOAT);
     goto(ATRIVER);
   }
-  if (vROOM_NO == ROOM17_CLIFFS_LAKE_EAST && vPREV_ROOM_NO == ROOM32 && vTEMP_X < 50) {
+  if (vROOM_NO == ROOM17_CLIFFS_LAKE_EAST && vPREV_ROOM_NO == ROOM32_EAST_OF_FREE_BOWL && vTEMP_X < 50) {
     position(oGOAT, 1, 45);
     stop.motion(oGOAT);
     stop.cycling(oGOAT);
@@ -108,13 +108,13 @@ if (f207) {
 if (rvDISTANCE_FROM_EGO_TO_GOAT > 20 && vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
   if (vROOM_NO != ROOM1_CASTLE_EAST
     && vROOM_NO != ROOM2_CASTLE_WEST
-    && vROOM_NO != ROOM41
-    && vROOM_NO != ROOM33
-    && vROOM_NO != ROOM34
-    && vROOM_NO != ROOM32
-    && vROOM_NO != ROOM25
-    && vROOM_NO != ROOM26
-    && vROOM_NO != ROOM39
+    && vROOM_NO != ROOM41_OPEN_SIDED_BRIDGE
+    && vROOM_NO != ROOM33_RAGING_RIVER_SPLIT_BY_BOULDER
+    && vROOM_NO != ROOM34_PEBBLY_RIVER_BANK
+    && vROOM_NO != ROOM32_EAST_OF_FREE_BOWL
+    && vROOM_NO != ROOM25_RICKETY_BRIDGE
+    && vROOM_NO != ROOM26_EMPTY_STUMP
+    && vROOM_NO != ROOM39_WEATHER_BEATEN_BRIDGE
   ) {
     print("The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water.");
   }

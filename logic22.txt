@@ -87,7 +87,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       random(0, 250, vTEMP_RESULT_2);
     } while (vTEMP_RESULT_2 > 90);
   }
-  if (vPREV_ROOM_NO == ROOM50) {
+  if (vPREV_ROOM_NO == ROOM50_CAVE_ADJOINING_DRAGONS_LAIR) {
     position(oEGO, 142, 83);
   }
   if (vBEANSTALK_ROOM == ROOM22_CONDOR_AND_CAVE) {
@@ -310,7 +310,7 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON && fEGO_CLIMBING_BEANSTALK) {
   new.room(ROOM70);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK) {
-  new.room(ROOM27);
+  new.room(ROOM27_BIG_FOREGROUND_TREE);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM21_WITCH_STOMPING_GROUND);
@@ -322,7 +322,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM11_GOAT_PEN_EAST);
 }
 if (posn(oEGO, 148, 71, 149, 88)) {
-  new.room(ROOM50);
+  new.room(ROOM50_CAVE_ADJOINING_DRAGONS_LAIR);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);

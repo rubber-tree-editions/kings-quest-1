@@ -27,7 +27,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oMUSHROOM, 84, 80);
     set(rfSHOW_MUSHROOM);
   }
-  if (vPREV_ROOM_NO == ROOM34) {
+  if (vPREV_ROOM_NO == ROOM34_PEBBLY_RIVER_BANK) {
     if (posn(oEGO, 77, 165, 112, 167)) {
       position(oEGO, 71, 164);
     }
@@ -211,7 +211,7 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM46_OGRE_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM34);
+  new.room(ROOM34_PEBBLY_RIVER_BANK);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);

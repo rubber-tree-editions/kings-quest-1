@@ -281,16 +281,16 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water"
 }
 FINALCHECKS:
   if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-    new.room(ROOM41);
+    new.room(ROOM41_OPEN_SIDED_BRIDGE);
   }
   if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-    new.room(ROOM39);
+    new.room(ROOM39_WEATHER_BEATEN_BRIDGE);
   }
   if (vEGO_EDGE_CODE == EDGE_LEFT) {
-    new.room(ROOM33);
+    new.room(ROOM33_RAGING_RIVER_SPLIT_BY_BOULDER);
   }
   if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-    new.room(ROOM25);
+    new.room(ROOM25_RICKETY_BRIDGE);
   }
   call(LOGIC101_SWIMMING);
   return;

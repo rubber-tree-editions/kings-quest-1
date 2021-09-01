@@ -381,13 +381,13 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM42_STONE_BRIDGE);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM38);
+  new.room(ROOM38_WILD_FLOWER_BED);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM40_GNOME_LEAN_TO);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM26);
+  new.room(ROOM26_EMPTY_STUMP);
 }
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);

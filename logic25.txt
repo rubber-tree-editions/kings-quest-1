@@ -389,10 +389,10 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM40_GNOME_LEAN_TO);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM26);
+  new.room(ROOM26_EMPTY_STUMP);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM32);
+  new.room(ROOM32_EAST_OF_FREE_BOWL);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM24_CLOVER_PATCH);
