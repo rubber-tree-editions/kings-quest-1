@@ -179,3 +179,19 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!"
+#message 2 "The magic shield will protect you from this dangerous  sorcerer."
+#message 3 "You're so afraid of the sorcerer that your knees are locked."
+#message 4 "This sorcerer exudes mystery and danger."
+#message 5 "There's no sorcerer here."
+#message 6 "The sorcerer casts a spell, freezing you to the spot. I hope no dangerous creatures drop by!"
+#message 7 "The sorcerer's spell has expired; now you can move  again.  Whew!"
+#message 8 "You are immobilized!  You can't jump or duck now!"
+#message 9 "OK.  But you just lost your dagger."
+#message 10 "The sorcerer only speaks in the language of the Mystics."
+#message 11 "This sorcerer's magic is no match for your fairy godmother's."
+#message 12 "The sorcerer sees the goat and decides to leave."
+#message 13 "Being invisible has protected you from this sorcerer."
+#endif

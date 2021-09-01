@@ -38,3 +38,7 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "What are you doing that for?  There's nothing here."
+#endif

@@ -83,3 +83,14 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "This placid looking stream is actually quite dangerous.... the current is stronger than it looks.  You can't keep your head above water."
+#message 2 "The bank is too steep to allow access to the river's edge."
+#message 3 "You are not close enough to the river."
+#message 4 "The stream appears placid enough, but appearances can be deceiving."
+#message 5 "It is old and rotted."
+#message 6 "There is an attractive meadow dotted with trees."
+#message 7 "It is just a hole in an empty, old stump."
+#message 8 "You are not close enough."
+#endif

@@ -61,3 +61,8 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "The stairs are moss-covered and slippery."
+#message 2 "Darn!  You slipped on the steep stairs."
+#endif

@@ -57,3 +57,9 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "You are in the Land of the Clouds.  It is rumored that a giant lives up here."
+#message 2 "You should know that it is not possible to walk on clouds!"
+#message 3 "This is very strange vegetation."
+#endif

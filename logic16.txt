@@ -94,3 +94,15 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "This is a neat little carrot patch.  The plump carrots  look tempting."
+#message 2 "There is no reason to climb the fence."
+#message 3 "You can go around the fence."
+#message 4 "It is a relatively low, native stone and masonry fence to the right and rear of a garden."
+#message 5 "There are many large, plump carrots in the garden."
+#message 6 "You pluck a delicious looking carrot from the fertile soil."
+#message 7 "They are buried in the ground.  You must get closer to see them."
+#message 8 "You cannot do that from here."
+#message 9 "You do not have a carrot to eat."
+#endif

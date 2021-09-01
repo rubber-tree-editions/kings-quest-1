@@ -186,3 +186,23 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "It's a witch swooping through the sky... She's trying to catch you!  Look out!"
+#message 2 "There is a witch in the area, but since you have that menacing goat with you, she will keep her distance."
+#message 3 "There is a witch in the area, but with the shield no harm will come to you."
+#message 4 "Jumping here would put you in even greater danger from that witch!"
+#message 5 "Your protection is gone and you best look out for the witch!"
+#message 6 "With the goat now dead, you are fair game for the witch."
+#message 7 "This is not your friendly-type witch."
+#message 8 "There's no witch here."
+#message 9 "There is no way to kill a flying witch!"
+#message 10 "The wicked witch is not interested in chitchat."
+#message 11 "Are you kidding?"
+#message 12 "The witch swoops down, grabs you by the neck, and carries you off to a fate worse than death."
+#message 13 "The witch missed you, this time."
+#message 14 "The witch can feel your protective spell and bids a hasty retreat."
+#message 15 "Lucky for you that you are invisible, the witch can't find you."
+#message 16 "There is no way you can now."
+#message 17 "There is no reason to jump now."
+#endif

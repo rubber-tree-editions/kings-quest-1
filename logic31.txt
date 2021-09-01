@@ -246,3 +246,16 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "This is a very colorful ceramic bowl."
+#message 2 "You pick up the ceramic bowl."
+#message 3 "It looks like an interesting, colorful bowl."
+#message 4 "That is impossible from here."
+#message 5 "There may have been a bowl here at one time, but it is not here now!"
+#message 6 "The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!"
+#message 7 "You can't reach the beanstalk from here."
+#message 8 "There is no beanstalk here to climb."
+#message 9 "Ouch!"
+#message 10 "There appears to be some sort of bowl on the ground."
+#endif

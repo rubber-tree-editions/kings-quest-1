@@ -82,3 +82,21 @@ if (!fSAID_ACCEPTED_USER_INPUT) {
 return;
 
 LOGIC__FOOTER
+
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "We, at Sierra, wish to thank you for playing King's Quest. We are very sorry that you did not succeed and hope you will fare better next time. Good luck."
+#ifdef RUBBER_TREE
+  #message 2 "As you are dead, I can only permit you to: Restore Game,  Restart Game, Undo or Take Inventory. Sorry."
+#else
+  #message 2 "As you are dead, I can only permit you to: Restore Game,  Restart Game or Take Inventory. Sorry."
+#endif
+#message 3 "We, at Sierra, wish to thank you for playing King's Quest. We are pleased to see that you are doing so well and hope that your score will keep improving."
+#message 4 "We, at Sierra, wish to thank you for playing King's Quest. We are delighted by your score and hope you are enjoying the game."
+#ifdef RUBBER_TREE
+  #message 5 "As you will never get out of this cage alive, I can only permit you to: Restore Game, Restart Game, Undo or Take Inventory. Sorry."
+#else
+  #message 5 "As you will never get out of this cage alive, I can only permit you to: Restore Game, Restart Game or Take Inventory. Sorry."
+#endif
+#message 6 "        King's Quest\n             by\n      Roberta Williams\n\n    Original version by\nArthur Abraham, Chuck Tingley\n        Ken McNeill\n\n        Graphics by\n Doug McNeill, Greg Rowland\n\n      This version by\n       Sol Ackerman\n\n(C) 1986 Sierra On-Line, Inc."
+#endif

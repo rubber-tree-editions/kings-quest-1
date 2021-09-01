@@ -217,3 +217,21 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go."
+#message 2 "King Edward's banners are waving in the strong breeze."
+#message 3 "This is the castle of King Edward the Benevolent."
+#message 4 "It looks deep and dangerous.  You can see alligators  floating in the water."
+#message 5 "The water in the moat is not conducive to swimming."
+#message 6 "They are absolutely gorgeous!"
+#message 7 "It is a very small,  wooden barrel bridge."
+#message 8 "The alligators are swimming in the moat."
+#message 9 "There are alligators in this water.  I don't think you want to try drinking it."
+#message 10 "You fill the bucket with the murky water from the moat."
+#message 11 "There is water nearby."
+#message 12 "You need to get closer to the water."
+#message 13 "King Edward does not allow anyone to take his flowers."
+#message 14 "The moats slippery sides prevent you from getting out."
+#message 15 "What!  Are you crazy?"
+#endif

@@ -297,3 +297,33 @@ FINALCHECKS:
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "You see a crotchety old gnome pacing around his lean-to."
+#message 2 "That is very close but not quite right!"
+#message 3 "You have the right idea, but your thinking is just a little bit off."
+#message 4 "That's right!!!  You've guessed it!!  Here are some magic beans for your outstanding accomplishment!"
+#message 5 "The old gnome tells you he has something that may be very useful to you.  Your task is to guess his name in three guesses and his gift will be yours.  Good luck!  What is your first guess?"
+#message 6 "You still haven't guessed my name!"
+#message 7 "The gnome is old and bent under the weight of years, but a playful wisdom still brightens his eyes."
+#message 8 "They look like beans.  Interesting."
+#message 9 "It is a heavy, gold, skeleton key."
+#message 10 "It would be unwise to kill a gnome."
+#message 11 "Being careful that you get every one of them, you place the beans in your pocket."
+#message 12 "It is heavy and cold."
+#message 13 "The gnome can't hear you from there."
+#message 14 "You should get a little closer."
+#message 15 "There are no beans here."
+#message 16 "The key to your problems is elsewhere."
+#message 17 "There is no gnome here."
+#message 18 "That's too far away."
+#message 19 "Where did you get that idea?  That's not even close!"
+#message 20 "You know that's not right!"
+#message 21 "What is your next guess?"
+#message 22 "You didn't guess the gnome's name, but he left you a gold key anyway.  Better luck next time!"
+#message 23 "There is no place to safely get a drink."
+#message 24 "There is no place to safely get water."
+#message 25 "You slip down the bank into the river far below.  Your cries for help are not heard."
+#message 26 "The gnome's lean-to doesn't look very sturdy."
+#message 27 "What do you think I am, a car?  This also won't get you a raise.  Nice try."
+#endif

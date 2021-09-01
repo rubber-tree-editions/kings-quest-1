@@ -122,3 +122,15 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "There is a rather large bird's nest here."
+#message 2 "There is a pure golden egg lying in the nest!"
+#message 3 "The nest is empty."
+#message 4 "The golden egg is smooth and shiny."
+#message 5 "You already have the golden egg from the nest."
+#message 6 "There is no egg here to get."
+#message 7 "The golden egg is so heavy you almost drop it."
+#message 8 "You can't get the egg from here!"
+#message 9 "Apparently you lost your grip while climbing this tree and you fall to the hard earth below."
+#endif

@@ -221,3 +221,15 @@ if (vBEANSTALK_ROOM == ROOM38_WILD_FLOWER_BED) {
 return;
 
 LOGIC__FOOTER
+
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "What a pretty bed of wild flowers."
+#message 2 "The flowers' fragrance is enticing."
+#message 3 "You will have to move closer to do that."
+#message 4 "It would be a shame to pick the lovely wild flowers."
+#message 5 "The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!"
+#message 6 "You can't reach the beanstalk from here."
+#message 7 "There is no beanstalk here to climb."
+#message 8 "Ouch!"
+#endif

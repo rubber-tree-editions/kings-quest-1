@@ -149,3 +149,14 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "This is a Raging River filled with boulders and rapids."
+#message 2 "You see a lovely green meadow on the other side of the river."
+#message 3 "It is a massive boulder that splits the river."
+#message 4 "You carefully fill the bucket at the river's edge."
+#message 5 "You drink deeply of the cold river water."
+#message 6 "You have no container for water."
+#message 7 "You are not close enough to the Raging River."
+#message 8 "Your swimming attempt proved fatal!  The raging current drags you under...."
+#endif

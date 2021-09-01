@@ -203,3 +203,27 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "The mountain is much too steep and rocky for you to climb."
+#message 2 "It is a huge wooden door built right into the bottom of a small mountain!  It has a large keyhole."
+#message 3 "How do you want to use the key?"
+#message 4 "You can't fool me!  You don't have a key."
+#message 5 "The door is already unlocked."
+#message 6 "Using the gold key, you unlock the huge door."
+#message 7 "You can't unlock the door without a key."
+#message 8 "The door is already locked."
+#message 9 "You lock the massive door with the heavy gold key."
+#message 10 "You need a key to do that."
+#message 11 "This massive door is securely locked."
+#message 12 "Through the keyhole you can dimly see a staircase. It looks like it might go up into the mountain."
+#message 13 "You strike the door with all your might!  To no avail."
+#message 14 "Don't be afraid.  Get close enough for a good look."
+#message 15 "It will be difficult to do that from here."
+#message 16 "There aren't many keyholes in the ground here."
+#message 17 "There seems to be a door built into the mountainside."
+#message 18 "There is no need to unlock an already open door."
+#message 19 "You need to close the door before you can lock it."
+#message 20 "The door is already open."
+#message 21 "The door is already closed."
+#endif

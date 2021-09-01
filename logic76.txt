@@ -158,3 +158,20 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "The leprechauns' magic powers detect your unseen presence."
+#message 2 "The leprechauns do not like your invasion of their territory.  They may not let you get any further."
+#message 3 "The leprechauns revere the power of the fourleaf clover. With it in your possession they will leave you absolutely alone."
+#message 4 "Leprechauns love fiddle music!  Have you ever seen such frenzied dancing?"
+#message 5 "Totally involved in the music, they dance right out of the room."
+#message 6 "The leprechaun catches you and holds you with his small,  but strong arms.  I don't think the leprechaun will ever let go."
+#message 7 "You are in the antechamber of the Hall of the Leprechaun King.  There is a leprechaun in the room with you."
+#message 8 "You are in the antechamber of the Hall of the Leprechaun King."
+#message 9 "I can think of no good reason to close the door."
+#message 10 "They are tiny people dressed all in green."
+#message 11 "I would not try talking to the leprechauns.  You might say the wrong thing."
+#message 12 "You would not get all of them before they got you."
+#message 13 "There are not any leprechauns here."
+#message 14 "You are already playing the fiddle."
+#endif

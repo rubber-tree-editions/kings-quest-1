@@ -213,3 +213,22 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "Wandering on the banks of the lake, you see a cute little elf."
+#message 2 "The cold water gushes into the old bucket."
+#message 3 "There is nothing to compare with that refreshing taste."
+#message 4 "You are not close enough to the water."
+#message 5 "There is a very pretty lake nearby with a small little elf running along its shore."
+#message 6 "This is a small elf.  He looks very friendly."
+#message 7 "There's no elf here."
+#message 8 "The elf, impressed by your friendliness, gives you a magic ring.  \"Kind person, know that once, only once, this ring will make you invisible,\" he says and then disappears."
+#message 10 "The elf has left since you were not very cordial to him."
+#message 11 "I'm surprised at you!  That is very impolite!"
+#message 12 "Nothing happens."
+#message 13 "You have no container for water."
+#message 14 "This is a clear mountain lake with some steep cliffs surrounding it."
+#message 15 "There is a clear mountain lake and some trees here."
+#message 16 "Silly!  You can't get close enough to do that."
+#message 17 "You are too far away."
+#endif

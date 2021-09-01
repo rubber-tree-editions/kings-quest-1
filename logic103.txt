@@ -149,3 +149,8 @@ ATRIVER:
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water."
+#message 2 "The goat, not being able to see you, wanders off."
+#endif

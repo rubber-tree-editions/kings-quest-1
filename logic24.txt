@@ -85,3 +85,12 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "There is a small patch of clover under the tree."
+#message 2 "Off in the distance you see a patch of clover."
+#message 3 "You already have the only fourleaf clover here."
+#message 4 "The clover is soft, yet you sense a strange strength in it."
+#message 5 "You really don't want any of the threeleaf clovers."
+#message 6 "You had, and lost, the only fourleaf clover  around.  You really don't want a threeleaf clover."
+#endif

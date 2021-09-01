@@ -83,3 +83,17 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "When the goat saw how dark it was in here, it decided not to stay around."
+#message 2 "It is empty except for a huge boulder opposite the opening."
+#message 3 "It is a rather large, vacant cave."
+#message 4 "It is a huge piece of granite."
+#message 5 "It is far too heavy to carry around."
+#message 6 "It is impossible for you to move a boulder this large."
+#message 7 "It took millenniums for these stalagmites and stalactites to form."
+#message 8 "Looking out the cave opening, you are able to admire the beautiful scenery outside."
+#message 9 "It leads to another portion of the cave."
+#message 10 "It is on the far side of the cave."
+#message 11 "There is nothing of interest on top of the boulder."
+#endif

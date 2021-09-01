@@ -98,3 +98,16 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "It is an ancient, rusty water pump.  It probably doesn't even work."
+#message 2 "The rusty pump doesn't work."
+#message 3 "The handle has been broken and repaired.  The head shows the signs of many sharpenings."
+#message 4 "It was made from rough, hand-hewn logs long ago.  Lately, the upkeep has faltered.  There are even holes in the  roof."
+#message 5 "The old axe is tightly wedged in the tree stump.  You cannot remove it no matter what you do."
+#message 6 "Upon closer inspection you realize this poor cabin doesn't even have a door."
+#message 7 "The trees were cut from these stumps years ago."
+#message 8 "When you look in the doorway, you see a poor, starving woodcutter and his wife."
+#message 9 "You are not close enough."
+#message 10 "How are you going to use the ax when you can't even get it out of this stump?"
+#endif

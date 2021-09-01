@@ -73,3 +73,15 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "This old cottage is sagging and in great need of repair."
+#message 2 "The trees were cut from these stumps long ago."
+#message 3 "When you look in the window, you see a poor, starving woodcutter and his wife."
+#message 4 "There isn't a glass pane in this window."
+#message 5 "You could get a much better view if you were a little bit closer."
+#message 6 "You are not close enough."
+#message 7 "You should really try to find the door."
+#message 8 "You need to go inside to do that."
+#message 9 "You can't do that now."
+#endif

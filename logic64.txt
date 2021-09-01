@@ -60,3 +60,8 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "So you're walking on clouds, huh?  Unfortunately, that's an impossible task that cost you your life!"
+#message 2 "You are in the Land of the Clouds.  It is rumored that a giant lives up here."
+#endif

@@ -334,3 +334,21 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "High up in the sky you see a very large, friendly bird."
+#message 2 "The opening to the cave is dark and ominous."
+#message 3 "You vaguely see the outline of a cave entrance."
+#message 4 "This is a big condor.  Its graceful flight appears effortless."
+#message 5 "There is no bird."
+#message 6 "The bird is too high to kill.  Besides, it looks like a nice bird."
+#message 7 "How?"
+#message 8 "You would hit your head on the top of the cave if you jumped now!"
+#message 9 "High up in the sky you see a very large, friendly bird, but it is afraid to come near you because of the goat."
+#message 10 "Where could this giant bird be taking you?"
+#message 11 "The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!"
+#message 12 "You can't reach the beanstalk from here."
+#message 13 "There is no beanstalk here to climb."
+#message 14 "Ouch!"
+#message 15 "This bird doesn't talk much."
+#endif

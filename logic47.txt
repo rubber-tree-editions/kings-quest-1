@@ -221,3 +221,25 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "This is sad.  You are not the first to fail your quest in the Raging River... I hope you may be the last."
+#message 2 "This is the wild Raging River filled with boulders and rapids."
+#message 3 "It would be dangerous to try and jump across the river on the boulders."
+#message 5 "The land across the river looks enchanting.  You wonder how you can get there."
+#message 6 "The mushroom is on the far side of the river."
+#message 7 "This mushroom is large and aromatic."
+#message 8 "There is a large mushroom growing in the ground close by."
+#message 9 "You reach down and pick a fat mushroom."
+#message 10 "You see the familiar side of the Raging River."
+#message 11 "The colorful mushroom is in the distance."
+#message 12 "You need to get closer to do that."
+#message 13 "The river is so swift it is a battle to fill the bucket."
+#message 14 "The water from this swift river is cold and sweet."
+#message 15 "You see King Edward's castle on the horizon."
+#message 16 "There is a large mushroom in the meadow next to the river."
+#message 17 "There is nothing of interest around you."
+#message 18 "This lovely meadow is split by the Raging River."
+#message 19 "There is no mushroom here."
+#message 20 "You already have it."
+#endif

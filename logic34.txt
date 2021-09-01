@@ -148,3 +148,18 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "You notice an enchanting meadow."
+#message 2 "The river is dangerous and powerful.  There is a delta of pebbles on its edge."
+#message 3 "Your pockets cannot hold any more pebbles."
+#message 4 "As you fill the bucket, the river almost rips it from your grasp."
+#message 5 "You drink deeply of the cold river water."
+#message 6 "The pebbles are round and smooth."
+#message 7 "You must venture closer to the river."
+#message 8 "You grab a handful of pebbles."
+#message 9 "The only pebbles worth getting are already gone."
+#message 10 "From here it looks like an ordinary delta of pebbles."
+#message 11 "You are not close enough to the pebbles to get them."
+#message 12 "Your swimming attempt proved fatal!  The raging current drags you under... you are lost...."
+#endif

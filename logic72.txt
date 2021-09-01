@@ -166,3 +166,15 @@ FINALCHECKS:
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "If you were to jump or duck here you might fall."
+#message 2 "You need to be closer to do that."
+#message 3 "You can't do that when you are invisible!"
+#message 4 "Whoops!  You fall toward a distant earth."
+#message 5 "Your heart thuds.  Dare you climb into the clouds?"
+#message 6 "It is a long, long way down...."
+#message 7 "It is amazing that you actually climbed up this high!"
+#message 8 "It is hard to believe those seeds you planted grew this high."
+#message 9 "You are in the Land of the Clouds.  It is rumored a giant lives up here."
+#endif

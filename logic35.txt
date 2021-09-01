@@ -360,3 +360,20 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "There is a small dwarf close by.  It would be a good idea to be careful."
+#message 2 "That little dwarf caught you by surprise.  Is your treasure still OK?"
+#message 3 "The quick, little dwarf came by to see what you had -- nothing interested him."
+#message 4 "Dwarfs are quick, little guys who will try to take your treasure."
+#message 5 "There is no dwarf here."
+#message 6 "He's too quick for you to catch."
+#message 7 "No time to talk to him.  He's in too much of a hurry!"
+#message 8 "It's a good thing you are protected by a spell.  That little dwarf likes to steal treasures."
+#message 9 "The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!"
+#message 10 "You can't reach the beanstalk from here."
+#message 11 "There is no beanstalk here to climb."
+#message 12 "Ouch!"
+#message 13 "The dwarf sees the goat and decides to leave."
+#message 14 "Being invisible has protected you from the dwarf."
+#endif

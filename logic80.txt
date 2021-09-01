@@ -42,3 +42,10 @@ if (rfTO_LEPRECHAUN_HOLE) {
 return;
 
 LOGIC__FOOTER
+
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "The view is magnificent."
+#message 2 "Now is not the time to irritate the witch."
+#message 3 "Now is not a good time to bother the bird."
+#endif

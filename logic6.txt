@@ -264,3 +264,23 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "Inside the old, rotted stump you notice a small, canvas pouch."
+#message 2 "Inside the decaying tree stump, you see nothing interesting."
+#message 3 "You notice the pouch feels aged and tattered."
+#message 4 "You could get a much better look at it if it were in your  hands."
+#message 5 "There's no pouch here."
+#message 6 "From here you can see the stump is very old and nearly petrified."
+#message 7 "You can vaguely see the stump in the distance."
+#message 8 "It is only a rotted log."
+#message 9 "There is no reason to take this old log with you."
+#message 10 "I suggest you move closer to try that."
+#message 11 "You need to get closer to look at the log."
+#message 12 "There is nothing in the old log."
+#message 13 "The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!"
+#message 14 "You can't reach the beanstalk from here."
+#message 15 "There is no beanstalk here to climb."
+#message 16 "Ouch!"
+#message 17 "You have to find it first."
+#endif

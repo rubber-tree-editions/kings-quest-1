@@ -65,3 +65,9 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "The old goat is afraid of the dark and decides to stay outside."
+#message 2 "The stairs go up into the heart of the mountain."
+#message 3 "Oops!  Those stairs are pretty slippery, aren't they?"
+#endif

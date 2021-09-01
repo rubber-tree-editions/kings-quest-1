@@ -330,3 +330,32 @@ FINALCHECKS:
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "High above the castle, the flags are waving in the wind."
+#message 2 "King Edward the Benevolent, the mighty ruler of Daventry, lives in this castle."
+#message 3 "You must enter the castle through the door, and the  door is closed."
+#message 4 "It's your typical moat water: murky and smelly."
+#message 5 "You never know what might be in there!"
+#message 6 "It is a rather small, wooden bridge."
+#message 7 "These alligators have protected the castle from many a trespasser."
+#message 8 "They pose as immovable guards for King Edward's castle, and have frightened off numerous intruders."
+#message 9 "These doors are strongly built to keep out unwanted visitors."
+#message 10 "You can't see them from here."
+#message 11 "As you kneel by the edge of the moat and see just how filthy the water is, your thirst strangely leaves you."
+#message 12 "Although you notice the water is unclean, you fill the bucket."
+#message 13 "You are not close enough to any water."
+#message 14 "You have no container for water."
+#message 15 "You have been to the castle once and you may not return until your quest is complete."
+#message 16 "You have been to the castle once since your quest and  are not allowed to return again."
+#message 17 "Since the goat is with you, permission to enter the  castle is denied."
+#message 18 "You cannot reach the door from here."
+#message 19 "The door is already closed."
+#message 21 "Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go."
+#message 22 "They are absolutely gorgeous!"
+#message 23 "King Edward does not allow anyone to take his flowers."
+#message 25 "The huge doors swing open slowly."
+#message 26 "The moats slippery sides prevent you from getting out."
+#message 27 "What!  Are you crazy?"
+#message 28 "Your knock echos within the castle.  Unfortunately, no one answers."
+#endif

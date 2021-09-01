@@ -275,3 +275,33 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "Being invisible won't hide you from this rat's keen sense of smell."
+#message 2 "There is no rat here."
+#message 3 "It is a big rat with dripping teeth and small, greedy eyes."
+#message 4 "It is very dark and dreary.  The rat seems to like it here."
+#message 5 "It is very dark and dreary in here."
+#message 6 "This is no mouse, this is a big, ugly rat!"
+#message 7 "The door slowly opens."
+#message 8 "The door is closed."
+#message 9 "What!  Are you crazy?"
+#message 10 "Be careful around this rat next time!  He's dangerous!!"
+#message 11 "It is already open."
+#message 12 "It is already closed."
+#message 13 "The door appears to be stuck and won't close."
+#message 14 "Get closer if you want to try."
+#message 15 "You can't.  He moves too quickly."
+#message 16 "The rat rasps, \"Treasure!  Treasure!  Give treasure, or no go door!  Give treasure NOW!\""
+#message 17 "You have no treasure to give the rat."
+#message 18 "The rat doesn't want an ordinary walnut."
+#message 19 "The rat doesn't want a tattered pouch."
+#message 20 "What kind of treasure would you like to give the  greedy rat?"
+#message 21 "The huge rat takes the treasure you have offered and scuttles away."
+#message 22 "It appears you are afraid of the rat!  You must get closer to give anything to this rat!"
+#message 23 "You do not have any."
+#message 24 "The rat drools at the sight of the cheese... and snatches it from your hand.  You might want to count your fingers."
+#message 25 "The rat scrambles to the wall and seems to magically merge with it."
+#message 26 "That is a good idea, but you do not have any cheese."
+#message 27 "You count your fingers and are relieved to see you still have all of them."
+#endif

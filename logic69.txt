@@ -61,3 +61,9 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "The stairs descend into the lower reaches of the mountain."
+#message 2 "You can see sky, light, and smell clouds through the opening."
+#message 3 "Oh dear!  With a slip of the foot, you fall head over heels down the long stairway."
+#endif

@@ -143,3 +143,18 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "Look out for that wolf -- he can run very fast!   Don't let him catch you!"
+#message 2 "You are very fortunate that your protective spell is still working."
+#message 3 "Fortunately, you are invisible and the wolf can't see you."
+#message 4 "The wolf sees that menacing goat by your side and decides to keep his distance."
+#message 5 "You, fortunately, have the magic shield which will protect you."
+#message 6 "Yes, it's a wolf and it's very fast.  Now do something!"
+#message 7 "You don't have time to do that right now!"
+#message 8 "It seems the wolf caught up with you and is discussing dinner arrangements."
+#message 9 "Are you crazy?"
+#message 10 "There's no wolf here."
+#message 11 "Now that the goat is gone, you'll have to take care of yourself!"
+#message 12 "The wolf is in no mood for conversion."
+#endif

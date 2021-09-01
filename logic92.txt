@@ -46,3 +46,24 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "          KING'S QUEST"
+#message 2 "             Help"
+#message 3 "F1 displays this message."
+#message 4 "F2 turns the sound off and on."
+#message 5 "F3 retypes the last line typed."
+#message 7 "F5 saves your current game."
+#message 9 "F7 restores a saved game."
+#message 11 "F9 restarts the game."
+#message 13 "TAB shows the status screen."
+#message 14 "ESC pauses the game."
+#message 15 "Ctrl-J sets up your joystick."
+#message 16 "Ctrl-R toggles RGB monitor modes."
+#message 17 "0 for jumping"
+#message 18 "- for ducking"
+#message 19 "= for swimming"
+#message 20 "F1 or HELP displays this message."
+#message 21 "TAB shows status screen. (see below)"
+#message 22 "Double clicking joystick button or\n right mouse button also shows status\n screen."
+#endif

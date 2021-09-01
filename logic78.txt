@@ -62,3 +62,13 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "You feel a stretching sensation... Oh, you're back to your original size.  You can't get out of the small cave!"
+#message 2 "The stairs are very steep and narrow."
+#message 3 "The small hole leads to the outside world."
+#message 4 "You are much too big to fit through that small hole."
+#message 5 "You feel a stretching sensation... Oh, you're back to your original size."
+#message 6 "Go ahead.  Walk right in."
+#message 7 "This is a small cave with stairs on one side and a very small hole on the other side."
+#endif

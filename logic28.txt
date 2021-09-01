@@ -178,3 +178,24 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "You must be getting nervous!  I see no witch here!"
+#message 2 "The windows are made from translucent, hardened sugar.  It's difficult to see through them."
+#message 3 "The windows are hard to break."
+#message 4 "You can't see much from here."
+#message 5 "You would have to get closer to the windows."
+#message 6 "This is the sweetest little gingerbread house you ever saw.  The walls are cake, the roof is frosting, the chimney looks delicious, and the candy path and cookie fence are unbearably tempting!"
+#message 7 "Yum!  The house tastes even better than it looks!"
+#message 8 "As you begin to eat the house, a squeaky voice from somewhere says, \"Nibble, nibble, little mouse.  Who is nibbling at my house?\""
+#message 9 "The house looks tempting, but you need to get closer."
+#message 10 "The goat is suspicious of this witch's house and  refuses to go in."
+#message 11 "The door is already closed."
+#message 12 "You will have to move closer to do that."
+#message 13 "The door is made from graham crackers held together  with chocolate drop nails."
+#message 14 "You don't need to do that; opening the door would suffice."
+#message 15 "The door is around the corner."
+#message 16 "It is made of delicious chocolate chip cookies!"
+#message 17 "Yummy!"
+#message 18 "There is no answer from inside the house."
+#endif

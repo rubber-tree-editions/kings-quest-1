@@ -126,3 +126,19 @@ FINALCHECKS:
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "When looking in this small hole, you see a faint green glow."
+#message 2 "You would need to be much smaller to fit through that hole."
+#message 3 "This rock is firmly stuck in the ground."
+#message 4 "Although you are very strong and healthy, this rock is too much even for you."
+#message 5 "Very cautiously, you reach into the hole, and to your dismay, find nothing."
+#message 6 "You'll have to move closer."
+#message 7 "The ancient, mossy rock has seen many winters.  There is a small hole at its base."
+#message 8 "From here it looks like a typical, large rock."
+#message 9 "There are several pretty trees in the area and a few rocks.  One rock has a small hole in its base."
+#message 10 "You feel a stretching sensation... Oh, you're back to your original size.  You can't get out of the small  cave!"
+#message 11 "One rock has a small hole in its base."
+#message 12 "Go ahead.  Walk right in."
+#message 13 "You feel a stretching sensation... Oh, you're back to your original size."
+#endif

@@ -178,3 +178,16 @@ return;
 
 LOGIC__FOOTER
 
+#ifndef LOGIC_AS_C
+#message 0 ""
+#message 1 "You have fallen in the raging current and are swept under.  I'm afraid your end has come."
+#message 2 "It is an old stone bridge dating to ancient times."
+#message 3 "The river gets to be rather rough around these parts."
+#message 4 "Very carefully, the bucket fills with water from the  rapid river."
+#message 5 "Being careful not to slip in, you drink deeply of the cool water."
+#message 6 "You are too far from the water."
+#message 7 "The clear blue lake is surrounded by a pretty meadow."
+#message 8 "It tastes very refreshing to a thirsty wanderer."
+#message 9 "The crystal clear water fills up the bucket."
+#message 10 "You glance under the old bridge, but see nothing unusual."
+#endif
