@@ -226,10 +226,10 @@ if (!fCARRYING_CLOVER) {
   }
 }
 if (!fCARRYING_SLINGSHOT) {
-  if (vROOM_NO != ROOM62 && said("get", "slingshot")) {
+  if (vROOM_NO != ROOM62_CLOUDLANDS_SOUTHEAST && said("get", "slingshot")) {
     print("You will have to find it before you can get it.");
   }
-  if (vROOM_NO != ROOM62 && said("examine", "slingshot")) {
+  if (vROOM_NO != ROOM62_CLOUDLANDS_SOUTHEAST && said("examine", "slingshot")) {
     print("You do not have it.");
   }
   if (said("anyword", "slingshot") && !said("get", "slingshot") && !said("examine", "slingshot")) {

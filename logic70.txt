@@ -12,12 +12,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.view(74);
   load.sound(SND_FALLING);
-  if (vPREV_ROOM_NO == ROOM71 && fEGO_CLIMBING_BEANSTALK) {
+  if (vPREV_ROOM_NO == ROOM71_BEANSTALK_NEAR_TOP && fEGO_CLIMBING_BEANSTALK) {
     set.view(oEGO, 74);
     position(oEGO, 69, 40);
     move.obj(oEGO, 69, 40, 0, fMISC_END_MARKER);
   }
-  if (vPREV_ROOM_NO == ROOM71 && fFALLING_TO_EARTH) {
+  if (vPREV_ROOM_NO == ROOM71_BEANSTALK_NEAR_TOP && fFALLING_TO_EARTH) {
     program.control();
     set.view(oEGO, 105);
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
@@ -83,7 +83,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !fFALLING_TO_EARTH) {
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_OFF_SCREEN);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM71);
+  new.room(ROOM71_BEANSTALK_NEAR_TOP);
 }
 if (rfFALLEN_OFF_SCREEN || posn(oEGO, 0, 166, 159, 167)) {
   if (vBEANSTALK_ROOM == ROOM6_POUCH_STUMP) {

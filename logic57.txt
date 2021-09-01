@@ -62,10 +62,10 @@ if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM58_GIANT_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM56);
+  new.room(ROOM56_CLOUDS_GRASS_EDGE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
-  new.room(ROOM60);
+  new.room(ROOM60_CLOUDLANDS_SOUTHWEST);
 }
 return;
 

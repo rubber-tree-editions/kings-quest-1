@@ -114,7 +114,7 @@ if (rfFALLEN_IN_HOLE) {
   reset(rfFALLEN_IN_HOLE);
   reset(fSCRIPTED_MOTION);
   erase(oEGO);
-  new.room(ROOM73);
+  new.room(ROOM73_CAVE_CEILING_HOLE);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM47_MUSHROOM);

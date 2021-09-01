@@ -14,7 +14,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.sound(SND_FALLING);
   load.view(105);
-  if (vPREV_ROOM_NO == ROOM57) {
+  if (vPREV_ROOM_NO == ROOM57_CLOUDLANDS_NORTHWEST) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y > 154) {
       position(oEGO, 150, 153);
@@ -76,14 +76,14 @@ else if (said("examine", "anyword")) {
   print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM57);
+  new.room(ROOM57_CLOUDLANDS_NORTHWEST);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
   if (fMAGIC_BEANS_PLANTED) {
-    new.room(ROOM72);
+    new.room(ROOM72_CLOUDS_LEFTMOST_WITH_BEANSTALK);
   }
   else {
-    new.room(ROOM64);
+    new.room(ROOM64_CLOUDS_LEFTMOST_NO_BEANSTALK);
   }
 }
 return;

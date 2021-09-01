@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.view(105);
   load.sound(SND_FALLING);
-  if (vPREV_ROOM_NO == ROOM56) {
+  if (vPREV_ROOM_NO == ROOM56_CLOUDS_GRASS_EDGE) {
     position(oEGO, 145, 109);
   }
   draw(oEGO);
@@ -54,7 +54,7 @@ if (said("examine", "anyword")) {
   print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM56);
+  new.room(ROOM56_CLOUDS_GRASS_EDGE);
 }
 return;
 

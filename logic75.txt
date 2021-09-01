@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  if (vPREV_ROOM_NO == ROOM74) {
+  if (vPREV_ROOM_NO == ROOM74_CAVE_CORNER) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_X += 150;
     position.v(oEGO, vTEMP_X, vTEMP_Y);
@@ -269,7 +269,7 @@ if (said("examine", "doors")) {
   print("The door is closed.");
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM74);
+  new.room(ROOM74_CAVE_CORNER);
 }
 return;
 

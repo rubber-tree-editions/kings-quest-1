@@ -36,13 +36,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC104_BEANSTALK);
     load.sound(SND_BEANSTALK);
   }
-  if (vPREV_ROOM_NO == ROOM70 && fEGO_CLIMBING_BEANSTALK) {
+  if (vPREV_ROOM_NO == ROOM70_BEANSTALK_NEAR_BOTTOM && fEGO_CLIMBING_BEANSTALK) {
     set.view(oEGO, 74);
     position(oEGO, 64, 41);
     move.obj(oEGO, 64, 41, 0, fMISC_END_MARKER);
     set.priority(oEGO, 8);
   }
-  if (vPREV_ROOM_NO == ROOM70 && fFALLING_TO_EARTH) {
+  if (vPREV_ROOM_NO == ROOM70_BEANSTALK_NEAR_BOTTOM && fFALLING_TO_EARTH) {
     program.control();
     ignore.horizon(oEGO);
     set.priority(oEGO, 15);
@@ -240,7 +240,7 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   reset(fINIT_BEANSTALK);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON && fEGO_CLIMBING_BEANSTALK) {
-  new.room(ROOM70);
+  new.room(ROOM70_BEANSTALK_NEAR_BOTTOM);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK) {
   new.room(ROOM11_GOAT_PEN_EAST);

@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     vTEMP_X += 2;
     position.v(oEGO, vTEMP_X, vTEMP_Y);
   }
-  if (vPREV_ROOM_NO == ROOM73) {
+  if (vPREV_ROOM_NO == ROOM73_CAVE_CEILING_HOLE) {
     position(oEGO, 80, 70);
   }
   draw(oEGO);
@@ -21,7 +21,7 @@ if (said("examine", "cave")) {
   print("The further you get from the light, the darker and mustier it becomes.");
 }
 if (posn(oEGO, 65, 51, 100, 52)) {
-  new.room(ROOM73);
+  new.room(ROOM73_CAVE_CEILING_HOLE);
 }
 if (posn(oEGO, 0, 0, 1, 167)) {
   new.room(ROOM75_RAT_STOMPING_GROUND);

@@ -267,7 +267,7 @@ if (vROOM_NO != ROOM21_WITCH_STOMPING_GROUND) {
         && vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE
         && vROOM_NO != ROOM80_IN_MID_AIR
         && vROOM_NO != ROOM48_LEPRECHAUN_HOLE
-        && vROOM_NO != ROOM73
+        && vROOM_NO != ROOM73_CAVE_CEILING_HOLE
         && vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE
         && vROOM_NO != ROOM12_TOP_OF_WELL
         && vROOM_NO != ROOM14_BASE_GOLDEN_EGG_TREE
@@ -318,7 +318,7 @@ if (said("duck") || controller(cDUCK)) {
       && vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE
       && vROOM_NO != ROOM80_IN_MID_AIR
       && vROOM_NO != ROOM48_LEPRECHAUN_HOLE
-      && vROOM_NO != ROOM73
+      && vROOM_NO != ROOM73_CAVE_CEILING_HOLE
       && vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE
       && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE
       && vROOM_NO != ROOM14_BASE_GOLDEN_EGG_TREE
@@ -549,8 +549,8 @@ if (fCARRYING_MUSHROOM) {
       && vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE
       && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE
       && vROOM_NO != ROOM12_TOP_OF_WELL
-      && vROOM_NO != ROOM73
-      && vROOM_NO != ROOM74
+      && vROOM_NO != ROOM73_CAVE_CEILING_HOLE
+      && vROOM_NO != ROOM74_CAVE_CORNER
       && vROOM_NO != ROOM75_RAT_STOMPING_GROUND
     ) {
       print("As soon as you swallow the first bite, you have this strange shrinking feeling...  It's true!  You are now no bigger than a mouse!");

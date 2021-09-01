@@ -51,10 +51,10 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM58_GIANT_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM62);
+  new.room(ROOM62_CLOUDLANDS_SOUTHEAST);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
-  new.room(ROOM60);
+  new.room(ROOM60_CLOUDLANDS_SOUTHWEST);
 }
 return;
 

@@ -48,10 +48,10 @@ if (rfFALLING_SOUND_PLAYED) {
   set(fGAME_OVER);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
-  new.room(ROOM57);
+  new.room(ROOM57_CLOUDLANDS_NORTHWEST);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  new.room(ROOM61);
+  new.room(ROOM61_CLOUDLANDS_SOUTH);
 }
 return;
 

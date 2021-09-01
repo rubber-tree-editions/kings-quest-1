@@ -13,7 +13,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.view(105);
   load.sound(SND_FALLING);
-  if (vPREV_ROOM_NO == ROOM59) {
+  if (vPREV_ROOM_NO == ROOM59_CLOUDS_MOUNTAIN_CAVE) {
     position(oEGO, 18, 97);
   }
   if (vPREV_ROOM_NO == ROOM68_MOUNTAIN_STAIRWAY_NEAR_TOP) {
@@ -52,7 +52,7 @@ if (rfFALLEN_OFF_STEPS) {
   set(fGAME_OVER);
 }
 if (posn(oEGO, 0, 0, 1, 167)) {
-  new.room(ROOM59);
+  new.room(ROOM59_CLOUDS_MOUNTAIN_CAVE);
 }
 if (posn(oEGO, 138, 156, 155, 157)) {
   new.room(ROOM68_MOUNTAIN_STAIRWAY_NEAR_TOP);
