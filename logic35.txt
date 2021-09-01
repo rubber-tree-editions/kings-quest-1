@@ -68,8 +68,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     vTEMP_STEP = 2;
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_FROM_SKY);
   }
-  random(0, 250, v62);
-  if (v62 < 85) {
+  random(0, 250, vTEMP_RESULT);
+  if (vTEMP_RESULT < 85) {
     rvDWARF_STEP_SIZE = 4;
     step.size(oDWARF, rvDWARF_STEP_SIZE);
     load.view(111);
@@ -81,8 +81,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (rfINIT_RANDOMIZER) {
     do {
-      random(0, 250, v70);
-    } while (v70 > 90);
+      random(0, 250, vTEMP_RESULT_2);
+    } while (vTEMP_RESULT_2 > 90);
   }
   if (vBEANSTALK_ROOM == ROOM35) {
     overlay.pic(vTEMP_PIC);
@@ -118,8 +118,8 @@ if (rfFALLEN_FROM_SKY) {
   shake.screen(2);
   set(fGAME_OVER);
 }
-v70--;
-if (v70 == 1 && !fFALLING_TO_EARTH && !fEGO_CLIMBING_BEANSTALK) {
+vTEMP_RESULT_2--;
+if (vTEMP_RESULT_2 == 1 && !fFALLING_TO_EARTH && !fEGO_CLIMBING_BEANSTALK) {
   position(oDWARF, 16, 79);
   set(rfDWARF_IS_HERE);
   sound(SND_VILLAIN, fSOUND_END_MARKER);

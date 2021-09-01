@@ -76,6 +76,8 @@
 // unused: v67
 #define vCOUNTDOWN_LO v68
 #define vCOUNTDOWN_HI v69
+#define vTEMP_RESULT_2 v70
+#define vTEMP_RESULT_3 v71
 #define vDEBUG_VAR_VALUE v72
 #define vTREASURE_COUNT v74
 #define vDRAGON_STATE v75

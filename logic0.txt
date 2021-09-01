@@ -89,9 +89,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   reset(fFALLING);
   reset(fVILLAIN_GOT_YOU);
   reset(fTENSE_SITUATION);
-  v62 = 0;
-  v70 = 0;
-  v71 = 0;
+  vTEMP_RESULT = 0;
+  vTEMP_RESULT_2 = 0;
+  vTEMP_RESULT_3 = 0;
   vTEMP_COUNTER = 20;
   do {
     reset.v(vTEMP_COUNTER);

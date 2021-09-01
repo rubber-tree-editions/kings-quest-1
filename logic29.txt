@@ -33,8 +33,8 @@ if (fROOM_SCRIPT_EXECUTED) {
       reset(fCYCLE_EGO_ANIMATION);
     }
   }
-  random(0, 250, v62);
-  if (v62 < 185) {
+  random(0, 250, vTEMP_RESULT);
+  if (vTEMP_RESULT < 185) {
     rvSORCERER_STEP_SIZE = 2;
     step.size(oSORCERER, rvSORCERER_STEP_SIZE);
     load.view(5);
@@ -47,8 +47,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (rfINIT_RANDOMIZER) {
     do {
-      random(0, 250, v70);
-    } while (v70 > 90);
+      random(0, 250, vTEMP_RESULT_2);
+    } while (vTEMP_RESULT_2 > 90);
   }
   draw(oEGO);
   show.pic();
@@ -63,8 +63,8 @@ if (rfSORCERER_IS_HERE && fSOUND_END_MARKER) {
     reset(rfPLAYED_SND_SORCERER);
   }
 }
-v70--;
-if (v70 == 1) {
+vTEMP_RESULT_2--;
+if (vTEMP_RESULT_2 == 1) {
   position(oSORCERER, 40, 140);
   set(rfSORCERER_IS_HERE);
   sound(SND_VILLAIN, fSOUND_END_MARKER);

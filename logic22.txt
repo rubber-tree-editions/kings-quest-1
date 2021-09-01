@@ -71,8 +71,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     vTEMP_STEP = 2;
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_FROM_SKY);
   }
-  random(0, 250, v62);
-  if (v62 < 125 && !fTAKEN_BY_GIANT_BIRD) {
+  random(0, 250, vTEMP_RESULT);
+  if (vTEMP_RESULT < 125 && !fTAKEN_BY_GIANT_BIRD) {
     rvBIRD_STEP_SIZE = 4;
     step.size(oBIRD, rvBIRD_STEP_SIZE);
     set(rfINIT_RANDOMIZER);
@@ -84,8 +84,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (rfINIT_RANDOMIZER) {
     do {
-      random(0, 250, v70);
-    } while (v70 > 90);
+      random(0, 250, vTEMP_RESULT_2);
+    } while (vTEMP_RESULT_2 > 90);
   }
   if (vPREV_ROOM_NO == ROOM50) {
     position(oEGO, 142, 83);
@@ -120,8 +120,8 @@ if (posn(oEGO, 141, 71, 159, 89) || fPLAYER_NOT_IN_CONTROL || fEGO_CLIMBING_BEAN
 else {
   reset(fTENSE_SITUATION);
 }
-v70--;
-if (v70 == 1 && !fFALLING_TO_EARTH && !fEGO_CLIMBING_BEANSTALK) {
+vTEMP_RESULT_2--;
+if (vTEMP_RESULT_2 == 1 && !fFALLING_TO_EARTH && !fEGO_CLIMBING_BEANSTALK) {
   set(rfBIRD_IS_HERE);
   position(oBIRD, 7, 35);
   vCOUNTDOWN_LO = 250;
@@ -159,11 +159,11 @@ if (rfBIRD_AFRAID_OF_GOAT && vOBJECT_EDGE_CODE != 0) {
   reset(rfBIRD_IS_HERE);
   erase(oBIRD);
 }
-distance(oEGO, oBIRD, v71);
+distance(oEGO, oBIRD, vTEMP_RESULT_3);
 get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
 get.posn(oBIRD, rvBIRD_X, rvBIRD_Y);
 rvBIRD_Y += 20;
-if (v71 > 20 && v71 < 30 && vTEMP_Y_2 > rvBIRD_Y && fJUMPING && !rfBIRD_AFRAID_OF_GOAT) {
+if (vTEMP_RESULT_3 > 20 && vTEMP_RESULT_3 < 30 && vTEMP_Y_2 > rvBIRD_Y && fJUMPING && !rfBIRD_AFRAID_OF_GOAT) {
   reset(fJUMPING);
   set(fTENSE_SITUATION);
   program.control();

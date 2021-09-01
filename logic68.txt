@@ -22,8 +22,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.view(105);
   load.sound(SND_FALLING);
-  random(0, 250, v62);
-  if (v62 < 150) {
+  random(0, 250, vTEMP_RESULT);
+  if (vTEMP_RESULT < 150) {
     load.sound(SND_DWARF);
     load.view(111);
     load.view(115);
@@ -35,8 +35,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (rfINIT_RANDOMIZER) {
     do {
-      random(0, 250, v70);
-    } while (v70 > 90);
+      random(0, 250, vTEMP_RESULT_2);
+    } while (vTEMP_RESULT_2 > 90);
   }
   set.horizon(40);
   if (vPREV_ROOM_NO == ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM) {
@@ -62,8 +62,8 @@ if (rfDWARF_IS_HERE) {
     reset(rfPLAYED_SND_DWARF);
   }
 }
-v70--;
-if (v70 == 1) {
+vTEMP_RESULT_2--;
+if (vTEMP_RESULT_2 == 1) {
   if (posn(oEGO, 0, 0, 159, 83)) {
     position(oDWARF, 96, 162);
   }
@@ -75,7 +75,7 @@ if (v70 == 1) {
   move.obj(oDWARF, 130, 127, 2, rfDWARF_MADE_ENTRANCE);
 }
 if (!rfDONT_CALCULATE_DISTANCE) {
-  distance(oEGO, oDWARF, v71);
+  distance(oEGO, oDWARF, vTEMP_RESULT_3);
 }
 if (rfDWARF_MADE_ENTRANCE) {
   set(rfDONT_CALCULATE_DISTANCE);
@@ -128,14 +128,14 @@ if (rfFELL) {
   erase(oEGO);
   set(fGAME_OVER);
 }
-if (v71 > 0 && v71 < 11) {
+if (vTEMP_RESULT_3 > 0 && vTEMP_RESULT_3 < 11) {
   set(rfDONT_CALCULATE_DISTANCE);
-  v71 = 0;
+  vTEMP_RESULT_3 = 0;
   set(fVILLAIN_GOT_YOU);
 }
 if (fVILLAIN_GOT_YOU) {
   reset(fVILLAIN_GOT_YOU);
-  v71 = 0;
+  vTEMP_RESULT_3 = 0;
   set(rfDONT_CALCULATE_DISTANCE);
   normal.motion(oDWARF);
   ignore.blocks(oDWARF);

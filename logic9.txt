@@ -24,8 +24,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 27, 131, 0, 0);
   }
-  random(0, 250, v62);
-  if (v62 < 125 && vSPELL_COUNTDOWN_LO == 0) {
+  random(0, 250, vTEMP_RESULT);
+  if (vTEMP_RESULT < 125 && vSPELL_COUNTDOWN_LO == 0) {
     load.view(6);
     animate.obj(oFAIRY_GODMOTHER);
     set.view(oFAIRY_GODMOTHER, 6);

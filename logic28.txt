@@ -12,8 +12,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   set.horizon(46);
   if (vWITCH_STATE != WITCHSTATE_DEAD) {
-    random(0, 250, v62);
-    if (v62 > 125) {
+    random(0, 250, vTEMP_RESULT);
+    if (vTEMP_RESULT > 125) {
       vWITCH_STATE = WITCHSTATE_AT_HOME;
     }
     else {

@@ -170,7 +170,7 @@ if (said("anyword", "gate")) {
 if (said("climb", "goat pen")) {
   print("There should be a gate around here somewhere.");
 }
-distance(oEGO, oGOAT, v70);
+distance(oEGO, oGOAT, vTEMP_RESULT_2);
 if (fINSIDE_GOAT_FENCE && rfGOAT_IS_HERE) {
   if (said("feed", "carrot")
     || said("feed", "goat", "carrot")
@@ -180,7 +180,7 @@ if (fINSIDE_GOAT_FENCE && rfGOAT_IS_HERE) {
     || said("give", "carrot", "goat")
   ) {
     if (fCARRYING_CARROT) {
-      if (v70 < 25) {
+      if (vTEMP_RESULT_2 < 25) {
         print("Goats love carrots!  The old goat quickly devours yours.");
         vSCORE -= 2;
         drop("carrot");
@@ -203,7 +203,7 @@ if (fINSIDE_GOAT_FENCE && rfGOAT_IS_HERE) {
       || said("show", "carrot", "goat")
       || said("show", "goat", "carrot")
     ) {
-      if (v70 < 50) {
+      if (vTEMP_RESULT_2 < 50) {
         if (!fTROLL_TOOK_TREASURE) {
           print("When you tempt the old goat with the carrot, he starts to follow you.");
           set(fGOAT_COMPANION);
@@ -235,7 +235,7 @@ if (!fINSIDE_GOAT_FENCE && rfGOAT_IS_HERE) {
       || said("give", "goat", "carrot")
       || said("give", "carrot", "goat")
     ) {
-      if (v70 < 25) {
+      if (vTEMP_RESULT_2 < 25) {
         print("Goats love carrots!  The old goat quickly devours yours.");
         vSCORE -= 2;
         drop("carrot");
@@ -250,7 +250,7 @@ if (!fINSIDE_GOAT_FENCE && rfGOAT_IS_HERE) {
       || said("show", "goat", "carrot")
       || said("show", "carrot", "goat")
     ) {
-      if (v70 < 50) {
+      if (vTEMP_RESULT_2 < 50) {
         print("The old goat shows some interest in the carrot.");
       }
       else {

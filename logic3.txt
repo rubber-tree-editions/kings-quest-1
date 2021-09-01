@@ -51,10 +51,10 @@ if (!fSAID_ACCEPTED_USER_INPUT) {
   if (said("examine", "tree")) {
     print("There are numerous white birch trees reaching to the sky.");
   }
-  distance(oEGO, oROCK, v62);
+  distance(oEGO, oROCK, vTEMP_RESULT);
   if (said("examine", "rocks")) {
     if (!fMOVED_ROCK) {
-      if (v62 > 50) {
+      if (vTEMP_RESULT > 50) {
         print("There is a rock in the distance.");
       }
       else {
@@ -66,7 +66,7 @@ if (!fSAID_ACCEPTED_USER_INPUT) {
     }
   }
   if (said("get", "rocks")) {
-    if (v62 < 20) {
+    if (vTEMP_RESULT < 20) {
       print("This rock is far too heavy for you to carry.");
     }
     else {
@@ -108,8 +108,8 @@ if (said("shove", "rocks")) {
   }
 }
 if (said("examine", "hole") || said("look inside", "hole")) {
-  distance(oEGO, oHOLE, v70);
-  if (fMOVED_ROCK && v70 < 15) {
+  distance(oEGO, oHOLE, vTEMP_RESULT_2);
+  if (fMOVED_ROCK && vTEMP_RESULT_2 < 15) {
     if (!fTAKEN_DAGGER) {
       print("There is an intricately carved dagger in the hole.");
     }
@@ -117,7 +117,7 @@ if (said("examine", "hole") || said("look inside", "hole")) {
       print("There is nothing in this hole but dirt.");
     }
   }
-  if (fMOVED_ROCK && v70 > 14) {
+  if (fMOVED_ROCK && vTEMP_RESULT_2 > 14) {
     print("You are too far from the hole to see in it.");
   }
   if (!fMOVED_ROCK) {

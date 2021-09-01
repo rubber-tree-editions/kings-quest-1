@@ -24,8 +24,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 60, 71, 0, 0);
   }
   set.horizon(42);
-  random(0, 250, v62);
-  if (v62 < 175) {
+  random(0, 250, vTEMP_RESULT);
+  if (vTEMP_RESULT < 175) {
     load.sound(SND_VILLAIN);
     rvOGRE_STEP_SIZE = 2;
     step.size(oOGRE, rvOGRE_STEP_SIZE);
@@ -38,14 +38,14 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (rfINIT_RANDOMIZER) {
     do {
-      random(0, 250, v70);
-    } while (v70 > 90);
+      random(0, 250, vTEMP_RESULT_2);
+    } while (vTEMP_RESULT_2 > 90);
   }
   draw(oEGO);
   show.pic();
 }
-v70--;
-if (v70 == 1) {
+vTEMP_RESULT_2--;
+if (vTEMP_RESULT_2 == 1) {
   set(fTENSE_SITUATION);
   set(fTHREAT_OF_SORCERER_OR_OGRE);
   position(oOGRE, 40, 51);

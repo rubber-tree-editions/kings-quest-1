@@ -133,8 +133,8 @@ if (rfGOAT_AT_BRIDGE) {
   vTEMP_STEP = 1;
   move.obj.v(oGOAT, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfGOAT_AT_TROLL);
 }
-distance(oTROLL, oGOAT, v62);
-if (v62 < 20 && !fGOAT_KILLED_TROLL) {
+distance(oTROLL, oGOAT, vTEMP_RESULT);
+if (vTEMP_RESULT < 20 && !fGOAT_KILLED_TROLL) {
   print("The goat butts the troll right off the bridge, never to be seen in these parts again.");
   set(fGOAT_KILLED_TROLL);
   reset(rfTROLL_IS_HERE);

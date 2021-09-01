@@ -133,8 +133,8 @@ if (rfGOAT_AT_BRIDGE) {
   move.obj(oTROLL, 100, 124, 0, fMISC_END_MARKER);
   move.obj(oGOAT, 100, 124, 1, f203);
 }
-distance(oTROLL, oGOAT, v62);
-if (v62 < 15 && !fGOAT_KILLED_TROLL) {
+distance(oTROLL, oGOAT, vTEMP_RESULT);
+if (vTEMP_RESULT < 15 && !fGOAT_KILLED_TROLL) {
   print("The old goat seeing the troll, the archenemy of all goats, charges the troll and butts him into oblivion!  The bridge is now yours.");
   set(fGOAT_KILLED_TROLL);
   reset(rfTROLL_IS_HERE);

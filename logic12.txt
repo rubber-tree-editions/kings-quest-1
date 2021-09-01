@@ -387,8 +387,8 @@ if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED && !fON_WELL_ROPE) {
       print("The old bucket emerges from the depths of the well.");
       start.update(oBUCKET);
       start.update(oHANDLE);
-      random(0, 250, v62);
-      if (v62 < 30) {
+      random(0, 250, vTEMP_RESULT);
+      if (vTEMP_RESULT < 30) {
         set(fBUCKET_ON_WELL_HAS_WATER);
       }
       reverse.loop(oBUCKET, rfBUCKET_ASCENDED);

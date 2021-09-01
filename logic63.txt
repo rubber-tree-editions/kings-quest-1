@@ -49,7 +49,7 @@ if (fTAKEN_GOLDEN_EGG) {
     print("There is no egg here to get.");
   }
 }
-distance(oEGO, oGOLDEN_EGG, v62);
+distance(oEGO, oGOLDEN_EGG, vTEMP_RESULT);
 if (!fTAKEN_GOLDEN_EGG) {
   if (said("examine", "birds nest") || said("look inside", "birds nest")) {
     print("There is a pure golden egg lying in the nest!");
@@ -58,7 +58,7 @@ if (!fTAKEN_GOLDEN_EGG) {
     print("The golden egg is smooth and shiny.");
   }
   if (said("get", "golden egg")) {
-    if (v62 < 24) {
+    if (vTEMP_RESULT < 24) {
       start.update(oGOLDEN_EGG);
       erase(oGOLDEN_EGG);
       set(fCARRYING_GOLDEN_EGG);

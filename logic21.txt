@@ -23,8 +23,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 110, 103, 0, 0);
   }
-  random(0, 250, v62);
-  if (v62 < 185 && vWITCH_STATE != WITCHSTATE_DEAD) {
+  random(0, 250, vTEMP_RESULT);
+  if (vTEMP_RESULT < 185 && vWITCH_STATE != WITCHSTATE_DEAD) {
     rvWITCH_STEP_SIZE = 4;
     step.size(oWITCH, rvWITCH_STEP_SIZE);
     set(rfINIT_RANDOMIZER);
@@ -39,15 +39,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (rfINIT_RANDOMIZER) {
     do {
-      random(0, 250, v70);
-    } while (v70 > 90);
+      random(0, 250, vTEMP_RESULT_2);
+    } while (vTEMP_RESULT_2 > 90);
   }
   observe.blocks(oEGO);
   draw(oEGO);
   show.pic();
 }
-v70--;
-if (v70 == 1) {
+vTEMP_RESULT_2--;
+if (vTEMP_RESULT_2 == 1) {
   set(rfWITCH_IS_HERE);
   position(oWITCH, 80, 40);
   draw(oWITCH);

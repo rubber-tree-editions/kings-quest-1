@@ -193,9 +193,9 @@ if (!fCARRYING_CHEST) {
     if (fCHEST_TAKEN) {
       print("There is no chest around here to get.");
     }
-    distance(oEGO, oGIANT, v70);
+    distance(oEGO, oGIANT, vTEMP_RESULT_2);
     if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST) {
-      if (v70 > 30) {
+      if (vTEMP_RESULT_2 > 30) {
         print("There is no way you can get the chest from here!");
       }
       else {
@@ -212,9 +212,9 @@ if (!fCARRYING_CHEST) {
         vGIANT_STATE = GIANTSTATE_ASLEEP_NO_CHEST;
       }
     }
-    distance(oEGO, oCHEST, v62);
+    distance(oEGO, oCHEST, vTEMP_RESULT);
     if (vGIANT_STATE == GIANTSTATE_DEAD_WITH_CHEST) {
-      if (v62 > 30) {
+      if (vTEMP_RESULT > 30) {
         print("There is no way you can get the chest from here!");
       }
       else {
@@ -231,19 +231,19 @@ if (!fCARRYING_CHEST) {
   }
 }
 if (fCARRYING_SLINGSHOT) {
-  distance(oEGO, oGIANT, v71);
+  distance(oEGO, oGIANT, vTEMP_RESULT_3);
   if (said("use", "slingshot") || said("with", "slingshot")) {
     if (!fCARRYING_PEBBLES) {
       print("You need some kind of small rock to use the sling.");
     }
-    if (fCARRYING_PEBBLES && v71 < 20) {
+    if (fCARRYING_PEBBLES && vTEMP_RESULT_3 < 20) {
       print("There is no way you can get the chest from here!");
     }
     if (fCARRYING_PEBBLES
       && !fCHEST_TAKEN
       && !fEGO_INVISIBLE
       && vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST
-      && v71 > 19
+      && vTEMP_RESULT_3 > 19
       && !fFALLING
     ) {
       reset(rfGIANT_IS_AFTER_YOU);
@@ -262,7 +262,7 @@ if (fCARRYING_SLINGSHOT) {
       && fCHEST_TAKEN
       && !fEGO_INVISIBLE
       && vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST
-      && v71 > 19
+      && vTEMP_RESULT_3 > 19
     ) {
       reset(rfGIANT_IS_AFTER_YOU);
       get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);

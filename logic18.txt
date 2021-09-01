@@ -21,8 +21,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
-  random(0, 250, v62);
-  if (v62 < 85 && !fIMPRESSED_ELF) {
+  random(0, 250, vTEMP_RESULT);
+  if (vTEMP_RESULT < 85 && !fIMPRESSED_ELF) {
     load.view(7);
     animate.obj(oELF);
     set.view(oELF, 7);
@@ -33,8 +33,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (rfINIT_RANDOMIZER) {
     do {
-      random(0, 250, v71);
-    } while (v71 > 90);
+      random(0, 250, vTEMP_RESULT_3);
+    } while (vTEMP_RESULT_3 > 90);
   }
   if (vPREV_ROOM_NO == ROOM17_CLIFFS_LAKE_EAST && fEGO_ON_WATER) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
@@ -45,8 +45,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-v71--;
-if (v71 == 1) {
+vTEMP_RESULT_3--;
+if (vTEMP_RESULT_3 == 1) {
   reset(rfINIT_RANDOMIZER);
   draw(oELF);
   set(rfELF_IS_HERE);
@@ -73,7 +73,7 @@ if (!rfELF_IS_HERE) {
   }
 }
 if (rfELF_IS_HERE) {
-  distance(oEGO, oELF, v70);
+  distance(oEGO, oELF, vTEMP_RESULT_2);
   if (said("examine", "room")) {
     print("There is a very pretty lake nearby with a small little elf running along its shore.");
   }
@@ -98,7 +98,7 @@ if (rfELF_IS_HERE) {
     }
   }
   if (!rfELF_LEFT && (said("talk", "elf") || said("hello") || said("say", "hello"))) {
-    if (v70 < 40) {
+    if (vTEMP_RESULT_2 < 40) {
       print("The elf, impressed by your friendliness, gives you a magic ring.  \"Kind person, know that once, only once, this ring will make you invisible,\" he says and then disappears.");
       get("ring");
       set(fCARRYING_RING);

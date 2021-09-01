@@ -22,8 +22,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  v70 = 0;
-  v71 = 0;
+  vTEMP_RESULT_2 = 0;
+  vTEMP_RESULT_3 = 0;
   if (vPREV_ROOM_NO == ROOM54_CASTLE_HALL_CORNER) {
     position(oEGO, 154, 120);
   }
@@ -41,8 +41,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
   if (vTREASURE_COUNT == 3) {
-    v70 = 250;
-    v71 = 1;
+    vTEMP_RESULT_2 = 250;
+    vTEMP_RESULT_3 = 1;
   }
 }
 if (rfKING_EDWARD_DEAD) {
@@ -54,15 +54,15 @@ if (f195) {
   return;
 }
 if (rvCOUNTDOWN == 0) {
-  v70--;
-  if (v70 == 1) {
-    if (v71 != 0) {
-      v71--;
-      v70 = 250;
+  vTEMP_RESULT_2--;
+  if (vTEMP_RESULT_2 == 1) {
+    if (vTEMP_RESULT_3 != 0) {
+      vTEMP_RESULT_3--;
+      vTEMP_RESULT_2 = 250;
     }
   }
-  if (v70 == 1 && v71 == 0) {
-    v70 = 0;
+  if (vTEMP_RESULT_2 == 1 && vTEMP_RESULT_3 == 0) {
+    vTEMP_RESULT_2 = 0;
     rvCOUNTDOWN = 250;
   }
 }
@@ -326,8 +326,8 @@ if (rfEGO_FINISHED_BOWING) {
   print("When you bow to King Edward, his pleased smile warms you.");
   if (fPOINTS_FOR_BOWING_TO_KING_AFTER_MISSION) {
     rvCOUNTDOWN = 250;
-    v70 = 0;
-    v71 = 0;
+    vTEMP_RESULT_2 = 0;
+    vTEMP_RESULT_3 = 0;
   }
 }
 if (rfWAIT_FOR_KEY) {

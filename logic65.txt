@@ -107,8 +107,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     && !fEGO_INVISIBLE
   ) {
     if (vWITCH_STATE == WITCHSTATE_AWAY_FROM_HOME) {
-      random(0, 250, v62);
-      if (v62 < 180) {
+      random(0, 250, vTEMP_RESULT);
+      if (vTEMP_RESULT < 180) {
         load.view(43);
         animate.obj(oWITCH);
         set.view(oWITCH, 43);
@@ -293,8 +293,8 @@ if (rfWITCH_AT_OVEN) {
   if (said("examine", "witch")) {
     print("This ugly old witch is one of the most hideous sights you have ever seen.  I would never trust her.");
   }
-  distance(oEGO, oWITCH, v70);
-  if (v70 < 15) {
+  distance(oEGO, oWITCH, vTEMP_RESULT_2);
+  if (vTEMP_RESULT_2 < 15) {
     if (said("shove", "witch") || said("murder", "witch")) {
       erase(oWITCH);
       print("Courageously, you manage to push the witch into the oven where she flashes and melts away into a harmless blob. Congratulations!");
@@ -306,7 +306,7 @@ if (rfWITCH_AT_OVEN) {
       vSCORE += 7;
     }
   }
-  if (v70 > 14) {
+  if (vTEMP_RESULT_2 > 14) {
     if (said("shove", "witch") || said("murder", "witch")) {
       print("You are in no position to do that!");
     }

@@ -77,10 +77,10 @@ if (rfGNOME_IS_HERE && !rfGNOME_INTRODUCED) {
   set(rfGNOME_INTRODUCED);
 }
 if (rfGNOME_IS_HERE) {
-  distance(oEGO, oGNOME, v62);
+  distance(oEGO, oGNOME, vTEMP_RESULT);
   if (rfGUESSING_GNOMES_NAME) {
     if (said("talk", "gnome") || said("hello") || said("say", "hello")) {
-      if (v62 < 50) {
+      if (vTEMP_RESULT < 50) {
         print("You still haven't guessed my name!");
       }
       else {
@@ -91,7 +91,7 @@ if (rfGNOME_IS_HERE) {
   }
   if (!rfGUESSING_GNOMES_NAME) {
     if (said("talk", "gnome") || said("hello") || said("say", "hello")) {
-      if (v62 < 50) {
+      if (vTEMP_RESULT < 50) {
         set(rfGUESSING_GNOMES_NAME);
         print("The old gnome tells you he has something that may be very useful to you.  Your task is to guess his name in three guesses and his gift will be yours.  Good luck!  What is your first guess?");
       }
@@ -102,7 +102,7 @@ if (rfGNOME_IS_HERE) {
     }
   }
   if (said("examine", "gnome")) {
-    if (v62 < 80) {
+    if (vTEMP_RESULT < 80) {
       print("The gnome is old and bent under the weight of years, but a playful wisdom still brightens his eyes.");
     }
     else {
@@ -189,9 +189,9 @@ if (!rfGNOME_IS_HERE) {
     print("There is no gnome here.");
   }
   if (rfSHOW_BEANS) {
-    distance(oEGO, oMAGIC_BEANS, v70);
+    distance(oEGO, oMAGIC_BEANS, vTEMP_RESULT_2);
     if (said("examine", "magic beans")) {
-      if (v70 > 40) {
+      if (vTEMP_RESULT_2 > 40) {
         print("That's too far away.");
       }
       else {
@@ -199,7 +199,7 @@ if (!rfGNOME_IS_HERE) {
       }
     }
     if (said("get", "magic beans")) {
-      if (v70 > 20) {
+      if (vTEMP_RESULT_2 > 20) {
         print("That's too far away.");
       }
       else {
@@ -215,9 +215,9 @@ if (!rfGNOME_IS_HERE) {
     }
   }
   if (rfSHOW_KEY) {
-    distance(oEGO, oGOLD_KEY, v71);
+    distance(oEGO, oGOLD_KEY, vTEMP_RESULT_3);
     if (said("examine", "gold key")) {
-      if (v71 > 40) {
+      if (vTEMP_RESULT_3 > 40) {
         print("That's too far away.");
       }
       else {
@@ -225,7 +225,7 @@ if (!rfGNOME_IS_HERE) {
       }
     }
     if (said("get", "gold key")) {
-      if (v71 > 20) {
+      if (vTEMP_RESULT_3 > 20) {
         print("That's too far away.");
       }
       else {
