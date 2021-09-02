@@ -2,13 +2,6 @@
 
 LOGIC__HEADER
 
-#ifdef RUBBER_TREE
-  if (fUNDO) {
-    print("Sorry, UNDO is not available right now!");
-    reset(fUNDO);
-    return;
-  }
-#endif
 if (!fPLAYER_ENTERED_COMMAND) {
   return;
 }

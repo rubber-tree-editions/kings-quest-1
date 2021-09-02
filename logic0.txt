@@ -993,6 +993,12 @@ if (fDEBUG_MODE) {
   call(LOGIC99_DEBUG);
 }
 call.v(vROOM_NO);
+#ifdef RUBBER_TREE
+  if (fUNDO) {
+    print("Sorry, UNDO is not available right now!");
+    reset(fUNDO);
+  }
+#endif
 call(LOGIC102_DEFAULT_RESPONSES);
 return;
 
