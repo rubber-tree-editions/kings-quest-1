@@ -36,6 +36,7 @@ if (fGAME_OVER) {
     reset(fUNDO);
     reset(rfROCK_MOVING_DEADLY);
     reset(fGAME_OVER);
+    reset(fMOVED_ROCK);
     player.control();
   }
   return;
