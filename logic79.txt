@@ -9,12 +9,35 @@ LOGIC__HEADER
 #define rfBOTH_GESTICULATING rf4
 
 #define rvGESTICULATION_COUNTDOWN rv0
+#ifdef RUBBER_TREE
+#define rvRESTORE_EGO_X rv1
+#define rvRESTORE_EGO_Y rv2
+#endif
 
 #define oBOWL o1
 #define oWOODCUTTER o2
 #define oFIDDLE o3
 #define oWIFE o4
 
+#ifdef RUBBER_TREE
+if (fUNDO && fFALLING) {
+  erase(oEGO);
+  set.position.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+  object.on.land(oEGO);
+  release.priority(oEGO);
+  observe.blocks(oEGO);
+  draw(oEGO);
+  reset(fUNDO);
+  reset(fFALLING);
+  reset(fSCRIPTED_MOTION);
+  reset(rfFELL_THROUGH_FLOOR);
+  stop.sound();
+  if (fGAME_OVER) {
+    reset(fGAME_OVER);
+    return;
+  }
+}
+#endif
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -395,6 +418,9 @@ if (!fFIDDLE_TAKEN) {
   }
 }
 if (fEGO_ON_WATER && !fFALLING) {
+#ifdef RUBBER_TREE
+  get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+#endif
   ignore.blocks(oEGO);
   set(fSCRIPTED_MOTION);
   stop.cycling(oEGO);
