@@ -79,6 +79,30 @@ if (!fSAID_ACCEPTED_USER_INPUT) {
     }
   }
 }
+#ifdef RUBBER_TREE
+if (fUNDO) {
+  if (vROOM_NO == ROOM3_ROCK_OVER_HOLE) {
+    call.v(vROOM_NO);
+  }
+  if (fGAME_OVER) {
+    print("Sorry! UNDO is not available here.");
+    reset(fUNDO);
+  }
+  else {
+    stop.sound();
+    if (fGOAT_COMPANION) {
+      // normal.motion(o13);
+      // stop.motion(o13);
+      // stop.cycling(o13);
+    }
+    enable.item(cSAVE);
+    enable.item(cJUMP);
+    enable.item(cSWIM);
+    enable.item(cDUCK);
+    reset(fGAME_OVER_PREPARATION);
+  }
+}
+#endif
 return;
 
 LOGIC__FOOTER

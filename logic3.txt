@@ -5,9 +5,42 @@ LOGIC__HEADER
 #define rfROCK_MOVING_SAFE rf0
 #define rfROCK_MOVING_DEADLY rf1
 
+#ifdef RUBBER_TREE
+#define rvRESTORE_EGO_X rv0
+#define rvRESTORE_EGO_Y rv1
+#define rvRESTORE_EGO_DIR rv2
+#define rvRESTORE_ROCK_X rv3
+#define rvRESTORE_ROCK_Y rv4
+#endif
+
 #define oROCK o1
 #define oHOLE o2
 
+#ifdef RUBBER_TREE
+if (fGAME_OVER) {
+  if (fUNDO && rfROCK_MOVING_DEADLY) {
+    erase(oHOLE);
+
+    erase(oROCK);
+    observe.objs(oROCK);
+    release.priority(oROCK);
+    position.v(oROCK, rvRESTORE_ROCK_X, rvRESTORE_ROCK_Y);
+    draw(oROCK);
+
+    erase(oEGO);
+    position.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+    set.view(oEGO, 0);
+    set.dir(oEGO, rvRESTORE_EGO_DIR);
+    draw(oEGO);
+
+    reset(fUNDO);
+    reset(rfROCK_MOVING_DEADLY);
+    reset(fGAME_OVER);
+    player.control();
+  }
+  return;
+}
+#endif
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -88,6 +121,11 @@ if (said("shove", "rocks")) {
       set(rfROCK_MOVING_SAFE);
     }
     if (posn(oEGO, 118, 134, 133, 148)) {
+#ifdef RUBBER_TREE
+      get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+      rvRESTORE_EGO_DIR = vEGO_DIR;
+      get.posn(oROCK, rvRESTORE_ROCK_X, rvRESTORE_ROCK_Y);
+#endif
       ignore.objs(oROCK);
       draw(oHOLE);
       stop.update(oHOLE);
