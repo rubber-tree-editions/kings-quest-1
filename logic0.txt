@@ -99,7 +99,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   } while (vTEMP_COUNTER < 45);
   vTEMP_COUNTER = 30;
   do {
-    lindirect(vTEMP_COUNTER, 0);
+    lindirectn(vTEMP_COUNTER, 0);
     vTEMP_COUNTER++;
   } while (vTEMP_COUNTER < 45);
   set.string(sPROMPT, ">");
