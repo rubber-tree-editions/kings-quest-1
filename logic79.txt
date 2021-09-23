@@ -22,7 +22,7 @@ LOGIC__HEADER
 #ifdef RUBBER_TREE
 if (fUNDO && fFALLING) {
   erase(oEGO);
-  set.position.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+  reposition.to.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
   object.on.land(oEGO);
   release.priority(oEGO);
   observe.blocks(oEGO);
