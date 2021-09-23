@@ -1,0 +1,28 @@
+000:dagger
+001:chest
+002:carrot
+003:gold walnut
+004:key
+005:necklace
+006:locket
+007:note
+008:glass shoes
+009:ring
+010:fourleaf clover
+011:ceramic bowl
+012:water bucket
+013:water
+014:pebbles
+015:leather slingshot
+016:pouch of diamonds
+017:pouch
+018:sceptre
+019:cheese
+020:rope
+021:magic mirror
+022:gold egg
+023:shield
+024:fiddle
+025:walnut
+026:mushroom
+027:beans
