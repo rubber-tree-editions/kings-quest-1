@@ -112,7 +112,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Not even you can hold your breath forever.  The well bottom has become your eternal resting place."
 #message 2 "This looks like typical well water."
 #message 3 "It looks like this bottle has been here for a very long time."

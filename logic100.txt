@@ -110,7 +110,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "We, at Sierra, wish to thank you for playing King's Quest. We are very sorry that you did not succeed and hope you will fare better next time. Good luck."
 #ifdef RUBBER_TREE
   #message 2 "As you are dead, I can only permit you to: Restore Game,  Restart Game, Undo or Take Inventory. Sorry."

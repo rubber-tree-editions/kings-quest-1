@@ -402,7 +402,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "I can see you need a little practice climbing rope!"
 #message 2 "You should be more careful before trying that next time!"
 #message 3 "Your arms are like lead... from swimming.  You find it impossible... to swim any longer.  You sink to the bottom... of the well...."

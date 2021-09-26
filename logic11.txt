@@ -348,7 +348,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "There is no reason to jump or duck here."
 #message 2 "It's not nice to tease the goat.  You're not leaving without him."
 #message 3 "The gate is already open."

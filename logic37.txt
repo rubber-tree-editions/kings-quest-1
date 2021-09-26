@@ -117,7 +117,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "The bucket fills with the somewhat swampy water."
 #message 2 "In your thirst, even swamp water is satisfying."
 #message 3 "This lake looks refreshing, but a little swampy."

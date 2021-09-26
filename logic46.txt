@@ -194,7 +194,6 @@ AFTERCOUNTDOWN:
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Watch out!!!  There is an ogre nearby!  He will crush you in his strong arms if he catches you."
 #message 2 "You are very fortunate that your protective spell is still working."
 #message 3 "With the magic shield, no harm will come to you."

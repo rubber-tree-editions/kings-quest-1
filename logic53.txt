@@ -344,7 +344,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Even as you are reaching for your medevial flamethrower, the King's agents descend upon you.  You are taken away to be torched at dawn."
 #message 2 "King Edward the Benevolent is a very wise, but elderly monarch.  His frail body is almost lost in the large throne."
 #message 3 "The King's throne is made of solid gold, accented with rubies.  It will be yours if you complete your quest."

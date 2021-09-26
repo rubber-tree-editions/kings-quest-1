@@ -214,7 +214,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Wandering on the banks of the lake, you see a cute little elf."
 #message 2 "The cold water gushes into the old bucket."
 #message 3 "There is nothing to compare with that refreshing taste."

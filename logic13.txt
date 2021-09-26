@@ -144,7 +144,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Look out for that wolf -- he can run very fast!   Don't let him catch you!"
 #message 2 "You are very fortunate that your protective spell is still working."
 #message 3 "Fortunately, you are invisible and the wolf can't see you."

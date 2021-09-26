@@ -208,7 +208,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "There are numerous white birch trees reaching to the sky."
 #message 2 "After moving that rock once, even thinking about it should make you tired."
 #message 3 "There is no hole here."

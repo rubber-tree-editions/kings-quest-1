@@ -422,7 +422,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "You see nothing special."
 #message 2 "You cannot get the \"%w2\". At least not now!"
 #message 3 "There is no reason to do that."

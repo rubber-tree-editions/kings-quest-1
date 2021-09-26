@@ -47,7 +47,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "          KING'S QUEST"
 #message 2 "             Help"
 #message 3 "F1 displays this message."

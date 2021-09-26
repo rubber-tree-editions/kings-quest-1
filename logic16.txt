@@ -95,7 +95,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "This is a neat little carrot patch.  The plump carrots  look tempting."
 #message 2 "There is no reason to climb the fence."
 #message 3 "You can go around the fence."

@@ -150,7 +150,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "This is a Raging River filled with boulders and rapids."
 #message 2 "You see a lovely green meadow on the other side of the river."
 #message 3 "It is a massive boulder that splits the river."

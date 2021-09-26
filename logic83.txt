@@ -359,7 +359,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "                "
 #message 2 "Designed and    "
 #message 3 "    Written by: "

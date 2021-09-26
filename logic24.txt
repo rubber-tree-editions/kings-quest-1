@@ -86,7 +86,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "There is a small patch of clover under the tree."
 #message 2 "Off in the distance you see a patch of clover."
 #message 3 "You already have the only fourleaf clover here."

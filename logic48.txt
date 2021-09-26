@@ -127,7 +127,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "In the depths of the large hole you seem to sense a faint, green glow."
 #message 2 "Don't be afraid... get closer."
 #message 3 "OUCH"

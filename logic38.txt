@@ -223,7 +223,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "What a pretty bed of wild flowers."
 #message 2 "The flowers' fragrance is enticing."
 #message 3 "You will have to move closer to do that."

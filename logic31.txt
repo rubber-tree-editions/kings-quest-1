@@ -247,7 +247,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "This is a very colorful ceramic bowl."
 #message 2 "You pick up the ceramic bowl."
 #message 3 "It looks like an interesting, colorful bowl."

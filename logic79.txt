@@ -449,7 +449,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "You dare not jump here or you would go through the floor!"
 #message 2 "The cottage is run-down and sparsely furnished.  The only nice possession seems to be a fiddle in the corner."
 #message 3 "The cottage is run-down and sparsely furnished."

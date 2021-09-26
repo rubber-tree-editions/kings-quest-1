@@ -99,7 +99,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "It is an ancient, rusty water pump.  It probably doesn't even work."
 #message 2 "The rusty pump doesn't work."
 #message 3 "The handle has been broken and repaired.  The head shows the signs of many sharpenings."

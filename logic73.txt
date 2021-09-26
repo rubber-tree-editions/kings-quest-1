@@ -100,7 +100,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "While falling through the hole, the magic ring fell off your finger.  Dangerous creatures can see you now!"
 #message 2 "The warm sunlight falls through the hole in the ceiling.  Unfortunately, you can't reach it."
 #message 3 "The dark tunnel leads off to the south."

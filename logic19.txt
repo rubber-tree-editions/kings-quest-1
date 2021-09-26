@@ -204,7 +204,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "The mountain is much too steep and rocky for you to climb."
 #message 2 "It is a huge wooden door built right into the bottom of a small mountain!  It has a large keyhole."
 #message 3 "How do you want to use the key?"

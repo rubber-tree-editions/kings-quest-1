@@ -89,7 +89,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "The dark cave burrows its way into a steep mountain."
 #message 2 "The mountain is too steep to climb."
 #message 3 "You are near the top of a very high mountain.  It steeply descends toward a valley floor."

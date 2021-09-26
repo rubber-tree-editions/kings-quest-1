@@ -75,7 +75,6 @@ if (vUNKNOWN_WORD_NO == 0 && fPLAYER_ENTERED_COMMAND && !fSAID_ACCEPTED_USER_INP
 return;
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "new room: "
 #message 2 "x: "
 #message 3 "y: "
