@@ -7,6 +7,31 @@ LOGIC__HEADER
 
 #define rvTEMP_PRIORITY rv0
 
+#ifdef RUBBER_TREE
+#define rvRESTORE_EGO_X rv1
+#define rvRESTORE_EGO_Y rv2
+#define rvRESTORE_EGO_DIR rv3
+#endif
+
+#ifdef RUBBER_TREE
+if (fUNDO && fGAME_OVER) {
+  reset(fSCRIPTED_MOTION);
+  stop.sound();
+  erase(oEGO);
+  position.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+  reset(fCYCLE_EGO_ANIMATION);
+  stop.cycling(oEGO);
+  set.view(oEGO, 0);
+  set.dir(oEGO, rvRESTORE_EGO_DIR);
+  release.priority(oEGO);
+  draw(oEGO);
+  reset(fUNDO);
+  reset(fGAME_OVER);
+  reset(fFALLING);
+  player.control();
+  return;
+}
+#endif
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -23,6 +48,16 @@ if (said("examine", "tree") || said("examine", "flowers")) {
   print("This is very strange vegetation.");
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {
+#ifdef RUBBER_TREE
+  get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+  if (rvRESTORE_EGO_X >= 22) {
+    rvRESTORE_EGO_Y -= 5;
+  }
+  else {
+    rvRESTORE_EGO_X += 5;
+  }
+  rvRESTORE_EGO_DIR = vEGO_DIR;
+#endif
   set(fSCRIPTED_MOTION);
   program.control();
   stop.cycling(oEGO);

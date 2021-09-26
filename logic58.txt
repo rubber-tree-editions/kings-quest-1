@@ -16,11 +16,36 @@ LOGIC__HEADER
 #define rvCOUNTDOWN_HI rv1
 // unused: rv2
 #define rvZERO rv3
+#ifdef RUBBER_TREE
+#define rvRESTORE_EGO_X rv4
+#define rvRESTORE_EGO_Y rv5
+#define rvRESTORE_EGO_DIR rv6
+#endif
 
 #define oGIANT o1
 #define oCHEST o2
 #define oFLUNG_PEBBLE o15
 
+#ifdef RUBBER_TREE
+if (fUNDO && fGAME_OVER) {
+  if (fFALLING) {
+    stop.sound();
+    erase(oEGO);
+    position.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+    reset(fCYCLE_EGO_ANIMATION);
+    stop.cycling(oEGO);
+    set.view(oEGO, 0);
+    set.dir(oEGO, rvRESTORE_EGO_DIR);
+    release.priority(oEGO);
+    draw(oEGO);
+    reset(fUNDO);
+    reset(fGAME_OVER);
+    reset(fFALLING);
+    player.control();
+  }
+  return;
+}
+#endif
 if (fROOM_SCRIPT_EXECUTED) {
   ignore.horizon(oEGO);
   load.pic(vROOM_NO);
@@ -129,6 +154,11 @@ if (rfGIANT_CAUGHT_YOU && rfGIANT_IS_AFTER_YOU) {
   }
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {
+#ifdef RUBBER_TREE
+  get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+  rvRESTORE_EGO_Y += 5;
+  rvRESTORE_EGO_DIR = vEGO_DIR;
+#endif
   set(fFALLING);
   reset(fEGO_TOUCHED_TRIGGER_LINE);
   program.control();

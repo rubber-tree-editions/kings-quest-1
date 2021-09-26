@@ -8,6 +8,32 @@ LOGIC__HEADER
 
 #define rvLOCK_PRIORITY rv0
 
+#ifdef RUBBER_TREE
+#define rvRESTORE_EGO_X rv1
+#define rvRESTORE_EGO_Y rv2
+#define rvRESTORE_EGO_DIR rv3
+#endif
+
+#ifdef RUBBER_TREE
+if (fUNDO && fGAME_OVER) {
+  reset(fSCRIPTED_MOTION);
+  stop.sound();
+  erase(oEGO);
+  position.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+  reset(fCYCLE_EGO_ANIMATION);
+  stop.cycling(oEGO);
+  set.view(oEGO, 0);
+  set.dir(oEGO, rvRESTORE_EGO_DIR);
+  release.priority(oEGO);
+  draw(oEGO);
+  reset(fUNDO);
+  reset(fGAME_OVER);
+  reset(fFALLING);
+  player.control();
+  return;
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   ignore.horizon(oEGO);
   load.pic(vROOM_NO);

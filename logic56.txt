@@ -6,7 +6,30 @@ LOGIC__HEADER
 #define rfPLAYING_SND_FALLING rf1
 
 #define rvLOCK_PRIORITY rv0
+#ifdef RUBBER_TREE
+#define rvRESTORE_EGO_X rv1
+#define rvRESTORE_EGO_Y rv2
+#define rvRESTORE_EGO_DIR rv3
+#endif
 
+#ifdef RUBBER_TREE
+if (fUNDO && fGAME_OVER) {
+  stop.sound();
+  erase(oEGO);
+  position.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+  reset(fCYCLE_EGO_ANIMATION);
+  stop.cycling(oEGO);
+  set.view(oEGO, 0);
+  set.dir(oEGO, rvRESTORE_EGO_DIR);
+  release.priority(oEGO);
+  draw(oEGO);
+  reset(fUNDO);
+  reset(fGAME_OVER);
+  reset(fFALLING);
+  player.control();
+  return;
+}
+#endif
 if (fROOM_SCRIPT_EXECUTED) {
   ignore.horizon(oEGO);
   load.pic(vROOM_NO);
@@ -24,6 +47,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
+#ifdef RUBBER_TREE
+  get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+  rvRESTORE_EGO_Y++;
+  rvRESTORE_EGO_DIR = vEGO_DIR;
+#endif
   set(fFALLING);
   reset(fEGO_TOUCHED_TRIGGER_LINE);
   program.control();
@@ -40,6 +68,11 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_THROUGH_CLOUDS);
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 84, 159, 167)) {
+#ifdef RUBBER_TREE
+  get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+  rvRESTORE_EGO_Y--;
+  rvRESTORE_EGO_DIR = vEGO_DIR;
+#endif
   set(fFALLING);
   set(fSCRIPTED_MOTION);
   program.control();
