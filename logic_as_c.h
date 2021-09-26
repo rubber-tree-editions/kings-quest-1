@@ -365,6 +365,10 @@ struct position {
   void (*v)(agiobj, agivar, agivar);
 } position;
 
+struct enable {
+  void (*item)(agicontrol);
+} enable;
+
 struct disable {
   void (*item)(agicontrol);
 } disable;

@@ -1,6 +1,6 @@
 #include "vars.txt"
 
-#define rfDROWNING rf44
+#define rfDROWNING f44
 
 LOGIC__HEADER
 
