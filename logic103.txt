@@ -84,8 +84,11 @@ if (rfAPPROACHING_WATERFALL_LAKE_EDGE || rfAPPROACHING_CLIFFS_LAKE_EDGE) {
 if (fSCRIPTED_GOAT_MOVEMENT) {
   ignore.blocks(oGOAT);
   return;
+  // unreachable goto necessary for bytecode matching:
+  goto(BADLABEL);
 }
 observe.blocks(oGOAT);
+BADLABEL:
 rvCOUNTDOWN--;
 if (rvCOUNTDOWN == 1) {
   if (rvDISTANCE_FROM_EGO_TO_GOAT < 21) {
@@ -105,7 +108,7 @@ if (fGOAT_NEAR_YOU) {
   stop.motion(oGOAT);
   stop.cycling(oGOAT);
 }
-if (rvDISTANCE_FROM_EGO_TO_GOAT > 20 && vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
+if (rvDISTANCE_FROM_EGO_TO_GOAT > 20 && vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
   if (vROOM_NO != ROOM1_CASTLE_EAST
     && vROOM_NO != ROOM2_CASTLE_WEST
     && vROOM_NO != ROOM41_OPEN_SIDED_BRIDGE
@@ -138,7 +141,7 @@ if (fEGO_INVISIBLE && !rfGOAT_WANDERING_OFF) {
 return;
 ATRIVER:
   distance(oEGO, oGOAT, rvDISTANCE_FROM_EGO_TO_GOAT);
-  if (rfAPPROACHING_CLIFFS_LAKE_EDGE && vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
+  if (rfAPPROACHING_CLIFFS_LAKE_EDGE && vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
     set(fGOAT_WONT_SWIM);
     print("The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water.");
   }
