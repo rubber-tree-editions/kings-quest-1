@@ -78,7 +78,7 @@ if (rfPLAYING_FIDDLE) {
     print("You are already playing the fiddle.");
   }
 }
-if (rvCOUNTDOWN != 0) {
+if (rvCOUNTDOWN > 0) {
   rvCOUNTDOWN--;
 }
 if (!fDANCING_LEPRECHAUNS && !rfPLAYING_FIDDLE) {
