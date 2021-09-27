@@ -51,13 +51,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
 }
 vCOUNTDOWN_LO--;
-if (vCOUNTDOWN_LO == 0) {
+if (equaln(vCOUNTDOWN_LO, 0)) {
   vCOUNTDOWN_HI--;
-  if (vCOUNTDOWN_HI != 0) {
+  if (vCOUNTDOWN_HI > 0) {
     vCOUNTDOWN_LO = 250;
   }
 }
-if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI == 0 && !rfDEAD) {
+if (equaln(vCOUNTDOWN_LO, 0) && equaln(vCOUNTDOWN_HI, 0) && !rfDEAD) {
   set(rfDEAD);
   set.view(oEGO, 114);
   print("Not even you can hold your breath forever.  The well bottom has become your eternal resting place.");
