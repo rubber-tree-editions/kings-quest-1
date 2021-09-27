@@ -298,7 +298,6 @@ FINALCHECKS:
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "You see a crotchety old gnome pacing around his lean-to."
 #message 2 "That is very close but not quite right!"
 #message 3 "You have the right idea, but your thinking is just a little bit off."

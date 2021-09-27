@@ -187,7 +187,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "It's a witch swooping through the sky... She's trying to catch you!  Look out!"
 #message 2 "There is a witch in the area, but since you have that menacing goat with you, she will keep her distance."
 #message 3 "There is a witch in the area, but with the shield no harm will come to you."

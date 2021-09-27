@@ -265,7 +265,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Inside the old, rotted stump you notice a small, canvas pouch."
 #message 2 "Inside the decaying tree stump, you see nothing interesting."
 #message 3 "You notice the pouch feels aged and tattered."

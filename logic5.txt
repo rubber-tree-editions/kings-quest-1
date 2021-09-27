@@ -143,7 +143,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "You kneel down and fill the bucket with the cool water."
 #message 2 "You drink of the clear lake water."
 #message 3 "You are not close enough to the water."

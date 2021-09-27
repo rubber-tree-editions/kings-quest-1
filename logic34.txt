@@ -149,7 +149,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "You notice an enchanting meadow."
 #message 2 "The river is dangerous and powerful.  There is a delta of pebbles on its edge."
 #message 3 "Your pockets cannot hold any more pebbles."

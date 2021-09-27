@@ -396,7 +396,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "As you approach the bridge, a mean, ugly troll appears.  He will not let you cross his bridge."
 #message 2 "The old goat seeing the troll, the archenemy of all goats, charges the troll and butts him into oblivion!  The bridge is now yours."
 #message 3 "This bridge is the only way to cross the river here."

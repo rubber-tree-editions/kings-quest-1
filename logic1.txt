@@ -218,7 +218,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go."
 #message 2 "King Edward's banners are waving in the strong breeze."
 #message 3 "This is the castle of King Edward the Benevolent."

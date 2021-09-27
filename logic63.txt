@@ -123,7 +123,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "There is a rather large bird's nest here."
 #message 2 "There is a pure golden egg lying in the nest!"
 #message 3 "The nest is empty."

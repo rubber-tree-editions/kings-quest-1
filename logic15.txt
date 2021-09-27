@@ -100,7 +100,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "This is a well-tended carrot patch.  The carrots look tempting to a hungry traveler."
 #message 2 "This is a relatively low, rustic stone fence which runs along the left and rear sides of the garden."
 #message 3 "There is no reason to climb the fence."

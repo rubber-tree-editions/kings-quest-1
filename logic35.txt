@@ -361,7 +361,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "There is a small dwarf close by.  It would be a good idea to be careful."
 #message 2 "That little dwarf caught you by surprise.  Is your treasure still OK?"
 #message 3 "The quick, little dwarf came by to see what you had -- nothing interested him."

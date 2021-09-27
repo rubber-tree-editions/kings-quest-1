@@ -20,7 +20,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "You are already climbing the beanstalk."
 #message 2 "You can't do that when you are invisible!"
 #message 3 "It is a mighty beanstalk that stretches to the sky."

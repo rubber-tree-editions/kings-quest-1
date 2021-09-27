@@ -276,7 +276,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Being invisible won't hide you from this rat's keen sense of smell."
 #message 2 "There is no rat here."
 #message 3 "It is a big rat with dripping teeth and small, greedy eyes."

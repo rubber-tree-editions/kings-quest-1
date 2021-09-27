@@ -331,7 +331,6 @@ FINALCHECKS:
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "High above the castle, the flags are waving in the wind."
 #message 2 "King Edward the Benevolent, the mighty ruler of Daventry, lives in this castle."
 #message 3 "You must enter the castle through the door, and the  door is closed."

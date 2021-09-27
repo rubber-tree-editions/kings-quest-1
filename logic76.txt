@@ -159,7 +159,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "The leprechauns' magic powers detect your unseen presence."
 #message 2 "The leprechauns do not like your invasion of their territory.  They may not let you get any further."
 #message 3 "The leprechauns revere the power of the fourleaf clover. With it in your possession they will leave you absolutely alone."

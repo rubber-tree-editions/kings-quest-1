@@ -84,7 +84,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "When the goat saw how dark it was in here, it decided not to stay around."
 #message 2 "It is empty except for a huge boulder opposite the opening."
 #message 3 "It is a rather large, vacant cave."

@@ -180,7 +180,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!"
 #message 2 "The magic shield will protect you from this dangerous  sorcerer."
 #message 3 "You're so afraid of the sorcerer that your knees are locked."

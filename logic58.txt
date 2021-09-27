@@ -406,7 +406,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "You are fortunate that you have the magic shield or this giant would cause problems for you."
 #message 2 "The giant cannot see you since you are invisible."
 #message 3 "The fairy godmother's spell is protecting you."

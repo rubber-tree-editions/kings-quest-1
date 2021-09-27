@@ -335,7 +335,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "High up in the sky you see a very large, friendly bird."
 #message 2 "The opening to the cave is dark and ominous."
 #message 3 "You vaguely see the outline of a cave entrance."

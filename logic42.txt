@@ -179,7 +179,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "You have fallen in the raging current and are swept under.  I'm afraid your end has come."
 #message 2 "It is an old stone bridge dating to ancient times."
 #message 3 "The river gets to be rather rough around these parts."

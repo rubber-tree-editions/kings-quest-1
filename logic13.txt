@@ -96,12 +96,12 @@ if (fVILLAIN_GOT_YOU) {
     wander(oWOLF);
     set(rfPROTECTED);
   }
-  if (fEGO_INVISIBLE) {
+  else if (fEGO_INVISIBLE) {
     print("Fortunately, you are invisible and the wolf can't see you.");
     wander(oWOLF);
     set(rfPROTECTED);
   }
-  if (fCARRYING_SHIELD) {
+  else if (fCARRYING_SHIELD) {
     print("You, fortunately, have the magic shield which will protect you.");
     wander(oWOLF);
     set(rfPROTECTED);
@@ -144,7 +144,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Look out for that wolf -- he can run very fast!   Don't let him catch you!"
 #message 2 "You are very fortunate that your protective spell is still working."
 #message 3 "Fortunately, you are invisible and the wolf can't see you."
