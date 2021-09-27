@@ -36,7 +36,7 @@ if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
   }
 }
 if (fEGO_ON_WATER) {
-  if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
+  if (equaln(vAQUATIC_ACTIVITY, AQUATICACTIVITY_NONE)) {
     set(fCYCLE_EGO_ANIMATION);
     stop.motion(oEGO);
     vDROWN_MESSAGE_COUNTDOWN = 250;
@@ -92,7 +92,7 @@ if (fEGO_ON_WATER) {
       vDROWN_GAME_OVER_COUNTDOWN = 50;
     }
   }
-  else if (!fSWIMMING_IMPOSSIBLE_HERE && vAQUATIC_ACTIVITY != AQUATICACTIVITY_SWIMMING && !rfDROWNING) {
+  else if (!fSWIMMING_IMPOSSIBLE_HERE && !equaln(vAQUATIC_ACTIVITY, AQUATICACTIVITY_SWIMMING) && !rfDROWNING) {
     if (said("swim") || said("go", "swim") || said("swim", "anyword") || controller(cSWIM)) {
       set.view(oEGO, 70);
       start.motion(oEGO);
@@ -117,7 +117,7 @@ else if (!controller(cSWIM)) {
   reset(fSWIMMING);
 }
 if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING && vDROWN_GAME_OVER_COUNTDOWN == 0) {
-  if (vDROWN_MESSAGE_COUNTDOWN == 0) {
+  if (equaln(vDROWN_MESSAGE_COUNTDOWN, 0)) {
     set(rfDROWNING);
     print("You splash around in the water for a while but seem  to have forgotten how to swim. Unfortunately, you drown.");
     vDROWN_GAME_OVER_COUNTDOWN = 50;
