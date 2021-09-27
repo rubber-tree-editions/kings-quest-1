@@ -65,7 +65,7 @@ if (rfFELL_OUT_OF_TREE) {
   sound(SND_OUCH, fSOUND_END_MARKER);
 }
 if (fSOUND_END_MARKER) {
-  if (rvCOUNTDOWN != 0) {
+  if (rvCOUNTDOWN > 0) {
     reset(fSOUND_END_MARKER);
     sound(SND_OUCH, fSOUND_END_MARKER);
   }
