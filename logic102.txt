@@ -8,7 +8,7 @@ if (!fPLAYER_ENTERED_COMMAND) {
 if (fSAID_ACCEPTED_USER_INPUT) {
   return;
 }
-if (fPLAYER_ENTERED_COMMAND && vUNKNOWN_WORD_NO != 0) {
+if (fPLAYER_ENTERED_COMMAND && vUNKNOWN_WORD_NO > 0) {
   if (vUNKNOWN_WORD_NO == 1) {
     print("I don't understand \"%w1\".");
   }
@@ -325,11 +325,11 @@ if (said("use", "anyword")) {
   print("What do you wish to do with it???");
 }
 if (said("anyword", "man")) {
-  print("There is no \"%w2\" here.");
+  print(m14 /* "There is no \"%w2\" here." */);
   return;
 }
 if (said("anyword", "woman")) {
-  print("There is no \"%w2\" here.");
+  print(m14 /* "There is no \"%w2\" here." */);
   return;
 }
 if (said("examine")) {
@@ -407,7 +407,7 @@ if (said("talk", "elf")
   || said("talk", "man")
   || said("talk", "woman")
 ) {
-  print("There is no \"%w2\" here.");
+  print(m28 /* "There is no \"%w2\" here." */);
   return;
 }
 if (said("talk", "anyword")) {
