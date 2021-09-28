@@ -145,7 +145,7 @@ if (fVILLAIN_GOT_YOU) {
     reset(rfDWARF_IS_HERE);
     end.of.loop(oDWARF, rfDWARF_FINISHED_ANIMATING);
   }
-  if (fEGO_INVISIBLE) {
+  else if (fEGO_INVISIBLE) {
     print("Being invisible has protected you, and your treasures, from the dwarf.");
     set.view(oDWARF, 115);
     reset(rfDWARF_IS_HERE);
