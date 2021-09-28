@@ -56,17 +56,17 @@ if (fYOU_WON) {
 if (rvCOUNTDOWN == 0) {
   vTEMP_RESULT_2--;
   if (vTEMP_RESULT_2 == 1) {
-    if (vTEMP_RESULT_3 != 0) {
+    if (vTEMP_RESULT_3 > 0) {
       vTEMP_RESULT_3--;
       vTEMP_RESULT_2 = 250;
     }
   }
-  if (vTEMP_RESULT_2 == 1 && vTEMP_RESULT_3 == 0) {
+  if (vTEMP_RESULT_2 == 1 && equaln(vTEMP_RESULT_3, 0)) {
     vTEMP_RESULT_2 = 0;
     rvCOUNTDOWN = 250;
   }
 }
-if (rvCOUNTDOWN != 0) {
+if (rvCOUNTDOWN > 0) {
   rvCOUNTDOWN--;
   if (rvCOUNTDOWN == 245) {
     set.view(oEGO, 0);
@@ -237,7 +237,7 @@ if (posn(oEGO, 18, 80, 86, 113)) {
       print("Why, Sir Graham, have you failed me and returned without accomplishing your task?  Go, and complete your quest!!");
       set(fNO_BUSINESS_WITH_KING);
     }
-    if (rvCOUNTDOWN != 0) {
+    if (rvCOUNTDOWN > 0) {
       print("The king cannot talk right now.");
     }
     if (!fSPOKEN_TO_KING && rvCOUNTDOWN == 0 && !fLOST_VITAL_TREASURE && vTREASURE_COUNT != 3) {
@@ -292,7 +292,7 @@ if (said("murder", "king")) {
   if (rvCOUNTDOWN == 0) {
     print("To kill King Edward would mean immediate execution!");
   }
-  if (rvCOUNTDOWN != 0) {
+  if (rvCOUNTDOWN > 0) {
     print("Your concern for the old king won't allow you to move.");
   }
 }
