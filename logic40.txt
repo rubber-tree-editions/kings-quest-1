@@ -82,11 +82,12 @@ if (rfGNOME_IS_HERE) {
     if (said("talk", "gnome") || said("hello") || said("say", "hello")) {
       if (vTEMP_RESULT < 50) {
         print("You still haven't guessed my name!");
+        goto(FINALCHECKS);
       }
       else {
         print("The gnome can't hear you from there.");
+        goto(FINALCHECKS);
       }
-      goto(FINALCHECKS);
     }
   }
   if (!rfGUESSING_GNOMES_NAME) {
@@ -94,21 +95,23 @@ if (rfGNOME_IS_HERE) {
       if (vTEMP_RESULT < 50) {
         set(rfGUESSING_GNOMES_NAME);
         print("The old gnome tells you he has something that may be very useful to you.  Your task is to guess his name in three guesses and his gift will be yours.  Good luck!  What is your first guess?");
+        goto(FINALCHECKS);
       }
       else {
         print("The gnome can't hear you from there.");
+        goto(FINALCHECKS);
       }
-      goto(FINALCHECKS);
     }
   }
   if (said("examine", "gnome")) {
     if (vTEMP_RESULT < 80) {
       print("The gnome is old and bent under the weight of years, but a playful wisdom still brightens his eyes.");
+      goto(FINALCHECKS);
     }
     else {
       print("You should get a little closer.");
+      goto(FINALCHECKS);
     }
-    goto(FINALCHECKS);
   }
   if (said("murder", "gnome")) {
     print("It would be unwise to kill a gnome.");
