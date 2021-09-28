@@ -35,7 +35,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.blocks(oEGO);
     stop.update(oDOOR);
   }
-  if (vDOOR_STATE == DOORSTATE_LOCKED || vDOOR_STATE == DOORSTATE_CLOSED) {
+  if (equaln(vDOOR_STATE, DOORSTATE_LOCKED) || vDOOR_STATE == DOORSTATE_CLOSED) {
     set.cel(oDOOR, 0);
     draw(oDOOR);
     observe.objs(oDOOR);
@@ -99,7 +99,7 @@ if (posn(oEGO, 90, 93, 125, 114)) {
       if (vDOOR_STATE == DOORSTATE_OPEN) {
         print("There is no need to unlock an already open door.");
       }
-      if (vDOOR_STATE == DOORSTATE_LOCKED) {
+      if (equaln(vDOOR_STATE, DOORSTATE_LOCKED)) {
         print("Using the gold key, you unlock the huge door.");
         vDOOR_STATE = DOORSTATE_CLOSED;
         if (!fPOINTS_FOR_UNLOCKING_DOOR) {
@@ -109,7 +109,7 @@ if (posn(oEGO, 90, 93, 125, 114)) {
       }
     }
     if (said("lock", "doors")) {
-      if (vDOOR_STATE == DOORSTATE_LOCKED) {
+      if (equaln(vDOOR_STATE, DOORSTATE_LOCKED)) {
         print("The door is already locked.");
       }
       if (vDOOR_STATE == DOORSTATE_CLOSED) {
@@ -121,7 +121,7 @@ if (posn(oEGO, 90, 93, 125, 114)) {
       }
     }
   }
-  if (vDOOR_STATE == DOORSTATE_LOCKED) {
+  if (equaln(vDOOR_STATE, DOORSTATE_LOCKED)) {
     if (said("open", "doors") || said("turn", "knob")) {
       print("This massive door is securely locked.");
     }
@@ -140,7 +140,7 @@ if (posn(oEGO, 90, 93, 125, 114)) {
     }
   }
   if (said("close", "doors")) {
-    if (vDOOR_STATE == DOORSTATE_LOCKED || vDOOR_STATE == DOORSTATE_CLOSED) {
+    if (equaln(vDOOR_STATE, DOORSTATE_LOCKED) || vDOOR_STATE == DOORSTATE_CLOSED) {
       print("The door is already closed.");
     }
     if (vDOOR_STATE == DOORSTATE_OPEN) {
