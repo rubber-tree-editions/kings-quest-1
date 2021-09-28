@@ -45,7 +45,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oGATOR1);
   draw(oGATOR2);
   draw(oBANNERS);
-  if (vPREV_ROOM_NO == ROOM_NULL || vPREV_ROOM_NO == ROOM83_TITLE_SCREEN) {
+  if (equaln(vPREV_ROOM_NO, ROOM_NULL) || vPREV_ROOM_NO == ROOM83_TITLE_SCREEN) {
     position(oEGO, 110, 100);
   }
   wander(oGATOR1);
