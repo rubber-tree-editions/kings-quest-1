@@ -29,7 +29,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.key(0, XKEY_F10, cSHOWMEM);
   set.key(KEY_TAB, 0, cINVENTORY);
   set.key(0, XKEY_ALT_D, cDEBUG);
-  set.key(KEY_CTRL_Z, 0, cINITJOYSTICK);
+  set.key(KEY_CTRL_J, 0, cINITJOYSTICK);
   set.key(KEY_CTRL_C, 0, cCLEARINPUT);
   set.key(KEY_CTRL_Y, 0, cCLEARINPUT);
   set.key(KEY_ESC, 0, cPAUSE);

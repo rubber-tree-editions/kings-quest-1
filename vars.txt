@@ -461,7 +461,7 @@
 #define KEY_CTRL_Z 25
 #define KEY_ESC 27
 #define KEY_SPACE 32
-#define KEY_DASH 41
+#define KEY_DASH 45
 #define KEY_DOT 46
 #define KEY_0 48
 #define KEY_1 49
