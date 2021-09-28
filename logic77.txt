@@ -179,7 +179,7 @@ if (fCARRYING_FIDDLE) {
 }
 if (said("examine", "throne")) {
   if (!rfDANCING_LEPRECHAUNS && !fDANCING_LEPRECHAUNS) {
-    print("The King of the leprechauns is sitting on the stone throne.");
+    print(m39 /* "The King of the leprechauns is sitting on the stone throne." */);
   }
   else {
     print("This is a rather simple stone throne, compared to King Edward's.");
