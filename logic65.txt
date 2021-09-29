@@ -51,7 +51,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.cel(oCUPBOARD, 0);
     stop.cycling(oCUPBOARD);
   }
-  if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE) {
+  if (equaln(vCUPBOARD_STATE, CUPBOARDSTATE_CLOSED_WITH_CHEESE)) {
     load.view(40);
     animate.obj(oCUPBOARD);
     set.view(oCUPBOARD, 40);
@@ -191,7 +191,7 @@ if (rfFALLEN_TO_EARTH) {
   sound(SND_OUCH, fSOUND_END_MARKER);
 }
 if (fSOUND_END_MARKER) {
-  if (rvCOUNTDOWN2 != 0) {
+  if (rvCOUNTDOWN2 > 0) {
     reset(fSOUND_END_MARKER);
     sound(SND_OUCH, fSOUND_END_MARKER);
   }
@@ -241,8 +241,8 @@ if (rfUNPROTECTED_BY_MAGIC) {
   }
 }
 rvCOUNTDOWN_LO--;
-if (rvCOUNTDOWN_LO == 0) {
-  if (rvCOUNTDOWN_HI != 0) {
+if (equaln(rvCOUNTDOWN_LO, 0)) {
+  if (rvCOUNTDOWN_HI > 0) {
     rvCOUNTDOWN_HI--;
     rvCOUNTDOWN_LO = 250;
   }
@@ -317,7 +317,7 @@ if (rfWITCH_AT_OVEN) {
   if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 2) {
     print("The witch mutters, \"The oven is heating up nicely.  I wonder who will be my dinner guest!\"");
   }
-  if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 0) {
+  if (rvCOUNTDOWN_LO == 1 && equaln(rvCOUNTDOWN_HI, 0)) {
     rvCOUNTDOWN_LO = 0;
     rvCOUNTDOWN_HI = 0;
     print("The witch says, \"My oven is now the perfect temperature. It is time to invite someone for dinner (cackle, cackle)!\"");
@@ -370,7 +370,7 @@ if (posn(oEGO, 23, 89, 55, 100)) {
     if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_WITH_CHEESE) {
       print("Sitting on the shelf is a delicious piece of Swiss cheese.");
     }
-    if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE
+    if (equaln(vCUPBOARD_STATE, CUPBOARDSTATE_CLOSED_WITH_CHEESE)
       || vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE
     ) {
       print("The cabinet on the wall is rather plain and simple.");
@@ -387,7 +387,7 @@ if (posn(oEGO, 23, 89, 55, 100)) {
       end.of.loop(oCUPBOARD, fMISC_END_MARKER);
       vCUPBOARD_STATE = CUPBOARDSTATE_OPEN_NO_CHEESE;
     }
-    if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE) {
+    if (equaln(vCUPBOARD_STATE, CUPBOARDSTATE_CLOSED_WITH_CHEESE)) {
       start.cycling(oCUPBOARD);
       end.of.loop(oCUPBOARD, rfCUPBOARD_FINISHED_OPENING);
       vCUPBOARD_STATE = CUPBOARDSTATE_OPEN_WITH_CHEESE;
@@ -398,7 +398,7 @@ if (posn(oEGO, 23, 89, 55, 100)) {
     }
   }
   if (said("close", "cupboard")) {
-    if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE
+    if (equaln(vCUPBOARD_STATE, CUPBOARDSTATE_CLOSED_WITH_CHEESE)
       || vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE
     ) {
       print("It is already closed.");
@@ -423,18 +423,18 @@ if (posn(oEGO, 23, 89, 55, 100)) {
         print("You pluck the Swiss cheese from the shelf.");
         vCUPBOARD_STATE = 3;
       }
-      if (vCUPBOARD_STATE == 0 || vCUPBOARD_STATE == 2) {
+      if (equaln(vCUPBOARD_STATE, CUPBOARDSTATE_CLOSED_WITH_CHEESE) || vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE) {
         print("I don't see any here.");
       }
     }
     if (said("examine", "swiss cheese")) {
-      if (vCUPBOARD_STATE == 0 || vCUPBOARD_STATE == 2) {
+      if (equaln(vCUPBOARD_STATE, CUPBOARDSTATE_CLOSED_WITH_CHEESE) || vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE) {
         print("I don't see any here.");
       }
-      if (vCUPBOARD_STATE == 3) {
+      if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_NO_CHEESE) {
         print("I don't see any here.");
       }
-      if (vCUPBOARD_STATE == 1) {
+      if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_WITH_CHEESE) {
         print("Sitting on the shelf is a delicious piece of Swiss cheese.");
       }
     }
@@ -449,7 +449,7 @@ if (!posn(oEGO, 23, 89, 55, 100)) {
   }
   if (!fCARRYING_SWISS_CHEESE) {
     if (said("examine", "swiss cheese")) {
-      print("You cannot see it from here.");
+      print(m29 /* "You cannot see it from here." */);
     }
     if (said("get", "swiss cheese")) {
       print("I don't see any here.");
@@ -482,7 +482,7 @@ if (said("examine", "cage")) {
       print("It is made from rusty, but strong, iron bars.");
     }
     else {
-      print("You cannot see it from here.");
+      print(m34 /* "You cannot see it from here." */);
     }
   }
 }
