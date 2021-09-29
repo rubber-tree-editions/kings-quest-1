@@ -10,7 +10,7 @@ LOGIC__HEADER
 if (vERROR_CODE > 0) {
   call(LOGIC98_ERROR);
 }
-if (equaln(vROOM_NO, ROOM_NULL)) {
+if (vROOM_NO == ROOM_NULL) {
   set.game.id("KQ1");
   script.size(100);
   set(fJOYSTICK_SENSITIVITY_ENABLED);
@@ -199,7 +199,7 @@ vSAVED_EGO_DIR = vEGO_DIR;
 if (fCYCLE_EGO_ANIMATION) {
   start.cycling(oEGO);
 }
-else if (__OR__(vEGO_DIR == DIR_NONE)) {
+else if (__OR__(vEGO_DIR <= DIR_NONE)) {
   stop.cycling(oEGO);
 }
 if (controller(cDEBUG)) {
@@ -258,7 +258,7 @@ else {
         && !fEGO_ON_WATER
         && !fTENSE_SITUATION
         && !fEGO_DUCKING
-        && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE
+        && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
         && vROOM_NO != ROOM29_SORCERER_STOMPING_GROUND
         && vROOM_NO != ROOM13_WOLF_STOMPING_GROUND
         && vROOM_NO != ROOM53_KING_EDWARD_THRONE_ROOM
@@ -307,7 +307,7 @@ if (said("duck") || controller(cDUCK)) {
       && !fEGO_TINY
       && !fEGO_ON_WATER
       && !fTENSE_SITUATION
-      && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE
+      && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
       && !fJUMPING
       && !fTHREAT_OF_SORCERER_OR_OGRE
       && vROOM_NO != ROOM29_SORCERER_STOMPING_GROUND
@@ -476,13 +476,13 @@ if (vROOM_NO != ROOM49_INSIDE_WELL && said("dive", "anyword")) {
     print("You need to be in the water to try that.");
   }
 }
-if (equaln(vSPELL_COUNTDOWN_HI, 0) && equaln(vSPELL_COUNTDOWN_LO, 0) && fPROTECTED_BY_SPELL) {
+if (vSPELL_COUNTDOWN_HI == 0 && vSPELL_COUNTDOWN_LO == 0 && fPROTECTED_BY_SPELL) {
   print("\"Ye best be careful, young Graham.  The mystic protective spell of mine has weakened and departed.\"");
   reset(fPROTECTED_BY_SPELL);
 }
 else {
   vSPELL_COUNTDOWN_LO--;
-  if (equaln(vSPELL_COUNTDOWN_LO, 0)) {
+  if (vSPELL_COUNTDOWN_LO == 0) {
     vSPELL_COUNTDOWN_HI--;
     if (vSPELL_COUNTDOWN_HI != 0) {
       vSPELL_COUNTDOWN_LO = 250;
@@ -548,7 +548,7 @@ if (fCARRYING_MUSHROOM) {
       && vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE
       && vROOM_NO != ROOM14_BASE_GOLDEN_EGG_TREE
       && vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE
-      && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE
+      && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
       && vROOM_NO != ROOM12_TOP_OF_WELL
       && vROOM_NO != ROOM73_CAVE_CEILING_HOLE
       && vROOM_NO != ROOM74_CAVE_CORNER
@@ -635,7 +635,7 @@ if (fCARRYING_RING) {
         vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE
         && !fEGO_CLIMBING_BEANSTALK
         && !fFALLING_TO_EARTH
-        && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE
+        && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
         && vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE
         && vROOM_NO != ROOM80_IN_MID_AIR
         && vROOM_NO != ROOM49_INSIDE_WELL
@@ -675,14 +675,14 @@ if (fCARRYING_RING) {
 }
 if (fEGO_INVISIBLE) {
   vINVISIBLE_COUNTDOWN_LO--;
-  if (equaln(vINVISIBLE_COUNTDOWN_LO, 0)) {
+  if (vINVISIBLE_COUNTDOWN_LO == 0) {
     if (vINVISIBLE_COUNTDOWN_HI > 0) {
       vINVISIBLE_COUNTDOWN_HI--;
       vINVISIBLE_COUNTDOWN_LO = 250;
     }
   }
 }
-if (vINVISIBLE_COUNTDOWN_LO == 1 && equaln(vINVISIBLE_COUNTDOWN_HI, 0)) {
+if (vINVISIBLE_COUNTDOWN_LO == 1 && vINVISIBLE_COUNTDOWN_HI == 0) {
   vINVISIBLE_COUNTDOWN_LO = 0;
   set.view(oEGO, 0);
   reset(fCARRYING_RING);
@@ -739,7 +739,7 @@ if (fCARRYING_BOWL) {
       print("You already have a full bowl of stew.");
     }
   }
-  if (equaln(vBOWL_STATE, BOWLSTATE_EMPTY)) {
+  if (vBOWL_STATE == BOWLSTATE_EMPTY) {
     if (said("examine", "bowl") || said("look inside", "bowl")) {
       show.obj(INV_EMPTY_BOWL);
     }
@@ -798,7 +798,7 @@ if (fCARRYING_CHEST) {
   }
 }
 if (!fGOAT_COMPANION) {
-  if (vROOM_YOU_KILLED_THE_GOAT_IN == ROOM_NULL && vROOM_NO != ROOM10_GOAT_PEN_WEST && vROOM_NO != ROOM11_GOAT_PEN_EAST) {
+  if (vROOM_YOU_KILLED_THE_GOAT_IN <= ROOM_NULL && vROOM_NO != ROOM10_GOAT_PEN_WEST && vROOM_NO != ROOM11_GOAT_PEN_EAST) {
     if (said("anyword", "goat")) {
       print("There is no goat here.");
     }

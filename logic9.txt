@@ -25,7 +25,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 27, 131, 0, 0);
   }
   random(0, 250, vTEMP_RESULT);
-  if (vTEMP_RESULT < 125 && equaln(vSPELL_COUNTDOWN_LO, 0)) {
+  if (vTEMP_RESULT < 125 && vSPELL_COUNTDOWN_LO == 0) {
     load.view(6);
     animate.obj(oFAIRY_GODMOTHER);
     set.view(oFAIRY_GODMOTHER, 6);

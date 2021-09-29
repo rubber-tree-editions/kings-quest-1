@@ -52,7 +52,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(66);
     load.view(77);
   }
-  if (equaln(vGIANT_STATE, GIANTSTATE_AWAKE_WITH_CHEST)) {
+  if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
     animate.obj(oGIANT);
     set.view(oGIANT, 36);
     position(oGIANT, 91, 71);
@@ -92,7 +92,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (equaln(vGIANT_STATE, GIANTSTATE_AWAKE_WITH_CHEST) || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
+if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
   if (!rfVILLAIN_SOUND_PLAYED) {
     set(rfVILLAIN_SOUND_PLAYED);
     sound(SND_VILLAIN, fMISC_END_MARKER);
@@ -118,7 +118,7 @@ if (rfGIANT_CAUGHT_YOU && rfGIANT_IS_AFTER_YOU) {
     wander(oGIANT);
   }
   else if (!fCARRYING_SHIELD && !fEGO_INVISIBLE && !fPROTECTED_BY_SPELL) {
-    if (equaln(vGIANT_STATE, GIANTSTATE_AWAKE_WITH_CHEST) || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
+    if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
       reset(rfGIANT_CAUGHT_YOU);
       reset(rfGIANT_IS_AFTER_YOU);
       set.view(oEGO, 114);
@@ -153,7 +153,7 @@ if (said("examine", "giant")) {
   if (vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
     print("The giant is enormous!  He does look rather stupid, though.");
   }
-  if (equaln(vGIANT_STATE, GIANTSTATE_AWAKE_WITH_CHEST)) {
+  if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
     print("The enormous giant has been carrying that heavy chest for longer than he can remember.");
   }
   if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST) {
@@ -170,7 +170,7 @@ if (said("examine", "giant")) {
   }
 }
 if (said("talk", "giant") || said("hello") || said("say", "hello")) {
-  if (vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST || equaln(vGIANT_STATE, GIANTSTATE_AWAKE_WITH_CHEST)) {
+  if (vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST || vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
     print("The giant is in no mood for talking.");
   }
   if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST || vGIANT_STATE == GIANTSTATE_ASLEEP_NO_CHEST) {
@@ -187,7 +187,7 @@ if (!fCARRYING_CHEST && !fCHEST_TAKEN) {
 }
 if (!fCARRYING_CHEST) {
   if (said("get", "chest") || said("get", "chest", "giant")) {
-    if (equaln(vGIANT_STATE, GIANTSTATE_AWAKE_WITH_CHEST)) {
+    if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
       print("The giant is protecting the magic chest.");
     }
     if (fCHEST_TAKEN) {
@@ -242,7 +242,7 @@ if (fCARRYING_SLINGSHOT) {
     if (fCARRYING_PEBBLES
       && !fCHEST_TAKEN
       && !fEGO_INVISIBLE
-      && equaln(vGIANT_STATE, GIANTSTATE_AWAKE_WITH_CHEST)
+      && vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST
       && vTEMP_RESULT_3 > 19
       && !fFALLING
     ) {
@@ -277,7 +277,7 @@ if (fCARRYING_SLINGSHOT) {
       vSCORE -= 1;
     }
     if (fCARRYING_PEBBLES && !fCHEST_TAKEN && fEGO_INVISIBLE) {
-      if (equaln(vGIANT_STATE, GIANTSTATE_AWAKE_WITH_CHEST)
+      if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST
         || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST
       ) {
         print("Not when you're invisible!");
@@ -331,7 +331,7 @@ if (fCARRYING_DAGGER) {
   }
 }
 if (said("murder", "giant")) {
-  if (equaln(vGIANT_STATE, GIANTSTATE_AWAKE_WITH_CHEST)) {
+  if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
     print("How?");
   }
   if (vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
@@ -347,16 +347,16 @@ if (said("murder", "giant")) {
 if (said("examine", "room") || said("examine", "clouds")) {
   print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.");
 }
-if (equaln(vGIANT_STATE, GIANTSTATE_AWAKE_WITH_CHEST)) {
+if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
   rvCOUNTDOWN_LO--;
-  if (equaln(rvCOUNTDOWN_LO, 0)) {
+  if (rvCOUNTDOWN_LO == 0) {
     if (rvCOUNTDOWN_HI > 0) {
       rvCOUNTDOWN_HI--;
       rvCOUNTDOWN_LO = 250;
     }
   }
 }
-if (rvCOUNTDOWN_LO == 1 && equaln(rvCOUNTDOWN_HI, 0)) {
+if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 0) {
   reset(rfGIANT_IS_AFTER_YOU);
   rvCOUNTDOWN_LO = 0;
   stop.motion(oGIANT);

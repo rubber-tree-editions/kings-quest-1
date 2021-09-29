@@ -45,7 +45,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oGATOR1);
   draw(oGATOR2);
   draw(oBANNERS);
-  if (equaln(vPREV_ROOM_NO, ROOM_NULL) || vPREV_ROOM_NO == ROOM83_TITLE_SCREEN) {
+  if (vPREV_ROOM_NO == ROOM_NULL || vPREV_ROOM_NO == ROOM83_TITLE_SCREEN) {
     position(oEGO, 110, 100);
   }
   wander(oGATOR1);
@@ -120,7 +120,7 @@ if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
 if (fEGO_TOUCHED_TRIGGER_LINE) {
   set(fEGO_ON_WATER);
 }
-if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
+if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   vEGO_WATER_X = 255;
   ignore.objs(oEGO);
   if (posn(oEGO, 0, 158, 28, 166)) {

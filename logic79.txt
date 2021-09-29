@@ -72,7 +72,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oFIDDLE);
   }
   if (fGIVEN_BOWL_TO_WOODCUTTER) {
-    if (equaln(vBOWL_STATE, BOWLSTATE_EMPTY)) {
+    if (vBOWL_STATE == BOWLSTATE_EMPTY) {
       set.view(oBOWL, 25);
     }
     if (vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
@@ -119,7 +119,7 @@ if (said("examine", "table")) {
   if (!fGIVEN_BOWL_TO_WOODCUTTER) {
     print("The woodcutter and his wife are sitting at the old oak table.");
   }
-  if (fGIVEN_BOWL_TO_WOODCUTTER && equaln(vBOWL_STATE, BOWLSTATE_EMPTY)) {
+  if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_EMPTY) {
     print("There is an empty bowl sitting on the old oak table.");
   }
   if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
@@ -290,7 +290,7 @@ if (fCARRYING_MAGIC_BEANS && said("give", "magic beans")) {
   vSCORE -= 6;
 }
 if (fCARRYING_BOWL) {
-  if (equaln(vBOWL_STATE, BOWLSTATE_EMPTY)) {
+  if (vBOWL_STATE == BOWLSTATE_EMPTY) {
     if (said("give", "bowl")
       || said("give", "bowl", "woodcutter")
       || said("give", "woodcutter", "bowl")
@@ -352,7 +352,7 @@ if (fCARRYING_BOWL) {
 }
 if (fGIVEN_BOWL_TO_WOODCUTTER) {
   if (said("eat", "stew")) {
-    if (equaln(vBOWL_STATE, BOWLSTATE_EMPTY)) {
+    if (vBOWL_STATE == BOWLSTATE_EMPTY) {
       print("Eat stew from an empty bowl?  The woodcutters are beginning to question your authenticity.");
     }
     else {
@@ -360,7 +360,7 @@ if (fGIVEN_BOWL_TO_WOODCUTTER) {
     }
   }
 }
-if (fGIVEN_BOWL_TO_WOODCUTTER && equaln(vBOWL_STATE, BOWLSTATE_EMPTY)) {
+if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_EMPTY) {
   if (said("fill") || said("say", "fill")) {
     erase(oBOWL);
     set.view(oBOWL, 83);

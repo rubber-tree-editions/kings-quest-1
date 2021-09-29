@@ -26,7 +26,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vDRAGON_STATE == DRAGONSTATE_DEAD) {
     load.view(61);
   }
-  if (equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL)) {
+  if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     load.view(33);
     load.view(61);
     load.view(82);
@@ -73,7 +73,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (vDRAGON_STATE == DRAGONSTATE_DEAD) {
       add.to.pic(61, 0, 0, 40, 152, 0, 0);
     }
-    if (equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL)) {
+    if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
       set.view(oDRAGON, 33);
       position(oDRAGON, 40, 120);
       rvDRAGON_STEP_SIZE = 3;
@@ -98,20 +98,20 @@ if (vTEMP_X < 16) {
     observe.blocks(oEGO);
   }
 }
-if (equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL) && !rfPLAYING_SND_VILLAIN) {
+if (vDRAGON_STATE == DRAGONSTATE_NORMAL && !rfPLAYING_SND_VILLAIN) {
   set(rfPLAYING_SND_VILLAIN);
   sound(SND_VILLAIN, rfPLAYED_SND_VILLAIN);
 }
-if (equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL) && rfPLAYED_SND_VILLAIN) {
+if (vDRAGON_STATE == DRAGONSTATE_NORMAL && rfPLAYED_SND_VILLAIN) {
   current.loop(oDRAGON, rvDRAGON_CURRENT_LOOP);
-  if (equaln(rvDRAGON_CURRENT_LOOP, 0)) {
+  if (rvDRAGON_CURRENT_LOOP == 0) {
     sound(SND_DRAGON, fMISC_END_MARKER);
   }
   else {
     stop.sound();
   }
 }
-if (rfDRAGON_GOT_YOU && equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL)) {
+if (rfDRAGON_GOT_YOU && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
   reset(rfDRAGON_GOT_YOU);
   set.view(oEGO, 82);
   if (fCARRYING_SHIELD) {
@@ -123,7 +123,7 @@ if (rfDRAGON_GOT_YOU && equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL)) {
   set(fGAME_OVER);
 }
 if (said("examine", "room")) {
-  if (!fTAKEN_MIRROR && equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL)) {
+  if (!fTAKEN_MIRROR && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     print("The ferocious fire-breathing dragon is protecting the magic mirror.");
   }
   if (!fTAKEN_MIRROR && vDRAGON_STATE == DRAGONSTATE_DEAD) {
@@ -134,7 +134,7 @@ if (said("examine", "room")) {
   }
 }
 if (said("examine", "cave")) {
-  if (!fTAKEN_MIRROR && equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL)) {
+  if (!fTAKEN_MIRROR && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     print("A green, scaly dragon breathing hot fire and smoke is protecting the mirror.");
   }
   if (fTAKEN_MIRROR && vDRAGON_STATE == DRAGONSTATE_DEAD) {
@@ -154,7 +154,7 @@ if (said("examine", "dragon")) {
   if (vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     print("There is no dragon here.");
   }
-  if (equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL)) {
+  if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     print("This ferocious, fire-breathing dragon with sharp, green scales and a long tail is protecting the magic mirror. Watch out for the flames!");
   }
   if (vDRAGON_STATE == DRAGONSTATE_DEAD) {
@@ -165,7 +165,7 @@ if (said("find", "dragon")) {
   if (vDRAGON_STATE == DRAGONSTATE_ABSENT) {
     print("There is no dragon here.");
   }
-  if (equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL) || vDRAGON_STATE == DRAGONSTATE_DEAD) {
+  if (vDRAGON_STATE == DRAGONSTATE_NORMAL || vDRAGON_STATE == DRAGONSTATE_DEAD) {
     print("I think you found the dragon!");
   }
 }
@@ -178,7 +178,7 @@ if (said("examine", "rocks")) {
 if (said("shove", "rocks") || said("shove", "rocks")) {
   print("This boulder is far too heavy to move.");
 }
-if (equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL)) {
+if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
   if (said("examine", "hole") || said("look inside", "hole")) {
     print("A strange watery light issues from the hole.");
   }
@@ -213,7 +213,7 @@ if (said("murder", "dragon")) {
   if (vDRAGON_STATE == DRAGONSTATE_DEAD) {
     print("This dragon had only one life and you have taken it.");
   }
-  if (equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL)) {
+  if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     if (posn(oEGO, 105, 96, 145, 166)) {
       print("You can't do that from here.!");
     }
@@ -242,12 +242,12 @@ if (!fCARRYING_MIRROR && fTAKEN_MIRROR) {
   }
 }
 if (!fCARRYING_MIRROR && !fTAKEN_MIRROR) {
-  if (said("steal", "mirror") && equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL)) {
+  if (said("steal", "mirror") && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     print("With that dragon here?  No way!");
   }
   if (posn(oEGO, 26, 104, 59, 127)) {
     if (said("examine", "mirror")) {
-      if (equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL)) {
+      if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
         print("The dragon is protecting the magic mirror.");
       }
       if (vDRAGON_STATE == DRAGONSTATE_ABSENT || vDRAGON_STATE == DRAGONSTATE_DEAD) {
@@ -255,7 +255,7 @@ if (!fCARRYING_MIRROR && !fTAKEN_MIRROR) {
       }
     }
     if (said("get", "mirror")) {
-      if (equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL)) {
+      if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
         print("I do not think that you can get close enough to the magic mirror with the dragon here.");
       }
       if (vDRAGON_STATE == DRAGONSTATE_ABSENT || vDRAGON_STATE == DRAGONSTATE_DEAD) {
@@ -289,7 +289,7 @@ if (!fBUCKET_FILLED) {
     }
   }
 }
-if (posn(oEGO, 105, 96, 145, 166) && equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL)) {
+if (posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
   if (fCARRYING_DAGGER && said("throw", "dagger")) {
     reset(fCARRYING_DAGGER);
     print("The dagger sings through the air, but falls short of the dragon.  You should have been closer.");
@@ -308,7 +308,7 @@ if (posn(oEGO, 105, 96, 145, 166) && equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL)) 
     reset(fFILL_BUCKET_POINTS);
   }
 }
-if (!posn(oEGO, 105, 96, 145, 166) && equaln(vDRAGON_STATE, DRAGONSTATE_NORMAL)) {
+if (!posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
   if (fBUCKET_FILLED && (
     said("throw", "water")
     || said("throw", "water", "dragon")

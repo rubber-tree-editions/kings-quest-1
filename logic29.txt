@@ -147,11 +147,11 @@ if (rfINVISIBLE) {
   reset(rfSORCERER_IS_HERE);
 }
 rvCOUNTDOWN_LO--;
-if (equaln(rvCOUNTDOWN_LO, 0) && rvCOUNTDOWN_HI > 0) {
+if (rvCOUNTDOWN_LO == 0 && rvCOUNTDOWN_HI > 0) {
   rvCOUNTDOWN_HI--;
   rvCOUNTDOWN_LO = 250;
 }
-if (rvCOUNTDOWN_LO == 1 && equaln(rvCOUNTDOWN_HI, 0)) {
+if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 0) {
   reset(rfUNDER_SORCERERS_SPELL);
   print("The sorcerer's spell has expired; now you can move  again.  Whew!");
   start.motion(oEGO);

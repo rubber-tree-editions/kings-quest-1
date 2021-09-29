@@ -94,7 +94,7 @@ if (rvCOUNTDOWN == 1) {
   if (rvDISTANCE_FROM_EGO_TO_GOAT < 21) {
     set(fGOAT_NEAR_YOU);
   }
-  else if (!fGOAT_NEAR_YOU && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
+  else if (!fGOAT_NEAR_YOU && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE) {
     rvCOUNTDOWN = 0;
     start.cycling(oGOAT);
     start.motion(oGOAT);
@@ -125,7 +125,7 @@ if (rvDISTANCE_FROM_EGO_TO_GOAT > 20 && vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE
   start.cycling(oGOAT);
   wander(oGOAT);
 }
-if (fGOAT_WONT_SWIM && rvDISTANCE_FROM_EGO_TO_GOAT < 25 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
+if (fGOAT_WONT_SWIM && rvDISTANCE_FROM_EGO_TO_GOAT < 25 && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE) {
   reset(fGOAT_WONT_SWIM);
   follow.ego(oGOAT, 10, fGOAT_NEAR_YOU);
 }
@@ -145,7 +145,7 @@ ATRIVER:
     set(fGOAT_WONT_SWIM);
     print("The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water.");
   }
-  if (rfAPPROACHING_CLIFFS_LAKE_EDGE && fGOAT_WONT_SWIM && rvDISTANCE_FROM_EGO_TO_GOAT < 25 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
+  if (rfAPPROACHING_CLIFFS_LAKE_EDGE && fGOAT_WONT_SWIM && rvDISTANCE_FROM_EGO_TO_GOAT < 25 && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE) {
     reset(fGOAT_WONT_SWIM);
   }
 RETURN:

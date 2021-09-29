@@ -138,11 +138,11 @@ if (vTEMP_RESULT_2 == 1 && !fFALLING_TO_EARTH && !fEGO_CLIMBING_BEANSTALK) {
   }
 }
 vCOUNTDOWN_LO--;
-if (equaln(vCOUNTDOWN_LO, 0) && vCOUNTDOWN_HI > 0) {
+if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI > 0) {
   vCOUNTDOWN_HI--;
   vCOUNTDOWN_LO = 250;
 }
-if (vCOUNTDOWN_LO == 1 && equaln(vCOUNTDOWN_HI, 0)) {
+if (vCOUNTDOWN_LO == 1 && vCOUNTDOWN_HI == 0) {
   wander(oBIRD);
   set(rfBIRD_AFRAID_OF_GOAT);
 }

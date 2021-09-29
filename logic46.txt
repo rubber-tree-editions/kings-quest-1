@@ -174,16 +174,16 @@ AFTERCOUNTDOWN:
   if (rfNO_ESCAPE) {
     goto RETURN;
   }
-  if (vEGO_EDGE_CODE == EDGE_HORIZON && rvCOUNTDOWN == 0) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON && rvCOUNTDOWN <= 0) {
     new.room(ROOM3_ROCK_OVER_HOLE);
   }
-  if (vEGO_EDGE_CODE == EDGE_RIGHT && rvCOUNTDOWN == 0) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT && rvCOUNTDOWN <= 0) {
     new.room(ROOM47_MUSHROOM);
   }
-  if (vEGO_EDGE_CODE == EDGE_LEFT && rvCOUNTDOWN == 0) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT && rvCOUNTDOWN <= 0) {
     new.room(ROOM45_OUTSIDE_WOODCUTTER_COTTAGE_BACK);
   }
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM && rvCOUNTDOWN == 0) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM && rvCOUNTDOWN <= 0) {
     new.room(ROOM35_DWARF_MEADOW);
   }
   if (fGOAT_COMPANION) {
