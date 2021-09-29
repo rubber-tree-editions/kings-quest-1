@@ -28,7 +28,7 @@ else {
 }
 display(15, 1, "ESC pauses the game.");
 display(16, 1, "Ctrl-J sets up your joystick.");
-if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
+if (equaln(vCOMPUTER_TYPE, COMPUTERTYPE_PC)) {
   display(17, 1, "Ctrl-R toggles RGB monitor modes.");
 }
 if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
