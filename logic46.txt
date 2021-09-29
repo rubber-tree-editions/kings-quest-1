@@ -172,7 +172,7 @@ AFTERCOUNTDOWN:
     reset(fTHREAT_OF_SORCERER_OR_OGRE);
   }
   if (rfNO_ESCAPE) {
-    return;
+    goto RETURN;
   }
   if (vEGO_EDGE_CODE == EDGE_HORIZON && rvCOUNTDOWN == 0) {
     new.room(ROOM3_ROCK_OVER_HOLE);
@@ -189,7 +189,8 @@ AFTERCOUNTDOWN:
   if (fGOAT_COMPANION) {
     call(LOGIC103_GOAT);
   }
-  return;
+  RETURN:
+    return;
 
 LOGIC__FOOTER
 

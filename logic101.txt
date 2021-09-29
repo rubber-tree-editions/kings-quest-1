@@ -12,7 +12,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   reset(fSWIMMING);
 }
 if (f174_UNKNOWN || fGAME_OVER) {
-  return;
+  goto RETURN;
 }
 if (fSWIMMING_IMPOSSIBLE_HERE && vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
   set(rfDROWNING);
@@ -98,7 +98,7 @@ if (fEGO_ON_WATER) {
       start.motion(oEGO);
       stop.sound();
       vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
-      return;
+      goto RETURN;
     }
   }
 }
@@ -147,7 +147,8 @@ if (vDROWN_GAME_OVER_COUNTDOWN == 1) {
   stop.sound();
   set(fGAME_OVER);
 }
-return;
+RETURN:
+  return;
 
 LOGIC__FOOTER
 

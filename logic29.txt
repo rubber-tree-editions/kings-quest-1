@@ -158,7 +158,7 @@ if (rvCOUNTDOWN_LO == 1 && equaln(rvCOUNTDOWN_HI, 0)) {
   player.control();
 }
 if (rfUNDER_SORCERERS_SPELL) {
-  return;
+  goto RETURN;
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM36_ROCK_WITH_TINY_HOLE);
@@ -175,7 +175,8 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-return;
+RETURN:
+  return;
 
 LOGIC__FOOTER
 

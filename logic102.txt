@@ -3,10 +3,10 @@
 LOGIC__HEADER
 
 if (!fPLAYER_ENTERED_COMMAND) {
-  return;
+  goto RETURN;
 }
 if (fSAID_ACCEPTED_USER_INPUT) {
-  return;
+  goto RETURN;
 }
 if (fPLAYER_ENTERED_COMMAND && vUNKNOWN_WORD_NO > 0) {
   if (vUNKNOWN_WORD_NO == 1) {
@@ -19,7 +19,7 @@ if (fPLAYER_ENTERED_COMMAND && vUNKNOWN_WORD_NO > 0) {
     print("I don't understand \"%w3\".");
   }
   reset(fPLAYER_ENTERED_COMMAND);
-  return;
+  goto RETURN;
 }
 if (said("look for", "anyword") || said("look for", "anyword", "anyword")) {
   print("Well.  Go look for it.");
@@ -326,11 +326,11 @@ if (said("use", "anyword")) {
 }
 if (said("anyword", "man")) {
   print(m14 /* "There is no \"%w2\" here." */);
-  return;
+  goto RETURN;
 }
 if (said("anyword", "woman")) {
   print(m14 /* "There is no \"%w2\" here." */);
-  return;
+  goto RETURN;
 }
 if (said("examine")) {
   print("You need to be more specific.");
@@ -408,16 +408,17 @@ if (said("talk", "elf")
   || said("talk", "woman")
 ) {
   print(m28 /* "There is no \"%w2\" here." */);
-  return;
+  goto RETURN;
 }
 if (said("talk", "anyword")) {
   print("You get no response from the \"%w2\".");
 }
 if (fSAID_ACCEPTED_USER_INPUT) {
-  return;
+  goto RETURN;
 }
 print("You can't do that--at least not now!");
-return;
+RETURN:
+  return;
 
 LOGIC__FOOTER
 

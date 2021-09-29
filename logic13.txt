@@ -122,7 +122,7 @@ if (rfPROTECTED && vOBJECT_EDGE_CODE != 0) {
   erase(oWOLF);
 }
 if (fGAME_OVER) {
-  return;
+  goto RETURN;
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM20_ALPINE_LAKE);
@@ -139,7 +139,8 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-return;
+RETURN:
+  return;
 
 LOGIC__FOOTER
 

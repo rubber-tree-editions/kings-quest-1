@@ -51,7 +51,7 @@ if (rfKING_EDWARD_DEAD) {
   }
 }
 if (fYOU_WON) {
-  return;
+  goto RETURN;
 }
 if (rvCOUNTDOWN == 0) {
   vTEMP_RESULT_2--;
@@ -339,7 +339,8 @@ if (rfWAIT_FOR_KEY) {
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM54_CASTLE_HALL_CORNER);
 }
-return;
+RETURN:
+  return;
 
 LOGIC__FOOTER
 

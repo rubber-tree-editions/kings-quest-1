@@ -70,20 +70,20 @@ else {
   step.size(oGOAT, vTEMP_STEP_SIZE_2);
 }
 if (!fGOAT_COMPANION) {
-  return;
+  goto RETURN;
 }
 if (fGAME_OVER) {
   normal.motion(oGOAT);
   stop.motion(oGOAT);
   stop.cycling(oGOAT);
-  return;
+  goto RETURN;
 }
 if (rfAPPROACHING_WATERFALL_LAKE_EDGE || rfAPPROACHING_CLIFFS_LAKE_EDGE) {
   goto(ATRIVER);
 }
 if (fSCRIPTED_GOAT_MOVEMENT) {
   ignore.blocks(oGOAT);
-  return;
+  goto RETURN;
   // unreachable goto necessary for bytecode matching:
   goto(BADLABEL);
 }
@@ -138,7 +138,7 @@ if (fEGO_INVISIBLE && !rfGOAT_WANDERING_OFF) {
     erase(oGOAT);
   }
 }
-return;
+goto RETURN;
 ATRIVER:
   distance(oEGO, oGOAT, rvDISTANCE_FROM_EGO_TO_GOAT);
   if (rfAPPROACHING_CLIFFS_LAKE_EDGE && vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
@@ -148,6 +148,7 @@ ATRIVER:
   if (rfAPPROACHING_CLIFFS_LAKE_EDGE && fGOAT_WONT_SWIM && rvDISTANCE_FROM_EGO_TO_GOAT < 25 && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
     reset(fGOAT_WONT_SWIM);
   }
+RETURN:
   return;
 
 LOGIC__FOOTER
