@@ -7,10 +7,10 @@ LOGIC__HEADER
 // In reality, object 13 may not always be the goat (e.g. Room 76).
 #define oGOAT o13
 
-if (vERROR_CODE != 0) {
+if (vERROR_CODE > 0) {
   call(LOGIC98_ERROR);
 }
-if (vROOM_NO == ROOM_NULL) {
+if (equaln(vROOM_NO, ROOM_NULL)) {
   set.game.id("KQ1");
   script.size(100);
   set(fJOYSTICK_SENSITIVITY_ENABLED);
@@ -75,7 +75,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (fCARRYING_MUSHROOM || fEGO_TINY) {
     load.view(60);
   }
-  if (fGOAT_COMPANION || vROOM_YOU_KILLED_THE_GOAT_IN != ROOM_NULL) {
+  if (fGOAT_COMPANION || vROOM_YOU_KILLED_THE_GOAT_IN > ROOM_NULL) {
     load.view(62);
   }
   reset(fDEBUG_MODE);
@@ -199,7 +199,7 @@ vSAVED_EGO_DIR = vEGO_DIR;
 if (fCYCLE_EGO_ANIMATION) {
   start.cycling(oEGO);
 }
-else if (vEGO_DIR == DIR_NONE) {
+else if (__OR__(vEGO_DIR == DIR_NONE)) {
   stop.cycling(oEGO);
 }
 if (controller(cDEBUG)) {
@@ -246,7 +246,8 @@ if (controller(cPREVINPUT)) {
 if (controller(cPAUSE)) {
   pause();
 }
-if (vROOM_NO != ROOM21_WITCH_STOMPING_GROUND) {
+if (vROOM_NO == ROOM21_WITCH_STOMPING_GROUND) { }
+else {
   if (said("jump") || controller(cJUMP)) {
     if (!fJUMPING
         && !fEGO_CLIMBING_BEANSTALK
@@ -468,20 +469,20 @@ if (fCARRYING_WALNUT) {
   }
 }
 if (vROOM_NO != ROOM49_INSIDE_WELL && said("dive", "anyword")) {
-  if (vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE) {
+  if (vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE) {
     print("The water is very deep here. Without aid, it is impossible to swim under the water for any length of time.");
   }
   else {
     print("You need to be in the water to try that.");
   }
 }
-if (vSPELL_COUNTDOWN_HI == 0 && vSPELL_COUNTDOWN_LO == 0 && fPROTECTED_BY_SPELL) {
+if (equaln(vSPELL_COUNTDOWN_HI, 0) && equaln(vSPELL_COUNTDOWN_LO, 0) && fPROTECTED_BY_SPELL) {
   print("\"Ye best be careful, young Graham.  The mystic protective spell of mine has weakened and departed.\"");
   reset(fPROTECTED_BY_SPELL);
 }
 else {
   vSPELL_COUNTDOWN_LO--;
-  if (vSPELL_COUNTDOWN_LO == 0) {
+  if (equaln(vSPELL_COUNTDOWN_LO, 0)) {
     vSPELL_COUNTDOWN_HI--;
     if (vSPELL_COUNTDOWN_HI != 0) {
       vSPELL_COUNTDOWN_LO = 250;
@@ -570,7 +571,7 @@ if (fCARRYING_MUSHROOM) {
     }
   }
 }
-if (fEGO_TINY && vTINY_COUNTDOWN != 0) {
+if (fEGO_TINY && vTINY_COUNTDOWN > 0) {
   vTINY_COUNTDOWN--;
   if (vTINY_COUNTDOWN == 1 && vROOM_NO != ROOM36_ROCK_WITH_TINY_HOLE && vROOM_NO != ROOM78_IN_CAVE_WITH_TINY_HOLE) {
     set.view(oEGO, 0);
@@ -655,7 +656,7 @@ if (fCARRYING_RING) {
       if (vROOM_NO == ROOM65_IN_GINGERBREAD_HOUSE
         || fEGO_CLIMBING_BEANSTALK
         || fFALLING_TO_EARTH
-        || vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE
+        || vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE
         || vROOM_NO == ROOM63_UP_GOLDEN_EGG_TREE
         || vROOM_NO == ROOM80_IN_MID_AIR
         || vROOM_NO == ROOM49_INSIDE_WELL
@@ -674,14 +675,14 @@ if (fCARRYING_RING) {
 }
 if (fEGO_INVISIBLE) {
   vINVISIBLE_COUNTDOWN_LO--;
-  if (vINVISIBLE_COUNTDOWN_LO == 0) {
-    if (vINVISIBLE_COUNTDOWN_HI != 0) {
+  if (equaln(vINVISIBLE_COUNTDOWN_LO, 0)) {
+    if (vINVISIBLE_COUNTDOWN_HI > 0) {
       vINVISIBLE_COUNTDOWN_HI--;
       vINVISIBLE_COUNTDOWN_LO = 250;
     }
   }
 }
-if (vINVISIBLE_COUNTDOWN_LO == 1 && vINVISIBLE_COUNTDOWN_HI == 0) {
+if (vINVISIBLE_COUNTDOWN_LO == 1 && equaln(vINVISIBLE_COUNTDOWN_HI, 0)) {
   vINVISIBLE_COUNTDOWN_LO = 0;
   set.view(oEGO, 0);
   reset(fCARRYING_RING);
@@ -723,23 +724,22 @@ if (fCARRYING_BOWL) {
       vBOWL_STATE = BOWLSTATE_EMPTY;
       reset(fPOINTS_FOR_STEW);
       vSCORE -= 2;
+      goto(END_OF_BOWL_LOGIC);
     }
-    else {
-      if (said("taste", "stew")) {
-        print("Even a small portion of the stew is very appetizing.");
-      }
-      if (said("examine", "stew")) {
-        print("The stew is chock full of vegetables and meat.");
-      }
-      if (said("examine", "bowl") || said("look inside", "bowl")) {
-        show.obj(INV_BOWL_OF_STEW);
-      }
-      if (said("fill") || said("fill", "bowl") || said("get", "stew")) {
-        print("You already have a full bowl of stew.");
-      }
+    if (said("taste", "stew")) {
+      print("Even a small portion of the stew is very appetizing.");
+    }
+    if (said("examine", "stew")) {
+      print("The stew is chock full of vegetables and meat.");
+    }
+    if (said("examine", "bowl") || said("look inside", "bowl")) {
+      show.obj(INV_BOWL_OF_STEW);
+    }
+    if (said("fill") || said("fill", "bowl") || said("get", "stew")) {
+      print("You already have a full bowl of stew.");
     }
   }
-  else if (vBOWL_STATE == BOWLSTATE_EMPTY) {
+  if (equaln(vBOWL_STATE, BOWLSTATE_EMPTY)) {
     if (said("examine", "bowl") || said("look inside", "bowl")) {
       show.obj(INV_EMPTY_BOWL);
     }
@@ -768,6 +768,7 @@ if (fCARRYING_BOWL) {
     }
   }
 }
+END_OF_BOWL_LOGIC:
 if (fCARRYING_PEBBLES) {
   if (said("examine", "pebbles")) {
     show.obj(INV_PEBBLES);
@@ -802,7 +803,7 @@ if (!fGOAT_COMPANION) {
       print("There is no goat here.");
     }
   }
-  if (vROOM_YOU_KILLED_THE_GOAT_IN != ROOM_NULL && vROOM_NO != ROOM10_GOAT_PEN_WEST && vROOM_NO != ROOM11_GOAT_PEN_EAST) {
+  if (vROOM_YOU_KILLED_THE_GOAT_IN > ROOM_NULL && vROOM_NO != ROOM10_GOAT_PEN_WEST && vROOM_NO != ROOM11_GOAT_PEN_EAST) {
     if (said("anyword", "goat")) {
       print("You've already killed the goat.");
     }
@@ -993,12 +994,6 @@ if (fDEBUG_MODE) {
   call(LOGIC99_DEBUG);
 }
 call.v(vROOM_NO);
-#ifdef RUBBER_TREE
-  if (fUNDO) {
-    print("Sorry, UNDO is not available right now!");
-    reset(fUNDO);
-  }
-#endif
 call(LOGIC102_DEFAULT_RESPONSES);
 return;
 
