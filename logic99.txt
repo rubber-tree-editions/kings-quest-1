@@ -69,7 +69,7 @@ if (vUNKNOWN_WORD_NO == 2) {
 if (vUNKNOWN_WORD_NO == 3) {
   log("%m12%w3");
 }
-if (vUNKNOWN_WORD_NO == 0 && fPLAYER_ENTERED_COMMAND && !fSAID_ACCEPTED_USER_INPUT) {
+if (equaln(vUNKNOWN_WORD_NO, 0) && fPLAYER_ENTERED_COMMAND && !fSAID_ACCEPTED_USER_INPUT) {
   log("No response to input.");
 }
 return;
