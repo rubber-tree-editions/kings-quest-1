@@ -133,6 +133,7 @@ if (controller(cINITJOYSTICK)) {
 if (controller(cCLEARINPUT)) {
   cancel.line();
 }
+#ifdef VERSION_U
 if (controller(cABOUT)) {
   print(
     "        King's Quest" "\n"
@@ -152,6 +153,7 @@ if (controller(cABOUT)) {
     "(C) 1986 Sierra On-Line, Inc."
   );
 }
+#endif
 if (vROOM_NO > ROOM52_IN_WELL_UNDERWATER
   || vROOM_NO == ROOM3_ROCK_OVER_HOLE
   || vROOM_NO == ROOM6_POUCH_STUMP
@@ -205,7 +207,7 @@ else if (__OR__(vEGO_DIR <= DIR_NONE)) {
 if (controller(cDEBUG)) {
   load.logics(LOGIC99_DEBUG);
   set(fDEBUG_MODE);
-  print("VERSION 1.0U");
+  print(m17);
   version();
 }
 if (said("fast")) {
@@ -848,7 +850,7 @@ if (fGOAT_COMPANION) {
     }
   }
   if (said("examine", "goat")) {
-    print("The old goat is trotting briskly by your side.");
+    print(m51);
   }
   if (said("talk", "goat")) {
     print("The goat is not much for conversation.");
@@ -1016,7 +1018,15 @@ LOGIC__FOOTER
 #message 14 "You open your mouth while swimming and quench your thirst."
 #message 15 "With difficulty, you fill the bucket while swimming."
 #message 16 "Mmmm!  There's nothing like a crisp, fresh carrot."
+#ifdef VERSION_U
 #message 17 "VERSION 1.0U"
+#endif
+#ifdef VERSION_F
+#message 17 "VERSION 2.0F"
+#endif
+#ifdef VERSION_C
+#message 17 "VERSION 2.0C"
+#endif
 #message 18 "You already have a carrot."
 #message 19 "You already ate the carrot."
 #message 20 "The goat quickly eats the carrot and disappears."
@@ -1048,7 +1058,11 @@ LOGIC__FOOTER
 #message 48 "You don't have any way to kill the old goat."
 #message 49 "There is no goat here."
 #message 50 "You've already killed the goat."
+#ifdef VERSION_U
 #message 51 "The old goat is trotting briskly by your side."
+#else
+#message 51 "The old goat, trotting briskly, seems happy to be with you."
+#endif
 #message 52 "Seeing how much the goat likes that carrot, eating it may be hazardous to your health."
 #message 53 "You have already opened the walnut."
 #message 54 "When you open the walnut, you discover the nut inside is pure gold!"
@@ -1081,5 +1095,57 @@ LOGIC__FOOTER
 #message 100 "_"
 #message 101 "You are not wearing the ring."
 #message 102 "There is no need to rub the ring as you are already invisible."
+#ifdef VERSION_U
 #message 103 "        King's Quest\n             by\n      Roberta Williams\n\n    Original version by\nArthur Abraham, Chuck Tingley\n        Ken McNeill\n\n        Graphics by\n Doug McNeill, Greg Rowland\n\n      This version by\n       Sol Ackerman\n\n(C) 1986 Sierra On-Line, Inc."
+#else
+#message 150 "Info"
+#ifdef VERSION_C
+#message 151 "Help     "
+#else
+#message 151 "Help    "
+#endif
+#message 152 "About KQ"
+#message 153 "File"
+#message 154 "Save Game      <F5>"
+#message 155 "Restore Game   <F7>"
+#message 156 "-------------------"
+#message 157 "Restart Game   <F9>"
+#ifdef VERSION_C
+#message 158 "Pause         <Esc>"
+#else
+#message 158 "Pause             <Esc>"
+#endif
+#message 159 "Quit        <Alt Z>"
+#message 160 "Game"
+#message 161 "Inventory     <Tab>"
+#message 162 "See Object     <F4>"
+#ifdef VERSION_C
+#message 163 "Toggle Sound   <F2>"
+#else
+#message 163 "Sound On/Off       <F2>"
+#endif
+#ifdef VERSION_C
+#message 164 "Action"
+#else
+#message 164 "Action "
+#endif
+#message 165 "Swim  ="
+#message 166 "Special"
+#ifdef VERSION_C
+#message 167 "Toggle RGB     <Ctrl R>"
+#else
+#message 167 "Graphics Mode  <Ctrl R>"
+#endif
+#message 168 "Reset Joystick <Ctrl J>"
+#message 169 "Speed"
+#message 170 "Normal"
+#message 171 "Fast  "
+#message 172 "Slow  "
+#message 173 "King's Quest was designed by Roberta Williams."
+#message 174 "Jump  0"
+#message 175 "Duck  -"
+#ifndef VERSION_C
+#message 176 "Joystick/Mouse <Ctrl J>"
+#endif
+#endif
 #endif
