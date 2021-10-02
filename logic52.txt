@@ -39,7 +39,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
   if (fEGO_INVISIBLE) {
-    drop("ring");
+    drop(iRING);
     vSCORE -= 3;
     print("Thrashing around in the water has caused you to lose the magic ring and become visible again.");
     reset(fCARRYING_RING);

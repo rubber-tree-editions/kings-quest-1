@@ -17,6 +17,12 @@
 #include "items.txt"
 #include "words.txt"
 
+#ifdef VERSION_U
+#define iRING "ring"
+#else
+#define iRING "magic ring"
+#endif
+
 // built-in vars
 #define vROOM_NO v0
 #define vPREV_ROOM_NO v1

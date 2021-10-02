@@ -64,7 +64,7 @@ if (fEGO_ON_WATER) {
         reset(fCARRYING_RING);
         reset(fWEARING_RING);
         set(fLOST_RING);
-        drop("ring");
+        drop(iRING);
         vSCORE -= 3;
         print("Thrashing around in the water has caused you to lose the magic ring and become visible again.");
       }
@@ -83,7 +83,7 @@ if (fEGO_ON_WATER) {
         reset(fCARRYING_RING);
         reset(fWEARING_RING);
         set(fLOST_RING);
-        drop("ring");
+        drop(iRING);
         vSCORE -= 3;
         print("Thrashing around in the water has caused you to lose the magic ring and become visible again.");
       }

@@ -100,7 +100,7 @@ if (rfELF_IS_HERE) {
   if (!rfELF_LEFT && (said("talk", "elf") || said("hello") || said("say", "hello"))) {
     if (vTEMP_RESULT_2 < 40) {
       print("The elf, impressed by your friendliness, gives you a magic ring.  \"Kind person, know that once, only once, this ring will make you invisible,\" he says and then disappears.");
-      get("ring");
+      get(iRING);
       set(fCARRYING_RING);
       vSCORE += 3;
       erase(oELF);

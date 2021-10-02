@@ -75,7 +75,7 @@ if (rvCOUNTDOWN > 0) {
       vINVISIBLE_COUNTDOWN_LO = 0;
       vINVISIBLE_COUNTDOWN_HI = 0;
       reset(fEGO_INVISIBLE);
-      drop("ring");
+      drop(iRING);
       vSCORE -= 3;
       reset(fCARRYING_RING);
     }

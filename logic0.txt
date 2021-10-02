@@ -600,7 +600,7 @@ if (fCARRYING_RING) {
       print("You are not wearing the ring.");
     }
     if (fWEARING_RING && !fEGO_INVISIBLE) {
-      drop("ring");
+      drop(iRING);
       vSCORE -= 3;
       print("I don't know why, but you drop the magic ring.");
       reset(fCARRYING_RING);
@@ -608,7 +608,7 @@ if (fCARRYING_RING) {
       set(fLOST_RING);
     }
     if (fWEARING_RING && fEGO_INVISIBLE) {
-      drop("ring");
+      drop(iRING);
       vSCORE -= 3;
       print("When the ring disappears, you reappear!");
       set.view(oEGO, 0);
@@ -686,7 +686,7 @@ if (vINVISIBLE_COUNTDOWN_LO == 1 && vINVISIBLE_COUNTDOWN_HI == 0) {
   vINVISIBLE_COUNTDOWN_LO = 0;
   set.view(oEGO, 0);
   reset(fCARRYING_RING);
-  drop("ring");
+  drop(iRING);
   reset(fWEARING_RING);
   set(fLOST_RING);
   reset(fEGO_INVISIBLE);

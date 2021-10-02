@@ -30,7 +30,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       set(rfLOST_INVISIBILITY_DURING_FALL);
       reset(fEGO_INVISIBLE);
       reset(fCARRYING_RING);
-      drop("ring");
+      drop(iRING);
       vSCORE -= 3;
       set(fLOST_RING);
     }
