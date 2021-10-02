@@ -305,3 +305,6 @@
 #word 258 path
 #word 259 bedroom
 #endif
+#ifdef RUBBER_TREE
+#word 300 undo
+#endif
