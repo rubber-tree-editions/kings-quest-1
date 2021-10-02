@@ -42,7 +42,7 @@ if (said("examine", "lake")) {
   print("This is a small alpine lake.");
 }
 if (said("examine", "stumps")) {
-  print("There seem to be beavers around here.");
+  print(m5);
 }
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 100, 109, 115, 135)) {
@@ -123,6 +123,14 @@ LOGIC__FOOTER
 #message 2 "The clear water quenches your thirst."
 #message 3 "You are not close enough to the water."
 #message 4 "You have no container for water."
+#ifdef VERSION_U
 #message 5 "There seem to be beavers around here."
+#else
+#message 5 "It looks as though there were beavers around here at one time."
+#endif
 #message 6 "This is a small alpine lake."
+#ifndef VERSION_U
+#message 7 "There are no beavers here now."
+#message 8 "It seems the old goat has wandered off by himself and is no longer following you."
+#endif
 #endif

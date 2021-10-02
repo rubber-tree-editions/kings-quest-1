@@ -138,4 +138,7 @@ LOGIC__FOOTER
 #message 6 "The old goat is afraid of heights and refuses to climb the tree."
 #message 7 "OK"
 #message 8 "OUCH!"
+#ifndef VERSION_U
+#message 9 "There is a very large oak tree here with branches stretching to the sky."
+#endif
 #endif

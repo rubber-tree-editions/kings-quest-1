@@ -357,4 +357,7 @@ LOGIC__FOOTER
 #message 26 "The moats slippery sides prevent you from getting out."
 #message 27 "What!  Are you crazy?"
 #message 28 "Your knock echos within the castle.  Unfortunately, no one answers."
+#ifndef VERSION_U
+#message 29 "You are standing outside a castle surrounded by an alligator filled moat."
+#endif
 #endif

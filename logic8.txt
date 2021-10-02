@@ -152,4 +152,9 @@ LOGIC__FOOTER
 #message 4 "This is a beautiful little lake."
 #message 5 "You have no container for water."
 #message 6 "The swift water pulls you down to your untimely demise."
+#ifndef VERSION_U
+#message 7 "The flowers are very beautiful."
+#message 8 "It seems the old goat has wandered off by himself and is no longer following you."
+#message 9 "A rapidly moving stream is flowing out of this lake."
+#endif
 #endif

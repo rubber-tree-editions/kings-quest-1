@@ -225,4 +225,7 @@ LOGIC__FOOTER
 #message 19 "You need to close the door before you can lock it."
 #message 20 "The door is already open."
 #message 21 "The door is already closed."
+#ifndef VERSION_U
+#message 22 "The only response you get is the echo of your pounding."
+#endif
 #endif
