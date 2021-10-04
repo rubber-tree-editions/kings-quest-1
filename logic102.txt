@@ -3,12 +3,12 @@
 LOGIC__HEADER
 
 if (!fPLAYER_ENTERED_COMMAND) {
-  return;
+  goto RETURN;
 }
 if (fSAID_ACCEPTED_USER_INPUT) {
-  return;
+  goto RETURN;
 }
-if (fPLAYER_ENTERED_COMMAND && vUNKNOWN_WORD_NO != 0) {
+if (fPLAYER_ENTERED_COMMAND && vUNKNOWN_WORD_NO > 0) {
   if (vUNKNOWN_WORD_NO == 1) {
     print("I don't understand \"%w1\".");
   }
@@ -19,7 +19,7 @@ if (fPLAYER_ENTERED_COMMAND && vUNKNOWN_WORD_NO != 0) {
     print("I don't understand \"%w3\".");
   }
   reset(fPLAYER_ENTERED_COMMAND);
-  return;
+  goto RETURN;
 }
 if (said("look for", "anyword") || said("look for", "anyword", "anyword")) {
   print("Well.  Go look for it.");
@@ -325,12 +325,12 @@ if (said("use", "anyword")) {
   print("What do you wish to do with it???");
 }
 if (said("anyword", "man")) {
-  print("There is no \"%w2\" here.");
-  return;
+  print(m14 /* "There is no \"%w2\" here." */);
+  goto RETURN;
 }
 if (said("anyword", "woman")) {
-  print("There is no \"%w2\" here.");
-  return;
+  print(m14 /* "There is no \"%w2\" here." */);
+  goto RETURN;
 }
 if (said("examine")) {
   print("You need to be more specific.");
@@ -407,22 +407,22 @@ if (said("talk", "elf")
   || said("talk", "man")
   || said("talk", "woman")
 ) {
-  print("There is no \"%w2\" here.");
-  return;
+  print(m28 /* "There is no \"%w2\" here." */);
+  goto RETURN;
 }
 if (said("talk", "anyword")) {
   print("You get no response from the \"%w2\".");
 }
 if (fSAID_ACCEPTED_USER_INPUT) {
-  return;
+  goto RETURN;
 }
 print("You can't do that--at least not now!");
-return;
+RETURN:
+  return;
 
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "You see nothing special."
 #message 2 "You cannot get the \"%w2\". At least not now!"
 #message 3 "There is no reason to do that."

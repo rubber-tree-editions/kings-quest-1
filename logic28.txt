@@ -179,7 +179,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "You must be getting nervous!  I see no witch here!"
 #message 2 "The windows are made from translucent, hardened sugar.  It's difficult to see through them."
 #message 3 "The windows are hard to break."

@@ -42,7 +42,7 @@ if (!fEGO_ON_WATER) {
     set(fMANUAL_EGO_WATER_POS);
   }
 }
-if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
+if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   vEGO_WATER_X = 255;
   if (posn(oEGO, 132, 51, 159, 59)) {
     vEGO_WATER_X = 132;
@@ -146,11 +146,15 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "The bucket is soon filled with clear water."
 #message 2 "The water is clear and refreshing."
 #message 3 "You are not close enough to the lake."
 #message 4 "This is a beautiful little lake."
 #message 5 "You have no container for water."
 #message 6 "The swift water pulls you down to your untimely demise."
+#ifndef VERSION_U
+#message 7 "The flowers are very beautiful."
+#message 8 "It seems the old goat has wandered off by himself and is no longer following you."
+#message 9 "A rapidly moving stream is flowing out of this lake."
+#endif
 #endif

@@ -39,7 +39,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
   if (fEGO_INVISIBLE) {
-    drop("ring");
+    drop(iRING);
     vSCORE -= 3;
     print("Thrashing around in the water has caused you to lose the magic ring and become visible again.");
     reset(fCARRYING_RING);
@@ -53,7 +53,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 vCOUNTDOWN_LO--;
 if (vCOUNTDOWN_LO == 0) {
   vCOUNTDOWN_HI--;
-  if (vCOUNTDOWN_HI != 0) {
+  if (vCOUNTDOWN_HI > 0) {
     vCOUNTDOWN_LO = 250;
   }
 }
@@ -112,7 +112,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Not even you can hold your breath forever.  The well bottom has become your eternal resting place."
 #message 2 "This looks like typical well water."
 #message 3 "It looks like this bottle has been here for a very long time."

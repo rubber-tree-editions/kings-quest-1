@@ -578,7 +578,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "The rope is securely fastened to the well."
 #message 2 "You cut a piece of rope and it falls into the well."
 #message 3 "With the rope cut, you are able to take the bucket."

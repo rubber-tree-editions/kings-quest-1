@@ -50,7 +50,7 @@ if (fEGO_ON_WATER && !rfPULLED_UNDERWATER) {
   set(rfPULLED_UNDERWATER);
   print("Your swimming attempt proved fatal!  The raging current drags you under... you are lost....");
 }
-if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
+if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   vEGO_WATER_X = 255;
   if (posn(oEGO, 83, 39, 127, 60)) {
     vEGO_WATER_X = 96;
@@ -149,7 +149,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "You notice an enchanting meadow."
 #message 2 "The river is dangerous and powerful.  There is a delta of pebbles on its edge."
 #message 3 "Your pockets cannot hold any more pebbles."

@@ -8,7 +8,7 @@ LOGIC__HEADER
 
 #define rvFAIRY_GODMOTHER_LEAVING_COUNTDOWN rv0
 #define rvFAIRY_GODMOTHER_SPEAKS_COUNTDOWN rv1
-#define rvFAIRY_GODMOTHER_SOUND_COUNTDOWN rv4
+#define rvFAIRY_GODMOTHER_SOUND_COUNTDOWN rv2
 
 #define oFAIRY_GODMOTHER o1
 
@@ -105,7 +105,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "\"Gentle Sir Graham, I am your fairy godmother.  Your quest is indeed noble.  My small part to aid you can be no bigger than this magic spell, protective but for a little while.\""
 #message 2 "It is impossible to acquire a fairy godmother."
 #message 3 "She is your fairy godmother."

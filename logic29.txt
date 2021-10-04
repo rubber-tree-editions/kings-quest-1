@@ -107,11 +107,11 @@ if (fVILLAIN_GOT_YOU) {
     wander(oSORCERER);
     set(rfPROTECTED);
   }
-  if (fEGO_INVISIBLE) {
+  else if (fEGO_INVISIBLE) {
     print("Being invisible has protected you from this sorcerer.");
     set(rfINVISIBLE);
   }
-  if (fCARRYING_SHIELD) {
+  else if (fCARRYING_SHIELD) {
     print("The magic shield will protect you from this dangerous  sorcerer.");
     wander(oSORCERER);
     set(rfPROTECTED);
@@ -147,7 +147,7 @@ if (rfINVISIBLE) {
   reset(rfSORCERER_IS_HERE);
 }
 rvCOUNTDOWN_LO--;
-if (rvCOUNTDOWN_LO == 0 && rvCOUNTDOWN_HI != 0) {
+if (rvCOUNTDOWN_LO == 0 && rvCOUNTDOWN_HI > 0) {
   rvCOUNTDOWN_HI--;
   rvCOUNTDOWN_LO = 250;
 }
@@ -158,7 +158,7 @@ if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 0) {
   player.control();
 }
 if (rfUNDER_SORCERERS_SPELL) {
-  return;
+  goto RETURN;
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM36_ROCK_WITH_TINY_HOLE);
@@ -175,12 +175,12 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-return;
+RETURN:
+  return;
 
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!"
 #message 2 "The magic shield will protect you from this dangerous  sorcerer."
 #message 3 "You're so afraid of the sorcerer that your knees are locked."

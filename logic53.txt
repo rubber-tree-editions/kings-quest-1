@@ -51,12 +51,12 @@ if (rfKING_EDWARD_DEAD) {
   }
 }
 if (fYOU_WON) {
-  return;
+  goto RETURN;
 }
-if (rvCOUNTDOWN == 0) {
+if (rvCOUNTDOWN <= 0) {
   vTEMP_RESULT_2--;
   if (vTEMP_RESULT_2 == 1) {
-    if (vTEMP_RESULT_3 != 0) {
+    if (vTEMP_RESULT_3 > 0) {
       vTEMP_RESULT_3--;
       vTEMP_RESULT_2 = 250;
     }
@@ -66,7 +66,7 @@ if (rvCOUNTDOWN == 0) {
     rvCOUNTDOWN = 250;
   }
 }
-if (rvCOUNTDOWN != 0) {
+if (rvCOUNTDOWN > 0) {
   rvCOUNTDOWN--;
   if (rvCOUNTDOWN == 245) {
     set.view(oEGO, 0);
@@ -75,7 +75,7 @@ if (rvCOUNTDOWN != 0) {
       vINVISIBLE_COUNTDOWN_LO = 0;
       vINVISIBLE_COUNTDOWN_HI = 0;
       reset(fEGO_INVISIBLE);
-      drop("ring");
+      drop(iRING);
       vSCORE -= 3;
       reset(fCARRYING_RING);
     }
@@ -167,10 +167,10 @@ else {
 }
 if (posn(oEGO, 18, 80, 86, 113)) {
   if (said("examine", "king")) {
-    if (rvCOUNTDOWN == 0 && vTREASURE_COUNT != 3 && !fLOST_VITAL_TREASURE) {
+    if (rvCOUNTDOWN <= 0 && vTREASURE_COUNT != 3 && !fLOST_VITAL_TREASURE) {
       print("King Edward the Benevolent is a very wise, but elderly monarch.  His frail body is almost lost in the large throne.");
     }
-    if (!rfNEAR_THRONE && !fEGO_INVISIBLE && vTREASURE_COUNT == 3 && rvCOUNTDOWN == 0) {
+    if (!rfNEAR_THRONE && !fEGO_INVISIBLE && vTREASURE_COUNT == 3 && rvCOUNTDOWN <= 0) {
       print("The King, though very ill, seems happy to see you.");
     }
   }
@@ -184,7 +184,7 @@ if (posn(oEGO, 18, 80, 86, 113)) {
     else if (!fEGO_INVISIBLE && rfNEAR_THRONE) {
       print("It is proper to stand directly in front of, and a few paces back from King Edward when addressing His Eminence.");
     }
-    else if (!rfNEAR_THRONE && !fEGO_INVISIBLE && rvCOUNTDOWN == 0 && vTREASURE_COUNT != 3 && !rfBOWING) {
+    else if (!rfNEAR_THRONE && !fEGO_INVISIBLE && rvCOUNTDOWN <= 0 && vTREASURE_COUNT != 3 && !rfBOWING) {
       set(rfBOWING);
       get.posn(oEGO, vTEMP_X, vTEMP_Y);
       vTEMP_X -= 7;
@@ -203,7 +203,7 @@ if (posn(oEGO, 18, 80, 86, 113)) {
         vSCORE += 3;
       }
     }
-    else if (!rfNEAR_THRONE && !fEGO_INVISIBLE && rvCOUNTDOWN == 0 && vTREASURE_COUNT == 3 && !rfBOWING2) {
+    else if (!rfNEAR_THRONE && !fEGO_INVISIBLE && rvCOUNTDOWN <= 0 && vTREASURE_COUNT == 3 && !rfBOWING2) {
       set(rfBOWING2);
       get.posn(oEGO, vTEMP_X, vTEMP_Y);
       vTEMP_X -= 7;
@@ -227,20 +227,20 @@ if (posn(oEGO, 18, 80, 86, 113)) {
     }
   }
   if (said("talk", "king")) {
-    if (fSPOKEN_TO_KING && rvCOUNTDOWN == 0 && !fLOST_VITAL_TREASURE && vTREASURE_COUNT != 3) {
+    if (fSPOKEN_TO_KING && rvCOUNTDOWN <= 0 && !fLOST_VITAL_TREASURE && vTREASURE_COUNT != 3) {
       print("Go, Sir Graham!  Go and bring me back these treasures!");
     }
-    if (rvCOUNTDOWN == 0 && vTREASURE_COUNT == 3) {
+    if (rvCOUNTDOWN <= 0 && vTREASURE_COUNT == 3) {
       print("Welcome back from your quest, Sir Graham.");
     }
-    if (rvCOUNTDOWN == 0 && fLOST_VITAL_TREASURE) {
+    if (rvCOUNTDOWN <= 0 && fLOST_VITAL_TREASURE) {
       print("Why, Sir Graham, have you failed me and returned without accomplishing your task?  Go, and complete your quest!!");
       set(fNO_BUSINESS_WITH_KING);
     }
-    if (rvCOUNTDOWN != 0) {
+    if (rvCOUNTDOWN > 0) {
       print("The king cannot talk right now.");
     }
-    if (!fSPOKEN_TO_KING && rvCOUNTDOWN == 0 && !fLOST_VITAL_TREASURE && vTREASURE_COUNT != 3) {
+    if (!fSPOKEN_TO_KING && rvCOUNTDOWN <= 0 && !fLOST_VITAL_TREASURE && vTREASURE_COUNT != 3) {
       set(fSPOKEN_TO_KING);
       set(rfWAIT_FOR_KEY);
       set(fNO_BUSINESS_WITH_KING);
@@ -270,7 +270,7 @@ if (posn(oEGO, 18, 80, 86, 113)) {
   }
 }
 if (!posn(oEGO, 60, 85, 86, 113) && !rfNEAR_THRONE) {
-  if (rvCOUNTDOWN == 0) {
+  if (rvCOUNTDOWN <= 0) {
     if (said("examine", "king")) {
       print("You are not close enough to see him clearly.");
     }
@@ -289,15 +289,15 @@ if (said("kneel", "king")) {
   print("That's not a bad idea, but the custom in Daventry is to bow.");
 }
 if (said("murder", "king")) {
-  if (rvCOUNTDOWN == 0) {
+  if (rvCOUNTDOWN <= 0) {
     print("To kill King Edward would mean immediate execution!");
   }
-  if (rvCOUNTDOWN != 0) {
+  if (rvCOUNTDOWN > 0) {
     print("Your concern for the old king won't allow you to move.");
   }
 }
 if (said("sit down", "throne")) {
-  if (rvCOUNTDOWN == 0) {
+  if (rvCOUNTDOWN <= 0) {
     print("The throne is already occupied.");
   }
   else {
@@ -339,12 +339,12 @@ if (rfWAIT_FOR_KEY) {
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM54_CASTLE_HALL_CORNER);
 }
-return;
+RETURN:
+  return;
 
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Even as you are reaching for your medevial flamethrower, the King's agents descend upon you.  You are taken away to be torched at dawn."
 #message 2 "King Edward the Benevolent is a very wise, but elderly monarch.  His frail body is almost lost in the large throne."
 #message 3 "The King's throne is made of solid gold, accented with rubies.  It will be yours if you complete your quest."

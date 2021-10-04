@@ -253,13 +253,13 @@ if (said("open", "doors")) {
     start.update(oDOOR);
     sound(SND_DOOR_OPENING, fMISC_END_MARKER);
     print("The door slowly opens.");
-    end.of.loop(oDOOR, rfRAT_LEFT);
+    end.of.loop(oDOOR, rfDOOR_OPEN);
   }
   else {
     print("Get closer if you want to try.");
   }
 }
-if (rfRAT_LEFT) {
+if (rfDOOR_OPEN) {
   new.room(ROOM76_LEPRECHAUN_ANTECHAMBER);
 }
 if (said("close", "doors")) {
@@ -276,7 +276,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Being invisible won't hide you from this rat's keen sense of smell."
 #message 2 "There is no rat here."
 #message 3 "It is a big rat with dripping teeth and small, greedy eyes."

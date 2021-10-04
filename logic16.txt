@@ -95,7 +95,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "This is a neat little carrot patch.  The plump carrots  look tempting."
 #message 2 "There is no reason to climb the fence."
 #message 3 "You can go around the fence."
@@ -105,4 +104,7 @@ LOGIC__FOOTER
 #message 7 "They are buried in the ground.  You must get closer to see them."
 #message 8 "You cannot do that from here."
 #message 9 "You do not have a carrot to eat."
+#ifndef VERSION_U
+#message 10 "You see an old stone wall surrounding a well kept garden."
+#endif
 #endif

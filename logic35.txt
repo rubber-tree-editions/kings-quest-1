@@ -173,7 +173,7 @@ if (fVILLAIN_GOT_YOU) {
       reset(fNO_BUSINESS_WITH_KING);
       vTREASURE_COUNT--;
     }
-    if (fCARRYING_SHIELD) {
+    else if (fCARRYING_SHIELD) {
       reset(fCARRYING_SHIELD);
       set(fDWARF_STOLE_SHIELD);
       vSCORE -= 8;
@@ -182,7 +182,7 @@ if (fVILLAIN_GOT_YOU) {
       reset(fNO_BUSINESS_WITH_KING);
       vTREASURE_COUNT--;
     }
-    if (fCARRYING_CHEST) {
+    else if (fCARRYING_CHEST) {
       reset(fCARRYING_CHEST);
       set(fDWARF_STOLE_CHEST);
       vSCORE -= 8;
@@ -191,31 +191,31 @@ if (fVILLAIN_GOT_YOU) {
       reset(fNO_BUSINESS_WITH_KING);
       vTREASURE_COUNT--;
     }
-    if (fCARRYING_DIAMONDS) {
+    else if (fCARRYING_DIAMONDS) {
       reset(fCARRYING_DIAMONDS);
       set(fDWARF_OR_TROLL_HAS_DIAMONDS);
       vSCORE -= 6;
       drop("pouch of diamonds");
     }
-    if (fCARRYING_GOLD_WALNUT) {
+    else if (fCARRYING_GOLD_WALNUT) {
       reset(fCARRYING_GOLD_WALNUT);
       set(fDWARF_OR_TROLL_HAS_WALNUT);
       vSCORE -= 6;
       drop("gold walnut");
     }
-    if (fCARRYING_GOLDEN_EGG) {
+    else if (fCARRYING_GOLDEN_EGG) {
       reset(fCARRYING_GOLDEN_EGG);
       set(fDWARF_OR_TROLL_HAS_EGG);
       vSCORE -= 6;
       drop("gold egg");
     }
-    if (fCARRYING_POUCH) {
+    else if (fCARRYING_POUCH) {
       reset(fCARRYING_POUCH);
       set(fDWARF_HAS_POUCH);
       vSCORE -= 3;
       drop("pouch");
     }
-    if (fCARRYING_SCEPTRE) {
+    else if (fCARRYING_SCEPTRE) {
       reset(fCARRYING_SCEPTRE);
       set(fDWARF_OR_TROLL_HAS_SCEPTRE);
       vSCORE -= 6;
@@ -315,7 +315,7 @@ if (rfFELL_FROM_BEANSTALK_LOW) {
   sound(SND_OUCH, fSOUND_END_MARKER);
 }
 if (fSOUND_END_MARKER) {
-  if (rvCOUNTDOWN != 0) {
+  if (rvCOUNTDOWN > 0) {
     reset(fSOUND_END_MARKER);
     sound(SND_OUCH, fSOUND_END_MARKER);
   }
@@ -361,7 +361,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "There is a small dwarf close by.  It would be a good idea to be careful."
 #message 2 "That little dwarf caught you by surprise.  Is your treasure still OK?"
 #message 3 "The quick, little dwarf came by to see what you had -- nothing interested him."

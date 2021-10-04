@@ -181,7 +181,7 @@ if (said("get", "dagger")) {
       set(fCARRYING_DAGGER);
     }
     else {
-      print("You are to far away to get the dagger.");
+      print(m7);
     }
   }
   if (!fMOVED_ROCK && !fTAKEN_DAGGER) {
@@ -208,14 +208,17 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "There are numerous white birch trees reaching to the sky."
 #message 2 "After moving that rock once, even thinking about it should make you tired."
 #message 3 "There is no hole here."
 #message 4 "There is an intricately carved dagger in the hole."
 #message 5 "There is nothing in this hole but dirt."
 #message 6 "There is no dagger here."
+#ifdef VERSION_U
 #message 7 "You are to far away to get the dagger."
+#else
+#message 7 "You are too far away to get the dagger."
+#endif
 #message 8 "You reach into the hole and grasp the dagger, being careful not to cut yourself."
 #message 10 "This rock is far too heavy for you to carry."
 #message 11 "It will be very difficult to move the rock from here."
@@ -228,4 +231,7 @@ LOGIC__FOOTER
 #message 18 "You could see it better if you picked it up."
 #message 19 "You do not have a dagger to look at."
 #message 20 "You are too far from the hole to see in it."
+#ifndef VERSION_U
+#message 21 "You are in a forest clearing.  There is a large rock here."
+#endif
 #endif

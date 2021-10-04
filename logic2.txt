@@ -233,7 +233,7 @@ if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
 if (fEGO_TOUCHED_TRIGGER_LINE) {
   set(fEGO_ON_WATER);
 }
-if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
+if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   vEGO_WATER_X = 255;
   ignore.objs(oEGO);
   if (posn(oEGO, 9, 145, 44, 167)) {
@@ -331,7 +331,6 @@ FINALCHECKS:
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "High above the castle, the flags are waving in the wind."
 #message 2 "King Edward the Benevolent, the mighty ruler of Daventry, lives in this castle."
 #message 3 "You must enter the castle through the door, and the  door is closed."
@@ -358,4 +357,7 @@ LOGIC__FOOTER
 #message 26 "The moats slippery sides prevent you from getting out."
 #message 27 "What!  Are you crazy?"
 #message 28 "Your knock echos within the castle.  Unfortunately, no one answers."
+#ifndef VERSION_U
+#message 29 "You are standing outside a castle surrounded by an alligator filled moat."
+#endif
 #endif

@@ -167,7 +167,6 @@ FINALCHECKS:
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "If you were to jump or duck here you might fall."
 #message 2 "You need to be closer to do that."
 #message 3 "You can't do that when you are invisible!"

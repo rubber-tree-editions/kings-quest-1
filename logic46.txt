@@ -172,29 +172,29 @@ AFTERCOUNTDOWN:
     reset(fTHREAT_OF_SORCERER_OR_OGRE);
   }
   if (rfNO_ESCAPE) {
-    return;
+    goto RETURN;
   }
-  if (vEGO_EDGE_CODE == EDGE_HORIZON && rvCOUNTDOWN == 0) {
+  if (vEGO_EDGE_CODE == EDGE_HORIZON && rvCOUNTDOWN <= 0) {
     new.room(ROOM3_ROCK_OVER_HOLE);
   }
-  if (vEGO_EDGE_CODE == EDGE_RIGHT && rvCOUNTDOWN == 0) {
+  if (vEGO_EDGE_CODE == EDGE_RIGHT && rvCOUNTDOWN <= 0) {
     new.room(ROOM47_MUSHROOM);
   }
-  if (vEGO_EDGE_CODE == EDGE_LEFT && rvCOUNTDOWN == 0) {
+  if (vEGO_EDGE_CODE == EDGE_LEFT && rvCOUNTDOWN <= 0) {
     new.room(ROOM45_OUTSIDE_WOODCUTTER_COTTAGE_BACK);
   }
-  if (vEGO_EDGE_CODE == EDGE_BOTTOM && rvCOUNTDOWN == 0) {
+  if (vEGO_EDGE_CODE == EDGE_BOTTOM && rvCOUNTDOWN <= 0) {
     new.room(ROOM35_DWARF_MEADOW);
   }
   if (fGOAT_COMPANION) {
     call(LOGIC103_GOAT);
   }
-  return;
+  RETURN:
+    return;
 
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Watch out!!!  There is an ogre nearby!  He will crush you in his strong arms if he catches you."
 #message 2 "You are very fortunate that your protective spell is still working."
 #message 3 "With the magic shield, no harm will come to you."

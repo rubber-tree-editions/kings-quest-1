@@ -173,7 +173,7 @@ struct set {
 struct add {
   struct add_to {
     void (*pic)(int, int, int, int, int, int, int);
-  } to;
+  } _to;
 } add;
 
 struct have {
@@ -219,7 +219,10 @@ struct configure {
 } configure;
 
 struct reposition {
-  void (*to)(agiobj, int, int);
+  struct reposition_to {
+    void (*v)(agiobj, agivar, agivar);
+  } to;
+  void (*_to)(agiobj, int, int);
 } reposition;
 
 struct reset {
@@ -424,6 +427,7 @@ void _draw(agiobj);
 #define room(...) _room(__VA_ARGS__)
 #define menu(...) _menu(__VA_ARGS__)
 #define print(...) _print(__VA_ARGS__)
+#define to(...) _to(__VA_ARGS__)
 
 #define null 0
 

@@ -317,7 +317,7 @@ if (!fEGO_ON_WATER) {
     set(fMANUAL_EGO_WATER_POS);
   }
 }
-if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
+if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   vEGO_WATER_X = 255;
   if (posn(oEGO, 0, 83, 94, 167)) {
     vEGO_WATER_X = 34;
@@ -398,7 +398,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "As you approach the bridge, a mean, ugly troll appears and refuses to let you cross his bridge."
 #message 2 "It is a well known fact that goats hate trolls intensely.   You should move aside and let the goat take care of this nasty troll."
 #message 3 "Caution and steep banks advise against getting water here."

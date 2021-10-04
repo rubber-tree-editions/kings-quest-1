@@ -267,7 +267,7 @@ if (fCARRYING_SLINGSHOT) {
       print("You need some kind of small rock to use the sling.");
     }
     if (fCARRYING_PEBBLES && vTEMP_RESULT_3 < 20) {
-      print("There is no way you can get the chest from here!");
+      print("The giant is to close for the slingshot to be effective.  I would suggest you RUN!");
     }
     if (fCARRYING_PEBBLES
       && !fCHEST_TAKEN
@@ -380,7 +380,7 @@ if (said("examine", "room") || said("examine", "clouds")) {
 if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
   rvCOUNTDOWN_LO--;
   if (rvCOUNTDOWN_LO == 0) {
-    if (rvCOUNTDOWN_HI != 0) {
+    if (rvCOUNTDOWN_HI > 0) {
       rvCOUNTDOWN_HI--;
       rvCOUNTDOWN_LO = 250;
     }
@@ -412,7 +412,7 @@ if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST || vGIANT_STATE == GIANTSTATE_A
   }
 }
 if (fGAME_OVER) {
-  return;
+  goto RETURN;
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
   if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST) {
@@ -431,12 +431,12 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM61_CLOUDLANDS_SOUTH);
 }
-return;
+RETURN:
+  return;
 
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "You are fortunate that you have the magic shield or this giant would cause problems for you."
 #message 2 "The giant cannot see you since you are invisible."
 #message 3 "The fairy godmother's spell is protecting you."

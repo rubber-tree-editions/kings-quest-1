@@ -66,13 +66,15 @@ if (fROOM_SCRIPT_EXECUTED) {
       end.of.loop(o1, fMISC_END_MARKER);
       goto(SHOWPIC);
     }
-    add.to.pic(99, 0, 0, 84, 119, 4, 4);
-    animate.obj(o1);
-    set.view(o1, 16);
-    position(o1, 79, 150);
-    set.cel(o1, 0);
-    draw(o1);
-    stop.update(o1);
+    else {
+      add.to.pic(99, 0, 0, 84, 119, 4, 4);
+      animate.obj(o1);
+      set.view(o1, 16);
+      position(o1, 79, 150);
+      set.cel(o1, 0);
+      draw(o1);
+      stop.update(o1);
+    }
   }
   draw(oEGO);
   SHOWPIC:
@@ -182,7 +184,7 @@ if (rvCOUNTDOWN == 1 && rfSWIMMING) {
 if (!fON_WELL_ROPE && !rfFALLING_DOWN_WELL) {
   if (said("climb", "rope") || said("up", "rope")) {
     if (!fROPE_DANGLING_IN_WELL && !fBUCKET_LOWERED) {
-      print("The rope is out of reach.");
+      print(m4 /* "The rope is out of reach." */);
     }
     if (fROPE_DANGLING_IN_WELL) {
       erase(oEGO);
@@ -281,7 +283,7 @@ if (said("untie", "rope")) {
     print("The knot is tied very tightly.");
   }
   else {
-    print("The rope is out of reach.");
+    print(m21 /* "The rope is out of reach." */);
   }
 }
 if (said("get", "rope")) {
@@ -289,7 +291,7 @@ if (said("get", "rope")) {
     print("The rope is secured to the well with a very tight knot.");
   }
   else {
-    print("The rope is out of reach.");
+    print(m21 /* "The rope is out of reach." */);
   }
 }
 if (said("break", "rope")) {
@@ -297,7 +299,7 @@ if (said("break", "rope")) {
     print("The thick rope resists your efforts.");
   }
   else {
-    print("The rope is out of reach.");
+    print(m21 /* "The rope is out of reach." */);
   }
 }
 if (said("lower", "bucket")
@@ -346,7 +348,7 @@ if (fCARRYING_DAGGER) {
       print("You have other things to think about right now.");
     }
     if (!fBUCKET_LOWERED && !fROPE_DANGLING_IN_WELL) {
-      print("The rope is out of reach.");
+      print(m21 /* "The rope is out of reach." */);
     }
   }
 }
@@ -402,7 +404,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "I can see you need a little practice climbing rope!"
 #message 2 "You should be more careful before trying that next time!"
 #message 3 "Your arms are like lead... from swimming.  You find it impossible... to swim any longer.  You sink to the bottom... of the well...."

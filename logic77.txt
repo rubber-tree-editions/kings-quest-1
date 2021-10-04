@@ -179,7 +179,7 @@ if (fCARRYING_FIDDLE) {
 }
 if (said("examine", "throne")) {
   if (!rfDANCING_LEPRECHAUNS && !fDANCING_LEPRECHAUNS) {
-    print("The King of the leprechauns is sitting on the stone throne.");
+    print(m39 /* "The King of the leprechauns is sitting on the stone throne." */);
   }
   else {
     print("This is a rather simple stone throne, compared to King Edward's.");
@@ -354,7 +354,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "You find playing the fiddle here very fun, but the dance floor is in the other room."
 #message 2 "You play a little tune on the fiddle to amuse yourself."
 #message 3 "It is very difficult to play a fiddle if you do not have one."

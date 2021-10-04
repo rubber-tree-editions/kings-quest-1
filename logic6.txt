@@ -219,7 +219,7 @@ if (rfFELL_OFF_BEANSTALK_LOW) {
   sound(SND_OUCH, fSOUND_END_MARKER);
 }
 if (fSOUND_END_MARKER) {
-  if (rvCOUNTDOWN != 0) {
+  if (rvCOUNTDOWN > 0) {
     reset(fSOUND_END_MARKER);
     sound(SND_OUCH, fSOUND_END_MARKER);
   }
@@ -265,7 +265,6 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "Inside the old, rotted stump you notice a small, canvas pouch."
 #message 2 "Inside the decaying tree stump, you see nothing interesting."
 #message 3 "You notice the pouch feels aged and tattered."
@@ -283,4 +282,7 @@ LOGIC__FOOTER
 #message 15 "There is no beanstalk here to climb."
 #message 16 "Ouch!"
 #message 17 "You have to find it first."
+#ifndef VERSION_U
+#message 18 "You are in the forest.  You can see a stump and a hollow log here."
+#endif
 #endif

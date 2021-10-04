@@ -85,7 +85,7 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water"
     print("You are not close enough to the water.");
   }
 }
-if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_TOUCHED_TRIGGER_LINE) {
+if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_TOUCHED_TRIGGER_LINE) {
   set(fEGO_ON_WATER);
   vEGO_WATER_X = 255;
   if (posn(oEGO, 93, 78, 112, 108)) {
@@ -110,7 +110,7 @@ if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_TOUCHED_TRIGGER_LINE) {
     set(fMANUAL_EGO_WATER_POS);
   }
 }
-if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE && fEGO_ON_WATER && !fEGO_TOUCHED_TRIGGER_LINE) {
+if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER && !fEGO_TOUCHED_TRIGGER_LINE) {
   vEGO_WATER_X = 255;
   if (posn(oEGO, 89, 109, 110, 121)) {
     vEGO_WATER_X = 89;
@@ -162,10 +162,12 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 0 ""
 #message 1 "You carefully fill the bucket with water."
 #message 2 "You have to scoop the water with your hands, but you manage to satisfy your thirst."
 #message 3 "That's a dangerous proposition from here."
 #message 4 "This is a clear mountain lake with some steep cliffs surrounding it."
 #message 5 "You are not close enough to the water."
+#ifndef VERSION_U
+#message 6 "It seems the old goat has wandered off by himself and is no longer following you."
+#endif
 #endif
