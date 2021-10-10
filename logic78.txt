@@ -70,4 +70,7 @@ LOGIC__FOOTER
 #message 5 "You feel a stretching sensation... Oh, you're back to your original size."
 #message 6 "Go ahead.  Walk right in."
 #message 7 "This is a small cave with stairs on one side and a very small hole on the other side."
+#ifndef VERSION_U
+  #message 8 "You seem to be stuck in these underground caverns.  As you have no way of leaving, it looks like you'll spend the rest of your life here." 
+#endif
 #endif

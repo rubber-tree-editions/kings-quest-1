@@ -140,4 +140,7 @@ LOGIC__FOOTER
 #message 11 "One rock has a small hole in its base."
 #message 12 "Go ahead.  Walk right in."
 #message 13 "You feel a stretching sensation... Oh, you're back to your original size."
+#ifndef VERSION_U
+  #message 14 "You notice a hole in the base of a large moss covered rock."
+#endif
 #endif

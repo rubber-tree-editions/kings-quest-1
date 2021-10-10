@@ -233,5 +233,7 @@ LOGIC__FOOTER
 #message 13 "King Edward does not allow anyone to take his flowers."
 #message 14 "The moats slippery sides prevent you from getting out."
 #message 15 "What!  Are you crazy?"
-#message 16 "You are standing outside a castle surrounded by an alligator filled moat."
+#ifndef VERSION_U
+  #message 16 "You are standing outside a castle surrounded by an alligator filled moat."
+#endif
 #endif

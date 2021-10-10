@@ -109,4 +109,7 @@ LOGIC__FOOTER
 #message 8 "When you look in the doorway, you see a poor, starving woodcutter and his wife."
 #message 9 "You are not close enough."
 #message 10 "How are you going to use the ax when you can't even get it out of this stump?"
+#ifndef VERSION_U
+  #message 11 "Perhaps you should go inside the house for a better look."
+#endif
 #endif

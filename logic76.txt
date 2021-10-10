@@ -123,7 +123,7 @@ if (rfLEPRECHAUNS_DANCING_AWAY) {
 }
 if (said("examine", "room")) {
   if (!fDANCING_LEPRECHAUNS) {
-    print("You are in the antechamber of the Hall of the Leprechaun King.  There is a leprechaun in the room with you.");
+    print(m7);
   }
   else {
     print("You are in the antechamber of the Hall of the Leprechaun King.");
@@ -165,7 +165,11 @@ LOGIC__FOOTER
 #message 4 "Leprechauns love fiddle music!  Have you ever seen such frenzied dancing?"
 #message 5 "Totally involved in the music, they dance right out of the room."
 #message 6 "The leprechaun catches you and holds you with his small,  but strong arms.  I don't think the leprechaun will ever let go."
-#message 7 "You are in the antechamber of the Hall of the Leprechaun King.  There is a leprechaun in the room with you."
+#ifdef VERSION_U
+  #message 7 "You are in the antechamber of the Hall of the Leprechaun King.  There is a leprechaun in the room with you."
+#else
+  #message 7 "You are in the antechamber of the Hall of the Leprechaun King.  There are leprechauns in the room with you."
+#endif
 #message 8 "You are in the antechamber of the Hall of the Leprechaun King."
 #message 9 "I can think of no good reason to close the door."
 #message 10 "They are tiny people dressed all in green."

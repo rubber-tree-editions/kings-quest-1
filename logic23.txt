@@ -123,4 +123,7 @@ LOGIC__FOOTER
 #message 4 "You have no container for water."
 #message 5 "You see the mountains and trees reflected in the mirror-like water."
 #message 6 "These cattails look soft and fuzzy."
+#ifndef VERSION_U
+  #message 7 "It seems the old goat has wandered off by himself and is no longer following you."
+#endif
 #endif

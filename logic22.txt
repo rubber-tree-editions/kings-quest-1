@@ -350,4 +350,7 @@ LOGIC__FOOTER
 #message 13 "There is no beanstalk here to climb."
 #message 14 "Ouch!"
 #message 15 "This bird doesn't talk much."
+#ifndef VERSION_U
+  #message 16 "A large cave is at the edge of this meadow."
+#endif
 #endif

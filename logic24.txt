@@ -45,10 +45,10 @@ distance(oEGO, oCLOVER, vTEMP_RESULT);
 if (said("get", "four leaf clover")) {
   if (fCLOVER_TAKEN) {
     if (fCARRYING_CLOVER) {
-      print("You already have the only fourleaf clover here.");
+      print(m3);
     }
     else {
-      print("You had, and lost, the only fourleaf clover  around.  You really don't want a threeleaf clover.");
+      print(m6);
     }
   }
   if (!fCLOVER_TAKEN) {
@@ -62,7 +62,7 @@ if (said("get", "four leaf clover")) {
       erase(oCLOVER);
     }
     else {
-      print("You really don't want any of the threeleaf clovers.");
+      print(m5);
     }
   }
 }
@@ -88,8 +88,20 @@ LOGIC__FOOTER
 #ifndef LOGIC_AS_C
 #message 1 "There is a small patch of clover under the tree."
 #message 2 "Off in the distance you see a patch of clover."
-#message 3 "You already have the only fourleaf clover here."
+#ifdef VERSION_U
+  #message 3 "You already have the only fourleaf clover here."
+#else
+  #message 3 "You already have the only four-leaf clover here."
+#endif
 #message 4 "The clover is soft, yet you sense a strange strength in it."
-#message 5 "You really don't want any of the threeleaf clovers."
-#message 6 "You had, and lost, the only fourleaf clover  around.  You really don't want a threeleaf clover."
+#ifdef VERSION_U
+  #message 5 "You really don't want any of the threeleaf clovers."
+  #message 6 "You had, and lost, the only fourleaf clover  around.  You really don't want a threeleaf clover."
+#else
+  #message 5 "You really don't want any of the three-leaf clovers."
+  #message 6 "You had, and lost, the only four-leaf clover  around.  You really don't want a three-leaf clover."
+#endif
+#ifndef VERSION_U
+  #message 7 "There is a clover patch in this meadow."
+#endif
 #endif

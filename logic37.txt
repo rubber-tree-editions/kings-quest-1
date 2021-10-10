@@ -121,4 +121,7 @@ LOGIC__FOOTER
 #message 2 "In your thirst, even swamp water is satisfying."
 #message 3 "This lake looks refreshing, but a little swampy."
 #message 4 "This is a very interesting tree, growing in the middle of the lake."
+#ifndef VERSION_U
+  #message 5 "It seems the old goat has wandered off by himself and is no longer following you."
+#endif
 #endif

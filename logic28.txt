@@ -197,4 +197,9 @@ LOGIC__FOOTER
 #message 16 "It is made of delicious chocolate chip cookies!"
 #message 17 "Yummy!"
 #message 18 "There is no answer from inside the house."
+#ifndef VERSION_U
+  #message 19 "The path leads to the door."
+  #message 20 "The path is around the corner."
+  #message 21 "You are near a little gingerbread house in a forest clearing."
+#endif
 #endif

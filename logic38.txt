@@ -231,4 +231,7 @@ LOGIC__FOOTER
 #message 6 "You can't reach the beanstalk from here."
 #message 7 "There is no beanstalk here to climb."
 #message 8 "Ouch!"
+#ifndef VERSION_U
+  #message 9 "Numerous flowers are growing in the fertile soil."
+#endif
 #endif

@@ -83,4 +83,7 @@ LOGIC__FOOTER
 #message 7 "You should really try to find the door."
 #message 8 "You need to go inside to do that."
 #message 9 "You can't do that now."
+#ifndef VERSION_U
+  #message 10 "Perhaps you should go inside the house for a better look."
+#endif
 #endif

@@ -51,9 +51,11 @@ if (controller(cTOGGLESOUND)) {
 if (controller(cCLEARINPUT)) {
   cancel.line();
 }
+#ifdef VERSION_U
 if (controller(cABOUT)) {
   print("        King's Quest\n             by\n      Roberta Williams\n\n    Original version by\nArthur Abraham, Chuck Tingley\n        Ken McNeill\n\n        Graphics by\n Doug McNeill, Greg Rowland\n\n      This version by\n       Sol Ackerman\n\n(C) 1986 Sierra On-Line, Inc.");
 }
+#endif
 if (controller(cPREVINPUT)) {
   echo.line();
 }
@@ -64,18 +66,10 @@ if (!fSAID_ACCEPTED_USER_INPUT) {
   if (said("anyword", "anyword") || said("anyword") || said("anyword", "anyword", "anyword")) {
     stop.sound();
     if (vROOM_NO == ROOM65_IN_GINGERBREAD_HOUSE) {
-#ifdef RUBBER_TREE
-      print("As you will never get out of this cage alive, I can only permit you to: Restore Game, Restart Game, Undo or Take Inventory. Sorry.");
-#else
-      print("As you will never get out of this cage alive, I can only permit you to: Restore Game, Restart Game or Take Inventory. Sorry.");
-#endif
+      print(m5);
     }
     else {
-#ifdef RUBBER_TREE
-      print("As you are dead, I can only permit you to: Restore Game,  Restart Game, Undo or Take Inventory. Sorry.");
-#else
-      print("As you are dead, I can only permit you to: Restore Game,  Restart Game or Take Inventory. Sorry.");
-#endif
+      print(m2);
     }
   }
 }
@@ -111,10 +105,18 @@ LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
 #message 1 "We, at Sierra, wish to thank you for playing King's Quest. We are very sorry that you did not succeed and hope you will fare better next time. Good luck."
-#ifdef RUBBER_TREE
-  #message 2 "As you are dead, I can only permit you to: Restore Game,  Restart Game, Undo or Take Inventory. Sorry."
+#ifdef VERSION_U
+  #ifdef RUBBER_TREE
+    #message 2 "As you are dead, I can only permit you to: Restore Game,  Restart Game, Undo or Take Inventory. Sorry."
+  #else
+    #message 2 "As you are dead, I can only permit you to: Restore Game,  Restart Game or Take Inventory. Sorry."
+  #endif
 #else
-  #message 2 "As you are dead, I can only permit you to: Restore Game,  Restart Game or Take Inventory. Sorry."
+  #ifdef RUBBER_TREE
+    #message 2 "As you can no longer continue, I can only permit you to: Restore Game,  Restart Game, Undo or Take Inventory. Sorry."
+  #else
+    #message 2 "As you can no longer continue, I can only permit you to: Restore Game,  Restart Game or Take Inventory. Sorry."
+  #endif
 #endif
 #message 3 "We, at Sierra, wish to thank you for playing King's Quest. We are pleased to see that you are doing so well and hope that your score will keep improving."
 #message 4 "We, at Sierra, wish to thank you for playing King's Quest. We are delighted by your score and hope you are enjoying the game."
@@ -123,5 +125,7 @@ LOGIC__FOOTER
 #else
   #message 5 "As you will never get out of this cage alive, I can only permit you to: Restore Game, Restart Game or Take Inventory. Sorry."
 #endif
-#message 6 "        King's Quest\n             by\n      Roberta Williams\n\n    Original version by\nArthur Abraham, Chuck Tingley\n        Ken McNeill\n\n        Graphics by\n Doug McNeill, Greg Rowland\n\n      This version by\n       Sol Ackerman\n\n(C) 1986 Sierra On-Line, Inc."
+#ifdef VERSION_U
+  #message 6 "        King's Quest\n             by\n      Roberta Williams\n\n    Original version by\nArthur Abraham, Chuck Tingley\n        Ken McNeill\n\n        Graphics by\n Doug McNeill, Greg Rowland\n\n      This version by\n       Sol Ackerman\n\n(C) 1986 Sierra On-Line, Inc."
+#endif
 #endif

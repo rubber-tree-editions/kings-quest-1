@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   prevent.input();
   rvCOUNTDOWN = 250;
   set(fSOUND_ENABLED);
-  display(22, 1, "(c) copyright SIERRA On-Line Inc.  1986");
+  display(22, 1, m19);
   display(24, 5, "Press any key to continue.");
   set.key(0, XKEY_F1, cHELP);
   set.key(0, XKEY_F2, cTOGGLESOUND);
@@ -54,6 +54,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.key(1, 1, c0);
   set.key(1, 2, cSWIM);
   set.key(1, 4, cINVENTORY);
+#ifdef VERSION_U
   set.menu("Info");
   set.menu.item("About King's Quest", cABOUT);
   set.menu.item("Help              ", cHELP);
@@ -74,6 +75,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.menu.item("Duck    -", cDUCK);
   set.menu("Sound");
   set.menu.item("Toggle Sound   <F2>", cTOGGLESOUND);
+#endif
   show.pic();
 }
 if (!rfPLAYING_SND_TITLE_MUSIC) {
@@ -81,6 +83,7 @@ if (!rfPLAYING_SND_TITLE_MUSIC) {
   sound(SND_TITLE_MUSIC, rfPLAYED_SND_TITLE_MUSIC);
 }
 rvCOUNTDOWN--;
+#ifdef VERSION_U
 if (rvCOUNTDOWN == 245) {
   display(18, 12, "Designed and    ");
 }
@@ -348,6 +351,7 @@ if (rvCOUNTDOWN == 135) {
   display(17, 12, "   Robert Heitman");
   display(18, 12, "    Scott Murphy ");
 }
+#endif
 if (have.key()) {
   clear.lines(21, 24, 0);
   stop.sound();
@@ -359,46 +363,76 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 1 "                "
-#message 2 "Designed and    "
-#message 3 "    Written by: "
-#message 4 "Roberta Williams"
-#message 5 "Orig. Version by"
-#message 6 " Charles Tingley"
-#message 7 "  Ken MacNeill  "
-#message 8 "   Chris Iden   "
-#message 9 "Graphics by:    "
-#message 10 " Doug MacNeill  "
-#message 11 "  Greg Rowland  "
-#message 12 "New Version by: "
-#message 13 " Jeff Stephenson"
-#message 14 "  Sol Ackerman  "
-#message 15 "Thanks to:      "
-#message 16 "  Mark Crowe     "
-#message 17 "   Robert Heitman"
-#message 18 "    Scott Murphy "
-#message 19 "(c) copyright SIERRA On-Line Inc.  1986"
-#message 20 "Press any key to continue."
-#message 21 " Linda Ackerman  "
-#message 22 "KQ1"
-#message 25 "Game"
-#message 26 "Inventory     <Tab>"
-#message 27 "Pause         <Esc>"
-#message 28 "Restart Game   <F9>"
-#message 29 "Quit               "
-#message 30 "Sound"
-#message 31 "Toggle Sound   <F2>"
-#message 35 "Info"
-#message 36 "About King's Quest"
-#message 37 "Help              "
-#message 40 "File"
-#message 41 "Save Game      <F5>"
-#message 42 "Restore Game   <F7>"
-#message 45 "Actions"
-#message 46 "Swim    ="
-#message 47 "Jump    0"
-#message 48 "Duck    -"
-#ifdef RUBBER_TREE
-#message 49 "Undo               "
+#ifdef VERSION_U
+  #message 1 "                "
+  #message 2 "Designed and    "
+  #message 3 "    Written by: "
+  #message 4 "Roberta Williams"
+  #message 5 "Orig. Version by"
+  #message 6 " Charles Tingley"
+  #message 7 "  Ken MacNeill  "
+  #message 8 "   Chris Iden   "
+  #message 9 "Graphics by:    "
+  #message 10 " Doug MacNeill  "
+  #message 11 "  Greg Rowland  "
+  #message 12 "New Version by: "
+  #message 13 " Jeff Stephenson"
+  #message 14 "  Sol Ackerman  "
+  #message 15 "Thanks to:      "
+  #message 16 "  Mark Crowe     "
+  #message 17 "   Robert Heitman"
+  #message 18 "    Scott Murphy "
+  #message 19 "(c) copyright SIERRA On-Line Inc.  1986"
+  #message 20 "Press any key to continue."
+#else
+  #message 1 "Designed and    "
+  #message 2 "    Written by: "
+  #message 3 "Roberta Williams"
+  #message 4 "                "
+  #message 5 "Orig. Version by"
+  #message 6 " Charles Tingley"
+  #message 7 "  Ken MacNeill  "
+  #message 8 "   Chris Iden   "
+  #message 9 "                "
+  #message 10 "Graphics by:    "
+  #message 11 " Doug MacNeill  "
+  #message 12 "  Greg Rowland  "
+  #message 13 "                "
+  #message 14 "New Version by: "
+  #message 15 " Jeff Stephenson"
+  #message 16 "  Sol Ackerman  "
+  #message 17 "   Chris Iden   "
+  #message 18 "                "
+  #message 19 "Thanks to:      "
+  #message 20 " Linda Ackerman  "
+  #message 21 "  Mark Crowe     "
+  #message 22 "   Robert Heitman"
+  #message 23 "    Scott Murphy "
+  #message 24 "(c) copyright SIERRA On-Line Inc.  1987"
+  #message 25 "Press any key to continue."
+#endif
+#ifdef VERSION_U
+  #message 21 " Linda Ackerman  "
+  #message 22 "KQ1"
+  #message 25 "Game"
+  #message 26 "Inventory     <Tab>"
+  #message 27 "Pause         <Esc>"
+  #message 28 "Restart Game   <F9>"
+  #message 29 "Quit               "
+  #message 30 "Sound"
+  #message 31 "Toggle Sound   <F2>"
+  #message 35 "Info"
+  #message 36 "About King's Quest"
+  #message 37 "Help              "
+  #message 40 "File"
+  #message 41 "Save Game      <F5>"
+  #message 42 "Restore Game   <F7>"
+  #message 45 "Actions"
+  #message 46 "Swim    ="
+  #message 47 "Jump    0"
+  #message 48 "Duck    -"
+  #ifdef RUBBER_TREE
+    #message 49 "Undo               "
+  #endif
 #endif
 #endif
