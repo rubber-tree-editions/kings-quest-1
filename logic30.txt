@@ -22,6 +22,11 @@ if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) {
     print("You already have one walnut, let's not be greedy.");
   }
 }
+#ifndef VERSION_U
+if (posn(oEGO, 9, 112, 98, 167) && (said("examine", "ground") || said("look around"))) {
+  print("These are some of the finest walnuts you have ever seen.");
+}
+#endif
 if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
   if (said("examine", "walnut")) {
     if (posn(oEGO, 9, 112, 98, 167)) {

@@ -52,10 +52,12 @@ if (rfBIRD_DROPPED_YOU) {
   set(f135_UNKNOWN);
   sound(SND_FALLING, fSOUND_END_MARKER_2);
 }
+#ifdef VERSION_U
 if (!rfHITTING_THE_GROUND && fSOUND_END_MARKER_2 && !rfFALLEN_TO_EARTH) {
   reset(fSOUND_END_MARKER_2);
   sound(SND_FALLING, fSOUND_END_MARKER_2);
 }
+#endif
 if (rfBIRD_LEFT) {
   reset(rfBIRD_LEFT);
   erase(oBIRD);

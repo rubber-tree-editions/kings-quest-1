@@ -105,10 +105,12 @@ if (fFALLING_TO_EARTH && !rfPLAYING_SND_FALLING) {
   set(f135_UNKNOWN);
   sound(SND_FALLING, rfPLAYED_SND_FALLING);
 }
+#ifdef VERSION_U
 if (!rfFALLEN_FROM_SKY && rfPLAYED_SND_FALLING) {
   reset(rfPLAYING_SND_FALLING);
   reset(rfPLAYED_SND_FALLING);
 }
+#endif
 if (rfFALLEN_FROM_SKY) {
   stop.sound();
   set(rfPLAYING_SND_FALLING);

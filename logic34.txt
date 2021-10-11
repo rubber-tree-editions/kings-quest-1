@@ -39,6 +39,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
+#ifndef VERSION_U
+if (said("examine", "room")) {
+  print("There are many smooth pebbles next to the river.");
+}
+#endif
 if (said("examine", "stream") || said("examine", "beach")) {
   print("The river is dangerous and powerful.  There is a delta of pebbles on its edge.");
 }
