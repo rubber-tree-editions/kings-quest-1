@@ -2,8 +2,13 @@
 
 LOGIC__HEADER
 
-#define rfDEAD_AND_SUNK rf0
-#define rfDEAD rf1
+#ifdef VERSION_U
+  #define rfDEAD_AND_SUNK rf0
+  #define rfDEAD rf1
+#else
+  #define rfDEAD_AND_SUNK rf1
+  #define rfDEAD rf2
+#endif
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -27,7 +32,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   }
   vCOUNTDOWN_LO = 250;
+#ifdef VERSION_U
   vCOUNTDOWN_HI = 3;
+#else
+  vCOUNTDOWN_HI = 2;
+#endif
   if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
     set(fBUCKET_FILLED);
     get("water");

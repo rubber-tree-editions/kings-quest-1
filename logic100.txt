@@ -21,47 +21,47 @@ if (fGOAT_COMPANION) {
   stop.motion(o13);
   stop.cycling(o13);
 }
-if (said("quit") || controller(cQUIT)) {
-  stop.sound();
-  quit(0);
-}
-if (said("restore", "game") || controller(cRESTORE)) {
-  stop.sound();
-  restore.game();
-}
-if (said("restart", "game") || controller(cRESTART)) {
-  stop.sound();
-  restart.game();
-}
-#ifdef RUBBER_TREE
-if (said("undo") || controller(cUNDO)) {
-  set(fUNDO);
-}
-#endif
-if (controller(cINVENTORY)) {
-  stop.sound();
-  status();
-}
-if (controller(cHELP)) {
-  call(LOGIC92_HELP);
-}
-if (controller(cTOGGLESOUND)) {
-  toggle(fSOUND_ENABLED);
-}
-if (controller(cCLEARINPUT)) {
-  cancel.line();
-}
 #ifdef VERSION_U
-if (controller(cABOUT)) {
-  print("        King's Quest\n             by\n      Roberta Williams\n\n    Original version by\nArthur Abraham, Chuck Tingley\n        Ken McNeill\n\n        Graphics by\n Doug McNeill, Greg Rowland\n\n      This version by\n       Sol Ackerman\n\n(C) 1986 Sierra On-Line, Inc.");
-}
+  if (said("quit") || controller(cQUIT)) {
+    stop.sound();
+    quit(0);
+  }
+  if (said("restore", "game") || controller(cRESTORE)) {
+    stop.sound();
+    restore.game();
+  }
+  if (said("restart", "game") || controller(cRESTART)) {
+    stop.sound();
+    restart.game();
+  }
+  #ifdef RUBBER_TREE
+    if (said("undo") || controller(cUNDO)) {
+      set(fUNDO);
+    }
+  #endif
+  if (controller(cINVENTORY)) {
+    stop.sound();
+    status();
+  }
+  if (controller(cHELP)) {
+    call(LOGIC92_HELP);
+  }
+  if (controller(cTOGGLESOUND)) {
+    toggle(fSOUND_ENABLED);
+  }
+  if (controller(cCLEARINPUT)) {
+    cancel.line();
+  }
+  if (controller(cABOUT)) {
+    print("        King's Quest\n             by\n      Roberta Williams\n\n    Original version by\nArthur Abraham, Chuck Tingley\n        Ken McNeill\n\n        Graphics by\n Doug McNeill, Greg Rowland\n\n      This version by\n       Sol Ackerman\n\n(C) 1986 Sierra On-Line, Inc.");
+  }
+  if (controller(cPREVINPUT)) {
+    echo.line();
+  }
+  if (controller(cPAUSE)) {
+    pause();
+  }
 #endif
-if (controller(cPREVINPUT)) {
-  echo.line();
-}
-if (controller(cPAUSE)) {
-  pause();
-}
 if (!fSAID_ACCEPTED_USER_INPUT) {
   if (said("anyword", "anyword") || said("anyword") || said("anyword", "anyword", "anyword")) {
     stop.sound();

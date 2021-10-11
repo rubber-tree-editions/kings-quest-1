@@ -2,6 +2,11 @@
 
 LOGIC__HEADER
 
+#ifndef VERSION_U
+#define rvCOUNTDOWN_LO rv0
+#define rvCOUNTDOWN_HI rv1
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -12,11 +17,37 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (vPREV_ROOM_NO == ROOM77_LEPRECHAUN_KING_THRONE_ROOM) {
     position(oEGO, 146, 131);
+#ifdef VERSION_U
     move.obj(oEGO, 146, 131, 0, fMISC_END_MARKER);
+#else
+    move.obj(oEGO, 145, 130, 0, fMISC_END_MARKER);
+#endif
   }
+#ifndef VERSION_U
+  if (!fCARRYING_MUSHROOM) {
+    rvCOUNTDOWN_LO = 250;
+    rvCOUNTDOWN_HI = 4;
+  }
+#endif
   draw(oEGO);
   show.pic();
 }
+#ifndef VERSION_U
+  if (!fCARRYING_MUSHROOM) {
+    rvCOUNTDOWN_LO--;
+    if (rvCOUNTDOWN_LO == 0) {
+      if (rvCOUNTDOWN_HI > 0) {
+        rvCOUNTDOWN_HI--;
+        rvCOUNTDOWN_LO = 250;
+      }
+    }
+  }
+  if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 0) {
+    stop.cycling(oEGO);
+    print("You seem to be stuck in these underground caverns.  As you have no way of leaving, it looks like you'll spend the rest of your life here." );
+    set(fGAME_OVER);
+  }
+#endif
 if (fEGO_TINY) {
   ignore.blocks(oEGO);
 }

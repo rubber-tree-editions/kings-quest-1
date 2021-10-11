@@ -15,6 +15,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 101, 137, 0, 0);
   }
+#ifndef VERSION_U
+  if (vPREV_ROOM_NO == ROOM33_RAGING_RIVER_SPLIT_BY_BOULDER) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_X > 130) {
+      position(oEGO, 140, 41);
+    }
+    if (vTEMP_X > 88 && vTEMP_X < 131) {
+      position(oEGO, 88, 41);
+    }
+  }
+#endif
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
   set(fSWIMMING_IMPOSSIBLE_HERE);

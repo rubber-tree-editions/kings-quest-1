@@ -16,11 +16,6 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#ifndef VERSION_U
-if (said("examine", "hall") || said("examine", "room") || said("examine", "castle")) {
-  print("The long marble hall has a cold, dreary feeling.");
-}
-#endif
 if (said("examine", "chandelier") || said("examine", "hall") || said("examine", "castle")) {
   print("The light from the oil lamp is rather dim in the dark interior of the castle.");
 }
@@ -33,6 +28,11 @@ if (said("examine", "knight")) {
 if (said("get", "knight")) {
   print("The armor is firmly mounted to the wall.");
 }
+#ifndef VERSION_U
+if (said("examine", "hall") || said("examine", "room") || said("examine", "castle")) {
+  print("The long marble hall has a cold, dreary feeling.");
+}
+#endif
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM54_CASTLE_HALL_CORNER);
 }

@@ -9,6 +9,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+#ifndef VERSION_U
+  set.horizon(30);
+#endif
   load.view(105);
   load.view(74);
   load.sound(SND_FALLING);
@@ -44,12 +47,14 @@ if (fFALLING_TO_EARTH && !rfFALLEN_OFF_SCREEN && !rfFALLING_SOUND_PLAYING) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   set(rfFALLING_SOUND_PLAYING);
 }
+#ifdef VERSION_U
 if (fSOUND_END_MARKER) {
   if (!rfFALLEN_OFF_SCREEN) {
     reset(rfFALLING_SOUND_PLAYING);
     reset(fSOUND_END_MARKER);
   }
 }
+#endif
 if (said("examine", "beanstalk")) {
   print("You can no longer see the bottom... it seems to go  on forever!");
 }
