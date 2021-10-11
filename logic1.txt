@@ -58,13 +58,20 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(oEGO);
   call(LOGIC101_SWIMMING);
+#ifdef VERSION_U
   if (vPREV_ROOM_NO == ROOM83_TITLE_SCREEN) {
     submit.menu();
   }
+#endif
   show.pic();
   status.line.on();
   accept.input();
 }
+#ifndef VERSION_U
+  if (said("examine", "room")) {
+    print("You are standing outside a castle surrounded by an alligator filled moat.");
+  }
+#endif
 if (said("pet", "alligators")) {
   print("What!  Are you crazy?");
 }

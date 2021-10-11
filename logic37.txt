@@ -38,6 +38,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
+#ifndef VERSION_U
+  if (f213) {
+    reset(f213);
+    print("It seems the old goat has wandered off by himself and is no longer following you.");
+  }
+#endif
 if (said("examine", "lake")) {
   print("This lake looks refreshing, but a little swampy.");
 }
@@ -94,6 +100,9 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
+#ifndef VERSION_U
+    set(f213);
+#endif
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {

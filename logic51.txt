@@ -290,7 +290,11 @@ if (!fBUCKET_FILLED) {
   }
 }
 if (posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
+#ifdef VERSION_U
   if (fCARRYING_DAGGER && said("throw", "dagger")) {
+#else
+  if (fCARRYING_DAGGER && (said("throw", "dagger") || said("throw", "dagger", "dragon"))) {
+#endif
     reset(fCARRYING_DAGGER);
     print("The dagger sings through the air, but falls short of the dragon.  You should have been closer.");
     drop("dagger");
@@ -319,11 +323,18 @@ if (!posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     drop("water");
     vSCORE -= 2;
     vSCORE += 7;
+#ifndef VERSION_U
+    set.loop(oDRAGON, 1);
+#endif
     reset(fFILL_BUCKET_POINTS);
     move.obj(oDRAGON, 40, 137, 0, rfDRAGON_AT_BOULDER);
     vDRAGON_STATE = DRAGONSTATE_ABSENT;
   }
+#ifdef VERSION_U
   if (fCARRYING_DAGGER && said("throw", "dagger")) {
+#else
+  if (fCARRYING_DAGGER && (said("throw", "dagger") || said("throw", "dagger", "dragon"))) {
+#endif
     ignore.blocks(oDRAGON);
     reset(fCARRYING_DAGGER);
     print("Nervously, you throw the dagger at the dragon and strike it in the heart.  Death for the dragon is instant.");
