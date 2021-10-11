@@ -75,6 +75,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
+#ifndef VERSION_U
+if (said("examine", "room")) {
+  print("You are in a forest clearing.  There is a large rock here.");
+}
+#endif
 if (fMOVED_ROCK) {
   ignore.blocks(oEGO);
 }

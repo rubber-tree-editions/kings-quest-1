@@ -8,7 +8,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+#ifdef VERSION_U
   set.horizon(40);
+#else
+  set.horizon(43);
+#endif
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
   if (fGOAT_COMPANION) {
