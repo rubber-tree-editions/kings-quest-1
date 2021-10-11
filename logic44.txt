@@ -76,6 +76,16 @@ if (said("examine", "doors") || said("examine", "doorway") || said("look inside"
     print("You are not close enough.");
   }
 }
+#ifndef VERSION_U
+if (said("examine", "woodcutter") || said("examine", "wife")) {
+  if (posn(oEGO, 100, 111, 133, 136)) {
+    print("Perhaps you should go inside the house for a better look.");
+  }
+  else {
+    print("You are not close enough.");
+  }
+}
+#endif
 if (posn(oEGO, 126, 119, 128, 127)) {
   new.room(ROOM79_IN_WOODCUTTER_COTTAGE);
 }

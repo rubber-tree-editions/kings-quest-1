@@ -30,6 +30,16 @@ if (said("talk", "woodcutter") || said("talk", "wife")) {
     print("You can't do that now.");
   }
 }
+#ifndef VERSION_U
+if (said("examine", "woodcutter") || said("examine", "wife")) {
+  if (posn(oEGO, 11, 119, 45, 146)) {
+    print("Perhaps you should go inside the house for a better look.");
+  }
+  else {
+    print("You could get a much better view if you were a little bit closer.");
+  }
+}
+#endif
 if (said("examine", "window") || said("look inside", "window")) {
   if (posn(oEGO, 11, 119, 45, 146)) {
     print("When you look in the window, you see a poor, starving woodcutter and his wife.");

@@ -65,15 +65,22 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
+#ifndef VERSION_U
+if (said("examine", "room")) {
+  print("Numerous flowers are growing in the fertile soil.");
+}
+#endif
 if (fFALLING_TO_EARTH && !rfPLAYING_SND_FALLING) {
   set(rfPLAYING_SND_FALLING);
   set(f135_UNKNOWN);
   sound(SND_FALLING, rfPLAYED_SND_FALLING);
 }
+#ifdef VERSION_U
 if (!rfFELL_FROM_SKY && rfPLAYED_SND_FALLING) {
   reset(rfPLAYING_SND_FALLING);
   reset(rfPLAYED_SND_FALLING);
 }
+#endif
 if (rfFELL_FROM_SKY) {
   stop.sound();
   set(rfPLAYING_SND_FALLING);

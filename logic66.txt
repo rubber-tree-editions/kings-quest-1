@@ -20,7 +20,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM) {
     position(oEGO, 132, 46);
     set.loop(oEGO, 1);
+#ifdef VERSION_U
     move.obj(oEGO, 132, 46, 0, fMISC_END_MARKER);
+#else
+    move.obj(oEGO, 131, 47, 0, fMISC_END_MARKER);
+#endif
   }
   draw(oEGO);
   show.pic();
@@ -35,6 +39,10 @@ if (said("examine", "stairway") || said("examine", "room")) {
   print("The stairs go up into the heart of the mountain.");
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING_OFF_STEPS) {
+#ifndef VERSION_U
+  set(fTENSE_SITUATION);
+  set(fTHREAT_OF_SORCERER_OR_OGRE);
+#endif
   set(rfFALLING_OFF_STEPS);
   if (!fEGO_INVISIBLE) {
     set.view(oEGO, 105);

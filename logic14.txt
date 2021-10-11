@@ -41,15 +41,22 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
+#ifndef VERSION_U
+if (said("examine", "room")) {
+  print("There is a very large oak tree here with branches stretching to the sky.");
+}
+#endif
 if (fFALLING_OUT_OF_TREE && !rfPLAYING_SND_FALLING) {
   set(rfPLAYING_SND_FALLING);
   set(f135_UNKNOWN);
   sound(SND_FALLING, fSOUND_END_MARKER_2);
 }
+#ifdef VERSION_U
 if (!rfFELL_OUT_OF_TREE && fSOUND_END_MARKER_2) {
   reset(fSOUND_END_MARKER_2);
   reset(rfPLAYING_SND_FALLING);
 }
+#endif
 rvCOUNTDOWN--;
 if (rfFELL_OUT_OF_TREE) {
   reset(rfFELL_OUT_OF_TREE);
@@ -139,6 +146,6 @@ LOGIC__FOOTER
 #message 7 "OK"
 #message 8 "OUCH!"
 #ifndef VERSION_U
-#message 9 "There is a very large oak tree here with branches stretching to the sky."
+  #message 9 "There is a very large oak tree here with branches stretching to the sky."
 #endif
 #endif

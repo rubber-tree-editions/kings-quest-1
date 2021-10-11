@@ -32,7 +32,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 if (!fCARRYING_CLOVER) {
+#ifdef VERSION_U
   if (said("examine", "four leaf clover") || said("examine", "ground")) {
+#else
+  if (said("examine", "four leaf clover") || said("examine", "ground") || said("examine", "plants")) {
+#endif
     if (posn(oEGO, 0, 77, 118, 167)) {
       print("There is a small patch of clover under the tree.");
     }
@@ -41,6 +45,11 @@ if (!fCARRYING_CLOVER) {
     }
   }
 }
+#ifndef VERSION_U
+if (said("examine", "room")) {
+  print("There is a clover patch in this meadow.");
+}
+#endif
 distance(oEGO, oCLOVER, vTEMP_RESULT);
 if (said("get", "four leaf clover")) {
   if (fCLOVER_TAKEN) {

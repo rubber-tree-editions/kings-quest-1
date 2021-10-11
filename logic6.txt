@@ -70,15 +70,22 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
+#ifndef VERSION_U
+if (said("examine", "room")) {
+  print("You are in the forest.  You can see a stump and a hollow log here.");
+}
+#endif
 if (fFALLING_TO_EARTH && !rfPLAYING_SND_FALLING) {
   set(rfPLAYING_SND_FALLING);
   set(f135_UNKNOWN);
   sound(SND_FALLING, rfPLAYED_SND_FALLING);
 }
+#ifdef VERSION_U
 if (!rfFELL_FROM_SKY && rfPLAYED_SND_FALLING) {
   reset(rfPLAYING_SND_FALLING);
   reset(rfPLAYED_SND_FALLING);
 }
+#endif
 if (rfFELL_FROM_SKY) {
   stop.sound();
   set(rfPLAYING_SND_FALLING);
@@ -283,6 +290,6 @@ LOGIC__FOOTER
 #message 16 "Ouch!"
 #message 17 "You have to find it first."
 #ifndef VERSION_U
-#message 18 "You are in the forest.  You can see a stump and a hollow log here."
+  #message 18 "You are in the forest.  You can see a stump and a hollow log here."
 #endif
 #endif
