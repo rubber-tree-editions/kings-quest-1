@@ -234,7 +234,7 @@ if ((said("restore", "game") || controller(cRESTORE)) && vROOM_NO != ROOM83_TITL
 if ((said("restart", "game") || controller(cRESTART)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
   restart.game();
 }
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
 if ((said("undo") || controller(cUNDO)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
   set(fUNDO);
 }

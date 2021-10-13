@@ -12,7 +12,9 @@
 
 #endif
 
-#define RUBBER_TREE
+#ifndef RUBBER_TREE
+  #define RUBBER_TREE 1
+#endif
 
 #include "items.txt"
 #include "words.txt"
@@ -243,7 +245,7 @@
 #define fCARRYING_SLINGSHOT f97
 #define fCYCLE_EGO_ANIMATION f98
 
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
   #define fUNDO f99
 #endif
 
@@ -375,7 +377,7 @@
 #define cHELP c18
 #define cABOUT c19
 
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
   #define cUNDO c20
 #endif
 

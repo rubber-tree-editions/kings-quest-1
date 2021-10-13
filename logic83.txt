@@ -39,7 +39,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.key(KEY_DASH, 0, cDUCK);
   set.key(KEY_0, 0, cJUMP);
 
-  #ifdef RUBBER_TREE
+  #if RUBBER_TREE
   set.key(KEY_CTRL_Z, 0, cUNDO);
   #endif
 
@@ -65,7 +65,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.menu.item("Inventory     <Tab>", cINVENTORY);
   set.menu.item("Pause         <Esc>", cPAUSE);
   set.menu.item("Restart Game   <F9>", cRESTART);
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
   set.menu.item("Undo               ", cUNDO);
 #endif
   set.menu.item("Quit               ", cQUIT);
@@ -464,7 +464,7 @@ LOGIC__FOOTER
   #message 46 "Swim    ="
   #message 47 "Jump    0"
   #message 48 "Duck    -"
-  #ifdef RUBBER_TREE
+  #if RUBBER_TREE
     #message 49 "Undo               "
   #endif
 #endif

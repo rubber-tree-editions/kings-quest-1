@@ -34,7 +34,7 @@ if (fGOAT_COMPANION) {
     stop.sound();
     restart.game();
   }
-  #ifdef RUBBER_TREE
+  #if RUBBER_TREE
     if (said("undo") || controller(cUNDO)) {
       set(fUNDO);
     }
@@ -75,7 +75,7 @@ if (!fSAID_ACCEPTED_USER_INPUT) {
     }
   }
 }
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
 if (fUNDO) {
   if (vROOM_NO == ROOM3_ROCK_OVER_HOLE
     || vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE
@@ -108,13 +108,13 @@ LOGIC__FOOTER
 #ifndef LOGIC_AS_C
 #message 1 "We, at Sierra, wish to thank you for playing King's Quest. We are very sorry that you did not succeed and hope you will fare better next time. Good luck."
 #if VERSION_U || VERSION_V
-  #ifdef RUBBER_TREE
+  #if RUBBER_TREE
     #message 2 "As you are dead, I can only permit you to: Restore Game,  Restart Game, Undo or Take Inventory. Sorry."
   #else
     #message 2 "As you are dead, I can only permit you to: Restore Game,  Restart Game or Take Inventory. Sorry."
   #endif
 #else
-  #ifdef RUBBER_TREE
+  #if RUBBER_TREE
     #message 2 "As you can no longer continue, I can only permit you to: Restore Game,  Restart Game, Undo or Take Inventory. Sorry."
   #else
     #message 2 "As you can no longer continue, I can only permit you to: Restore Game,  Restart Game or Take Inventory. Sorry."
@@ -122,7 +122,7 @@ LOGIC__FOOTER
 #endif
 #message 3 "We, at Sierra, wish to thank you for playing King's Quest. We are pleased to see that you are doing so well and hope that your score will keep improving."
 #message 4 "We, at Sierra, wish to thank you for playing King's Quest. We are delighted by your score and hope you are enjoying the game."
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
   #message 5 "As you will never get out of this cage alive, I can only permit you to: Restore Game, Restart Game, Undo or Take Inventory. Sorry."
 #else
   #message 5 "As you will never get out of this cage alive, I can only permit you to: Restore Game, Restart Game or Take Inventory. Sorry."
