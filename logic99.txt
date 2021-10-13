@@ -91,6 +91,12 @@ return;
 #message 14 "%m12%w2"
 #message 15 "%m12%w3"
 #message 16 "No response to input."
+#if VERSION_S
+  #message 17 "%v72|3/%v73|3"
+  #message 97 "  "
+  #message 98 "W "
+  #message 99 " W"
+#endif
 #endif
 
 LOGIC__FOOTER

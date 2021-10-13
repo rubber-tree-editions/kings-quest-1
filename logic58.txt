@@ -439,4 +439,7 @@ LOGIC__FOOTER
 #message 30 "The giant is sleeping with a chest."
 #message 31 "The giant lies dead on the ground and there is a chest beside him."
 #message 32 "The giant is to close for the slingshot to be effective.  I would suggest you RUN!"
+#if VERSION_S
+  #message 99 "BREAK"
+#endif
 #endif

@@ -1026,6 +1026,8 @@ LOGIC__FOOTER
   #message 17 "VERSION 2.0F"
 #elif VERSION_C
   #message 17 "VERSION 2.0C"
+#elif VERSION_S
+  #message 17 "  King's Quest \n\nApple IIgs Version \n\n    1.0S-88223 \n"
 #endif
 #message 18 "You already have a carrot."
 #message 19 "You already ate the carrot."
@@ -1106,23 +1108,39 @@ LOGIC__FOOTER
   #endif
   #message 152 "About KQ"
   #message 153 "File"
-  #message 154 "Save Game      <F5>"
-  #message 155 "Restore Game   <F7>"
-  #message 156 "-------------------"
-  #message 157 "Restart Game   <F9>"
-  #ifdef VERSION_C
-    #message 158 "Pause         <Esc>"
+  #ifdef VERSION_S
+    #message 154 "Save Game      <Shift-5>"
+    #message 155 "Restore Game   <Shift-7>"
   #else
-    #message 158 "Pause             <Esc>"
+    #message 154 "Save Game      <F5>"
+    #message 155 "Restore Game   <F7>"
   #endif
-  #message 159 "Quit        <Alt Z>"
+  #message 156 "-------------------"
+  #if VERSION_S
+    #message 157 "Restart Game   <Shift-9>"
+    #message 158 "Pause           <Esc>"
+    #message 159 "Quit        <Option-Z>"
+  #else
+    #message 157 "Restart Game   <F9>"
+    #ifdef VERSION_C
+      #message 158 "Pause         <Esc>"
+    #else
+      #message 158 "Pause             <Esc>"
+    #endif
+    #message 159 "Quit        <Alt Z>"
+  #endif
   #message 160 "Game"
   #message 161 "Inventory     <Tab>"
-  #message 162 "See Object     <F4>"
-  #ifdef VERSION_C
-    #message 163 "Toggle Sound   <F2>"
+  #if VERSION_S
+    #message 162 "See Object     <Shift-4>"
+    #message 163 "Sound On/Off   <Shift-2>"
   #else
-    #message 163 "Sound On/Off       <F2>"
+    #message 162 "See Object     <F4>"
+    #ifdef VERSION_C
+      #message 163 "Toggle Sound   <F2>"
+    #else
+      #message 163 "Sound On/Off       <F2>"
+    #endif
   #endif
   #ifdef VERSION_C
     #message 164 "Action"
@@ -1141,11 +1159,20 @@ LOGIC__FOOTER
   #message 170 "Normal"
   #message 171 "Fast  "
   #message 172 "Slow  "
-  #message 173 "King's Quest was designed by Roberta Williams."
+  #ifdef VERSION_S
+    #message 173 "   King's Quest\n\nby Roberta Williams.\n"
+  #else
+    #message 173 "King's Quest was designed by Roberta Williams."
+  #endif
   #message 174 "Jump  0"
   #message 175 "Duck  -"
   #ifndef VERSION_C
     #message 176 "Joystick/Mouse <Ctrl J>"
   #endif
+#endif
+#ifdef VERSION_S
+  #message 197 "You already have the beans."
+  #message 198 "PQ"
+  #message 199 "KQ"
 #endif
 #endif

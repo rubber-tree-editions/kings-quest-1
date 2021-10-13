@@ -400,6 +400,8 @@ LOGIC__FOOTER
 #message 56 "Your concern for the old king won't allow you to move."
 #if VERSION_U || VERSION_V
   #message 57 "    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stevenson                 Mark Crowe            Bob Ballew   Mikel Knight             Susan Lee          "
+#elif VERSION_S
+  #message 57 "    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stephenson                 Mark Crowe            Bob Ballew   Carlos Escobar     Susan Lee    Russ Truelove         Dale Carlson        "
 #else
   #message 57 "    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stephenson                 Mark Crowe            Bob Ballew   Mikel Knight     Susan Lee    Russ Truelove         Larry Weissenborn   "
 #endif

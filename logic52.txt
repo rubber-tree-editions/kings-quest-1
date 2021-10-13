@@ -135,4 +135,7 @@ LOGIC__FOOTER
 #message 8 "The rusty old can has been here awhile."
 #message 9 "You have no use for this old can."
 #message 10 "Thrashing around in the water has caused you to lose the magic ring and become visible again."
+#if VERSION_S
+  #message 99 "BREAK"
+#endif
 #endif

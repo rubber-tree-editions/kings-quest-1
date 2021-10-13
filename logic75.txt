@@ -303,4 +303,7 @@ LOGIC__FOOTER
 #message 25 "The rat scrambles to the wall and seems to magically merge with it."
 #message 26 "That is a good idea, but you do not have any cheese."
 #message 27 "You count your fingers and are relieved to see you still have all of them."
+#if VERSION_S
+  #message 99 "BREAK"
+#endif
 #endif

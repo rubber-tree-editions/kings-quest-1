@@ -88,7 +88,11 @@ if (rfEGO_FINISHED_ANIMATING) {
   }
   if (rfBECAME_FULL_SIZE_DURING_FALL) {
     reset(rfBECAME_FULL_SIZE_DURING_FALL);
+#if VERSION_S
+    print("When you fell through the hole, you felt a stretching sensation and are back to your normal size.");
+#else
     print("When you fell through the hole, you felt a streching sensation and are back to your normal size.");
+#endif
   }
 }
 rvCOUNTDOWN--;
@@ -104,5 +108,9 @@ LOGIC__FOOTER
 #message 2 "The warm sunlight falls through the hole in the ceiling.  Unfortunately, you can't reach it."
 #message 3 "The dark tunnel leads off to the south."
 #message 4 "OUCH!"
-#message 5 "When you fell through the hole, you felt a streching sensation and are back to your normal size."
+#if VERSION_S
+  #message 5 "When you fell through the hole, you felt a stretching sensation and are back to your normal size."
+#else
+  #message 5 "When you fell through the hole, you felt a streching sensation and are back to your normal size."
+#endif
 #endif
