@@ -13,8 +13,10 @@ if (vERROR_CODE > 0) {
 if (vROOM_NO == ROOM_NULL) {
   set.game.id("KQ1");
   script.size(100);
+#if VERSION_U
   set(fJOYSTICK_SENSITIVITY_ENABLED);
   vJOYSTICK_SENSITIVITY = 3;
+#endif
   vMAX_SCORE = 158;
   vTEMP_CYCLE_DELAY = 2;
   vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
@@ -105,12 +107,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.string(sPROMPT, ">");
   set.cursor.char("_");
 }
+#if VERSION_V
+  get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
+#endif
 if (fGAME_OVER) {
   if (!fGAME_OVER_PREPARATION) {
-    disable.item(cSAVE);
-    disable.item(cJUMP);
-    disable.item(cSWIM);
-    disable.item(cDUCK);
+    #if VERSION_U
+      disable.item(cSAVE);
+      disable.item(cJUMP);
+      disable.item(cSWIM);
+      disable.item(cDUCK);
+    #endif
     load.logics(LOGIC100_GAME_OVER);
     load.sound(SND_GAME_OVER);
     vGAME_OVER_MESSAGE_COUNTDOWN = 40;
@@ -121,12 +128,21 @@ if (fGAME_OVER) {
   call(LOGIC100_GAME_OVER);
   return;
 }
+#if VERSION_U
 if (controller(cHELP) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+#else
+if (controller(cHELP)) {
+#endif
   call(LOGIC92_HELP);
 }
 if (controller(cTOGGLESOUND)) {
   toggle(fSOUND_ENABLED);
 }
+#if VERSION_V
+  if (controller(cTOGGLEGFX)) {
+    toggle.monitor();
+  }
+#endif
 if (controller(cINITJOYSTICK)) {
   init.joy();
 }
@@ -188,22 +204,38 @@ if (vROOM_NO > ROOM52_IN_WELL_UNDERWATER
     print("You need to be in water to swim.");
   }
 }
-get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
-if (vEGO_DIR == vSAVED_EGO_DIR && vTEMP_X_2 == vSAVED_EGO_X && vTEMP_Y_2 == vSAVED_EGO_Y) {
-  stop.cycling(oEGO);
+#if VERSION_U
+  get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
+#else
+  if (vEGO_DIR == DIR_NONE) {
+    if (fCYCLE_EGO_ANIMATION) {
+      start.cycling(oEGO);
+    }
+    else {
+      stop.cycling(oEGO);
+    }
+  }
+  else if (!fSCRIPTED_MOTION)
+#endif
+{
+  if (vEGO_DIR == vSAVED_EGO_DIR && vTEMP_X_2 == vSAVED_EGO_X && vTEMP_Y_2 == vSAVED_EGO_Y) {
+    stop.cycling(oEGO);
+  }
+  else {
+    start.cycling(oEGO);
+  }
 }
-else {
-  start.cycling(oEGO);
-}
-vSAVED_EGO_X = vTEMP_X_2;
-vSAVED_EGO_Y = vTEMP_Y_2;
-vSAVED_EGO_DIR = vEGO_DIR;
-if (fCYCLE_EGO_ANIMATION) {
-  start.cycling(oEGO);
-}
-else if (__OR__(vEGO_DIR <= DIR_NONE)) {
-  stop.cycling(oEGO);
-}
+#if VERSION_U
+  vSAVED_EGO_X = vTEMP_X_2;
+  vSAVED_EGO_Y = vTEMP_Y_2;
+  vSAVED_EGO_DIR = vEGO_DIR;
+  if (fCYCLE_EGO_ANIMATION) {
+    start.cycling(oEGO);
+  }
+  else if (__OR__(vEGO_DIR <= DIR_NONE)) {
+    stop.cycling(oEGO);
+  }
+#endif
 if (controller(cDEBUG)) {
   load.logics(LOGIC99_DEBUG);
   set(fDEBUG_MODE);
@@ -222,24 +254,48 @@ if (said("slow")) {
   vTEMP_CYCLE_DELAY = 4;
   vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
 }
+#if VERSION_V
+if ((said("quit") || controller(cQUIT))) {
+#else
 if ((said("quit") || controller(cQUIT)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+#endif
   quit(0);
 }
+#if VERSION_V
+if ((said("save", "game") || controller(cSAVE))) {
+#else
 if ((said("save", "game") || controller(cSAVE)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+#endif
   save.game();
 }
+#if VERSION_V
+if ((said("restore", "game") || controller(cRESTORE))) {
+#else
 if ((said("restore", "game") || controller(cRESTORE)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+#endif
   restore.game();
 }
+#if VERSION_V
+if ((said("restart", "game") || controller(cRESTART))) {
+#else
 if ((said("restart", "game") || controller(cRESTART)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+#endif
   restart.game();
 }
 #if RUBBER_TREE
-if ((said("undo") || controller(cUNDO)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
-  set(fUNDO);
-}
+#if VERSION_V
+  if ((said("undo") || controller(cUNDO))) {
+#else
+  if ((said("undo") || controller(cUNDO)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
 #endif
+    set(fUNDO);
+  }
+#endif
+#if VERSION_V
+if (controller(cINVENTORY)) {
+#else
 if (controller(cINVENTORY) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+#endif
   status();
 }
 if (controller(cPREVINPUT)) {
@@ -997,6 +1053,10 @@ if (fDEBUG_MODE) {
 }
 call.v(vROOM_NO);
 call(LOGIC102_DEFAULT_RESPONSES);
+#if VERSION_V
+get.posn(oEGO, vSAVED_EGO_X, vSAVED_EGO_Y);
+vSAVED_EGO_DIR = vEGO_DIR;
+#endif
 return;
 
 LOGIC__FOOTER

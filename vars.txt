@@ -372,6 +372,7 @@
 #define cCLEARINPUT c12
 #define cPREVINPUT c13
 #define cPAUSE c14
+#define cTOGGLEGFX c15
 #define cSHOWPRIORITY c16
 #define cTOGGLESOUND c17
 #define cHELP c18

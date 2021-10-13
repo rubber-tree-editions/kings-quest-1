@@ -14,6 +14,10 @@ LOGIC__HEADER
 #define oGATOR2 o12
 
 if (fROOM_SCRIPT_EXECUTED) {
+#if VERSION_V
+  set(fJOYSTICK_SENSITIVITY_ENABLED);
+  vJOYSTICK_SENSITIVITY = 3;
+#endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
@@ -58,7 +62,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(oEGO);
   call(LOGIC101_SWIMMING);
-#if VERSION_U || VERSION_V
+#if VERSION_U
   if (vPREV_ROOM_NO == ROOM83_TITLE_SCREEN) {
     submit.menu();
   }

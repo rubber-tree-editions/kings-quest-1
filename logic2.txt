@@ -185,6 +185,9 @@ if (!fGOAT_COMPANION && !fNO_BUSINESS_WITH_KING) {
       start.update(oCASTLE_DOORS);
       sound(SND_CASTLE_DOOR_FANFARE, rfFANFARE_FINISHED);
       end.of.loop(oCASTLE_DOORS, rfDOORS_FINISHED_OPENING);
+      #if VERSION_V
+        stop.motion(oEGO);
+      #endif
       set.priority(oEGO, 15);
       print("The huge doors swing open slowly.");
       if (!fPOINTS_FOR_ENTERING_CASTLE) {
