@@ -8,6 +8,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+#if VERSION_S
+  load.sound(23);
+#endif
   set.horizon(46);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
@@ -69,11 +72,20 @@ if (posn(oEGO, 87, 54, 159, 65)
 else {
   reset(rfON_CARROT_PATCH);
 }
+#if VERSION_S
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  if (vTEMP_Y < 60) {
+    reset(rfON_CARROT_PATCH);
+  }
+#endif
 if (rfON_CARROT_PATCH) {
   if (!fCARRYING_CARROT && said("examine", "carrot")) {
     print("There are many large, plump carrots in the garden.");
   }
   if (!fCARRYING_CARROT && said("get", "carrot")) {
+#if VERSION_S
+    sound(23, fMISC_END_MARKER);
+#endif
     print("You pluck a plump, orange carrot from the ground.");
     set(fCARRYING_CARROT);
     reset(fCARROT_EATEN);

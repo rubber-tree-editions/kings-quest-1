@@ -68,7 +68,12 @@ if (rfFELL_OUT_OF_TREE) {
   rvCOUNTDOWN = 20;
   set(fCYCLE_EGO_ANIMATION);
   shake.screen(2);
-  print("OUCH!");
+#if VERSION_S
+  if (!fSOUND_ENABLED)
+#endif
+  {
+    print("OUCH!");
+  }
   sound(SND_OUCH, fSOUND_END_MARKER);
 }
 if (fSOUND_END_MARKER) {

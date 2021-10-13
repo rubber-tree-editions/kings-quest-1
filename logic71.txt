@@ -59,6 +59,10 @@ if (said("examine", "beanstalk")) {
   print("You can no longer see the bottom... it seems to go  on forever!");
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !fFALLING_TO_EARTH) {
+  #if VERSION_S
+    set(f215);
+    set(fFALLING);
+  #endif
   program.control();
   print("You have to be careful when you get so high on the foliage!");
   get.posn(oEGO, vTEMP_X, vTEMP_Y);

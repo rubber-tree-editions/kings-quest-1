@@ -6,6 +6,15 @@ vGAME_OVER_MESSAGE_COUNTDOWN--;
 if (vGAME_OVER_MESSAGE_COUNTDOWN == 1) {
   vGAME_OVER_MESSAGE_COUNTDOWN = 0;
   sound(SND_GAME_OVER, fMISC_END_MARKER);
+#if VERSION_S
+  if ((vROOM_NO == ROOM46_OGRE_STOMPING_GROUND) || (vROOM_NO == ROOM77_LEPRECHAUN_KING_THRONE_ROOM)) {
+    load.view(114);
+    erase(oEGO);
+    set.view(oEGO, 114);
+    stop.cycling(oEGO);
+    draw(oEGO);
+  }
+#endif
   if (vSCORE < 50) {
     print("We, at Sierra, wish to thank you for playing King's Quest. We are very sorry that you did not succeed and hope you will fare better next time. Good luck.");
   }

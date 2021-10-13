@@ -9,6 +9,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(40);
+#if VERSION_S
+  load.sound(47);
+#endif
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
   }
@@ -31,8 +34,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   set(fSWIMMING_IMPOSSIBLE_HERE);
   ignore.blocks(oEGO);
   draw(oEGO);
+#if VERSION_S
+  set(rf1);
+#endif
   show.pic();
 }
+#if VERSION_S
+  if (!rfPULLED_UNDERWATER && rf1 && !f211) {
+    sound(47, rf1);
+  }
+#endif
 if (fEGO_ON_WATER && !rfPULLED_UNDERWATER) {
   set(rfPULLED_UNDERWATER);
   print("Oh No!  That's such a dangerous river... the current is too strong... you won't be able to escape!");
