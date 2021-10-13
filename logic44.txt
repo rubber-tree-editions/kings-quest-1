@@ -76,7 +76,7 @@ if (said("examine", "doors") || said("examine", "doorway") || said("look inside"
     print("You are not close enough.");
   }
 }
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 if (said("examine", "woodcutter") || said("examine", "wife")) {
   if (posn(oEGO, 100, 111, 133, 136)) {
     print("Perhaps you should go inside the house for a better look.");
@@ -119,7 +119,7 @@ LOGIC__FOOTER
 #message 8 "When you look in the doorway, you see a poor, starving woodcutter and his wife."
 #message 9 "You are not close enough."
 #message 10 "How are you going to use the ax when you can't even get it out of this stump?"
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
   #message 11 "Perhaps you should go inside the house for a better look."
 #endif
 #endif

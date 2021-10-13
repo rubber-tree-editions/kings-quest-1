@@ -138,7 +138,7 @@ LOGIC__FOOTER
 #message 3 "You are not close enough to the water."
 #message 4 "These cattails are soft and fuzzy."
 #message 5 "This is a serene mountain lake."
-#ifndef VERSION_U
-#message 6 "It seems the old goat has wandered off by himself and is no longer following you."
+#if !VERSION_U && !VERSION_V
+  #message 6 "It seems the old goat has wandered off by himself and is no longer following you."
 #endif
 #endif

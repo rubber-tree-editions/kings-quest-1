@@ -32,7 +32,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 if (!fCARRYING_CLOVER) {
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
   if (said("examine", "four leaf clover") || said("examine", "ground")) {
 #else
   if (said("examine", "four leaf clover") || said("examine", "ground") || said("examine", "plants")) {
@@ -45,7 +45,7 @@ if (!fCARRYING_CLOVER) {
     }
   }
 }
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 if (said("examine", "room")) {
   print("There is a clover patch in this meadow.");
 }
@@ -97,20 +97,20 @@ LOGIC__FOOTER
 #ifndef LOGIC_AS_C
 #message 1 "There is a small patch of clover under the tree."
 #message 2 "Off in the distance you see a patch of clover."
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
   #message 3 "You already have the only fourleaf clover here."
 #else
   #message 3 "You already have the only four-leaf clover here."
 #endif
 #message 4 "The clover is soft, yet you sense a strange strength in it."
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
   #message 5 "You really don't want any of the threeleaf clovers."
   #message 6 "You had, and lost, the only fourleaf clover  around.  You really don't want a threeleaf clover."
 #else
   #message 5 "You really don't want any of the three-leaf clovers."
   #message 6 "You had, and lost, the only four-leaf clover  around.  You really don't want a three-leaf clover."
 #endif
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
   #message 7 "There is a clover patch in this meadow."
 #endif
 #endif

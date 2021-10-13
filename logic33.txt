@@ -8,7 +8,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
   set.horizon(40);
 #else
   set.horizon(43);

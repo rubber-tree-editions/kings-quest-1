@@ -230,7 +230,7 @@ LOGIC__FOOTER
 #message 15 "There is a clear mountain lake and some trees here."
 #message 16 "Silly!  You can't get close enough to do that."
 #message 17 "You are too far away."
-#ifndef VERSION_U
-#message 18 "It seems the old goat has wandered off by himself and is no longer following you."
+#if !VERSION_U && !VERSION_V
+  #message 18 "It seems the old goat has wandered off by himself and is no longer following you."
 #endif
 #endif

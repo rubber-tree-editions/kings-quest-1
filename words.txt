@@ -1,5 +1,5 @@
 #word 0 a, all, an, another, antique, around, at, down, every, first, for, from, gingerbread, guess, i, in, into, is, little, me, now, of, off, old, on, out, over, please, second, sir, some, that, the, these, third, this, those, through, to, under, up, will, with, you, your
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #word 0 hollow
 #endif
 #word 1 anyword
@@ -60,7 +60,7 @@
 #word 53 island
 #word 54 kill, murder
 #word 55 flag, flags
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #word 55 banner, banners
 #endif
 #word 56 waterfall
@@ -69,16 +69,16 @@
 #word 59 goat
 #word 60 call
 #word 61 carrot
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #word 61 carrots
 #endif
 #word 62 "get in"
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #word 62 "get into"
 #endif
 #word 63 gate
 #word 64 garden
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #word 64 "carrot patch"
 #endif
 #word 65 elf
@@ -91,12 +91,12 @@
 #word 72 knob
 #word 73 unlock
 #word 74 clover, "four leaf clover", "fourleaf clover"
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #word 74 "four-leaf clover"
 #endif
 #word 75 "gold key", key
 #word 76 cave
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #word 76 cavern, chamber
 #endif
 #word 77 hall
@@ -108,7 +108,7 @@
 #word 83 bowl
 #word 84 pebbles
 #word 85 pump
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #word 85 "water pump"
 #endif
 #word 86 ax, axe, hatchet
@@ -127,11 +127,11 @@
 #word 99 consume, eat
 #word 100 kitchen
 #word 101 cabinet, cupboard
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #word 101 cabinets
 #endif
 #word 102 can
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #word 102 cans
 #endif
 #word 103 table
@@ -139,7 +139,7 @@
 #word 105 pound
 #word 106 well
 #word 107 bottle
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #word 107 bottles
 #endif
 #word 108 egg, "gold egg", "golden egg"
@@ -193,7 +193,7 @@
 #word 156 cut
 #word 157 "get out", leave
 #word 158 oven, stove
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #word 158 woodstove
 #endif
 #word 159 normal
@@ -207,7 +207,7 @@
 #word 167 note
 #word 168 move, pull, push, shove
 #word 169 rumplestiltskin
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #word 169 rumpelstiltskin
 #endif
 #word 170 nikstlitselpmur
@@ -244,7 +244,7 @@
 #word 201 point
 #word 202 let
 #word 203 "look in", "look inside"
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #word 203 "look into"
 #endif
 #word 204 thank, "thank you"
@@ -295,7 +295,7 @@
 #word 249 lake, pond
 #word 250 oak
 #word 251 view
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #word 252 curtain, curtains
 #word 253 shelf
 #word 254 roof

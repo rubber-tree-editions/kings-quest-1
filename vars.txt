@@ -17,7 +17,7 @@
 #include "items.txt"
 #include "words.txt"
 
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
 #define iRING "ring"
 #else
 #define iRING "magic ring"

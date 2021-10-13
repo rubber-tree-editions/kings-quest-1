@@ -398,7 +398,7 @@ LOGIC__FOOTER
 #message 54 "Press any key to continue."
 #message 55 "There is no need to bow again."
 #message 56 "Your concern for the old king won't allow you to move."
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
   #message 57 "    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stevenson                 Mark Crowe            Bob Ballew   Mikel Knight             Susan Lee          "
 #else
   #message 57 "    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stephenson                 Mark Crowe            Bob Ballew   Mikel Knight     Susan Lee    Russ Truelove         Larry Weissenborn   "
@@ -406,7 +406,7 @@ LOGIC__FOOTER
 #message 58 "The king cannot talk right now."
 #message 59 "That is no way to try and address King Edward."
 #message 60 "The spell to make you invisible has expired and you are once again visible."
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
   #message 61 "That man is the King."
 #endif
 #endif

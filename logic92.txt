@@ -7,7 +7,7 @@ status.line.off();
 text.screen();
 vKEY_PRESSED = 0;
 reset(fSAID_ACCEPTED_USER_INPUT);
-#ifdef VERSION_U
+#if VERSION_U
   display(2, 1, m1);
   display(3, 1, m2);
   if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
@@ -77,7 +77,7 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#ifdef VERSION_U
+#if VERSION_U
   #message 1 "          KING'S QUEST"
   #message 2 "             Help"
   #message 3 "F1 displays this message."
@@ -102,7 +102,7 @@ LOGIC__FOOTER
   #message 3 "    F1 displays this message."
   #message 4 "    F2 turns the sound off and on."
   #message 5 "    F3 retypes the last line typed."
-  #ifdef VERSION_C
+  #if VERSION_C || VERSION_V
     #message 7 "    F5 saves your current game."
     #message 9 "    F7 restores a saved game."
     #message 11 "    F9 restarts the game."

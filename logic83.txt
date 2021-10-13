@@ -54,7 +54,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.key(1, 1, c0);
   set.key(1, 2, cSWIM);
   set.key(1, 4, cINVENTORY);
-#ifdef VERSION_U
+#if VERSION_U
   set.menu("Info");
   set.menu.item("About King's Quest", cABOUT);
   set.menu.item("Help              ", cHELP);
@@ -83,7 +83,7 @@ if (!rfPLAYING_SND_TITLE_MUSIC) {
   sound(SND_TITLE_MUSIC, rfPLAYED_SND_TITLE_MUSIC);
 }
 rvCOUNTDOWN--;
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
 if (rvCOUNTDOWN == 245) {
   display(18, 12, "Designed and    ");
 }
@@ -363,7 +363,7 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
   #message 1 "                "
   #message 2 "Designed and    "
   #message 3 "    Written by: "
@@ -411,9 +411,11 @@ LOGIC__FOOTER
   #message 24 "(c) copyright SIERRA On-Line Inc.  1987"
   #message 25 "Press any key to continue."
 #endif
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
   #message 21 " Linda Ackerman  "
   #message 22 "KQ1"
+#endif
+#if VERSION_U
   #message 25 "Game"
   #message 26 "Inventory     <Tab>"
   #message 27 "Pause         <Esc>"

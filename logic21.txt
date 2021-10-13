@@ -204,7 +204,7 @@ LOGIC__FOOTER
 #message 15 "Lucky for you that you are invisible, the witch can't find you."
 #message 16 "There is no way you can now."
 #message 17 "There is no reason to jump now."
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
   #message 18 "Oh NO!!  She's back!!!"
 #endif
 #endif

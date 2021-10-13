@@ -39,7 +39,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 if (said("examine", "room")) {
   print("There are many smooth pebbles next to the river.");
 }
@@ -166,7 +166,7 @@ LOGIC__FOOTER
 #message 10 "From here it looks like an ordinary delta of pebbles."
 #message 11 "You are not close enough to the pebbles to get them."
 #message 12 "Your swimming attempt proved fatal!  The raging current drags you under... you are lost...."
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
   #message 13 "There are many smooth pebbles next to the river."
 #endif
 #endif

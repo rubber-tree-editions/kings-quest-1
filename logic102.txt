@@ -458,7 +458,7 @@ LOGIC__FOOTER
 #message 33 "You have better things to do than to play all day."
 #message 34 "What would you like to climb?"
 #message 35 "Well.  Go look for it."
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
   #message 36 "This is a very beautiful tree."
   #message 37 "This is just a normal tree, but very pretty."
   #message 38 "You admire the beauty of the tree."

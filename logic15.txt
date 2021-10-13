@@ -25,7 +25,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 if (said("examine", "room")) {
   print("You see an old stone wall surrounding a well kept garden.");
 }
@@ -37,21 +37,21 @@ if (said("examine", "garden")
 ) {
   print("This is a well-tended carrot patch.  The carrots look tempting to a hungry traveler.");
 }
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
 if (said("examine", "fence")) {
 #else
 if (said("examine", "fence") || said("examine", "wall")) {
 #endif
   print("This is a relatively low, rustic stone fence which runs along the left and rear sides of the garden.");
 }
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
 if (said("climb", "fence")) {
 #else
 if (said("climb", "fence") || said("climb", "wall")) {
 #endif
   print("There is no reason to climb the fence.");
 }
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
 if (said("jump", "fence")) {
 #else
 if (said("jump", "fence") || said("jump", "wall")) {
@@ -126,7 +126,7 @@ LOGIC__FOOTER
 #message 7 "The carrots are buried in the ground.  You must get  closer to see them."
 #message 8 "You must be in the carrot patch to pick a carrot."
 #message 9 "You do not have a carrot to eat."
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
   #message 10 "You see an old stone wall surrounding a well kept garden."
 #endif
 #endif

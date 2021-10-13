@@ -108,7 +108,7 @@ if (!fBOWL_TAKEN) {
       print("It looks like an interesting, colorful bowl.");
     }
   }
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
   if (said("examine", "ground")) {
 #else
   if (said("examine", "ground") || said("examine", "room")) {
@@ -190,7 +190,7 @@ if (fEGO_CLIMBING_BEANSTALK) {
   }
 }
 rvCOUNTDOWN--;
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
   if (!rfFELL_FROM_SKY && rfPLAYED_SND_FALLING) {
     reset(rfPLAYING_SND_FALLING);
     reset(rfPLAYED_SND_FALLING);

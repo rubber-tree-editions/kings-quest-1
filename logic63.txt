@@ -28,7 +28,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.priority(oEGO, 6);
   position(oEGO, 35, 164);
   observe.blocks(oEGO);
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
   vEGO_DIR = 0;
 #endif
   if (rfSHOW_GOLDEN_EGG) {

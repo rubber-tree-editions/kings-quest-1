@@ -19,7 +19,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM68_MOUNTAIN_STAIRWAY_NEAR_TOP) {
     position(oEGO, 144, 155);
     set.loop(oEGO, 1);
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
     move.obj(oEGO, 144, 155, 0, fMISC_END_MARKER);
 #else
     move.obj(oEGO, 143, 154, 0, fMISC_END_MARKER);
@@ -35,7 +35,7 @@ if (said("examine", "opening")) {
   print("You can see sky, light, and smell clouds through the opening.");
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING_OFF_STEPS) {
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
   set(fTENSE_SITUATION);
   set(fTHREAT_OF_SORCERER_OR_OGRE);
 #endif

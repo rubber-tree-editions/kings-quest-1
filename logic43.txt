@@ -109,7 +109,7 @@ LOGIC__FOOTER
 #message 1 "The crystal clear water fills up the bucket."
 #message 2 "It tastes very refreshing to a thirsty wanderer."
 #message 3 "The clear blue lake is surrounded by a pretty meadow."
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
   #message 4 "It seems the old goat has wandered off by himself and is no longer following you."
 #endif
 #endif

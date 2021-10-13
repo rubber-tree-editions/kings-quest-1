@@ -65,7 +65,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 if (said("examine", "room")) {
   print("Numerous flowers are growing in the fertile soil.");
 }
@@ -75,7 +75,7 @@ if (fFALLING_TO_EARTH && !rfPLAYING_SND_FALLING) {
   set(f135_UNKNOWN);
   sound(SND_FALLING, rfPLAYED_SND_FALLING);
 }
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
 if (!rfFELL_FROM_SKY && rfPLAYED_SND_FALLING) {
   reset(rfPLAYING_SND_FALLING);
   reset(rfPLAYED_SND_FALLING);
@@ -238,7 +238,7 @@ LOGIC__FOOTER
 #message 6 "You can't reach the beanstalk from here."
 #message 7 "There is no beanstalk here to climb."
 #message 8 "Ouch!"
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
   #message 9 "Numerous flowers are growing in the fertile soil."
 #endif
 #endif

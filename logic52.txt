@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
   #define rfDEAD_AND_SUNK rf0
   #define rfDEAD rf1
 #else
@@ -32,7 +32,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   }
   vCOUNTDOWN_LO = 250;
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
   vCOUNTDOWN_HI = 3;
 #else
   vCOUNTDOWN_HI = 2;
@@ -125,7 +125,7 @@ LOGIC__FOOTER
 #message 2 "This looks like typical well water."
 #message 3 "It looks like this bottle has been here for a very long time."
 #message 4 "This is just an old, junky bottle.  You don't want it."
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
   #message 5 "You are at the bottom of th well.  Through the plants you spy what seems to be a hole in the side of the well."
 #else
   #message 5 "You are at the bottom of the well.  Through the plants you spy what seems to be a hole in the side of the well."

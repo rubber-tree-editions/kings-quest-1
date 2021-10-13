@@ -629,7 +629,7 @@ LOGIC__FOOTER
 #message 60 "As soon as you entered the house the goat ran away."
 #message 61 "Now is not a good time to try and start a conversation!"
 #message 62 "Be thankful that you are invisible or the witch may have stuck around to try and catch you!"
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
   #message 63 "You need to be more specific."
   #message 64 "It looks like an ordinary bedroom."
 #endif
