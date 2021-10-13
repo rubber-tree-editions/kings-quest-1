@@ -21,7 +21,7 @@ if (fGOAT_COMPANION) {
   stop.motion(o13);
   stop.cycling(o13);
 }
-#if VERSION_U
+#if VERSION_U || VERSION_V
   if (said("quit") || controller(cQUIT)) {
     stop.sound();
     quit(0);
@@ -43,6 +43,8 @@ if (fGOAT_COMPANION) {
     stop.sound();
     status();
   }
+#endif
+#if VERSION_U
   if (controller(cHELP)) {
     call(LOGIC92_HELP);
   }
