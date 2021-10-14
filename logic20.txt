@@ -127,7 +127,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-#if !VERSION_U && !VERSION_V && !VERSION_C
+#if VERSION_S
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_X > 13 && vTEMP_X <  133) {
     set(fTENSE_SITUATION);
