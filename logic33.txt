@@ -13,6 +13,9 @@ if (fROOM_SCRIPT_EXECUTED) {
 #else
   set.horizon(43);
 #endif
+#if VERSION_S
+  load.sound(47);
+#endif
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
   if (fGOAT_COMPANION) {
@@ -31,7 +34,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
+#if VERSION_S
+  set(rf1);
+#endif
 }
+#if VERSION_S
+  if (!rfPULLED_UNDERWATER && rf1 && !fEGO_ON_WATER && !f211 && !posn(oEGO, 132, 59, 149, 69)) {
+    sound(47, rf1);
+  }
+#endif
 if (fEGO_ON_WATER && !rfPULLED_UNDERWATER) {
   set(rfPULLED_UNDERWATER);
   print("Your swimming attempt proved fatal!  The raging current drags you under....");
@@ -76,6 +87,13 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && said("get", "water")) {
     print("You are not close enough to the Raging River.");
   }
 }
+#if VERSION_S
+if (posn(oEGO, 118, 50, 154, 80)) {
+  set(fTENSE_SITUATION);
+  set(fTHREAT_OF_SORCERER_OR_OGRE);
+  set(f216);
+}
+#endif
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 14, 66, 54, 107)
     || posn(oEGO, 99, 64, 145, 82)

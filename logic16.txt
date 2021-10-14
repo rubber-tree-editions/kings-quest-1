@@ -8,9 +8,19 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+#if VERSION_S
+  load.sound(23);
+#endif
   set.horizon(46);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
+#if VERSION_S
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_Y == 61) {
+      vTEMP_Y = 60;
+    }
+    position.v(oEGO, vTEMP_X, vTEMP_Y);
+#endif
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 114, 71, 0, 0);
@@ -64,11 +74,27 @@ if (posn(oEGO, 0, 57, 97, 78) || posn(oEGO, 0, 79, 117, 102) || posn(oEGO, 0, 10
 else {
   reset(rfON_CARROT_PATCH);
 }
+#if VERSION_S
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  if (vTEMP_Y < 60) {
+    reset(rfON_CARROT_PATCH);
+  }
+  if (posn(oEGO, 95, 73, 132, 88)
+  || posn(oEGO, 107, 88, 142, 100)
+  || posn(oEGO, 84, 59, 120, 75)
+  || posn(oEGO, 118, 100, 153, 115)
+  || posn(oEGO, 127, 115, 154, 164)) {
+    reset(rfON_CARROT_PATCH);
+  }
+#endif
 if (rfON_CARROT_PATCH) {
   if (!fCARRYING_CARROT && said("examine", "carrot")) {
     print("There are many large, plump carrots in the garden.");
   }
   if (!fCARRYING_CARROT && said("get", "carrot")) {
+#if VERSION_S
+    sound(23, fMISC_END_MARKER);
+#endif
     print("You pluck a delicious looking carrot from the fertile soil.");
     set(fCARRYING_CARROT);
     reset(fCARROT_EATEN);
