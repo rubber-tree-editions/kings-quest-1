@@ -16,13 +16,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 56, 83, 0, 0);
   }
   if (vPREV_ROOM_NO == ROOM78_IN_CAVE_WITH_TINY_HOLE) {
-#if VERSION_S
+#if VERSION_S || VERSION_C
     vTINY_COUNTDOWN = 0;
 #endif
     vSCORE += 1;
     set.view(oEGO, 60);
     position(oEGO, 110, 131);
-#if VERSION_S
+#if VERSION_S || VERSION_C
     move.obj(oEGO, 88, 131, 0, rf0);
 #endif
   }
@@ -35,7 +35,7 @@ if (fEGO_TINY) {
 else {
   observe.blocks(oEGO);
 }
-#if VERSION_S
+#if VERSION_S || VERSION_C
   if (rf0) {
     set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");

@@ -379,7 +379,7 @@
 #define cABOUT c19
 
 #if RUBBER_TREE
-  #define cUNDO c20
+  #define cUNDO c30
 #endif
 
 #define oEGO o0
