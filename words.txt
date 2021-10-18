@@ -106,6 +106,9 @@
 #word 81 chandelier, light
 #word 82 armor, kinghts, knight
 #word 83 bowl
+#if VERSION_S
+#word 83 "ceramic bowl"
+#endif
 #word 84 pebbles
 #word 85 pump
 #if !VERSION_U && !VERSION_V
@@ -304,6 +307,9 @@
 #word 257 beaver, beavers
 #word 258 path
 #word 259 bedroom
+#endif
+#if VERSION_S
+#word 260 kqdbg
 #endif
 #if RUBBER_TREE
 #word 300 undo

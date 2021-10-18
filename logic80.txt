@@ -10,20 +10,47 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   if (fCARRIED_BY_WITCH) {
+    #if VERSION_S
+      load.sound(37);
+    #endif
     load.view(91);
     set.view(oEGO, 91);
     position(oEGO, 1, 60);
     move.obj(oEGO, 130, 60, 0, rfTO_WITCHS_HOUSE);
+    #if VERSION_S
+      rv1 = 35;
+    #endif
   }
   else {
     load.view(89);
     set.view(oEGO, 89);
     position(oEGO, 1, 60);
     move.obj(oEGO, 135, 60, 0, rfTO_LEPRECHAUN_HOLE);
+    #if VERSION_S
+      rv0 = 12;
+      set(rf2);
+      load.sound(35);
+    #endif
   }
   draw(oEGO);
   show.pic();
 }
+#if VERSION_S
+  if (!fCARRIED_BY_WITCH && rf2) {
+    rv0--;
+    if (rv0 == 1) {
+      rv0 = 35;
+      sound(35, rf2);
+    }
+  }
+  else {
+    rv1--;
+    if (rv1 == 1) {
+      rv1 = 35;
+      sound(37, fMISC_END_MARKER);
+    }
+  }
+#endif
 if (said("examine", "view") || said("examine", "clouds") || said("examine", "room")) {
   print("The view is magnificent.");
 }

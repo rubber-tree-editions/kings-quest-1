@@ -63,6 +63,9 @@ if (vTINY_COUNTDOWN == 1 && fEGO_TINY) {
   else {
     set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
+#if VERSION_S
+    rvCOUNTDOWN_LO = 40;
+#endif
     reset(fEGO_TINY);
   }
 }
@@ -75,9 +78,6 @@ if (said("examine", "hole") || said("look inside", "hole")) {
 if (said("go", "hole") || said("go", "hole")) {
   if (fEGO_TINY) {
     print("Go ahead.  Walk right in.");
-#if VERSION_S
-    rvCOUNTDOWN_LO = 40;
-#endif
   }
   else {
     print("You are much too big to fit through that small hole.");

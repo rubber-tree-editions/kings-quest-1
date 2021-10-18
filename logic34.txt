@@ -48,7 +48,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 #if VERSION_S
   if (!rfPULLED_UNDERWATER && rf1 && !f211) {
-    play.sound(45, rf1);
+    sound(45, rf1);
   }
 #endif
 #if !VERSION_U && !VERSION_V
@@ -125,7 +125,7 @@ if (said("get", "pebbles")) {
   if (!fPEBBLES_TAKEN) {
     if (posn(oEGO, 68, 83, 109, 124)) {
 #if VERSION_S
-      play.sound(23, fMISC_END_MARKER);
+      sound(23, fMISC_END_MARKER);
 #endif
       print("You grab a handful of pebbles.");
       start.update(oPEBBLES);

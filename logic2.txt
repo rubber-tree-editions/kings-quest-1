@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-#if !VERSION_S
+#if VERSION_S
   load.sound(SND_DOOR_OPENING);
 #endif
   load.logics(LOGIC101_SWIMMING);
@@ -346,7 +346,7 @@ if (rfGATOR2_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
 #endif
 }
 #if VERSION_S
-if (set(rfEATEN_BY_GATORS) && rvCOUNTDOWN > 1) {
+if (rfEATEN_BY_GATORS && rvCOUNTDOWN > 1) {
   if (rfGATOR1_CAUGHT_YOU || rfGATOR2_CAUGHT_YOU) {
     rv2--;
     if (rv2 == 1) {

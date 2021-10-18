@@ -138,7 +138,7 @@ if (fGOAT_COMPANION) {
 }
 call(LOGIC101_SWIMMING);
 #if VERSION_S
-  if (posn(oEGO, 39, 105, 167)) {
+  if (posn(oEGO, 0, 39, 105, 167)) {
     set(fTENSE_SITUATION);
     set(fTHREAT_OF_SORCERER_OR_OGRE);
     set(f216);
