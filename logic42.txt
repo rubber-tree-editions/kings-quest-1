@@ -9,6 +9,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(50);
+  #if VERSION_S
+    load.sound(47);
+  #endif
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
   if (fGOAT_COMPANION) {
@@ -43,8 +46,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   ignore.blocks(oEGO);
   draw(oEGO);
+  #if VERSION_S
+    set(rf1);
+  #endif
   show.pic();
 }
+#if VERSION_S
+  if (!rfPULLED_UNDERWATER && rf1 && !f211) {
+    sound(47, rf1);
+  }
+#endif
 if (posn(oEGO, 0, 83, 159, 167)) {
   set(fSWIMMING_IMPOSSIBLE_HERE);
 }

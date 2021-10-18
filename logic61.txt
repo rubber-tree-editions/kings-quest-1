@@ -23,6 +23,11 @@ if (said("examine", "tree") || said("examine", "flowers")) {
   print("This is very strange vegetation.");
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {
+  #if VERSION_S
+    prevent.input();
+    set(f215);
+    set(fFALLING);
+  #endif
   set(fSCRIPTED_MOTION);
   program.control();
   stop.cycling(oEGO);
@@ -46,6 +51,9 @@ if (rfFALLING_SOUND_PLAYED) {
   reset(rfFALLING_SOUND_PLAYED);
   print("Oops!  You've missed the edge and fallen through the clouds.");
   set(fGAME_OVER);
+  #if VERSION_S
+    accept.input();
+  #endif
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM58_GIANT_STOMPING_GROUND);
@@ -56,6 +64,15 @@ if (vEGO_EDGE_CODE == EDGE_RIGHT) {
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM60_CLOUDLANDS_SOUTHWEST);
 }
+#if VERSION_S
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  if (vTEMP_Y > 150) {
+    set(f216);
+  }
+  else {
+    reset(f216);
+  }
+#endif
 return;
 
 LOGIC__FOOTER

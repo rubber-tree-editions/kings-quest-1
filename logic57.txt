@@ -18,8 +18,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {
-  ignore.blocks(oEGO);
-  set(fFALLING);
+  #if VERSION_S
+    prevent.input();
+    set(f215);
+    set(fFALLING);
+    ignore.blocks(oEGO);
+  #else
+    ignore.blocks(oEGO);
+    set(fFALLING);
+  #endif
   reset(fEGO_TOUCHED_TRIGGER_LINE);
   program.control();
   if (!fEGO_INVISIBLE) {
@@ -53,6 +60,9 @@ if (rfFELL_THROUGH_CLOUDS) {
   stop.sound();
   print("You'll have to keep yourself out of the clouds!");
   set(fGAME_OVER);
+  #if VERSION_S
+    accept.input();
+  #endif
 }
 if (said("examine", "tree")) {
   print("These are very unusual looking trees.");
@@ -69,6 +79,15 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM60_CLOUDLANDS_SOUTHWEST);
 }
+#if VERSION_S
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  if (vTEMP_Y < 60) {
+    set(f216);
+  }
+  else {
+    reset(f216);
+  }
+#endif
 return;
 
 LOGIC__FOOTER

@@ -24,6 +24,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
+  #if VERSION_S
+    prevent.input();
+    set(f215);
+  #endif
   set(fFALLING);
   reset(fEGO_TOUCHED_TRIGGER_LINE);
   program.control();
@@ -70,6 +74,9 @@ if (rfFELL_THROUGH_CLOUDS) {
   stop.sound();
   print("You should know you can't walk on clouds.");
   set(fGAME_OVER);
+  #if VERSION_S
+    accept.input();
+  #endif
 }
 if (said("examine", "flowers")) {
   print("These flowers look different than any you have ever seen before.");
@@ -88,6 +95,15 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(ROOM64_CLOUDS_LEFTMOST_NO_BEANSTALK);
   }
 }
+#if VERSION_S
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  if (vTEMP_Y > 148 || vTEMP_Y < 50 || vTEMP_X < 70) {
+    set(f216);
+  }
+  else {
+    clear(f216);
+  }
+#endif
 return;
 
 LOGIC__FOOTER

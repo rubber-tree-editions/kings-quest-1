@@ -14,6 +14,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+  #if VERSION_S
+    load.sound(36);
+  #endif
   ignore.horizon(oEGO);
   load.view(73);
   set.view(oEGO, 73);
@@ -58,7 +61,17 @@ if (fROOM_SCRIPT_EXECUTED) {
     vINVISIBLE_COUNTDOWN_LO = 0;
     vINVISIBLE_COUNTDOWN_HI = 0;
   }
+  #if VERSION_S
+    rv0 = 30;
+  #endif
 }
+#if VERSION_S
+  rv0--;
+  if (rv0 == 1 && !rfDEAD) {
+    rv0 = 30;
+    sound(36, fMISC_END_MARKER);
+  }
+#endif
 vCOUNTDOWN_LO--;
 if (vCOUNTDOWN_LO == 0) {
   vCOUNTDOWN_HI--;
@@ -68,6 +81,9 @@ if (vCOUNTDOWN_LO == 0) {
 }
 if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI == 0 && !rfDEAD) {
   set(rfDEAD);
+  #if VERSION_S
+    rv1 = 20;
+  #endif
   set.view(oEGO, 114);
   print("Not even you can hold your breath forever.  The well bottom has become your eternal resting place.");
   ignore.blocks(oEGO);
@@ -79,10 +95,19 @@ if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI == 0 && !rfDEAD) {
     set(rfDEAD_AND_SUNK);
   }
 }
-if (rfDEAD_AND_SUNK) {
-  reset(rfDEAD_AND_SUNK);
-  set(fGAME_OVER);
-}
+#if VERSION_S
+  rv1--;
+  if (rv1 == 1 || rfDEAD_AND_SUNK) {
+    rv1 = 0;
+    reset(rfDEAD_AND_SUNK);
+    set(fGAME_OVER);
+  }
+#else
+  if (rfDEAD_AND_SUNK) {
+    reset(rfDEAD_AND_SUNK);
+    set(fGAME_OVER);
+  }
+#endif
 if (said("examine", "water")) {
   print("This looks like typical well water.");
 }
