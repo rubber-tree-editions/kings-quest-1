@@ -11,8 +11,19 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+  #if VERSION_S
+    load.sound(47);
+    load.sound(23);
+  #endif
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
+    #if VERSION_S
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      if (vTEMP_Y < 100) {
+        vTEMP_Y = 101;
+        position.v(oEGO, vTEMP_X, vTEMP_Y);
+      }
+    #endif
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 14, 144, 0, 0);
@@ -43,7 +54,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
+  #if VERSION_S
+    set(rf2);
+  #endif
 }
+#if VERSION_S
+  if (!rfPULLED_UNDERWATER && rf2 && !f211) {
+    sound(47, rf2);
+  }
+#endif
 if (fEGO_ON_WATER && !rfPULLED_UNDERWATER) {
   set(rfPULLED_UNDERWATER);
   print("This is sad.  You are not the first to fail your quest in the Raging River... I hope you may be the last.");
@@ -109,6 +128,9 @@ if (!fMUSHROOM_TAKEN) {
     }
     else if (posn(oEGO, 74, 70, 94, 90)) {
       erase(oMUSHROOM);
+      #if VERSION_S
+        sound(23, fMISC_END_MARKER);
+      #endif
       print("You reach down and pick a fat mushroom.");
       set(fMUSHROOM_TAKEN);
       set(fCARRYING_MUSHROOM);

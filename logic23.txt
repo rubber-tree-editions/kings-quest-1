@@ -24,10 +24,19 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 116, 50);
     }
   }
+  #if VERSION_S
+    block(128, 78, 136, 113);
+  #endif
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
 }
+#if !VERSION_U && !VERSION_V
+  if (f213) {
+    reset(f213);
+    message("It seems the old goat has wandered off by himself and is no longer following you.");
+  }
+#endif
 if (said("examine", "lake")) {
   print("You see the mountains and trees reflected in the mirror-like water.");
 }
