@@ -11,6 +11,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+  #if VERSION_S
+    load.sound(23);
+  #endif
   load.sound(SND_FALLING);
   load.view(105);
   if (!fPOINTS_FOR_CLIMBING_TREE) {
@@ -68,6 +71,9 @@ if (!fTAKEN_GOLDEN_EGG) {
       get("gold egg");
       set(fTAKEN_GOLDEN_EGG);
       vSCORE += 6;
+      #if VERSION_S
+        sound(23, fMISC_END_MARKER);
+      #endif
       print("The golden egg is so heavy you almost drop it.");
     }
     else {
@@ -115,7 +121,11 @@ if (posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT_OF_THE_TREE) {
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, fMISC_END_MARKER);
   }
 }
+#if VERSION_S
+if (fSOUND_END_MARKER) {
+#else
 if (fMISC_END_MARKER) {
+#endif
   new.room(ROOM14_BASE_GOLDEN_EGG_TREE);
 }
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {

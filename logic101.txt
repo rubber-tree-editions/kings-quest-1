@@ -6,12 +6,35 @@ LOGIC__HEADER
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.view(93);
-  load.view(70);
-  load.sound(SND_SPLASHING);
+  #if VERSION_S
+    if (vROOM_NO > 2) {
+      load.view(70);
+    }
+    if (vROOM_NO != ROOM49_INSIDE_WELL && vROOM_NO > 2) {
+      load.sound(SND_SPLASHING);
+    }
+    if (vROOM_NO < 3) {
+      load.sound(34);
+    }
+  #else
+    load.view(70);
+    load.sound(SND_SPLASHING);
+  #endif
   set(fSWIMMING_LOGIC_LOADED);
   reset(fSWIMMING);
+  #if VERSION_S
+    reset(fPLAYING_SND_SPLASHING);
+  #endif
 }
+#if VERSION_S
+if (f214) {
+  load.sound(34);
+}
+#endif
 if (f174_UNKNOWN || fGAME_OVER) {
+  #if VERSION_S
+    set(f215);
+  #endif
   goto RETURN;
 }
 if (fSWIMMING_IMPOSSIBLE_HERE && vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
@@ -32,7 +55,18 @@ if (fSWIMMING_IMPOSSIBLE_HERE && vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) 
 if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
   if (!fPLAYING_SND_SPLASHING) {
     set(fPLAYING_SND_SPLASHING);
-    sound(SND_SPLASHING, fPLAYED_SND_SPLASHING);
+    #if VERSION_S
+      if (vROOM_NO != ROOM49_INSIDE_WELL) {
+        if (!f214 && vROOM_NO > 2) {
+          sound(SND_SPLASHING, fPLAYED_SND_SPLASHING);
+        }
+        else {
+          sound(34, fPLAYED_SND_SPLASHING);
+        }
+      }
+    #else
+      sound(SND_SPLASHING, fPLAYED_SND_SPLASHING);
+    #endif
   }
   if (fPLAYED_SND_SPLASHING) {
     reset(fPLAYED_SND_SPLASHING);
@@ -150,6 +184,12 @@ if (vDROWN_GAME_OVER_COUNTDOWN == 1) {
   erase(oEGO);
   stop.sound();
   set(fGAME_OVER);
+  #if VERSION_S
+    set(f215);
+    if (vROOM_NO == ROOM2_CASTLE_WEST && !f214) {
+      print("You splash around in the water for a while but seem  to have forgotten how to swim. Unfortunately, you drown.");
+    }
+  #endif
 }
 RETURN:
   return;

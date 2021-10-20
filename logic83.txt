@@ -14,25 +14,57 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   prevent.input();
   rvCOUNTDOWN = 250;
+  #if VERSION_S
+    rv1 = 245;
+    rv3 = 1;
+    rv5 = 1;
+    rv7 = 12;
+    rv8 = 11;
+  #endif
   set(fSOUND_ENABLED);
-  display(22, 1, m19);
+  #if VERSION_S
+    display(22, 1, "(C) Copyright 1987 Sierra On-Line Inc.");
+  #else
+    display(22, 1, m19);
+  #endif
   display(24, 5, "Press any key to continue.");
+  #if VERSION_S
+    if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
+      set.key(KEY_ESC, 0, c25);
+    }
+    else {
+      set.key(KEY_ESC, 0, cPAUSE);
+    }
+  #endif
   set.key(0, XKEY_F1, cHELP);
   set.key(0, XKEY_F2, cTOGGLESOUND);
   set.key(KEY_CTRL_S, 0, cTOGGLESOUND);
   set.key(0, XKEY_F3, cPREVINPUT);
   set.key(KEY_CTRL_E, 0, cPREVINPUT);
+  #if VERSION_S
+    set.key(0, XKEY_ALT_I, c21);
+  #endif
   set.key(0, XKEY_F5, cSAVE);
-  set.key(0, XKEY_F6, cSHOWPRIORITY);
+  #if VERSION_S
+    set.key(0, XKEY_ALT_P, cSHOWPRIORITY);
+  #else
+    set.key(0, XKEY_F6, cSHOWPRIORITY);
+  #endif
   set.key(0, XKEY_F7, cRESTORE);
   set.key(0, XKEY_F9, cRESTART);
-  set.key(0, XKEY_F10, cSHOWMEM);
+  #if VERSION_S
+    set.key(0, XKEY_ALT_M, cSHOWMEM);
+  #else
+    set.key(0, XKEY_F10, cSHOWMEM);
+  #endif
   set.key(KEY_TAB, 0, cINVENTORY);
   set.key(0, XKEY_ALT_D, cDEBUG);
   set.key(KEY_CTRL_J, 0, cINITJOYSTICK);
   set.key(KEY_CTRL_C, 0, cCLEARINPUT);
   set.key(KEY_CTRL_Y, 0, cCLEARINPUT);
-  set.key(KEY_ESC, 0, cPAUSE);
+  #if !VERSION_S
+    set.key(KEY_ESC, 0, cPAUSE);
+  #endif
   set.key(KEY_CTRL_R, 0, c15);
   set.key(0, XKEY_ALT_Z, cQUIT);
   set.key(KEY_EQUALS, 0, cSWIM);
@@ -51,9 +83,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.key(KEY_7, 0, cRESTORE);
     set.key(KEY_9, 0, cRESTART);
   }
+#if !VERSION_S
   set.key(1, 1, c0);
   set.key(1, 2, cSWIM);
   set.key(1, 4, cINVENTORY);
+#endif
 #if VERSION_U
   set.menu("Info");
   set.menu.item("About King's Quest", cABOUT);
@@ -352,12 +386,69 @@ if (rvCOUNTDOWN == 135) {
   display(18, 12, "    Scott Murphy ");
 }
 #endif
-if (have.key()) {
-  clear.lines(21, 24, 0);
-  stop.sound();
-  rvCOUNTDOWN = 0;
-  new.room(ROOM1_CASTLE_EAST);
-}
+#if VERSION_S
+  if (rf0) {
+    goto(JUMP);
+  }
+  if (rvCOUNTDOWN == rv1) {
+    rv2 = rv3;
+    rv4 = rv5;
+    rv6 = 18;
+    LOOP:
+    do {
+      rv8--;
+    } while (rv8 != 1);
+    rv8 = 11;
+    display.v(rv6, rv7, rv2);
+    rv4--;
+    if (rv4 > 0) {
+      rv6--;
+      rv2--;
+      goto(LOOP);
+    }
+    rv1 -= 5;
+    rv3++;
+    if (rv5 < 13) {
+      rv5++;
+    }
+  }
+  if (rvCOUNTDOWN == 40) {
+    rvCOUNTDOWN = 250;
+    rv1 = 245;
+    rv3 = 1;
+    rv5 = 1;
+    rv7 = 12;
+  }
+  JUMP:
+  if (have.key() || rf0) {
+    stop.sound();
+    rvCOUNTDOWN = 0;
+    set.key(KEY_ESC, 0, c25);
+    if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST) {
+      set.key(1, 1, c25);
+      set.key(1, 3, cSWIM);
+    }
+    else {
+      set.key(1, 1, c0);
+      set.key(1, 3, c25);
+      set.key(1, 2, cSWIM);
+      set.key(1, 4, cINVENTORY);
+    }
+    vTEMP_RESULT = 97;
+    load.pic(vTEMP_RESULT);
+    draw.pic(vTEMP_RESULT);
+    clear.lines(22, 24, m0);
+    show.pic();
+    new.room(ROOM1_CASTLE_EAST);
+  }
+#else
+  if (have.key()) {
+    clear.lines(21, 24, 0);
+    stop.sound();
+    rvCOUNTDOWN = 0;
+    new.room(ROOM1_CASTLE_EAST);
+  }
+#endif
 return;
 
 LOGIC__FOOTER
