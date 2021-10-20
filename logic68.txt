@@ -23,8 +23,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.sound(SND_FALLING);
   random(0, 250, vTEMP_RESULT);
+  #if VERSION_S
+  if (vTEMP_RESULT < 150 && vPREV_ROOM_NO == ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM) {
+  #else
   if (vTEMP_RESULT < 150) {
-    load.sound(SND_DWARF);
+  #endif
+    #if VERSION_S
+      load.sound(SND_VILLAIN);
+      load.sound(32);
+    #else
+      load.sound(SND_DWARF);
+    #endif
     load.view(111);
     load.view(115);
     animate.obj(oDWARF);
@@ -34,20 +43,34 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.horizon(oDWARF);
   }
   if (rfINIT_RANDOMIZER) {
-    do {
-      random(0, 250, vTEMP_RESULT_2);
-    } while (vTEMP_RESULT_2 > 90);
+    #if VERSION_S
+      do {
+        random(0, 150, vTEMP_RESULT_2);
+      } while (vTEMP_RESULT_2 > 45);
+    #else
+      do {
+        random(0, 250, vTEMP_RESULT_2);
+      } while (vTEMP_RESULT_2 > 90);
+    #endif
   }
   set.horizon(40);
   if (vPREV_ROOM_NO == ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM) {
     position(oEGO, 94, 160);
     set.loop(oEGO, 0);
-    move.obj(oEGO, 94, 160, 0, fMISC_END_MARKER);
+    #if VERSION_S
+      move.obj(oEGO, 95, 159, 0, fMISC_END_MARKER);
+    #else
+      move.obj(oEGO, 94, 160, 0, fMISC_END_MARKER);
+    #endif
   }
   if (vPREV_ROOM_NO == ROOM69_MOUNTAIN_STAIRWAY_TOP) {
     position(oEGO, 43, 41);
     set.loop(oEGO, 0);
-    move.obj(oEGO, 43, 41, 0, fMISC_END_MARKER);
+    #if VERSION_S
+      move.obj(oEGO, 44, 42, 0, fMISC_END_MARKER);
+    #else
+      move.obj(oEGO, 43, 41, 0, fMISC_END_MARKER);
+    #endif
   }
   draw(oEGO);
   show.pic();
@@ -55,7 +78,11 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (rfDWARF_IS_HERE) {
   if (!rfPLAYING_SND_DWARF) {
     set(rfPLAYING_SND_DWARF);
-    sound(SND_DWARF, rfPLAYED_SND_DWARF);
+    #if VERSION_S
+      set(rfPLAYED_SND_DWARF);
+    #else
+      sound(SND_DWARF, rfPLAYED_SND_DWARF);
+    #endif
   }
   if (rfPLAYED_SND_DWARF) {
     reset(rfPLAYING_SND_DWARF);
@@ -71,6 +98,9 @@ if (vTEMP_RESULT_2 == 1) {
     position(oDWARF, 30, 27);
   }
   draw(oDWARF);
+  #if VERSION_S
+    sound(SND_VILLAIN, fMISC_END_MARKER);
+  #endif
   set(rfDWARF_IS_HERE);
   move.obj(oDWARF, 130, 127, 2, rfDWARF_MADE_ENTRANCE);
 }
@@ -101,8 +131,20 @@ if (said("talk", "dwarf") || said("hello") || said("say", "hello")) {
     print("There is nobody here but you.");
   }
 }
+#if VERSION_S
+if (fEGO_TOUCHED_TRIGGER_LINE && !fFALLING) {
+#else
 if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING) {
-  set(rfFALLING);
+#endif
+  #if VERSION_S
+    set(f215);
+    prevent.input();
+    set(fTENSE_SITUATION);
+    set(fTHREAT_OF_SORCERER_OR_OGRE);
+    set(fFALLING);
+  #else
+    set(rfFALLING);
+  #endif
   ignore.blocks(oEGO);
   start.cycling(oEGO);
   set(fCYCLE_EGO_ANIMATION);
@@ -127,6 +169,9 @@ if (rfFELL) {
   reset(rfFELL);
   erase(oEGO);
   set(fGAME_OVER);
+  #if VERSION_S
+    accept.input();
+  #endif
 }
 if (vTEMP_RESULT_3 > 0 && vTEMP_RESULT_3 < 11) {
   set(rfDONT_CALCULATE_DISTANCE);
@@ -216,6 +261,9 @@ if (fVILLAIN_GOT_YOU) {
       end.of.loop(oDWARF, rfDWARF_FINISHED_ANIMATING);
       goto(END_OF_DWARF_LOGIC);
     }
+    #if VERSION_S
+      sound(32, fMISC_END_MARKER);
+    #endif
     set.view(oDWARF, 115);
     reset(rfDWARF_IS_HERE);
     print("That little dwarf caught you by surprise.  Is your treasure still OK?");
@@ -232,6 +280,7 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
 if (posn(oEGO, 0, 166, 159, 167)) {
   new.room(ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM);
 }
+set(f216);
 return;
 
 LOGIC__FOOTER
