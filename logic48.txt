@@ -46,7 +46,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 #if VERSION_S
-if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR && rf28) {
+if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR && rf8) {
   rv1--;
   if (rv1 == 1) {
     rv1 = 35;
@@ -125,7 +125,7 @@ rvCOUNTDOWN--;
     set.view(oEGO, 103);
     shake.screen(1);
     if (!fSOUND_ENABLED) {
-      print("OUCH")
+      print("OUCH");
     }
     rv2 = 5;
     rvCOUNTDOWN = 18;

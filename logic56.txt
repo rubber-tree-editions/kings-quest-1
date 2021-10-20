@@ -101,7 +101,7 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
     set(f216);
   }
   else {
-    clear(f216);
+    reset(f216);
   }
 #endif
 return;

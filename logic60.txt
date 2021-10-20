@@ -63,7 +63,7 @@ if (vEGO_EDGE_CODE == EDGE_RIGHT) {
 }
 #if VERSION_S
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
-  if (vTEMP_Y > 150 || vTEMP_X < 11 posn(oEGO, 0, 80, 40, 167)) {
+  if (vTEMP_Y > 150 || vTEMP_X < 11 || posn(oEGO, 0, 80, 40, 167)) {
     set(f216);
   }
   else {

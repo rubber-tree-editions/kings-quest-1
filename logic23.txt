@@ -34,7 +34,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 #if !VERSION_U && !VERSION_V
   if (f213) {
     reset(f213);
-    message("It seems the old goat has wandered off by himself and is no longer following you.");
+    print("It seems the old goat has wandered off by himself and is no longer following you.");
   }
 #endif
 if (said("examine", "lake")) {
