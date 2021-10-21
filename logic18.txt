@@ -12,6 +12,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+  #if VERSION_S
+    load.sound(25);
+    load.sound(23);
+  #endif
   set.horizon(46);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
@@ -22,7 +26,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
   random(0, 250, vTEMP_RESULT);
+  #if VERSION_S
+  if (vTEMP_RESULT < 95 && !fIMPRESSED_ELF) {
+  #else
   if (vTEMP_RESULT < 85 && !fIMPRESSED_ELF) {
+  #endif
     load.view(7);
     animate.obj(oELF);
     set.view(oELF, 7);
@@ -36,6 +44,14 @@ if (fROOM_SCRIPT_EXECUTED) {
       random(0, 250, vTEMP_RESULT_3);
     } while (vTEMP_RESULT_3 > 90);
   }
+  #if VERSION_S
+    if (vPREV_ROOM_NO == ROOM15_CARROT_PATCH_WEST) {
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      if (vTEMP_X > 100) {
+        position(oEGO, 100, 165);
+      }
+    }
+  #endif
   if (vPREV_ROOM_NO == ROOM17_CLIFFS_LAKE_EAST && fEGO_ON_WATER) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y < 111) {
@@ -45,9 +61,18 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
+#if !VERSION_V && !VERSION_U
+  if (f213) {
+    reset(f213);
+    print("It seems the old goat has wandered off by himself and is no longer following you.");
+  }
+#endif
 vTEMP_RESULT_3--;
 if (vTEMP_RESULT_3 == 1) {
   reset(rfINIT_RANDOMIZER);
+  #if VERSION_S
+    sound(25, fMISC_END_MARKER);
+  #endif
   draw(oELF);
   set(rfELF_IS_HERE);
   wander(oELF);
@@ -99,6 +124,9 @@ if (rfELF_IS_HERE) {
   }
   if (!rfELF_LEFT && (said("talk", "elf") || said("hello") || said("say", "hello"))) {
     if (vTEMP_RESULT_2 < 40) {
+      #if VERSION_S
+        sound(23, fMISC_END_MARKER);
+      #endif
       print("The elf, impressed by your friendliness, gives you a magic ring.  \"Kind person, know that once, only once, this ring will make you invisible,\" he says and then disappears.");
       get(iRING);
       set(fCARRYING_RING);
@@ -118,6 +146,9 @@ if (!fEGO_ON_WATER) {
 else {
   observe.blocks(oEGO);
 }
+#if VERSION_S
+  block(100, 95, 130, 100);
+#endif
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 129, 95, 159, 105) || posn(oEGO, 133, 80, 145, 94)) {
     set(fEGO_ON_WATER);
@@ -191,6 +222,9 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
+    #if !VERSION_U && !VERSION_V
+      set(f213);
+    #endif
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
@@ -208,6 +242,18 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
+#if VERSION_S
+  if (posn(oEGO, 79, 60, 146, 167))
+    set(f216);
+    set(fTENSE_SITUATION);
+    set(fTHREAT_OF_SORCERER_OR_OGRE);
+  }
+  else {
+    reset(fTENSE_SITUATION);
+    reset(fTHREAT_OF_SORCERER_OR_OGRE);
+    reset(f216);
+  }
+#endif
 call(LOGIC101_SWIMMING);
 return;
 
