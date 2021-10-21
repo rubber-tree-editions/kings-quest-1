@@ -147,7 +147,7 @@ else {
   observe.blocks(oEGO);
 }
 #if VERSION_S
-  block(100, 95, 130, 100);
+  block(100, 95, 139, 100);
 #endif
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 129, 95, 159, 105) || posn(oEGO, 133, 80, 145, 94)) {
@@ -243,7 +243,7 @@ if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
 #if VERSION_S
-  if (posn(oEGO, 79, 60, 146, 167))
+  if (posn(oEGO, 79, 60, 146, 167)) {
     set(f216);
     set(fTENSE_SITUATION);
     set(fTHREAT_OF_SORCERER_OR_OGRE);
