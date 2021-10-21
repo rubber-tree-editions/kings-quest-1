@@ -437,7 +437,7 @@ if (rvCOUNTDOWN == 135) {
     vTEMP_RESULT = 97;
     load.pic(vTEMP_RESULT);
     draw.pic(vTEMP_RESULT);
-    clear.lines(22, 24, m0);
+    clear.lines(22, 24, "");
     show.pic();
     new.room(ROOM1_CASTLE_EAST);
   }

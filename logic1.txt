@@ -27,7 +27,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
 #if VERSION_S
-  clear.lines(22, 24, m0);
+  clear.lines(22, 24, "");
   load.sound(33);
 #endif
   load.logics(LOGIC101_SWIMMING);
