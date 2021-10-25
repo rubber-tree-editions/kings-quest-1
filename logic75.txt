@@ -17,29 +17,43 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+  #if VERSION_S
+    load.sound(SND_DOOR_OPENING);
+  #endif
   if (vPREV_ROOM_NO == ROOM74_CAVE_CORNER) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_X += 150;
     position.v(oEGO, vTEMP_X, vTEMP_Y);
   }
   if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
+    #if VERSION_S
+      load.sound(29);
+    #endif
     position(oEGO, 34, 125);
   }
   ignore.objs(oEGO);
   load.view(95);
   if (!fRAT_IS_GONE) {
-    load.sound(SND_VILLAIN);
+    #if !VERSION_S
+      load.sound(SND_VILLAIN);
+    #endif
     load.view(45);
     animate.obj(oRAT);
     set.view(oRAT, 45);
     position(oRAT, 36, 127);
     set(rfRAT_IS_HERE);
-    follow.ego(oRAT, 15, rfRAT_CAUGHT_YOU);
+    #if VERSION_S
+      follow.ego(oRAT, 14, rfRAT_CAUGHT_YOU);
+    #else
+      follow.ego(oRAT, 15, rfRAT_CAUGHT_YOU);
+    #endif
     observe.blocks(oRAT);
     rvRAT_STEP_SIZE = 3;
     step.size(oRAT, rvRAT_STEP_SIZE);
   }
-  load.sound(SND_DOOR_OPENING);
+  #if !VERSION_S
+    load.sound(SND_DOOR_OPENING);
+  #endif
   load.view(46);
   animate.obj(oDOOR);
   set.view(oDOOR, 46);
@@ -57,7 +71,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oRAT);
   }
   draw(oEGO);
-  show.pic();
+  #if !VERSION_S
+    show.pic();
+  #endif
   if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
     reverse.loop(oDOOR, fMISC_END_MARKER_2);
     sound(SND_DOOR_OPENING, fMISC_END_MARKER);
@@ -65,14 +81,51 @@ if (fROOM_SCRIPT_EXECUTED) {
   else {
     stop.update(oDOOR);
   }
+  #if VERSION_S
+    if (!fRAT_IS_GONE) {
+      load.sound(SND_VILLAIN);
+      load.sound(27);
+      rv1 = 9;
+      set(rf6);
+    }
+    show.pic();
+  #endif
 }
+#if VERSION_S
+  if (rfRAT_CAUGHT_YOU) {
+    set.view(oEGO, 95);
+    print("Be careful around this rat next time!  He's dangerous!!");
+    wander(oRAT);
+    set(fGAME_OVER);
+    goto RETURN;
+  }
+  if (!fRAT_IS_GONE && rf5) {
+    rv1--;
+    if (rv1 == 1) {
+      random(5, 10, rv1);
+      random(1, 8, vTEMP_RESULT);
+      if (vTEMP_RESULT == 2 && rf6) {
+        sound(27, rf6);
+      }
+    }
+  }
+#endif
 if (fMISC_END_MARKER_2) {
   reset(fMISC_END_MARKER_2);
   stop.update(oDOOR);
+  #if VERSION_S
+    if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
+      sound(29, fMISC_END_MARKER);
+    }
+  #endif
 }
 if (rfRAT_IS_HERE) {
   reset(rfRAT_IS_HERE);
-  sound(SND_VILLAIN, fMISC_END_MARKER);
+  #if VERSION_S
+    sound(SND_VILLAIN, rf5);
+  #else
+    sound(SND_VILLAIN, fMISC_END_MARKER);
+  #endif
 }
 if (posn(oEGO, 0, 0, 54, 167)) {
   observe.blocks(oEGO);
@@ -80,7 +133,11 @@ if (posn(oEGO, 0, 0, 54, 167)) {
 else {
   ignore.blocks(oEGO);
 }
+#if VERSION_S
+if (fEGO_INVISIBLE && !rfWARNED_RAT_CAN_SMELL_YOU && !fRAT_IS_GONE) {
+#else
 if (fEGO_INVISIBLE && !rfWARNED_RAT_CAN_SMELL_YOU) {
+#endif
   set(rfWARNED_RAT_CAN_SMELL_YOU);
   print("Being invisible won't hide you from this rat's keen sense of smell.");
 }
@@ -139,7 +196,11 @@ if (!fRAT_IS_GONE) {
       || said("give", "rat", "bag of jewels")
       || said("give", "bag of jewels", "rat")
     ) {
+      #if VERSION_S
+      if (fCARRYING_DIAMONDS && vTEMP_RESULT_2 > 14 && vTEMP_RESULT_2 < 35) {
+      #else
       if (fCARRYING_DIAMONDS && vTEMP_RESULT_2 < 35) {
+      #endif
         print("The huge rat takes the treasure you have offered and scuttles away.");
         move.obj(oRAT, 46, 105, 0, rfRAT_LEFT);
         drop("pouch of diamonds");
@@ -155,7 +216,11 @@ if (!fRAT_IS_GONE) {
   if (said("give", "golden egg")
     || said("give", "rat", "golden egg")
     || said("give", "golden egg", "rat")) {
+    #if VERSION_S
+    if (fCARRYING_GOLDEN_EGG && vTEMP_RESULT_2 > 14 && vTEMP_RESULT_2 < 35) {
+    #else
     if (fCARRYING_GOLDEN_EGG && vTEMP_RESULT_2 < 35) {
+    #endif
       print("The huge rat takes the treasure you have offered and scuttles away.");
       move.obj(oRAT, 46, 105, 0, rfRAT_LEFT);
       drop("gold egg");
@@ -169,7 +234,11 @@ if (!fRAT_IS_GONE) {
   }
   if (said("give", "walnut") || said("give", "rat", "walnut") || said("give", "walnut", "rat")) {
     if (fCARRYING_WALNUT) {
+      #if VERSION_S
+      if (vTEMP_RESULT_2 > 14 && vTEMP_RESULT_2 < 35) {
+      #else
       if (vTEMP_RESULT_2 < 35) {
+      #endif
         print("The rat doesn't want an ordinary walnut.");
       }
       else {
@@ -177,7 +246,11 @@ if (!fRAT_IS_GONE) {
       }
     }
     if (fCARRYING_GOLD_WALNUT) {
+      #if VERSION_S
+      if (vTEMP_RESULT_2 > 14 && vTEMP_RESULT_2 < 35) {
+      #else
       if (vTEMP_RESULT_2 < 35) {
+      #endif
         print("The huge rat takes the treasure you have offered and scuttles away.");
         move.obj(oRAT, 46, 105, 0, rfRAT_LEFT);
         drop("gold walnut");
@@ -194,7 +267,11 @@ if (!fRAT_IS_GONE) {
     || said("give", "rat", "sceptre")
     || said("give", "sceptre", "rat")
   ) {
+    #if VERSION_S
+    if (fCARRYING_SCEPTRE && vTEMP_RESULT_2 > 14 && vTEMP_RESULT_2 < 35) {
+    #else
     if (fCARRYING_SCEPTRE && vTEMP_RESULT_2 < 35) {
+    #endif
       print("The huge rat takes the treasure you have offered and scuttles away.");
       move.obj(oRAT, 46, 105, 0, rfRAT_LEFT);
       drop("sceptre");
@@ -217,7 +294,11 @@ if (!fRAT_IS_GONE) {
       print("That is a good idea, but you do not have any cheese.");
     }
     if (fCARRYING_SWISS_CHEESE) {
+      #if VERSION_S
+      if (vTEMP_RESULT_2 > 14 && vTEMP_RESULT_2 < 35) {
+      #else
       if (vTEMP_RESULT_2 < 35) {
+      #endif
         print("The rat drools at the sight of the cheese... and snatches it from your hand.  You might want to count your fingers.");
         move.obj(oRAT, 46, 105, 0, rfRAT_LEFT);
         drop("cheese");
@@ -241,25 +322,39 @@ if (rfRAT_LEFT) {
 if (said("count", "fingers") || said("examine", "fingers")) {
   print("You count your fingers and are relieved to see you still have all of them.");
 }
+#if !VERSION_S
 if (rfRAT_CAUGHT_YOU) {
   set.view(oEGO, 95);
   print("Be careful around this rat next time!  He's dangerous!!");
   wander(oRAT);
   set(fGAME_OVER);
 }
+#endif
 distance(oEGO, oDOOR, vTEMP_RESULT_3);
 if (said("open", "doors")) {
   if (vTEMP_RESULT_3 < 25) {
     start.update(oDOOR);
+    #if VERSION_S
+    if (!fSOUND_ENABLED) {
+      print("The door slowly opens.");
+    }
+    end.of.loop(oDOOR, rfDOOR_OPEN);
+    sound(SND_DOOR_OPENING, fMISC_END_MARKER);
+    #else
     sound(SND_DOOR_OPENING, fMISC_END_MARKER);
     print("The door slowly opens.");
     end.of.loop(oDOOR, rfDOOR_OPEN);
+    #endif
   }
   else {
     print("Get closer if you want to try.");
   }
 }
+#if VERSION_S
+if (rfDOOR_OPEN && fMISC_END_MARKER) {
+#else
 if (rfDOOR_OPEN) {
+#endif
   new.room(ROOM76_LEPRECHAUN_ANTECHAMBER);
 }
 if (said("close", "doors")) {
@@ -271,7 +366,8 @@ if (said("examine", "doors")) {
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM74_CAVE_CORNER);
 }
-return;
+RETURN:
+  return;
 
 LOGIC__FOOTER
 

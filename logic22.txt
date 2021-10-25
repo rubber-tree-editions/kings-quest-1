@@ -27,8 +27,19 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  load.sound(SND_OUCH);
-  load.sound(SND_FALLING);
+  #if VERSION_S
+    load.sound(35);
+    set(rf11);
+    if (vBEANSTALK_ROOM == ROOM22_CONDOR_AND_CAVE) {
+      load.sound(SND_FALLING);
+    }
+    load.sound(25);
+    load.sound(43);
+    load.sound(SND_OUCH);
+  #else
+    load.sound(SND_OUCH);
+    load.sound(SND_FALLING);
+  #endif
   set.horizon(41);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
@@ -46,8 +57,15 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(74);
     load.view(105);
     load.logics(LOGIC104_BEANSTALK);
-    load.sound(SND_BEANSTALK);
+    #if !VERSION_S
+      load.sound(SND_BEANSTALK);
+    #endif
   }
+  #if VERSION_S
+    if (vPREV_ROOM_NO == ROOM70_BEANSTALK_NEAR_BOTTOM) {
+      load.sound(SND_FALLING);
+    }
+  #endif
   if (vPREV_ROOM_NO == ROOM70_BEANSTALK_NEAR_BOTTOM && fEGO_CLIMBING_BEANSTALK) {
     set.view(oEGO, 74);
     position(oEGO, 64, 41);
@@ -72,7 +90,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_FROM_SKY);
   }
   random(0, 250, vTEMP_RESULT);
+  #if VERSION_S
+  if (vTEMP_RESULT < 150 && !fTAKEN_BY_GIANT_BIRD) {
+  #else
   if (vTEMP_RESULT < 125 && !fTAKEN_BY_GIANT_BIRD) {
+  #endif
     rvBIRD_STEP_SIZE = 4;
     step.size(oBIRD, rvBIRD_STEP_SIZE);
     set(rfINIT_RANDOMIZER);
@@ -94,17 +116,48 @@ if (fROOM_SCRIPT_EXECUTED) {
     overlay.pic(vTEMP_PIC);
   }
   draw(oEGO);
+  #if VERSION_S
+    if (vPREV_ROOM_NO == ROOM21_WITCH_STOMPING_GROUND) {
+      get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
+      if (vTEMP_Y_2 > 78 && vTEMP_Y_2 < 96) {
+        vTEMP_Y_2 = 96;
+      }
+      else if (vTEMP_Y_2 > 61 && vTEMP_Y_2 < 79) {
+        vTEMP_Y_2 = 61;
+      }
+      position.v(oEGO, vTEMP_X_2, vTEMP_Y_2);
+    }
+  #endif
   show.pic();
+  rv4 = 25;
 }
+#if VERSION_S
+if (rfBIRD_IS_HERE && rf11) {
+  rv4--;
+  if (rv4 == 1) {
+    rv4 = 35;
+    if (!fTENSE_SITUATION && !f211) {
+      sound(35, rf11);
+    }
+  }
+}
+#endif
+#if !VERSION_U && !VERSION_V
+if (said("examine", "room")) {
+  print("A large cave is at the edge of this meadow.");
+}
+#endif
 if (fFALLING_TO_EARTH && !rfPLAYING_SND_FALLING) {
   set(rfPLAYING_SND_FALLING);
   set(f135_UNKNOWN);
   sound(SND_FALLING, rfFALLING_SOUND_PLAYED);
 }
-if (!rfFELL_FROM_SKY && rfFALLING_SOUND_PLAYED) {
-  reset(rfPLAYING_SND_FALLING);
-  reset(rfFALLING_SOUND_PLAYED);
-}
+#if !VERSION_S
+  if (!rfFELL_FROM_SKY && rfFALLING_SOUND_PLAYED) {
+    reset(rfPLAYING_SND_FALLING);
+    reset(rfFALLING_SOUND_PLAYED);
+  }
+#endif
 if (rfFELL_FROM_SKY) {
   stop.sound();
   set(rfPLAYING_SND_FALLING);
@@ -126,6 +179,9 @@ if (vTEMP_RESULT_2 == 1 && !fFALLING_TO_EARTH && !fEGO_CLIMBING_BEANSTALK) {
   position(oBIRD, 7, 35);
   vCOUNTDOWN_LO = 250;
   vCOUNTDOWN_HI = 3;
+  #if VERSION_S
+    sound(25, fMISC_END_MARKER);
+  #endif
   draw(oBIRD);
   if (!fGOAT_COMPANION) {
     print("High up in the sky you see a very large, friendly bird.");
@@ -148,7 +204,11 @@ if (vCOUNTDOWN_LO == 1 && vCOUNTDOWN_HI == 0) {
 }
 if (!rfBIRD_AFRAID_OF_GOAT && rfBIRD_IS_HERE) {
   get.posn(oBIRD, vTEMP_X_3, vTEMP_Y_3);
+  #if VERSION_S
+  if (vTEMP_Y_3 > 115) {
+  #else
   if (vTEMP_Y_3 > 110) {
+  #endif
     vTEMP_DIR = DIR_NORTH;
     set.dir(oBIRD, vTEMP_DIR);
     wander(oBIRD);
@@ -163,7 +223,14 @@ distance(oEGO, oBIRD, vTEMP_RESULT_3);
 get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
 get.posn(oBIRD, rvBIRD_X, rvBIRD_Y);
 rvBIRD_Y += 20;
+#if VERSION_S
+if (vTEMP_RESULT_3 > 20 && vTEMP_RESULT_3 < 35 && vTEMP_Y_2 > rvBIRD_Y && fJUMPING && !rfBIRD_AFRAID_OF_GOAT) {
+#else
 if (vTEMP_RESULT_3 > 20 && vTEMP_RESULT_3 < 30 && vTEMP_Y_2 > rvBIRD_Y && fJUMPING && !rfBIRD_AFRAID_OF_GOAT) {
+#endif
+  #if VERSION_S
+    sound(43, fMISC_END_MARKER);
+  #endif
   reset(fJUMPING);
   set(fTENSE_SITUATION);
   program.control();
@@ -172,7 +239,14 @@ if (vTEMP_RESULT_3 > 20 && vTEMP_RESULT_3 < 30 && vTEMP_Y_2 > rvBIRD_Y && fJUMPI
   set(fPLAYER_NOT_IN_CONTROL);
   ignore.horizon(oEGO);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
-  vTEMP_X = 130;
+  #if VERSION_S
+    if (vTEMP_Y > 80) {
+      vTEMP_Y -= 70;
+    }
+    vTEMP_X = 135;
+  #else
+    vTEMP_X = 130;
+  #endif
   set.priority(oEGO, 15);
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, rvBIRD_STEP_SIZE, rfTAKEN_BY_BIRD);
   set(fCYCLE_EGO_ANIMATION);
@@ -214,9 +288,14 @@ if (fCARRYING_MAGIC_BEANS && fINIT_BEANSTALK) {
     drop("beans");
     vSCORE += 2;
     print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
-    sound(SND_BEANSTALK, rfPLAYED_SND_BEANSTALK);
+    #if !VERSION_S
+      sound(SND_BEANSTALK, rfPLAYED_SND_BEANSTALK);
+    #endif
     overlay.pic(vTEMP_PIC);
     show.pic();
+    #if VERSION_S
+      load.sound(SND_FALLING);
+    #endif
   }
 }
 if (vBEANSTALK_ROOM == ROOM22_CONDOR_AND_CAVE && !fEGO_INVISIBLE) {
@@ -276,16 +355,35 @@ if (rfFELL_OFF_BEANSTALK_LOW) {
   rvCOUNTDOWN = 20;
   set(fCYCLE_EGO_ANIMATION);
   shake.screen(2);
-  print("Ouch!");
-  set(f135_UNKNOWN);
-  sound(SND_OUCH, fSOUND_END_MARKER);
-}
-if (fSOUND_END_MARKER) {
-  if (rvCOUNTDOWN > 0) {
-    reset(fSOUND_END_MARKER);
-    sound(SND_OUCH, fSOUND_END_MARKER);
+  #if VERSION_S
+  if (!fSOUND_ENABLED)
+  #endif
+  {
+    print("Ouch!");
   }
+  set(f135_UNKNOWN);
+  #if VERSION_S
+    rv5 = 5;
+  #else
+    sound(SND_OUCH, fSOUND_END_MARKER);
+  #endif
 }
+#if VERSION_S
+  if (rvCOUNTDOWN > 0) {
+    rv5--;
+    if (rv5 == 1) {
+      rv5 = 5;
+      sound(SND_OUCH, fSOUND_END_MARKER);
+    }
+  }
+#else
+  if (fSOUND_END_MARKER) {
+    if (rvCOUNTDOWN > 0) {
+      reset(fSOUND_END_MARKER);
+      sound(SND_OUCH, fSOUND_END_MARKER);
+    }
+  }
+#endif
 if (rvCOUNTDOWN == 1) {
   set.view(oEGO, 104);
   end.of.loop(oEGO, rfEGO_STOPPED_ANIMATING);
