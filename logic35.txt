@@ -24,9 +24,14 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+  #if VERSION_S
+    load.sound(32);
+  #endif
   set.horizon(44);
   load.sound(SND_OUCH);
-  load.sound(SND_FALLING);
+  #if !VERSION_S
+    load.sound(SND_FALLING);
+  #endif
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
   }
@@ -43,8 +48,20 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(74);
     load.view(105);
     load.logics(LOGIC104_BEANSTALK);
-    load.sound(SND_BEANSTALK);
+    #if VERSION_S
+      set(f216);
+    #else
+      load.sound(SND_BEANSTALK);
+    #endif
   }
+  #if VERSION_S
+    if (vPREV_ROOM_NO == ROOM70_BEANSTALK_NEAR_BOTTOM) {
+      set(fTENSE_SITUATION);
+      set(fTHREAT_OF_SORCERER_OR_OGRE);
+      set(f216);
+      load.sound(SND_FALLING);
+    }
+  #endif
   if (vPREV_ROOM_NO == ROOM70_BEANSTALK_NEAR_BOTTOM && fEGO_CLIMBING_BEANSTALK) {
     set.view(oEGO, 74);
     position(oEGO, 64, 41);
@@ -52,6 +69,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.priority(oEGO, 8);
   }
   if (vPREV_ROOM_NO == ROOM70_BEANSTALK_NEAR_BOTTOM && fFALLING_TO_EARTH) {
+    #if VERSION_S
+      prevent.input();
+    #endif
     program.control();
     ignore.horizon(oEGO);
     set.priority(oEGO, 15);
@@ -69,7 +89,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_FROM_SKY);
   }
   random(0, 250, vTEMP_RESULT);
+  #if VERSION_S
+  if (vTEMP_RESULT < 125) {
+  #else
   if (vTEMP_RESULT < 85) {
+  #endif
     rvDWARF_STEP_SIZE = 4;
     step.size(oDWARF, rvDWARF_STEP_SIZE);
     load.view(111);
@@ -77,7 +101,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oDWARF, 111);
     set(rfINIT_RANDOMIZER);
     load.sound(SND_VILLAIN);
-    load.sound(SND_DWARF);
+    #if !VERSION_S
+      load.sound(SND_DWARF);
+    #endif
   }
   if (rfINIT_RANDOMIZER) {
     do {
@@ -93,7 +119,11 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (rfDWARF_IS_HERE && fSOUND_END_MARKER) {
   if (!rfPLAYING_SND_DWARF) {
     set(rfPLAYING_SND_DWARF);
+    #if VERSION_S
+    set(rfPLAYED_SND_DWARF);
+    #else
     sound(SND_DWARF, rfPLAYED_SND_DWARF);
+    #endif
   }
   if (rfPLAYED_SND_DWARF) {
     reset(rfPLAYING_SND_DWARF);
@@ -103,6 +133,9 @@ if (rfDWARF_IS_HERE && fSOUND_END_MARKER) {
 if (fFALLING_TO_EARTH && !rfPLAYING_SND_FALLING) {
   set(rfPLAYING_SND_FALLING);
   set(f135_UNKNOWN);
+  #if VERSION_S
+    load.sound(SND_FALLING);
+  #endif
   sound(SND_FALLING, rfPLAYED_SND_FALLING);
 }
 #if VERSION_U || VERSION_V
@@ -119,6 +152,9 @@ if (rfFALLEN_FROM_SKY) {
   set.view(oEGO, 114);
   shake.screen(2);
   set(fGAME_OVER);
+  #if VERSION_S
+    accept.input();
+  #endif
 }
 vTEMP_RESULT_2--;
 if (vTEMP_RESULT_2 == 1 && !fFALLING_TO_EARTH && !fEGO_CLIMBING_BEANSTALK) {
@@ -229,6 +265,9 @@ if (fVILLAIN_GOT_YOU) {
       set(rfHAD_DWARF_ENCOUNTER);
       goto(END_OF_DWARF_LOGIC);
     }
+    #if VERSION_S
+      sound(32, fMISC_END_MARKER);
+    #endif
     print("That little dwarf caught you by surprise.  Is your treasure still OK?");
     wander(oDWARF);
     set(rfHAD_DWARF_ENCOUNTER);
@@ -247,15 +286,28 @@ if (fCARRYING_MAGIC_BEANS && fINIT_BEANSTALK) {
     set(fMAGIC_BEANS_PLANTED);
     drop("beans");
     vSCORE += 2;
+    #if VERSION_S
+      load.sound(SND_BEANSTALK);
+    #endif
     print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
     sound(SND_BEANSTALK, rfPLAYED_SND_BEANSTALK);
     overlay.pic(vTEMP_PIC);
     show.pic();
+    #if VERSION_S
+      set.simple(12);
+      load.sound(SND_FALLING);
+    #endif
   }
 }
 if (vBEANSTALK_ROOM == ROOM35_DWARF_MEADOW && !fEGO_INVISIBLE) {
   if (said("climb", "beanstalk") && !fEGO_CLIMBING_BEANSTALK) {
     if (posn(oEGO, 52, 76, 103, 97)) {
+      #if VERSION_S
+        set(fTENSE_SITUATION);
+        set(fTHREAT_OF_SORCERER_OR_OGRE);
+        set(f216);
+        load.sound(SND_FALLING);
+      #endif
       erase(oEGO);
       ignore.blocks(oEGO);
       set.view(oEGO, 74);
@@ -277,16 +329,35 @@ if (vBEANSTALK_ROOM != ROOM35_DWARF_MEADOW) {
 }
 if (fEGO_CLIMBING_BEANSTALK) {
   if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 60, 78, 93, 80)) {
+    #if VERSION_S
+      reset(fEGO_CLIMBING_BEANSTALK);
+      reset(fFALLING);
+    #endif
     erase(oEGO);
     set.view(oEGO, 0);
     observe.blocks(oEGO);
-    reset(fEGO_CLIMBING_BEANSTALK);
+    #if !VERSION_S
+      reset(fEGO_CLIMBING_BEANSTALK);
+    #endif
     position(oEGO, 70, 106);
     release.priority(oEGO);
     draw(oEGO);
+    #if VERSION_S
+      accept.input();
+      reset(fTENSE_SITUATION);
+      reset(fTHREAT_OF_SORCERER_OR_OGRE);
+      reset(f216);
+    #endif
   }
   if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 60, 78, 93, 80)) {
     program.control();
+    #if VERSION_S
+      prevent.input();
+      set(fFALLING);
+      set(fTENSE_SITUATION);
+      set(fTHREAT_OF_SORCERER_OR_OGRE);
+      set(f216);
+    #endif
     set.priority(oEGO, 15);
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     erase(oEGO);
@@ -298,6 +369,9 @@ if (fEGO_CLIMBING_BEANSTALK) {
     vTEMP_STEP = 2;
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_FROM_BEANSTALK_LOW);
     set(f135_UNKNOWN);
+    #if VERSION_S
+      load.sound(SND_FALLING);
+    #endif
     sound(SND_FALLING, fSOUND_END_MARKER_2);
   }
 }
@@ -312,16 +386,35 @@ if (rfFELL_FROM_BEANSTALK_LOW) {
   rvCOUNTDOWN = 20;
   set(fCYCLE_EGO_ANIMATION);
   shake.screen(2);
-  print("Ouch!");
-  set(f135_UNKNOWN);
-  sound(SND_OUCH, fSOUND_END_MARKER);
-}
-if (fSOUND_END_MARKER) {
-  if (rvCOUNTDOWN > 0) {
-    reset(fSOUND_END_MARKER);
-    sound(SND_OUCH, fSOUND_END_MARKER);
+  #if VERSION_S
+  if (!fSOUND_ENABLED)
+  #endif
+  {
+    print("Ouch!");
   }
+  set(f135_UNKNOWN);
+  #if VERSION_S
+    rv2 = 5;
+  #else
+    sound(SND_OUCH, fSOUND_END_MARKER);
+  #endif
 }
+#if VERSION_S
+  if (rvCOUNTDOWN > 0) {
+    rv2--;
+    if (rv2 == 1) {
+      rv2 = 5;
+      sound(SND_OUCH, fSOUND_END_MARKER);
+    }
+  }
+#else
+  if (fSOUND_END_MARKER) {
+    if (rvCOUNTDOWN > 0) {
+      reset(fSOUND_END_MARKER);
+      sound(SND_OUCH, fSOUND_END_MARKER);
+    }
+  }
+#endif
 if (rvCOUNTDOWN == 1) {
   set.view(oEGO, 104);
   end.of.loop(oEGO, rfEGO_FINISHED_ANIMATING);
@@ -333,6 +426,12 @@ if (rfEGO_FINISHED_ANIMATING) {
   set.view(oEGO, 0);
   release.priority(oEGO);
   player.control();
+  #if VERSION_S
+    accept.input();
+    reset(fTENSE_SITUATION);
+    reset(fTHREAT_OF_SORCERER_OR_OGRE);
+    reset(f216);
+  #endif
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
   reset(fINIT_BEANSTALK);
@@ -340,7 +439,11 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
 if (vEGO_EDGE_CODE == EDGE_HORIZON && fEGO_CLIMBING_BEANSTALK) {
   new.room(ROOM70_BEANSTALK_NEAR_BOTTOM);
 }
+#if VERSION_S
+if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK && !fFALLING_TO_EARTH) {
+#else
 if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK) {
+#endif
   new.room(ROOM46_OGRE_STOMPING_GROUND);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
