@@ -21,6 +21,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   if (!fTAKEN_MIRROR) {
+    #if VERSION_S
+      load.sound(24);
+    #endif
     load.view(34);
   }
   if (vDRAGON_STATE == DRAGONSTATE_DEAD) {
@@ -30,8 +33,15 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(33);
     load.view(61);
     load.view(82);
-    load.sound(SND_VILLAIN);
-    load.sound(SND_DRAGON);
+    #if VERSION_S
+      load.sound(22);
+      load.sound(SND_DRAGON);
+      load.sound(42);
+      load.sound(43);
+    #else
+      load.sound(SND_VILLAIN);
+      load.sound(SND_DRAGON);
+    #endif
   }
   load.view(35);
   if (vPREV_ROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
@@ -76,14 +86,25 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
       set.view(oDRAGON, 33);
       position(oDRAGON, 40, 120);
-      rvDRAGON_STEP_SIZE = 3;
+      #if VERSION_S
+        rvDRAGON_STEP_SIZE = 2;
+      #else
+        rvDRAGON_STEP_SIZE = 3;
+      #endif
       step.size(oDRAGON, rvDRAGON_STEP_SIZE);
       draw(oDRAGON);
       observe.blocks(oDRAGON);
-      follow.ego(oDRAGON, 20, rfDRAGON_GOT_YOU);
+      #if VERSION_S
+        follow.ego(oDRAGON, 13, rfDRAGON_GOT_YOU);
+      #else
+        follow.ego(oDRAGON, 20, rfDRAGON_GOT_YOU);
+      #endif
     }
   }
   draw(oEGO);
+  #if VERSION_S
+    set(fMISC_END_MARKER);
+  #endif
   show.pic();
 }
 get.posn(oEGO, vTEMP_X, vTEMP_Y);
@@ -100,20 +121,36 @@ if (vTEMP_X < 16) {
 }
 if (vDRAGON_STATE == DRAGONSTATE_NORMAL && !rfPLAYING_SND_VILLAIN) {
   set(rfPLAYING_SND_VILLAIN);
-  sound(SND_VILLAIN, rfPLAYED_SND_VILLAIN);
+  #if VERSION_S
+    sound(22, rfPLAYED_SND_VILLAIN);
+  #else
+    sound(SND_VILLAIN, rfPLAYED_SND_VILLAIN);
+  #endif
 }
 if (vDRAGON_STATE == DRAGONSTATE_NORMAL && rfPLAYED_SND_VILLAIN) {
   current.loop(oDRAGON, rvDRAGON_CURRENT_LOOP);
-  if (rvDRAGON_CURRENT_LOOP == 0) {
+  #if VERSION_S
+    current.cel(oDRAGON, rv2);
+  #endif
+  if (rvDRAGON_CURRENT_LOOP == 0
+    #if VERSION_S
+      && rv2 == 1 && fMISC_END_MARKER
+    #endif
+  ) {
     sound(SND_DRAGON, fMISC_END_MARKER);
   }
+  #if !VERSION_S
   else {
     stop.sound();
   }
+  #endif
 }
 if (rfDRAGON_GOT_YOU && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
   reset(rfDRAGON_GOT_YOU);
   set.view(oEGO, 82);
+  #if VERSION_S
+    wander(oDRAGON);
+  #endif
   if (fCARRYING_SHIELD) {
     print("Your shield melted from the intensity of the dragon's flames!  You should know about these fire-breathing dragons!  Maybe next time you will be a little more careful!");
   }
@@ -264,6 +301,9 @@ if (!fCARRYING_MIRROR && !fTAKEN_MIRROR) {
         set(fCARRYING_MIRROR);
         set(fTAKEN_MIRROR);
         get("magic mirror");
+        #if VERSION_S
+          sound(24, fMISC_END_MARKER);
+        #endif
         print("Carefully, you pick up the magic mirror.");
         vTREASURE_COUNT++;
         vSCORE += 8;
@@ -318,6 +358,9 @@ if (!posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     || said("throw", "water", "dragon")
     || said("douse", "dragon")
   )) {
+    #if VERSION_S
+      sound(43, fMISC_END_MARKER);
+    #endif
     reset(fBUCKET_FILLED);
     print("The water hits the dragon squarely in the mouth, extinguishing its roaring flames.  No fire!  How mortified and embarrassed the dragon is!  Moving a huge boulder in leaving, the dragon creeps off to sulk.");
     drop("water");
@@ -328,6 +371,9 @@ if (!posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
 #endif
     reset(fFILL_BUCKET_POINTS);
     move.obj(oDRAGON, 40, 137, 0, rfDRAGON_AT_BOULDER);
+    #if VERSION_S
+      ignore.objs(oDRAGON);
+    #endif
     vDRAGON_STATE = DRAGONSTATE_ABSENT;
   }
 #if VERSION_U || VERSION_V
@@ -335,6 +381,10 @@ if (!posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
 #else
   if (fCARRYING_DAGGER && (said("throw", "dagger") || said("throw", "dagger", "dragon"))) {
 #endif
+    #if VERSION_S
+      stop.sound();
+      sound(43, fMISC_END_MARKER);
+    #endif
     ignore.blocks(oDRAGON);
     reset(fCARRYING_DAGGER);
     print("Nervously, you throw the dagger at the dragon and strike it in the heart.  Death for the dragon is instant.");
@@ -354,6 +404,9 @@ if (!posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
 if (rfDRAGON_AT_BOULDER) {
   reset(rfDRAGON_AT_BOULDER);
   start.cycling(oBOULDER);
+  #if VERSION_S
+    sound(42, fMISC_END_MARKER);
+  #endif
   end.of.loop(oBOULDER, rfBOULDER_MOVED);
 }
 if (rfBOULDER_MOVED) {

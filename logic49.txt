@@ -15,14 +15,28 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  load.sound(SND_FALLING);
+  #if !VERSION_S
+    load.sound(SND_FALLING);
+  #endif
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
-  load.view(72);
-  load.view(16);
-  load.view(74);
-  load.view(105);
-  load.view(99);
+  #if VERSION_S
+    load.view(99);
+    load.view(105);
+    load.view(74);
+    load.view(70);
+    load.view(16);
+    load.view(72);
+  #else
+    load.view(72);
+    load.view(16);
+    load.view(74);
+    load.view(105);
+    load.view(99);
+  #endif
+  #if VERSION_S
+    load.sound(SND_FALLING);
+  #endif
   if (fFALLING_DOWN_WELL) {
     set.view(oEGO, 105);
     position(oEGO, 81, 48);
@@ -31,6 +45,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.priority(oEGO, 15);
     set(fCYCLE_EGO_ANIMATION);
     set(rfFALLING_DOWN_WELL);
+    #if VERSION_S
+      sound(SND_FALLING, fMISC_END_MARKER);
+    #endif
     move.obj(oEGO, 81, 164, 3, rfFALLEN_DOWN_WELL);
   }
   if (vPREV_ROOM_NO == ROOM12_TOP_OF_WELL && !fFALLING_DOWN_WELL) {
@@ -46,6 +63,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (vPREV_ROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
+    #if VERSION_S
+      start.motion(oEGO);
+    #endif
     set.view(oEGO, 70);
     set(rfSWIMMING);
     rvCOUNTDOWN = 250;
@@ -53,7 +73,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (fROPE_DANGLING_IN_WELL) {
     add.to.pic(99, 0, 0, 84, 119, 4, 4);
-    discard.view(99);
+    #if !VERSION_S
+      discard.view(99);
+    #endif
   }
   if (fBUCKET_LOWERED) {
     if (fIN_WELL_BUCKET) {
@@ -80,6 +102,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   SHOWPIC:
     show.pic();
 }
+#if VERSION_S
+  if (fROPE_DANGLING_IN_WELL || fBUCKET_LOWERED) {
+    if (said("examine", "rope")) {
+      print("It is a very long, sturdy rope.");
+    }
+  }
+#endif
 if (fEGO_ON_WATER) {
   observe.blocks(oEGO);
 }
@@ -87,18 +116,25 @@ else {
   ignore.blocks(oEGO);
 }
 if (fFALLING_DOWN_WELL && !rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE && !rfPLAYING_SND_FALLING) {
-  sound(SND_FALLING, fSOUND_END_MARKER);
+  #if !VERSION_S
+    sound(SND_FALLING, fSOUND_END_MARKER);
+  #endif
   set(rfPLAYING_SND_FALLING);
 }
-if (fSOUND_END_MARKER) {
-  if (!rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE) {
-    reset(rfPLAYING_SND_FALLING);
-    reset(fSOUND_END_MARKER);
+#if !VERSION_S
+  if (fSOUND_END_MARKER) {
+    if (!rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE) {
+      reset(rfPLAYING_SND_FALLING);
+      reset(fSOUND_END_MARKER);
+    }
   }
-}
+#endif
 if (fON_WELL_ROPE) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y > 115 && fBUCKET_LOWERED) {
+    #if VERSION_S
+      sound(SND_FALLING, rf7);
+    #endif
     reset(fON_WELL_ROPE);
     set(fFALLING_DOWN_WELL);
     set.view(oEGO, 105);
@@ -111,6 +147,9 @@ if (fON_WELL_ROPE) {
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_OFF_ROPE);
   }
   if (vTEMP_Y > 115 && fROPE_DANGLING_IN_WELL) {
+    #if VERSION_S
+      sound(SND_FALLING, rf7);
+    #endif
     reset(fON_WELL_ROPE);
     set(fFALLING_DOWN_WELL);
     set.view(oEGO, 105);
@@ -124,6 +163,9 @@ if (fON_WELL_ROPE) {
   }
   if (vTEMP_X < 79 || vTEMP_X > 83) {
     if (vTEMP_Y > 70) {
+      #if VERSION_S
+        sound(SND_FALLING, rf7);
+      #endif
       reset(fON_WELL_ROPE);
       set(fFALLING_DOWN_WELL);
       set.view(oEGO, 105);
@@ -136,6 +178,9 @@ if (fON_WELL_ROPE) {
       move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_OFF_ROPE);
     }
     else {
+      #if VERSION_S
+        sound(SND_FALLING, rf7);
+      #endif
       reset(fON_WELL_ROPE);
       set(fFALLING_DOWN_WELL);
       set(rfFELL_FROM_ROPE);
@@ -232,6 +277,9 @@ if (!fON_WELL_ROPE && !rfFALLING_DOWN_WELL) {
       || said("exit", "bucket")
       || said("go", "water")
       || said("jump", "water")
+#if VERSION_S
+      || said("leave", "bucket")
+#endif
     ) {
       start.update(o1);
       erase(o1);
@@ -274,11 +322,22 @@ if (!fCARRYING_BUCKET) {
       print("The bucket is not here.");
     }
   }
-  if (said("go", "bucket") && fBUCKET_LOWERED && !fIN_WELL_BUCKET) {
-    print("I don't think that getting in the bucket right now will do you very much good.");
-  }
+  #if VERSION_S
+    if (said("go", "bucket") || said("get in", "bucket")) if (fBUCKET_LOWERED && !fIN_WELL_BUCKET) {
+      print("I don't think that getting in the bucket right now will do you very much good.");
+    }
+  #else
+    if (said("go", "bucket") && fBUCKET_LOWERED && !fIN_WELL_BUCKET) {
+      print("I don't think that getting in the bucket right now will do you very much good.");
+    }
+  #endif
 }
-if (said("untie", "rope")) {
+if (
+  said("untie", "rope")
+#if VERSION_S
+  || said("untie", "bucket")
+#endif
+) {
   if (fON_WELL_ROPE || fIN_WELL_BUCKET) {
     print("The knot is tied very tightly.");
   }
@@ -381,12 +440,22 @@ if (!fBUCKET_FILLED) {
     }
   }
 }
-if (vAQUATIC_ACTIVITY != AQUATICACTIVITY_SWIMMING) {
+if (
+#if VERSION_S
+  vAQUATIC_ACTIVITY != AQUATICACTIVITY_DROWNING &&
+#endif
+  vAQUATIC_ACTIVITY != AQUATICACTIVITY_SWIMMING
+) {
   if (said("dive", "water") || said("dive", "down") || said("dive")) {
     print("Now is not the time to try diving.");
   }
 }
-if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING) {
+if (
+#if VERSION_S
+  vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING ||
+#endif
+  vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING
+) {
   if (said("dive", "water") || said("dive", "down") || said("dive")) {
     if (!fPOINTS_FOR_DIVING_IN_WELL) {
       set(fPOINTS_FOR_DIVING_IN_WELL);
