@@ -315,6 +315,11 @@ if (!fCARRYING_MIRROR) {
     print("You do not have it.");
   }
 }
+#if VERSION_S
+  if (fCARRYING_FIDDLE) if (said("play", "fiddle")) {
+    print("You can't do that--at least not now!");
+  }
+#endif
 if (said("play", "anyword")) {
   print("You have better things to do than to play all day.");
 }
@@ -333,9 +338,71 @@ if (said("anyword", "woman")) {
   goto RETURN;
 }
 if (said("examine")) {
-  print("You need to be more specific.");
+  print(m13 /* "You need to be more specific." */);
 }
-if (said("examine", "anyword")) {
+#if !VERSION_U && !VERSION_V
+  if (said("examine", "river")) {
+    print("The stream may not be safe to cross.");
+  }
+  if (said("examine", "room")) {
+    print(m43 /* "You need to be more specific." */);
+  }
+  if (said("examine", "door")) {
+    print("There is no door here.");
+  }
+  if (!fBUCKET_FILLED && said("examine", "water")) {
+    print("You do not have any water.");
+  }
+  if (said("examine", "tree")) {
+    if (
+      vROOM_NO < ROOM49_INSIDE_WELL
+      || vROOM_NO == ROOM56_CLOUDS_GRASS_EDGE
+      || vROOM_NO == ROOM57_CLOUDLANDS_NORTHWEST
+      || vROOM_NO == ROOM58_GIANT_STOMPING_GROUND
+      || vROOM_NO == ROOM59_CLOUDS_MOUNTAIN_CAVE
+      || vROOM_NO == ROOM60_CLOUDLANDS_SOUTHWEST
+      || vROOM_NO == ROOM61_CLOUDLANDS_SOUTH
+      || vROOM_NO == ROOM69_MOUNTAIN_STAIRWAY_TOP
+    ) {
+      random(1, 3, v112);
+      if (v112 == 1) {
+        print("This is a very beautiful tree.");
+      }
+      if (v112 == 2) {
+        print("This is just a normal tree, but very pretty.");
+      }
+      if (v112 == 3) {
+        print("You admire the beauty of the tree.");
+      }
+    }
+    else {
+      print("There is no \"%w2\" here to look at.");
+    }
+  }
+  if (said("examine", "rock")) {
+    if (vROOM_NO < ROOM49_INSIDE_WELL) {
+      random(1, 3, v113);
+      if (v113 == 1) {
+        print("This is a very nice looking rock.");
+      }
+      if (v113 == 2) {
+        print("There is nothing extraordinary about this rock.");
+      }
+      if (v113 == 3) {
+        print("This is your ordinary rock.");
+      }
+    }
+    else {
+      print("There is no \"%w2\" here to look at.");
+    }
+  }
+#endif
+if (
+  said("examine", "anyword")
+#if VERSION_S
+  || said("look around")
+#endif
+) {
   print("You see nothing special.");
 }
 if (said("get", "anyword") && !said("get")) {
