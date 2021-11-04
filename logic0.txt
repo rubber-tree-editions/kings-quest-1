@@ -11,26 +11,94 @@ if (vERROR_CODE > 0) {
   call(LOGIC98_ERROR);
 }
 if (vROOM_NO == ROOM_NULL) {
+#if !VERSION_S
   set.game.id("KQ1");
+#endif
   script.size(100);
 #if VERSION_U
   set(fJOYSTICK_SENSITIVITY_ENABLED);
   vJOYSTICK_SENSITIVITY = 3;
+#elif VERSION_S
+  if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
+    set.game.id("PQ");
+  }
+  else {
+    set.game.id("KQ");
+  }
 #endif
   vMAX_SCORE = 158;
+#if VERSION_S
+  vCYCLE_DELAY = 0;
+#else
   vTEMP_CYCLE_DELAY = 2;
   vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
+#endif
   if (fRESTART_GAME_EXECUTED) {
     new.room(ROOM1_CASTLE_EAST);
   }
   else {
+#if VERSION_S
+    set.menu("Info");
+    set.menu.item("About KQ", cABOUT);
+    set.menu.item("Help    ", cHELP);
+    set.menu("File");
+    set.menu.item("Save Game      <Shift-5>", cSAVE);
+    set.menu.item("Restore Game   <Shift-7>", cRESTORE);
+    set.menu.item("-------------------", c20);
+    set.menu.item("Restart Game   <Shift-9>", cRESTART);
+    set.menu.item("-------------------", c20);
+    set.menu.item("Quit        <Option-Z>", cQUIT);
+    set.menu("Game");
+    set.menu.item("See Object     <Shift-4>", c21);
+    set.menu.item("Inventory     <Tab>", cINVENTORY);
+    set.menu("Action ");
+    set.menu.item("Swim  =", cSWIM);
+    set.menu.item("Jump  0", cJUMP);
+    set.menu.item("Duck  -", cDUCK);
+    set.menu("Special");
+    set.menu.item("Sound On/Off   <Shift-2>", cTOGGLESOUND);
+    set.menu.item("Reset Joystick <Ctrl J>", cINITJOYSTICK);
+    set.menu.item("Pause           <Esc>", cPAUSE);
+    submit.menu();
+#endif
     new.room(ROOM83_TITLE_SCREEN);
   }
 }
 if (vROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
   set(fEGO_ON_WATER);
 }
+#if VERSION_S
+if (fROOM_SCRIPT_EXECUTED || fRESTORE_GAME_EXECUTED) {
+  if (vROOM_NO != ROOM1_CASTLE_EAST) {
+    clear.lines(24, 24, "");
+  }
+  if (vROOM_NO != ROOM83_TITLE_SCREEN) {
+    set(fJOYSTICK_SENSITIVITY_ENABLED);
+    disable.item(c20);
+    set(fENABLE_MENU);
+    vJOYSTICK_SENSITIVITY = 3;
+  }
+}
+#endif
 if (fROOM_SCRIPT_EXECUTED) {
+  #if VERSION_S
+    if (vPREV_ROOM_NO != ROOM70_BEANSTALK_NEAR_BOTTOM) {
+      reset(fTENSE_SITUATION);
+      reset(fTHREAT_OF_SORCERER_OR_OGRE);
+      reset(f216);
+      reset(f215);
+    }
+    else {
+      disable.item(cJUMP);
+      disable.item(cDUCK);
+      set(f216);
+    }
+    vDROWN_GAME_OVER_COUNTDOWN = 0;
+    reset(fSCRIPTED_MOTION);
+    vTEMP_CYCLE_DELAY = 0;
+    vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
+    reset(fDEBUG_MODE);
+  #endif
   animate.obj(oEGO);
   load.view(0);
   if (vROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
@@ -80,7 +148,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (fGOAT_COMPANION || vROOM_YOU_KILLED_THE_GOAT_IN > ROOM_NULL) {
     load.view(62);
   }
+#if !VERSION_S
   reset(fDEBUG_MODE);
+#endif
   observe.objs(oEGO);
   observe.blocks(oEGO);
   reset(fSWIMMING_LOGIC_LOADED);
@@ -90,7 +160,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   reset(fSOUND_END_MARKER_2);
   reset(fFALLING);
   reset(fVILLAIN_GOT_YOU);
+#if !VERSION_S
   reset(fTENSE_SITUATION);
+#endif
   vTEMP_RESULT = 0;
   vTEMP_RESULT_2 = 0;
   vTEMP_RESULT_3 = 0;
@@ -107,34 +179,104 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.string(sPROMPT, ">");
   set.cursor.char("_");
 }
-#if VERSION_V
+#if VERSION_V || VERSION_S
   get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
 #endif
-if (fGAME_OVER) {
-  if (!fGAME_OVER_PREPARATION) {
-    #if VERSION_U
-      disable.item(cSAVE);
-      disable.item(cJUMP);
-      disable.item(cSWIM);
-      disable.item(cDUCK);
-    #endif
-    load.logics(LOGIC100_GAME_OVER);
-    load.sound(SND_GAME_OVER);
-    vGAME_OVER_MESSAGE_COUNTDOWN = 40;
-    set(fGAME_OVER_PREPARATION);
+#if !VERSION_S
+  if (fGAME_OVER) {
+    if (!fGAME_OVER_PREPARATION) {
+      #if VERSION_U
+        disable.item(cSAVE);
+        disable.item(cJUMP);
+        disable.item(cSWIM);
+        disable.item(cDUCK);
+      #endif
+      load.logics(LOGIC100_GAME_OVER);
+      load.sound(SND_GAME_OVER);
+      vGAME_OVER_MESSAGE_COUNTDOWN = 40;
+      set(fGAME_OVER_PREPARATION);
+    }
+    program.control();
+    stop.motion(oEGO);
+    call(LOGIC100_GAME_OVER);
+    return;
   }
-  program.control();
-  stop.motion(oEGO);
-  call(LOGIC100_GAME_OVER);
-  return;
-}
-#if VERSION_U
-if (controller(cHELP) && vROOM_NO != ROOM83_TITLE_SCREEN) {
-#else
-if (controller(cHELP)) {
 #endif
-  call(LOGIC92_HELP);
-}
+#if VERSION_S
+  if (controller(c25) && vROOM_NO != 83) {
+    menu.input();
+  }
+  if (controller(cDEBUG)) {
+    if (fDEBUG_MODE) {
+      clear.lines(24, 24, "");
+      reset(fDEBUG_MODE);
+    }
+    print("  King's Quest \n\nApple IIgs Version \n\n    1.0S-88223 \n");
+    version();
+  }
+  if (said("kqdbg")) {
+    toggle(fDEBUG_MODE);
+    clear.lines(24, 24, "");
+    load.logics(99);
+    print("  King's Quest \n\nApple IIgs Version \n\n    1.0S-88223 \n");
+    version();
+  }
+  if (said("fast")) {
+    vTEMP_CYCLE_DELAY = 0;
+    vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
+  }
+  if (said("normal")) {
+    vTEMP_CYCLE_DELAY = 0;
+    vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
+  }
+  if (said("slow")) {
+    vTEMP_CYCLE_DELAY = 2;
+    vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
+  }
+  if (said("quit") || controller(cQUIT)) {
+    stop.sound();
+    quit(0);
+  }
+  if (said("restore", "game") || controller(cRESTORE)) {
+    restore.game();
+  }
+  if (said("restart", "game") || controller(cRESTART)) {
+    restart.game();
+  }
+  if (controller(cINVENTORY)) {
+    status();
+  }
+  if (controller(c21)) {
+    set(fSTATUS_TO_SELECT_ITEMS);
+    status();
+    if (vSELECTED_INV_ITEM > 0 && vSELECTED_INV_ITEM != 255) {
+      vTEMP_RESULT = vSELECTED_INV_ITEM;
+      vTEMP_RESULT += 116;
+      if (vTEMP_RESULT == 125 && vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
+        vTEMP_RESULT++;
+      }
+      if ((vTEMP_RESULT == 127 || vTEMP_RESULT == 142) && fBUCKET_FILLED) {
+        vTEMP_RESULT = 128;
+      }
+      show.obj.v(vTEMP_RESULT);
+    }
+    reset(fSTATUS_TO_SELECT_ITEMS);
+  }
+  if (controller(cABOUT)) {
+    print("   King's Quest\n\nby Roberta Williams.\n");
+  }
+  if (said("help") || controller(cHELP)) {
+    call(LOGIC92_HELP);
+  }
+#elif VERSION_U
+  if (controller(cHELP) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+    call(LOGIC92_HELP);
+  }
+#else
+  if (controller(cHELP)) {
+    call(LOGIC92_HELP);
+  }
+#endif
 if (controller(cTOGGLESOUND)) {
   toggle(fSOUND_ENABLED);
 }
@@ -169,6 +311,11 @@ if (controller(cABOUT)) {
     "(C) 1986 Sierra On-Line, Inc."
   );
 }
+#endif
+#if VERSION_S
+  if (fGAME_OVER) {
+    goto(END_OF_BOWL_LOGIC);
+  }
 #endif
 if (vROOM_NO > ROOM52_IN_WELL_UNDERWATER
   || vROOM_NO == ROOM3_ROCK_OVER_HOLE
@@ -215,7 +362,12 @@ if (vROOM_NO > ROOM52_IN_WELL_UNDERWATER
       stop.cycling(oEGO);
     }
   }
-  else if (!fSCRIPTED_MOTION)
+  else if (
+    !fSCRIPTED_MOTION
+    #if VERSION_S
+      && !fEGO_DUCKING
+    #endif
+  )
 #endif
 {
   if (vEGO_DIR == vSAVED_EGO_DIR && vTEMP_X_2 == vSAVED_EGO_X && vTEMP_Y_2 == vSAVED_EGO_Y) {
@@ -236,52 +388,70 @@ if (vROOM_NO > ROOM52_IN_WELL_UNDERWATER
     stop.cycling(oEGO);
   }
 #endif
-if (controller(cDEBUG)) {
-  load.logics(LOGIC99_DEBUG);
-  set(fDEBUG_MODE);
-  print(m17);
-  version();
-}
-if (said("fast")) {
-  vTEMP_CYCLE_DELAY = 0;
-  vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
-}
-if (said("normal")) {
-  vTEMP_CYCLE_DELAY = 2;
-  vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
-}
-if (said("slow")) {
-  vTEMP_CYCLE_DELAY = 4;
-  vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
-}
-#if VERSION_V
-if ((said("quit") || controller(cQUIT))) {
+#if VERSION_S
+  if (said("save", "game") || controller(cSAVE)) {
+    if (!fGAME_OVER) {
+      save.game();
+    }
+    else {
+      reset(fSAID_ACCEPTED_USER_INPUT);
+    }
+  }
 #else
-if ((said("quit") || controller(cQUIT)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+  if (controller(cDEBUG)) {
+    load.logics(LOGIC99_DEBUG);
+    set(fDEBUG_MODE);
+    print(m17);
+    version();
+  }
+  if (said("fast")) {
+    vTEMP_CYCLE_DELAY = 0;
+    vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
+  }
+  if (said("normal")) {
+    vTEMP_CYCLE_DELAY = 2;
+    vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
+  }
+  if (said("slow")) {
+    vTEMP_CYCLE_DELAY = 4;
+    vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
+  }
+  #if VERSION_V
+  if ((said("quit") || controller(cQUIT))) {
+  #else
+  if ((said("quit") || controller(cQUIT)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+  #endif
+    quit(0);
+  }
+  #if VERSION_V
+  if ((said("save", "game") || controller(cSAVE))) {
+  #else
+  if ((said("save", "game") || controller(cSAVE)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+  #endif
+    save.game();
+  }
+  #if VERSION_V
+  if ((said("restore", "game") || controller(cRESTORE))) {
+  #else
+  if ((said("restore", "game") || controller(cRESTORE)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+  #endif
+    restore.game();
+  }
+  #if VERSION_V
+  if ((said("restart", "game") || controller(cRESTART))) {
+  #else
+  if ((said("restart", "game") || controller(cRESTART)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+  #endif
+    restart.game();
+  }
+  #if VERSION_V
+  if (controller(cINVENTORY)) {
+  #else
+  if (controller(cINVENTORY) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+  #endif
+    status();
+  }
 #endif
-  quit(0);
-}
-#if VERSION_V
-if ((said("save", "game") || controller(cSAVE))) {
-#else
-if ((said("save", "game") || controller(cSAVE)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
-#endif
-  save.game();
-}
-#if VERSION_V
-if ((said("restore", "game") || controller(cRESTORE))) {
-#else
-if ((said("restore", "game") || controller(cRESTORE)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
-#endif
-  restore.game();
-}
-#if VERSION_V
-if ((said("restart", "game") || controller(cRESTART))) {
-#else
-if ((said("restart", "game") || controller(cRESTART)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
-#endif
-  restart.game();
-}
 #if RUBBER_TREE
 #if VERSION_V
   if ((said("undo") || controller(cUNDO))) {
@@ -291,13 +461,6 @@ if ((said("restart", "game") || controller(cRESTART)) && vROOM_NO != ROOM83_TITL
     set(fUNDO);
   }
 #endif
-#if VERSION_V
-if (controller(cINVENTORY)) {
-#else
-if (controller(cINVENTORY) && vROOM_NO != ROOM83_TITLE_SCREEN) {
-#endif
-  status();
-}
 if (controller(cPREVINPUT)) {
   echo.line();
 }
@@ -314,9 +477,16 @@ else {
         && !fEGO_TINY
         && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE
         && !fEGO_ON_WATER
+      #if !VERSION_S
         && !fTENSE_SITUATION
+      #endif
         && !fEGO_DUCKING
         && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
+      #if VERSION_S
+        && !f211
+        && !f215
+        && !fTENSE_SITUATION
+      #endif
         && vROOM_NO != ROOM29_SORCERER_STOMPING_GROUND
         && vROOM_NO != ROOM13_WOLF_STOMPING_GROUND
         && vROOM_NO != ROOM53_KING_EDWARD_THRONE_ROOM
@@ -334,6 +504,9 @@ else {
         && vROOM_NO != ROOM11_GOAT_PEN_EAST
         && vROOM_NO != ROOM51_DRAGONS_LAIR
     ) {
+      #if VERSION_S
+        set(f215);
+      #endif
       set(fJUMPING);
       stop.motion(oEGO);
       set.cel(oEGO, 0);
@@ -355,60 +528,86 @@ else {
     cycle.time(oEGO, vTEMP_CYCLE_TIME_2);
     start.motion(oEGO);
     set.view(oEGO, 0);
+    #if VERSION_S
+      reset(f215);
+    #endif
   }
 }
-if (said("duck") || controller(cDUCK)) {
-  if (!fEGO_DUCKING
-      && !fEGO_CLIMBING_BEANSTALK
-      && !fFALLING_TO_EARTH
-      && !fEGO_INVISIBLE
-      && !fEGO_TINY
-      && !fEGO_ON_WATER
-      && !fTENSE_SITUATION
-      && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
-      && !fJUMPING
-      && !fTHREAT_OF_SORCERER_OR_OGRE
-      && vROOM_NO != ROOM29_SORCERER_STOMPING_GROUND
-      && vROOM_NO != ROOM12_TOP_OF_WELL
-      && vROOM_NO != ROOM53_KING_EDWARD_THRONE_ROOM
-      && vROOM_NO != ROOM58_GIANT_STOMPING_GROUND
-      && vROOM_NO != ROOM49_INSIDE_WELL
-      && vROOM_NO != ROOM52_IN_WELL_UNDERWATER
-      && vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE
-      && vROOM_NO != ROOM80_IN_MID_AIR
-      && vROOM_NO != ROOM48_LEPRECHAUN_HOLE
-      && vROOM_NO != ROOM73_CAVE_CEILING_HOLE
-      && vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE
-      && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE
-      && vROOM_NO != ROOM14_BASE_GOLDEN_EGG_TREE
-      && vROOM_NO != ROOM10_GOAT_PEN_WEST
-      && vROOM_NO != ROOM11_GOAT_PEN_EAST
-      && vROOM_NO != ROOM13_WOLF_STOMPING_GROUND
-      && !fCARRIED_BY_WITCH
-  ) {
-    set(fEGO_DUCKING);
-    set.view(oEGO, 87);
-    set(fCYCLE_EGO_ANIMATION);
-    end.of.loop(oEGO, fDUCKED);
+#if VERSION_S
+  if (vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE) { }
+  else
+#endif
+{
+  if (said("duck") || controller(cDUCK)) {
+    if (!fEGO_DUCKING
+        && !fEGO_CLIMBING_BEANSTALK
+        && !fFALLING_TO_EARTH
+        && !fEGO_INVISIBLE
+        && !fEGO_TINY
+        && !fEGO_ON_WATER
+        && !fTENSE_SITUATION
+        && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
+        && !fJUMPING
+        && !fTHREAT_OF_SORCERER_OR_OGRE
+      #if VERSION_S
+        && !f215
+      #endif
+        && vROOM_NO != ROOM29_SORCERER_STOMPING_GROUND
+        && vROOM_NO != ROOM12_TOP_OF_WELL
+        && vROOM_NO != ROOM53_KING_EDWARD_THRONE_ROOM
+        && vROOM_NO != ROOM58_GIANT_STOMPING_GROUND
+        && vROOM_NO != ROOM49_INSIDE_WELL
+        && vROOM_NO != ROOM52_IN_WELL_UNDERWATER
+        && vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE
+        && vROOM_NO != ROOM80_IN_MID_AIR
+        && vROOM_NO != ROOM48_LEPRECHAUN_HOLE
+        && vROOM_NO != ROOM73_CAVE_CEILING_HOLE
+        && vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE
+        && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE
+        && vROOM_NO != ROOM14_BASE_GOLDEN_EGG_TREE
+        && vROOM_NO != ROOM10_GOAT_PEN_WEST
+        && vROOM_NO != ROOM11_GOAT_PEN_EAST
+        && vROOM_NO != ROOM13_WOLF_STOMPING_GROUND
+      #if VERSION_S
+        && vROOM_NO != ROOM51_DRAGONS_LAIR
+      #endif
+        && !fCARRIED_BY_WITCH
+      #if VERSION_S
+        && !f211
+      #endif
+    ) {
+      set(fEGO_DUCKING);
+      set.view(oEGO, 87);
+      set(fCYCLE_EGO_ANIMATION);
+    #if VERSION_S
+      start.cycling(oEGO);
+    #endif
+      end.of.loop(oEGO, fDUCKED);
+    }
+    else if (!fFULLY_DUCKED) {
+      print("There is no reason to do that now.");
+    }
   }
-  else if (!fFULLY_DUCKED) {
-    print("There is no reason to do that now.");
+  if (fDUCKED) {
+    stop.cycling(oEGO);
+    stop.motion(oEGO);
+    set(fFULLY_DUCKED);
+    reset(fDUCKED);
+    reset(fCYCLE_EGO_ANIMATION);
   }
-}
-if (fDUCKED) {
-  stop.cycling(oEGO);
-  stop.motion(oEGO);
-  set(fFULLY_DUCKED);
-  reset(fDUCKED);
-  reset(fCYCLE_EGO_ANIMATION);
-}
-if (fFULLY_DUCKED) {
-  if (said("stand up") || controller(cDUCK)) {
-    reset(fEGO_DUCKING);
-    reset(fFULLY_DUCKED);
-    start.motion(oEGO);
-    set.view(oEGO, 0);
-    start.cycling(oEGO);
+  if (fFULLY_DUCKED) {
+    if (
+      said("stand up") || controller(cDUCK)
+    #if VERSION_S
+      || said("jump") || controller(cJUMP)
+    #endif
+    ) {
+      reset(fEGO_DUCKING);
+      reset(fFULLY_DUCKED);
+      start.motion(oEGO);
+      set.view(oEGO, 0);
+      start.cycling(oEGO);
+    }
   }
 }
 if (said("thank", "anyword")) {
@@ -472,6 +671,9 @@ if (fCARRYING_CARROT) {
     print("You already have a carrot.");
   }
   if (fGOAT_COMPANION) {
+#if VERSION_S
+    if (vROOM_NO != ROOM10_GOAT_PEN_WEST && vROOM_NO != ROOM11_GOAT_PEN_EAST)
+#endif
     if (said("feed", "carrot")
       || said("feed", "goat", "carrot")
       || said("feed", "carrot", "goat")
@@ -484,13 +686,29 @@ if (fCARRYING_CARROT) {
       reset(fCARRYING_CARROT);
       reset(fPOINTS_FOR_CARROT);
       vSCORE -= 2;
+    #if !VERSION_S
       if (vROOM_NO == ROOM10_GOAT_PEN_WEST || vROOM_NO == ROOM11_GOAT_PEN_EAST) {
         set.view(oEGO, 0);
       }
+    #endif
       erase(oGOAT);
       set(fGOAT_IS_GONE);
       reset(fGOAT_COMPANION);
     }
+    #if VERSION_S
+      if (vROOM_NO == ROOM10_GOAT_PEN_WEST || vROOM_NO == ROOM11_GOAT_PEN_EAST) {
+        if (
+          said("feed", "carrot")
+          || said("feed", "goat", "carrot")
+          || said("feed", "carrot", "goat")
+          || said("give", "carrot")
+          || said("give", "goat", "carrot")
+          || said("give", "carrot", "goat")
+        ) {
+          print("There is no reason to do that now.");
+        }
+      }
+    #endif
     if (said("show", "carrot") || said("show", "carrot", "goat") || said("show", "goat", "carrot")) {
       print("It is not nice to tease the goat.");
     }
@@ -547,11 +765,21 @@ else {
     }
   }
 }
+#if VERSION_S
+  if (fCARRYING_BUCKET && fBUCKET_FILLED && said("examine", "bucket")) {
+    show.obj(INV_BUCKET_OF_WATER);
+  }
+#endif
 if (fCARRYING_BUCKET && fBUCKET_FILLED && !fEGO_ON_WATER) {
   if (said("get", "bucket") || said("get", "water")) {
     print("You already have it.");
   }
-  if (said("examine", "bucket") || said("examine", "water")) {
+  if (
+#if !VERSION_S
+    said("examine", "bucket") || 
+#endif
+    said("examine", "water")
+  ) {
     show.obj(INV_BUCKET_OF_WATER);
   }
   if (said("drink", "water") || said("get", "drink")) {
@@ -606,15 +834,37 @@ if (fCARRYING_MUSHROOM) {
       && vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE
       && vROOM_NO != ROOM14_BASE_GOLDEN_EGG_TREE
       && vROOM_NO != ROOM63_UP_GOLDEN_EGG_TREE
+    #if VERSION_S
+      && vROOM_NO != ROOM52_IN_WELL_UNDERWATER
+      && vROOM_NO != ROOM51_DRAGONS_LAIR
+      && vROOM_NO != ROOM49_INSIDE_WELL
+      && !f215
+    #endif
       && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
       && vROOM_NO != ROOM12_TOP_OF_WELL
       && vROOM_NO != ROOM73_CAVE_CEILING_HOLE
       && vROOM_NO != ROOM74_CAVE_CORNER
       && vROOM_NO != ROOM75_RAT_STOMPING_GROUND
     ) {
+      #if VERSION_S
+        stop.sound();
+        reset(f212);
+        reset(f211);
+        disable.item(cJUMP);
+        disable.item(cDUCK);
+        reset(fFULLY_DUCKED);
+      #endif
       print("As soon as you swallow the first bite, you have this strange shrinking feeling...  It's true!  You are now no bigger than a mouse!");
+      #if VERSION_S
+        start.motion(oEGO);
+        reset(fCYCLE_EGO_ANIMATION);
+        reset(fEGO_DUCKING);
+      #endif
       set.view(oEGO, 60);
       vTINY_COUNTDOWN = 200;
+      #if VERSION_S
+        start.cycling(oEGO);
+      #endif
       drop("mushroom");
       reset(fCARRYING_MUSHROOM);
       set(fEATEN_MUSHROOM);
@@ -635,6 +885,10 @@ if (fEGO_TINY && vTINY_COUNTDOWN > 0) {
     set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
     reset(fEGO_TINY);
+    #if VERSION_S
+      enable.item(cJUMP);
+      enable.item(cDUCK);
+    #endif
   }
 }
 if (fCARRYING_RING) {
@@ -679,6 +933,11 @@ if (fCARRYING_RING) {
     }
   }
   if (said("rub", "ring")) {
+    #if VERSION_S
+      if (f215) {
+        reset(fSAID_ACCEPTED_USER_INPUT);
+      }
+    #endif
     if (!fWEARING_RING) {
       print("The magic ring is still in your pocket.  You can't rub it there.");
     }
@@ -701,13 +960,26 @@ if (fCARRYING_RING) {
         && vROOM_NO != ROOM52_IN_WELL_UNDERWATER
         && vROOM_NO != ROOM12_TOP_OF_WELL
         && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE
+      #if VERSION_S
+        && !fEGO_DUCKING
+        && !f215
+      #endif
         && !fPLAYER_NOT_IN_CONTROL
         && !fCARRIED_BY_WITCH
         && !fEGO_TINY
       ) {
+        #if VERSION_S
+          set(f215);
+          reset(fJUMPING);
+          reset(fJUMPED);
+        #endif
         set.view(oEGO, 110);
         print("When you rub the magic ring, you mysteriously disappear, except for your footprints.");
         set(fEGO_INVISIBLE);
+        #if VERSION_S
+          disable.item(cJUMP);
+          disable.item(cDUCK);
+        #endif
         vINVISIBLE_COUNTDOWN_LO = 250;
         vINVISIBLE_COUNTDOWN_HI = 10;
       }
@@ -749,9 +1021,21 @@ if (vINVISIBLE_COUNTDOWN_LO == 1 && vINVISIBLE_COUNTDOWN_HI == 0) {
   set(fLOST_RING);
   reset(fEGO_INVISIBLE);
   print("The spell to make you invisible has expired and you are once again visible to dangerous creatures, but, the ring has now disappeared.");
+  #if VERSION_S
+    enable.item(cJUMP);
+    enable.item(cDUCK);
+  #endif
   vSCORE -= 3;
+  #if VERSION_S
+    reset(f215);
+  #endif
 }
 if (fCARRYING_MAGIC_BEANS) {
+  #if VERSION_S
+    if (said("take", "magic beans")) {
+      print("You already have the beans.");
+    }
+  #endif
   if (said("examine", "magic beans")) {
     show.obj(INV_MAGIC_BEANS);
   }
@@ -762,7 +1046,15 @@ if (fCARRYING_MAGIC_BEANS) {
     reset(fCARRYING_MAGIC_BEANS);
   }
   if (said("plant", "magic beans")) {
-    if (vROOM_NO != ROOM6_POUCH_STUMP && vROOM_NO != ROOM22_CONDOR_AND_CAVE && vROOM_NO != ROOM31_FREE_BOWL && vROOM_NO != ROOM35_DWARF_MEADOW && vROOM_NO != ROOM38_WILD_FLOWER_BED) {
+    if (
+      vROOM_NO != ROOM6_POUCH_STUMP
+    #if !VERSION_S
+      && vROOM_NO != ROOM22_CONDOR_AND_CAVE
+    #endif
+      && vROOM_NO != ROOM31_FREE_BOWL
+      && vROOM_NO != ROOM35_DWARF_MEADOW
+      && vROOM_NO != ROOM38_WILD_FLOWER_BED
+    ) {
       print("That is not a bad idea, but this is not a very suitable place to plant these beans.  Why don't you try it elsewhere?");
     }
     else {
@@ -793,7 +1085,16 @@ if (fCARRYING_BOWL) {
     if (said("examine", "bowl") || said("look inside", "bowl")) {
       show.obj(INV_BOWL_OF_STEW);
     }
-    if (said("fill") || said("fill", "bowl") || said("get", "stew")) {
+    if (
+      said("fill")
+  #if !VERSION_S
+      || said("fill", "bowl")
+  #endif
+      || said("get", "stew")
+  #if VERSION_S
+      || said("say", "fill")
+  #endif
+    ) {
       print("You already have a full bowl of stew.");
     }
   }
@@ -808,7 +1109,15 @@ if (fCARRYING_BOWL) {
         vSCORE += 1;
       }
     }
-    if (said("fill") || said("fill", "bowl")) {
+    if (
+      said("fill")
+#if !VERSION_S
+      || said("fill", "bowl")
+#endif
+#if VERSION_S
+      || said("say", "fill")
+#endif
+    ) {
       if (vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE) {
         print("The bowl fills with the delicious stew, but the woodcutters are unaware of it.");
       }
@@ -872,7 +1181,14 @@ if (fGOAT_COMPANION) {
     print("You don't have any way to kill the old goat.");
   }
   if (fCARRYING_DAGGER && said("murder", "goat")) {
-    if (vROOM_NO != ROOM25_RICKETY_BRIDGE && vROOM_NO != ROOM39_WEATHER_BEATEN_BRIDGE && vROOM_NO != ROOM41_OPEN_SIDED_BRIDGE) {
+    if (
+      vROOM_NO != ROOM25_RICKETY_BRIDGE
+      && vROOM_NO != ROOM39_WEATHER_BEATEN_BRIDGE
+      && vROOM_NO != ROOM41_OPEN_SIDED_BRIDGE
+#if VERSION_S
+      && vROOM_NO != ROOM2_CASTLE_WEST
+#endif
+    ) {
       if (vROOM_NO == ROOM10_GOAT_PEN_WEST || vROOM_NO == ROOM11_GOAT_PEN_EAST) {
         get.posn(oEGO, vTEMP_X, vTEMP_Y);
         print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.");
@@ -924,16 +1240,31 @@ if (fCARRYING_NOTE) {
   if (said("examine", "note")) {
     show.obj(INV_NOTE);
   }
-  if (said("read", "note") || said("read", "message")) {
+#if VERSION_S
+  if (said("take", "note")) {
+    print("You already have it.");
+  }
+}
+if (fCARRYING_NOTE && !fGAME_OVER) {
+#endif
+  if (
+    said("read", "note")
+    || said("read", "message")
+#if VERSION_S
+    || said("read", "message", "note")
+#endif
+  ) {
     print("The note reads, \"Sometimes it is wise to think backwards.\"");
     if (!fPOINTS_FOR_READING_NOTE) {
       set(fPOINTS_FOR_READING_NOTE);
       vSCORE += 1;
     }
   }
-  if (said("get", "note")) {
-    print("You already have it.");
-  }
+  #if !VERSION_S
+    if (said("get", "note")) {
+      print("You already have it.");
+    }
+  #endif
 }
 if (fCARRYING_SWISS_CHEESE) {
   if (said("get", "swiss cheese")) {
@@ -942,6 +1273,10 @@ if (fCARRYING_SWISS_CHEESE) {
   if (said("examine", "swiss cheese")) {
     show.obj(INV_SWISS_CHEESE);
   }
+#if VERSION_S
+}
+if (fCARRYING_SWISS_CHEESE && !fGAME_OVER) {
+#endif
   if (said("eat", "swiss cheese")) {
     print("Mmmm!  That Swiss cheese was as delicious as it looked.");
     drop("cheese");
@@ -999,7 +1334,11 @@ if (fCARRYING_POUCH) {
   if (said("examine", "bag of jewels")) {
     show.obj(INV_CLOSED_POUCH);
   }
+  #if VERSION_S
+  if (!fCARRYING_DIAMONDS && !fGAME_OVER) {
+  #else
   if (!fCARRYING_DIAMONDS) {
+  #endif
     if (said("open", "bag of jewels") || said("look inside", "bag of jewels")) {
       print("Cautiously, you open the pouch and see many sparkling and flashing diamonds!  Quickly, you close it again so as not to lose any.");
       get("pouch of diamonds");
@@ -1021,6 +1360,17 @@ if (fCARRYING_GOLDEN_EGG) {
     print("This egg will be tough to crack.");
   }
 }
+#if VERSION_S
+  if (f212) {
+    stop.sound();
+    start.motion(oEGO);
+    reset(f212);
+    reset(f211);
+    enable.item(cJUMP);
+    enable.item(cDUCK);
+    reset(f215);
+  }
+#endif
 if (fCARRYING_FIDDLE) {
   if (said("get", "fiddle")) {
     print("You already have it.");
@@ -1028,12 +1378,59 @@ if (fCARRYING_FIDDLE) {
   if (said("examine", "fiddle")) {
     show.obj(INV_FIDDLE);
   }
-  if (vROOM_NO != ROOM76_LEPRECHAUN_ANTECHAMBER && vROOM_NO != ROOM77_LEPRECHAUN_KING_THRONE_ROOM) {
+  if (
+    vROOM_NO != ROOM76_LEPRECHAUN_ANTECHAMBER
+    && vROOM_NO != ROOM77_LEPRECHAUN_KING_THRONE_ROOM
+#if VERSION_S
+    && vROOM_NO != ROOM53_KING_EDWARD_THRONE_ROOM
+    && vROOM_NO != ROOM65_IN_GINGERBREAD_HOUSE
+    && vROOM_NO != ROOM80_IN_MID_AIR
+    && vROOM_NO != ROOM49_INSIDE_WELL
+    && vROOM_NO != ROOM52_IN_WELL_UNDERWATER
+    && vROOM_NO != ROOM12_TOP_OF_WELL
+    && vAQUATIC_ACTIVITY != AQUATICACTIVITY_DROWNING
+    && vAQUATIC_ACTIVITY != AQUATICACTIVITY_SWIMMING
+    && !fPLAYER_NOT_IN_CONTROL
+    && !fCARRIED_BY_WITCH
+    && !fGAME_OVER
+    && !fEGO_CLIMBING_BEANSTALK
+    && !fON_WELL_ROPE
+    && !fFALLING_TO_EARTH
+    && !fJUMPING
+    && !fEGO_TINY
+    && !fTENSE_SITUATION
+    && vROOM_NO != ROOM58_GIANT_STOMPING_GROUND
+    && !f175_UNKNOWN
+    && !f211
+    && !f215
+    && !fFULLY_DUCKED
+    && !fEGO_ON_WATER
+    && !fFALLING
+    && !f216
+#endif
+  ) {
     if (said("play", "fiddle")) {
+      #if VERSION_S
+        set(f215);
+        disable.item(cJUMP);
+        disable.item(cDUCK);
+        load.sound(SND_FIDDLE_TUNE);
+        set(f211);
+        sound(SND_FIDDLE_TUNE, f212);
+      #endif
       print("You play a lively, toe-tapping tune on the fiddle.");
-      if (vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE) {
-        sound(SND_FIDDLE_TUNE, fMISC_END_MARKER);
-      }
+      #if VERSION_S
+        if (!fEGO_ON_WATER && !fFALLING && !fEGO_TOUCHED_TRIGGER_LINE) {
+          stop.motion(oEGO);
+        }
+        else {
+          set(f212);
+        }
+      #else
+        if (vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE) {
+          sound(SND_FIDDLE_TUNE, fMISC_END_MARKER);
+        }
+      #endif
     }
   }
 }
@@ -1051,9 +1448,32 @@ if (vTREASURE_COUNT == 3) {
 if (fDEBUG_MODE) {
   call(LOGIC99_DEBUG);
 }
+#if VERSION_S
+  if (fGAME_OVER) {
+    if (!fGAME_OVER_PREPARATION) {
+      load.logics(LOGIC100_GAME_OVER);
+      load.sound(SND_GAME_OVER);
+      load.view(114);
+      vGAME_OVER_MESSAGE_COUNTDOWN = 40;
+      set(fGAME_OVER_PREPARATION);
+    }
+    program.control();
+    stop.motion(oEGO);
+    disable.item(cSAVE);
+    disable.item(cPAUSE);
+    disable.item(cSWIM);
+    disable.item(cJUMP);
+    disable.item(cDUCK);
+    call(LOGIC100_GAME_OVER);
+    if (vROOM_NO == ROOM46_OGRE_STOMPING_GROUND || vROOM_NO == ROOM13_WOLF_STOMPING_GROUND) {
+      call.v(vROOM_NO);
+    }
+    return;
+  }
+#endif
 call.v(vROOM_NO);
 call(LOGIC102_DEFAULT_RESPONSES);
-#if VERSION_V
+#if VERSION_V || VERSION_S
 get.posn(oEGO, vSAVED_EGO_X, vSAVED_EGO_Y);
 vSAVED_EGO_DIR = vEGO_DIR;
 #endif
