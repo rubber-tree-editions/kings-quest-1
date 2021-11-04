@@ -7,13 +7,13 @@ LOGIC__HEADER
 
 #define rvLOCK_PRIORITY rv0
 
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
 #define rvRESTORE_EGO_X rv1
 #define rvRESTORE_EGO_Y rv2
 #define rvRESTORE_EGO_DIR rv3
 #endif
 
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
 if (fUNDO && fGAME_OVER) {
   stop.sound();
   erase(oEGO);
@@ -42,7 +42,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {
-  #ifdef RUBBER_TREE
+  #if RUBBER_TREE
     get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
     rvRESTORE_EGO_Y++;
     rvRESTORE_EGO_DIR = vEGO_DIR;

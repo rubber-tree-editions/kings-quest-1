@@ -5,13 +5,13 @@ LOGIC__HEADER
 #define rfFALLEN_THROUGH_THE_CLOUDS rf0
 #define rfHIDE_EGO rf1
 
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
 #define rvRESTORE_EGO_X rv0
 #define rvRESTORE_EGO_Y rv1
 #define rvRESTORE_EGO_DIR rv2
 #endif
 
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
 if (fUNDO && fGAME_OVER) {
   reset(fSCRIPTED_MOTION);
   stop.sound();
@@ -69,7 +69,7 @@ if (said("examine", "flowers")) {
   print("These are unusual looking flowers.");
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !fSCRIPTED_MOTION && posn(oEGO, 0, 84, 159, 167)) {
-  #ifdef RUBBER_TREE
+  #if RUBBER_TREE
     get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
     rvRESTORE_EGO_X -= 5;
     rvRESTORE_EGO_DIR = vEGO_DIR;
@@ -85,7 +85,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !fSCRIPTED_MOTION && posn(oEGO, 0, 84, 159, 167
   move.obj(oEGO, 153, 166, 5, rfHIDE_EGO);
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
-  #ifdef RUBBER_TREE
+  #if RUBBER_TREE
     get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
     if (rvRESTORE_EGO_X >= 113) {
       rvRESTORE_EGO_X -= 5;

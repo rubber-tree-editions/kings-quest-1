@@ -8,13 +8,13 @@ LOGIC__HEADER
 
 #define rvLOCK_PRIORITY rv0
 
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
 #define rvRESTORE_EGO_X rv1
 #define rvRESTORE_EGO_Y rv2
 #define rvRESTORE_EGO_DIR rv3
 #endif
 
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
 if (fUNDO && fGAME_OVER) {
   reset(fSCRIPTED_MOTION);
   stop.sound();

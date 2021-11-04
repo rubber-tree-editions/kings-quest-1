@@ -16,7 +16,7 @@ LOGIC__HEADER
 #define rvCOUNTDOWN_HI rv1
 // unused: rv2
 #define rvZERO rv3
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
 #define rvRESTORE_EGO_X rv4
 #define rvRESTORE_EGO_Y rv5
 #define rvRESTORE_EGO_DIR rv6
@@ -26,7 +26,7 @@ LOGIC__HEADER
 #define oCHEST o2
 #define oFLUNG_PEBBLE o15
 
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
 if (fUNDO && fGAME_OVER) {
   if (fFALLING) {
     stop.sound();
@@ -175,7 +175,7 @@ if (rfGIANT_CAUGHT_YOU && rfGIANT_IS_AFTER_YOU) {
   }
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {
-  #ifdef RUBBER_TREE
+  #if RUBBER_TREE
     get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
     rvRESTORE_EGO_Y += 5;
     rvRESTORE_EGO_DIR = vEGO_DIR;
