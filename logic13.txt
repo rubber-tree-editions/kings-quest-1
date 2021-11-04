@@ -15,6 +15,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+  #if VERSION_S
+    load.sound(3);
+    load.sound(38);
+    load.view(114);
+  #endif
   set.horizon(46);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
@@ -48,6 +53,23 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
+#if VERSION_S
+  rv2--;
+  if (rf5 && rv2 > 1) {
+    sound(38, rf5);
+  }
+  if (rv2 == 1) {
+    draw(oWOLF);
+    wander(oWOLF);
+    set(rf6);
+    erase(oEGO);
+    set.view(oEGO, 114);
+    stop.cycling(oEGO);
+    draw(oEGO);
+    set(fGAME_OVER);
+    reset(rf5);
+  }
+#endif
 vTEMP_RESULT_2--;
 if (vTEMP_RESULT_2 == 1) {
   set(rfWOLF_IS_HERE);
@@ -57,7 +79,11 @@ if (vTEMP_RESULT_2 == 1) {
   draw(oWOLF);
   if (!fGOAT_COMPANION) {
     print("Look out for that wolf -- he can run very fast!   Don't let him catch you!");
-    follow.ego(oWOLF, 12, fVILLAIN_GOT_YOU);
+    #if VERSION_S
+      follow.ego(oWOLF, 9, fVILLAIN_GOT_YOU);
+    #else
+      follow.ego(oWOLF, 12, fVILLAIN_GOT_YOU);
+    #endif
   }
   if (fGOAT_COMPANION) {
     wander(oWOLF);
@@ -66,12 +92,19 @@ if (vTEMP_RESULT_2 == 1) {
     print("The wolf sees that menacing goat by your side and decides to keep his distance.");
   }
 }
-if (fSOUND_END_MARKER) {
-  reset(fSOUND_END_MARKER);
-  reset(f135_UNKNOWN);
-}
+#if VERSION_S
+  random(1, 9, rv1);
+  if (rfWOLF_IS_HERE && rv1 == 2 && fSOUND_END_MARKER && rv2 <= 0) {
+    sound(3, fSOUND_END_MARKER);
+  }
+#else
+  if (fSOUND_END_MARKER) {
+    reset(fSOUND_END_MARKER);
+    reset(f135_UNKNOWN);
+  }
+#endif
 if (!rfWOLF_IS_HERE) {
-  if (said("anyword", "wolf")) {
+    if (said("anyword", "wolf")) {
     print("There's no wolf here.");
   }
 }
@@ -107,13 +140,26 @@ if (fVILLAIN_GOT_YOU) {
     set(rfPROTECTED);
   }
   else {
+    #if VERSION_S
+      stop.motion(oEGO);
+    #endif
     program.control();
+    #if VERSION_S
+      rv2 = 15;
+    #endif
     print("It seems the wolf caught up with you and is discussing dinner arrangements.");
     erase(oWOLF);
     set.view(oEGO, 96);
     start.cycling(oEGO);
+    #if VERSION_S
+      stop.motion(oEGO);
+    #endif
     set(fCYCLE_EGO_ANIMATION);
-    set(fGAME_OVER);
+    #if VERSION_S
+      sound(38, rf5);
+    #else
+      set(fGAME_OVER);
+    #endif
   }
 }
 if (rfPROTECTED && vOBJECT_EDGE_CODE != 0) {
@@ -121,7 +167,11 @@ if (rfPROTECTED && vOBJECT_EDGE_CODE != 0) {
   reset(rfWOLF_IS_HERE);
   erase(oWOLF);
 }
+#if VERSION_S
+if (fGAME_OVER || rv2 > 0) {
+#else
 if (fGAME_OVER) {
+#endif
   goto RETURN;
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
@@ -140,6 +190,18 @@ if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
 RETURN:
+  #if VERSION_S
+    if (rf5 && rv2 > 1) {
+      sound(38, rf5);
+    }
+    if (fGAME_OVER && rf6) {
+      if (vOBJECT_TOUCHING_EDGE > 0 || vOBJECT_EDGE_CODE > 0) {
+        reset(rfWOLF_IS_HERE);
+        reset(rf6);
+        erase(oWOLF);
+      }
+    }
+  #endif
   return;
 
 LOGIC__FOOTER

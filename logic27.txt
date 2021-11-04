@@ -16,7 +16,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
+#if VERSION_U || VERSION_V
 if (said("examine", "anyword")) {
+#else
+if (said("look around")) {
+#endif
   print("What are you doing that for?  There's nothing here.");
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {

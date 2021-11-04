@@ -9,6 +9,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+#if !VERSION_U && !VERSION_V
+  set.horizon(30);
+#endif
   load.view(105);
   load.view(74);
   load.sound(SND_FALLING);
@@ -44,16 +47,22 @@ if (fFALLING_TO_EARTH && !rfFALLEN_OFF_SCREEN && !rfFALLING_SOUND_PLAYING) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   set(rfFALLING_SOUND_PLAYING);
 }
+#if VERSION_U || VERSION_V
 if (fSOUND_END_MARKER) {
   if (!rfFALLEN_OFF_SCREEN) {
     reset(rfFALLING_SOUND_PLAYING);
     reset(fSOUND_END_MARKER);
   }
 }
+#endif
 if (said("examine", "beanstalk")) {
   print("You can no longer see the bottom... it seems to go  on forever!");
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !fFALLING_TO_EARTH) {
+  #if VERSION_S
+    set(f215);
+    set(fFALLING);
+  #endif
   program.control();
   print("You have to be careful when you get so high on the foliage!");
   get.posn(oEGO, vTEMP_X, vTEMP_Y);

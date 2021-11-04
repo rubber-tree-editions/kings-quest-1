@@ -3,11 +3,26 @@
 LOGIC__HEADER
 
 
-
-if (said("quit")) {
-  stop.sound();
-  quit(0);
-}
+#if VERSION_S
+  vDEBUG_VAR_VALUE = vTEMP_X_2;
+  vDEBUG_VAR_OR_FLAG_ID = vTEMP_Y_2;
+  display(24, 16, "%v72|3/%v73|3");
+  if (fEGO_ON_WATER) {
+    display(24, 34, "W ");
+    display(24, 34, " W");
+  }
+  else {
+    display(24, 34, "  ");
+  }
+  if (controller(cSHOWMEM)) {
+    show.mem();
+  }
+#else
+  if (said("quit")) {
+    stop.sound();
+    quit(0);
+  }
+#endif
 if (said("tp")) {
   get.num("new room: ", vTEMP_INPUT_NUM1);
   new.room.v(vTEMP_INPUT_NUM1);
@@ -28,7 +43,11 @@ if (said("set", "var")) {
   get.num("var value: ", vTEMP_INPUT_NUM2);
   lindirectv(vTEMP_INPUT_NUM1, vTEMP_INPUT_NUM2);
 }
+#if VERSION_S
+if (controller(c21)) {
+#else
 if (said("object")) {
+#endif
   get.num("object #: ", vTEMP_INPUT_NUM1);
   obj.status.v(vTEMP_INPUT_NUM1);
 }
@@ -36,6 +55,9 @@ if (controller(cSHOWPRIORITY)) {
   show.pri.screen();
 }
 if (said("show", "var")) {
+  #if VERSION_S
+    vDEBUG_VAR_OR_FLAG_ID = 0;
+  #endif
   get.num("var number: ", vDEBUG_VAR_OR_FLAG_ID);
   rindirect(vDEBUG_VAR_VALUE, vDEBUG_VAR_OR_FLAG_ID);
   print("var %v73: %v72");
@@ -57,9 +79,11 @@ if (said("set", "flags")) {
   get.num("flag number: ", vDEBUG_VAR_OR_FLAG_ID);
   set.v(vDEBUG_VAR_OR_FLAG_ID);
 }
-if (controller(cSHOWMEM)) {
-  show.mem();
-}
+#if !VERSION_S
+  if (controller(cSHOWMEM)) {
+    show.mem();
+  }
+#endif
 if (vUNKNOWN_WORD_NO == 1) {
   log("%m12%w1");
 }
@@ -91,6 +115,12 @@ return;
 #message 14 "%m12%w2"
 #message 15 "%m12%w3"
 #message 16 "No response to input."
+#if VERSION_S
+  #message 17 "%v72|3/%v73|3"
+  #message 97 "  "
+  #message 98 "W "
+  #message 99 " W"
+#endif
 #endif
 
 LOGIC__FOOTER

@@ -14,9 +14,22 @@ LOGIC__HEADER
 #define oGATOR2 o12
 
 if (fROOM_SCRIPT_EXECUTED) {
+#if VERSION_V
+  set(fJOYSTICK_SENSITIVITY_ENABLED);
+  vJOYSTICK_SENSITIVITY = 3;
+#elif VERSION_C
+  set(fJOYSTICK_SENSITIVITY_ENABLED);
+  disable.item(c20);
+  set(fENABLE_MENU);
+  vJOYSTICK_SENSITIVITY = 3;
+#endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+#if VERSION_S
+  clear.lines(22, 24, "");
+  load.sound(33);
+#endif
   load.logics(LOGIC101_SWIMMING);
   set.horizon(50);
   if (fGOAT_COMPANION) {
@@ -58,13 +71,23 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(oEGO);
   call(LOGIC101_SWIMMING);
+#if VERSION_U
   if (vPREV_ROOM_NO == ROOM83_TITLE_SCREEN) {
     submit.menu();
   }
+#endif
   show.pic();
   status.line.on();
   accept.input();
+#if VERSION_S
+  rv5 = 2;
+#endif
 }
+#if !VERSION_U && !VERSION_V
+  if (said("examine", "room")) {
+    print("You are standing outside a castle surrounded by an alligator filled moat.");
+  }
+#endif
 if (said("pet", "alligators")) {
   print("What!  Are you crazy?");
 }
@@ -166,8 +189,13 @@ if (fEGO_ON_WATER) {
 if (fEGO_ON_WATER && !rfINIT_GATOR_DEATH) {
   program.control();
   stop.motion(oEGO);
+#if VERSION_S
+  follow.ego(oGATOR1, 10, rfGATOR1_CAUGHT_YOU);
+  follow.ego(oGATOR2, 10, rfGATOR2_CAUGHT_YOU);
+#else
   follow.ego(oGATOR1, 18, rfGATOR1_CAUGHT_YOU);
   follow.ego(oGATOR2, 18, rfGATOR2_CAUGHT_YOU);
+#endif
   set(rfINIT_GATOR_DEATH);
 }
 if (posn(oEGO, 89, 132, 91, 134) && !rfEATEN_BY_GATORS) {
@@ -179,14 +207,34 @@ if (rfGATOR1_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
   set(rfEATEN_BY_GATORS);
   rvCOUNTDOWN = 45;
+#if VERSION_S
+  set(f214);
+#endif
 }
 if (rfGATOR2_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
   set(rfEATEN_BY_GATORS);
   rvCOUNTDOWN = 45;
+#if VERSION_S
+  set(f214);
+#endif
 }
+#if VERSION_S
+if (rfEATEN_BY_GATORS && rvCOUNTDOWN > 1) {
+  if (rfGATOR1_CAUGHT_YOU || rfGATOR2_CAUGHT_YOU) {
+    rv5--;
+    if (rv5 == 1) {
+      rv5 = 8;
+      sound(33, fMISC_END_MARKER);
+    }
+  }
+}
+#endif
 if (rfEATEN_BY_GATORS && rvCOUNTDOWN == 1) {
   rvCOUNTDOWN = 0;
+#if VERSION_S
+  stop.sound();
+#endif
   erase(oEGO);
   if (rfGATOR1_CAUGHT_YOU) {
     erase(oGATOR1);
@@ -233,5 +281,7 @@ LOGIC__FOOTER
 #message 13 "King Edward does not allow anyone to take his flowers."
 #message 14 "The moats slippery sides prevent you from getting out."
 #message 15 "What!  Are you crazy?"
-#message 16 "You are standing outside a castle surrounded by an alligator filled moat."
+#if !VERSION_U && !VERSION_V
+  #message 16 "You are standing outside a castle surrounded by an alligator filled moat."
+#endif
 #endif

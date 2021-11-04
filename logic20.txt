@@ -38,12 +38,23 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
+#if !VERSION_U && !VERSION_V
+  if (f213) {
+    reset(f213);
+    print("It seems the old goat has wandered off by himself and is no longer following you.");
+  }
+#endif
 if (said("examine", "lake")) {
   print("This is a small alpine lake.");
 }
 if (said("examine", "stumps")) {
   print(m5);
 }
+#if !VERSION_U && !VERSION_V
+if (said("anyword", "beavers")) {
+  print("There are no beavers here now.");
+}
+#endif
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 100, 109, 115, 135)) {
     set(fEGO_ON_WATER);
@@ -96,6 +107,9 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
+#if !VERSION_U && !VERSION_V
+    set(f213);
+#endif
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
@@ -113,6 +127,19 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
+#if VERSION_S
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  if (vTEMP_X > 13 && vTEMP_X <  133) {
+    set(fTENSE_SITUATION);
+    set(fTHREAT_OF_SORCERER_OR_OGRE);
+    set(f216);
+  }
+  else {
+    reset(fTENSE_SITUATION);
+    reset(fTHREAT_OF_SORCERER_OR_OGRE);
+    reset(f216);
+  }
+#endif
 call(LOGIC101_SWIMMING);
 return;
 
@@ -123,14 +150,14 @@ LOGIC__FOOTER
 #message 2 "The clear water quenches your thirst."
 #message 3 "You are not close enough to the water."
 #message 4 "You have no container for water."
-#ifdef VERSION_U
-#message 5 "There seem to be beavers around here."
+#if VERSION_U || VERSION_V
+  #message 5 "There seem to be beavers around here."
 #else
-#message 5 "It looks as though there were beavers around here at one time."
+  #message 5 "It looks as though there were beavers around here at one time."
 #endif
 #message 6 "This is a small alpine lake."
-#ifndef VERSION_U
-#message 7 "There are no beavers here now."
-#message 8 "It seems the old goat has wandered off by himself and is no longer following you."
+#if !VERSION_U && !VERSION_V
+  #message 7 "There are no beavers here now."
+  #message 8 "It seems the old goat has wandered off by himself and is no longer following you."
 #endif
 #endif

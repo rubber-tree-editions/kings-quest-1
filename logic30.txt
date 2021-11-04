@@ -6,6 +6,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+#if VERSION_S
+  load.sound(23);
+#endif
   load.sound(SND_GOLDEN_WALNUT);
   set.horizon(50);
   if (fGOAT_COMPANION) {
@@ -22,6 +25,11 @@ if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) {
     print("You already have one walnut, let's not be greedy.");
   }
 }
+#if !VERSION_U && !VERSION_V
+if (posn(oEGO, 9, 112, 98, 167) && (said("examine", "ground") || said("look around"))) {
+  print("These are some of the finest walnuts you have ever seen.");
+}
+#endif
 if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
   if (said("examine", "walnut")) {
     if (posn(oEGO, 9, 112, 98, 167)) {
@@ -37,6 +45,9 @@ if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
     }
     if (!fWALNUT_TAKEN) {
       if (posn(oEGO, 9, 112, 98, 167)) {
+#if VERSION_S
+        sound(23, fMISC_END_MARKER);
+#endif
         print("You pluck a nice walnut from the tree.");
         set(fCARRYING_WALNUT);
         set(fWALNUT_TAKEN);

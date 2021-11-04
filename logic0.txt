@@ -13,8 +13,10 @@ if (vERROR_CODE > 0) {
 if (vROOM_NO == ROOM_NULL) {
   set.game.id("KQ1");
   script.size(100);
+#if VERSION_U
   set(fJOYSTICK_SENSITIVITY_ENABLED);
   vJOYSTICK_SENSITIVITY = 3;
+#endif
   vMAX_SCORE = 158;
   vTEMP_CYCLE_DELAY = 2;
   vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
@@ -105,12 +107,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.string(sPROMPT, ">");
   set.cursor.char("_");
 }
+#if VERSION_V
+  get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
+#endif
 if (fGAME_OVER) {
   if (!fGAME_OVER_PREPARATION) {
-    disable.item(cSAVE);
-    disable.item(cJUMP);
-    disable.item(cSWIM);
-    disable.item(cDUCK);
+    #if VERSION_U
+      disable.item(cSAVE);
+      disable.item(cJUMP);
+      disable.item(cSWIM);
+      disable.item(cDUCK);
+    #endif
     load.logics(LOGIC100_GAME_OVER);
     load.sound(SND_GAME_OVER);
     vGAME_OVER_MESSAGE_COUNTDOWN = 40;
@@ -121,19 +128,28 @@ if (fGAME_OVER) {
   call(LOGIC100_GAME_OVER);
   return;
 }
+#if VERSION_U
 if (controller(cHELP) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+#else
+if (controller(cHELP)) {
+#endif
   call(LOGIC92_HELP);
 }
 if (controller(cTOGGLESOUND)) {
   toggle(fSOUND_ENABLED);
 }
+#if VERSION_V
+  if (controller(cTOGGLEGFX)) {
+    toggle.monitor();
+  }
+#endif
 if (controller(cINITJOYSTICK)) {
   init.joy();
 }
 if (controller(cCLEARINPUT)) {
   cancel.line();
 }
-#ifdef VERSION_U
+#if VERSION_U
 if (controller(cABOUT)) {
   print(
     "        King's Quest" "\n"
@@ -188,22 +204,38 @@ if (vROOM_NO > ROOM52_IN_WELL_UNDERWATER
     print("You need to be in water to swim.");
   }
 }
-get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
-if (vEGO_DIR == vSAVED_EGO_DIR && vTEMP_X_2 == vSAVED_EGO_X && vTEMP_Y_2 == vSAVED_EGO_Y) {
-  stop.cycling(oEGO);
+#if VERSION_U
+  get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
+#else
+  if (vEGO_DIR == DIR_NONE) {
+    if (fCYCLE_EGO_ANIMATION) {
+      start.cycling(oEGO);
+    }
+    else {
+      stop.cycling(oEGO);
+    }
+  }
+  else if (!fSCRIPTED_MOTION)
+#endif
+{
+  if (vEGO_DIR == vSAVED_EGO_DIR && vTEMP_X_2 == vSAVED_EGO_X && vTEMP_Y_2 == vSAVED_EGO_Y) {
+    stop.cycling(oEGO);
+  }
+  else {
+    start.cycling(oEGO);
+  }
 }
-else {
-  start.cycling(oEGO);
-}
-vSAVED_EGO_X = vTEMP_X_2;
-vSAVED_EGO_Y = vTEMP_Y_2;
-vSAVED_EGO_DIR = vEGO_DIR;
-if (fCYCLE_EGO_ANIMATION) {
-  start.cycling(oEGO);
-}
-else if (__OR__(vEGO_DIR <= DIR_NONE)) {
-  stop.cycling(oEGO);
-}
+#if VERSION_U
+  vSAVED_EGO_X = vTEMP_X_2;
+  vSAVED_EGO_Y = vTEMP_Y_2;
+  vSAVED_EGO_DIR = vEGO_DIR;
+  if (fCYCLE_EGO_ANIMATION) {
+    start.cycling(oEGO);
+  }
+  else if (__OR__(vEGO_DIR <= DIR_NONE)) {
+    stop.cycling(oEGO);
+  }
+#endif
 if (controller(cDEBUG)) {
   load.logics(LOGIC99_DEBUG);
   set(fDEBUG_MODE);
@@ -222,24 +254,48 @@ if (said("slow")) {
   vTEMP_CYCLE_DELAY = 4;
   vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
 }
+#if VERSION_V
+if ((said("quit") || controller(cQUIT))) {
+#else
 if ((said("quit") || controller(cQUIT)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+#endif
   quit(0);
 }
+#if VERSION_V
+if ((said("save", "game") || controller(cSAVE))) {
+#else
 if ((said("save", "game") || controller(cSAVE)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+#endif
   save.game();
 }
+#if VERSION_V
+if ((said("restore", "game") || controller(cRESTORE))) {
+#else
 if ((said("restore", "game") || controller(cRESTORE)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+#endif
   restore.game();
 }
+#if VERSION_V
+if ((said("restart", "game") || controller(cRESTART))) {
+#else
 if ((said("restart", "game") || controller(cRESTART)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+#endif
   restart.game();
 }
-#ifdef RUBBER_TREE
-if ((said("undo") || controller(cUNDO)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
-  set(fUNDO);
-}
+#if RUBBER_TREE
+#if VERSION_V
+  if ((said("undo") || controller(cUNDO))) {
+#else
+  if ((said("undo") || controller(cUNDO)) && vROOM_NO != ROOM83_TITLE_SCREEN) {
 #endif
+    set(fUNDO);
+  }
+#endif
+#if VERSION_V
+if (controller(cINVENTORY)) {
+#else
 if (controller(cINVENTORY) && vROOM_NO != ROOM83_TITLE_SCREEN) {
+#endif
   status();
 }
 if (controller(cPREVINPUT)) {
@@ -997,6 +1053,10 @@ if (fDEBUG_MODE) {
 }
 call.v(vROOM_NO);
 call(LOGIC102_DEFAULT_RESPONSES);
+#if VERSION_V
+get.posn(oEGO, vSAVED_EGO_X, vSAVED_EGO_Y);
+vSAVED_EGO_DIR = vEGO_DIR;
+#endif
 return;
 
 LOGIC__FOOTER
@@ -1018,14 +1078,16 @@ LOGIC__FOOTER
 #message 14 "You open your mouth while swimming and quench your thirst."
 #message 15 "With difficulty, you fill the bucket while swimming."
 #message 16 "Mmmm!  There's nothing like a crisp, fresh carrot."
-#ifdef VERSION_U
-#message 17 "VERSION 1.0U"
-#endif
-#ifdef VERSION_F
-#message 17 "VERSION 2.0F"
-#endif
-#ifdef VERSION_C
-#message 17 "VERSION 2.0C"
+#if VERSION_U
+  #message 17 "VERSION 1.0U"
+#elif VERSION_V
+  #message 17 "VERSION 1.0V"
+#elif VERSION_F
+  #message 17 "VERSION 2.0F"
+#elif VERSION_C
+  #message 17 "VERSION 2.0C"
+#elif VERSION_S
+  #message 17 "  King's Quest \n\nApple IIgs Version \n\n    1.0S-88223 \n"
 #endif
 #message 18 "You already have a carrot."
 #message 19 "You already ate the carrot."
@@ -1058,10 +1120,10 @@ LOGIC__FOOTER
 #message 48 "You don't have any way to kill the old goat."
 #message 49 "There is no goat here."
 #message 50 "You've already killed the goat."
-#ifdef VERSION_U
-#message 51 "The old goat is trotting briskly by your side."
+#if VERSION_U || VERSION_V
+  #message 51 "The old goat is trotting briskly by your side."
 #else
-#message 51 "The old goat, trotting briskly, seems happy to be with you."
+  #message 51 "The old goat, trotting briskly, seems happy to be with you."
 #endif
 #message 52 "Seeing how much the goat likes that carrot, eating it may be hazardous to your health."
 #message 53 "You have already opened the walnut."
@@ -1095,57 +1157,82 @@ LOGIC__FOOTER
 #message 100 "_"
 #message 101 "You are not wearing the ring."
 #message 102 "There is no need to rub the ring as you are already invisible."
-#ifdef VERSION_U
-#message 103 "        King's Quest\n             by\n      Roberta Williams\n\n    Original version by\nArthur Abraham, Chuck Tingley\n        Ken McNeill\n\n        Graphics by\n Doug McNeill, Greg Rowland\n\n      This version by\n       Sol Ackerman\n\n(C) 1986 Sierra On-Line, Inc."
-#else
-#message 150 "Info"
-#ifdef VERSION_C
-#message 151 "Help     "
-#else
-#message 151 "Help    "
+#if VERSION_U
+  #message 103 "        King's Quest\n             by\n      Roberta Williams\n\n    Original version by\nArthur Abraham, Chuck Tingley\n        Ken McNeill\n\n        Graphics by\n Doug McNeill, Greg Rowland\n\n      This version by\n       Sol Ackerman\n\n(C) 1986 Sierra On-Line, Inc."
+#elif !VERSION_V
+  #message 150 "Info"
+  #ifdef VERSION_C
+    #message 151 "Help     "
+  #else
+    #message 151 "Help    "
+  #endif
+  #message 152 "About KQ"
+  #message 153 "File"
+  #ifdef VERSION_S
+    #message 154 "Save Game      <Shift-5>"
+    #message 155 "Restore Game   <Shift-7>"
+  #else
+    #message 154 "Save Game      <F5>"
+    #message 155 "Restore Game   <F7>"
+  #endif
+  #message 156 "-------------------"
+  #if VERSION_S
+    #message 157 "Restart Game   <Shift-9>"
+    #message 158 "Pause           <Esc>"
+    #message 159 "Quit        <Option-Z>"
+  #else
+    #message 157 "Restart Game   <F9>"
+    #ifdef VERSION_C
+      #message 158 "Pause         <Esc>"
+    #else
+      #message 158 "Pause             <Esc>"
+    #endif
+    #message 159 "Quit        <Alt Z>"
+  #endif
+  #message 160 "Game"
+  #message 161 "Inventory     <Tab>"
+  #if VERSION_S
+    #message 162 "See Object     <Shift-4>"
+    #message 163 "Sound On/Off   <Shift-2>"
+  #else
+    #message 162 "See Object     <F4>"
+    #ifdef VERSION_C
+      #message 163 "Toggle Sound   <F2>"
+    #else
+      #message 163 "Sound On/Off       <F2>"
+    #endif
+  #endif
+  #ifdef VERSION_C
+    #message 164 "Action"
+  #else
+    #message 164 "Action "
+  #endif
+  #message 165 "Swim  ="
+  #message 166 "Special"
+  #ifdef VERSION_C
+    #message 167 "Toggle RGB     <Ctrl R>"
+  #else
+    #message 167 "Graphics Mode  <Ctrl R>"
+  #endif
+  #message 168 "Reset Joystick <Ctrl J>"
+  #message 169 "Speed"
+  #message 170 "Normal"
+  #message 171 "Fast  "
+  #message 172 "Slow  "
+  #ifdef VERSION_S
+    #message 173 "   King's Quest\n\nby Roberta Williams.\n"
+  #else
+    #message 173 "King's Quest was designed by Roberta Williams."
+  #endif
+  #message 174 "Jump  0"
+  #message 175 "Duck  -"
+  #ifndef VERSION_C
+    #message 176 "Joystick/Mouse <Ctrl J>"
+  #endif
 #endif
-#message 152 "About KQ"
-#message 153 "File"
-#message 154 "Save Game      <F5>"
-#message 155 "Restore Game   <F7>"
-#message 156 "-------------------"
-#message 157 "Restart Game   <F9>"
-#ifdef VERSION_C
-#message 158 "Pause         <Esc>"
-#else
-#message 158 "Pause             <Esc>"
-#endif
-#message 159 "Quit        <Alt Z>"
-#message 160 "Game"
-#message 161 "Inventory     <Tab>"
-#message 162 "See Object     <F4>"
-#ifdef VERSION_C
-#message 163 "Toggle Sound   <F2>"
-#else
-#message 163 "Sound On/Off       <F2>"
-#endif
-#ifdef VERSION_C
-#message 164 "Action"
-#else
-#message 164 "Action "
-#endif
-#message 165 "Swim  ="
-#message 166 "Special"
-#ifdef VERSION_C
-#message 167 "Toggle RGB     <Ctrl R>"
-#else
-#message 167 "Graphics Mode  <Ctrl R>"
-#endif
-#message 168 "Reset Joystick <Ctrl J>"
-#message 169 "Speed"
-#message 170 "Normal"
-#message 171 "Fast  "
-#message 172 "Slow  "
-#message 173 "King's Quest was designed by Roberta Williams."
-#message 174 "Jump  0"
-#message 175 "Duck  -"
-#ifndef VERSION_C
-#message 176 "Joystick/Mouse <Ctrl J>"
-#endif
+#ifdef VERSION_S
+  #message 197 "You already have the beans."
+  #message 198 "PQ"
+  #message 199 "KQ"
 #endif
 #endif

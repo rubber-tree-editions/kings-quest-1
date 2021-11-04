@@ -24,6 +24,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
+#if !VERSION_U && !VERSION_V
+  if (said("examine", "room")) {
+    print("A rapidly moving stream is flowing out of this lake.");
+  }
+  if (f213) {
+    reset(f213);
+    print("It seems the old goat has wandered off by himself and is no longer following you.");
+  }
+#endif
 if (posn(oEGO, 79, 135, 132, 167) || posn(oEGO, 133, 146, 159, 167)) {
   set(fSWIMMING_IMPOSSIBLE_HERE);
 }
@@ -33,6 +42,11 @@ else {
 if (said("examine", "lake")) {
   print("This is a beautiful little lake.");
 }
+#if !VERSION_U && !VERSION_V
+  if (said("examine", "flowers")) {
+    print("The flowers are very beautiful.");
+  }
+#endif
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 84, 59, 113, 78)
     || posn(oEGO, 102, 79, 113, 94)
@@ -123,6 +137,9 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
+    #if !VERSION_U && !VERSION_V
+      set(f213);
+    #endif
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
@@ -141,6 +158,18 @@ if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
 call(LOGIC101_SWIMMING);
+#if VERSION_S
+  if (posn(oEGO, 76, 49, 154, 167)) {
+    set(fTHREAT_OF_SORCERER_OR_OGRE);
+    set(fTENSE_SITUATION);
+    set(f216);
+  }
+  else {
+    reset(fTENSE_SITUATION);
+    reset(fTHREAT_OF_SORCERER_OR_OGRE);
+    reset(f216);
+  }
+#endif
 return;
 
 LOGIC__FOOTER
@@ -152,9 +181,9 @@ LOGIC__FOOTER
 #message 4 "This is a beautiful little lake."
 #message 5 "You have no container for water."
 #message 6 "The swift water pulls you down to your untimely demise."
-#ifndef VERSION_U
-#message 7 "The flowers are very beautiful."
-#message 8 "It seems the old goat has wandered off by himself and is no longer following you."
-#message 9 "A rapidly moving stream is flowing out of this lake."
+#if !VERSION_U && !VERSION_V
+  #message 7 "The flowers are very beautiful."
+  #message 8 "It seems the old goat has wandered off by himself and is no longer following you."
+  #message 9 "A rapidly moving stream is flowing out of this lake."
 #endif
 #endif

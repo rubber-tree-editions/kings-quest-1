@@ -7,36 +7,109 @@ status.line.off();
 text.screen();
 vKEY_PRESSED = 0;
 reset(fSAID_ACCEPTED_USER_INPUT);
-display(2, 1, "          KING'S QUEST");
-display(3, 1, "             Help");
-if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
-  display(6, 1, "F1 or HELP displays this message.");
-}
-else {
-  display(6, 1, "F1 displays this message.");
-}
-display(7, 1, "F2 turns the sound off and on.");
-display(8, 1, "F3 retypes the last line typed.");
-display(9, 1, "F5 saves your current game.");
-display(10, 1, "F7 restores a saved game.");
-display(11, 1, "F9 restarts the game.");
-if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
-  display(14, 1, "TAB shows status screen. (see below)");
-}
-else {
-  display(14, 1, "TAB shows the status screen.");
-}
-display(15, 1, "ESC pauses the game.");
-display(16, 1, "Ctrl-J sets up your joystick.");
-if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
-  display(17, 1, "Ctrl-R toggles RGB monitor modes.");
-}
-if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
-  display(17, 1, "Double clicking joystick button or\n right mouse button also shows status\n screen.");
-}
-display(20, 1, "0 for jumping");
-display(21, 1, "- for ducking");
-display(22, 1, "= for swimming");
+#if VERSION_U
+  display(2, 1, m1);
+  display(3, 1, m2);
+  if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
+    display(6, 1, m20);
+  }
+  else {
+    display(6, 1, m3);
+  }
+  display(7, 1, m4);
+  display(8, 1, m5);
+  display(9, 1, m7);
+  display(10, 1, m9);
+  display(11, 1, m11);
+  if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
+    display(14, 1, m21);
+  }
+  else {
+    display(14, 1, m13);
+  }
+  display(15, 1, m14);
+  display(16, 1, m15);
+  if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
+    display(17, 1, m16);
+  }
+  if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
+    display(17, 1, m22);
+  }
+  display(20, 1, "0 for jumping");
+  display(21, 1, "- for ducking");
+  display(22, 1, "= for swimming");
+#else
+  display(1, 1, m1);
+  display(2, 1, m2);
+  #if VERSION_S
+    display(4, 1, m3);
+    display(5, 1, m4);
+    display(6, 1, m5);
+    display(7, 1, m6);
+    display(8, 1, m7);
+    display(9, 1, m8);
+    display(11, 1, m9);
+    display(12, 1, m10);
+    display(13, 1, m11);
+    display(14, 1, m12);
+    display(15, 1, m13);
+    display(17, 1, m42);
+    display(18, 1, m43);
+    display(24, 1, m98);
+  #elif VERSION_V
+    if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
+      display(4, 1, m20);
+      display(11, 1, m21);
+      display(16, 1, m17);
+      display(17, 1, m18);
+      display(18, 1, m19);
+      display(20, 1, m22);
+    }
+    else {
+      display(4, 1, m3);
+      display(11, 1, m13);
+      display(17, 1, m17);
+      display(18, 1, m18);
+      display(19, 1, m19);
+    }
+    display(5, 1, m4);
+    display(6, 1, m5);
+    display(7, 1, m7);
+    display(8, 1, m9);
+    display(9, 1, m11);
+    display(12, 1, m14);
+    display(14, 1, m15);
+    if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
+      display(15, 1, m16);
+    }
+  #else
+    if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST) {
+      display(4, 1, m16);
+      display(11, 1, m17);
+      display(14, 1, m18);
+      display(15, 1, m19);
+      display(17, 1, m20);
+      display(21, 1, m21);
+    }
+    else {
+      display(4, 1, m3);
+      display(11, 1, m10);
+      display(14, 1, m13);
+      display(15, 1, m14);
+    }
+    display(5, 1, m4);
+    display(6, 1, m5);
+    display(7, 1, m6);
+    display(8, 1, m7);
+    display(9, 1, m8);
+    display(10, 1, m9);
+    display(12, 1, m11);
+    display(13, 1, m12);
+    if (vCOMPUTER_TYPE == COMPUTERTYPE_PC && vVIDEO_MODE != 3 && vVIDEO_MODE != 2) {
+      display(16, 1, m15);
+    }  
+  #endif
+#endif
 while (!have.key()) { }
 accept.input();
 status.line.on();
@@ -47,22 +120,84 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#message 1 "          KING'S QUEST"
-#message 2 "             Help"
-#message 3 "F1 displays this message."
-#message 4 "F2 turns the sound off and on."
-#message 5 "F3 retypes the last line typed."
-#message 7 "F5 saves your current game."
-#message 9 "F7 restores a saved game."
-#message 11 "F9 restarts the game."
-#message 13 "TAB shows the status screen."
-#message 14 "ESC pauses the game."
-#message 15 "Ctrl-J sets up your joystick."
-#message 16 "Ctrl-R toggles RGB monitor modes."
-#message 17 "0 for jumping"
-#message 18 "- for ducking"
-#message 19 "= for swimming"
-#message 20 "F1 or HELP displays this message."
-#message 21 "TAB shows status screen. (see below)"
-#message 22 "Double clicking joystick button or\n right mouse button also shows status\n screen."
+#if VERSION_U
+  #message 1 "          KING'S QUEST"
+  #message 2 "             Help"
+  #message 3 "F1 displays this message."
+  #message 4 "F2 turns the sound off and on."
+  #message 5 "F3 retypes the last line typed."
+  #message 7 "F5 saves your current game."
+  #message 9 "F7 restores a saved game."
+  #message 11 "F9 restarts the game."
+  #message 13 "TAB shows the status screen."
+  #message 14 "ESC pauses the game."
+  #message 15 "Ctrl-J sets up your joystick."
+  #message 16 "Ctrl-R toggles RGB monitor modes."
+  #message 17 "0 for jumping"
+  #message 18 "- for ducking"
+  #message 19 "= for swimming"
+  #message 20 "F1 or HELP displays this message."
+  #message 21 "TAB shows status screen. (see below)"
+  #message 22 "Double clicking joystick button or\n right mouse button also shows status\n screen."
+#else
+  #message 1 "              KING'S QUEST"
+  #message 2 "                 Help"
+  #if VERSION_S
+    #message 3 " <shift> 1 displays this message."
+    #message 4 " <shift> 2 toggles sound on/off."
+    #message 5 " <shift> 3 retypes the last line typed."
+  #else
+    #message 3 "    F1 displays this message."
+    #message 4 "    F2 turns the sound off and on."
+    #message 5 "    F3 retypes the last line typed."
+  #endif
+  #if VERSION_C || VERSION_V
+    #message 7 "    F5 saves your current game."
+    #message 9 "    F7 restores a saved game."
+    #message 11 "    F9 restarts the game."
+    #message 13 "   TAB shows the status screen."
+    #message 14 "   ESC pauses the game."
+    #message 15 "Ctrl-J sets up your joystick."
+    #message 16 "Ctrl-R toggles RGB monitor modes."
+    #message 17 "     0 for jumping"
+    #message 18 "     - for ducking"
+    #message 19 "     = for swimming"
+    #message 20 "    F1 or HELP displays this message."
+    #message 21 "   TAB shows status screen. (see below)"
+    #message 22 "Double clicking joystick button or\n right mouse button also shows status\n screen."
+  #else
+    #if VERSION_S
+      #message 6 " <shift> 5 saves your current game."
+      #message 7 " <shift> 7 restores a saved game."
+      #message 8 " <shift> 9 restarts the game."
+      #message 9 " TAB shows the status screen."
+      #message 10 " ESC pauses the game."
+      #message 11 "   0 for jumping"
+      #message 12 "   - for ducking"
+      #message 13 "   = for swimming"
+    #else
+      #message 6 "    F5 saves your current game."
+      #message 7 "    F7 restores a saved game."
+      #message 8 "    F9 restarts the game."
+      #message 9 "   TAB shows the status screen."
+      #message 10 "   ESC activates the menus."
+      #message 11 "     0 for jumping"
+      #message 12 "     - for ducking"
+      #message 13 "     = for swimming"
+    #endif
+    #message 14 "Ctrl-J sets up your joystick."
+    #message 15 "Ctrl-R toggles graphics mode."
+    #message 16 "    F1 or HELP displays this message."
+    #message 17 "   ESC activates the menus. (see below)"
+    #message 18 "     = for swimming (see below)"
+    #message 19 "Ctrl-J toggles joystick/mouse."
+    #message 20 "Clicking the joystick button or the\n right mouse button also activates\n the menus."
+    #message 21 "Double-clicking the joystick button\n or the right mouse button also\n initiates swimming."
+  #endif
+#endif
+#if VERSION_S
+  #message 42 "Put mouse cursor where you want Sir"
+  #message 43 "Graham to go, then click the button."
+  #message 98 " For a hint book, call (209) 683-6858"
+#endif
 #endif

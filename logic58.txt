@@ -53,12 +53,19 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.view(105);
   load.view(114);
-  load.sound(SND_VILLAIN);
-  load.sound(SND_FALLING);
-  load.sound(SND_GIANT);
-  load.sound(SND_KILL_GIANT);
+  #if VERSION_S
+    load.sound(43);
+  #else
+    load.sound(SND_VILLAIN);
+    load.sound(SND_FALLING);
+    load.sound(SND_GIANT);
+    load.sound(SND_KILL_GIANT);
+  #endif
   rvZERO = 0;
   if (fCARRYING_SLINGSHOT) {
+    #if VERSION_S
+      load.sound(SND_KILL_GIANT);
+    #endif
     load.view(102);
     animate.obj(oFLUNG_PEBBLE);
     set.view(oFLUNG_PEBBLE, 102);
@@ -81,7 +88,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oGIANT);
     set.view(oGIANT, 36);
     position(oGIANT, 91, 71);
+    #if VERSION_S
+    follow.ego(oGIANT, 6, rfGIANT_CAUGHT_YOU);
+    #else
     follow.ego(oGIANT, 10, rfGIANT_CAUGHT_YOU);
+    #endif
     set(rfGIANT_IS_AFTER_YOU);
     rvCOUNTDOWN_LO = 250;
     rvCOUNTDOWN_HI = 2;
@@ -115,12 +126,22 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(oGIANT);
   draw(oEGO);
+  #if VERSION_S
+    load.sound(SND_TROLL);
+  #endif
   show.pic();
+  #if VERSION_S
+    rv4 = 10;
+  #endif
 }
 if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
   if (!rfVILLAIN_SOUND_PLAYED) {
     set(rfVILLAIN_SOUND_PLAYED);
-    sound(SND_VILLAIN, fMISC_END_MARKER);
+    #if VERSION_S
+      sound(SND_TROLL, rf9);
+    #else
+      sound(SND_VILLAIN, fMISC_END_MARKER);
+    #endif
   }
 }
 if (rfGIANT_CAUGHT_YOU && rfGIANT_IS_AFTER_YOU) {
@@ -154,12 +175,19 @@ if (rfGIANT_CAUGHT_YOU && rfGIANT_IS_AFTER_YOU) {
   }
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {
-#ifdef RUBBER_TREE
-  get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
-  rvRESTORE_EGO_Y += 5;
-  rvRESTORE_EGO_DIR = vEGO_DIR;
-#endif
+  #ifdef RUBBER_TREE
+    get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+    rvRESTORE_EGO_Y += 5;
+    rvRESTORE_EGO_DIR = vEGO_DIR;
+  #endif
+  #if VERSION_S
+    stop.sound();
+    set(f215);
+  #endif
   set(fFALLING);
+  #if VERSION_S
+    load.sound(SND_FALLING);
+  #endif
   reset(fEGO_TOUCHED_TRIGGER_LINE);
   program.control();
   if (!fEGO_INVISIBLE) {
@@ -229,10 +257,16 @@ if (!fCARRYING_CHEST) {
         print("There is no way you can get the chest from here!");
       }
       else {
+        #if VERSION_S
+          load.sound(24);
+        #endif
         erase(oGIANT);
         set.view(oGIANT, 68);
         stop.motion(oGIANT);
         draw(oGIANT);
+        #if VERSION_S
+          sound(24, fMISC_END_MARKER);
+        #endif
         print("Very carefully, you slip the magic chest from the sleeping giant's arms.");
         set(fCARRYING_CHEST);
         set(fCHEST_TAKEN);
@@ -248,7 +282,13 @@ if (!fCARRYING_CHEST) {
         print("There is no way you can get the chest from here!");
       }
       else {
+        #if VERSION_S
+          load.sound(24);
+        #endif
         erase(oCHEST);
+        #if VERSION_S
+          sound(24, fMISC_END_MARKER);
+        #endif
         print("It's easy to take a magic chest from a dead giant.");
         set(fCARRYING_CHEST);
         set(fCHEST_TAKEN);
@@ -386,7 +426,17 @@ if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
     }
   }
 }
+#if VERSION_S
+  if (rf10) {
+    reset(rf10);
+    rvCOUNTDOWN_LO = 1;
+    rvCOUNTDOWN_HI = 0;
+  }
+#endif
 if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 0) {
+  #if VERSION_S
+    load.sound(SND_GIANT);
+  #endif
   reset(rfGIANT_IS_AFTER_YOU);
   rvCOUNTDOWN_LO = 0;
   stop.motion(oGIANT);
@@ -396,20 +446,31 @@ if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 0) {
   draw(oGIANT);
   vGIANT_STATE = GIANTSTATE_ASLEEP_WITH_CHEST;
   if (!fPOINTS_FOR_TIRING_OUT_GIANT) {
+    #if VERSION_S
+      sound(43, fMISC_END_MARKER);
+    #endif
     set(fPOINTS_FOR_TIRING_OUT_GIANT);
     vSCORE += 7;
   }
   print("What luck!  The huge giant fell fast asleep!");
 }
 if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST || vGIANT_STATE == GIANTSTATE_ASLEEP_NO_CHEST) {
-  if (!rfGIANT_SOUND_PLAYING) {
-    set(rfGIANT_SOUND_PLAYING);
-    sound(SND_GIANT, rfGIANT_SOUND_PLAYED);
-  }
-  if (rfGIANT_SOUND_PLAYED) {
-    reset(rfGIANT_SOUND_PLAYED);
-    reset(rfGIANT_SOUND_PLAYING);
-  }
+  #if VERSION_S
+    rv4--;
+    if (rv4 == 1) {
+      rv4 = 20;
+      sound(SND_GIANT, rfGIANT_SOUND_PLAYED);
+    }
+  #else
+    if (!rfGIANT_SOUND_PLAYING) {
+      set(rfGIANT_SOUND_PLAYING);
+      sound(SND_GIANT, rfGIANT_SOUND_PLAYED);
+    }
+    if (rfGIANT_SOUND_PLAYED) {
+      reset(rfGIANT_SOUND_PLAYED);
+      reset(rfGIANT_SOUND_PLAYING);
+    }
+  #endif
 }
 if (fGAME_OVER) {
   goto RETURN;
@@ -432,6 +493,15 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM61_CLOUDLANDS_SOUTH);
 }
 RETURN:
+  #if VERSION_S
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_Y < 60) {
+      set(f216);
+    }
+    else {
+      reset(f216);
+    }
+  #endif
   return;
 
 LOGIC__FOOTER
@@ -469,4 +539,7 @@ LOGIC__FOOTER
 #message 30 "The giant is sleeping with a chest."
 #message 31 "The giant lies dead on the ground and there is a chest beside him."
 #message 32 "The giant is to close for the slingshot to be effective.  I would suggest you RUN!"
+#if VERSION_S
+  #message 99 "BREAK"
+#endif
 #endif

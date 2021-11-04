@@ -5,6 +5,11 @@ LOGIC__HEADER
 
 
 if (fROOM_SCRIPT_EXECUTED) {
+  #if VERSION_S
+    set(fTENSE_SITUATION);
+    set(fTHREAT_OF_SORCERER_OR_OGRE);
+    set(f216);
+  #endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
@@ -24,6 +29,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
+#if VERSION_S
+  if (f213) {
+    reset(f213);
+    print("It seems the old goat has wandered off by himself and is no longer following you.");
+  }
+#endif
 if (said("examine", "lake")) {
   print("The clear blue lake is surrounded by a pretty meadow.");
 }
@@ -83,6 +94,9 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
+    #if VERSION_S
+      set(f213);
+    #endif
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
@@ -109,4 +123,7 @@ LOGIC__FOOTER
 #message 1 "The crystal clear water fills up the bucket."
 #message 2 "It tastes very refreshing to a thirsty wanderer."
 #message 3 "The clear blue lake is surrounded by a pretty meadow."
+#if !VERSION_U && !VERSION_V
+  #message 4 "It seems the old goat has wandered off by himself and is no longer following you."
+#endif
 #endif

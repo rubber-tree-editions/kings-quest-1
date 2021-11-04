@@ -41,8 +41,19 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
+#if !VERSION_U && !VERSION_V
+  if (f213) {
+    reset(f213);
+    print("It seems the old goat has wandered off by himself and is no longer following you.");
+  }
+#endif
 if (!fEGO_ON_WATER) {
-  if (posn(oEGO, 32, 103, 102, 123)
+  if (
+    #if VERSION_S
+      posn(oEGO, 32, 103, 103, 123)
+    #else
+      posn(oEGO, 32, 103, 102, 123)
+    #endif
     || posn(oEGO, 0, 96, 58, 108)
     || posn(oEGO, 34, 87, 68, 97)
     || posn(oEGO, 13, 88, 37, 97)
@@ -112,7 +123,11 @@ if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_TOUCHED_TRIGGER_LINE) {
 }
 if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER && !fEGO_TOUCHED_TRIGGER_LINE) {
   vEGO_WATER_X = 255;
+  #if VERSION_S
+  if (posn(oEGO, 89, 109, 111, 121)) {
+  #else
   if (posn(oEGO, 89, 109, 110, 121)) {
+  #endif
     vEGO_WATER_X = 89;
     vEGO_WATER_Y = 116;
   }
@@ -139,6 +154,9 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
+    #if VERSION_S
+      set(f213);
+    #endif
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
@@ -156,6 +174,19 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
+#if VERSION_S
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  if (vTEMP_X < 113) {
+    set(fTENSE_SITUATION);
+    set(f216);
+    set(fTHREAT_OF_SORCERER_OR_OGRE);
+  }
+  else {
+    reset(fTENSE_SITUATION);
+    reset(f216);
+    reset(fTHREAT_OF_SORCERER_OR_OGRE);
+  }
+#endif
 call(LOGIC101_SWIMMING);
 return;
 
@@ -167,7 +198,7 @@ LOGIC__FOOTER
 #message 3 "That's a dangerous proposition from here."
 #message 4 "This is a clear mountain lake with some steep cliffs surrounding it."
 #message 5 "You are not close enough to the water."
-#ifndef VERSION_U
-#message 6 "It seems the old goat has wandered off by himself and is no longer following you."
+#if !VERSION_U && !VERSION_V
+  #message 6 "It seems the old goat has wandered off by himself and is no longer following you."
 #endif
 #endif

@@ -20,7 +20,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM) {
     position(oEGO, 132, 46);
     set.loop(oEGO, 1);
+#if VERSION_U || VERSION_V
     move.obj(oEGO, 132, 46, 0, fMISC_END_MARKER);
+#else
+    move.obj(oEGO, 131, 47, 0, fMISC_END_MARKER);
+#endif
   }
   draw(oEGO);
   show.pic();
@@ -34,8 +38,25 @@ if (fGOAT_COMPANION) {
 if (said("examine", "stairway") || said("examine", "room")) {
   print("The stairs go up into the heart of the mountain.");
 }
+#if VERSION_S
+if (fEGO_TOUCHED_TRIGGER_LINE && !fFALLING) {
+#else
 if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING_OFF_STEPS) {
-  set(rfFALLING_OFF_STEPS);
+#endif
+  #if VERSION_S
+    set(f215);
+    prevent.input();
+    start.motion(oEGO);
+  #endif
+  #if !VERSION_U && !VERSION_V
+    set(fTENSE_SITUATION);
+    set(fTHREAT_OF_SORCERER_OR_OGRE);
+  #endif
+  #if VERSION_S
+    set(fFALLING);
+  #else
+    set(rfFALLING_OFF_STEPS);
+  #endif
   if (!fEGO_INVISIBLE) {
     set.view(oEGO, 105);
   }
@@ -54,6 +75,9 @@ if (rfFALLEN_OFF_STEPS) {
   print("Oops!  Those stairs are pretty slippery, aren't they?");
   erase(oEGO);
   set(fGAME_OVER);
+  #if VERSION_S
+    accept.input();
+  #endif
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM);
@@ -61,6 +85,9 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
 if (posn(oEGO, 16, 165, 31, 166)) {
   new.room(ROOM19_BASE_MOUNTAIN_DOOR);
 }
+#if VERSION_S
+  set(f216);
+#endif
 return;
 
 LOGIC__FOOTER

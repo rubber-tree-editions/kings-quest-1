@@ -17,6 +17,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+  #if VERSION_S
+    load.sound(16);
+    load.view(114);
+  #endif
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
   }
@@ -44,6 +48,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
+#if VERSION_S
+  if (fGAME_OVER) {
+    goto(RETURN);
+  }
+  random(1, 11, rv2);
+  if (rv2 == 2 && rfOGRE_IS_HERE && fSOUND_END_MARKER) {
+    sound(16, fSOUND_END_MARKER);
+  }
+#endif
 vTEMP_RESULT_2--;
 if (vTEMP_RESULT_2 == 1) {
   set(fTENSE_SITUATION);
@@ -52,12 +65,22 @@ if (vTEMP_RESULT_2 == 1) {
   set(rfOGRE_IS_HERE);
   set(f135_UNKNOWN);
   sound(SND_VILLAIN, fSOUND_END_MARKER);
-  draw(oOGRE);
+  #if !VERSION_S
+    draw(oOGRE);
+  #endif
   if (!fGOAT_COMPANION) {
     print("Watch out!!!  There is an ogre nearby!  He will crush you in his strong arms if he catches you.");
-    follow.ego(oOGRE, 7, fVILLAIN_GOT_YOU);
+    #if VERSION_S
+      draw(oOGRE);
+      follow.ego(oOGRE, 4, fVILLAIN_GOT_YOU);
+    #else
+      follow.ego(oOGRE, 7, fVILLAIN_GOT_YOU);
+    #endif
   }
   if (fGOAT_COMPANION) {
+    #if VERSION_S
+      draw(oOGRE);
+    #endif
     wander(oOGRE);
     set(rfPROTECTED);
     print("Watch out!!!  There is an ogre nearby!  He will crush you in his strong arms if he catches you.");
@@ -65,7 +88,9 @@ if (vTEMP_RESULT_2 == 1) {
   }
 }
 if (fSOUND_END_MARKER) {
+  #if !VERSION_S
   reset(fSOUND_END_MARKER);
+  #endif
   reset(f135_UNKNOWN);
 }
 if (!rfOGRE_IS_HERE) {
@@ -109,11 +134,18 @@ if (fVILLAIN_GOT_YOU) {
     goto(AFTERCOUNTDOWN);
   }
   set(rfNO_ESCAPE);
-  rvCOUNTDOWN = 10;
+  #if VERSION_S
+    rvCOUNTDOWN = 20;
+  #else
+    rvCOUNTDOWN = 10;
+  #endif
   program.control();
   stop.motion(oEGO);
   erase(oOGRE);
   set.view(oEGO, 94);
+  #if VERSION_S
+    draw(oEGO);
+  #endif
 }
 rvCOUNTDOWN--;
 AFTERCOUNTDOWN:
@@ -126,14 +158,24 @@ AFTERCOUNTDOWN:
     print("You were warned to be careful around this fierce creature!  Maybe next time you will be able to elude the beast.");
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     erase(oEGO);
-    set.view(oEGO, 95);
+    #if VERSION_S
+      set.view(oEGO, 114);
+    #else
+      set.view(oEGO, 95);
+    #endif
     set.view(oOGRE, 2);
     position.v(oEGO, vTEMP_X, vTEMP_Y);
     position.v(oOGRE, vTEMP_X, vTEMP_Y);
     draw(oOGRE);
     draw(oEGO);
-    stop.motion(oOGRE);
-    stop.cycling(oOGRE);
+    #if VERSION_S
+      start.motion(oOGRE);
+      start.cycling(oOGRE);
+      wander(oOGRE);
+    #else
+      stop.motion(oOGRE);
+      stop.cycling(oOGRE);
+    #endif
     set(fGAME_OVER);
   }
   if (rfOGRE_IS_HERE) {
@@ -190,6 +232,15 @@ AFTERCOUNTDOWN:
     call(LOGIC103_GOAT);
   }
   RETURN:
+    #if VERSION_S
+      if (fGAME_OVER && rfOGRE_IS_HERE) {
+        get.posn(oOGRE, vTEMP_X, vTEMP_Y);
+        if (vTEMP_X < 4 || vTEMP_X > 150 || vTEMP_Y < 49 || vTEMP_Y > 160) {
+          reset(rfOGRE_IS_HERE);
+          erase(oOGRE);
+        }
+      }
+    #endif
     return;
 
 LOGIC__FOOTER
@@ -214,4 +265,7 @@ LOGIC__FOOTER
 #message 17 "You were warned to be careful around this fierce creature!  Maybe next time you will be able to elude the beast."
 #message 18 "Lucky for you that ogres are afraid of goats. This one decides to leave you alone."
 #message 19 "You need to be a little closer to smell the flowers."
+#if VERSION_S
+  #message 99 "BREAK"
+#endif
 #endif

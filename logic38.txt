@@ -17,7 +17,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   set.horizon(40);
   load.sound(SND_OUCH);
-  load.sound(SND_FALLING);
+  #if !VERSION_S
+    load.sound(SND_FALLING);
+  #endif
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
   }
@@ -34,8 +36,20 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(74);
     load.view(105);
     load.logics(LOGIC104_BEANSTALK);
-    load.sound(SND_BEANSTALK);
+    #if VERSION_S
+      set(f216);
+    #else
+      load.sound(SND_BEANSTALK);
+    #endif
   }
+  #if VERSION_S
+    if (vPREV_ROOM_NO == ROOM70_BEANSTALK_NEAR_BOTTOM) {
+      set(fTENSE_SITUATION);
+      set(f216);
+      set(fTHREAT_OF_SORCERER_OR_OGRE);
+      load.sound(SND_FALLING);
+    }
+  #endif
   if (vPREV_ROOM_NO == ROOM70_BEANSTALK_NEAR_BOTTOM && fEGO_CLIMBING_BEANSTALK) {
     set.view(oEGO, 74);
     position(oEGO, 64, 41);
@@ -43,6 +57,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.priority(oEGO, 8);
   }
   if (vPREV_ROOM_NO == ROOM70_BEANSTALK_NEAR_BOTTOM && fFALLING_TO_EARTH) {
+    #if VERSION_S
+      prevent.input();
+    #endif
     program.control();
     ignore.horizon(oEGO);
     set.priority(oEGO, 15);
@@ -65,15 +82,25 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
+#if !VERSION_U && !VERSION_V
+if (said("examine", "room")) {
+  print("Numerous flowers are growing in the fertile soil.");
+}
+#endif
 if (fFALLING_TO_EARTH && !rfPLAYING_SND_FALLING) {
   set(rfPLAYING_SND_FALLING);
   set(f135_UNKNOWN);
+  #if VERSION_S
+    load.sound(SND_FALLING);
+  #endif
   sound(SND_FALLING, rfPLAYED_SND_FALLING);
 }
+#if VERSION_U || VERSION_V
 if (!rfFELL_FROM_SKY && rfPLAYED_SND_FALLING) {
   reset(rfPLAYING_SND_FALLING);
   reset(rfPLAYED_SND_FALLING);
 }
+#endif
 if (rfFELL_FROM_SKY) {
   stop.sound();
   set(rfPLAYING_SND_FALLING);
@@ -82,6 +109,9 @@ if (rfFELL_FROM_SKY) {
   set.view(oEGO, 114);
   shake.screen(2);
   set(fGAME_OVER);
+  #if VERSION_S
+    accept.input();
+  #endif
 }
 if (said("examine", "flowers")) {
   print("What a pretty bed of wild flowers.");
@@ -109,15 +139,28 @@ if (fCARRYING_MAGIC_BEANS && fINIT_BEANSTALK) {
     set(fMAGIC_BEANS_PLANTED);
     drop("beans");
     vSCORE += 2;
+    #if VERSION_S
+      load.sound(SND_BEANSTALK);
+    #endif
     print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
     sound(SND_BEANSTALK, rfPLAYED_SND_BEANSTALK);
     overlay.pic(vTEMP_PIC);
     show.pic();
+    #if VERSION_S
+      set.simple(12);
+      load.sound(SND_FALLING);
+    #endif
   }
 }
 if (vBEANSTALK_ROOM == ROOM38_WILD_FLOWER_BED && !fEGO_INVISIBLE) {
   if (said("climb", "beanstalk") && !fEGO_CLIMBING_BEANSTALK) {
     if (posn(oEGO, 52, 76, 103, 97)) {
+      #if VERSION_S
+        set(fTENSE_SITUATION);
+        set(f216);
+        set(fTHREAT_OF_SORCERER_OR_OGRE);
+        load.sound(SND_FALLING);
+      #endif
       erase(oEGO);
       set.view(oEGO, 74);
       set(fEGO_CLIMBING_BEANSTALK);
@@ -138,15 +181,33 @@ if (vBEANSTALK_ROOM != ROOM38_WILD_FLOWER_BED) {
 }
 if (fEGO_CLIMBING_BEANSTALK) {
   if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 60, 78, 93, 80)) {
+    #if VERSION_S
+      reset(fEGO_CLIMBING_BEANSTALK);
+      reset(fFALLING);
+    #endif
     erase(oEGO);
     set.view(oEGO, 0);
-    reset(fEGO_CLIMBING_BEANSTALK);
+    #if !VERSION_S
+      reset(fEGO_CLIMBING_BEANSTALK);
+    #endif
     position(oEGO, 70, 106);
     release.priority(oEGO);
     draw(oEGO);
+    #if VERSION_S
+      accept.input();
+      reset(fTENSE_SITUATION);
+      reset(fTHREAT_OF_SORCERER_OR_OGRE);
+      reset(f216);
+    #endif
   }
   if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 60, 78, 93, 80)) {
     program.control();
+    #if VERSION_S
+      prevent.input();
+      set(fFALLING);
+      set(fTENSE_SITUATION);
+      set(f216);
+    #endif
     set.priority(oEGO, 15);
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     erase(oEGO);
@@ -158,6 +219,9 @@ if (fEGO_CLIMBING_BEANSTALK) {
     vTEMP_STEP = 2;
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_FROM_BEANSTALK_LOW);
     set(f135_UNKNOWN);
+    #if VERSION_S
+      load.sound(SND_FALLING);
+    #endif
     sound(SND_FALLING, fSOUND_END_MARKER_2);
   }
 }
@@ -172,16 +236,36 @@ if (rfFELL_FROM_BEANSTALK_LOW) {
   rvCOUNTDOWN = 20;
   set(fCYCLE_EGO_ANIMATION);
   shake.screen(2);
-  print("Ouch!");
+  #if VERSION_S
+    if (!fSOUND_ENABLED) {
+      print("Ouch!");
+    }
+  #else
+    print("Ouch!");
+  #endif
   set(f135_UNKNOWN);
-  sound(SND_OUCH, fSOUND_END_MARKER);
-}
-if (fSOUND_END_MARKER) {
-  if (rvCOUNTDOWN > 0) {
-    reset(fSOUND_END_MARKER);
+  #if VERSION_S
+    rv1 = 5;
+  #else
     sound(SND_OUCH, fSOUND_END_MARKER);
-  }
+  #endif
 }
+#if VERSION_S
+  if (rvCOUNTDOWN > 0) {
+    rv1--;
+    if (rv1 == 1) {
+      rv1 = 5;
+      sound(SND_OUCH, fSOUND_END_MARKER);
+    }
+  }
+#else
+  if (fSOUND_END_MARKER) {
+    if (rvCOUNTDOWN > 0) {
+      reset(fSOUND_END_MARKER);
+      sound(SND_OUCH, fSOUND_END_MARKER);
+    }
+  }
+#endif
 if (rvCOUNTDOWN == 1) {
   set.view(oEGO, 104);
   end.of.loop(oEGO, rfEGO_STOPPED_ANIMATING);
@@ -193,6 +277,12 @@ if (rfEGO_STOPPED_ANIMATING) {
   set.view(oEGO, 0);
   release.priority(oEGO);
   player.control();
+  #if VERSION_S
+    accept.input();
+    reset(fTENSE_SITUATION);
+    reset(fTHREAT_OF_SORCERER_OR_OGRE);
+    reset(f216);
+  #endif
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
   reset(fINIT_BEANSTALK);
@@ -200,7 +290,11 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
 if (vEGO_EDGE_CODE == EDGE_HORIZON && fEGO_CLIMBING_BEANSTALK) {
   new.room(ROOM70_BEANSTALK_NEAR_BOTTOM);
 }
+#if VERSION_S
+if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK && !fFALLING_TO_EARTH) {
+#else
 if (vEGO_EDGE_CODE == EDGE_HORIZON && !fEGO_CLIMBING_BEANSTALK) {
+#endif
   new.room(ROOM43_CLEAR_BLUE_LAKE);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
@@ -231,4 +325,7 @@ LOGIC__FOOTER
 #message 6 "You can't reach the beanstalk from here."
 #message 7 "There is no beanstalk here to climb."
 #message 8 "Ouch!"
+#if !VERSION_U && !VERSION_V
+  #message 9 "Numerous flowers are growing in the fertile soil."
+#endif
 #endif

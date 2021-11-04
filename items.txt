@@ -1,5 +1,5 @@
 
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
 
 #item 0 "dagger"
 #item 1 "chest"

@@ -16,9 +16,15 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 56, 83, 0, 0);
   }
   if (vPREV_ROOM_NO == ROOM78_IN_CAVE_WITH_TINY_HOLE) {
+#if !VERSION_U && !VERSION_V
+    vTINY_COUNTDOWN = 0;
+#endif
     vSCORE += 1;
     set.view(oEGO, 60);
     position(oEGO, 110, 131);
+#if !VERSION_U && !VERSION_V
+    move.obj(oEGO, 88, 131, 0, rf0);
+#endif
   }
   draw(oEGO);
   show.pic();
@@ -29,18 +35,27 @@ if (fEGO_TINY) {
 else {
   observe.blocks(oEGO);
 }
-if (vTINY_COUNTDOWN == 1 && fEGO_TINY) {
-  if (posn(oEGO, 104, 127, 110, 132)) {
-    reset(fEGO_TINY);
-    print("You feel a stretching sensation... Oh, you're back to your original size.  You can't get out of the small  cave!");
-    set(fGAME_OVER);
-  }
-  else {
+#if !VERSION_U && !VERSION_V
+  if (rf0) {
     set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
     reset(fEGO_TINY);
+    reset(rf0);
   }
-}
+#else
+  if (vTINY_COUNTDOWN == 1 && fEGO_TINY) {
+    if (posn(oEGO, 104, 127, 110, 132)) {
+      reset(fEGO_TINY);
+      print("You feel a stretching sensation... Oh, you're back to your original size.  You can't get out of the small  cave!");
+      set(fGAME_OVER);
+    }
+    else {
+      set.view(oEGO, 0);
+      print("You feel a stretching sensation... Oh, you're back to your original size.");
+      reset(fEGO_TINY);
+    }
+  }
+#endif
 if (said("examine", "hole") || said("look inside", "hole")) {
   if (posn(oEGO, 90, 124, 106, 140)) {
     print("When looking in this small hole, you see a faint green glow.");
@@ -101,7 +116,11 @@ if (said("examine", "rocks")) {
   }
 }
 if (said("examine", "room")) {
+#if VERSION_U || VERSION_V
   print("There are several pretty trees in the area and a few rocks.  One rock has a small hole in its base.");
+#else
+  print("You notice a hole in the base of a large moss covered rock.");
+#endif
 }
 FINALCHECKS:
   if (posn(oEGO, 111, 127, 119, 132)) {
@@ -140,4 +159,7 @@ LOGIC__FOOTER
 #message 11 "One rock has a small hole in its base."
 #message 12 "Go ahead.  Walk right in."
 #message 13 "You feel a stretching sensation... Oh, you're back to your original size."
+#if !VERSION_U && !VERSION_V
+  #message 14 "You notice a hole in the base of a large moss covered rock."
+#endif
 #endif

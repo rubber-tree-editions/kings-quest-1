@@ -11,6 +11,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+  #if VERSION_S
+    load.sound(29);
+  #endif
   set.horizon(41);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
@@ -67,6 +70,16 @@ if (said("break", "doors")) {
     print("It will be difficult to do that from here.");
   }
 }
+#if !VERSION_U && !VERSION_V
+  if (said("knock", "door")) {
+    if (posn(oEGO, 90, 93, 125, 114)) {
+      print("The only response you get is the echo of your pounding.");
+    }
+    else {
+      print("It will be difficult to do that from here.");
+    }
+  }
+#endif
 if (!posn(oEGO, 90, 93, 125, 114)) {
   if (said("open", "doors")
     || said("close", "doors")
@@ -145,6 +158,9 @@ if (posn(oEGO, 90, 93, 125, 114)) {
     }
     if (vDOOR_STATE == DOORSTATE_OPEN) {
       start.update(oDOOR);
+      #if VERSION_S
+        sound(SND_DOOR_OPENING, fMISC_END_MARKER);
+      #endif
       reverse.loop(oDOOR, rfDOOR_CLOSED);
       vDOOR_STATE = DOORSTATE_CLOSED;
     }
@@ -157,6 +173,9 @@ if (rfDOOR_OPENED) {
   stop.update(oDOOR);
 }
 if (rfDOOR_CLOSED) {
+  #if VERSION_S
+    sound(29, fMISC_END_MARKER);
+  #endif
   reset(rfDOOR_CLOSED);
   observe.objs(oDOOR);
   observe.blocks(oEGO);
@@ -173,7 +192,11 @@ if (!fCARRYING_GOLD_KEY) {
     print("You need a key to do that.");
   }
 }
+#if VERSION_S
+if (said("examine", "key hole") || said("look in", "key hole")) {
+#else
 if (said("examine", "key hole")) {
+#endif
   if (posn(oEGO, 90, 93, 125, 114)) {
     print("Through the keyhole you can dimly see a staircase. It looks like it might go up into the mountain.");
   }
@@ -225,7 +248,7 @@ LOGIC__FOOTER
 #message 19 "You need to close the door before you can lock it."
 #message 20 "The door is already open."
 #message 21 "The door is already closed."
-#ifndef VERSION_U
+#if !VERSION_U && !VERSION_V
 #message 22 "The only response you get is the echo of your pounding."
 #endif
 #endif

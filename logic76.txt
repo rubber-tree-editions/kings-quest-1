@@ -24,16 +24,27 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(o1);
     set.view(o1, 50);
     position(o1, 96, 78);
-    load.sound(SND_FIDDLE_TUNE);
+    #if VERSION_S
+      load.sound(41);
+    #else
+      load.sound(SND_FIDDLE_TUNE);
+    #endif
   }
   if (!fDANCING_LEPRECHAUNS) {
+    #if VERSION_S
+      load.view(47);
+    #endif
     load.view(78);
     load.view(79);
     load.view(80);
     animate.obj(o2);
     animate.obj(o13);
     set.view(o2, 79);
-    set.view(o13, 80);
+    #if VERSION_S
+      set.view(o13, 47);
+    #else
+      set.view(o13, 80);
+    #endif
     position(o2, 60, 136);
     position(o13, 45, 119);
     stop.cycling(o13);
@@ -83,11 +94,22 @@ if (rvCOUNTDOWN > 0) {
 }
 if (!fDANCING_LEPRECHAUNS && !rfPLAYING_FIDDLE) {
   if (fCARRYING_FIDDLE && said("play", "fiddle")) {
+    #if VERSION_S
+      stop.motion(oEGO);
+    #endif
     set(rfLEPRECHAUNS_DANCING_AWAY);
     set(rfPLAYING_FIDDLE);
-    rvCOUNTDOWN = 45;
-    draw(o1);
-    sound(SND_FIDDLE_TUNE, rfPLAYED_SND_FIDDLE_TUNE);
+    #if VERSION_S
+      rvCOUNTDOWN = 145;
+      sound(41, rfPLAYED_SND_FIDDLE_TUNE);
+      erase(o13);
+      set.view(o13, 80);
+      draw(o13);
+    #else
+      rvCOUNTDOWN = 45;
+      draw(o1);
+      sound(SND_FIDDLE_TUNE, rfPLAYED_SND_FIDDLE_TUNE);
+    #endif
     start.cycling(o13);
     wander(o13);
     erase(o2);
@@ -101,7 +123,11 @@ if (!fDANCING_LEPRECHAUNS && !rfPLAYING_FIDDLE) {
 }
 if (rvCOUNTDOWN > 1 && rfPLAYED_SND_FIDDLE_TUNE) {
   reset(rfPLAYED_SND_FIDDLE_TUNE);
-  sound(SND_FIDDLE_TUNE, rfPLAYED_SND_FIDDLE_TUNE);
+  #if VERSION_S
+    sound(41, rfPLAYED_SND_FIDDLE_TUNE);
+  #else
+    sound(SND_FIDDLE_TUNE, rfPLAYED_SND_FIDDLE_TUNE);
+  #endif
 }
 if (rvCOUNTDOWN == 1) {
   rvCOUNTDOWN = 0;
@@ -110,8 +136,13 @@ if (rvCOUNTDOWN == 1) {
   reset(rfPLAYING_FIDDLE);
   erase(o13);
   erase(o2);
-  erase(o1);
-  print("Totally involved in the music, they dance right out of the room.");
+  #if VERSION_S
+    print("Totally involved in the music, they dance right out of the room.");
+    start.motion(oEGO);
+  #else
+    erase(o1);
+    print("Totally involved in the music, they dance right out of the room.");
+  #endif
 }
 if (rfLEPRECHAUNS_DANCING_AWAY) {
   if (vOBJECT_TOUCHING_EDGE == 13) {
@@ -123,7 +154,7 @@ if (rfLEPRECHAUNS_DANCING_AWAY) {
 }
 if (said("examine", "room")) {
   if (!fDANCING_LEPRECHAUNS) {
-    print("You are in the antechamber of the Hall of the Leprechaun King.  There is a leprechaun in the room with you.");
+    print(m7);
   }
   else {
     print("You are in the antechamber of the Hall of the Leprechaun King.");
@@ -165,7 +196,11 @@ LOGIC__FOOTER
 #message 4 "Leprechauns love fiddle music!  Have you ever seen such frenzied dancing?"
 #message 5 "Totally involved in the music, they dance right out of the room."
 #message 6 "The leprechaun catches you and holds you with his small,  but strong arms.  I don't think the leprechaun will ever let go."
-#message 7 "You are in the antechamber of the Hall of the Leprechaun King.  There is a leprechaun in the room with you."
+#if VERSION_U || VERSION_V
+  #message 7 "You are in the antechamber of the Hall of the Leprechaun King.  There is a leprechaun in the room with you."
+#else
+  #message 7 "You are in the antechamber of the Hall of the Leprechaun King.  There are leprechauns in the room with you."
+#endif
 #message 8 "You are in the antechamber of the Hall of the Leprechaun King."
 #message 9 "I can think of no good reason to close the door."
 #message 10 "They are tiny people dressed all in green."

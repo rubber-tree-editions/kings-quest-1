@@ -24,10 +24,19 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 116, 50);
     }
   }
+  #if VERSION_S
+    block(128, 78, 136, 113);
+  #endif
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
 }
+#if !VERSION_U && !VERSION_V
+  if (f213) {
+    reset(f213);
+    print("It seems the old goat has wandered off by himself and is no longer following you.");
+  }
+#endif
 if (said("examine", "lake")) {
   print("You see the mountains and trees reflected in the mirror-like water.");
 }
@@ -37,7 +46,11 @@ if (said("examine", "cattails")) {
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 69, 76, 103, 131)
     || posn(oEGO, 104, 96, 123, 120)
+#if VERSION_S
+    || posn(oEGO, 124, 96, 132, 105)
+#else
     || posn(oEGO, 120, 96, 131, 105)
+#endif
     || posn(oEGO, 120, 106, 125, 111)
   ) {
     set(fEGO_ON_WATER);
@@ -46,7 +59,14 @@ if (!fEGO_ON_WATER) {
 }
 if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   vEGO_WATER_X = 255;
-  if (posn(oEGO, 108, 88, 140, 110) || posn(oEGO, 104, 111, 125, 120)) {
+  if (
+#if VERSION_S
+    posn(oEGO, 108, 88, 133, 110)
+#else
+    posn(oEGO, 108, 88, 140, 110)
+#endif
+    || posn(oEGO, 104, 111, 125, 120)
+  ) {
     vEGO_WATER_X = 114;
     vEGO_WATER_Y = 102;
   }
@@ -94,6 +114,9 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
+    #if !VERSION_U && !VERSION_V
+      set(f213);
+    #endif
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
@@ -111,6 +134,19 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
+#if VERSION_S
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  if (vTEMP_X > 6 && vTEMP_X < 145) {
+    set(f216);
+    set(fTENSE_SITUATION);
+    set(fTHREAT_OF_SORCERER_OR_OGRE);
+  }
+  else {
+    reset(fTENSE_SITUATION);
+    reset(fTHREAT_OF_SORCERER_OR_OGRE);
+    reset(f216);
+  }
+#endif
 call(LOGIC101_SWIMMING);
 return;
 
@@ -123,4 +159,7 @@ LOGIC__FOOTER
 #message 4 "You have no container for water."
 #message 5 "You see the mountains and trees reflected in the mirror-like water."
 #message 6 "These cattails look soft and fuzzy."
+#if !VERSION_U && !VERSION_V
+  #message 7 "It seems the old goat has wandered off by himself and is no longer following you."
+#endif
 #endif

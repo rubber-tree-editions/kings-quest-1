@@ -12,12 +12,14 @@
 
 #endif
 
-#define RUBBER_TREE
+#ifndef RUBBER_TREE
+  #define RUBBER_TREE 1
+#endif
 
 #include "items.txt"
 #include "words.txt"
 
-#ifdef VERSION_U
+#if VERSION_U || VERSION_V
 #define iRING "ring"
 #else
 #define iRING "magic ring"
@@ -243,7 +245,7 @@
 #define fCARRYING_SLINGSHOT f97
 #define fCYCLE_EGO_ANIMATION f98
 
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
   #define fUNDO f99
 #endif
 
@@ -370,13 +372,14 @@
 #define cCLEARINPUT c12
 #define cPREVINPUT c13
 #define cPAUSE c14
+#define cTOGGLEGFX c15
 #define cSHOWPRIORITY c16
 #define cTOGGLESOUND c17
 #define cHELP c18
 #define cABOUT c19
 
-#ifdef RUBBER_TREE
-  #define cUNDO c20
+#if RUBBER_TREE
+  #define cUNDO c30
 #endif
 
 #define oEGO o0

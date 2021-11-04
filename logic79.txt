@@ -9,7 +9,7 @@ LOGIC__HEADER
 #define rfBOTH_GESTICULATING rf4
 
 #define rvGESTICULATION_COUNTDOWN rv0
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
 #define rvRESTORE_EGO_X rv1
 #define rvRESTORE_EGO_Y rv2
 #endif
@@ -19,7 +19,7 @@ LOGIC__HEADER
 #define oFIDDLE o3
 #define oWIFE o4
 
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
 if (fUNDO && fFALLING) {
   erase(oEGO);
   reposition.to.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
@@ -42,10 +42,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+  #if VERSION_S
+    load.sound(23);
+    load.sound(25);
+  #endif
   load.view(57);
   load.view(58);
   load.sound(SND_FALLING);
   load.sound(SND_FIDDLE_TUNE);
+  #if VERSION_S
+    load.sound(43);
+  #endif
   if (fCARRYING_BOWL || fGIVEN_BOWL_TO_WOODCUTTER) {
     load.view(25);
     load.view(83);
@@ -65,6 +72,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.view(oWIFE, 58);
   position(oWIFE, 89, 115);
   stop.cycling(oWIFE);
+  #if VERSION_S
+    sound(25, fMISC_END_MARKER);
+  #endif
   draw(oWOODCUTTER);
   draw(oWIFE);
   if (!fFIDDLE_TAKEN) {
@@ -115,6 +125,12 @@ if (said("examine", "woodcutter")) {
 if (said("examine", "wife")) {
   print("The woodcutter's wife is skinny and poorly dressed.");
 }
+#if VERSION_S
+if (said("examine", "people")) {
+  print("The woodcutter is thin and dressed in rags.");
+  print("The woodcutter's wife is skinny and poorly dressed.");
+}
+#endif
 if (said("examine", "table")) {
   if (!fGIVEN_BOWL_TO_WOODCUTTER) {
     print("The woodcutter and his wife are sitting at the old oak table.");
@@ -166,7 +182,12 @@ if (rvGESTICULATION_COUNTDOWN == 1) {
 if (said("help", "woodcutter") || said("help", "wife") || said("help", "people")) {
   print("That would be very nice.  How do you want to help them?");
 }
-if (said("murder", "woodcutter") || said("murder", "wife") || said("murder", "people")) {
+if (
+  said("murder", "woodcutter") || said("murder", "wife") || said("murder", "people")
+#if VERSION_S
+  || said("attack", "anyword")
+#endif
+) {
   print("What an abominable idea!  You should be ashamed of yourself for even suggesting such a thing!");
   if (!rfBOTH_GESTICULATING) {
     set(rfBOTH_GESTICULATING);
@@ -217,7 +238,14 @@ if (fCARRYING_DIAMONDS || fCARRYING_GOLDEN_EGG || fCARRYING_GOLD_WALNUT || fCARR
     print("What treasure do you wish to donate to them?");
   }
 }
-if (fCARRYING_DIAMONDS && said("give", "pouch of diamonds")) {
+if (
+  fCARRYING_DIAMONDS && (
+    said("give", "pouch of diamonds")
+#if VERSION_S
+    || said("give", "pouch")
+#endif
+  )
+) {
   print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.");
   if (!rfBOTH_GESTICULATING) {
     set(rfBOTH_GESTICULATING);
@@ -278,6 +306,9 @@ if (fCARRYING_CARROT && said("give", "carrot")) {
   vSCORE -= 2;
 }
 if (fCARRYING_MAGIC_BEANS && said("give", "magic beans")) {
+  #if VERSION_S
+    sound(43, fMISC_END_MARKER);
+  #endif
   print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
   if (!rfBOTH_GESTICULATING) {
     set(rfBOTH_GESTICULATING);
@@ -298,6 +329,9 @@ if (fCARRYING_BOWL) {
       || said("give", "bowl", "wife")
       || said("drop", "bowl", "table")
     ) {
+      #if VERSION_S
+        sound(43, fMISC_END_MARKER);
+      #endif
       set(fGIVEN_BOWL_TO_WOODCUTTER);
       reset(fCARRYING_BOWL);
       drop("ceramic bowl");
@@ -330,6 +364,9 @@ if (fCARRYING_BOWL) {
       || said("give", "stew", "wife")
       || said("drop", "stew", "table")
     ) {
+      #if VERSION_S
+        sound(43, fMISC_END_MARKER);
+      #endif
       set(fGIVEN_BOWL_TO_WOODCUTTER);
       reset(fCARRYING_BOWL);
       drop("ceramic bowl");
@@ -361,7 +398,15 @@ if (fGIVEN_BOWL_TO_WOODCUTTER) {
   }
 }
 if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_EMPTY) {
-  if (said("fill") || said("say", "fill")) {
+  if (
+    said("fill") || said("say", "fill")
+#if VERSION_S
+    || said("fill", "bowl")
+#endif
+  ) {
+    #if VERSION_S
+      sound(43, fMISC_END_MARKER);
+    #endif
     erase(oBOWL);
     set.view(oBOWL, 83);
     draw(oBOWL);
@@ -401,25 +446,40 @@ if (!fFIDDLE_TAKEN) {
     }
   }
   if (said("get", "fiddle")) {
-    if (posn(oEGO, 120, 140, 158, 166) && !fWOODCUTTER_GIVEN_STEW) {
+    if (
+#if !VERSION_S
+      posn(oEGO, 120, 140, 158, 166) &&
+#endif
+      !fWOODCUTTER_GIVEN_STEW) {
       print("You cannot take their last precious possession!");
     }
     if (posn(oEGO, 120, 140, 158, 166) && fWOODCUTTER_GIVEN_STEW) {
       erase(oFIDDLE);
       set(fCARRYING_FIDDLE);
       set(fFIDDLE_TAKEN);
+      #if VERSION_S
+        sound(23, fMISC_END_MARKER);
+      #endif
       print("The polished wood feels like satin -- it seems to still vibrate from the last song it played.");
       get("fiddle");
       vSCORE += 3;
     }
-    if (!posn(oEGO, 120, 140, 158, 166)) {
+    if (
+      !posn(oEGO, 120, 140, 158, 166)
+#if VERSION_S
+      && fWOODCUTTER_GIVEN_STEW
+#endif
+    ) {
       print("You are not close enough to reach it.");
     }
   }
 }
 if (fEGO_ON_WATER && !fFALLING) {
-#ifdef RUBBER_TREE
+#if RUBBER_TREE
   get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+#endif
+#if VERSION_S
+  set(f215);
 #endif
   ignore.blocks(oEGO);
   set(fSCRIPTED_MOTION);

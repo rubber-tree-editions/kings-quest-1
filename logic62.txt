@@ -37,6 +37,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+  #if VERSION_S
+    load.sound(23);
+  #endif
   set.horizon(45);
   load.sound(SND_FALLING);
   draw(oEGO);
@@ -87,6 +90,9 @@ if (fSLINGSHOT_TAKEN) {
 if (!fSLINGSHOT_TAKEN) {
   if (said("get", "slingshot")) {
     if (posn(oEGO, 117, 100, 144, 117)) {
+      #if VERSION_S
+        sound(23, fMISC_END_MARKER);
+      #endif
       print("You reach into the hole and pull out the leather sling.");
       set(fSLINGSHOT_TAKEN);
       set(fCARRYING_SLINGSHOT);
@@ -99,16 +105,21 @@ if (!fSLINGSHOT_TAKEN) {
   }
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {
-#ifdef RUBBER_TREE
-  get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
-  if (rvRESTORE_EGO_X < 148) {
-    rvRESTORE_EGO_Y -= 5;
-  }
-  else {
-    rvRESTORE_EGO_X -= 5;
-  }
-  rvRESTORE_EGO_DIR = vEGO_DIR;
-#endif
+  #ifdef RUBBER_TREE
+    get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+    if (rvRESTORE_EGO_X < 148) {
+      rvRESTORE_EGO_Y -= 5;
+    }
+    else {
+      rvRESTORE_EGO_X -= 5;
+    }
+    rvRESTORE_EGO_DIR = vEGO_DIR;
+  #endif
+  #if VERSION_S
+    prevent.input();
+    set(f215);
+    set(fFALLING);
+  #endif
   set(fSCRIPTED_MOTION);
   program.control();
   stop.cycling(oEGO);
@@ -133,6 +144,9 @@ if (rfFALLING_SOUND_PLAYED) {
   print("You've fallen through the clouds!  Cloud walking is for the birds.");
   erase(oEGO);
   set(fGAME_OVER);
+  #if VERSION_S
+    accept.input();
+  #endif
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM59_CLOUDS_MOUNTAIN_CAVE);
@@ -140,6 +154,15 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM61_CLOUDLANDS_SOUTH);
 }
+#if VERSION_S
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+if (vTEMP_Y > 150 || vTEMP_X > 140 || posn(oEGO, 118, 120, 154, 167)) {
+  set(f216);
+}
+else {
+  reset(f216);
+}
+#endif
 return;
 
 LOGIC__FOOTER

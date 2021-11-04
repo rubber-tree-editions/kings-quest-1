@@ -17,11 +17,18 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+  #if VERSION_S
+    load.sound(25);
+    load.sound(23);
+  #endif
   set.horizon(42);
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
   ignore.blocks(oEGO);
   if (vGNOME_STATE <= GNOMESTATE_PRESENT) {
+    #if VERSION_S
+      load.sound(43);
+    #endif
     load.view(27);
     animate.obj(oGNOME);
     set.view(oGNOME, 27);
@@ -54,6 +61,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oGOLD_KEY, 39, 118);
   }
   if (vGNOME_STATE <= GNOMESTATE_PRESENT) {
+    #if VERSION_S
+      sound(25, fMISC_END_MARKER);
+    #endif
     draw(oGNOME);
     set(rfGNOME_IS_HERE);
   }
@@ -135,6 +145,9 @@ if (rfGUESSING_GNOMES_NAME) {
     goto(FINALCHECKS);
   }
   if (said("ifnkovhgroghprm")) {
+    #if VERSION_S
+      sound(43, fMISC_END_MARKER);
+    #endif
     erase(oGNOME);
     reset(rfGUESSING_GNOMES_NAME);
     reset(rfGNOME_IS_HERE);
@@ -206,6 +219,9 @@ if (!rfGNOME_IS_HERE) {
         print("That's too far away.");
       }
       else {
+        #if VERSION_S
+          sound(23, fMISC_END_MARKER);
+        #endif
         print("Being careful that you get every one of them, you place the beans in your pocket.");
         reset(rfSHOW_BEANS);
         start.update(oMAGIC_BEANS);
@@ -232,6 +248,9 @@ if (!rfGNOME_IS_HERE) {
         print("That's too far away.");
       }
       else {
+        #if VERSION_S
+          sound(23, fMISC_END_MARKER);
+        #endif
         print("It is heavy and cold.");
         reset(rfSHOW_KEY);
         start.update(oGOLD_KEY);

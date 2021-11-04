@@ -23,6 +23,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+  #if VERSION_S
+    load.sound(23);
+    load.sound(24);
+  #endif
   if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
     position(oEGO, 87, 67);
   }
@@ -40,6 +44,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(47);
     load.view(79);
   }
+  #if VERSION_S
+  else {
+    load.sound(SND_FIDDLE_TUNE);
+  }
+  #endif
   if (!fLEPRECHAUN_KING_GONE) {
     load.view(81);
     load.view(54);
@@ -95,8 +104,14 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oSCEPTRE);
   }
   draw(oEGO);
+  #if VERSION_S
+    if (!fDANCING_LEPRECHAUNS) {
+      sound(SND_LEPRECHAUN_KING, fMISC_END_MARKER);
+    }
+  #endif
   show.pic();
 }
+#if !VERSION_S
 if (!fDANCING_LEPRECHAUNS) {
   if (!rfPLAYING_SND_LEPRECHAUN_KING) {
     set(rfPLAYING_SND_LEPRECHAUN_KING);
@@ -107,6 +122,7 @@ if (!fDANCING_LEPRECHAUNS) {
     reset(rfPLAYED_SND_LEPRECHAUN_KING);
   }
 }
+#endif
 if (!fDANCING_LEPRECHAUNS && fCARRYING_CLOVER) {
   observe.blocks(oEGO);
   if (posn(oEGO, 80, 110, 139, 141)) {
@@ -174,6 +190,9 @@ if (fCARRYING_FIDDLE) {
     }
     else {
       print("You play a little tune on the fiddle to amuse yourself.");
+      #if VERSION_S
+        sound(SND_FIDDLE_TUNE, fMISC_END_MARKER);
+      #endif
     }
   }
 }
@@ -282,7 +301,13 @@ if (!fSHIELD_TAKEN) {
   }
   if (said("get", "shield")) {
     if (posn(oEGO, 121, 118, 144, 138)) {
+      #if VERSION_S
+        stop.sound();
+      #endif
       erase(oSHIELD);
+      #if VERSION_S
+        sound(24, fMISC_END_MARKER);
+      #endif
       if (fDANCING_LEPRECHAUNS) {
         print("You take the magic shield and carefully put it in your pocket.");
       }
@@ -318,6 +343,9 @@ if (!fSCEPTRE_TAKEN) {
         erase(oSCEPTRE);
         set(fSCEPTRE_TAKEN);
         set(fCARRYING_SCEPTRE);
+        #if VERSION_S
+          sound(23, fMISC_END_MARKER);
+        #endif
         print("Eagerly, you pick up the sceptre.");
         get("sceptre");
         vSCORE += 6;

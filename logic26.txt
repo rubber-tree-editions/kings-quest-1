@@ -9,6 +9,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(46);
+#if VERSION_S
+  load.sound(47);
+#endif
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
   }
@@ -28,7 +31,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
+#if VERSION_S
+  set(rf1);
+#endif
 }
+#if VERSION_S
+if (!rfPULLED_UNDERWATER && rf1 && !f211) {
+  sound(47, rf1);
+}
+#endif
 if (said("examine", "hole") || said("look inside", "hole") || said("look inside", "stumps")) {
   if (posn(oEGO, 66, 134, 159, 167)) {
     print("It is just a hole in an empty, old stump.");

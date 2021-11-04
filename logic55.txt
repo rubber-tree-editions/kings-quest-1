@@ -16,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-if (said("examine", "chandelier") || said("examine", "hall") || said("examine", "building")) {
+if (said("examine", "chandelier") || said("examine", "hall") || said("examine", "castle")) {
   print("The light from the oil lamp is rather dim in the dark interior of the castle.");
 }
 if (said("talk", "knight")) {
@@ -28,6 +28,11 @@ if (said("examine", "knight")) {
 if (said("get", "knight")) {
   print("The armor is firmly mounted to the wall.");
 }
+#if !VERSION_U && !VERSION_V
+if (said("examine", "hall") || said("examine", "room") || said("examine", "castle")) {
+  print("The long marble hall has a cold, dreary feeling.");
+}
+#endif
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM54_CASTLE_HALL_CORNER);
 }
@@ -43,4 +48,7 @@ LOGIC__FOOTER
 #message 2 "There is nobody in the armor."
 #message 3 "This is the armor of one of King Edward's knights from years ago."
 #message 4 "The armor is firmly mounted to the wall."
+#if !VERSION_U && !VERSION_V
+  #message 5 "The long marble hall has a cold, dreary feeling."
+#endif
 #endif

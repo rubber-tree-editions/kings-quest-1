@@ -2,6 +2,11 @@
 
 LOGIC__HEADER
 
+#if !VERSION_U && !VERSION_V
+#define rvCOUNTDOWN_LO rv0
+#define rvCOUNTDOWN_HI rv1
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -12,11 +17,37 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (vPREV_ROOM_NO == ROOM77_LEPRECHAUN_KING_THRONE_ROOM) {
     position(oEGO, 146, 131);
+#if VERSION_U || VERSION_V
     move.obj(oEGO, 146, 131, 0, fMISC_END_MARKER);
+#else
+    move.obj(oEGO, 145, 130, 0, fMISC_END_MARKER);
+#endif
   }
+#if !VERSION_U && !VERSION_V
+  if (!fCARRYING_MUSHROOM) {
+    rvCOUNTDOWN_LO = 250;
+    rvCOUNTDOWN_HI = 4;
+  }
+#endif
   draw(oEGO);
   show.pic();
 }
+#if !VERSION_U && !VERSION_V
+  if (!fCARRYING_MUSHROOM) {
+    rvCOUNTDOWN_LO--;
+    if (rvCOUNTDOWN_LO == 0) {
+      if (rvCOUNTDOWN_HI > 0) {
+        rvCOUNTDOWN_HI--;
+        rvCOUNTDOWN_LO = 250;
+      }
+    }
+  }
+  if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 0) {
+    stop.cycling(oEGO);
+    print("You seem to be stuck in these underground caverns.  As you have no way of leaving, it looks like you'll spend the rest of your life here." );
+    set(fGAME_OVER);
+  }
+#endif
 if (fEGO_TINY) {
   ignore.blocks(oEGO);
 }
@@ -32,6 +63,9 @@ if (vTINY_COUNTDOWN == 1 && fEGO_TINY) {
   else {
     set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
+#if VERSION_S
+    rvCOUNTDOWN_LO = 40;
+#endif
     reset(fEGO_TINY);
   }
 }
@@ -70,4 +104,7 @@ LOGIC__FOOTER
 #message 5 "You feel a stretching sensation... Oh, you're back to your original size."
 #message 6 "Go ahead.  Walk right in."
 #message 7 "This is a small cave with stairs on one side and a very small hole on the other side."
+#if !VERSION_U && !VERSION_V
+  #message 8 "You seem to be stuck in these underground caverns.  As you have no way of leaving, it looks like you'll spend the rest of your life here." 
+#endif
 #endif

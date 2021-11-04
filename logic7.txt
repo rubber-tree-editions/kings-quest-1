@@ -9,6 +9,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(46);
+  #if VERSION_S
+    load.sound(47);
+  #endif
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
   if (fGOAT_COMPANION) {
@@ -27,6 +30,18 @@ if (fROOM_SCRIPT_EXECUTED) {
       move.obj(oEGO, 2, 47, 1, fMISC_END_MARKER);
     }
   }
+  #if VERSION_S
+    if (vPREV_ROOM_NO == ROOM10_GOAT_PEN_WEST) {
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      if (vTEMP_X > 19) {
+        position(oEGO, 34, 47);
+      }
+      if (vTEMP_X < 20) {
+        position(oEGO, 2, 47);
+        move.obj(oEGO, 2, 47, 1, fMISC_END_MARKER);
+      }
+    }
+  #endif
   if (vPREV_ROOM_NO == ROOM42_STONE_BRIDGE && fEGO_ON_WATER) {
     set.view(oEGO, 0);
     reset(fCYCLE_EGO_ANIMATION);
@@ -36,7 +51,24 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
+  #if VERSION_S
+    set(rf1);
+  #endif
 }
+#if VERSION_S
+  if (!fEGO_ON_WATER && rf1 && !f211) {
+    sound(47, rf1);
+  }
+#endif
+#if !VERSION_U && !VERSION_V
+  if (said("examine", "room")) {
+    print("A rapidly flowing stream is pouring into this lake.");
+  }
+  if (f213) {
+    reset(f213);
+    print("It seems the old goat has wandered off by himself and is no longer following you.");
+  }
+#endif
 if (posn(oEGO, 0, 45, 31, 78)) {
   set(fSWIMMING_IMPOSSIBLE_HERE);
 }
@@ -108,6 +140,9 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
+    #if !VERSION_U && !VERSION_V
+      set(f213);
+    #endif
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
@@ -126,6 +161,18 @@ if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
 call(LOGIC101_SWIMMING);
+#if VERSION_S
+  if (posn(oEGO, 0, 65, 77, 167)) {
+    set(fTHREAT_OF_SORCERER_OR_OGRE);
+    set(fTENSE_SITUATION);
+    set(f216);
+  }
+  else {
+    reset(fTENSE_SITUATION);
+    reset(fTHREAT_OF_SORCERER_OR_OGRE);
+    reset(f216);
+  }
+#endif
 return;
 
 LOGIC__FOOTER
@@ -139,8 +186,8 @@ LOGIC__FOOTER
 #message 6 "This is a beautiful little lake."
 #message 7 "You have no container for water."
 #message 8 "The swift water pulls you down to your untimely demise."
-#ifndef VERSION_U
-#message 9 "It seems the old goat has wandered off by himself and is no longer following you."
-#message 10 "A rapidly flowing stream is pouring into this lake."
+#if !VERSION_U && !VERSION_V
+  #message 9 "It seems the old goat has wandered off by himself and is no longer following you."
+  #message 10 "A rapidly flowing stream is pouring into this lake."
 #endif
 #endif

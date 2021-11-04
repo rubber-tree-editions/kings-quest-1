@@ -22,6 +22,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+  #if VERSION_S
+    load.sound(26);
+    load.sound(SND_TITLE_MUSIC);
+  #endif
   vTEMP_RESULT_2 = 0;
   vTEMP_RESULT_3 = 0;
   if (vPREV_ROOM_NO == ROOM54_CASTLE_HALL_CORNER) {
@@ -33,6 +37,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(85);
   load.view(98);
   load.view(142);
+  #if VERSION_S
+    load.sound(15);
+  #endif
   animate.obj(oKING);
   set.view(oKING, 53);
   position(oKING, 30, 90);
@@ -40,6 +47,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   stop.cycling(oKING);
   draw(oEGO);
   show.pic();
+  #if VERSION_S
+    if (!fSPOKEN_TO_KING) {
+      sound(15, rf10);
+    }
+  #endif
   if (vTREASURE_COUNT == 3) {
     vTEMP_RESULT_2 = 250;
     vTEMP_RESULT_3 = 1;
@@ -53,6 +65,11 @@ if (rfKING_EDWARD_DEAD) {
 if (fYOU_WON) {
   goto RETURN;
 }
+#if !VERSION_U && !VERSION_V
+if (said("examine", "man")) {
+  print("That man is the King.");
+}
+#endif
 if (rvCOUNTDOWN <= 0) {
   vTEMP_RESULT_2--;
   if (vTEMP_RESULT_2 == 1) {
@@ -85,13 +102,21 @@ if (rvCOUNTDOWN > 0) {
       move.obj(oEGO, 67, 82, 0, rfFINISHED_MOVING_ASIDE);
     }
     else {
-      move.obj(oEGO, 60, 105, 0, rfFINISHED_MOVING_ASIDE2);
+      #if VERSION_S
+        move.obj(oEGO, 50, 110, 0, rfFINISHED_MOVING_ASIDE2);
+      #else
+        move.obj(oEGO, 60, 105, 0, rfFINISHED_MOVING_ASIDE2);
+      #endif
     }
     print("You move aside as the King steps from his throne.");
   }
   if (rfFINISHED_MOVING_ASIDE) {
     reset(rfFINISHED_MOVING_ASIDE);
-    move.obj(oEGO, 60, 105, 0, rfFINISHED_MOVING_ASIDE2);
+    #if VERSION_S
+      move.obj(oEGO, 50, 110, 0, rfFINISHED_MOVING_ASIDE2);
+    #else
+      move.obj(oEGO, 60, 105, 0, rfFINISHED_MOVING_ASIDE2);
+    #endif
   }
   if (rfFINISHED_MOVING_ASIDE2) {
     reset(rfFINISHED_MOVING_ASIDE2);
@@ -123,6 +148,9 @@ if (rvCOUNTDOWN > 0) {
       draw(oKING);
       end.of.loop(oKING, rfKING_EDWARD_DEAD);
       print("\"Oh!... Oh!!\"  the King proclaims in pain!");
+      #if VERSION_S
+        sound(26, fMISC_END_MARKER);
+      #endif
       if (said("examine", "king")) {
         print("Your heart also aches with pain as you watch the King.");
       }
@@ -140,6 +168,9 @@ if (rvCOUNTDOWN > 0) {
     if (rvCOUNTDOWN == 105) {
       program.control();
       print("The experiences of your quest will be invaluable to you as you begin your reign as King of Daventry!!");
+      #if VERSION_S
+        stop.sound();
+      #endif
       reset(fSCRIPTED_MOTION);
       start.cycling(oEGO);
       ignore.objs(oEGO);
@@ -154,9 +185,15 @@ if (rfEGO_ON_THE_THRONE) {
   position(oEGO, 30, 85);
   set.view(oEGO, 142);
   draw(oEGO);
+  #if VERSION_S
+    erase(oKING);
+  #endif
   stop.motion(oEGO);
   prevent.input();
-  print("    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stevenson                 Mark Crowe            Bob Ballew   Mikel Knight             Susan Lee          ");
+  #if VERSION_S
+    sound(SND_TITLE_MUSIC, rf10);
+  #endif
+  print(m57);
   set(fYOU_WON);
 }
 if (posn(oEGO, 18, 80, 67, 107)) {
@@ -330,11 +367,20 @@ if (rfEGO_FINISHED_BOWING) {
     vTEMP_RESULT_3 = 0;
   }
 }
+#if VERSION_S
+if (rf9) {
+  reset(rf9);
+  reverse.loop(oKING, fMISC_END_MARKER);
+}
+#endif
 if (rfWAIT_FOR_KEY) {
   vKEY_PRESSED = 0;
   while (!have.key()) { }
   reset(rfWAIT_FOR_KEY);
   graphics();
+  #if VERSION_S
+    end.of.loop(oKING, rf9);
+  #endif
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM54_CASTLE_HALL_CORNER);
@@ -398,8 +444,17 @@ LOGIC__FOOTER
 #message 54 "Press any key to continue."
 #message 55 "There is no need to bow again."
 #message 56 "Your concern for the old king won't allow you to move."
-#message 57 "    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stevenson                 Mark Crowe            Bob Ballew   Mikel Knight             Susan Lee          "
+#if VERSION_U || VERSION_V
+  #message 57 "    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stevenson                 Mark Crowe            Bob Ballew   Mikel Knight             Susan Lee          "
+#elif VERSION_S
+  #message 57 "    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stephenson                 Mark Crowe            Bob Ballew   Carlos Escobar     Susan Lee    Russ Truelove         Dale Carlson        "
+#else
+  #message 57 "    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stephenson                 Mark Crowe            Bob Ballew   Mikel Knight     Susan Lee    Russ Truelove         Larry Weissenborn   "
+#endif
 #message 58 "The king cannot talk right now."
 #message 59 "That is no way to try and address King Edward."
 #message 60 "The spell to make you invisible has expired and you are once again visible."
+#if !VERSION_U && !VERSION_V
+  #message 61 "That man is the King."
+#endif
 #endif

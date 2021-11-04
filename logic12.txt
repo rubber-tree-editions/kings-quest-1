@@ -22,8 +22,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
+  #if VERSION_S
+    load.sound(23);
+  #endif
   set.horizon(46);
-  load.sound(SND_FALLING);
+  #if !VERSION_S
+    load.sound(SND_FALLING);
+  #endif
   load.sound(SND_WELL_HANDLE_TURNING);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
@@ -60,6 +65,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oROPE);
     set.view(oROPE, 17);
     ignore.blocks(oROPE);
+    #if VERSION_S
+      ignore.objs(oROPE);
+    #endif
     position(oROPE, 43, 147);
     set.priority(oROPE, 11);
     if (!fROPE_DANGLING_IN_WELL) {
@@ -131,6 +139,9 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         else {
           set.view(oEGO, 74);
         }
+        #if VERSION_S
+          vEGO_DIR = DIR_NONE;
+        #endif
         position(oEGO, 39, 131);
         draw(oEGO);
         set(fON_WELL_ROPE);
@@ -152,6 +163,9 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         || said("go", "bucket")
         || said("go", "well")
         || said("go down", "well")
+#if VERSION_S
+        || said("get in", "bucket")
+#endif
       ) {
         erase(oEGO);
         set.view(oBUCKET, 72);
@@ -164,20 +178,37 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         stop.cycling(oBUCKET);
         draw(oBUCKET);
         set(fIN_WELL_BUCKET);
-        sound(SND_WELL_HANDLE_TURNING, rfPLAYED_SND_WELL_HANDLE_TURNING);
+        #if !VERSION_S
+          sound(SND_WELL_HANDLE_TURNING, rfPLAYED_SND_WELL_HANDLE_TURNING);
+        #endif
         end.of.loop(oBUCKET, rfBUCKET_DESCENDED_WITH_YOU_IN_IT);
         start.update(oHANDLE);
         start.cycling(oHANDLE);
         print("After you are in the old bucket, your weight causes it to slowly descend.");
+        #if VERSION_S
+          sound(SND_WELL_HANDLE_TURNING, rfPLAYED_SND_WELL_HANDLE_TURNING);
+        #endif
       }
     }
     if (fBUCKET_LOWERED && !fBUCKET_ROPE_CUT) {
-      if (said("climb", "bucket") || said("go", "bucket")) {
+      if (
+        said("climb", "bucket")
+        || said("go", "bucket")
+#if VERSION_S
+        || said("get in", "bucket")
+#endif
+      ) {
         print("The old bucket is at the bottom of the well.");
       }
     }
     if (fBUCKET_ROPE_CUT) {
-      if (said("climb", "bucket") || said("go", "bucket")) {
+      if (
+        said("climb", "bucket")
+        || said("go", "bucket")
+#if VERSION_S
+        || said("get in", "bucket")
+#endif
+      ) {
         print("There is no bucket here.");
       }
     }
@@ -203,6 +234,9 @@ if (!posn(oEGO, 10, 100, 75, 150)) {
     || said("jump", "well")
     || said("slide", "rope")
     || said("go", "bucket")
+#if VERSION_S
+    || said("get in", "bucket")
+#endif
   ) {
     print("You need to be closer to do that.");
   }
@@ -218,7 +252,12 @@ if (fGOAT_COMPANION && !fEGO_INVISIBLE) {
     if (said("climb", "bucket")) {
       print("The goat refuses to do down the well.");
     }
-    if (said("go", "bucket")) {
+    if (
+      said("go", "bucket")
+#if VERSION_S
+      || said("get in", "bucket")
+#endif
+    ) {
       print("That bucket isn't big enough for you and that big goat!");
     }
     if (said("go", "well")) {
@@ -243,6 +282,9 @@ if (fEGO_INVISIBLE) {
       || said("go down", "well")
       || said("slide", "rope")
       || said("jump", "well")
+#if VERSION_S
+      || said("get in", "bucket")
+#endif
     ) {
       print("You can't do that when you are invisible!");
     }
@@ -269,7 +311,11 @@ if (fON_WELL_ROPE) {
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_OFF_ROPE);
     print("You should be more careful the next time you try  climbing ropes.");
     set(f135_UNKNOWN);
-    sound(SND_FALLING, fSOUND_END_MARKER);
+    #if VERSION_S
+      set(fSOUND_END_MARKER);
+    #else
+      sound(SND_FALLING, fSOUND_END_MARKER);
+    #endif
     reset(fON_WELL_ROPE);
   }
 }
@@ -295,7 +341,11 @@ if (rfENTERED_WELL) {
     print("What a mistake you made!  This well is too deep to jump into.");
   }
   set(f135_UNKNOWN);
-  sound(SND_FALLING, fSOUND_END_MARKER);
+  #if VERSION_S
+    set(fSOUND_END_MARKER);
+  #else
+    sound(SND_FALLING, fSOUND_END_MARKER);
+  #endif
 }
 if (fBUCKET_ROPE_CUT || fBUCKET_LOWERED) {
   if (!fCARRYING_BUCKET && (said("get", "bucket") || said("examine", "bucket"))) {
@@ -308,7 +358,12 @@ if (fBUCKET_ROPE_CUT) {
   }
 }
 if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
-  if (!fCARRYING_BUCKET && said("get", "bucket")) {
+  if (!fCARRYING_BUCKET && (
+    said("get", "bucket")
+#if VERSION_S
+    || said("untie", "bucket")
+#endif
+  )) {
     if (posn(oEGO, 10, 109, 71, 153)) {
       print("The old bucket is securely fastened to a strong rope.");
     }
@@ -331,7 +386,12 @@ if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
   }
 }
 if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED) {
-  if (said("lower", "bucket")) {
+  if (
+    said("lower", "bucket")
+#if VERSION_S
+    || said("lower", "bucket", "well")
+#endif
+  ) {
     if (posn(oEGO, 10, 109, 71, 153)) {
       print("The old bucket is already at the bottom of the well.");
     }
@@ -361,7 +421,12 @@ if (rfBUCKET_ASCENDED) {
   stop.update(oHANDLE);
 }
 if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
-  if (said("lower", "bucket") || said("lower", "rope")) {
+  if (
+    said("lower", "bucket") || said("lower", "rope")
+#if VERSION_S
+    || said("lower", "bucket", "well") || said("lower", "rope", "well")
+#endif
+  ) {
     if (posn(oEGO, 60, 108, 77, 140)) {
       print("The old bucket disappears into the darkness.");
       start.update(oBUCKET);
@@ -468,6 +533,9 @@ if (said("cut", "rope") || said("cut", "rope", "dagger")) {
       }
       set(fBUCKET_ROPE_CUT);
       get("water bucket");
+      #if VERSION_S
+        sound(23, fMISC_END_MARKER);
+      #endif
       print("With the rope cut, you are able to take the bucket.");
       vSCORE += 2;
     }
@@ -482,12 +550,22 @@ if (said("cut", "rope") || said("cut", "rope", "dagger")) {
   }
 }
 if (fROPE_GONE) {
-  if (said("lower", "rope") || said("lower", "bucket")) {
+  if (
+    said("lower", "rope") || said("lower", "bucket")
+#if VERSION_S
+    || said("lower", "rope", "well") || said("lower", "bucket", "well")
+#endif
+  ) {
     print("There is not enough rope left to lower.");
   }
 }
 if (fBUCKET_ROPE_CUT && fROPE_DANGLING_IN_WELL) {
-  if (said("lower", "rope")) {
+  if (
+    said("lower", "rope")
+#if VERSION_S
+    || said("lower", "rope", "well")
+#endif
+  ) {
     if (posn(oEGO, 60, 108, 77, 129)) {
       print("The rope has already been lowered.");
     }
@@ -497,7 +575,12 @@ if (fBUCKET_ROPE_CUT && fROPE_DANGLING_IN_WELL) {
   }
 }
 if (fBUCKET_ROPE_CUT && !fROPE_DANGLING_IN_WELL) {
-  if (said("lower", "rope")) {
+  if (
+    said("lower", "rope")
+#if VERSION_S
+    || said("lower", "rope", "well")
+#endif
+  ) {
     if (posn(oEGO, 60, 108, 77, 129)) {
       start.cycling(oROPE);
       start.update(oHANDLE);
