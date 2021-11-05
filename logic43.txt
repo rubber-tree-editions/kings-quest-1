@@ -29,7 +29,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if VERSION_S
+#if !VERSION_U && !VERSION_V
   if (f213) {
     reset(f213);
     print("It seems the old goat has wandered off by himself and is no longer following you.");
@@ -94,7 +94,7 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
-    #if VERSION_S
+    #if !VERSION_U && !VERSION_V
       set(f213);
     #endif
   }

@@ -205,7 +205,7 @@ if (!fGOAT_COMPANION && !fNO_BUSINESS_WITH_KING) {
       sound(SND_CASTLE_DOOR_FANFARE, rfFANFARE_FINISHED);
 #endif
       end.of.loop(oCASTLE_DOORS, rfDOORS_FINISHED_OPENING);
-      #if VERSION_V || VERSION_S
+      #if VERSION_V || VERSION_S || VERSION_C
         stop.motion(oEGO);
       #endif
       set.priority(oEGO, 15);

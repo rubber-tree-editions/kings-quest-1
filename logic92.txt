@@ -56,7 +56,7 @@ reset(fSAID_ACCEPTED_USER_INPUT);
     display(17, 1, m42);
     display(18, 1, m43);
     display(24, 1, m98);
-  #elif VERSION_V
+  #elif VERSION_V || VERSION_C
     if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
       display(4, 1, m20);
       display(11, 1, m21);
@@ -79,7 +79,12 @@ reset(fSAID_ACCEPTED_USER_INPUT);
     display(9, 1, m11);
     display(12, 1, m14);
     display(14, 1, m15);
-    if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
+    if (
+      vCOMPUTER_TYPE == COMPUTERTYPE_PC
+  #if VERSION_C
+      && vVIDEO_MODE != 2
+  #endif
+    ) {
       display(15, 1, m16);
     }
   #else

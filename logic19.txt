@@ -192,7 +192,7 @@ if (!fCARRYING_GOLD_KEY) {
     print("You need a key to do that.");
   }
 }
-#if VERSION_S
+#if VERSION_S || VERSION_C
 if (said("examine", "key hole") || said("look in", "key hole")) {
 #else
 if (said("examine", "key hole")) {
