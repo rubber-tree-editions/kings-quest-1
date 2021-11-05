@@ -15,7 +15,7 @@ LOGIC__HEADER
 #if VERSION_S
   #define fNO_GOAT_SWIM f66
 #else
-  #define fNO_GOAT_SWIM f214
+  #define fNO_GOAT_SWIM fGOAT_WONT_SWIM
 #endif
 
 if (fROOM_SCRIPT_EXECUTED) {

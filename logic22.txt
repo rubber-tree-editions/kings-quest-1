@@ -129,7 +129,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   #endif
   show.pic();
-  rv4 = 25;
+  #if VERSION_S
+    rv4 = 25;
+  #endif
 }
 #if VERSION_S
 if (rfBIRD_IS_HERE && rf11) {

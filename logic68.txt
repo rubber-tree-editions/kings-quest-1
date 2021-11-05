@@ -280,7 +280,9 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
 if (posn(oEGO, 0, 166, 159, 167)) {
   new.room(ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM);
 }
-set(f216);
+#if VERSION_S
+  set(f216);
+#endif
 return;
 
 LOGIC__FOOTER
