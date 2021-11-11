@@ -377,6 +377,9 @@
 #define cTOGGLESOUND c17
 #define cHELP c18
 #define cABOUT c19
+#define cSPEED_FAST c22
+#define cSPEED_NORMAL c23
+#define cSPEED_SLOW c24
 
 #if RUBBER_TREE
   #define cUNDO c30
