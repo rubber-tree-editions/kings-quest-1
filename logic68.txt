@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.sound(SND_FALLING);
   random(0, 250, vTEMP_RESULT);
-  #if VERSION_S
+  #if VERSION_C || VERSION_S
   if (vTEMP_RESULT < 150 && vPREV_ROOM_NO == ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM) {
   #else
   if (vTEMP_RESULT < 150) {
@@ -43,7 +43,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.horizon(oDWARF);
   }
   if (rfINIT_RANDOMIZER) {
-    #if VERSION_S
+    #if VERSION_S || VERSION_C
       do {
         random(0, 150, vTEMP_RESULT_2);
       } while (vTEMP_RESULT_2 > 45);
@@ -57,7 +57,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM) {
     position(oEGO, 94, 160);
     set.loop(oEGO, 0);
-    #if VERSION_S
+    #if VERSION_S || VERSION_C
       move.obj(oEGO, 95, 159, 0, fMISC_END_MARKER);
     #else
       move.obj(oEGO, 94, 160, 0, fMISC_END_MARKER);
@@ -66,7 +66,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM69_MOUNTAIN_STAIRWAY_TOP) {
     position(oEGO, 43, 41);
     set.loop(oEGO, 0);
-    #if VERSION_S
+    #if VERSION_S || VERSION_C
       move.obj(oEGO, 44, 42, 0, fMISC_END_MARKER);
     #else
       move.obj(oEGO, 43, 41, 0, fMISC_END_MARKER);
@@ -139,8 +139,12 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING) {
   #if VERSION_S
     set(f215);
     prevent.input();
+  #endif
+  #if VERSION_S || VERSION_C
     set(fTENSE_SITUATION);
     set(fTHREAT_OF_SORCERER_OR_OGRE);
+  #endif
+  #if VERSION_S
     set(fFALLING);
   #else
     set(rfFALLING);

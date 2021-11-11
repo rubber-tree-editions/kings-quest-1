@@ -12,7 +12,7 @@ LOGIC__HEADER
 
 #define oGOAT o13
 
-#if VERSION_S
+#if VERSION_S || VERSION_C
   #define fNO_GOAT_SWIM f66
 #else
   #define fNO_GOAT_SWIM fGOAT_WONT_SWIM
@@ -34,7 +34,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oGOAT);
     goto(ATRIVER);
   }
-  #if VERSION_S
+  #if VERSION_S || VERSION_C
     if (vROOM_NO == ROOM7_WATERFALL_LAKE_EAST && vPREV_ROOM_NO == ROOM10_GOAT_PEN_WEST && vTEMP_X < 20) {
       position(oGOAT, 1, 42);
       stop.motion(oGOAT);
@@ -85,7 +85,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 distance(oEGO, oGOAT, rvDISTANCE_FROM_EGO_TO_GOAT);
 if (rvDISTANCE_FROM_EGO_TO_GOAT > 35) {
-  #if VERSION_S
+  #if VERSION_S || VERSION_C
     vTEMP_STEP_SIZE_2 = 1;
   #else
     vTEMP_STEP_SIZE_2 = 2;
@@ -137,7 +137,7 @@ if (fGOAT_NEAR_YOU) {
 }
 if (rvDISTANCE_FROM_EGO_TO_GOAT > 20 && vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE && !fNO_GOAT_SWIM) {
   if (
-#if VERSION_S
+#if VERSION_S || VERSION_C
     !fSWIMMING_IMPOSSIBLE_HERE &&
 #endif
     vROOM_NO != ROOM1_CASTLE_EAST

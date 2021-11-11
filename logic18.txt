@@ -44,7 +44,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       random(0, 250, vTEMP_RESULT_3);
     } while (vTEMP_RESULT_3 > 90);
   }
-  #if VERSION_S
+  #if VERSION_S || VERSION_C
     if (vPREV_ROOM_NO == ROOM15_CARROT_PATCH_WEST) {
       get.posn(oEGO, vTEMP_X, vTEMP_Y);
       if (vTEMP_X > 100) {
@@ -146,7 +146,7 @@ if (!fEGO_ON_WATER) {
 else {
   observe.blocks(oEGO);
 }
-#if VERSION_S
+#if VERSION_S || VERSION_C
   block(100, 95, 139, 100);
 #endif
 if (!fEGO_ON_WATER) {
