@@ -196,11 +196,15 @@ if (!fRAT_IS_GONE) {
       || said("give", "rat", "bag of jewels")
       || said("give", "bag of jewels", "rat")
     ) {
+      if (
+        fCARRYING_DIAMONDS &&
       #if VERSION_S
-      if (fCARRYING_DIAMONDS && vTEMP_RESULT_2 > 14 && vTEMP_RESULT_2 < 35) {
-      #else
-      if (fCARRYING_DIAMONDS && vTEMP_RESULT_2 < 35) {
+        vTEMP_RESULT_2 > 14 &&
+      #elif VERSION_C
+        vTEMP_RESULT_2 > 15 &&
       #endif
+       vTEMP_RESULT_2 < 35
+      ) {
         print("The huge rat takes the treasure you have offered and scuttles away.");
         move.obj(oRAT, 46, 105, 0, rfRAT_LEFT);
         drop("pouch of diamonds");
@@ -216,11 +220,15 @@ if (!fRAT_IS_GONE) {
   if (said("give", "golden egg")
     || said("give", "rat", "golden egg")
     || said("give", "golden egg", "rat")) {
+    if (
+      fCARRYING_GOLDEN_EGG &&
     #if VERSION_S
-    if (fCARRYING_GOLDEN_EGG && vTEMP_RESULT_2 > 14 && vTEMP_RESULT_2 < 35) {
-    #else
-    if (fCARRYING_GOLDEN_EGG && vTEMP_RESULT_2 < 35) {
+      vTEMP_RESULT_2 > 14 &&
+    #elif VERSION_C
+      vTEMP_RESULT_2 > 15 &&
     #endif
+      vTEMP_RESULT_2 < 35
+    ) {
       print("The huge rat takes the treasure you have offered and scuttles away.");
       move.obj(oRAT, 46, 105, 0, rfRAT_LEFT);
       drop("gold egg");
@@ -234,11 +242,14 @@ if (!fRAT_IS_GONE) {
   }
   if (said("give", "walnut") || said("give", "rat", "walnut") || said("give", "walnut", "rat")) {
     if (fCARRYING_WALNUT) {
+      if (
       #if VERSION_S
-      if (vTEMP_RESULT_2 > 14 && vTEMP_RESULT_2 < 35) {
-      #else
-      if (vTEMP_RESULT_2 < 35) {
+        vTEMP_RESULT_2 > 14 &&
+      #elif VERSION_C
+        vTEMP_RESULT_2 > 15 &&
       #endif
+        vTEMP_RESULT_2 < 35
+      ) {
         print("The rat doesn't want an ordinary walnut.");
       }
       else {
@@ -246,11 +257,14 @@ if (!fRAT_IS_GONE) {
       }
     }
     if (fCARRYING_GOLD_WALNUT) {
+      if (
       #if VERSION_S
-      if (vTEMP_RESULT_2 > 14 && vTEMP_RESULT_2 < 35) {
-      #else
-      if (vTEMP_RESULT_2 < 35) {
+        vTEMP_RESULT_2 > 14 &&
+      #elif VERSION_C
+        vTEMP_RESULT_2 > 15 &&
       #endif
+        vTEMP_RESULT_2 < 35
+      ) {
         print("The huge rat takes the treasure you have offered and scuttles away.");
         move.obj(oRAT, 46, 105, 0, rfRAT_LEFT);
         drop("gold walnut");
@@ -267,11 +281,15 @@ if (!fRAT_IS_GONE) {
     || said("give", "rat", "sceptre")
     || said("give", "sceptre", "rat")
   ) {
+    if (
+      fCARRYING_SCEPTRE &&
     #if VERSION_S
-    if (fCARRYING_SCEPTRE && vTEMP_RESULT_2 > 14 && vTEMP_RESULT_2 < 35) {
-    #else
-    if (fCARRYING_SCEPTRE && vTEMP_RESULT_2 < 35) {
+      vTEMP_RESULT_2 > 14 &&
+    #elif VERSION_C
+      vTEMP_RESULT_2 > 15 &&
     #endif
+      vTEMP_RESULT_2 < 35
+    ) {
       print("The huge rat takes the treasure you have offered and scuttles away.");
       move.obj(oRAT, 46, 105, 0, rfRAT_LEFT);
       drop("sceptre");
@@ -294,11 +312,14 @@ if (!fRAT_IS_GONE) {
       print("That is a good idea, but you do not have any cheese.");
     }
     if (fCARRYING_SWISS_CHEESE) {
+      if (
       #if VERSION_S
-      if (vTEMP_RESULT_2 > 14 && vTEMP_RESULT_2 < 35) {
-      #else
-      if (vTEMP_RESULT_2 < 35) {
+        vTEMP_RESULT_2 > 14 &&
+      #elif VERSION_C
+        vTEMP_RESULT_2 > 15 &&
       #endif
+        vTEMP_RESULT_2 < 35
+      ) {
         print("The rat drools at the sight of the cheese... and snatches it from your hand.  You might want to count your fingers.");
         move.obj(oRAT, 46, 105, 0, rfRAT_LEFT);
         drop("cheese");

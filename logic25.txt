@@ -50,7 +50,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       load.sound(SND_TROLL);
     #endif
   }
-  #if VERSION_S
+  #if VERSION_S || VERSION_C
     if (vPREV_ROOM_NO == ROOM32_EAST_OF_FREE_BOWL) {
       get.posn(oEGO, vTEMP_X, vTEMP_Y);
       if (vTEMP_Y > 83 && vTEMP_Y < 101) {
@@ -117,21 +117,21 @@ if (!rfTROLL_IS_HERE) {
   if (said("give", "treasure")) {
     print("Why?  To what?");
   }
-  #if VERSION_S
+  #if VERSION_S || VERSION_C
   if (fCARRYING_DIAMONDS) if (said("give", "pouch of diamonds")) {
   #else
   if (said("give", "pouch of diamonds") && fCARRYING_DIAMONDS) {
   #endif
     print("Why?  To what?");
   }
-  #if VERSION_S
+  #if VERSION_S || VERSION_C
   if (fCARRYING_GOLDEN_EGG) if (said("give", "golden egg")) {
   #else
   if (said("give", "golden egg") && fCARRYING_GOLDEN_EGG) {
   #endif
     print("Why?  To what?");
   }
-  #if VERSION_S
+  #if VERSION_S || VERSION_C
   if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) if (said("give", "walnut")) {
   #else
   if (said("give", "walnut")) if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) {
@@ -156,6 +156,8 @@ if (rfTROLL_NEARBY && fEGO_TOUCHED_TRIGGER_LINE) {
 if (rfTROLL_IS_HERE && fGOAT_COMPANION && !rfGOAT_APPROACHING_TROLL) {
   #if VERSION_S
     prevent.input();
+  #endif
+  #if VERSION_S || VERSION_C
     normal.cycle(oGOAT);
   #endif
   distance(oEGO, oGOAT, rvDISTANCE_FROM_EGO_TO_GOAT);
@@ -173,7 +175,7 @@ if (rfTROLL_IS_HERE && fGOAT_COMPANION && !rfGOAT_APPROACHING_TROLL) {
 }
 if (rfGOAT_AT_BRIDGE) {
   ignore.objs(oGOAT);
-  #if VERSION_S
+  #if VERSION_S || VERSION_C
     ignore.blocks(oGOAT);
   #endif
   reset(rfGOAT_AT_BRIDGE);
@@ -183,7 +185,7 @@ if (rfGOAT_AT_BRIDGE) {
   move.obj.v(oGOAT, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfGOAT_AT_TROLL);
 }
 distance(oTROLL, oGOAT, vTEMP_RESULT);
-#if VERSION_S
+#if VERSION_S || VERSION_C
 if (vTEMP_RESULT < 25 && !fGOAT_KILLED_TROLL) {
 #else
 if (vTEMP_RESULT < 20 && !fGOAT_KILLED_TROLL) {
@@ -283,8 +285,8 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
   ) {
     print("What type of treasure would you like to give the old troll?");
   }
-  #if VERSION_S
-  if (fCARRYING_DIAMONDS && !fSCRIPTED_GOAT_MOVEMENT)
+  #if VERSION_S || VERSION_C
+  if (fCARRYING_DIAMONDS && GOAT_MOVE_CHECK)
   if (said("give", "pouch of diamonds")
     || said("give", "troll", "pouch of diamonds")
     || said("give", "pouch of diamonds", "troll")
@@ -294,7 +296,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
     || said("give", "troll", "pouch of diamonds")
     || said("give", "pouch of diamonds", "troll")
   )
-  if (fCARRYING_DIAMONDS)
+  if (fCARRYING_DIAMONDS && GOAT_MOVE_CHECK)
   #endif
   {
     if (posn(oEGO, 1, 78, 85, 120)) {
@@ -310,8 +312,8 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
       print("If you want to try that, you should get a little closer.");
     }
   }
-  #if VERSION_S
-  if (fCARRYING_SCEPTRE && !fSCRIPTED_GOAT_MOVEMENT)
+  #if VERSION_S || VERSION_C
+  if (fCARRYING_SCEPTRE && GOAT_MOVE_CHECK)
   if (said("give", "sceptre")
     || said("give", "troll", "sceptre")
     || said("give", "sceptre", "troll")
@@ -321,7 +323,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
     || said("give", "troll", "sceptre")
     || said("give", "sceptre", "troll")
   )
-  if (fCARRYING_SCEPTRE)
+  if (fCARRYING_SCEPTRE && GOAT_MOVE_CHECK)
   #endif
   {
     if (posn(oEGO, 1, 78, 85, 120)) {
@@ -337,8 +339,8 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
       print("If you want to try that, you should get a little closer.");
     }
   }
-  #if VERSION_S
-  if (fCARRYING_GOLDEN_EGG && !fSCRIPTED_GOAT_MOVEMENT)
+  #if VERSION_S || VERSION_C
+  if (fCARRYING_GOLDEN_EGG && GOAT_MOVE_CHECK)
   if (said("give", "golden egg")
     || said("give", "troll", "golden egg")
     || said("give", "golden egg", "troll")
@@ -348,7 +350,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
     || said("give", "troll", "golden egg")
     || said("give", "golden egg", "troll")
   )
-  if (fCARRYING_GOLDEN_EGG)
+  if (fCARRYING_GOLDEN_EGG && GOAT_MOVE_CHECK)
   #endif
   {
     if (posn(oEGO, 1, 78, 85, 120)) {
@@ -364,7 +366,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
       print("If you want to try that, you should get a little closer.");
     }
   }
-  #if VERSION_S
+  #if VERSION_S || VERSION_C
   if (fCARRYING_WALNUT)
   if (said("give", "walnut")
     || said("give", "troll", "walnut")
@@ -372,7 +374,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
   ) {
     print("The troll doesn't want just a plain walnut.");
   }
-  if (fCARRYING_GOLD_WALNUT && !fSCRIPTED_GOAT_MOVEMENT)
+  if (fCARRYING_GOLD_WALNUT && GOAT_MOVE_CHECK)
   if (said("give", "walnut")
     || said("give", "troll", "walnut")
     || said("give", "walnut", "troll")
@@ -398,7 +400,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
     if (fCARRYING_WALNUT) {
       print("The troll doesn't want just a plain walnut.");
     }
-    else if (fCARRYING_GOLD_WALNUT) {
+    else if (fCARRYING_GOLD_WALNUT && GOAT_MOVE_CHECK) {
       if (posn(oEGO, 1, 78, 85, 120)) {
         print("OK");
         drop("gold walnut");

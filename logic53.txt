@@ -39,6 +39,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(142);
   #if VERSION_S
     load.sound(15);
+  #elif VERSION_C
+    load.sound(SND_TITLE_MUSIC);
   #endif
   animate.obj(oKING);
   set.view(oKING, 53);
@@ -102,7 +104,7 @@ if (rvCOUNTDOWN > 0) {
       move.obj(oEGO, 67, 82, 0, rfFINISHED_MOVING_ASIDE);
     }
     else {
-      #if VERSION_S
+      #if VERSION_S || VERSION_C
         move.obj(oEGO, 50, 110, 0, rfFINISHED_MOVING_ASIDE2);
       #else
         move.obj(oEGO, 60, 105, 0, rfFINISHED_MOVING_ASIDE2);
@@ -112,7 +114,7 @@ if (rvCOUNTDOWN > 0) {
   }
   if (rfFINISHED_MOVING_ASIDE) {
     reset(rfFINISHED_MOVING_ASIDE);
-    #if VERSION_S
+    #if VERSION_S || VERSION_C
       move.obj(oEGO, 50, 110, 0, rfFINISHED_MOVING_ASIDE2);
     #else
       move.obj(oEGO, 60, 105, 0, rfFINISHED_MOVING_ASIDE2);
@@ -185,12 +187,12 @@ if (rfEGO_ON_THE_THRONE) {
   position(oEGO, 30, 85);
   set.view(oEGO, 142);
   draw(oEGO);
-  #if VERSION_S
+  #if VERSION_S || VERSION_C
     erase(oKING);
   #endif
   stop.motion(oEGO);
   prevent.input();
-  #if VERSION_S
+  #if VERSION_S || VERSION_C
     sound(SND_TITLE_MUSIC, rf10);
   #endif
   print(m57);
@@ -367,7 +369,7 @@ if (rfEGO_FINISHED_BOWING) {
     vTEMP_RESULT_3 = 0;
   }
 }
-#if VERSION_S
+#if VERSION_S || VERSION_C
 if (rf9) {
   reset(rf9);
   reverse.loop(oKING, fMISC_END_MARKER);
@@ -378,7 +380,7 @@ if (rfWAIT_FOR_KEY) {
   while (!have.key()) { }
   reset(rfWAIT_FOR_KEY);
   graphics();
-  #if VERSION_S
+  #if VERSION_S || VERSION_C
     end.of.loop(oKING, rf9);
   #endif
 }

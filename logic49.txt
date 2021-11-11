@@ -102,7 +102,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   SHOWPIC:
     show.pic();
 }
-#if VERSION_S
+#if !VERSION_U && !VERSION_V
   if (fROPE_DANGLING_IN_WELL || fBUCKET_LOWERED) {
     if (said("examine", "rope")) {
       print("It is a very long, sturdy rope.");
@@ -121,7 +121,7 @@ if (fFALLING_DOWN_WELL && !rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE && !rfPLAYIN
   #endif
   set(rfPLAYING_SND_FALLING);
 }
-#if !VERSION_S
+#if !VERSION_S && !VERSION_C
   if (fSOUND_END_MARKER) {
     if (!rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE) {
       reset(rfPLAYING_SND_FALLING);
@@ -277,7 +277,7 @@ if (!fON_WELL_ROPE && !rfFALLING_DOWN_WELL) {
       || said("exit", "bucket")
       || said("go", "water")
       || said("jump", "water")
-#if VERSION_S
+#if VERSION_S || VERSION_C
       || said("leave", "bucket")
 #endif
     ) {
@@ -322,7 +322,7 @@ if (!fCARRYING_BUCKET) {
       print("The bucket is not here.");
     }
   }
-  #if VERSION_S
+  #if VERSION_S || VERSION_C
     if (said("go", "bucket") || said("get in", "bucket")) if (fBUCKET_LOWERED && !fIN_WELL_BUCKET) {
       print("I don't think that getting in the bucket right now will do you very much good.");
     }
@@ -334,7 +334,7 @@ if (!fCARRYING_BUCKET) {
 }
 if (
   said("untie", "rope")
-#if VERSION_S
+#if VERSION_S || VERSION_C
   || said("untie", "bucket")
 #endif
 ) {
@@ -441,7 +441,7 @@ if (!fBUCKET_FILLED) {
   }
 }
 if (
-#if VERSION_S
+#if VERSION_S || VERSION_C
   vAQUATIC_ACTIVITY != AQUATICACTIVITY_DROWNING &&
 #endif
   vAQUATIC_ACTIVITY != AQUATICACTIVITY_SWIMMING
@@ -451,7 +451,7 @@ if (
   }
 }
 if (
-#if VERSION_S
+#if VERSION_S || VERSION_C
   vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING ||
 #endif
   vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING

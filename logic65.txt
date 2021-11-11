@@ -190,7 +190,7 @@ if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
     set(rfPLAYING_SND_FALLING);
   }
 }
-#if !VERSION_S
+#if !VERSION_S && !VERSION_C
 if (fSOUND_END_MARKER_2) {
   if (!rfFALLEN_TO_EARTH && !rfSAID_OUCH) {
     reset(fSOUND_END_MARKER_2);
@@ -432,7 +432,7 @@ if (posn(oEGO, 23, 89, 55, 100)) {
       vCUPBOARD_STATE = CUPBOARDSTATE_OPEN_NO_CHEESE;
     }
     if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE) {
-      #if VERSION_S
+      #if VERSION_S || VERSION_C
         prevent.input();
       #endif
       start.cycling(oCUPBOARD);
@@ -507,7 +507,7 @@ if (!posn(oEGO, 23, 89, 55, 100)) {
   }
 }
 if (rfCUPBOARD_FINISHED_OPENING) {
-  #if VERSION_S
+  #if VERSION_S || VERSION_C
     accept.input();
   #endif
   reset(rfCUPBOARD_FINISHED_OPENING);
@@ -556,7 +556,7 @@ if (said("open", "stove")) {
   }
 }
 if (posn(oEGO, 105, 88, 158, 160)) {
-  #if VERSION_S
+  #if !VERSION_U && !VERSION_V
     if (said("examine", "bedroom")) {
       print("It looks like an ordinary bedroom.");
     }
@@ -577,7 +577,7 @@ if (posn(oEGO, 105, 88, 158, 160)) {
   }
 }
 if (!posn(oEGO, 105, 88, 158, 160)) {
-  #if VERSION_S
+  #if VERSION_S || VERSION_C
     if (said("examine", "bedroom")) {
       print(m34 /* "You cannot see it from here." */);
     }
