@@ -200,7 +200,7 @@ if (!fRAT_IS_GONE) {
         fCARRYING_DIAMONDS &&
       #if VERSION_S
         vTEMP_RESULT_2 > 14 &&
-      #elif VERSION_C
+      #elif VERSION_C || VERSION_F
         vTEMP_RESULT_2 > 15 &&
       #endif
        vTEMP_RESULT_2 < 35
@@ -224,7 +224,7 @@ if (!fRAT_IS_GONE) {
       fCARRYING_GOLDEN_EGG &&
     #if VERSION_S
       vTEMP_RESULT_2 > 14 &&
-    #elif VERSION_C
+    #elif VERSION_C || VERSION_F
       vTEMP_RESULT_2 > 15 &&
     #endif
       vTEMP_RESULT_2 < 35
@@ -245,7 +245,7 @@ if (!fRAT_IS_GONE) {
       if (
       #if VERSION_S
         vTEMP_RESULT_2 > 14 &&
-      #elif VERSION_C
+      #elif VERSION_C || VERSION_F
         vTEMP_RESULT_2 > 15 &&
       #endif
         vTEMP_RESULT_2 < 35
@@ -260,7 +260,7 @@ if (!fRAT_IS_GONE) {
       if (
       #if VERSION_S
         vTEMP_RESULT_2 > 14 &&
-      #elif VERSION_C
+      #elif VERSION_C || VERSION_F
         vTEMP_RESULT_2 > 15 &&
       #endif
         vTEMP_RESULT_2 < 35
@@ -285,7 +285,7 @@ if (!fRAT_IS_GONE) {
       fCARRYING_SCEPTRE &&
     #if VERSION_S
       vTEMP_RESULT_2 > 14 &&
-    #elif VERSION_C
+    #elif VERSION_C || VERSION_F
       vTEMP_RESULT_2 > 15 &&
     #endif
       vTEMP_RESULT_2 < 35
@@ -315,7 +315,7 @@ if (!fRAT_IS_GONE) {
       if (
       #if VERSION_S
         vTEMP_RESULT_2 > 14 &&
-      #elif VERSION_C
+      #elif VERSION_C || VERSION_F
         vTEMP_RESULT_2 > 15 &&
       #endif
         vTEMP_RESULT_2 < 35

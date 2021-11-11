@@ -14,7 +14,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   prevent.input();
   rvCOUNTDOWN = 250;
-  #if VERSION_S || VERSION_C
+  #if VERSION_S || VERSION_C || VERSION_F
     rv1 = 245;
     rv3 = 1;
     rv5 = 1;
@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     rv8 = 11;
   #endif
   set(fSOUND_ENABLED);
-  #if VERSION_C
+  #if VERSION_C || VERSION_F
     if (vVIDEO_MODE == 2) {
       display(24, 1, "(c) copyright SIERRA On-Line Inc.  1987");
     }
@@ -52,7 +52,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.key(KEY_CTRL_S, 0, cTOGGLESOUND);
   set.key(0, XKEY_F3, cPREVINPUT);
   set.key(KEY_CTRL_E, 0, cPREVINPUT);
-  #if VERSION_C
+  #if VERSION_C || VERSION_F
     set.key(0, XKEY_F4, c21);
   #elif VERSION_S
     set.key(0, XKEY_ALT_I, c21);
@@ -75,7 +75,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.key(KEY_CTRL_J, 0, cINITJOYSTICK);
   set.key(KEY_CTRL_C, 0, cCLEARINPUT);
   set.key(KEY_CTRL_Y, 0, cCLEARINPUT);
-  #if !VERSION_S
+  #if !VERSION_S && !VERSION_F
     #if VERSION_C
       set.key(KEY_ESC, 0, c25);
     #else
@@ -100,7 +100,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.key(KEY_7, 0, cRESTORE);
     set.key(KEY_9, 0, cRESTART);
   }
-#if !VERSION_S
+#if !VERSION_S && !VERSION_F
   set.key(1, 1, c0);
   set.key(1, 2, cSWIM);
   set.key(1, 4, cINVENTORY);
@@ -408,11 +408,11 @@ if (rvCOUNTDOWN == 135) {
     goto(JUMP);
   }
 #endif
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
   if (rvCOUNTDOWN == rv1) {
     rv2 = rv3;
     rv4 = rv5;
-  #if VERSION_C
+  #if VERSION_C || VERSION_F
     if (vVIDEO_MODE == 2) {
       rv6 = 19;
     }
@@ -441,7 +441,7 @@ if (rvCOUNTDOWN == 135) {
       rv5++;
     }
   }
-  #if VERSION_C
+  #if VERSION_C || VERSION_F
     if (rvCOUNTDOWN == 135) {
       rv1 = 255;
       if (vVIDEO_MODE == 2) {
@@ -484,7 +484,7 @@ if (rvCOUNTDOWN == 135) {
   }
 #else
   if (have.key()) {
-    #if VERSION_C
+    #if VERSION_C || VERSION_F
     if (vVIDEO_MODE != 2)
     #endif
     {
@@ -492,6 +492,19 @@ if (rvCOUNTDOWN == 135) {
     }
     stop.sound();
     rvCOUNTDOWN = 0;
+    #if VERSION_F
+      set.key(KEY_ESC, 0, c25);
+      if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST) {
+        set.key(1, 1, c25);
+        set.key(1, 3, cSWIM);
+      }
+      else {
+        set.key(1, 1, c0);
+        set.key(1, 3, c25);
+        set.key(1, 2, cSWIM);
+        set.key(1, 4, cINVENTORY);
+      }
+    #endif
     new.room(ROOM1_CASTLE_EAST);
   }
 #endif

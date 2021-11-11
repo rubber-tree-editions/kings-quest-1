@@ -116,7 +116,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     overlay.pic(vTEMP_PIC);
   }
   draw(oEGO);
-  #if VERSION_S
+  #if VERSION_S || VERSION_F
     if (vPREV_ROOM_NO == ROOM21_WITCH_STOMPING_GROUND) {
       get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
       if (vTEMP_Y_2 > 78 && vTEMP_Y_2 < 96) {
@@ -154,7 +154,7 @@ if (fFALLING_TO_EARTH && !rfPLAYING_SND_FALLING) {
   set(f135_UNKNOWN);
   sound(SND_FALLING, rfFALLING_SOUND_PLAYED);
 }
-#if !VERSION_S && !VERSION_C
+#if !VERSION_S && !VERSION_C && !VERSION_F
   if (!rfFELL_FROM_SKY && rfFALLING_SOUND_PLAYED) {
     reset(rfPLAYING_SND_FALLING);
     reset(rfFALLING_SOUND_PLAYED);
@@ -206,7 +206,7 @@ if (vCOUNTDOWN_LO == 1 && vCOUNTDOWN_HI == 0) {
 }
 if (!rfBIRD_AFRAID_OF_GOAT && rfBIRD_IS_HERE) {
   get.posn(oBIRD, vTEMP_X_3, vTEMP_Y_3);
-  #if VERSION_S || VERSION_C
+  #if VERSION_S || VERSION_C || VERSION_F
   if (vTEMP_Y_3 > 115) {
   #else
   if (vTEMP_Y_3 > 110) {
@@ -225,7 +225,7 @@ distance(oEGO, oBIRD, vTEMP_RESULT_3);
 get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
 get.posn(oBIRD, rvBIRD_X, rvBIRD_Y);
 rvBIRD_Y += 20;
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
 if (vTEMP_RESULT_3 > 20 && vTEMP_RESULT_3 < 35 && vTEMP_Y_2 > rvBIRD_Y && fJUMPING && !rfBIRD_AFRAID_OF_GOAT) {
 #else
 if (vTEMP_RESULT_3 > 20 && vTEMP_RESULT_3 < 30 && vTEMP_Y_2 > rvBIRD_Y && fJUMPING && !rfBIRD_AFRAID_OF_GOAT) {
@@ -241,7 +241,7 @@ if (vTEMP_RESULT_3 > 20 && vTEMP_RESULT_3 < 30 && vTEMP_Y_2 > rvBIRD_Y && fJUMPI
   set(fPLAYER_NOT_IN_CONTROL);
   ignore.horizon(oEGO);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
-  #if VERSION_S || VERSION_C
+  #if VERSION_S || VERSION_C || VERSION_F
     if (vTEMP_Y > 80) {
       vTEMP_Y -= 70;
     }

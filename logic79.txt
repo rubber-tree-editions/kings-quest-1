@@ -125,7 +125,7 @@ if (said("examine", "woodcutter")) {
 if (said("examine", "wife")) {
   print("The woodcutter's wife is skinny and poorly dressed.");
 }
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
 if (said("examine", "people")) {
   print("The woodcutter is thin and dressed in rags.");
   print("The woodcutter's wife is skinny and poorly dressed.");
@@ -184,7 +184,7 @@ if (said("help", "woodcutter") || said("help", "wife") || said("help", "people")
 }
 if (
   said("murder", "woodcutter") || said("murder", "wife") || said("murder", "people")
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
   || said("attack", "anyword")
 #endif
 ) {
@@ -241,7 +241,7 @@ if (fCARRYING_DIAMONDS || fCARRYING_GOLDEN_EGG || fCARRYING_GOLD_WALNUT || fCARR
 if (
   fCARRYING_DIAMONDS && (
     said("give", "pouch of diamonds")
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
     || said("give", "pouch")
 #endif
   )
@@ -400,7 +400,7 @@ if (fGIVEN_BOWL_TO_WOODCUTTER) {
 if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_EMPTY) {
   if (
     said("fill") || said("say", "fill")
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
     || said("fill", "bowl")
 #endif
   ) {
@@ -447,7 +447,7 @@ if (!fFIDDLE_TAKEN) {
   }
   if (said("get", "fiddle")) {
     if (
-#if !VERSION_S && !VERSION_C
+#if !VERSION_S && !VERSION_C && !VERSION_F
       posn(oEGO, 120, 140, 158, 166) &&
 #endif
       !fWOODCUTTER_GIVEN_STEW) {
@@ -466,7 +466,7 @@ if (!fFIDDLE_TAKEN) {
     }
     if (
       !posn(oEGO, 120, 140, 158, 166)
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
       && fWOODCUTTER_GIVEN_STEW
 #endif
     ) {

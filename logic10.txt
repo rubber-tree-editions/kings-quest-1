@@ -23,25 +23,25 @@ if (fROOM_SCRIPT_EXECUTED) {
     rv1 = 20;
   #endif
   load.view(67);
-  #if VERSION_S || VERSION_C
+  #if VERSION_S || VERSION_C || VERSION_F
   if (!fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN <= ROOM_NULL && !fGOAT_IS_GONE && v111 != 11) {
   #else
   if (!fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN <= ROOM_NULL && !fGOAT_IS_GONE) {
   #endif
-    #if VERSION_S || VERSION_C
+    #if VERSION_S || VERSION_C || VERSION_F
       v111 = 10;
     #endif
     load.sound(SND_GOAT);
     load.view(14);
     load.view(62);
-    #if VERSION_S || VERSION_C
+    #if VERSION_S || VERSION_C || VERSION_F
       set(rfGOAT_IS_HERE);
     #else
       rvCOUNTDOWN = 27;
     #endif
     animate.obj(oGOAT);
     set.view(oGOAT, 14);
-    #if VERSION_S || VERSION_C
+    #if VERSION_S || VERSION_C || VERSION_F
       position(oGOAT, 95, 97);
       #if VERSION_S
         sound(25, fMISC_END_MARKER);
@@ -107,7 +107,7 @@ if (!rfGOAT_IS_HERE) {
     print("There is no goat in the immediate area.");
   }
 }
-#if !VERSION_S && !VERSION_C
+#if !VERSION_S && !VERSION_C && !VERSION_F
   rvCOUNTDOWN--;
   if (rvCOUNTDOWN == 1) {
     set(rfGOAT_IS_HERE);
@@ -193,7 +193,7 @@ if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
       print("You cannot do that from outside the fence.");
     }
   }
-  #if VERSION_S || VERSION_C
+  #if VERSION_S || VERSION_C || VERSION_F
     if (vOBJECT_EDGE_CODE == EDGE_RIGHT) {
       erase(oGOAT);
       reset(rfGOAT_IS_HERE);

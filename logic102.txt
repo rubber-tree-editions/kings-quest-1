@@ -315,7 +315,7 @@ if (!fCARRYING_MIRROR) {
     print("You do not have it.");
   }
 }
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
   if (fCARRYING_FIDDLE) if (said("play", "fiddle")) {
     print("You can't do that--at least not now!");
   }
@@ -399,7 +399,7 @@ if (said("examine")) {
 #endif
 if (
   said("examine", "anyword")
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
   || said("look around")
 #endif
 ) {

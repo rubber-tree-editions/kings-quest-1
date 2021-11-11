@@ -110,21 +110,21 @@ if (!rfTROLL_IS_HERE) {
   if (said("give", "treasure")) {
     print("To what?");
   }
-  #if VERSION_S || VERSION_C
+  #if VERSION_S || VERSION_C || VERSION_F
   if (fCARRYING_DIAMONDS) if (said("give", "pouch of diamonds")) {
   #else
   if (said("give", "pouch of diamonds") && fCARRYING_DIAMONDS) {
   #endif
     print("To what?");
   }
-  #if VERSION_S || VERSION_C
+  #if VERSION_S || VERSION_C || VERSION_F
   if (fCARRYING_GOLDEN_EGG) if (said("give", "golden egg")) {
   #else
   if (said("give", "golden egg") && fCARRYING_GOLDEN_EGG) {
   #endif
     print("To what?");
   }
-  #if VERSION_S || VERSION_C
+  #if VERSION_S || VERSION_C || VERSION_F
   if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) if (said("give", "walnut")) {
   #else
   if (said("give", "walnut")) if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) {
@@ -268,7 +268,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
   ) {
     print("What precious treasure would you like to give to the  old troll?");
   }
-  #if VERSION_S || VERSION_C
+  #if VERSION_S || VERSION_C || VERSION_F
   if (fCARRYING_DIAMONDS && GOAT_MOVE_CHECK)
   if (said("give", "pouch of diamonds")
     || said("give", "troll", "pouch of diamonds")
@@ -295,7 +295,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
       print("There may be something trollish around, but you're not close enough to do anything about it.");
     }
   }
-  #if VERSION_S || VERSION_C
+  #if VERSION_S || VERSION_C || VERSION_F
   if (fCARRYING_SCEPTRE && GOAT_MOVE_CHECK)
   if (said("give", "sceptre")
     || said("give", "troll", "sceptre")
@@ -322,7 +322,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
       print("There may be something trollish around, but you're not close enough to do anything about it.");
     }
   }
-  #if VERSION_S || VERSION_C
+  #if VERSION_S || VERSION_C || VERSION_F
   if (fCARRYING_GOLDEN_EGG && GOAT_MOVE_CHECK)
   if (said("give", "golden egg")
     || said("give", "troll", "golden egg")
@@ -349,7 +349,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
       print("There may be something trollish around, but you're not close enough to do anything about it.");
     }
   }
-  #if VERSION_S || VERSION_C
+  #if VERSION_S || VERSION_C || VERSION_F
   if (fCARRYING_WALNUT) {
     if (said("give", "walnut")
       || said("give", "troll", "walnut")
@@ -414,7 +414,7 @@ if (rfTROLL_LEFT) {
 if (!fEGO_ON_WATER) {
   if (
     posn(oEGO, 24, 44, 68, 58)
-  #if VERSION_S || VERSION_C
+  #if VERSION_S || VERSION_C || VERSION_F
     || posn(oEGO, 72, 84, 72, 87)
   #endif
   ) {

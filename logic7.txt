@@ -30,7 +30,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       move.obj(oEGO, 2, 47, 1, fMISC_END_MARKER);
     }
   }
-  #if VERSION_S || VERSION_C
+  #if VERSION_S || VERSION_C || VERSION_F
     if (vPREV_ROOM_NO == ROOM10_GOAT_PEN_WEST) {
       get.posn(oEGO, vTEMP_X, vTEMP_Y);
       if (vTEMP_X > 19) {

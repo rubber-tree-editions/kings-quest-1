@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 116, 50);
     }
   }
-  #if VERSION_S || VERSION_C
+  #if VERSION_S || VERSION_C || VERSION_F
     block(128, 78, 136, 113);
   #endif
   ignore.blocks(oEGO);
@@ -46,7 +46,7 @@ if (said("examine", "cattails")) {
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 69, 76, 103, 131)
     || posn(oEGO, 104, 96, 123, 120)
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
     || posn(oEGO, 124, 96, 132, 105)
 #else
     || posn(oEGO, 120, 96, 131, 105)
@@ -60,7 +60,7 @@ if (!fEGO_ON_WATER) {
 if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   vEGO_WATER_X = 255;
   if (
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
     posn(oEGO, 108, 88, 133, 110)
 #else
     posn(oEGO, 108, 88, 140, 110)

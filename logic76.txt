@@ -31,7 +31,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     #endif
   }
   if (!fDANCING_LEPRECHAUNS) {
-    #if VERSION_S || VERSION_C
+    #if VERSION_S || VERSION_C || VERSION_F
       load.view(47);
     #endif
     load.view(78);
@@ -40,7 +40,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(o2);
     animate.obj(o13);
     set.view(o2, 79);
-    #if VERSION_S || VERSION_C
+    #if VERSION_S || VERSION_C || VERSION_F
       set.view(o13, 47);
     #else
       set.view(o13, 80);
@@ -112,7 +112,7 @@ if (!fDANCING_LEPRECHAUNS && !rfPLAYING_FIDDLE) {
     #else
       sound(SND_FIDDLE_TUNE, rfPLAYED_SND_FIDDLE_TUNE);
     #endif
-    #if VERSION_C || VERSION_S
+    #if VERSION_C || VERSION_S || VERSION_F
       erase(o13);
       set.view(o13, 80);
       draw(o13);

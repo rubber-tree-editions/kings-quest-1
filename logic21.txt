@@ -25,7 +25,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   random(0, 250, vTEMP_RESULT);
   if (vTEMP_RESULT < 185 && vWITCH_STATE != WITCHSTATE_DEAD) {
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
     rvWITCH_STEP_SIZE = 6;
 #else
     rvWITCH_STEP_SIZE = 4;
@@ -39,7 +39,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oWITCH, 3);
     ignore.horizon(oWITCH);
     ignore.blocks(oWITCH);
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
     set.priority(oWITCH, 15);
 #endif
     set.loop(oWITCH, 1);
@@ -62,11 +62,11 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 vTEMP_RESULT_2--;
 if (vTEMP_RESULT_2 == 1) {
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
   vTEMP_RESULT_2 = 0;
 #endif
   set(rfWITCH_IS_HERE);
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
   position(oWITCH, 80, 48);
 #else
   position(oWITCH, 80, 40);
@@ -117,7 +117,7 @@ if (rfWITCH_GOT_YOU) {
   }
   else if (fEGO_DUCKING) {
     print("The witch missed you, this time.");
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
     random(1, 2, rv1);
 #else
     wander(oWITCH);
@@ -133,20 +133,20 @@ if (rfWITCH_GOT_YOU) {
     ignore.blocks(oEGO);
     ignore.horizon(oEGO);
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
     if (vTEMP_Y > 120) {
       vTEMP_Y -= 50;
     }
 #endif
     vTEMP_X = 130;
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
     set.priority(oEGO, 15);
 #endif
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, rvWITCH_STEP_SIZE, rfCARRIED_OFF);
     set(fCYCLE_EGO_ANIMATION);
   }
 }
-#if VERSION_S || VERSION_C
+#if VERSION_S || VERSION_C || VERSION_F
   if (rv1 == 1) {
     move.obj(oWITCH, 1, 24, 6, rf8);
     rv1 = 0;
