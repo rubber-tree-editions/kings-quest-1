@@ -137,7 +137,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !fFALLING) {
 if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING) {
 #endif
   #if VERSION_S
-    set(f215);
+    set(fEGO_PREOCCUPIED);
     prevent.input();
   #endif
   #if VERSION_S || VERSION_C || VERSION_F
@@ -285,7 +285,7 @@ if (posn(oEGO, 0, 166, 159, 167)) {
   new.room(ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM);
 }
 #if VERSION_S
-  set(f216);
+  set(fFALL_DANGER);
 #endif
 return;
 

@@ -331,7 +331,7 @@ if (rfGATOR1_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
   set(rfEATEN_BY_GATORS);
   rvCOUNTDOWN = 45;
 #if VERSION_S
-  set(f214);
+  set(fEATEN_BY_GATORS);
 #endif
 }
 if (rfGATOR2_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
@@ -342,7 +342,7 @@ if (rfGATOR2_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
   set(rfEATEN_BY_GATORS);
   rvCOUNTDOWN = 45;
 #if VERSION_S
-  set(f214);
+  set(fEATEN_BY_GATORS);
 #endif
 }
 #if VERSION_S

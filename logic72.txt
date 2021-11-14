@@ -29,7 +29,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   #if VERSION_S
     set(fTENSE_SITUATION);
     set(fTHREAT_OF_SORCERER_OR_OGRE);
-    set(f216);
+    set(fFALL_DANGER);
   #endif
 }
 if (fFALLING_TO_EARTH && !rfFELL_OFF_BEANSTALK && !rfPLAYING_SND_FALLING) {

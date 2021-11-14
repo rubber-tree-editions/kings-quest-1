@@ -36,11 +36,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     && vROOM_YOU_KILLED_THE_GOAT_IN <= ROOM_NULL
     && !fGOAT_IS_GONE
 #if VERSION_S || VERSION_C || VERSION_F
-    && v111 != 10
+    && vGOAT_ROOM != ROOM10_GOAT_PEN_WEST
 #endif
   ) {
     #if VERSION_S || VERSION_C || VERSION_F
-      v111 = 11;
+      vGOAT_ROOM = ROOM11_GOAT_PEN_EAST;
     #endif
     load.sound(SND_GOAT);
     load.view(14);
@@ -285,7 +285,7 @@ if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
     if (vOBJECT_EDGE_CODE == EDGE_LEFT && !rf5) {
       erase(oGOAT);
       reset(rfGOAT_IS_HERE);
-      v111 = 10;
+      vGOAT_ROOM = ROOM10_GOAT_PEN_WEST;
     }
   #endif
 }
@@ -425,7 +425,7 @@ if (rf5)
       set(fGOAT_IS_GONE);
       print("It seems the old goat has wandered off.");
       #if VERSION_S || VERSION_C || VERSION_F
-        v111 = 0;
+        vGOAT_ROOM = ROOM_NULL;
       #endif
     }
   }
@@ -438,7 +438,7 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
   ) {
     set(fGOAT_IS_GONE);
     #if VERSION_S || VERSION_C || VERSION_F
-      v111 = 0;
+      vGOAT_ROOM = ROOM_NULL;
     #endif
   }
 }

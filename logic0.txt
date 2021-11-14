@@ -54,7 +54,7 @@ if (vROOM_NO == ROOM_NULL) {
       set.menu.item("Save Game      <F5>", cSAVE);
       set.menu.item("Restore Game   <F7>", cRESTORE);
     #endif
-    set.menu.item("-------------------", c20);
+    set.menu.item("-------------------", cNOTHING);
     #if VERSION_S
       set.menu.item("Restart Game   <Shift-9>", cRESTART);
     #else
@@ -63,7 +63,7 @@ if (vROOM_NO == ROOM_NULL) {
     #if VERSION_C
       set.menu.item("Pause         <Esc>", cPAUSE);
     #endif
-    set.menu.item("-------------------", c20);
+    set.menu.item("-------------------", cNOTHING);
     #if VERSION_S
       set.menu.item("Quit        <Option-Z>", cQUIT);
     #else
@@ -71,14 +71,14 @@ if (vROOM_NO == ROOM_NULL) {
     #endif
     set.menu("Game");
     #if VERSION_F
-      set.menu.item("See Object     <F4>", c21);
+      set.menu.item("See Object     <F4>", cSEE_OBJECT);
       set.menu.item("Inventory     <Tab>", cINVENTORY);
     #elif VERSION_S
-      set.menu.item("See Object     <Shift-4>", c21);
+      set.menu.item("See Object     <Shift-4>", cSEE_OBJECT);
       set.menu.item("Inventory     <Tab>", cINVENTORY);
     #else
       set.menu.item("Inventory     <Tab>", cINVENTORY);
-      set.menu.item("See Object     <F4>", c21);
+      set.menu.item("See Object     <F4>", cSEE_OBJECT);
       set.menu.item("Toggle Sound   <F2>", cTOGGLESOUND);
     #endif
     #if VERSION_C
@@ -144,7 +144,7 @@ if (fROOM_SCRIPT_EXECUTED || fRESTORE_GAME_EXECUTED) {
   #endif
   if (vROOM_NO != ROOM83_TITLE_SCREEN) {
     set(fJOYSTICK_SENSITIVITY_ENABLED);
-    disable.item(c20);
+    disable.item(cNOTHING);
     set(fENABLE_MENU);
     vJOYSTICK_SENSITIVITY = 3;
   }
@@ -155,13 +155,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (vPREV_ROOM_NO != ROOM70_BEANSTALK_NEAR_BOTTOM) {
       reset(fTENSE_SITUATION);
       reset(fTHREAT_OF_SORCERER_OR_OGRE);
-      reset(f216);
-      reset(f215);
+      reset(fFALL_DANGER);
+      reset(fEGO_PREOCCUPIED);
     }
     else {
       disable.item(cJUMP);
       disable.item(cDUCK);
-      set(f216);
+      set(fFALL_DANGER);
     }
     vDROWN_GAME_OVER_COUNTDOWN = 0;
     reset(fSCRIPTED_MOTION);
@@ -278,7 +278,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
 #endif
 #if VERSION_S || VERSION_C || VERSION_F
-  if (controller(c25) && vROOM_NO != 83) {
+  if (controller(cSHOW_MENU) && vROOM_NO != ROOM83_TITLE_SCREEN) {
     menu.input();
   }
 #endif
@@ -361,7 +361,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (controller(cINVENTORY)) {
     status();
   }
-  if (controller(c21)) {
+  if (controller(cSEE_OBJECT)) {
     set(fSTATUS_TO_SELECT_ITEMS);
     status();
     if (vSELECTED_INV_ITEM > 0 && vSELECTED_INV_ITEM != 255) {
@@ -635,8 +635,8 @@ else {
         && !fEGO_DUCKING
         && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
       #if VERSION_S
-        && !f211
-        && !f215
+        && !fEGO_PLAYING_FIDDLE
+        && !fEGO_PREOCCUPIED
         && !fTENSE_SITUATION
       #endif
         && vROOM_NO != ROOM29_SORCERER_STOMPING_GROUND
@@ -657,7 +657,7 @@ else {
         && vROOM_NO != ROOM51_DRAGONS_LAIR
     ) {
       #if VERSION_S
-        set(f215);
+        set(fEGO_PREOCCUPIED);
       #endif
       set(fJUMPING);
       stop.motion(oEGO);
@@ -681,7 +681,7 @@ else {
     start.motion(oEGO);
     set.view(oEGO, 0);
     #if VERSION_S
-      reset(f215);
+      reset(fEGO_PREOCCUPIED);
     #endif
   }
 }
@@ -702,7 +702,7 @@ else {
         && !fJUMPING
         && !fTHREAT_OF_SORCERER_OR_OGRE
       #if VERSION_S
-        && !f215
+        && !fEGO_PREOCCUPIED
       #endif
         && vROOM_NO != ROOM29_SORCERER_STOMPING_GROUND
         && vROOM_NO != ROOM12_TOP_OF_WELL
@@ -725,7 +725,7 @@ else {
       #endif
         && !fCARRIED_BY_WITCH
       #if VERSION_S
-        && !f211
+        && !fEGO_PLAYING_FIDDLE
       #endif
     ) {
       set(fEGO_DUCKING);
@@ -990,7 +990,7 @@ if (fCARRYING_MUSHROOM) {
       && vROOM_NO != ROOM52_IN_WELL_UNDERWATER
       && vROOM_NO != ROOM51_DRAGONS_LAIR
       && vROOM_NO != ROOM49_INSIDE_WELL
-      && !f215
+      && !fEGO_PREOCCUPIED
     #endif
       && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE
       && vROOM_NO != ROOM12_TOP_OF_WELL
@@ -1000,8 +1000,8 @@ if (fCARRYING_MUSHROOM) {
     ) {
       #if VERSION_S
         stop.sound();
-        reset(f212);
-        reset(f211);
+        reset(fPLAYED_SND_FIDDLE_TUNE);
+        reset(fEGO_PLAYING_FIDDLE);
         disable.item(cJUMP);
         disable.item(cDUCK);
         reset(fFULLY_DUCKED);
@@ -1086,7 +1086,7 @@ if (fCARRYING_RING) {
   }
   if (said("rub", "ring")) {
     #if VERSION_S
-      if (f215) {
+      if (fEGO_PREOCCUPIED) {
         reset(fSAID_ACCEPTED_USER_INPUT);
       }
     #endif
@@ -1114,14 +1114,14 @@ if (fCARRYING_RING) {
         && vROOM_NO != ROOM79_IN_WOODCUTTER_COTTAGE
       #if VERSION_S
         && !fEGO_DUCKING
-        && !f215
+        && !fEGO_PREOCCUPIED
       #endif
         && !fPLAYER_NOT_IN_CONTROL
         && !fCARRIED_BY_WITCH
         && !fEGO_TINY
       ) {
         #if VERSION_S
-          set(f215);
+          set(fEGO_PREOCCUPIED);
           reset(fJUMPING);
           reset(fJUMPED);
         #endif
@@ -1179,7 +1179,7 @@ if (vINVISIBLE_COUNTDOWN_LO == 1 && vINVISIBLE_COUNTDOWN_HI == 0) {
   #endif
   vSCORE -= 3;
   #if VERSION_S
-    reset(f215);
+    reset(fEGO_PREOCCUPIED);
   #endif
 }
 if (fCARRYING_MAGIC_BEANS) {
@@ -1513,14 +1513,14 @@ if (fCARRYING_GOLDEN_EGG) {
   }
 }
 #if VERSION_S
-  if (f212) {
+  if (fPLAYED_SND_FIDDLE_TUNE) {
     stop.sound();
     start.motion(oEGO);
-    reset(f212);
-    reset(f211);
+    reset(fPLAYED_SND_FIDDLE_TUNE);
+    reset(fEGO_PLAYING_FIDDLE);
     enable.item(cJUMP);
     enable.item(cDUCK);
-    reset(f215);
+    reset(fEGO_PREOCCUPIED);
   }
 #endif
 if (fCARRYING_FIDDLE) {
@@ -1561,26 +1561,26 @@ if (fCARRYING_FIDDLE) {
 #endif
 #if VERSION_S || VERSION_C || VERSION_F
     && !f175_UNKNOWN
-    && !f211
+    && !fEGO_PLAYING_FIDDLE
 #endif
 #if VERSION_S
-    && !f215
+    && !fEGO_PREOCCUPIED
     && !fFULLY_DUCKED
     && !fEGO_ON_WATER
     && !fFALLING
-    && !f216
+    && !fFALL_DANGER
 #endif
   ) {
     if (said("play", "fiddle")) {
       #if VERSION_C || VERSION_F
-        set(f211);
+        set(fEGO_PLAYING_FIDDLE);
       #elif VERSION_S
-        set(f215);
+        set(fEGO_PREOCCUPIED);
         disable.item(cJUMP);
         disable.item(cDUCK);
         load.sound(SND_FIDDLE_TUNE);
-        set(f211);
-        sound(SND_FIDDLE_TUNE, f212);
+        set(fEGO_PLAYING_FIDDLE);
+        sound(SND_FIDDLE_TUNE, fPLAYED_SND_FIDDLE_TUNE);
       #endif
       print("You play a lively, toe-tapping tune on the fiddle.");
       #if VERSION_S
@@ -1588,10 +1588,10 @@ if (fCARRYING_FIDDLE) {
           stop.motion(oEGO);
         }
         else {
-          set(f212);
+          set(fPLAYED_SND_FIDDLE_TUNE);
         }
       #elif VERSION_C || VERSION_F
-        sound(SND_FIDDLE_TUNE, f212);
+        sound(SND_FIDDLE_TUNE, fPLAYED_SND_FIDDLE_TUNE);
       #else
         if (vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE) {
           sound(SND_FIDDLE_TUNE, fMISC_END_MARKER);
@@ -1601,9 +1601,9 @@ if (fCARRYING_FIDDLE) {
   }
 }
 #if VERSION_C || VERSION_F
-  if (f212) {
-    reset(f212);
-    reset(f211);
+  if (fPLAYED_SND_FIDDLE_TUNE) {
+    reset(fPLAYED_SND_FIDDLE_TUNE);
+    reset(fEGO_PLAYING_FIDDLE);
   }
 #endif
 if (fCARRYING_MIRROR) {

@@ -54,7 +54,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING) {
 #endif
   #if VERSION_S
     prevent.input();
-    set(f215);
+    set(fEGO_PREOCCUPIED);
     set(fFALLING);
   #else
     set(rfFALLING);
@@ -96,7 +96,7 @@ if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM56_CLOUDS_GRASS_EDGE);
 }
 #if VERSION_S
-  set(f216);
+  set(fFALL_DANGER);
 #endif
 return;
 

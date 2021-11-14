@@ -60,7 +60,7 @@ if (said("examine", "beanstalk")) {
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !fFALLING_TO_EARTH) {
   #if VERSION_S
-    set(f215);
+    set(fEGO_PREOCCUPIED);
     set(fFALLING);
   #endif
   program.control();

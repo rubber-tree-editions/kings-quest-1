@@ -138,7 +138,7 @@ if (rfBIRD_IS_HERE && rf11) {
   rv4--;
   if (rv4 == 1) {
     rv4 = 35;
-    if (!fTENSE_SITUATION && !f211) {
+    if (!fTENSE_SITUATION && !fEGO_PLAYING_FIDDLE) {
       sound(35, rf11);
     }
   }

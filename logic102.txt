@@ -364,14 +364,14 @@ if (said("examine")) {
       || vROOM_NO == ROOM61_CLOUDLANDS_SOUTH
       || vROOM_NO == ROOM69_MOUNTAIN_STAIRWAY_TOP
     ) {
-      random(1, 3, v112);
-      if (v112 == 1) {
+      random(1, 3, vRANDOM_TREE_MESSAGE);
+      if (vRANDOM_TREE_MESSAGE == 1) {
         print("This is a very beautiful tree.");
       }
-      if (v112 == 2) {
+      if (vRANDOM_TREE_MESSAGE == 2) {
         print("This is just a normal tree, but very pretty.");
       }
-      if (v112 == 3) {
+      if (vRANDOM_TREE_MESSAGE == 3) {
         print("You admire the beauty of the tree.");
       }
     }
@@ -381,14 +381,14 @@ if (said("examine")) {
   }
   if (said("examine", "rock")) {
     if (vROOM_NO < ROOM49_INSIDE_WELL) {
-      random(1, 3, v113);
-      if (v113 == 1) {
+      random(1, 3, vRANDOM_ROCK_MESSAGE);
+      if (vRANDOM_ROCK_MESSAGE == 1) {
         print("This is a very nice looking rock.");
       }
-      if (v113 == 2) {
+      if (vRANDOM_ROCK_MESSAGE == 2) {
         print("There is nothing extraordinary about this rock.");
       }
-      if (v113 == 3) {
+      if (vRANDOM_ROCK_MESSAGE == 3) {
         print("This is your ordinary rock.");
       }
     }

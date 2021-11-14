@@ -49,7 +49,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(105);
     load.logics(LOGIC104_BEANSTALK);
     #if VERSION_S
-      set(f216);
+      set(fFALL_DANGER);
     #else
       load.sound(SND_BEANSTALK);
     #endif
@@ -58,7 +58,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (vPREV_ROOM_NO == ROOM70_BEANSTALK_NEAR_BOTTOM) {
       set(fTENSE_SITUATION);
       set(fTHREAT_OF_SORCERER_OR_OGRE);
-      set(f216);
+      set(fFALL_DANGER);
       load.sound(SND_FALLING);
     }
   #endif
@@ -305,7 +305,7 @@ if (vBEANSTALK_ROOM == ROOM35_DWARF_MEADOW && !fEGO_INVISIBLE) {
       #if VERSION_S
         set(fTENSE_SITUATION);
         set(fTHREAT_OF_SORCERER_OR_OGRE);
-        set(f216);
+        set(fFALL_DANGER);
         load.sound(SND_FALLING);
       #endif
       erase(oEGO);
@@ -346,7 +346,7 @@ if (fEGO_CLIMBING_BEANSTALK) {
       accept.input();
       reset(fTENSE_SITUATION);
       reset(fTHREAT_OF_SORCERER_OR_OGRE);
-      reset(f216);
+      reset(fFALL_DANGER);
     #endif
   }
   if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 60, 78, 93, 80)) {
@@ -356,7 +356,7 @@ if (fEGO_CLIMBING_BEANSTALK) {
       set(fFALLING);
       set(fTENSE_SITUATION);
       set(fTHREAT_OF_SORCERER_OR_OGRE);
-      set(f216);
+      set(fFALL_DANGER);
     #endif
     set.priority(oEGO, 15);
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
@@ -430,7 +430,7 @@ if (rfEGO_FINISHED_ANIMATING) {
     accept.input();
     reset(fTENSE_SITUATION);
     reset(fTHREAT_OF_SORCERER_OR_OGRE);
-    reset(f216);
+    reset(fFALL_DANGER);
   #endif
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {

@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define oGOAT o13
+
 vGAME_OVER_MESSAGE_COUNTDOWN--;
 if (vGAME_OVER_MESSAGE_COUNTDOWN == 1) {
   vGAME_OVER_MESSAGE_COUNTDOWN = 0;
@@ -26,9 +28,9 @@ if (vGAME_OVER_MESSAGE_COUNTDOWN == 1) {
   }
 }
 if (fGOAT_COMPANION) {
-  normal.motion(o13);
-  stop.motion(o13);
-  stop.cycling(o13);
+  normal.motion(oGOAT);
+  stop.motion(oGOAT);
+  stop.cycling(oGOAT);
 }
 #if VERSION_U || VERSION_V
   if (said("quit") || controller(cQUIT)) {
@@ -98,9 +100,9 @@ if (fUNDO) {
   else {
     stop.sound();
     if (fGOAT_COMPANION) {
-      // normal.motion(o13);
-      // stop.motion(o13);
-      // stop.cycling(o13);
+      // normal.motion(oGOAT);
+      // stop.motion(oGOAT);
+      // stop.cycling(oGOAT);
     }
     enable.item(cSAVE);
     enable.item(cJUMP);

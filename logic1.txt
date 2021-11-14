@@ -19,7 +19,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   vJOYSTICK_SENSITIVITY = 3;
 #elif VERSION_C
   set(fJOYSTICK_SENSITIVITY_ENABLED);
-  disable.item(c20);
+  disable.item(cNOTHING);
   set(fENABLE_MENU);
   vJOYSTICK_SENSITIVITY = 3;
 #endif
@@ -208,7 +208,7 @@ if (rfGATOR1_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
   set(rfEATEN_BY_GATORS);
   rvCOUNTDOWN = 45;
 #if VERSION_S
-  set(f214);
+  set(fEATEN_BY_GATORS);
 #endif
 }
 if (rfGATOR2_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
@@ -216,7 +216,7 @@ if (rfGATOR2_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
   set(rfEATEN_BY_GATORS);
   rvCOUNTDOWN = 45;
 #if VERSION_S
-  set(f214);
+  set(fEATEN_BY_GATORS);
 #endif
 }
 #if VERSION_S

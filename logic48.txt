@@ -153,7 +153,7 @@ if (said("examine", "hole") || said("look inside", "hole")) {
 }
 if (fEGO_ON_WATER && !fFALLING) {
   #if VERSION_S
-    set(f215);
+    set(fEGO_PREOCCUPIED);
   #endif
   set(fSCRIPTED_MOTION);
   stop.cycling(oEGO);

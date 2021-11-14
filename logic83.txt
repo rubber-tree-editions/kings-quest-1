@@ -41,7 +41,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   #endif
   #if VERSION_S
     if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
-      set.key(KEY_ESC, 0, c25);
+      set.key(KEY_ESC, 0, cSHOW_MENU);
     }
     else {
       set.key(KEY_ESC, 0, cPAUSE);
@@ -53,9 +53,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.key(0, XKEY_F3, cPREVINPUT);
   set.key(KEY_CTRL_E, 0, cPREVINPUT);
   #if VERSION_C || VERSION_F
-    set.key(0, XKEY_F4, c21);
+    set.key(0, XKEY_F4, cSEE_OBJECT);
   #elif VERSION_S
-    set.key(0, XKEY_ALT_I, c21);
+    set.key(0, XKEY_ALT_I, cSEE_OBJECT);
   #endif
   set.key(0, XKEY_F5, cSAVE);
   #if VERSION_S
@@ -77,12 +77,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.key(KEY_CTRL_Y, 0, cCLEARINPUT);
   #if !VERSION_S && !VERSION_F
     #if VERSION_C
-      set.key(KEY_ESC, 0, c25);
+      set.key(KEY_ESC, 0, cSHOW_MENU);
     #else
       set.key(KEY_ESC, 0, cPAUSE);
     #endif
   #endif
-  set.key(KEY_CTRL_R, 0, c15);
+  set.key(KEY_CTRL_R, 0, cTOGGLEGFX);
   set.key(0, XKEY_ALT_Z, cQUIT);
   set.key(KEY_EQUALS, 0, cSWIM);
   set.key(KEY_DASH, 0, cDUCK);
@@ -464,14 +464,14 @@ if (rvCOUNTDOWN == 135) {
   if (have.key() || rf0) {
     stop.sound();
     rvCOUNTDOWN = 0;
-    set.key(KEY_ESC, 0, c25);
+    set.key(KEY_ESC, 0, cSHOW_MENU);
     if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST) {
-      set.key(1, 1, c25);
+      set.key(1, 1, cSHOW_MENU);
       set.key(1, 3, cSWIM);
     }
     else {
       set.key(1, 1, c0);
-      set.key(1, 3, c25);
+      set.key(1, 3, cSHOW_MENU);
       set.key(1, 2, cSWIM);
       set.key(1, 4, cINVENTORY);
     }
@@ -493,14 +493,14 @@ if (rvCOUNTDOWN == 135) {
     stop.sound();
     rvCOUNTDOWN = 0;
     #if VERSION_F
-      set.key(KEY_ESC, 0, c25);
+      set.key(KEY_ESC, 0, cSHOW_MENU);
       if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST) {
-        set.key(1, 1, c25);
+        set.key(1, 1, cSHOW_MENU);
         set.key(1, 3, cSWIM);
       }
       else {
         set.key(1, 1, c0);
-        set.key(1, 3, c25);
+        set.key(1, 3, cSHOW_MENU);
         set.key(1, 2, cSWIM);
         set.key(1, 4, cINVENTORY);
       }

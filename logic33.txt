@@ -39,7 +39,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 #endif
 }
 #if VERSION_S
-  if (!rfPULLED_UNDERWATER && rf1 && !fEGO_ON_WATER && !f211 && !posn(oEGO, 132, 59, 149, 69)) {
+  if (!rfPULLED_UNDERWATER && rf1 && !fEGO_ON_WATER && !fEGO_PLAYING_FIDDLE && !posn(oEGO, 132, 59, 149, 69)) {
     sound(47, rf1);
   }
 #endif
@@ -91,7 +91,7 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && said("get", "water")) {
 if (posn(oEGO, 118, 50, 154, 80)) {
   set(fTENSE_SITUATION);
   set(fTHREAT_OF_SORCERER_OR_OGRE);
-  set(f216);
+  set(fFALL_DANGER);
 }
 #endif
 if (!fEGO_ON_WATER) {

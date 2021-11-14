@@ -27,13 +27,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   #endif
 }
 #if VERSION_S
-if (f214) {
+if (fEATEN_BY_GATORS) {
   load.sound(34);
 }
 #endif
 if (f174_UNKNOWN || fGAME_OVER) {
   #if VERSION_S
-    set(f215);
+    set(fEGO_PREOCCUPIED);
   #endif
   goto RETURN;
 }
@@ -57,7 +57,7 @@ if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
     set(fPLAYING_SND_SPLASHING);
     #if VERSION_S
       if (vROOM_NO != ROOM49_INSIDE_WELL) {
-        if (!f214 && vROOM_NO > 2) {
+        if (!fEATEN_BY_GATORS && vROOM_NO > 2) {
           sound(SND_SPLASHING, fPLAYED_SND_SPLASHING);
         }
         else {
@@ -185,8 +185,8 @@ if (vDROWN_GAME_OVER_COUNTDOWN == 1) {
   stop.sound();
   set(fGAME_OVER);
   #if VERSION_S
-    set(f215);
-    if (vROOM_NO == ROOM2_CASTLE_WEST && !f214) {
+    set(fEGO_PREOCCUPIED);
+    if (vROOM_NO == ROOM2_CASTLE_WEST && !fEATEN_BY_GATORS) {
       print("You splash around in the water for a while but seem  to have forgotten how to swim. Unfortunately, you drown.");
     }
   #endif

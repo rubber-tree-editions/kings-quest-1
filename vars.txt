@@ -154,6 +154,9 @@
 #define vSAVED_EGO_X v108
 #define vSAVED_EGO_Y v109
 #define vSAVED_EGO_DIR v110
+#define vGOAT_ROOM v111
+#define vRANDOM_TREE_MESSAGE v112
+#define vRANDOM_ROCK_MESSAGE v113
 
 // built-in flags
 #define fEGO_ON_WATER f0
@@ -355,6 +358,12 @@
 #define fPOINTS_FOR_LEAVING_DRAGONS_LAIR f208
 #define fPLAYER_NOT_IN_CONTROL f209
 #define fGOAT_WONT_SWIM f210
+#define fEGO_PLAYING_FIDDLE f211
+#define fPLAYED_SND_FIDDLE_TUNE f212
+#define fSHOW_GOAT_LEFT_MESSAGE f213
+#define fEATEN_BY_GATORS f214
+#define fEGO_PREOCCUPIED f215
+#define fFALL_DANGER f216
 // unused: f211-f255
 
 // controls
@@ -377,9 +386,12 @@
 #define cTOGGLESOUND c17
 #define cHELP c18
 #define cABOUT c19
+#define cNOTHING c20
+#define cSEE_OBJECT c21
 #define cSPEED_FAST c22
 #define cSPEED_NORMAL c23
 #define cSPEED_SLOW c24
+#define cSHOW_MENU c25
 
 #if RUBBER_TREE
   #define cUNDO c30

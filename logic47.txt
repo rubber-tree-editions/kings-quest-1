@@ -59,7 +59,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   #endif
 }
 #if VERSION_S
-  if (!rfPULLED_UNDERWATER && rf2 && !f211) {
+  if (!rfPULLED_UNDERWATER && rf2 && !fEGO_PLAYING_FIDDLE) {
     sound(47, rf2);
   }
 #endif

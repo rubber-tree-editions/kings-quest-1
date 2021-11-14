@@ -24,12 +24,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   #endif
   load.view(67);
   #if VERSION_S || VERSION_C || VERSION_F
-  if (!fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN <= ROOM_NULL && !fGOAT_IS_GONE && v111 != 11) {
+  if (!fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN <= ROOM_NULL && !fGOAT_IS_GONE && vGOAT_ROOM != ROOM11_GOAT_PEN_EAST) {
   #else
   if (!fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN <= ROOM_NULL && !fGOAT_IS_GONE) {
   #endif
     #if VERSION_S || VERSION_C || VERSION_F
-      v111 = 10;
+      vGOAT_ROOM = ROOM10_GOAT_PEN_WEST;
     #endif
     load.sound(SND_GOAT);
     load.view(14);
@@ -197,7 +197,7 @@ if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
     if (vOBJECT_EDGE_CODE == EDGE_RIGHT) {
       erase(oGOAT);
       reset(rfGOAT_IS_HERE);
-      v111 = 11;
+      vGOAT_ROOM = ROOM11_GOAT_PEN_EAST;
     }
   #endif
 }

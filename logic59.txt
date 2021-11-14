@@ -77,7 +77,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !fSCRIPTED_MOTION && posn(oEGO, 0, 84, 159, 167
   #if VERSION_S
     prevent.input();
     set(fFALLING);
-    set(f215);
+    set(fEGO_PREOCCUPIED);
   #endif
   set(fSCRIPTED_MOTION);
   stop.cycling(oEGO);
@@ -97,7 +97,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
   #endif
   #if VERSION_S
     prevent.input();
-    set(f215);
+    set(fEGO_PREOCCUPIED);
     set(fFALLING);
   #endif
   reset(fEGO_TOUCHED_TRIGGER_LINE);
@@ -141,10 +141,10 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 #if VERSION_S
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y < 50 || posn(oEGO, 118, 120, 154, 167) || posn(oEGO, 96, 31, 131, 92)) {
-    set(f216);
+    set(fFALL_DANGER);
   }
   else {
-    reset(f216);
+    reset(fFALL_DANGER);
   }
 #endif
 return;

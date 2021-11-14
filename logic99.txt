@@ -44,7 +44,7 @@ if (said("set", "var")) {
   lindirectv(vTEMP_INPUT_NUM1, vTEMP_INPUT_NUM2);
 }
 #if VERSION_S
-if (controller(c21)) {
+if (controller(cSEE_OBJECT)) {
 #else
 if (said("object")) {
 #endif

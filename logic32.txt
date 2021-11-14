@@ -40,7 +40,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 #if VERSION_S
-  if (!rfPULLED_UNDERWATER && rf1 && !f211) {
+  if (!rfPULLED_UNDERWATER && rf1 && !fEGO_PLAYING_FIDDLE) {
     sound(47, rf1);
   }
 #endif

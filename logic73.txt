@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(104);
   if (vPREV_ROOM_NO == ROOM48_LEPRECHAUN_HOLE) {
     #if VERSION_S
-      set(f215);
+      set(fEGO_PREOCCUPIED);
     #endif
     position(oEGO, 90, 63);
     set.view(oEGO, 105);
@@ -120,7 +120,7 @@ if (rfEGO_FINISHED_ANIMATING) {
   reset(fCYCLE_EGO_ANIMATION);
   player.control();
   #if VERSION_S
-    reset(f215);
+    reset(fEGO_PREOCCUPIED);
   #endif
   if (rfLOST_INVISIBILITY_DURING_FALL) {
     reset(rfLOST_INVISIBILITY_DURING_FALL);

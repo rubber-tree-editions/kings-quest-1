@@ -479,7 +479,7 @@ if (fEGO_ON_WATER && !fFALLING) {
   get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
 #endif
 #if VERSION_S
-  set(f215);
+  set(fEGO_PREOCCUPIED);
 #endif
   ignore.blocks(oEGO);
   set(fSCRIPTED_MOTION);

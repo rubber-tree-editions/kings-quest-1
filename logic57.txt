@@ -49,7 +49,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
   #endif
   #if VERSION_S
     prevent.input();
-    set(f215);
+    set(fEGO_PREOCCUPIED);
     set(fFALLING);
     ignore.blocks(oEGO);
   #else
@@ -111,10 +111,10 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 #if VERSION_S
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y < 60) {
-    set(f216);
+    set(fFALL_DANGER);
   }
   else {
-    reset(f216);
+    reset(fFALL_DANGER);
   }
 #endif
 return;

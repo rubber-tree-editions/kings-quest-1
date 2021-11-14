@@ -39,8 +39,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 #if !VERSION_U && !VERSION_V
-  if (f213) {
-    reset(f213);
+  if (fSHOW_GOAT_LEFT_MESSAGE) {
+    reset(fSHOW_GOAT_LEFT_MESSAGE);
     print("It seems the old goat has wandered off by himself and is no longer following you.");
   }
 #endif
@@ -108,7 +108,7 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
 #if !VERSION_U && !VERSION_V
-    set(f213);
+    set(fSHOW_GOAT_LEFT_MESSAGE);
 #endif
   }
 }
@@ -132,12 +132,12 @@ if (fGOAT_COMPANION) {
   if (vTEMP_X > 13 && vTEMP_X <  133) {
     set(fTENSE_SITUATION);
     set(fTHREAT_OF_SORCERER_OR_OGRE);
-    set(f216);
+    set(fFALL_DANGER);
   }
   else {
     reset(fTENSE_SITUATION);
     reset(fTHREAT_OF_SORCERER_OR_OGRE);
-    reset(f216);
+    reset(fFALL_DANGER);
   }
 #endif
 call(LOGIC101_SWIMMING);

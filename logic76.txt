@@ -9,6 +9,10 @@ LOGIC__HEADER
 
 #define rvCOUNTDOWN rv0
 
+#define oOTHER_LEPRECHAUNS o1
+#define oLEPRECHAUN1 o2
+#define oLEPRECHAUN2 o13
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -21,9 +25,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (fCARRYING_FIDDLE) {
     load.view(50);
-    animate.obj(o1);
-    set.view(o1, 50);
-    position(o1, 96, 78);
+    animate.obj(oOTHER_LEPRECHAUNS);
+    set.view(oOTHER_LEPRECHAUNS, 50);
+    position(oOTHER_LEPRECHAUNS, 96, 78);
     #if VERSION_S
       load.sound(41);
     #else
@@ -37,27 +41,27 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(78);
     load.view(79);
     load.view(80);
-    animate.obj(o2);
-    animate.obj(o13);
-    set.view(o2, 79);
+    animate.obj(oLEPRECHAUN1);
+    animate.obj(oLEPRECHAUN2);
+    set.view(oLEPRECHAUN1, 79);
     #if VERSION_S || VERSION_C || VERSION_F
-      set.view(o13, 47);
+      set.view(oLEPRECHAUN2, 47);
     #else
-      set.view(o13, 80);
+      set.view(oLEPRECHAUN2, 80);
     #endif
-    position(o2, 60, 136);
-    position(o13, 45, 119);
-    stop.cycling(o13);
-    stop.motion(o13);
+    position(oLEPRECHAUN1, 60, 136);
+    position(oLEPRECHAUN2, 45, 119);
+    stop.cycling(oLEPRECHAUN2);
+    stop.motion(oLEPRECHAUN2);
   }
   if (!fDANCING_LEPRECHAUNS) {
-    draw(o13);
-    draw(o2);
+    draw(oLEPRECHAUN2);
+    draw(oLEPRECHAUN1);
     if (fCARRYING_CLOVER) {
-      wander(o2);
+      wander(oLEPRECHAUN1);
     }
     else {
-      follow.ego(o2, 5, rfLEPRECHAUN_CAUGHT_YOU);
+      follow.ego(oLEPRECHAUN1, 5, rfLEPRECHAUN_CAUGHT_YOU);
     }
   }
   draw(oEGO);
@@ -80,8 +84,8 @@ if (rfLEPRECHAUN_CAUGHT_YOU) {
   stop.motion(oEGO);
   set(fSCRIPTED_MOTION);
   stop.cycling(oEGO);
-  stop.motion(o2);
-  stop.cycling(o2);
+  stop.motion(oLEPRECHAUN1);
+  stop.cycling(oLEPRECHAUN1);
   set(fGAME_OVER);
 }
 if (rfPLAYING_FIDDLE) {
@@ -105,7 +109,7 @@ if (!fDANCING_LEPRECHAUNS && !rfPLAYING_FIDDLE) {
       rvCOUNTDOWN = 45;
     #endif
     #if !VERSION_S
-      draw(o1);
+      draw(oOTHER_LEPRECHAUNS);
     #endif
     #if VERSION_S
       sound(41, rfPLAYED_SND_FIDDLE_TUNE);
@@ -113,16 +117,16 @@ if (!fDANCING_LEPRECHAUNS && !rfPLAYING_FIDDLE) {
       sound(SND_FIDDLE_TUNE, rfPLAYED_SND_FIDDLE_TUNE);
     #endif
     #if VERSION_C || VERSION_S || VERSION_F
-      erase(o13);
-      set.view(o13, 80);
-      draw(o13);
+      erase(oLEPRECHAUN2);
+      set.view(oLEPRECHAUN2, 80);
+      draw(oLEPRECHAUN2);
     #endif
-    start.cycling(o13);
-    wander(o13);
-    erase(o2);
-    set.view(o2, 78);
-    draw(o2);
-    wander(o2);
+    start.cycling(oLEPRECHAUN2);
+    wander(oLEPRECHAUN2);
+    erase(oLEPRECHAUN1);
+    set.view(oLEPRECHAUN1, 78);
+    draw(oLEPRECHAUN1);
+    wander(oLEPRECHAUN1);
     print("Leprechauns love fiddle music!  Have you ever seen such frenzied dancing?");
     set(fDANCING_LEPRECHAUNS);
     vSCORE += 3;
@@ -141,22 +145,22 @@ if (rvCOUNTDOWN == 1) {
   stop.sound();
   reset(rfLEPRECHAUNS_DANCING_AWAY);
   reset(rfPLAYING_FIDDLE);
-  erase(o13);
-  erase(o2);
+  erase(oLEPRECHAUN2);
+  erase(oLEPRECHAUN1);
   #if VERSION_S
     print("Totally involved in the music, they dance right out of the room.");
     start.motion(oEGO);
   #else
-    erase(o1);
+    erase(oOTHER_LEPRECHAUNS);
     print("Totally involved in the music, they dance right out of the room.");
   #endif
 }
 if (rfLEPRECHAUNS_DANCING_AWAY) {
   if (vOBJECT_TOUCHING_EDGE == 13) {
-    erase(o13);
+    erase(oLEPRECHAUN2);
   }
   if (vOBJECT_TOUCHING_EDGE == 2) {
-    erase(o2);
+    erase(oLEPRECHAUN1);
   }
 }
 if (said("examine", "room")) {

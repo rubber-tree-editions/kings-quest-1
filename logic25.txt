@@ -65,7 +65,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 #if VERSION_S
-  if (!rfSTUCK_IN_RIVER && rf13 && !f211) {
+  if (!rfSTUCK_IN_RIVER && rf13 && !fEGO_PLAYING_FIDDLE) {
     sound(47, rf13);
   }
 #endif
