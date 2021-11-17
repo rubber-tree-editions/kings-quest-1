@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_WALNUTS 9, 112, 98, 167
+#define BX_WALNUTS_VISIBLE 0, 75, 159, 167
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -26,13 +29,13 @@ if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) {
   }
 }
 #if VERSION_MAJOR >= 2
-if (posn(oEGO, 9, 112, 98, 167) && (said("examine", "ground") || said("look around"))) {
+if (posn(oEGO, BX_NEAR_WALNUTS) && (said("examine", "ground") || said("look around"))) {
   print("These are some of the finest walnuts you have ever seen.");
 }
 #endif
 if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
   if (said("examine", "walnut")) {
-    if (posn(oEGO, 9, 112, 98, 167)) {
+    if (posn(oEGO, BX_NEAR_WALNUTS)) {
       print("These are some of the finest walnuts you have ever seen.");
     }
     else {
@@ -44,7 +47,7 @@ if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
       print("You look around and decide these plain walnuts won't do. You want a gold walnut!");
     }
     if (!fWALNUT_TAKEN) {
-      if (posn(oEGO, 9, 112, 98, 167)) {
+      if (posn(oEGO, BX_NEAR_WALNUTS)) {
 #if BUILD_TARGET == APPLE_IIGS
         sound(SND_POINTS, fMISC_END_MARKER);
 #endif
@@ -61,7 +64,7 @@ if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
   }
 }
 if (said("examine", "tree") || said("examine", "walnut tree")) {
-  if (posn(oEGO, 0, 75, 159, 167)) {
+  if (posn(oEGO, BX_WALNUTS_VISIBLE)) {
     print("The tree is loaded with walnuts.");
   }
   else {

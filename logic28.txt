@@ -2,6 +2,13 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_HOUSE 20, 120, 110, 135
+#define BX_NEAR_DOOR 40, 127, 70, 135
+#define BX_HOUSE_VISIBLE 1, 105, 158, 166
+#define BX_DOOR_VISIBLE 1, 106, 158, 166
+#define BX_NEAR_FENCE 1, 95, 134, 159
+#define BX_NEAR_WINDOWS 66, 120, 92, 134
+
 #define rfDOOR_OPENED rf0
 
 #define oDOOR o1
@@ -62,7 +69,7 @@ if (said("examine", "witch")) {
   print("You must be getting nervous!  I see no witch here!");
 }
 if (said("examine", "window") || said("look inside", "window")) {
-  if (posn(oEGO, 66, 120, 92, 134)) {
+  if (posn(oEGO, BX_NEAR_WINDOWS)) {
     print("The windows are made from translucent, hardened sugar.  It's difficult to see through them.");
   }
   else {
@@ -70,7 +77,7 @@ if (said("examine", "window") || said("look inside", "window")) {
   }
 }
 if (said("break", "window")) {
-  if (posn(oEGO, 66, 120, 92, 134)) {
+  if (posn(oEGO, BX_NEAR_WINDOWS)) {
     print("The windows are hard to break.");
   }
   else {
@@ -78,19 +85,19 @@ if (said("break", "window")) {
   }
 }
 if (said("examine", "building")) {
-  if (posn(oEGO, 1, 105, 158, 166)) {
+  if (posn(oEGO, BX_HOUSE_VISIBLE)) {
     print("This is the sweetest little gingerbread house you ever saw.  The walls are cake, the roof is frosting, the chimney looks delicious, and the candy path and cookie fence are unbearably tempting!");
   }
   else {
     print("You can't see much from here.");
   }
 }
-if (!posn(oEGO, 20, 120, 110, 135)) {
+if (!posn(oEGO, BX_NEAR_HOUSE)) {
   if (said("eat", "building") || said("eat", "candy")) {
     print("The house looks tempting, but you need to get closer.");
   }
 }
-if (posn(oEGO, 20, 120, 110, 135)) {
+if (posn(oEGO, BX_NEAR_HOUSE)) {
   if (vWITCH_STATE == WITCHSTATE_AWAY_FROM_HOME || vWITCH_STATE == WITCHSTATE_DEAD) {
     if (said("eat", "building")) {
       print("Yum!  The house tastes even better than it looks!");
@@ -116,7 +123,7 @@ if (posn(oEGO, 20, 120, 110, 135)) {
     }
   }
 }
-if (posn(oEGO, 40, 127, 70, 135)) {
+if (posn(oEGO, BX_NEAR_DOOR)) {
   if (said("close", "doors")) {
     print("The door is already closed.");
   }
@@ -129,7 +136,7 @@ if (posn(oEGO, 40, 127, 70, 135)) {
     end.of.loop(oDOOR, rfDOOR_OPENED);
   }
 }
-if (!posn(oEGO, 40, 127, 70, 135)) {
+if (!posn(oEGO, BX_NEAR_DOOR)) {
   if (said("open", "doors") || said("close", "doors") || said("knock", "doors")) {
     print("You will have to move closer to do that.");
   }
@@ -147,7 +154,7 @@ if (rfDOOR_OPENED) {
   }
 #endif
 if (said("examine", "doors")) {
-  if (posn(oEGO, 1, 106, 158, 166)) {
+  if (posn(oEGO, BX_DOOR_VISIBLE)) {
     print("The door is made from graham crackers held together  with chocolate drop nails.");
   }
   else {
@@ -155,7 +162,7 @@ if (said("examine", "doors")) {
   }
 }
 if (said("break", "doors")) {
-  if (posn(oEGO, 1, 106, 158, 166)) {
+  if (posn(oEGO, BX_DOOR_VISIBLE)) {
     print("You don't need to do that; opening the door would suffice.");
   }
   else {
@@ -166,7 +173,7 @@ if (said("examine", "fence")) {
   print("It is made of delicious chocolate chip cookies!");
 }
 if (said("eat", "fence")) {
-  if (posn(oEGO, 1, 95, 134, 159)) {
+  if (posn(oEGO, BX_NEAR_FENCE)) {
     print("Yummy!");
   }
   else {

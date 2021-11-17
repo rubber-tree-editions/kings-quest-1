@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_HOLE 55, 105, 100, 142
+
 #define rfBIRD_DROPPED_YOU rf0
 #define rfBIRD_LEFT rf1
 #define rfHITTING_THE_GROUND rf2
@@ -147,7 +149,7 @@ if (rfEGO_STOPPED_ANIMATING) {
   reset(fPLAYER_NOT_IN_CONTROL);
 }
 if (said("examine", "hole") || said("look inside", "hole")) {
-  if (posn(oEGO, 55, 105, 100, 142)) {
+  if (posn(oEGO, BX_NEAR_HOLE)) {
     print("In the depths of the large hole you seem to sense a faint, green glow.");
   }
   else {

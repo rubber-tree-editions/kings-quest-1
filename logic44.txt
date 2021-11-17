@@ -2,6 +2,11 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_DOORWAY 100, 111, 133, 136
+#define BX_NEAR_AXE 61, 80, 88, 118
+#define BX_NEAR_PUMP 24, 115, 61, 149
+#define BX_COTTAGE_ENTRY_ZONE 126, 119, 128, 127
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -37,7 +42,7 @@ if (said("examine", "stumps")) {
   print("The trees were cut from these stumps years ago.");
 }
 if (said("use", "pump") || said("pump", "water")) {
-  if (posn(oEGO, 24, 115, 61, 149)) {
+  if (posn(oEGO, BX_NEAR_PUMP)) {
     print("The rusty pump doesn't work.");
   }
   else {
@@ -45,7 +50,7 @@ if (said("use", "pump") || said("pump", "water")) {
   }
 }
 if (said("get", "axe")) {
-  if (posn(oEGO, 61, 80, 88, 118)) {
+  if (posn(oEGO, BX_NEAR_AXE)) {
     print("The old axe is tightly wedged in the tree stump.  You cannot remove it no matter what you do.");
   }
   else {
@@ -53,7 +58,7 @@ if (said("get", "axe")) {
   }
 }
 if (said("use", "axe")) {
-  if (posn(oEGO, 61, 80, 88, 118)) {
+  if (posn(oEGO, BX_NEAR_AXE)) {
     print("How are you going to use the ax when you can't even get it out of this stump?");
   }
   else {
@@ -61,7 +66,7 @@ if (said("use", "axe")) {
   }
 }
 if (said("open", "doors") || said("close", "doors")) {
-  if (posn(oEGO, 100, 111, 133, 136)) {
+  if (posn(oEGO, BX_NEAR_DOORWAY)) {
     print("Upon closer inspection you realize this poor cabin doesn't even have a door.");
   }
   else {
@@ -69,7 +74,7 @@ if (said("open", "doors") || said("close", "doors")) {
   }
 }
 if (said("examine", "doors") || said("examine", "doorway") || said("look inside", "doors")) {
-  if (posn(oEGO, 100, 111, 133, 136)) {
+  if (posn(oEGO, BX_NEAR_DOORWAY)) {
     print("When you look in the doorway, you see a poor, starving woodcutter and his wife.");
   }
   else {
@@ -78,7 +83,7 @@ if (said("examine", "doors") || said("examine", "doorway") || said("look inside"
 }
 #if VERSION_MAJOR >= 2
 if (said("examine", "woodcutter") || said("examine", "wife")) {
-  if (posn(oEGO, 100, 111, 133, 136)) {
+  if (posn(oEGO, BX_NEAR_DOORWAY)) {
     print("Perhaps you should go inside the house for a better look.");
   }
   else {
@@ -86,7 +91,7 @@ if (said("examine", "woodcutter") || said("examine", "wife")) {
   }
 }
 #endif
-if (posn(oEGO, 126, 119, 128, 127)) {
+if (posn(oEGO, BX_COTTAGE_ENTRY_ZONE)) {
   new.room(ROOM79_IN_WOODCUTTER_COTTAGE);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {

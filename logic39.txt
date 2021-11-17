@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_TROLL 1, 40, 100, 90
+#define BX_NEAR_RIVER 15, 40, 90, 166
+
 #define rfTROLL_NEARBY rf0
 #define rfTROLL_IS_HERE rf1
 #define rfTROLL_CAUGHT_YOU rf2
@@ -204,7 +207,7 @@ if (rfHIDE_GOAT) {
 }
 if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
   if (said("examine", "troll")) {
-    if (posn(oEGO, 1, 40, 100, 90)) {
+    if (posn(oEGO, BX_NEAR_TROLL)) {
       print("This is the ugliest, meanest troll I have ever seen.");
     }
     else {
@@ -212,18 +215,18 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
     }
   }
   if (said("murder", "troll")) {
-    if (posn(oEGO, 1, 40, 100, 90) && fCARRYING_DAGGER) {
+    if (posn(oEGO, BX_NEAR_TROLL) && fCARRYING_DAGGER) {
       print("Do you really think you can do that?");
     }
-    if (posn(oEGO, 1, 40, 100, 90) && !fCARRYING_DAGGER) {
+    if (posn(oEGO, BX_NEAR_TROLL) && !fCARRYING_DAGGER) {
       print("Fortunately for you, you have no way to do that.");
     }
-    if (!posn(oEGO, 1, 40, 100, 90)) {
+    if (!posn(oEGO, BX_NEAR_TROLL)) {
       print("There may be something trollish around, but you're not close enough to do anything about it.");
     }
   }
   if (said("talk", "troll") || said("hello") || said("say", "hello")) {
-    if (posn(oEGO, 1, 40, 100, 90)) {
+    if (posn(oEGO, BX_NEAR_TROLL)) {
       print("The troll demands a treasure for passage across his bridge.");
     }
     else {
@@ -231,7 +234,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
     }
   }
   if (said("throw", "dagger") && fCARRYING_DAGGER) {
-    if (posn(oEGO, 1, 40, 100, 90)) {
+    if (posn(oEGO, BX_NEAR_TROLL)) {
       print("You throw the dagger and the quick old troll catches it.");
       drop("dagger");
       reset(fCARRYING_DAGGER);
@@ -250,7 +253,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
     print("How?");
   }
   if (said("shove", "troll")) {
-    if (posn(oEGO, 1, 40, 100, 90)) {
+    if (posn(oEGO, BX_NEAR_TROLL)) {
       print("You push the troll as hard as you can; he won't budge.");
     }
     else {
@@ -283,7 +286,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
   if (fCARRYING_DIAMONDS && GOAT_MOVE_CHECK)
   #endif
   {
-    if (posn(oEGO, 1, 40, 100, 90)) {
+    if (posn(oEGO, BX_NEAR_TROLL)) {
       print("The troll grabs the treasure and vanishes.");
       drop("pouch of diamonds");
       reset(fCARRYING_DIAMONDS);
@@ -310,7 +313,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
   if (fCARRYING_SCEPTRE && GOAT_MOVE_CHECK)
   #endif
   {
-    if (posn(oEGO, 1, 40, 100, 90)) {
+    if (posn(oEGO, BX_NEAR_TROLL)) {
       print("The troll grabs the treasure and vanishes.");
       drop("sceptre");
       reset(fCARRYING_SCEPTRE);
@@ -337,7 +340,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
   if (fCARRYING_GOLDEN_EGG && GOAT_MOVE_CHECK)
   #endif
   {
-    if (posn(oEGO, 1, 40, 100, 90)) {
+    if (posn(oEGO, BX_NEAR_TROLL)) {
       print("The troll grabs the treasure and vanishes.");
       drop("gold egg");
       reset(fCARRYING_GOLDEN_EGG);
@@ -364,7 +367,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
       || said("give", "troll", "walnut")
       || said("give", "walnut", "troll")
     ) {
-      if (posn(oEGO, 1, 40, 100, 90)) {
+      if (posn(oEGO, BX_NEAR_TROLL)) {
         print("The troll grabs the treasure and vanishes.");
         drop("gold walnut");
         reset(fCARRYING_GOLD_WALNUT);
@@ -387,7 +390,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
       print("The troll doesn't want just a plain walnut.");
     }
     else if (fCARRYING_GOLD_WALNUT && GOAT_MOVE_CHECK) {
-      if (posn(oEGO, 1, 40, 100, 90)) {
+      if (posn(oEGO, BX_NEAR_TROLL)) {
         print("The troll grabs the treasure and vanishes.");
         drop("gold walnut");
         reset(fCARRYING_GOLD_WALNUT);
@@ -449,7 +452,7 @@ if (fEGO_ON_WATER && !rfSTUCK_IN_RIVER) {
 }
 if (!fBUCKET_FILLED && !fEGO_ON_WATER && !fDRANK_WATER) {
   if (said("drink", "water") || said("get", "drink")) {
-    if (posn(oEGO, 15, 40, 90, 166)) {
+    if (posn(oEGO, BX_NEAR_RIVER)) {
       print("Caution and steep banks advise against getting water here.");
     }
     else {
@@ -458,7 +461,7 @@ if (!fBUCKET_FILLED && !fEGO_ON_WATER && !fDRANK_WATER) {
   }
 }
 if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
-  if (posn(oEGO, 15, 40, 90, 166)) {
+  if (posn(oEGO, BX_NEAR_RIVER)) {
     print("Caution and steep banks advise against getting water here.");
   }
   else {

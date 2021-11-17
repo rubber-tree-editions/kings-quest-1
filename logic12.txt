@@ -2,6 +2,11 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_WELL 10, 100, 75, 150
+#define BX_NEAR_BUCKET 10, 109, 71, 153
+#define BX_NEAR_HANDLE 60, 108, 77, 140
+#define BX_NEAR_ROPE 60, 108, 77, 129
+
 #define rfFALLEN_INTO_WELL rf0
 #define rfBUCKET_DESCENDED rf1
 #define rfBUCKET_ASCENDED rf2
@@ -124,7 +129,7 @@ if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
   }
 }
 if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
-  if (posn(oEGO, 10, 100, 75, 150)) {
+  if (posn(oEGO, BX_NEAR_WELL)) {
     if (fBUCKET_LOWERED || fROPE_DANGLING_IN_WELL) {
       if (said("climb", "rope")
         || said("climb", "well")
@@ -227,7 +232,7 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
     }
   }
 }
-if (!posn(oEGO, 10, 100, 75, 150)) {
+if (!posn(oEGO, BX_NEAR_WELL)) {
   if (said("climb", "rope")
     || said("go", "well")
     || said("go down", "well")
@@ -242,7 +247,7 @@ if (!posn(oEGO, 10, 100, 75, 150)) {
   }
 }
 if (fGOAT_COMPANION && !fEGO_INVISIBLE) {
-  if (posn(oEGO, 10, 100, 75, 150)) {
+  if (posn(oEGO, BX_NEAR_WELL)) {
     if (said("climb", "rope")) {
       print("The goat sure doesn't want to climb the rope.");
     }
@@ -275,7 +280,7 @@ if (fGOAT_COMPANION && !fEGO_INVISIBLE) {
   }
 }
 if (fEGO_INVISIBLE) {
-  if (posn(oEGO, 10, 100, 75, 150)) {
+  if (posn(oEGO, BX_NEAR_WELL)) {
     if (said("climb", "rope")
       || said("go", "bucket")
       || said("go", "well")
@@ -364,7 +369,7 @@ if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
     || said("untie", "bucket")
 #endif
   )) {
-    if (posn(oEGO, 10, 109, 71, 153)) {
+    if (posn(oEGO, BX_NEAR_BUCKET)) {
       print("The old bucket is securely fastened to a strong rope.");
     }
     else {
@@ -372,7 +377,7 @@ if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
     }
   }
   if (!fCARRYING_BUCKET && said("examine", "bucket")) {
-    if (posn(oEGO, 10, 109, 71, 153)) {
+    if (posn(oEGO, BX_NEAR_BUCKET)) {
       if (fBUCKET_ON_WELL_HAS_WATER) {
         print("The old bucket holds a full load of water.");
       }
@@ -392,7 +397,7 @@ if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED) {
     || said("lower", "bucket", "well")
 #endif
   ) {
-    if (posn(oEGO, 10, 109, 71, 153)) {
+    if (posn(oEGO, BX_NEAR_BUCKET)) {
       print("The old bucket is already at the bottom of the well.");
     }
     else {
@@ -402,7 +407,7 @@ if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED) {
 }
 if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
   if (said("raise", "bucket") || said("raise", "rope")) {
-    if (posn(oEGO, 10, 109, 71, 153)) {
+    if (posn(oEGO, BX_NEAR_BUCKET)) {
       print("The bucket is already at the top of the well.");
     }
     else {
@@ -427,7 +432,7 @@ if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
     || said("lower", "bucket", "well") || said("lower", "rope", "well")
 #endif
   ) {
-    if (posn(oEGO, 60, 108, 77, 140)) {
+    if (posn(oEGO, BX_NEAR_HANDLE)) {
       print("The old bucket disappears into the darkness.");
       start.update(oBUCKET);
       start.update(oHANDLE);
@@ -448,7 +453,7 @@ if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED && fON_WELL_ROPE) {
 }
 if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED && !fON_WELL_ROPE) {
   if (said("raise", "bucket") || said("raise", "rope")) {
-    if (posn(oEGO, 60, 108, 77, 140)) {
+    if (posn(oEGO, BX_NEAR_HANDLE)) {
       print("The old bucket emerges from the depths of the well.");
       start.update(oBUCKET);
       start.update(oHANDLE);
@@ -466,19 +471,19 @@ if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED && !fON_WELL_ROPE) {
     }
   }
 }
-if (posn(oEGO, 10, 109, 71, 153)) {
+if (posn(oEGO, BX_NEAR_BUCKET)) {
   if (said("examine", "well") || said("look inside", "well")) {
     print("The well is deep and dark. But you can see the sky's reflection on the water.");
   }
 }
-if (!posn(oEGO, 10, 109, 71, 153)) {
+if (!posn(oEGO, BX_NEAR_BUCKET)) {
   if (said("examine", "well")) {
     print("This well is one of the most ancient sites in the entire kingdom.  History and mystery seem to echo from its  every stone.");
   }
 }
 if (!fROPE_GONE) {
   if (said("examine", "rope")) {
-    if (posn(oEGO, 10, 109, 71, 153)) {
+    if (posn(oEGO, BX_NEAR_BUCKET)) {
       print("It is thick and firmly attached.  It could easily carry heavy weights.");
     }
     else {
@@ -487,7 +492,7 @@ if (!fROPE_GONE) {
   }
 }
 if (said("get", "rope") && !fROPE_GONE) {
-  if (posn(oEGO, 10, 109, 71, 153)) {
+  if (posn(oEGO, BX_NEAR_BUCKET)) {
     print("The rope is securely fastened to the well.");
   }
   else {
@@ -501,10 +506,10 @@ if (said("cut", "rope") || said("cut", "rope", "dagger")) {
   if (!fCARRYING_DAGGER) {
     print("You have no way to cut the rope.");
   }
-  if (fCARRYING_DAGGER && !posn(oEGO, 10, 109, 71, 153)) {
+  if (fCARRYING_DAGGER && !posn(oEGO, BX_NEAR_BUCKET)) {
     print("You will need longer arms to cut that rope from here.");
   }
-  if (fCARRYING_DAGGER && posn(oEGO, 10, 109, 71, 153)) {
+  if (fCARRYING_DAGGER && posn(oEGO, BX_NEAR_BUCKET)) {
     if (fBUCKET_ROPE_CUT && !fROPE_DANGLING_IN_WELL) {
       print("You cut a piece of rope and it falls into the well.");
     }
@@ -566,7 +571,7 @@ if (fBUCKET_ROPE_CUT && fROPE_DANGLING_IN_WELL) {
     || said("lower", "rope", "well")
 #endif
   ) {
-    if (posn(oEGO, 60, 108, 77, 129)) {
+    if (posn(oEGO, BX_NEAR_ROPE)) {
       print("The rope has already been lowered.");
     }
     else {
@@ -581,7 +586,7 @@ if (fBUCKET_ROPE_CUT && !fROPE_DANGLING_IN_WELL) {
     || said("lower", "rope", "well")
 #endif
   ) {
-    if (posn(oEGO, 60, 108, 77, 129)) {
+    if (posn(oEGO, BX_NEAR_ROPE)) {
       start.cycling(oROPE);
       start.update(oHANDLE);
       print("The rope descends into the darkness.");
@@ -602,7 +607,7 @@ if (rfROPE_DESCENDED) {
 }
 if (fBUCKET_ROPE_CUT && !fROPE_DANGLING_IN_WELL) {
   if (said("raise", "rope")) {
-    if (posn(oEGO, 10, 109, 71, 153)) {
+    if (posn(oEGO, BX_NEAR_BUCKET)) {
       print("The rope is already at the top of the well.");
     }
     else {
@@ -612,7 +617,7 @@ if (fBUCKET_ROPE_CUT && !fROPE_DANGLING_IN_WELL) {
 }
 if (fBUCKET_ROPE_CUT && fROPE_DANGLING_IN_WELL && !fON_WELL_ROPE) {
   if (said("raise", "rope")) {
-    if (posn(oEGO, 10, 109, 71, 153)) {
+    if (posn(oEGO, BX_NEAR_BUCKET)) {
       start.cycling(oROPE);
       start.update(oHANDLE);
       print("The rope emerges from the well.");

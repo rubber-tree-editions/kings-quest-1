@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_MIRROR 26, 104, 59, 127
+#define BX_PAST_BOULDER 0, 0, 1, 167
+
 #define rfDRAGON_GOT_YOU rf0
 #define rfDRAGON_AT_BOULDER rf1
 #define rfBOULDER_MOVED rf2
@@ -283,7 +286,7 @@ if (!fCARRYING_MIRROR && !fTAKEN_MIRROR) {
   if (said("steal", "mirror") && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     print("With that dragon here?  No way!");
   }
-  if (posn(oEGO, 26, 104, 59, 127)) {
+  if (posn(oEGO, BX_NEAR_MIRROR)) {
     if (said("examine", "mirror")) {
       if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
         print("The dragon is protecting the magic mirror.");
@@ -311,7 +314,7 @@ if (!fCARRYING_MIRROR && !fTAKEN_MIRROR) {
       }
     }
   }
-  if (!posn(oEGO, 26, 104, 59, 127)) {
+  if (!posn(oEGO, BX_NEAR_MIRROR)) {
     if (said("examine", "mirror")) {
       print("You could get a much better view if you were closer.");
     }
@@ -423,7 +426,7 @@ if (rfDRAGON_LEFT) {
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM52_IN_WELL_UNDERWATER);
 }
-if (posn(oEGO, 0, 0, 1, 167)) {
+if (posn(oEGO, BX_PAST_BOULDER)) {
   new.room(ROOM50_CAVE_ADJOINING_DRAGONS_LAIR);
 }
 return;

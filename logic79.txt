@@ -8,6 +8,8 @@ LOGIC__HEADER
 #define PT_BOWL 68, 104
 #define PT_ENTER 24, 113
 
+#define BX_NEAR_FIDDLE 120, 140, 158, 166
+
 #define rfWOODCUTTER_GESTICULATING rf0
 #define rfWIFE_GESTICULATING rf1
 // unused: rf2
@@ -436,7 +438,7 @@ if (said("show", "anyword")) {
 }
 if (!fFIDDLE_TAKEN) {
   if (said("examine", "fiddle")) {
-    if (posn(oEGO, 120, 140, 158, 166)) {
+    if (posn(oEGO, BX_NEAR_FIDDLE)) {
       print("The fiddle is a beautiful instrument made of polished wood.");
     }
     else {
@@ -444,7 +446,7 @@ if (!fFIDDLE_TAKEN) {
     }
   }
   if (said("steal", "fiddle")) {
-    if (posn(oEGO, 120, 140, 158, 166)) {
+    if (posn(oEGO, BX_NEAR_FIDDLE)) {
       print("What a terrible suggestion!  These people are poor and starving and you want to steal one of their last earthly possessions.");
     }
     else {
@@ -454,12 +456,12 @@ if (!fFIDDLE_TAKEN) {
   if (said("get", "fiddle")) {
     if (
 #if VERSION_MAJOR < 2
-      posn(oEGO, 120, 140, 158, 166) &&
+      posn(oEGO, BX_NEAR_FIDDLE) &&
 #endif
       !fWOODCUTTER_GIVEN_STEW) {
       print("You cannot take their last precious possession!");
     }
-    if (posn(oEGO, 120, 140, 158, 166) && fWOODCUTTER_GIVEN_STEW) {
+    if (posn(oEGO, BX_NEAR_FIDDLE) && fWOODCUTTER_GIVEN_STEW) {
       erase(oFIDDLE);
       set(fCARRYING_FIDDLE);
       set(fFIDDLE_TAKEN);
@@ -471,7 +473,7 @@ if (!fFIDDLE_TAKEN) {
       vSCORE += 3;
     }
     if (
-      !posn(oEGO, 120, 140, 158, 166)
+      !posn(oEGO, BX_NEAR_FIDDLE)
 #if VERSION_MAJOR >= 2
       && fWOODCUTTER_GIVEN_STEW
 #endif

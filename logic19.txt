@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_DOOR 90, 93, 125, 114
+#define BX_MOUNTAIN_ENTRY_ZONE 99, 93, 114, 94
+
 #define rfDOOR_OPENED rf0
 #define rfDOOR_CLOSED rf1
 
@@ -55,7 +58,7 @@ if (said("climb", "mountains")) {
   print("The mountain is much too steep and rocky for you to climb.");
 }
 if (said("examine", "doors")) {
-  if (posn(oEGO, 90, 93, 125, 114)) {
+  if (posn(oEGO, BX_NEAR_DOOR)) {
     print("It is a huge wooden door built right into the bottom of a small mountain!  It has a large keyhole.");
   }
   else {
@@ -63,7 +66,7 @@ if (said("examine", "doors")) {
   }
 }
 if (said("break", "doors")) {
-  if (posn(oEGO, 90, 93, 125, 114)) {
+  if (posn(oEGO, BX_NEAR_DOOR)) {
     print("You strike the door with all your might!  To no avail.");
   }
   else {
@@ -72,7 +75,7 @@ if (said("break", "doors")) {
 }
 #if VERSION_MAJOR >= 2
   if (said("knock", "door")) {
-    if (posn(oEGO, 90, 93, 125, 114)) {
+    if (posn(oEGO, BX_NEAR_DOOR)) {
       print("The only response you get is the echo of your pounding.");
     }
     else {
@@ -80,7 +83,7 @@ if (said("break", "doors")) {
     }
   }
 #endif
-if (!posn(oEGO, 90, 93, 125, 114)) {
+if (!posn(oEGO, BX_NEAR_DOOR)) {
   if (said("open", "doors")
     || said("close", "doors")
     || said("turn", "knob")
@@ -95,7 +98,7 @@ if (!posn(oEGO, 90, 93, 125, 114)) {
     }
   }
 }
-if (posn(oEGO, 90, 93, 125, 114)) {
+if (posn(oEGO, BX_NEAR_DOOR)) {
   if (fCARRYING_GOLD_KEY) {
     if (said("use", "gold key")) {
       print("How do you want to use the key?");
@@ -197,14 +200,14 @@ if (said("examine", "key hole") || said("look in", "key hole")) {
 #else
 if (said("examine", "key hole")) {
 #endif
-  if (posn(oEGO, 90, 93, 125, 114)) {
+  if (posn(oEGO, BX_NEAR_DOOR)) {
     print("Through the keyhole you can dimly see a staircase. It looks like it might go up into the mountain.");
   }
   else {
     print("There aren't many keyholes in the ground here.");
   }
 }
-if (posn(oEGO, 99, 93, 114, 94)) {
+if (posn(oEGO, BX_MOUNTAIN_ENTRY_ZONE)) {
   new.room(ROOM66_MOUNTAIN_STAIRWAY_BOTTOM);
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {

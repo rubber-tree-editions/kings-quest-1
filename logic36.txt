@@ -2,6 +2,12 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_ROCK 75, 125, 109, 158
+#define BX_NEAR_HOLE 90, 124, 106, 140
+#define BX_HOLE_VISIBLE 50, 80, 158, 166
+#define BX_CAVE_ENTRY_ZONE 111, 127, 119, 132
+#define BX_CAVE_EXIT_ZONE 104, 127, 110, 132
+
 #define rfEGO_ESCAPED rf0
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -44,7 +50,7 @@ else {
   }
 #else
   if (vTINY_COUNTDOWN == 1 && fEGO_TINY) {
-    if (posn(oEGO, 104, 127, 110, 132)) {
+    if (posn(oEGO, BX_CAVE_EXIT_ZONE)) {
       reset(fEGO_TINY);
       print("You feel a stretching sensation... Oh, you're back to your original size.  You can't get out of the small  cave!");
       set(fGAME_OVER);
@@ -57,11 +63,11 @@ else {
   }
 #endif
 if (said("examine", "hole") || said("look inside", "hole")) {
-  if (posn(oEGO, 90, 124, 106, 140)) {
+  if (posn(oEGO, BX_NEAR_HOLE)) {
     print("When looking in this small hole, you see a faint green glow.");
     goto(FINALCHECKS);
   }
-  if (posn(oEGO, 75, 125, 109, 158)) {
+  if (posn(oEGO, BX_NEAR_ROCK)) {
     print("One rock has a small hole in its base.");
   }
   else {
@@ -69,7 +75,7 @@ if (said("examine", "hole") || said("look inside", "hole")) {
   }
 }
 if (said("reach", "hole")) {
-  if (posn(oEGO, 90, 124, 106, 140)) {
+  if (posn(oEGO, BX_NEAR_HOLE)) {
     print("Very cautiously, you reach into the hole, and to your dismay, find nothing.");
   }
   else {
@@ -78,7 +84,7 @@ if (said("reach", "hole")) {
 }
 if (!fEGO_TINY) {
   if (said("go", "hole") || said("go", "hole")) {
-    if (posn(oEGO, 75, 125, 109, 158)) {
+    if (posn(oEGO, BX_NEAR_ROCK)) {
       print("You would need to be much smaller to fit through that hole.");
     }
     else {
@@ -92,7 +98,7 @@ if (fEGO_TINY) {
   }
 }
 if (said("get", "rocks")) {
-  if (posn(oEGO, 75, 125, 109, 158)) {
+  if (posn(oEGO, BX_NEAR_ROCK)) {
     print("This rock is firmly stuck in the ground.");
   }
   else {
@@ -100,7 +106,7 @@ if (said("get", "rocks")) {
   }
 }
 if (said("shove", "rocks")) {
-  if (posn(oEGO, 75, 125, 109, 158)) {
+  if (posn(oEGO, BX_NEAR_ROCK)) {
     print("Although you are very strong and healthy, this rock is too much even for you.");
   }
   else {
@@ -108,7 +114,7 @@ if (said("shove", "rocks")) {
   }
 }
 if (said("examine", "rocks")) {
-  if (posn(oEGO, 50, 80, 158, 166)) {
+  if (posn(oEGO, BX_HOLE_VISIBLE)) {
     print("The ancient, mossy rock has seen many winters.  There is a small hole at its base.");
   }
   else {
@@ -123,7 +129,7 @@ if (said("examine", "room")) {
 #endif
 }
 FINALCHECKS:
-  if (posn(oEGO, 111, 127, 119, 132)) {
+  if (posn(oEGO, BX_CAVE_ENTRY_ZONE)) {
     new.room(ROOM78_IN_CAVE_WITH_TINY_HOLE);
   }
   if (vEGO_EDGE_CODE == EDGE_HORIZON) {
