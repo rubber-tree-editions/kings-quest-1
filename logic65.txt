@@ -2,6 +2,16 @@
 
 LOGIC__HEADER
 
+#define PT_NOTE 118, 140
+#define PT_CUPBOARD 33, 76
+#define PT_SWISS_CHEESE 41, 61
+#define PT_EGO_ENTER_FROM_DOOR 49, 163
+#define PT_WITCH_ENTER_FROM_DOOR 49, 160
+#define PT_ENTER_FROM_MIDAIR 80, 45
+#define PT_LAND_FROM_MIDAIR 80, 84
+#define PT_IN_CAGE 80, 80
+#define PT_WITCH_AT_HOME 26, 120
+
 #define rfFALLEN_TO_EARTH rf0
 #define rfWITCH_AT_OVEN rf1
 #define rfEGO_FINISHED_ANIM rf2
@@ -46,14 +56,14 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(42);
     animate.obj(oNOTE);
     set.view(oNOTE, 42);
-    position(oNOTE, 118, 140);
+    position(oNOTE, PT_NOTE);
     set.priority(oNOTE, 14);
   }
   if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE) {
     load.view(40);
     animate.obj(oCUPBOARD);
     set.view(oCUPBOARD, 40);
-    position(oCUPBOARD, 33, 76);
+    position(oCUPBOARD, PT_CUPBOARD);
     set.cel(oCUPBOARD, 0);
     stop.cycling(oCUPBOARD);
   }
@@ -61,20 +71,20 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(40);
     animate.obj(oCUPBOARD);
     set.view(oCUPBOARD, 40);
-    position(oCUPBOARD, 33, 76);
+    position(oCUPBOARD, PT_CUPBOARD);
     set.cel(oCUPBOARD, 0);
     stop.cycling(oCUPBOARD);
     load.view(41);
     animate.obj(oSWISS_CHEESE);
     set.view(oSWISS_CHEESE, 41);
-    position(oSWISS_CHEESE, 41, 61);
+    position(oSWISS_CHEESE, PT_SWISS_CHEESE);
     set.priority(oSWISS_CHEESE, 8);
   }
   if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_NO_CHEESE) {
     load.view(40);
     animate.obj(oCUPBOARD);
     set.view(oCUPBOARD, 40);
-    position(oCUPBOARD, 33, 76);
+    position(oCUPBOARD, PT_CUPBOARD);
     set.cel(oCUPBOARD, 5);
     stop.cycling(oCUPBOARD);
   }
@@ -82,13 +92,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(40);
     animate.obj(oCUPBOARD);
     set.view(oCUPBOARD, 40);
-    position(oCUPBOARD, 33, 76);
+    position(oCUPBOARD, PT_CUPBOARD);
     set.cel(oCUPBOARD, 5);
     stop.cycling(oCUPBOARD);
     load.view(41);
     animate.obj(oSWISS_CHEESE);
     set.view(oSWISS_CHEESE, 41);
-    position(oSWISS_CHEESE, 41, 61);
+    position(oSWISS_CHEESE, PT_SWISS_CHEESE);
     set.priority(oSWISS_CHEESE, 8);
   }
   if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
@@ -101,15 +111,15 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(104);
     set.view(oEGO, 105);
     ignore.blocks(oEGO);
-    position(oEGO, 80, 45);
+    position(oEGO, PT_ENTER_FROM_MIDAIR);
     set(fCYCLE_EGO_ANIMATION);
     set(rfIN_CAGE);
     program.control();
-    move.obj(oEGO, 80, 84, 6, rfFALLEN_TO_EARTH);
+    move.obj(oEGO, PT_LAND_FROM_MIDAIR, 6, rfFALLEN_TO_EARTH);
     vWITCH_STATE = WITCHSTATE_AWAY_FROM_HOME;
   }
   if (vPREV_ROOM_NO == ROOM28_OUTSIDE_GINGERBREAD_HOUSE) {
-    position(oEGO, 49, 163);
+    position(oEGO, PT_EGO_ENTER_FROM_DOOR);
   }
   if (!fPROTECTED_BY_SPELL
     && vWITCH_STATE != WITCHSTATE_DEAD
@@ -133,7 +143,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       load.view(43);
       animate.obj(oWITCH);
       set.view(oWITCH, 43);
-      position(oWITCH, 26, 120);
+      position(oWITCH, PT_WITCH_AT_HOME);
     }
   }
   if (!fCARRYING_NOTE) {
@@ -260,7 +270,7 @@ if (rfUNPROTECTED_BY_MAGIC) {
     reset(rfWITCH_CAUGHT_YOU);
     print("She pokes and pinches you, then states, \"This one is too scrawny, so it's into the cage until you fatten up (smack, yum)!\"");
     erase(oEGO);
-    position(oEGO, 80, 80);
+    position(oEGO, PT_IN_CAGE);
     draw(oEGO);
     start.motion(oEGO);
     set(rfEGO_FINISHED_ANIM);
@@ -278,7 +288,7 @@ if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 3) {
   print("Off in the distance you hear a high, squeaky voice say, \"I can smell someone tasty in my house.\"");
 }
 if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 2) {
-  position(oWITCH, 49, 160);
+  position(oWITCH, PT_WITCH_ENTER_FROM_DOOR);
   draw(oWITCH);
   sound(SND_VILLAIN, fMISC_END_MARKER);
   set(rfWITCH_IS_HERE);

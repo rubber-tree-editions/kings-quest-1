@@ -1,5 +1,12 @@
 #include "vars.txt"
 
+#define PT_CASTLE_DOORS 105, 120
+#define PT_GATOR1_START 121, 161
+#define PT_GATOR2_START 73, 166
+#define PT_BANNERS 115, 17
+#define PT_ENTER_FROM_SOUTHWEST 2, 150
+#define PT_ENTER_FROM_CASTLE 110, 122
+
 #define rfGATOR1_CAUGHT_YOU rf0
 #define rfGATOR2_CAUGHT_YOU rf1
 #define rfEATEN_BY_GATORS rf2
@@ -44,7 +51,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(9);
     animate.obj(oCASTLE_DOORS);
     set.view(oCASTLE_DOORS, 9);
-    position(oCASTLE_DOORS, 105, 120);
+    position(oCASTLE_DOORS, PT_CASTLE_DOORS);
     if (vPREV_ROOM_NO == ROOM55_CASTLE_HALL) {
       set.cel(oCASTLE_DOORS, 2);
     }
@@ -62,10 +69,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.view(oGATOR1, 107);
   set.view(oGATOR2, 107);
   set.view(oBANNERS, 97);
-  position(oGATOR1, 121, 161);
-  position(oGATOR2, 73, 166);
+  position(oGATOR1, PT_GATOR1_START);
+  position(oGATOR2, PT_GATOR2_START);
   ignore.horizon(oBANNERS);
-  position(oBANNERS, 115, 17);
+  position(oBANNERS, PT_BANNERS);
   set.priority(oBANNERS, 15);
   set(fSWIMMING_IMPOSSIBLE_HERE);
   object.on.water(oGATOR1);
@@ -75,13 +82,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oGATOR2);
   draw(oBANNERS);
   if (vPREV_ROOM_NO == ROOM55_CASTLE_HALL) {
-    position(oEGO, 110, 122);
+    position(oEGO, PT_ENTER_FROM_CASTLE);
     set(rfINIT_LEAVING_CASTLE);
   }
   if (vPREV_ROOM_NO == ROOM3_ROCK_OVER_HOLE) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y > 150) {
-      position(oEGO, 2, 150);
+      position(oEGO, PT_ENTER_FROM_SOUTHWEST);
     }
   }
   draw(oEGO);

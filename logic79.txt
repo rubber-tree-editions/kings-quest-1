@@ -2,6 +2,12 @@
 
 LOGIC__HEADER
 
+#define PT_FIDDLE 128, 155
+#define PT_WOODCUTTER 45, 116
+#define PT_WIFE 89, 115
+#define PT_BOWL 68, 104
+#define PT_ENTER 24, 113
+
 #define rfWOODCUTTER_GESTICULATING rf0
 #define rfWIFE_GESTICULATING rf1
 // unused: rf2
@@ -62,15 +68,15 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(50);
     animate.obj(oFIDDLE);
     set.view(oFIDDLE, 50);
-    position(oFIDDLE, 128, 155);
+    position(oFIDDLE, PT_FIDDLE);
   }
   animate.obj(oWOODCUTTER);
   set.view(oWOODCUTTER, 57);
-  position(oWOODCUTTER, 45, 116);
+  position(oWOODCUTTER, PT_WOODCUTTER);
   stop.cycling(oWOODCUTTER);
   animate.obj(oWIFE);
   set.view(oWIFE, 58);
-  position(oWIFE, 89, 115);
+  position(oWIFE, PT_WIFE);
   stop.cycling(oWIFE);
   #if BUILD_TARGET == APPLE_IIGS
     sound(SND_FRIEND, fMISC_END_MARKER);
@@ -88,13 +94,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) {
       set.view(oBOWL, 83);
     }
-    position(oBOWL, 68, 104);
+    position(oBOWL, PT_BOWL);
     set.priority(oBOWL, 14);
     draw(oBOWL);
     stop.update(oBOWL);
   }
   if (vPREV_ROOM_NO == ROOM44_OUTSIDE_WOODCUTTER_COTTAGE_FRONT) {
-    position(oEGO, 24, 113);
+    position(oEGO, PT_ENTER);
   }
   draw(oEGO);
   show.pic();
@@ -337,7 +343,7 @@ if (fCARRYING_BOWL) {
       drop("ceramic bowl");
       vSCORE -= 3;
       vSCORE += 6;
-      position(oBOWL, 68, 104);
+      position(oBOWL, PT_BOWL);
       set.priority(oBOWL, 14);
       set.view(oBOWL, 25);
       draw(oBOWL);
@@ -372,7 +378,7 @@ if (fCARRYING_BOWL) {
       drop("ceramic bowl");
       vSCORE -= 3;
       vSCORE += 6;
-      position(oBOWL, 68, 104);
+      position(oBOWL, PT_BOWL);
       set.priority(oBOWL, 14);
       set.view(oBOWL, 83);
       draw(oBOWL);

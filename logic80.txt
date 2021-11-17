@@ -2,6 +2,11 @@
 
 LOGIC__HEADER
 
+#define PT_WITCH_START 1, 60
+#define PT_WITCH_END 130, 60
+#define PT_BIRD_START 1, 60
+#define PT_BIRD_END 135, 60
+
 #define rfTO_WITCHS_HOUSE rf0
 #define rfTO_LEPRECHAUN_HOLE rf1
 #define rfPLAYED_SND_BIRD rf2
@@ -19,8 +24,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     #endif
     load.view(91);
     set.view(oEGO, 91);
-    position(oEGO, 1, 60);
-    move.obj(oEGO, 130, 60, 0, rfTO_WITCHS_HOUSE);
+    position(oEGO, PT_WITCH_START);
+    move.obj(oEGO, PT_WITCH_END, 0, rfTO_WITCHS_HOUSE);
     #if BUILD_TARGET == APPLE_IIGS
       rvCOUNTDOWN_TO_WITCH_SOUND = 35;
     #endif
@@ -28,8 +33,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   else {
     load.view(89);
     set.view(oEGO, 89);
-    position(oEGO, 1, 60);
-    move.obj(oEGO, 135, 60, 0, rfTO_LEPRECHAUN_HOLE);
+    position(oEGO, PT_BIRD_START);
+    move.obj(oEGO, PT_BIRD_END, 0, rfTO_LEPRECHAUN_HOLE);
     #if BUILD_TARGET == APPLE_IIGS
       rvCOUNTDOWN_TO_BIRD_SOUND = 12;
       set(rfPLAYED_SND_BIRD);

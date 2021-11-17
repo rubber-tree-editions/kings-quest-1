@@ -2,6 +2,11 @@
 
 LOGIC__HEADER
 
+#define PT_ROCK_START 118, 133
+#define PT_ROCK_MOVED 118, 145
+#define PT_HOLE 122, 124
+#define PT_EGO_CRUSHED 115, 140
+
 #define rfROCK_MOVING_SAFE rf0
 #define rfROCK_MOVING_DEADLY rf1
 
@@ -63,15 +68,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   animate.obj(oROCK);
   set.view(oROCK, 10);
   if (!fMOVED_ROCK) {
-    position(oROCK, 118, 133);
+    position(oROCK, PT_ROCK_START);
   }
   else {
-    position(oROCK, 118, 145);
+    position(oROCK, PT_ROCK_MOVED);
   }
   load.view(112);
   animate.obj(oHOLE);
   set.view(oHOLE, 112);
-  position(oHOLE, 122, 124);
+  position(oHOLE, PT_HOLE);
   ignore.objs(oHOLE);
   load.view(114);
   draw(oROCK);
@@ -153,7 +158,7 @@ if (said("shove", "rocks")) {
       set(fGAME_OVER);
       erase(oEGO);
       set.view(oEGO, 114);
-      position(oEGO, 115, 140);
+      position(oEGO, PT_EGO_CRUSHED);
       draw(oEGO);
     }
   }

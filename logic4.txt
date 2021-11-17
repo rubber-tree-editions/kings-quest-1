@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define PT_ENTER_FROM_NORTHWEST 70, 56
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -20,7 +20,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM13_WOLF_STOMPING_GROUND) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_X < 70) {
-      position(oEGO, 70, 56);
+      position(oEGO, PT_ENTER_FROM_NORTHWEST);
     }
   }
   ignore.blocks(oEGO);

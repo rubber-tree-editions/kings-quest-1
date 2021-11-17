@@ -2,6 +2,12 @@
 
 LOGIC__HEADER
 
+#define PT_EGO_START 110, 100
+#define PT_GATOR1_START 121, 161
+#define PT_GATOR2_START 73, 166
+#define PT_BANNERS 5, 17
+#define PT_ENTER_FROM_SOUTHEAST 148, 150
+
 #define rfGATOR1_CAUGHT_YOU rf0
 #define rfGATOR2_CAUGHT_YOU rf1
 #define rfEATEN_BY_GATORS rf2
@@ -48,10 +54,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.view(oGATOR1, 107);
   set.view(oGATOR2, 107);
   set.view(oBANNERS, 97);
-  position(oGATOR1, 121, 161);
-  position(oGATOR2, 73, 166);
+  position(oGATOR1, PT_GATOR1_START);
+  position(oGATOR2, PT_GATOR2_START);
   ignore.horizon(oBANNERS);
-  position(oBANNERS, 5, 17);
+  position(oBANNERS, PT_BANNERS);
   set.priority(oBANNERS, 15);
   set(fSWIMMING_IMPOSSIBLE_HERE);
   object.on.water(oGATOR1);
@@ -61,14 +67,14 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oGATOR2);
   draw(oBANNERS);
   if (vPREV_ROOM_NO == ROOM_NULL || vPREV_ROOM_NO == ROOM83_TITLE_SCREEN) {
-    position(oEGO, 110, 100);
+    position(oEGO, PT_EGO_START);
   }
   wander(oGATOR1);
   wander(oGATOR2);
   if (vPREV_ROOM_NO == ROOM8_WATERFALL_LAKE_WEST) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y > 150) {
-      position(oEGO, 148, 150);
+      position(oEGO, PT_ENTER_FROM_SOUTHEAST);
     }
   }
   draw(oEGO);
