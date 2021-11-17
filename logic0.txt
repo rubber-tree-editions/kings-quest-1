@@ -11,147 +11,154 @@ if (vERROR_CODE > 0) {
   call(LOGIC98_ERROR);
 }
 if (vROOM_NO == ROOM_NULL) {
-#if BUILD_TARGET != APPLE_IIGS
-  set.game.id("KQ1");
-#endif
+  if (BUILD_TARGET != APPLE_IIGS) {
+    set.game.id("KQ1");
+  }
   script.size(100);
-#if BUILD_TARGET == AMIGA
-  set(fJOYSTICK_SENSITIVITY_ENABLED);
-  vJOYSTICK_SENSITIVITY = 3;
-#elif BUILD_TARGET == APPLE_IIGS
-  if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
-    set.game.id("PQ");
+  if (BUILD_TARGET == AMIGA) {
+    set(fJOYSTICK_SENSITIVITY_ENABLED);
+    vJOYSTICK_SENSITIVITY = 3;
+  }
+  else if (BUILD_TARGET == APPLE_IIGS) {
+    if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
+      set.game.id("PQ");
+    }
+    else {
+      set.game.id("KQ");
+    }
+  }
+  vMAX_SCORE = 158;
+  if (BUILD_TARGET == APPLE_IIGS) {
+    vCYCLE_DELAY = 0;
   }
   else {
-    set.game.id("KQ");
+    vTEMP_CYCLE_DELAY = 2;
+    vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
   }
-#endif
-  vMAX_SCORE = 158;
-#if BUILD_TARGET == APPLE_IIGS
-  vCYCLE_DELAY = 0;
-#else
-  vTEMP_CYCLE_DELAY = 2;
-  vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
-#endif
   if (fRESTART_GAME_EXECUTED) {
     new.room(ROOM1_CASTLE_EAST);
   }
   else {
-#if VERSION_MAJOR >= 2
-    set.menu("Info");
-    #if BUILD_TARGET == MACINTOSH
-      set.menu.item("Help     ", cHELP);
-      set.menu.item("About KQ", cABOUT);
-    #else
-      set.menu.item("About KQ", cABOUT);
-      set.menu.item("Help    ", cHELP);
-    #endif
-    set.menu("File");
-    #if BUILD_TARGET == APPLE_IIGS
-      set.menu.item("Save Game      <Shift-5>", cSAVE);
-      set.menu.item("Restore Game   <Shift-7>", cRESTORE);
-    #else
-      set.menu.item("Save Game      <F5>", cSAVE);
-      set.menu.item("Restore Game   <F7>", cRESTORE);
-    #endif
-    set.menu.item("-------------------", cNOTHING);
-    #if BUILD_TARGET == APPLE_IIGS
-      set.menu.item("Restart Game   <Shift-9>", cRESTART);
-    #else
-      set.menu.item("Restart Game   <F9>", cRESTART);
-    #endif
-    #if BUILD_TARGET == MACINTOSH
-      set.menu.item("Pause         <Esc>", cPAUSE);
-    #endif
-    set.menu.item("-------------------", cNOTHING);
-    #if BUILD_TARGET == APPLE_IIGS
-      set.menu.item("Quit        <Option-Z>", cQUIT);
-    #else
-      set.menu.item("Quit        <Alt Z>", cQUIT);
-    #endif
-    set.menu("Game");
-    #if BUILD_TARGET == DOS
-      set.menu.item("See Object     <F4>", cSEE_OBJECT);
-      set.menu.item("Inventory     <Tab>", cINVENTORY);
-    #elif BUILD_TARGET == APPLE_IIGS
-      set.menu.item("See Object     <Shift-4>", cSEE_OBJECT);
-      set.menu.item("Inventory     <Tab>", cINVENTORY);
-    #else
-      set.menu.item("Inventory     <Tab>", cINVENTORY);
-      set.menu.item("See Object     <F4>", cSEE_OBJECT);
-      set.menu.item("Toggle Sound   <F2>", cTOGGLESOUND);
-    #endif
-    #if BUILD_TARGET == MACINTOSH
-      set.menu("Action");
-    #else
-      set.menu("Action ");
-    #endif
-    set.menu.item("Swim  =", cSWIM);
-    set.menu.item("Jump  0", cJUMP);
-    set.menu.item("Duck  -", cDUCK);
-    set.menu("Special");
-    #if BUILD_TARGET == DOS
-      set.menu.item("Sound On/Off       <F2>", cTOGGLESOUND);
-      if (vCOMPUTER_TYPE != COMPUTERTYPE_AMIGA) {
-        if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST) {
-          set.menu.item("Joystick/Mouse <Ctrl J>", cINITJOYSTICK);
-        }
-        else {
-          if (vCOMPUTER_TYPE == COMPUTERTYPE_PC && vVIDEO_MODE != 3 && vVIDEO_MODE != 2) {
-            set.menu.item("Graphics Mode  <Ctrl R>", cTOGGLEGFX);
+    if (VERSION_MAJOR >= 2) {
+      set.menu("Info");
+      if (BUILD_TARGET == MACINTOSH) {
+        set.menu.item("Help     ", cHELP);
+        set.menu.item("About KQ", cABOUT);
+      }
+      else {
+        set.menu.item("About KQ", cABOUT);
+        set.menu.item("Help    ", cHELP);
+      }
+      set.menu("File");
+      if (BUILD_TARGET == APPLE_IIGS) {
+        set.menu.item("Save Game      <Shift-5>", cSAVE);
+        set.menu.item("Restore Game   <Shift-7>", cRESTORE);
+      }
+      else {
+        set.menu.item("Save Game      <F5>", cSAVE);
+        set.menu.item("Restore Game   <F7>", cRESTORE);
+      }
+      set.menu.item("-------------------", cNOTHING);
+      if (BUILD_TARGET == APPLE_IIGS) {
+        set.menu.item("Restart Game   <Shift-9>", cRESTART);
+      }
+      else {
+        set.menu.item("Restart Game   <F9>", cRESTART);
+      }
+      if (BUILD_TARGET == MACINTOSH) {
+        set.menu.item("Pause         <Esc>", cPAUSE);
+      }
+      set.menu.item("-------------------", cNOTHING);
+      if (BUILD_TARGET == APPLE_IIGS) {
+        set.menu.item("Quit        <Option-Z>", cQUIT);
+      }
+      else {
+        set.menu.item("Quit        <Alt Z>", cQUIT);
+      }
+      set.menu("Game");
+      if (BUILD_TARGET == DOS) {
+        set.menu.item("See Object     <F4>", cSEE_OBJECT);
+        set.menu.item("Inventory     <Tab>", cINVENTORY);
+      }
+      else if (BUILD_TARGET == APPLE_IIGS) {
+        set.menu.item("See Object     <Shift-4>", cSEE_OBJECT);
+        set.menu.item("Inventory     <Tab>", cINVENTORY);
+      }
+      else {
+        set.menu.item("Inventory     <Tab>", cINVENTORY);
+        set.menu.item("See Object     <F4>", cSEE_OBJECT);
+        set.menu.item("Toggle Sound   <F2>", cTOGGLESOUND);
+      }
+      if (BUILD_TARGET == MACINTOSH) {
+        set.menu("Action");
+      }
+      else {
+        set.menu("Action ");
+      }
+      set.menu.item("Swim  =", cSWIM);
+      set.menu.item("Jump  0", cJUMP);
+      set.menu.item("Duck  -", cDUCK);
+      set.menu("Special");
+      if (BUILD_TARGET == DOS) {
+        set.menu.item("Sound On/Off       <F2>", cTOGGLESOUND);
+        if (vCOMPUTER_TYPE != COMPUTERTYPE_AMIGA) {
+          if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST) {
+            set.menu.item("Joystick/Mouse <Ctrl J>", cINITJOYSTICK);
           }
-          set.menu.item("Reset Joystick <Ctrl J>", cINITJOYSTICK);
+          else {
+            if (vCOMPUTER_TYPE == COMPUTERTYPE_PC && vVIDEO_MODE != 3 && vVIDEO_MODE != 2) {
+              set.menu.item("Graphics Mode  <Ctrl R>", cTOGGLEGFX);
+            }
+            set.menu.item("Reset Joystick <Ctrl J>", cINITJOYSTICK);
+          }
+        }
+        set.menu.item("Pause             <Esc>", cPAUSE);
+      }
+      else {
+        if (BUILD_TARGET == MACINTOSH) {
+          if (vCOMPUTER_TYPE == COMPUTERTYPE_PC && vVIDEO_MODE != 3 && vVIDEO_MODE != 2) {
+            set.menu.item("Toggle RGB     <Ctrl R>", cTOGGLEGFX);
+          }
+        }
+        else if (BUILD_TARGET == APPLE_IIGS) {
+          set.menu.item("Sound On/Off   <Shift-2>", cTOGGLESOUND);
+        }
+        set.menu.item("Reset Joystick <Ctrl J>", cINITJOYSTICK);
+      }
+      if (BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH) {
+        if (BUILD_TARGET != MACINTOSH || vCOMPUTER_TYPE != COMPUTERTYPE_AMIGA) {
+          set.menu("Speed");
+          set.menu.item("Normal", cSPEED_NORMAL);
+          set.menu.item("Fast  ", cSPEED_FAST);
+          set.menu.item("Slow  ", cSPEED_SLOW);
         }
       }
-      set.menu.item("Pause             <Esc>", cPAUSE);
-    #else
-      #if BUILD_TARGET == MACINTOSH
-        if (vCOMPUTER_TYPE == COMPUTERTYPE_PC && vVIDEO_MODE != 3 && vVIDEO_MODE != 2) {
-          set.menu.item("Toggle RGB     <Ctrl R>", cTOGGLEGFX);
-        }
-      #elif BUILD_TARGET == APPLE_IIGS
-        set.menu.item("Sound On/Off   <Shift-2>", cTOGGLESOUND);
-      #endif
-      set.menu.item("Reset Joystick <Ctrl J>", cINITJOYSTICK);
-    #endif
-    #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
-      #if BUILD_TARGET == MACINTOSH
-      if (vCOMPUTER_TYPE != COMPUTERTYPE_AMIGA)
-      #endif
-      {
-        set.menu("Speed");
-        set.menu.item("Normal", cSPEED_NORMAL);
-        set.menu.item("Fast  ", cSPEED_FAST);
-        set.menu.item("Slow  ", cSPEED_SLOW);
+      else {
+        set.menu.item("Pause           <Esc>", cPAUSE);
       }
-    #else
-      set.menu.item("Pause           <Esc>", cPAUSE);
-    #endif
-    submit.menu();
-#endif
+      submit.menu();
+    }
     new.room(ROOM83_TITLE_SCREEN);
   }
 }
 if (vROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
   set(fEGO_ON_WATER);
 }
-#if BUILD_TARGET == DOS || BUILD_TARGET == APPLE_IIGS
-if (fROOM_SCRIPT_EXECUTED || fRESTORE_GAME_EXECUTED) {
-  #if BUILD_TARGET == APPLE_IIGS
-    if (vROOM_NO != ROOM1_CASTLE_EAST) {
+if (BUILD_TARGET == DOS || BUILD_TARGET == APPLE_IIGS) {
+  if (fROOM_SCRIPT_EXECUTED || fRESTORE_GAME_EXECUTED) {
+    if (BUILD_TARGET == APPLE_IIGS) if (vROOM_NO != ROOM1_CASTLE_EAST) {
       clear.lines(24, 24, "");
     }
-  #endif
-  if (vROOM_NO != ROOM83_TITLE_SCREEN) {
-    set(fJOYSTICK_SENSITIVITY_ENABLED);
-    disable.item(cNOTHING);
-    set(fENABLE_MENU);
-    vJOYSTICK_SENSITIVITY = 3;
+    if (vROOM_NO != ROOM83_TITLE_SCREEN) {
+      set(fJOYSTICK_SENSITIVITY_ENABLED);
+      disable.item(cNOTHING);
+      set(fENABLE_MENU);
+      vJOYSTICK_SENSITIVITY = 3;
+    }
   }
 }
-#endif
 if (fROOM_SCRIPT_EXECUTED) {
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     if (vPREV_ROOM_NO != ROOM70_BEANSTALK_NEAR_BOTTOM) {
       reset(fTENSE_SITUATION);
       reset(fTHREAT_OF_SORCERER_OR_OGRE);
@@ -168,7 +175,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     vTEMP_CYCLE_DELAY = 0;
     vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
     reset(fDEBUG_MODE);
-  #endif
+  }
   animate.obj(oEGO);
   load.view(0);
   if (vROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
@@ -196,11 +203,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view.v(vEGO_VIEW_NO);
   set.view.v(oEGO, vEGO_VIEW_NO);
   load.logics(LOGIC102_DEFAULT_RESPONSES);
-  #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
+  if (BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH) {
     if (fCARRYING_FIDDLE) {
       load.sound(SND_FIDDLE_TUNE);
     }
-  #endif
+  }
   if (vROOM_NO != ROOM53_KING_EDWARD_THRONE_ROOM
     && vROOM_NO != ROOM58_GIANT_STOMPING_GROUND
     && vROOM_NO != ROOM49_INSIDE_WELL
@@ -223,9 +230,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (fGOAT_COMPANION || vROOM_YOU_KILLED_THE_GOAT_IN > ROOM_NULL) {
     load.view(62);
   }
-#if BUILD_TARGET != APPLE_IIGS
-  reset(fDEBUG_MODE);
-#endif
+  if (BUILD_TARGET != APPLE_IIGS) {
+    reset(fDEBUG_MODE);
+  }
   observe.objs(oEGO);
   observe.blocks(oEGO);
   reset(fSWIMMING_LOGIC_LOADED);
@@ -235,9 +242,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   reset(fSOUND_END_MARKER_2);
   reset(fFALLING);
   reset(fVILLAIN_GOT_YOU);
-#if BUILD_TARGET != APPLE_IIGS
-  reset(fTENSE_SITUATION);
-#endif
+  if (BUILD_TARGET != APPLE_IIGS) {
+    reset(fTENSE_SITUATION);
+  }
   vTEMP_RESULT = 0;
   vTEMP_RESULT_2 = 0;
   vTEMP_RESULT_3 = 0;
@@ -254,18 +261,18 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.string(sPROMPT, ">");
   set.cursor.char("_");
 }
-#if BUILD_TARGET != AMIGA
+if (BUILD_TARGET != AMIGA) {
   get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
-#endif
-#if VERSION_MAJOR < 2
+}
+if (VERSION_MAJOR < 2) {
   if (fGAME_OVER) {
     if (!fGAME_OVER_PREPARATION) {
-      #if BUILD_TARGET == AMIGA
+      if (BUILD_TARGET == AMIGA) {
         disable.item(cSAVE);
         disable.item(cJUMP);
         disable.item(cSWIM);
         disable.item(cDUCK);
-      #endif
+      }
       load.logics(LOGIC100_GAME_OVER);
       load.sound(SND_GAME_OVER);
       vGAME_OVER_MESSAGE_COUNTDOWN = 40;
@@ -276,24 +283,26 @@ if (fROOM_SCRIPT_EXECUTED) {
     call(LOGIC100_GAME_OVER);
     return;
   }
-#endif
-#if VERSION_MAJOR >= 2
+}
+if (VERSION_MAJOR >= 2) {
   if (controller(cSHOW_MENU) && vROOM_NO != ROOM83_TITLE_SCREEN) {
     menu.input();
   }
-#endif
-#if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
+}
+if (BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH) {
   if (controller(cDEBUG)) {
     load.logics(LOGIC99_DEBUG);
     set(fDEBUG_MODE);
-    #if BUILD_TARGET == DOS
+    if (BUILD_TARGET == DOS) {
       print("VERSION 2.0F");
-    #else
+    }
+    else {
       print("VERSION 2.0C");
-    #endif
+    }
     version();
   }
-#elif BUILD_TARGET == APPLE_IIGS
+}
+else if (BUILD_TARGET == APPLE_IIGS) {
   if (controller(cDEBUG)) {
     if (fDEBUG_MODE) {
       clear.lines(24, 24, "");
@@ -302,7 +311,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     print("  King's Quest \n\nApple IIgs Version \n\n    1.0S-88223 \n");
     version();
   }
-#endif
+}
+// using #if because "kqdbg" is not in other dictionaries
 #if BUILD_TARGET == APPLE_IIGS
   if (said("kqdbg")) {
     toggle(fDEBUG_MODE);
@@ -312,7 +322,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     version();
   }
 #endif
-#if VERSION_MAJOR >= 2
+if (VERSION_MAJOR >= 2) {
   if (
     said("fast")
   #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
@@ -328,11 +338,12 @@ if (fROOM_SCRIPT_EXECUTED) {
     || controller(cSPEED_NORMAL)
   #endif
   ) {
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       vTEMP_CYCLE_DELAY = 0;
-    #else
+    }
+    else {
       vTEMP_CYCLE_DELAY = 2;
-    #endif
+    }
     vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
   }
   if (
@@ -341,11 +352,12 @@ if (fROOM_SCRIPT_EXECUTED) {
     || controller(cSPEED_SLOW)
   #endif
   ) {
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       vTEMP_CYCLE_DELAY = 2;
-    #else
+    }
+    else {
       vTEMP_CYCLE_DELAY = 4;
-    #endif
+    }
     vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
   }
   if (said("quit") || controller(cQUIT)) {
@@ -384,11 +396,12 @@ if (fROOM_SCRIPT_EXECUTED) {
     reset(fSTATUS_TO_SELECT_ITEMS);
   }
   if (controller(cABOUT)) {
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       print("   King's Quest\n\nby Roberta Williams.\n");
-    #else
+    }
+    else {
       print("King's Quest was designed by Roberta Williams.");
-    #endif
+    }
   }
   if (
     #if BUILD_TARGET == APPLE_IIGS
@@ -398,31 +411,32 @@ if (fROOM_SCRIPT_EXECUTED) {
   ) {
     call(LOGIC92_HELP);
   }
-#elif BUILD_TARGET == AMIGA
+}
+else if (BUILD_TARGET == AMIGA) {
   if (controller(cHELP) && vROOM_NO != ROOM83_TITLE_SCREEN) {
     call(LOGIC92_HELP);
   }
-#else
+}
+else {
   if (controller(cHELP)) {
     call(LOGIC92_HELP);
   }
-#endif
+}
 if (controller(cTOGGLESOUND)) {
   toggle(fSOUND_ENABLED);
 }
-#if BUILD_TARGET == ATARI_ST || BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
+if (BUILD_TARGET == ATARI_ST || BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH) {
   if (controller(cTOGGLEGFX)) {
     toggle.monitor();
   }
-#endif
+}
 if (controller(cINITJOYSTICK)) {
   init.joy();
 }
 if (controller(cCLEARINPUT)) {
   cancel.line();
 }
-#if BUILD_TARGET == AMIGA
-if (controller(cABOUT)) {
+if (BUILD_TARGET == AMIGA && controller(cABOUT)) {
   print(
     "        King's Quest" "\n"
     "             by" "\n"
@@ -441,8 +455,7 @@ if (controller(cABOUT)) {
     "(C) 1986 Sierra On-Line, Inc."
   );
 }
-#endif
-#if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
+if (BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH) {
   if (fGAME_OVER) {
     if (!fGAME_OVER_PREPARATION) {
       load.logics(LOGIC100_GAME_OVER);
@@ -460,11 +473,12 @@ if (controller(cABOUT)) {
     call(LOGIC100_GAME_OVER);
     return;
   }
-#elif BUILD_TARGET == APPLE_IIGS
+}
+else if (BUILD_TARGET == APPLE_IIGS) {
   if (fGAME_OVER) {
     goto(END_OF_BOWL_LOGIC);
   }
-#endif
+}
 if (vROOM_NO > ROOM52_IN_WELL_UNDERWATER
   || vROOM_NO == ROOM3_ROCK_OVER_HOLE
   || vROOM_NO == ROOM6_POUCH_STUMP
@@ -499,9 +513,10 @@ if (vROOM_NO > ROOM52_IN_WELL_UNDERWATER
     print("You need to be in water to swim.");
   }
 }
-#if BUILD_TARGET == AMIGA
+if (BUILD_TARGET == AMIGA) {
   get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
-#else
+}
+#if BUILD_TARGET != AMIGA
   if (vEGO_DIR == DIR_NONE) {
     if (fCYCLE_EGO_ANIMATION) {
       start.cycling(oEGO);
@@ -525,7 +540,7 @@ if (vROOM_NO > ROOM52_IN_WELL_UNDERWATER
     start.cycling(oEGO);
   }
 }
-#if BUILD_TARGET == AMIGA
+if (BUILD_TARGET == AMIGA) {
   vSAVED_EGO_X = vTEMP_X_2;
   vSAVED_EGO_Y = vTEMP_Y_2;
   vSAVED_EGO_DIR = vEGO_DIR;
@@ -535,12 +550,13 @@ if (vROOM_NO > ROOM52_IN_WELL_UNDERWATER
   else if (__OR__(vEGO_DIR <= DIR_NONE)) {
     stop.cycling(oEGO);
   }
-#endif
-#if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
+}
+if (BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH) {
   if (said("save", "game") || controller(cSAVE)) {
     save.game();
   }
-#elif BUILD_TARGET == APPLE_IIGS
+}
+else if (BUILD_TARGET == APPLE_IIGS) {
   if (said("save", "game") || controller(cSAVE)) {
     if (!fGAME_OVER) {
       save.game();
@@ -549,7 +565,8 @@ if (vROOM_NO > ROOM52_IN_WELL_UNDERWATER
       reset(fSAID_ACCEPTED_USER_INPUT);
     }
   }
-#else
+}
+else {
   if (controller(cDEBUG)) {
     load.logics(LOGIC99_DEBUG);
     set(fDEBUG_MODE);
@@ -603,7 +620,7 @@ if (vROOM_NO > ROOM52_IN_WELL_UNDERWATER
   #endif
     status();
   }
-#endif
+}
 #if RUBBER_TREE
 #if BUILD_TARGET == ATARI_ST
   if ((said("undo") || controller(cUNDO))) {
@@ -656,9 +673,9 @@ else {
         && vROOM_NO != ROOM11_GOAT_PEN_EAST
         && vROOM_NO != ROOM51_DRAGONS_LAIR
     ) {
-      #if BUILD_TARGET == APPLE_IIGS
+      if (BUILD_TARGET == APPLE_IIGS) {
         set(fEGO_PREOCCUPIED);
-      #endif
+      }
       set(fJUMPING);
       stop.motion(oEGO);
       set.cel(oEGO, 0);
@@ -680,9 +697,9 @@ else {
     cycle.time(oEGO, vTEMP_CYCLE_TIME_2);
     start.motion(oEGO);
     set.view(oEGO, 0);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       reset(fEGO_PREOCCUPIED);
-    #endif
+    }
   }
 }
 #if BUILD_TARGET == APPLE_IIGS
@@ -731,9 +748,9 @@ else {
       set(fEGO_DUCKING);
       set.view(oEGO, 87);
       set(fCYCLE_EGO_ANIMATION);
-    #if VERSION_MAJOR >= 2
-      start.cycling(oEGO);
-    #endif
+      if (VERSION_MAJOR >= 2) {
+        start.cycling(oEGO);
+      }
       end.of.loop(oEGO, fDUCKED);
     }
     else if (!fFULLY_DUCKED) {
@@ -838,16 +855,16 @@ if (fCARRYING_CARROT) {
       reset(fCARRYING_CARROT);
       reset(fPOINTS_FOR_CARROT);
       vSCORE -= 2;
-    #if VERSION_MAJOR < 2
-      if (vROOM_NO == ROOM10_GOAT_PEN_WEST || vROOM_NO == ROOM11_GOAT_PEN_EAST) {
-        set.view(oEGO, 0);
+      if (VERSION_MAJOR < 2) {
+        if (vROOM_NO == ROOM10_GOAT_PEN_WEST || vROOM_NO == ROOM11_GOAT_PEN_EAST) {
+          set.view(oEGO, 0);
+        }
       }
-    #endif
       erase(oGOAT);
       set(fGOAT_IS_GONE);
       reset(fGOAT_COMPANION);
     }
-    #if VERSION_MAJOR >= 2
+    if (VERSION_MAJOR >= 2) {
       if (vROOM_NO == ROOM10_GOAT_PEN_WEST || vROOM_NO == ROOM11_GOAT_PEN_EAST) {
         if (
           said("feed", "carrot")
@@ -860,7 +877,7 @@ if (fCARRYING_CARROT) {
           print("There is no reason to do that now.");
         }
       }
-    #endif
+    }
     if (said("show", "carrot") || said("show", "carrot", "goat") || said("show", "goat", "carrot")) {
       print("It is not nice to tease the goat.");
     }
@@ -917,11 +934,11 @@ else {
     }
   }
 }
-#if VERSION_MAJOR >= 2
+if (VERSION_MAJOR >= 2) {
   if (fCARRYING_BUCKET && fBUCKET_FILLED && said("examine", "bucket")) {
     show.obj(INV_BUCKET_OF_WATER);
   }
-#endif
+}
 if (fCARRYING_BUCKET && fBUCKET_FILLED && !fEGO_ON_WATER) {
   if (said("get", "bucket") || said("get", "water")) {
     print("You already have it.");
@@ -998,25 +1015,25 @@ if (fCARRYING_MUSHROOM) {
       && vROOM_NO != ROOM74_CAVE_CORNER
       && vROOM_NO != ROOM75_RAT_STOMPING_GROUND
     ) {
-      #if BUILD_TARGET == APPLE_IIGS
+      if (BUILD_TARGET == APPLE_IIGS) {
         stop.sound();
         reset(fPLAYED_SND_FIDDLE_TUNE);
         reset(fEGO_PLAYING_FIDDLE);
         disable.item(cJUMP);
         disable.item(cDUCK);
         reset(fFULLY_DUCKED);
-      #endif
+      }
       print("As soon as you swallow the first bite, you have this strange shrinking feeling...  It's true!  You are now no bigger than a mouse!");
-      #if BUILD_TARGET == APPLE_IIGS
+      if (BUILD_TARGET == APPLE_IIGS) {
         start.motion(oEGO);
         reset(fCYCLE_EGO_ANIMATION);
         reset(fEGO_DUCKING);
-      #endif
+      }
       set.view(oEGO, 60);
       vTINY_COUNTDOWN = 200;
-      #if BUILD_TARGET == APPLE_IIGS
+      if (BUILD_TARGET == APPLE_IIGS) {
         start.cycling(oEGO);
-      #endif
+      }
       drop("mushroom");
       reset(fCARRYING_MUSHROOM);
       set(fEATEN_MUSHROOM);
@@ -1037,10 +1054,10 @@ if (fEGO_TINY && vTINY_COUNTDOWN > 0) {
     set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
     reset(fEGO_TINY);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       enable.item(cJUMP);
       enable.item(cDUCK);
-    #endif
+    }
   }
 }
 if (fCARRYING_RING) {
@@ -1085,11 +1102,11 @@ if (fCARRYING_RING) {
     }
   }
   if (said("rub", "ring")) {
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       if (fEGO_PREOCCUPIED) {
         reset(fSAID_ACCEPTED_USER_INPUT);
       }
-    #endif
+    }
     if (!fWEARING_RING) {
       print("The magic ring is still in your pocket.  You can't rub it there.");
     }
@@ -1120,18 +1137,18 @@ if (fCARRYING_RING) {
         && !fCARRIED_BY_WITCH
         && !fEGO_TINY
       ) {
-        #if BUILD_TARGET == APPLE_IIGS
+        if (BUILD_TARGET == APPLE_IIGS) {
           set(fEGO_PREOCCUPIED);
           reset(fJUMPING);
           reset(fJUMPED);
-        #endif
+        }
         set.view(oEGO, 110);
         print("When you rub the magic ring, you mysteriously disappear, except for your footprints.");
         set(fEGO_INVISIBLE);
-        #if BUILD_TARGET == APPLE_IIGS
+        if (BUILD_TARGET == APPLE_IIGS) {
           disable.item(cJUMP);
           disable.item(cDUCK);
-        #endif
+        }
         vINVISIBLE_COUNTDOWN_LO = 250;
         vINVISIBLE_COUNTDOWN_HI = 10;
       }
@@ -1173,21 +1190,21 @@ if (vINVISIBLE_COUNTDOWN_LO == 1 && vINVISIBLE_COUNTDOWN_HI == 0) {
   set(fLOST_RING);
   reset(fEGO_INVISIBLE);
   print("The spell to make you invisible has expired and you are once again visible to dangerous creatures, but, the ring has now disappeared.");
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     enable.item(cJUMP);
     enable.item(cDUCK);
-  #endif
+  }
   vSCORE -= 3;
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     reset(fEGO_PREOCCUPIED);
-  #endif
+  }
 }
 if (fCARRYING_MAGIC_BEANS) {
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     if (said("take", "magic beans")) {
       print("You already have the beans.");
     }
-  #endif
+  }
   if (said("examine", "magic beans")) {
     show.obj(INV_MAGIC_BEANS);
   }
@@ -1412,11 +1429,11 @@ if (fCARRYING_NOTE && !fGAME_OVER) {
       vSCORE += 1;
     }
   }
-  #if BUILD_TARGET != APPLE_IIGS
+  if (BUILD_TARGET != APPLE_IIGS) {
     if (said("get", "note")) {
       print("You already have it.");
     }
-  #endif
+  }
 }
 if (fCARRYING_SWISS_CHEESE) {
   if (said("get", "swiss cheese")) {
@@ -1512,17 +1529,15 @@ if (fCARRYING_GOLDEN_EGG) {
     print("This egg will be tough to crack.");
   }
 }
-#if BUILD_TARGET == APPLE_IIGS
-  if (fPLAYED_SND_FIDDLE_TUNE) {
-    stop.sound();
-    start.motion(oEGO);
-    reset(fPLAYED_SND_FIDDLE_TUNE);
-    reset(fEGO_PLAYING_FIDDLE);
-    enable.item(cJUMP);
-    enable.item(cDUCK);
-    reset(fEGO_PREOCCUPIED);
-  }
-#endif
+if (BUILD_TARGET == APPLE_IIGS && fPLAYED_SND_FIDDLE_TUNE) {
+  stop.sound();
+  start.motion(oEGO);
+  reset(fPLAYED_SND_FIDDLE_TUNE);
+  reset(fEGO_PLAYING_FIDDLE);
+  enable.item(cJUMP);
+  enable.item(cDUCK);
+  reset(fEGO_PREOCCUPIED);
+}
 if (fCARRYING_FIDDLE) {
   if (said("get", "fiddle")) {
     print("You already have it.");
@@ -1572,40 +1587,41 @@ if (fCARRYING_FIDDLE) {
 #endif
   ) {
     if (said("play", "fiddle")) {
-      #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
-        set(fEGO_PLAYING_FIDDLE);
-      #elif BUILD_TARGET == APPLE_IIGS
+      if (BUILD_TARGET == APPLE_IIGS) {
         set(fEGO_PREOCCUPIED);
         disable.item(cJUMP);
         disable.item(cDUCK);
         load.sound(SND_FIDDLE_TUNE);
         set(fEGO_PLAYING_FIDDLE);
         sound(SND_FIDDLE_TUNE, fPLAYED_SND_FIDDLE_TUNE);
-      #endif
+      }
+      else if (VERSION_MAJOR >= 2) {
+        set(fEGO_PLAYING_FIDDLE);
+      }
       print("You play a lively, toe-tapping tune on the fiddle.");
-      #if BUILD_TARGET == APPLE_IIGS
+      if (BUILD_TARGET == APPLE_IIGS) {
         if (!fEGO_ON_WATER && !fFALLING && !fEGO_TOUCHED_TRIGGER_LINE) {
           stop.motion(oEGO);
         }
         else {
           set(fPLAYED_SND_FIDDLE_TUNE);
         }
-      #elif BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
+      }
+      else if (VERSION_MAJOR >= 2) {
         sound(SND_FIDDLE_TUNE, fPLAYED_SND_FIDDLE_TUNE);
-      #else
-        if (vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE) {
-          sound(SND_FIDDLE_TUNE, fMISC_END_MARKER);
-        }
-      #endif
+      }
+      else if (vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE) {
+        sound(SND_FIDDLE_TUNE, fMISC_END_MARKER);
+      }
     }
   }
 }
-#if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
+if (BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH) {
   if (fPLAYED_SND_FIDDLE_TUNE) {
     reset(fPLAYED_SND_FIDDLE_TUNE);
     reset(fEGO_PLAYING_FIDDLE);
   }
-#endif
+}
 if (fCARRYING_MIRROR) {
   if (said("get", "mirror")) {
     print("You already have it.");
@@ -1620,7 +1636,7 @@ if (vTREASURE_COUNT == 3) {
 if (fDEBUG_MODE) {
   call(LOGIC99_DEBUG);
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   if (fGAME_OVER) {
     if (!fGAME_OVER_PREPARATION) {
       load.logics(LOGIC100_GAME_OVER);
@@ -1642,13 +1658,13 @@ if (fDEBUG_MODE) {
     }
     return;
   }
-#endif
+}
 call.v(vROOM_NO);
 call(LOGIC102_DEFAULT_RESPONSES);
-#if BUILD_TARGET != AMIGA
+if (BUILD_TARGET != AMIGA) {
   get.posn(oEGO, vSAVED_EGO_X, vSAVED_EGO_Y);
   vSAVED_EGO_DIR = vEGO_DIR;
-#endif
+}
 return;
 
 LOGIC__FOOTER
