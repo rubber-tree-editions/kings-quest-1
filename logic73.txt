@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_IMPACT);
   #endif
   load.sound(SND_OUCH);
@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(103);
   load.view(104);
   if (vPREV_ROOM_NO == ROOM48_LEPRECHAUN_HOLE) {
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       set(fEGO_PREOCCUPIED);
     #endif
     position(oEGO, 90, 63);
@@ -52,12 +52,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(oEGO);
   show.pic();
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     rvOUCH_COUNTDOWN = 12;
   #endif
 }
 if (!rfFELL_INTO_CAVE && !rfPLAYING_SND_FALLING && vPREV_ROOM_NO == ROOM48_LEPRECHAUN_HOLE) {
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     set(fSOUND_END_MARKER);
   #endif
   sound(SND_FALLING, fSOUND_END_MARKER);
@@ -72,25 +72,25 @@ if (said("examine", "cave")) {
 if (rfFELL_INTO_CAVE) {
   reset(rfFELL_INTO_CAVE);
   stop.sound();
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     sound(SND_IMPACT, fMISC_END_MARKER);
   #endif
   observe.blocks(oEGO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     vTEMP_RESULT = 1;
     cycle.time(oEGO, vTEMP_RESULT);
   #endif
   set.view(oEGO, 103);
   program.control();
   shake.screen(1);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
   if (!fSOUND_ENABLED)
   #endif
   {
     print("OUCH!");
   }
   rvCOUNTDOWN = 36;
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     set(fSOUND_END_MARKER);
     rvOUCH_COUNTDOWN = 5;
   #else
@@ -99,7 +99,7 @@ if (rfFELL_INTO_CAVE) {
 }
 if (fSOUND_END_MARKER) {
   if (rvCOUNTDOWN > 0) {
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       rvOUCH_COUNTDOWN--;
       if (rvOUCH_COUNTDOWN == 1) {
         rvOUCH_COUNTDOWN = 5;
@@ -120,7 +120,7 @@ if (rfEGO_FINISHED_ANIMATING) {
   set.view(oEGO, 0);
   reset(fCYCLE_EGO_ANIMATION);
   player.control();
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     reset(fEGO_PREOCCUPIED);
   #endif
   if (rfLOST_INVISIBILITY_DURING_FALL) {
@@ -129,7 +129,7 @@ if (rfEGO_FINISHED_ANIMATING) {
   }
   if (rfBECAME_FULL_SIZE_DURING_FALL) {
     reset(rfBECAME_FULL_SIZE_DURING_FALL);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       print("When you fell through the hole, you felt a stretching sensation and are back to your normal size.");
     #else
       print("When you fell through the hole, you felt a streching sensation and are back to your normal size.");
@@ -149,7 +149,7 @@ LOGIC__FOOTER
 #message 2 "The warm sunlight falls through the hole in the ceiling.  Unfortunately, you can't reach it."
 #message 3 "The dark tunnel leads off to the south."
 #message 4 "OUCH!"
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   #message 5 "When you fell through the hole, you felt a stretching sensation and are back to your normal size."
 #else
   #message 5 "When you fell through the hole, you felt a streching sensation and are back to your normal size."

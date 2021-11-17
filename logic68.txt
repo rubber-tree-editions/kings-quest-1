@@ -23,12 +23,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.sound(SND_FALLING);
   random(0, 250, vTEMP_RESULT);
-  #if VERSION_C || VERSION_S || VERSION_F
+  #if VERSION_MAJOR >= 2
   if (vTEMP_RESULT < 150 && vPREV_ROOM_NO == ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM) {
   #else
   if (vTEMP_RESULT < 150) {
   #endif
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       load.sound(SND_VILLAIN);
       load.sound(SND_ROBBED);
     #else
@@ -43,7 +43,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.horizon(oDWARF);
   }
   if (rfINIT_RANDOMIZER) {
-    #if VERSION_S || VERSION_C || VERSION_F
+    #if VERSION_MAJOR >= 2
       do {
         random(0, 150, vTEMP_RESULT_2);
       } while (vTEMP_RESULT_2 > 45);
@@ -57,7 +57,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM) {
     position(oEGO, 94, 160);
     set.loop(oEGO, 0);
-    #if VERSION_S || VERSION_C || VERSION_F
+    #if VERSION_MAJOR >= 2
       move.obj(oEGO, 95, 159, 0, fMISC_END_MARKER);
     #else
       move.obj(oEGO, 94, 160, 0, fMISC_END_MARKER);
@@ -66,7 +66,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM69_MOUNTAIN_STAIRWAY_TOP) {
     position(oEGO, 43, 41);
     set.loop(oEGO, 0);
-    #if VERSION_S || VERSION_C || VERSION_F
+    #if VERSION_MAJOR >= 2
       move.obj(oEGO, 44, 42, 0, fMISC_END_MARKER);
     #else
       move.obj(oEGO, 43, 41, 0, fMISC_END_MARKER);
@@ -78,7 +78,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (rfDWARF_IS_HERE) {
   if (!rfPLAYING_SND_DWARF) {
     set(rfPLAYING_SND_DWARF);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       set(rfPLAYED_SND_DWARF);
     #else
       sound(SND_DWARF, rfPLAYED_SND_DWARF);
@@ -98,7 +98,7 @@ if (vTEMP_RESULT_2 == 1) {
     position(oDWARF, 30, 27);
   }
   draw(oDWARF);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     sound(SND_VILLAIN, fMISC_END_MARKER);
   #endif
   set(rfDWARF_IS_HERE);
@@ -131,20 +131,20 @@ if (said("talk", "dwarf") || said("hello") || said("say", "hello")) {
     print("There is nobody here but you.");
   }
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (fEGO_TOUCHED_TRIGGER_LINE && !fFALLING) {
 #else
 if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING) {
 #endif
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     set(fEGO_PREOCCUPIED);
     prevent.input();
   #endif
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     set(fTENSE_SITUATION);
     set(fTHREAT_OF_SORCERER_OR_OGRE);
   #endif
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     set(fFALLING);
   #else
     set(rfFALLING);
@@ -173,7 +173,7 @@ if (rfFELL) {
   reset(rfFELL);
   erase(oEGO);
   set(fGAME_OVER);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     accept.input();
   #endif
 }
@@ -265,7 +265,7 @@ if (fVILLAIN_GOT_YOU) {
       end.of.loop(oDWARF, rfDWARF_FINISHED_ANIMATING);
       goto(END_OF_DWARF_LOGIC);
     }
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       sound(SND_ROBBED, fMISC_END_MARKER);
     #endif
     set.view(oDWARF, 115);
@@ -284,7 +284,7 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
 if (posn(oEGO, 0, 166, 159, 167)) {
   new.room(ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM);
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   set(fFALL_DANGER);
 #endif
 return;

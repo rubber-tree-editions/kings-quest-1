@@ -1,5 +1,5 @@
 
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
 
 #item 0 "dagger"
 #item 1 "chest"

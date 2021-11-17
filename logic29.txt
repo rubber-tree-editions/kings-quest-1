@@ -53,7 +53,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#ifndef VERSION_S
+#if BUILD_TARGET != APPLE_IIGS
   if (rfSORCERER_IS_HERE && fSOUND_END_MARKER) {
     if (!rfPLAYING_SND_SORCERER) {
       set(rfPLAYING_SND_SORCERER);
@@ -127,14 +127,14 @@ if (fVILLAIN_GOT_YOU) {
     set.view(oSORCERER, 116);
     end.of.loop(oSORCERER, rfSORCERER_FINISHED_SPELLCASTING);
     print("The sorcerer casts a spell, freezing you to the spot. I hope no dangerous creatures drop by!");
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
     sound(SND_SORCERER, rfPLAYED_SND_SORCERER);
 #endif
     set(fTENSE_SITUATION);
     set(fTHREAT_OF_SORCERER_OR_OGRE);
   }
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (rfSORCERER_FINISHED_SPELLCASTING && rfPLAYED_SND_SORCERER) {
 #else
 if (rfSORCERER_FINISHED_SPELLCASTING) {

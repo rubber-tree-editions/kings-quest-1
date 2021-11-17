@@ -18,12 +18,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if !VERSION_S
+  #if BUILD_TARGET != APPLE_IIGS
     load.sound(SND_FALLING);
   #endif
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.view(99);
     load.view(105);
     load.view(74);
@@ -37,7 +37,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(105);
     load.view(99);
   #endif
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_FALLING);
   #endif
   if (fFALLING_DOWN_WELL) {
@@ -48,7 +48,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.priority(oEGO, 15);
     set(fCYCLE_EGO_ANIMATION);
     set(rfFALLING_DOWN_WELL);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       sound(SND_FALLING, fMISC_END_MARKER);
     #endif
     move.obj(oEGO, 81, 164, 3, rfFALLEN_DOWN_WELL);
@@ -66,7 +66,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (vPREV_ROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       start.motion(oEGO);
     #endif
     set.view(oEGO, 70);
@@ -76,7 +76,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (fROPE_DANGLING_IN_WELL) {
     add.to.pic(99, 0, 0, 84, 119, 4, 4);
-    #if !VERSION_S
+    #if BUILD_TARGET != APPLE_IIGS
       discard.view(99);
     #endif
   }
@@ -105,7 +105,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   SHOWPIC:
     show.pic();
 }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   if (fROPE_DANGLING_IN_WELL || fBUCKET_LOWERED) {
     if (said("examine", "rope")) {
       print("It is a very long, sturdy rope.");
@@ -119,12 +119,12 @@ else {
   ignore.blocks(oEGO);
 }
 if (fFALLING_DOWN_WELL && !rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE && !rfPLAYING_SND_FALLING) {
-  #if !VERSION_S
+  #if BUILD_TARGET != APPLE_IIGS
     sound(SND_FALLING, fSOUND_END_MARKER);
   #endif
   set(rfPLAYING_SND_FALLING);
 }
-#if !VERSION_S && !VERSION_C && !VERSION_F
+#if VERSION_MAJOR < 2
   if (fSOUND_END_MARKER) {
     if (!rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE) {
       reset(rfPLAYING_SND_FALLING);
@@ -135,7 +135,7 @@ if (fFALLING_DOWN_WELL && !rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE && !rfPLAYIN
 if (fON_WELL_ROPE) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y > 115 && fBUCKET_LOWERED) {
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       sound(SND_FALLING, rfPLAYED_SND_FALLING);
     #endif
     reset(fON_WELL_ROPE);
@@ -150,7 +150,7 @@ if (fON_WELL_ROPE) {
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_OFF_ROPE);
   }
   if (vTEMP_Y > 115 && fROPE_DANGLING_IN_WELL) {
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       sound(SND_FALLING, rfPLAYED_SND_FALLING);
     #endif
     reset(fON_WELL_ROPE);
@@ -166,7 +166,7 @@ if (fON_WELL_ROPE) {
   }
   if (vTEMP_X < 79 || vTEMP_X > 83) {
     if (vTEMP_Y > 70) {
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         sound(SND_FALLING, rfPLAYED_SND_FALLING);
       #endif
       reset(fON_WELL_ROPE);
@@ -181,7 +181,7 @@ if (fON_WELL_ROPE) {
       move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_OFF_ROPE);
     }
     else {
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         sound(SND_FALLING, rfPLAYED_SND_FALLING);
       #endif
       reset(fON_WELL_ROPE);
@@ -280,7 +280,7 @@ if (!fON_WELL_ROPE && !rfFALLING_DOWN_WELL) {
       || said("exit", "bucket")
       || said("go", "water")
       || said("jump", "water")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
       || said("leave", "bucket")
 #endif
     ) {
@@ -325,7 +325,7 @@ if (!fCARRYING_BUCKET) {
       print("The bucket is not here.");
     }
   }
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     if (said("go", "bucket") || said("get in", "bucket")) if (fBUCKET_LOWERED && !fIN_WELL_BUCKET) {
       print("I don't think that getting in the bucket right now will do you very much good.");
     }
@@ -337,7 +337,7 @@ if (!fCARRYING_BUCKET) {
 }
 if (
   said("untie", "rope")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
   || said("untie", "bucket")
 #endif
 ) {
@@ -444,7 +444,7 @@ if (!fBUCKET_FILLED) {
   }
 }
 if (
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
   vAQUATIC_ACTIVITY != AQUATICACTIVITY_DROWNING &&
 #endif
   vAQUATIC_ACTIVITY != AQUATICACTIVITY_SWIMMING
@@ -454,7 +454,7 @@ if (
   }
 }
 if (
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
   vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING ||
 #endif
   vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING
@@ -502,7 +502,7 @@ LOGIC__FOOTER
 #message 24 "You need to be closer to the water to drink."
 #message 25 "There is no way for you to get water now."
 #message 26 "Now is not the time to try diving."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 27 "It is a very long, sturdy rope."
 #endif
 #endif

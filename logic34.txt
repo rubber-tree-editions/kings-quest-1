@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   load.sound(SND_RUSHING_WATER);
   load.sound(SND_POINTS);
 #endif
@@ -43,16 +43,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   set(rfPLAYED_SND_RUSHING_WATER);
 #endif
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if (!rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
     sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
   }
 #endif
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 if (said("examine", "room")) {
   print("There are many smooth pebbles next to the river.");
 }
@@ -125,7 +125,7 @@ if (said("get", "pebbles")) {
   }
   if (!fPEBBLES_TAKEN) {
     if (posn(oEGO, 68, 83, 109, 124)) {
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
       stop.sound();
       sound(SND_POINTS, fMISC_END_MARKER);
 #endif
@@ -183,7 +183,7 @@ LOGIC__FOOTER
 #message 10 "From here it looks like an ordinary delta of pebbles."
 #message 11 "You are not close enough to the pebbles to get them."
 #message 12 "Your swimming attempt proved fatal!  The raging current drags you under... you are lost...."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 13 "There are many smooth pebbles next to the river."
 #endif
 #endif

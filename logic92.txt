@@ -7,7 +7,7 @@ status.line.off();
 text.screen();
 vKEY_PRESSED = 0;
 reset(fSAID_ACCEPTED_USER_INPUT);
-#if VERSION_U
+#if BUILD_TARGET == AMIGA
   display(2, 1, m1);
   display(3, 1, m2);
   if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
@@ -41,7 +41,7 @@ reset(fSAID_ACCEPTED_USER_INPUT);
 #else
   display(1, 1, m1);
   display(2, 1, m2);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     display(4, 1, m3);
     display(5, 1, m4);
     display(6, 1, m5);
@@ -56,7 +56,7 @@ reset(fSAID_ACCEPTED_USER_INPUT);
     display(17, 1, m42);
     display(18, 1, m43);
     display(24, 1, m98);
-  #elif VERSION_V || VERSION_C
+  #elif BUILD_TARGET == ATARI_ST || BUILD_TARGET == MACINTOSH
     if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
       display(4, 1, m20);
       display(11, 1, m21);
@@ -81,7 +81,7 @@ reset(fSAID_ACCEPTED_USER_INPUT);
     display(14, 1, m15);
     if (
       vCOMPUTER_TYPE == COMPUTERTYPE_PC
-  #if VERSION_C
+  #if BUILD_TARGET == MACINTOSH
       && vVIDEO_MODE != 2
   #endif
     ) {
@@ -125,7 +125,7 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#if VERSION_U
+#if BUILD_TARGET == AMIGA
   #message 1 "          KING'S QUEST"
   #message 2 "             Help"
   #message 3 "F1 displays this message."
@@ -147,7 +147,7 @@ LOGIC__FOOTER
 #else
   #message 1 "              KING'S QUEST"
   #message 2 "                 Help"
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     #message 3 " <shift> 1 displays this message."
     #message 4 " <shift> 2 toggles sound on/off."
     #message 5 " <shift> 3 retypes the last line typed."
@@ -156,7 +156,7 @@ LOGIC__FOOTER
     #message 4 "    F2 turns the sound off and on."
     #message 5 "    F3 retypes the last line typed."
   #endif
-  #if VERSION_C || VERSION_V
+  #if BUILD_TARGET == ATARI_ST || BUILD_TARGET == MACINTOSH
     #message 7 "    F5 saves your current game."
     #message 9 "    F7 restores a saved game."
     #message 11 "    F9 restarts the game."
@@ -171,7 +171,7 @@ LOGIC__FOOTER
     #message 21 "   TAB shows status screen. (see below)"
     #message 22 "Double clicking joystick button or\n right mouse button also shows status\n screen."
   #else
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       #message 6 " <shift> 5 saves your current game."
       #message 7 " <shift> 7 restores a saved game."
       #message 8 " <shift> 9 restarts the game."
@@ -200,7 +200,7 @@ LOGIC__FOOTER
     #message 21 "Double-clicking the joystick button\n or the right mouse button also\n initiates swimming."
   #endif
 #endif
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   #message 42 "Put mouse cursor where you want Sir"
   #message 43 "Graham to go, then click the button."
   #message 98 " For a hint book, call (209) 683-6858"

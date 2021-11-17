@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   if (said("examine", "room")) {
     print("A rapidly moving stream is flowing out of this lake.");
   }
@@ -42,7 +42,7 @@ else {
 if (said("examine", "lake")) {
   print("This is a beautiful little lake.");
 }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   if (said("examine", "flowers")) {
     print("The flowers are very beautiful.");
   }
@@ -137,7 +137,7 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
-    #if !VERSION_U && !VERSION_V
+    #if VERSION_MAJOR >= 2
       set(fSHOW_GOAT_LEFT_MESSAGE);
     #endif
   }
@@ -158,7 +158,7 @@ if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
 call(LOGIC101_SWIMMING);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if (posn(oEGO, 76, 49, 154, 167)) {
     set(fTHREAT_OF_SORCERER_OR_OGRE);
     set(fTENSE_SITUATION);
@@ -181,7 +181,7 @@ LOGIC__FOOTER
 #message 4 "This is a beautiful little lake."
 #message 5 "You have no container for water."
 #message 6 "The swift water pulls you down to your untimely demise."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 7 "The flowers are very beautiful."
   #message 8 "It seems the old goat has wandered off by himself and is no longer following you."
   #message 9 "A rapidly moving stream is flowing out of this lake."

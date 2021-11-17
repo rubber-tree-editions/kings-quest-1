@@ -1,9 +1,9 @@
 #word 0 a, all, an, another, antique, around, at, down, every, first, for, from, gingerbread, guess, i, in, into, is, little, me, now, of, off, old, on, out, over, please, second, sir, some, that, the, these, third, this, those, through, to, under, up, will, with, you, your
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 #word 0 hollow
 #endif
 #word 1 anyword
-#ifdef VERSION_F
+#if BUILD_TARGET == DOS
 #word 1 ANYWORD
 #endif
 #word 2 check, examine, look, see
@@ -60,7 +60,7 @@
 #word 53 island
 #word 54 kill, murder
 #word 55 flag, flags
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 #word 55 banner, banners
 #endif
 #word 56 waterfall
@@ -69,16 +69,16 @@
 #word 59 goat
 #word 60 call
 #word 61 carrot
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 #word 61 carrots
 #endif
 #word 62 "get in"
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 #word 62 "get into"
 #endif
 #word 63 gate
 #word 64 garden
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 #word 64 "carrot patch"
 #endif
 #word 65 elf
@@ -91,12 +91,12 @@
 #word 72 knob
 #word 73 unlock
 #word 74 clover, "four leaf clover", "fourleaf clover"
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 #word 74 "four-leaf clover"
 #endif
 #word 75 "gold key", key
 #word 76 cave
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 #word 76 cavern, chamber
 #endif
 #word 77 hall
@@ -106,12 +106,12 @@
 #word 81 chandelier, light
 #word 82 armor, kinghts, knight
 #word 83 bowl
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 #word 83 "ceramic bowl"
 #endif
 #word 84 pebbles
 #word 85 pump
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 #word 85 "water pump"
 #endif
 #word 86 ax, axe, hatchet
@@ -130,11 +130,11 @@
 #word 99 consume, eat
 #word 100 kitchen
 #word 101 cabinet, cupboard
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 #word 101 cabinets
 #endif
 #word 102 can
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 #word 102 cans
 #endif
 #word 103 table
@@ -142,7 +142,7 @@
 #word 105 pound
 #word 106 well
 #word 107 bottle
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 #word 107 bottles
 #endif
 #word 108 egg, "gold egg", "golden egg"
@@ -196,7 +196,7 @@
 #word 156 cut
 #word 157 "get out", leave
 #word 158 oven, stove
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 #word 158 woodstove
 #endif
 #word 159 normal
@@ -210,7 +210,7 @@
 #word 167 note
 #word 168 move, pull, push, shove
 #word 169 rumplestiltskin
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 #word 169 rumpelstiltskin
 #endif
 #word 170 nikstlitselpmur
@@ -247,7 +247,7 @@
 #word 201 point
 #word 202 let
 #word 203 "look in", "look inside"
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 #word 203 "look into"
 #endif
 #word 204 thank, "thank you"
@@ -298,7 +298,7 @@
 #word 249 lake, pond
 #word 250 oak
 #word 251 view
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 #word 252 curtain, curtains
 #word 253 shelf
 #word 254 roof
@@ -308,7 +308,7 @@
 #word 258 path
 #word 259 bedroom
 #endif
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 #word 260 kqdbg
 #endif
 #if RUBBER_TREE

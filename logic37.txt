@@ -38,7 +38,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   if (fSHOW_GOAT_LEFT_MESSAGE) {
     reset(fSHOW_GOAT_LEFT_MESSAGE);
     print("It seems the old goat has wandered off by himself and is no longer following you.");
@@ -100,7 +100,7 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
     set(fSHOW_GOAT_LEFT_MESSAGE);
 #endif
   }
@@ -120,7 +120,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_X > 5 && vTEMP_X < 150) {
     set(fTENSE_SITUATION);
@@ -146,7 +146,7 @@ LOGIC__FOOTER
 #message 2 "In your thirst, even swamp water is satisfying."
 #message 3 "This lake looks refreshing, but a little swampy."
 #message 4 "This is a very interesting tree, growing in the middle of the lake."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 5 "It seems the old goat has wandered off by himself and is no longer following you."
 #endif
 #endif

@@ -30,7 +30,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_BIRD);
     set(rfPLAYED_SND_BIRD);
     if (vBEANSTALK_ROOM == ROOM22_CONDOR_AND_CAVE) {
@@ -60,11 +60,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(74);
     load.view(105);
     load.logics(LOGIC104_BEANSTALK);
-    #if !VERSION_S
+    #if BUILD_TARGET != APPLE_IIGS
       load.sound(SND_BEANSTALK);
     #endif
   }
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     if (vPREV_ROOM_NO == ROOM70_BEANSTALK_NEAR_BOTTOM) {
       load.sound(SND_FALLING);
     }
@@ -93,7 +93,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_FROM_SKY);
   }
   random(0, 250, vTEMP_RESULT);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
   if (vTEMP_RESULT < 150 && !fTAKEN_BY_GIANT_BIRD) {
   #else
   if (vTEMP_RESULT < 125 && !fTAKEN_BY_GIANT_BIRD) {
@@ -119,7 +119,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     overlay.pic(vTEMP_PIC);
   }
   draw(oEGO);
-  #if VERSION_S || VERSION_F
+  #if BUILD_TARGET == DOS || BUILD_TARGET == APPLE_IIGS
     if (vPREV_ROOM_NO == ROOM21_WITCH_STOMPING_GROUND) {
       get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
       if (vTEMP_Y_2 > 78 && vTEMP_Y_2 < 96) {
@@ -132,11 +132,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   #endif
   show.pic();
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     rvCOUNTDOWN_TO_SND_BIRD = 25;
   #endif
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (rfBIRD_IS_HERE && rfPLAYED_SND_BIRD) {
   rvCOUNTDOWN_TO_SND_BIRD--;
   if (rvCOUNTDOWN_TO_SND_BIRD == 1) {
@@ -147,7 +147,7 @@ if (rfBIRD_IS_HERE && rfPLAYED_SND_BIRD) {
   }
 }
 #endif
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 if (said("examine", "room")) {
   print("A large cave is at the edge of this meadow.");
 }
@@ -157,7 +157,7 @@ if (fFALLING_TO_EARTH && !rfPLAYING_SND_FALLING) {
   set(f135_UNKNOWN);
   sound(SND_FALLING, rfFALLING_SOUND_PLAYED);
 }
-#if !VERSION_S && !VERSION_C && !VERSION_F
+#if VERSION_MAJOR < 2
   if (!rfFELL_FROM_SKY && rfFALLING_SOUND_PLAYED) {
     reset(rfPLAYING_SND_FALLING);
     reset(rfFALLING_SOUND_PLAYED);
@@ -184,7 +184,7 @@ if (vTEMP_RESULT_2 == 1 && !fFALLING_TO_EARTH && !fEGO_CLIMBING_BEANSTALK) {
   position(oBIRD, 7, 35);
   vCOUNTDOWN_LO = 250;
   vCOUNTDOWN_HI = 3;
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     sound(SND_FRIEND, fMISC_END_MARKER);
   #endif
   draw(oBIRD);
@@ -209,7 +209,7 @@ if (vCOUNTDOWN_LO == 1 && vCOUNTDOWN_HI == 0) {
 }
 if (!rfBIRD_AFRAID_OF_GOAT && rfBIRD_IS_HERE) {
   get.posn(oBIRD, vTEMP_X_3, vTEMP_Y_3);
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
   if (vTEMP_Y_3 > 115) {
   #else
   if (vTEMP_Y_3 > 110) {
@@ -228,12 +228,12 @@ distance(oEGO, oBIRD, vTEMP_RESULT_3);
 get.posn(oEGO, vTEMP_X_2, vTEMP_Y_2);
 get.posn(oBIRD, rvBIRD_X, rvBIRD_Y);
 rvBIRD_Y += 20;
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
 if (vTEMP_RESULT_3 > 20 && vTEMP_RESULT_3 < 35 && vTEMP_Y_2 > rvBIRD_Y && fJUMPING && !rfBIRD_AFRAID_OF_GOAT) {
 #else
 if (vTEMP_RESULT_3 > 20 && vTEMP_RESULT_3 < 30 && vTEMP_Y_2 > rvBIRD_Y && fJUMPING && !rfBIRD_AFRAID_OF_GOAT) {
 #endif
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     sound(SND_GIFT, fMISC_END_MARKER);
   #endif
   reset(fJUMPING);
@@ -244,7 +244,7 @@ if (vTEMP_RESULT_3 > 20 && vTEMP_RESULT_3 < 30 && vTEMP_Y_2 > rvBIRD_Y && fJUMPI
   set(fPLAYER_NOT_IN_CONTROL);
   ignore.horizon(oEGO);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     if (vTEMP_Y > 80) {
       vTEMP_Y -= 70;
     }
@@ -293,12 +293,12 @@ if (fCARRYING_MAGIC_BEANS && fINIT_BEANSTALK) {
     drop("beans");
     vSCORE += 2;
     print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!");
-    #if !VERSION_S
+    #if BUILD_TARGET != APPLE_IIGS
       sound(SND_BEANSTALK, rfPLAYED_SND_BEANSTALK);
     #endif
     overlay.pic(vTEMP_PIC);
     show.pic();
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       load.sound(SND_FALLING);
     #endif
   }
@@ -360,20 +360,20 @@ if (rfFELL_OFF_BEANSTALK_LOW) {
   rvCOUNTDOWN = 20;
   set(fCYCLE_EGO_ANIMATION);
   shake.screen(2);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
   if (!fSOUND_ENABLED)
   #endif
   {
     print("Ouch!");
   }
   set(f135_UNKNOWN);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     rvCOUNTDOWN_TO_SND_OUCH = 5;
   #else
     sound(SND_OUCH, fSOUND_END_MARKER);
   #endif
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if (rvCOUNTDOWN > 0) {
     rvCOUNTDOWN_TO_SND_OUCH--;
     if (rvCOUNTDOWN_TO_SND_OUCH == 1) {
@@ -453,7 +453,7 @@ LOGIC__FOOTER
 #message 13 "There is no beanstalk here to climb."
 #message 14 "Ouch!"
 #message 15 "This bird doesn't talk much."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 16 "A large cave is at the edge of this meadow."
 #endif
 #endif

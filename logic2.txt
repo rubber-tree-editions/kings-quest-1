@@ -24,12 +24,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   load.sound(SND_DOOR_OPENING);
 #endif
   load.logics(LOGIC101_SWIMMING);
   set.horizon(50);
-#if !VERSION_S
+#if BUILD_TARGET != APPLE_IIGS
   load.sound(SND_CASTLE_DOOR_FANFARE);
 #endif
   if (fGOAT_COMPANION) {
@@ -89,11 +89,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   wander(oGATOR1);
   wander(oGATOR2);
   show.pic();
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   rvGATOR_SOUND_COUNTDOWN = 2;
 #endif
 }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 if (said("examine", "room")) {
   print("You are standing outside a castle surrounded by an alligator filled moat.");
 }
@@ -102,7 +102,7 @@ if (rfINIT_LEAVING_CASTLE) {
   reset(rfINIT_LEAVING_CASTLE);
   start.update(oCASTLE_DOORS);
   reverse.loop(oCASTLE_DOORS, rfDOOR_FINISHED_CLOSING);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   sound(SND_DOOR_OPENING, fMISC_END_MARKER);
 #endif
 }
@@ -200,18 +200,18 @@ if (!fGOAT_COMPANION && !fNO_BUSINESS_WITH_KING) {
     if (posn(oEGO, 105, 120, 121, 128)) {
       set(rfDOORS_OPENING);
       start.update(oCASTLE_DOORS);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
       set(rfFANFARE_FINISHED);
 #else
       sound(SND_CASTLE_DOOR_FANFARE, rfFANFARE_FINISHED);
 #endif
       end.of.loop(oCASTLE_DOORS, rfDOORS_FINISHED_OPENING);
-      #if VERSION_V || VERSION_S || VERSION_C || VERSION_F
+      #if BUILD_TARGET != AMIGA
         stop.motion(oEGO);
       #endif
       set.priority(oEGO, 15);
       print("The huge doors swing open slowly.");
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
       sound(SND_DOOR_OPENING, fMISC_END_MARKER);
 #endif
       if (!fPOINTS_FOR_ENTERING_CASTLE) {
@@ -229,7 +229,7 @@ if (!fGOAT_COMPANION && !fNO_BUSINESS_WITH_KING) {
     }
   }
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (rfDOORS_FINISHED_OPENING && fMISC_END_MARKER) {
 #else
 if (rfDOORS_FINISHED_OPENING && rfFANFARE_FINISHED) {
@@ -310,7 +310,7 @@ if (fEGO_ON_WATER) {
 if (fEGO_ON_WATER && !rfINIT_GATOR_DEATH) {
   program.control();
   stop.motion(oEGO);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   follow.ego(oGATOR1, 10, rfGATOR1_CAUGHT_YOU);
   follow.ego(oGATOR2, 10, rfGATOR2_CAUGHT_YOU);
 #else
@@ -325,28 +325,28 @@ if (posn(oEGO, 61, 135, 63, 137) && !rfEATEN_BY_GATORS) {
   rvCOUNTDOWN = 45;
 }
 if (rfGATOR1_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   load.sound(SND_EATEN_BY_GATORS);
 #endif
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
   set(rfEATEN_BY_GATORS);
   rvCOUNTDOWN = 45;
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   set(fEATEN_BY_GATORS);
 #endif
 }
 if (rfGATOR2_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   load.sound(SND_EATEN_BY_GATORS);
 #endif
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
   set(rfEATEN_BY_GATORS);
   rvCOUNTDOWN = 45;
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   set(fEATEN_BY_GATORS);
 #endif
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (rfEATEN_BY_GATORS && rvCOUNTDOWN > 1) {
   if (rfGATOR1_CAUGHT_YOU || rfGATOR2_CAUGHT_YOU) {
     rvGATOR_SOUND_COUNTDOWN--;
@@ -357,7 +357,7 @@ if (rfEATEN_BY_GATORS && rvCOUNTDOWN > 1) {
   }
 }
 #endif
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (rfEATEN_BY_GATORS && rvCOUNTDOWN == 1) {
 #else
 if (rfEATEN_BY_GATORS && rvCOUNTDOWN < 1) {
@@ -420,7 +420,7 @@ LOGIC__FOOTER
 #message 26 "The moats slippery sides prevent you from getting out."
 #message 27 "What!  Are you crazy?"
 #message 28 "Your knock echos within the castle.  Unfortunately, no one answers."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 29 "You are standing outside a castle surrounded by an alligator filled moat."
 #endif
 #endif

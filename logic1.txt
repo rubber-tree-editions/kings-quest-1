@@ -15,10 +15,10 @@ LOGIC__HEADER
 #define oGATOR2 o12
 
 if (fROOM_SCRIPT_EXECUTED) {
-#if VERSION_V
+#if BUILD_TARGET == ATARI_ST
   set(fJOYSTICK_SENSITIVITY_ENABLED);
   vJOYSTICK_SENSITIVITY = 3;
-#elif VERSION_C
+#elif BUILD_TARGET == MACINTOSH
   set(fJOYSTICK_SENSITIVITY_ENABLED);
   disable.item(cNOTHING);
   set(fENABLE_MENU);
@@ -27,7 +27,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   clear.lines(22, 24, "");
   load.sound(SND_EATEN_BY_GATORS);
 #endif
@@ -72,7 +72,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(oEGO);
   call(LOGIC101_SWIMMING);
-#if VERSION_U
+#if BUILD_TARGET == AMIGA
   if (vPREV_ROOM_NO == ROOM83_TITLE_SCREEN) {
     submit.menu();
   }
@@ -80,11 +80,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
   status.line.on();
   accept.input();
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   rvGATOR_SOUND_COUNTDOWN = 2;
 #endif
 }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   if (said("examine", "room")) {
     print("You are standing outside a castle surrounded by an alligator filled moat.");
   }
@@ -190,7 +190,7 @@ if (fEGO_ON_WATER) {
 if (fEGO_ON_WATER && !rfINIT_GATOR_DEATH) {
   program.control();
   stop.motion(oEGO);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   follow.ego(oGATOR1, 10, rfGATOR1_CAUGHT_YOU);
   follow.ego(oGATOR2, 10, rfGATOR2_CAUGHT_YOU);
 #else
@@ -208,7 +208,7 @@ if (rfGATOR1_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
   set(rfEATEN_BY_GATORS);
   rvCOUNTDOWN = 45;
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   set(fEATEN_BY_GATORS);
 #endif
 }
@@ -216,11 +216,11 @@ if (rfGATOR2_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
   set(rfEATEN_BY_GATORS);
   rvCOUNTDOWN = 45;
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   set(fEATEN_BY_GATORS);
 #endif
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (rfEATEN_BY_GATORS && rvCOUNTDOWN > 1) {
   if (rfGATOR1_CAUGHT_YOU || rfGATOR2_CAUGHT_YOU) {
     rvGATOR_SOUND_COUNTDOWN--;
@@ -233,7 +233,7 @@ if (rfEATEN_BY_GATORS && rvCOUNTDOWN > 1) {
 #endif
 if (rfEATEN_BY_GATORS && rvCOUNTDOWN == 1) {
   rvCOUNTDOWN = 0;
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   stop.sound();
 #endif
   erase(oEGO);
@@ -282,7 +282,7 @@ LOGIC__FOOTER
 #message 13 "King Edward does not allow anyone to take his flowers."
 #message 14 "The moats slippery sides prevent you from getting out."
 #message 15 "What!  Are you crazy?"
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 16 "You are standing outside a castle surrounded by an alligator filled moat."
 #endif
 #endif

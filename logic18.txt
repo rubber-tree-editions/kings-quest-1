@@ -12,7 +12,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_FRIEND);
     load.sound(SND_POINTS);
   #endif
@@ -26,7 +26,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
   random(0, 250, vTEMP_RESULT);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
   if (vTEMP_RESULT < 95 && !fIMPRESSED_ELF) {
   #else
   if (vTEMP_RESULT < 85 && !fIMPRESSED_ELF) {
@@ -44,7 +44,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       random(0, 250, vTEMP_RESULT_3);
     } while (vTEMP_RESULT_3 > 90);
   }
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     if (vPREV_ROOM_NO == ROOM15_CARROT_PATCH_WEST) {
       get.posn(oEGO, vTEMP_X, vTEMP_Y);
       if (vTEMP_X > 100) {
@@ -61,7 +61,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if !VERSION_V && !VERSION_U
+#if VERSION_MAJOR >= 2
   if (fSHOW_GOAT_LEFT_MESSAGE) {
     reset(fSHOW_GOAT_LEFT_MESSAGE);
     print("It seems the old goat has wandered off by himself and is no longer following you.");
@@ -70,7 +70,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 vTEMP_RESULT_3--;
 if (vTEMP_RESULT_3 == 1) {
   reset(rfINIT_RANDOMIZER);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     sound(SND_FRIEND, fMISC_END_MARKER);
   #endif
   draw(oELF);
@@ -124,7 +124,7 @@ if (rfELF_IS_HERE) {
   }
   if (!rfELF_LEFT && (said("talk", "elf") || said("hello") || said("say", "hello"))) {
     if (vTEMP_RESULT_2 < 40) {
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         sound(SND_POINTS, fMISC_END_MARKER);
       #endif
       print("The elf, impressed by your friendliness, gives you a magic ring.  \"Kind person, know that once, only once, this ring will make you invisible,\" he says and then disappears.");
@@ -146,7 +146,7 @@ if (!fEGO_ON_WATER) {
 else {
   observe.blocks(oEGO);
 }
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
   block(100, 95, 139, 100);
 #endif
 if (!fEGO_ON_WATER) {
@@ -222,7 +222,7 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
-    #if !VERSION_U && !VERSION_V
+    #if VERSION_MAJOR >= 2
       set(fSHOW_GOAT_LEFT_MESSAGE);
     #endif
   }
@@ -242,7 +242,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if (posn(oEGO, 79, 60, 146, 167)) {
     set(fFALL_DANGER);
     set(fTENSE_SITUATION);
@@ -276,7 +276,7 @@ LOGIC__FOOTER
 #message 15 "There is a clear mountain lake and some trees here."
 #message 16 "Silly!  You can't get close enough to do that."
 #message 17 "You are too far away."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 18 "It seems the old goat has wandered off by himself and is no longer following you."
 #endif
 #endif

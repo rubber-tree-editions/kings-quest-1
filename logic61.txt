@@ -54,7 +54,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
     rvRESTORE_EGO_Y -= 5;
     rvRESTORE_EGO_DIR = vEGO_DIR;
   #endif
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     prevent.input();
     set(fEGO_PREOCCUPIED);
     set(fFALLING);
@@ -82,7 +82,7 @@ if (rfFALLING_SOUND_PLAYED) {
   reset(rfFALLING_SOUND_PLAYED);
   print("Oops!  You've missed the edge and fallen through the clouds.");
   set(fGAME_OVER);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     accept.input();
   #endif
 }
@@ -95,7 +95,7 @@ if (vEGO_EDGE_CODE == EDGE_RIGHT) {
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM60_CLOUDLANDS_SOUTHWEST);
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y > 150) {
     set(fFALL_DANGER);

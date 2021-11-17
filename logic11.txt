@@ -20,12 +20,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_FRIEND);
     load.sound(SND_GIFT);
   #endif
   set.horizon(41);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     rv1 = 20;
   #endif
   load.view(15);
@@ -38,16 +38,16 @@ if (fROOM_SCRIPT_EXECUTED) {
     !fGOAT_COMPANION
     && vROOM_YOU_KILLED_THE_GOAT_IN <= ROOM_NULL
     && !fGOAT_IS_GONE
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     && vGOAT_ROOM != ROOM10_GOAT_PEN_WEST
 #endif
   ) {
-    #if VERSION_S || VERSION_C || VERSION_F
+    #if VERSION_MAJOR >= 2
       vGOAT_ROOM = ROOM11_GOAT_PEN_EAST;
     #endif
     load.sound(SND_GOAT);
     load.view(14);
-    #if VERSION_S || VERSION_C || VERSION_F
+    #if VERSION_MAJOR >= 2
       set(rfGOAT_IS_HERE);
     #else
       rvCOUNTDOWN = 27;
@@ -55,9 +55,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oGOAT);
     set.view(oGOAT, 14);
     observe.blocks(oGOAT);
-    #if VERSION_S || VERSION_C || VERSION_F
+    #if VERSION_MAJOR >= 2
       position(oGOAT, 43, 97);
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         sound(SND_FRIEND, fMISC_END_MARKER);
       #endif
       draw(oGOAT);
@@ -80,7 +80,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (fGOAT_COMPANION) {
     set.view(oEGO, 67);
   }
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     if (vPREV_ROOM_NO == ROOM6_POUCH_STUMP) {
       get.posn(oEGO, vTEMP_X, vTEMP_Y);
       if (vTEMP_X < 46) {
@@ -89,12 +89,12 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   #endif
   draw(oEGO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     set(rfPLAYED_SND_GOAT);
   #endif
   show.pic();
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     if (said("examine", "goat")) {
       print("Lying lifeless on the ground you see a dead goat.");
@@ -127,7 +127,7 @@ if (posn(oEGO, 16, 153, 44, 155)) {
 if (posn(oEGO, 16, 156, 44, 158)) {
   reset(fINSIDE_GOAT_FENCE);
 }
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
   if (posn(oGOAT, 16, 153, 44, 155)) {
     reset(rfGOAT_FREE);
   }
@@ -149,7 +149,7 @@ if (said("open", "gate")) {
       move.obj(oGATE, 43, 156, 0, fGOAT_GATE_OPEN);
       reset(rfGATE_CLOSED);
       print("The gate is rather heavy, but you manage to open it.");
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         set(rfOPENED_OR_CLOSED_GATE);
       #endif
     }
@@ -174,7 +174,7 @@ if (said("close", "gate")) {
       start.update(oGATE);
       move.obj(oGATE, 17, 156, 0, rfGATE_CLOSED);
       reset(fGOAT_GATE_OPEN);
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         set(rfOPENED_OR_CLOSED_GATE);
       #endif
     }
@@ -189,7 +189,7 @@ if (said("close", "gate")) {
     print("The gate is already closed.");
   }
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (!rfGOAT_IS_HERE && vROOM_YOU_KILLED_THE_GOAT_IN != vROOM_NO) {
 #else
 if (!rfGOAT_IS_HERE) {
@@ -198,7 +198,7 @@ if (!rfGOAT_IS_HERE) {
     print("There is no goat here.");
   }
 }
-#if !VERSION_S && !VERSION_C && !VERSION_F
+#if VERSION_MAJOR < 2
   rvCOUNTDOWN--;
   if (rvCOUNTDOWN == 1) {
     set(rfGOAT_IS_HERE);
@@ -248,7 +248,7 @@ if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
         print("From here it will be very difficult to do such a  terrible thing.");
       }
       else {
-        #if VERSION_S
+        #if BUILD_TARGET == APPLE_IIGS
           reset(rfGOAT_IS_HERE);
         #endif
         erase(oGOAT);
@@ -284,7 +284,7 @@ if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
       print("You cannot do that from outside the fence.");
     }
   }
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     if (vOBJECT_EDGE_CODE == EDGE_LEFT && !rfGOAT_FREE) {
       erase(oGOAT);
       reset(rfGOAT_IS_HERE);
@@ -292,7 +292,7 @@ if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
     }
   #endif
 }
-#if !VERSION_S
+#if BUILD_TARGET != APPLE_IIGS
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     if (said("examine", "goat")) {
       print("Lying lifeless on the ground you see a dead goat.");
@@ -351,7 +351,7 @@ if (fINSIDE_GOAT_FENCE && rfGOAT_IS_HERE) {
     ) {
       if (vTEMP_RESULT_2 < 50) {
         if (!fTROLL_TOOK_TREASURE) {
-          #if VERSION_S
+          #if BUILD_TARGET == APPLE_IIGS
             sound(SND_GIFT, fMISC_END_MARKER);
           #endif
           print("When you tempt the old goat with the carrot, he starts to follow you.");
@@ -413,11 +413,11 @@ if (fEGO_INVISIBLE) {
     print("Since you are invisible, everything you own is invisible.  The goat cannot see the carrot.");
   }
 }
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
 if (rfGOAT_FREE)
 #endif
 {
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
   if (vOBJECT_EDGE_CODE == 2 || vOBJECT_EDGE_CODE == 3 || vOBJECT_EDGE_CODE == 4) {
   #else
   if (vOBJECT_EDGE_CODE == 2 || vOBJECT_EDGE_CODE == 3) {
@@ -427,7 +427,7 @@ if (rfGOAT_FREE)
       reset(rfGOAT_IS_HERE);
       set(fGOAT_IS_GONE);
       print("It seems the old goat has wandered off.");
-      #if VERSION_S || VERSION_C || VERSION_F
+      #if VERSION_MAJOR >= 2
         vGOAT_ROOM = ROOM_NULL;
       #endif
     }
@@ -435,12 +435,12 @@ if (rfGOAT_FREE)
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
   if (fGOAT_GATE_OPEN && !fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN <= ROOM_NULL && !fGOAT_IS_GONE
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
       && !fINSIDE_GOAT_FENCE
 #endif
   ) {
     set(fGOAT_IS_GONE);
-    #if VERSION_S || VERSION_C || VERSION_F
+    #if VERSION_MAJOR >= 2
       vGOAT_ROOM = ROOM_NULL;
     #endif
   }

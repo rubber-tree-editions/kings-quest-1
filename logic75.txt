@@ -20,7 +20,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_DOOR_OPENING);
   #endif
   if (vPREV_ROOM_NO == ROOM74_CAVE_CORNER) {
@@ -29,7 +29,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position.v(oEGO, vTEMP_X, vTEMP_Y);
   }
   if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       load.sound(SND_DOOR_CLOSED);
     #endif
     position(oEGO, 34, 125);
@@ -37,7 +37,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.objs(oEGO);
   load.view(95);
   if (!fRAT_IS_GONE) {
-    #if !VERSION_S
+    #if BUILD_TARGET != APPLE_IIGS
       load.sound(SND_VILLAIN);
     #endif
     load.view(45);
@@ -45,7 +45,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oRAT, 45);
     position(oRAT, 36, 127);
     set(rfRAT_IS_HERE);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       follow.ego(oRAT, 14, rfRAT_CAUGHT_YOU);
     #else
       follow.ego(oRAT, 15, rfRAT_CAUGHT_YOU);
@@ -54,7 +54,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     rvRAT_STEP_SIZE = 3;
     step.size(oRAT, rvRAT_STEP_SIZE);
   }
-  #if !VERSION_S
+  #if BUILD_TARGET != APPLE_IIGS
     load.sound(SND_DOOR_OPENING);
   #endif
   load.view(46);
@@ -74,7 +74,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oRAT);
   }
   draw(oEGO);
-  #if !VERSION_S
+  #if BUILD_TARGET != APPLE_IIGS
     show.pic();
   #endif
   if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
@@ -84,7 +84,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   else {
     stop.update(oDOOR);
   }
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     if (!fRAT_IS_GONE) {
       load.sound(SND_VILLAIN);
       load.sound(SND_RAT);
@@ -94,7 +94,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     show.pic();
   #endif
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if (rfRAT_CAUGHT_YOU) {
     set.view(oEGO, 95);
     print("Be careful around this rat next time!  He's dangerous!!");
@@ -116,7 +116,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (fMISC_END_MARKER_2) {
   reset(fMISC_END_MARKER_2);
   stop.update(oDOOR);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
       sound(SND_DOOR_CLOSED, fMISC_END_MARKER);
     }
@@ -124,7 +124,7 @@ if (fMISC_END_MARKER_2) {
 }
 if (rfRAT_IS_HERE) {
   reset(rfRAT_IS_HERE);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     sound(SND_VILLAIN, rfPLAYED_SND_VILLAIN);
   #else
     sound(SND_VILLAIN, fMISC_END_MARKER);
@@ -136,7 +136,7 @@ if (posn(oEGO, 0, 0, 54, 167)) {
 else {
   ignore.blocks(oEGO);
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (fEGO_INVISIBLE && !rfWARNED_RAT_CAN_SMELL_YOU && !fRAT_IS_GONE) {
 #else
 if (fEGO_INVISIBLE && !rfWARNED_RAT_CAN_SMELL_YOU) {
@@ -201,9 +201,9 @@ if (!fRAT_IS_GONE) {
     ) {
       if (
         fCARRYING_DIAMONDS &&
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         vTEMP_RESULT_2 > 14 &&
-      #elif VERSION_C || VERSION_F
+      #elif BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
         vTEMP_RESULT_2 > 15 &&
       #endif
        vTEMP_RESULT_2 < 35
@@ -225,9 +225,9 @@ if (!fRAT_IS_GONE) {
     || said("give", "golden egg", "rat")) {
     if (
       fCARRYING_GOLDEN_EGG &&
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       vTEMP_RESULT_2 > 14 &&
-    #elif VERSION_C || VERSION_F
+    #elif BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
       vTEMP_RESULT_2 > 15 &&
     #endif
       vTEMP_RESULT_2 < 35
@@ -246,9 +246,9 @@ if (!fRAT_IS_GONE) {
   if (said("give", "walnut") || said("give", "rat", "walnut") || said("give", "walnut", "rat")) {
     if (fCARRYING_WALNUT) {
       if (
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         vTEMP_RESULT_2 > 14 &&
-      #elif VERSION_C || VERSION_F
+      #elif BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
         vTEMP_RESULT_2 > 15 &&
       #endif
         vTEMP_RESULT_2 < 35
@@ -261,9 +261,9 @@ if (!fRAT_IS_GONE) {
     }
     if (fCARRYING_GOLD_WALNUT) {
       if (
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         vTEMP_RESULT_2 > 14 &&
-      #elif VERSION_C || VERSION_F
+      #elif BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
         vTEMP_RESULT_2 > 15 &&
       #endif
         vTEMP_RESULT_2 < 35
@@ -286,9 +286,9 @@ if (!fRAT_IS_GONE) {
   ) {
     if (
       fCARRYING_SCEPTRE &&
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       vTEMP_RESULT_2 > 14 &&
-    #elif VERSION_C || VERSION_F
+    #elif BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
       vTEMP_RESULT_2 > 15 &&
     #endif
       vTEMP_RESULT_2 < 35
@@ -316,9 +316,9 @@ if (!fRAT_IS_GONE) {
     }
     if (fCARRYING_SWISS_CHEESE) {
       if (
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         vTEMP_RESULT_2 > 14 &&
-      #elif VERSION_C || VERSION_F
+      #elif BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
         vTEMP_RESULT_2 > 15 &&
       #endif
         vTEMP_RESULT_2 < 35
@@ -346,7 +346,7 @@ if (rfRAT_LEFT) {
 if (said("count", "fingers") || said("examine", "fingers")) {
   print("You count your fingers and are relieved to see you still have all of them.");
 }
-#if !VERSION_S
+#if BUILD_TARGET != APPLE_IIGS
 if (rfRAT_CAUGHT_YOU) {
   set.view(oEGO, 95);
   print("Be careful around this rat next time!  He's dangerous!!");
@@ -358,7 +358,7 @@ distance(oEGO, oDOOR, vTEMP_RESULT_3);
 if (said("open", "doors")) {
   if (vTEMP_RESULT_3 < 25) {
     start.update(oDOOR);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
     if (!fSOUND_ENABLED) {
       print("The door slowly opens.");
     }
@@ -374,7 +374,7 @@ if (said("open", "doors")) {
     print("Get closer if you want to try.");
   }
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (rfDOOR_OPEN && fMISC_END_MARKER) {
 #else
 if (rfDOOR_OPEN) {
@@ -423,7 +423,7 @@ LOGIC__FOOTER
 #message 25 "The rat scrambles to the wall and seems to magically merge with it."
 #message 26 "That is a good idea, but you do not have any cheese."
 #message 27 "You count your fingers and are relieved to see you still have all of them."
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   #message 99 "BREAK"
 #endif
 #endif

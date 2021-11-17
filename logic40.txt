@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_FRIEND);
     load.sound(SND_POINTS);
   #endif
@@ -26,7 +26,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   call(LOGIC101_SWIMMING);
   ignore.blocks(oEGO);
   if (vGNOME_STATE <= GNOMESTATE_PRESENT) {
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       load.sound(SND_GIFT);
     #endif
     load.view(27);
@@ -61,7 +61,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oGOLD_KEY, 39, 118);
   }
   if (vGNOME_STATE <= GNOMESTATE_PRESENT) {
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       sound(SND_FRIEND, fMISC_END_MARKER);
     #endif
     draw(oGNOME);
@@ -145,7 +145,7 @@ if (rfGUESSING_GNOMES_NAME) {
     goto(FINALCHECKS);
   }
   if (said("ifnkovhgroghprm")) {
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       sound(SND_GIFT, fMISC_END_MARKER);
     #endif
     erase(oGNOME);
@@ -219,7 +219,7 @@ if (!rfGNOME_IS_HERE) {
         print("That's too far away.");
       }
       else {
-        #if VERSION_S
+        #if BUILD_TARGET == APPLE_IIGS
           sound(SND_POINTS, fMISC_END_MARKER);
         #endif
         print("Being careful that you get every one of them, you place the beans in your pocket.");
@@ -248,7 +248,7 @@ if (!rfGNOME_IS_HERE) {
         print("That's too far away.");
       }
       else {
-        #if VERSION_S
+        #if BUILD_TARGET == APPLE_IIGS
           sound(SND_POINTS, fMISC_END_MARKER);
         #endif
         print("It is heavy and cold.");

@@ -30,7 +30,7 @@ if (said("talk", "woodcutter") || said("talk", "wife")) {
     print("You can't do that now.");
   }
 }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 if (said("examine", "woodcutter") || said("examine", "wife")) {
   if (posn(oEGO, 11, 119, 45, 146)) {
     print("Perhaps you should go inside the house for a better look.");
@@ -93,7 +93,7 @@ LOGIC__FOOTER
 #message 7 "You should really try to find the door."
 #message 8 "You need to go inside to do that."
 #message 9 "You can't do that now."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 10 "Perhaps you should go inside the house for a better look."
 #endif
 #endif

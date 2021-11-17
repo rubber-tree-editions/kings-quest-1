@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(46);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_RUSHING_WATER);
   #endif
   load.logics(LOGIC101_SWIMMING);
@@ -31,7 +31,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       move.obj(oEGO, 2, 47, 1, fMISC_END_MARKER);
     }
   }
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     if (vPREV_ROOM_NO == ROOM10_GOAT_PEN_WEST) {
       get.posn(oEGO, vTEMP_X, vTEMP_Y);
       if (vTEMP_X > 19) {
@@ -52,16 +52,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     set(rfPLAYED_SND_RUNNING_WATER);
   #endif
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if (!fEGO_ON_WATER && rfPLAYED_SND_RUNNING_WATER && !fEGO_PLAYING_FIDDLE) {
     sound(SND_RUSHING_WATER, rfPLAYED_SND_RUNNING_WATER);
   }
 #endif
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   if (said("examine", "room")) {
     print("A rapidly flowing stream is pouring into this lake.");
   }
@@ -141,7 +141,7 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
-    #if !VERSION_U && !VERSION_V
+    #if VERSION_MAJOR >= 2
       set(fSHOW_GOAT_LEFT_MESSAGE);
     #endif
   }
@@ -162,7 +162,7 @@ if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
 call(LOGIC101_SWIMMING);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if (posn(oEGO, 0, 65, 77, 167)) {
     set(fTHREAT_OF_SORCERER_OR_OGRE);
     set(fTENSE_SITUATION);
@@ -187,7 +187,7 @@ LOGIC__FOOTER
 #message 6 "This is a beautiful little lake."
 #message 7 "You have no container for water."
 #message 8 "The swift water pulls you down to your untimely demise."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 9 "It seems the old goat has wandered off by himself and is no longer following you."
   #message 10 "A rapidly flowing stream is pouring into this lake."
 #endif

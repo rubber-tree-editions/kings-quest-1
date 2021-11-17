@@ -47,12 +47,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (fEGO_TOUCHED_TRIGGER_LINE && !fFALLING) {
 #else
 if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING) {
 #endif
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     prevent.input();
     set(fEGO_PREOCCUPIED);
     set(fFALLING);
@@ -84,7 +84,7 @@ if (rfPLAYED_SND_FALLING) {
   reset(rfPLAYED_SND_FALLING);
   print("So you're walking on clouds, huh?  Unfortunately, that's an impossible task that cost you your life!");
   erase(oEGO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     accept.input();
   #endif
   set(fGAME_OVER);
@@ -95,7 +95,7 @@ if (said("examine", "anyword")) {
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM56_CLOUDS_GRASS_EDGE);
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   set(fFALL_DANGER);
 #endif
 return;

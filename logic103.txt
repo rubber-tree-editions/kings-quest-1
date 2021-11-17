@@ -12,7 +12,7 @@ LOGIC__HEADER
 
 #define oGOAT o13
 
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
   #define fNO_GOAT_SWIM f66
 #else
   #define fNO_GOAT_SWIM fGOAT_WONT_SWIM
@@ -34,7 +34,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oGOAT);
     goto(ATRIVER);
   }
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     if (vROOM_NO == ROOM7_WATERFALL_LAKE_EAST && vPREV_ROOM_NO == ROOM10_GOAT_PEN_WEST && vTEMP_X < 20) {
       position(oGOAT, 1, 42);
       stop.motion(oGOAT);
@@ -72,7 +72,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   else {
     vTEMP_Y -= 1;
   }
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     if (vROOM_NO == ROOM16_CARROT_PATCH_EAST && vTEMP_Y == 59) {
       vTEMP_Y = 55;
     }
@@ -85,7 +85,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 distance(oEGO, oGOAT, rvDISTANCE_FROM_EGO_TO_GOAT);
 if (rvDISTANCE_FROM_EGO_TO_GOAT > 35) {
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     vTEMP_STEP_SIZE_2 = 1;
   #else
     vTEMP_STEP_SIZE_2 = 2;
@@ -137,7 +137,7 @@ if (fGOAT_NEAR_YOU) {
 }
 if (rvDISTANCE_FROM_EGO_TO_GOAT > 20 && vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE && !fNO_GOAT_SWIM) {
   if (
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     !fSWIMMING_IMPOSSIBLE_HERE &&
 #endif
     vROOM_NO != ROOM1_CASTLE_EAST
@@ -187,7 +187,7 @@ LOGIC__FOOTER
 #ifndef LOGIC_AS_C
 #message 1 "The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water."
 #message 2 "The goat, not being able to see you, wanders off."
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   #message 90 "BREAK0"
 #endif
 #endif

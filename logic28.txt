@@ -53,7 +53,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   if (said("examine", "room")) {
     print("You are near a little gingerbread house in a forest clearing.");
   }
@@ -134,14 +134,14 @@ if (!posn(oEGO, 40, 127, 70, 135)) {
     print("You will have to move closer to do that.");
   }
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (rfDOOR_OPENED && fMISC_END_MARKER) {
 #else
 if (rfDOOR_OPENED) {
 #endif
   new.room(ROOM65_IN_GINGERBREAD_HOUSE);
 }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   if (said("examine", "path")) {
     print("The path leads to the door.");
   }
@@ -211,7 +211,7 @@ LOGIC__FOOTER
 #message 16 "It is made of delicious chocolate chip cookies!"
 #message 17 "Yummy!"
 #message 18 "There is no answer from inside the house."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 19 "The path leads to the door."
   #message 20 "The path is around the corner."
   #message 21 "You are near a little gingerbread house in a forest clearing."

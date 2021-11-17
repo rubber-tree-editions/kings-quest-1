@@ -41,7 +41,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 if (said("examine", "room")) {
   print("There is a very large oak tree here with branches stretching to the sky.");
 }
@@ -51,7 +51,7 @@ if (fFALLING_OUT_OF_TREE && !rfPLAYING_SND_FALLING) {
   set(f135_UNKNOWN);
   sound(SND_FALLING, fSOUND_END_MARKER_2);
 }
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
 if (!rfFELL_OUT_OF_TREE && fSOUND_END_MARKER_2) {
   reset(fSOUND_END_MARKER_2);
   reset(rfPLAYING_SND_FALLING);
@@ -68,7 +68,7 @@ if (rfFELL_OUT_OF_TREE) {
   rvCOUNTDOWN = 20;
   set(fCYCLE_EGO_ANIMATION);
   shake.screen(2);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if (!fSOUND_ENABLED)
 #endif
   {
@@ -150,7 +150,7 @@ LOGIC__FOOTER
 #message 6 "The old goat is afraid of heights and refuses to climb the tree."
 #message 7 "OK"
 #message 8 "OUCH!"
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 9 "There is a very large oak tree here with branches stretching to the sky."
 #endif
 #endif

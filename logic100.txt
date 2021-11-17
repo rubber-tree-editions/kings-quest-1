@@ -8,7 +8,7 @@ vGAME_OVER_MESSAGE_COUNTDOWN--;
 if (vGAME_OVER_MESSAGE_COUNTDOWN == 1) {
   vGAME_OVER_MESSAGE_COUNTDOWN = 0;
   sound(SND_GAME_OVER, fMISC_END_MARKER);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if ((vROOM_NO == ROOM46_OGRE_STOMPING_GROUND) || (vROOM_NO == ROOM77_LEPRECHAUN_KING_THRONE_ROOM)) {
     load.view(114);
     erase(oEGO);
@@ -32,7 +32,7 @@ if (fGOAT_COMPANION) {
   stop.motion(oGOAT);
   stop.cycling(oGOAT);
 }
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
   if (said("quit") || controller(cQUIT)) {
     stop.sound();
     quit(0);
@@ -55,7 +55,7 @@ if (fGOAT_COMPANION) {
     status();
   }
 #endif
-#if VERSION_U
+#if BUILD_TARGET == AMIGA
   if (controller(cHELP)) {
     call(LOGIC92_HELP);
   }
@@ -118,7 +118,7 @@ LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
 #message 1 "We, at Sierra, wish to thank you for playing King's Quest. We are very sorry that you did not succeed and hope you will fare better next time. Good luck."
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
   #if RUBBER_TREE
     #message 2 "As you are dead, I can only permit you to: Restore Game,  Restart Game, Undo or Take Inventory. Sorry."
   #else
@@ -138,7 +138,7 @@ LOGIC__FOOTER
 #else
   #message 5 "As you will never get out of this cage alive, I can only permit you to: Restore Game, Restart Game or Take Inventory. Sorry."
 #endif
-#if VERSION_U
+#if BUILD_TARGET == AMIGA
   #message 6 "        King's Quest\n             by\n      Roberta Williams\n\n    Original version by\nArthur Abraham, Chuck Tingley\n        Ken McNeill\n\n        Graphics by\n Doug McNeill, Greg Rowland\n\n      This version by\n       Sol Ackerman\n\n(C) 1986 Sierra On-Line, Inc."
 #endif
 #endif

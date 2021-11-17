@@ -9,12 +9,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
   set.horizon(40);
 #else
   set.horizon(43);
 #endif
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   load.sound(SND_RUSHING_WATER);
 #endif
   load.logics(LOGIC101_SWIMMING);
@@ -35,11 +35,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   set(rfPLAYED_SND_RUSHING_WATER);
 #endif
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if (!rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_ON_WATER && !fEGO_PLAYING_FIDDLE && !posn(oEGO, 132, 59, 149, 69)) {
     sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
   }
@@ -88,7 +88,7 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && said("get", "water")) {
     print("You are not close enough to the Raging River.");
   }
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (posn(oEGO, 118, 50, 154, 80)) {
   set(fTENSE_SITUATION);
   set(fTHREAT_OF_SORCERER_OR_OGRE);

@@ -20,7 +20,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM) {
     position(oEGO, 132, 46);
     set.loop(oEGO, 1);
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
     move.obj(oEGO, 132, 46, 0, fMISC_END_MARKER);
 #else
     move.obj(oEGO, 131, 47, 0, fMISC_END_MARKER);
@@ -38,21 +38,21 @@ if (fGOAT_COMPANION) {
 if (said("examine", "stairway") || said("examine", "room")) {
   print("The stairs go up into the heart of the mountain.");
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (fEGO_TOUCHED_TRIGGER_LINE && !fFALLING) {
 #else
 if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING_OFF_STEPS) {
 #endif
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     set(fEGO_PREOCCUPIED);
     prevent.input();
     start.motion(oEGO);
   #endif
-  #if !VERSION_U && !VERSION_V
+  #if VERSION_MAJOR >= 2
     set(fTENSE_SITUATION);
     set(fTHREAT_OF_SORCERER_OR_OGRE);
   #endif
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     set(fFALLING);
   #else
     set(rfFALLING_OFF_STEPS);
@@ -75,7 +75,7 @@ if (rfFALLEN_OFF_STEPS) {
   print("Oops!  Those stairs are pretty slippery, aren't they?");
   erase(oEGO);
   set(fGAME_OVER);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     accept.input();
   #endif
 }
@@ -85,7 +85,7 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
 if (posn(oEGO, 16, 165, 31, 166)) {
   new.room(ROOM19_BASE_MOUNTAIN_DOOR);
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   set(fFALL_DANGER);
 #endif
 return;

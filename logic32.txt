@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(40);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   load.sound(SND_RUSHING_WATER);
 #endif
   if (fGOAT_COMPANION) {
@@ -19,7 +19,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 101, 137, 0, 0);
   }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   if (vPREV_ROOM_NO == ROOM33_RAGING_RIVER_SPLIT_BY_BOULDER) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_X > 130) {
@@ -35,12 +35,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   set(fSWIMMING_IMPOSSIBLE_HERE);
   ignore.blocks(oEGO);
   draw(oEGO);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   set(rfPLAYED_SND_RUSHING_WATER);
 #endif
   show.pic();
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if (!rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
     sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
   }

@@ -19,7 +19,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_WOLF);
     load.sound(SND_WOLF2);
     load.view(114);
@@ -57,7 +57,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   rvCOUNTDOWN--;
   if (rfPLAYED_SND_WOLF2 && rvCOUNTDOWN > 1) {
     sound(SND_WOLF2, rfPLAYED_SND_WOLF2);
@@ -83,7 +83,7 @@ if (vTEMP_RESULT_2 == 1) {
   draw(oWOLF);
   if (!fGOAT_COMPANION) {
     print("Look out for that wolf -- he can run very fast!   Don't let him catch you!");
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       follow.ego(oWOLF, 9, fVILLAIN_GOT_YOU);
     #else
       follow.ego(oWOLF, 12, fVILLAIN_GOT_YOU);
@@ -96,7 +96,7 @@ if (vTEMP_RESULT_2 == 1) {
     print("The wolf sees that menacing goat by your side and decides to keep his distance.");
   }
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   random(1, 9, rvRANDOM_CHANCE_OF_SND_WOLF);
   if (rfWOLF_IS_HERE && rvRANDOM_CHANCE_OF_SND_WOLF == 2 && fSOUND_END_MARKER && rvCOUNTDOWN <= 0) {
     sound(SND_WOLF, fSOUND_END_MARKER);
@@ -144,22 +144,22 @@ if (fVILLAIN_GOT_YOU) {
     set(rfPROTECTED);
   }
   else {
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       stop.motion(oEGO);
     #endif
     program.control();
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       rvCOUNTDOWN = 15;
     #endif
     print("It seems the wolf caught up with you and is discussing dinner arrangements.");
     erase(oWOLF);
     set.view(oEGO, 96);
     start.cycling(oEGO);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       stop.motion(oEGO);
     #endif
     set(fCYCLE_EGO_ANIMATION);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       sound(SND_WOLF2, rfPLAYED_SND_WOLF2);
     #else
       set(fGAME_OVER);
@@ -171,7 +171,7 @@ if (rfPROTECTED && vOBJECT_EDGE_CODE != 0) {
   reset(rfWOLF_IS_HERE);
   erase(oWOLF);
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (fGAME_OVER || rvCOUNTDOWN > 0) {
 #else
 if (fGAME_OVER) {
@@ -194,7 +194,7 @@ if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
 RETURN:
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     if (rfPLAYED_SND_WOLF2 && rvCOUNTDOWN > 1) {
       sound(SND_WOLF2, rfPLAYED_SND_WOLF2);
     }

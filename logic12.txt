@@ -22,11 +22,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_POINTS);
   #endif
   set.horizon(46);
-  #if !VERSION_S
+  #if BUILD_TARGET != APPLE_IIGS
     load.sound(SND_FALLING);
   #endif
   load.sound(SND_WELL_HANDLE_TURNING);
@@ -65,7 +65,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oROPE);
     set.view(oROPE, 17);
     ignore.blocks(oROPE);
-    #if VERSION_S || VERSION_C || VERSION_F
+    #if VERSION_MAJOR >= 2
       ignore.objs(oROPE);
     #endif
     position(oROPE, 43, 147);
@@ -139,7 +139,7 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         else {
           set.view(oEGO, 74);
         }
-        #if VERSION_S || VERSION_C || VERSION_F
+        #if VERSION_MAJOR >= 2
           vEGO_DIR = DIR_NONE;
         #endif
         position(oEGO, 39, 131);
@@ -163,7 +163,7 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         || said("go", "bucket")
         || said("go", "well")
         || said("go down", "well")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
         || said("get in", "bucket")
 #endif
       ) {
@@ -178,14 +178,14 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         stop.cycling(oBUCKET);
         draw(oBUCKET);
         set(fIN_WELL_BUCKET);
-        #if !VERSION_S
+        #if BUILD_TARGET != APPLE_IIGS
           sound(SND_WELL_HANDLE_TURNING, rfPLAYED_SND_WELL_HANDLE_TURNING);
         #endif
         end.of.loop(oBUCKET, rfBUCKET_DESCENDED_WITH_YOU_IN_IT);
         start.update(oHANDLE);
         start.cycling(oHANDLE);
         print("After you are in the old bucket, your weight causes it to slowly descend.");
-        #if VERSION_S
+        #if BUILD_TARGET == APPLE_IIGS
           sound(SND_WELL_HANDLE_TURNING, rfPLAYED_SND_WELL_HANDLE_TURNING);
         #endif
       }
@@ -194,7 +194,7 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
       if (
         said("climb", "bucket")
         || said("go", "bucket")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
         || said("get in", "bucket")
 #endif
       ) {
@@ -205,7 +205,7 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
       if (
         said("climb", "bucket")
         || said("go", "bucket")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
         || said("get in", "bucket")
 #endif
       ) {
@@ -234,7 +234,7 @@ if (!posn(oEGO, 10, 100, 75, 150)) {
     || said("jump", "well")
     || said("slide", "rope")
     || said("go", "bucket")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     || said("get in", "bucket")
 #endif
   ) {
@@ -254,7 +254,7 @@ if (fGOAT_COMPANION && !fEGO_INVISIBLE) {
     }
     if (
       said("go", "bucket")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
       || said("get in", "bucket")
 #endif
     ) {
@@ -282,7 +282,7 @@ if (fEGO_INVISIBLE) {
       || said("go down", "well")
       || said("slide", "rope")
       || said("jump", "well")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
       || said("get in", "bucket")
 #endif
     ) {
@@ -311,7 +311,7 @@ if (fON_WELL_ROPE) {
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_OFF_ROPE);
     print("You should be more careful the next time you try  climbing ropes.");
     set(f135_UNKNOWN);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       set(fSOUND_END_MARKER);
     #else
       sound(SND_FALLING, fSOUND_END_MARKER);
@@ -341,7 +341,7 @@ if (rfENTERED_WELL) {
     print("What a mistake you made!  This well is too deep to jump into.");
   }
   set(f135_UNKNOWN);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     set(fSOUND_END_MARKER);
   #else
     sound(SND_FALLING, fSOUND_END_MARKER);
@@ -360,7 +360,7 @@ if (fBUCKET_ROPE_CUT) {
 if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
   if (!fCARRYING_BUCKET && (
     said("get", "bucket")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     || said("untie", "bucket")
 #endif
   )) {
@@ -388,7 +388,7 @@ if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
 if (!fBUCKET_ROPE_CUT && fBUCKET_LOWERED) {
   if (
     said("lower", "bucket")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     || said("lower", "bucket", "well")
 #endif
   ) {
@@ -423,7 +423,7 @@ if (rfBUCKET_ASCENDED) {
 if (!fBUCKET_ROPE_CUT && !fBUCKET_LOWERED) {
   if (
     said("lower", "bucket") || said("lower", "rope")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     || said("lower", "bucket", "well") || said("lower", "rope", "well")
 #endif
   ) {
@@ -533,7 +533,7 @@ if (said("cut", "rope") || said("cut", "rope", "dagger")) {
       }
       set(fBUCKET_ROPE_CUT);
       get("water bucket");
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         sound(SND_POINTS, fMISC_END_MARKER);
       #endif
       print("With the rope cut, you are able to take the bucket.");
@@ -552,7 +552,7 @@ if (said("cut", "rope") || said("cut", "rope", "dagger")) {
 if (fROPE_GONE) {
   if (
     said("lower", "rope") || said("lower", "bucket")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     || said("lower", "rope", "well") || said("lower", "bucket", "well")
 #endif
   ) {
@@ -562,7 +562,7 @@ if (fROPE_GONE) {
 if (fBUCKET_ROPE_CUT && fROPE_DANGLING_IN_WELL) {
   if (
     said("lower", "rope")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     || said("lower", "rope", "well")
 #endif
   ) {
@@ -577,7 +577,7 @@ if (fBUCKET_ROPE_CUT && fROPE_DANGLING_IN_WELL) {
 if (fBUCKET_ROPE_CUT && !fROPE_DANGLING_IN_WELL) {
   if (
     said("lower", "rope")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     || said("lower", "rope", "well")
 #endif
   ) {

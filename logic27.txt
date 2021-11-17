@@ -16,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
 if (said("examine", "anyword")) {
 #else
 if (said("look around")) {

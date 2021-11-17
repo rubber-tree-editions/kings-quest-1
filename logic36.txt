@@ -16,13 +16,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 56, 83, 0, 0);
   }
   if (vPREV_ROOM_NO == ROOM78_IN_CAVE_WITH_TINY_HOLE) {
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
     vTINY_COUNTDOWN = 0;
 #endif
     vSCORE += 1;
     set.view(oEGO, 60);
     position(oEGO, 110, 131);
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
     move.obj(oEGO, 88, 131, 0, rfEGO_ESCAPED);
 #endif
   }
@@ -35,7 +35,7 @@ if (fEGO_TINY) {
 else {
   observe.blocks(oEGO);
 }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   if (rfEGO_ESCAPED) {
     set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
@@ -116,7 +116,7 @@ if (said("examine", "rocks")) {
   }
 }
 if (said("examine", "room")) {
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
   print("There are several pretty trees in the area and a few rocks.  One rock has a small hole in its base.");
 #else
   print("You notice a hole in the base of a large moss covered rock.");
@@ -159,7 +159,7 @@ LOGIC__FOOTER
 #message 11 "One rock has a small hole in its base."
 #message 12 "Go ahead.  Walk right in."
 #message 13 "You feel a stretching sensation... Oh, you're back to your original size."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 14 "You notice a hole in the base of a large moss covered rock."
 #endif
 #endif

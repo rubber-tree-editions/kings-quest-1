@@ -41,7 +41,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   if (fSHOW_GOAT_LEFT_MESSAGE) {
     reset(fSHOW_GOAT_LEFT_MESSAGE);
     print("It seems the old goat has wandered off by himself and is no longer following you.");
@@ -49,7 +49,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 #endif
 if (!fEGO_ON_WATER) {
   if (
-    #if VERSION_S || VERSION_C || VERSION_F
+    #if VERSION_MAJOR >= 2
       posn(oEGO, 32, 103, 103, 123)
     #else
       posn(oEGO, 32, 103, 102, 123)
@@ -123,7 +123,7 @@ if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_TOUCHED_TRIGGER_LINE) {
 }
 if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER && !fEGO_TOUCHED_TRIGGER_LINE) {
   vEGO_WATER_X = 255;
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
   if (posn(oEGO, 89, 109, 111, 121)) {
   #else
   if (posn(oEGO, 89, 109, 110, 121)) {
@@ -154,7 +154,7 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
-    #if !VERSION_U && !VERSION_V
+    #if VERSION_MAJOR >= 2
       set(fSHOW_GOAT_LEFT_MESSAGE);
     #endif
   }
@@ -174,7 +174,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_X < 113) {
     set(fTENSE_SITUATION);
@@ -198,7 +198,7 @@ LOGIC__FOOTER
 #message 3 "That's a dangerous proposition from here."
 #message 4 "This is a clear mountain lake with some steep cliffs surrounding it."
 #message 5 "You are not close enough to the water."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 6 "It seems the old goat has wandered off by himself and is no longer following you."
 #endif
 #endif

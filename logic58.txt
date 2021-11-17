@@ -56,7 +56,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.view(105);
   load.view(114);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_GIFT);
   #else
     load.sound(SND_VILLAIN);
@@ -66,7 +66,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   #endif
   rvZERO = 0;
   if (fCARRYING_SLINGSHOT) {
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       load.sound(SND_KILL_GIANT);
     #endif
     load.view(102);
@@ -91,7 +91,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oGIANT);
     set.view(oGIANT, 36);
     position(oGIANT, 91, 71);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
     follow.ego(oGIANT, 6, rfGIANT_CAUGHT_YOU);
     #else
     follow.ego(oGIANT, 10, rfGIANT_CAUGHT_YOU);
@@ -129,18 +129,18 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(oGIANT);
   draw(oEGO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_GIANT2);
   #endif
   show.pic();
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     rvCOUNTDOWN_TO_SND_GIANT = 10;
   #endif
 }
 if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST || vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {
   if (!rfVILLAIN_SOUND_PLAYED) {
     set(rfVILLAIN_SOUND_PLAYED);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       sound(SND_GIANT2, rfPLAYED_SND_GIANT2);
     #else
       sound(SND_VILLAIN, fMISC_END_MARKER);
@@ -183,12 +183,12 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
     rvRESTORE_EGO_Y += 5;
     rvRESTORE_EGO_DIR = vEGO_DIR;
   #endif
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     stop.sound();
     set(fEGO_PREOCCUPIED);
   #endif
   set(fFALLING);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_FALLING);
   #endif
   reset(fEGO_TOUCHED_TRIGGER_LINE);
@@ -260,14 +260,14 @@ if (!fCARRYING_CHEST) {
         print("There is no way you can get the chest from here!");
       }
       else {
-        #if VERSION_S
+        #if BUILD_TARGET == APPLE_IIGS
           load.sound(SND_TREASURE);
         #endif
         erase(oGIANT);
         set.view(oGIANT, 68);
         stop.motion(oGIANT);
         draw(oGIANT);
-        #if VERSION_S
+        #if BUILD_TARGET == APPLE_IIGS
           sound(SND_TREASURE, fMISC_END_MARKER);
         #endif
         print("Very carefully, you slip the magic chest from the sleeping giant's arms.");
@@ -285,11 +285,11 @@ if (!fCARRYING_CHEST) {
         print("There is no way you can get the chest from here!");
       }
       else {
-        #if VERSION_S
+        #if BUILD_TARGET == APPLE_IIGS
           load.sound(SND_TREASURE);
         #endif
         erase(oCHEST);
-        #if VERSION_S
+        #if BUILD_TARGET == APPLE_IIGS
           sound(SND_TREASURE, fMISC_END_MARKER);
         #endif
         print("It's easy to take a magic chest from a dead giant.");
@@ -429,7 +429,7 @@ if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
     }
   }
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if (rfCLEAR_COUNTDOWN) {
     reset(rfCLEAR_COUNTDOWN);
     rvCOUNTDOWN_LO = 1;
@@ -437,7 +437,7 @@ if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
   }
 #endif
 if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 0) {
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_GIANT);
   #endif
   reset(rfGIANT_IS_AFTER_YOU);
@@ -449,7 +449,7 @@ if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 0) {
   draw(oGIANT);
   vGIANT_STATE = GIANTSTATE_ASLEEP_WITH_CHEST;
   if (!fPOINTS_FOR_TIRING_OUT_GIANT) {
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       sound(SND_GIFT, fMISC_END_MARKER);
     #endif
     set(fPOINTS_FOR_TIRING_OUT_GIANT);
@@ -458,7 +458,7 @@ if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 0) {
   print("What luck!  The huge giant fell fast asleep!");
 }
 if (vGIANT_STATE == GIANTSTATE_ASLEEP_WITH_CHEST || vGIANT_STATE == GIANTSTATE_ASLEEP_NO_CHEST) {
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     rvCOUNTDOWN_TO_SND_GIANT--;
     if (rvCOUNTDOWN_TO_SND_GIANT == 1) {
       rvCOUNTDOWN_TO_SND_GIANT = 20;
@@ -496,7 +496,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM61_CLOUDLANDS_SOUTH);
 }
 RETURN:
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y < 60) {
       set(fFALL_DANGER);
@@ -542,7 +542,7 @@ LOGIC__FOOTER
 #message 30 "The giant is sleeping with a chest."
 #message 31 "The giant lies dead on the ground and there is a chest beside him."
 #message 32 "The giant is to close for the slingshot to be effective.  I would suggest you RUN!"
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   #message 99 "BREAK"
 #endif
 #endif

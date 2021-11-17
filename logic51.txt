@@ -22,7 +22,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   if (!fTAKEN_MIRROR) {
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       load.sound(SND_TREASURE);
     #endif
     load.view(34);
@@ -34,7 +34,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(33);
     load.view(61);
     load.view(82);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       load.sound(SND_DRAGON2);
       load.sound(SND_DRAGON);
       load.sound(SND_MOVING_ROCK);
@@ -87,7 +87,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
       set.view(oDRAGON, 33);
       position(oDRAGON, 40, 120);
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         rvDRAGON_STEP_SIZE = 2;
       #else
         rvDRAGON_STEP_SIZE = 3;
@@ -95,7 +95,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       step.size(oDRAGON, rvDRAGON_STEP_SIZE);
       draw(oDRAGON);
       observe.blocks(oDRAGON);
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         follow.ego(oDRAGON, 13, rfDRAGON_GOT_YOU);
       #else
         follow.ego(oDRAGON, 20, rfDRAGON_GOT_YOU);
@@ -103,7 +103,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   }
   draw(oEGO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     set(fMISC_END_MARKER);
   #endif
   show.pic();
@@ -122,7 +122,7 @@ if (vTEMP_X < 16) {
 }
 if (vDRAGON_STATE == DRAGONSTATE_NORMAL && !rfPLAYING_SND_VILLAIN) {
   set(rfPLAYING_SND_VILLAIN);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     sound(SND_DRAGON2, rfPLAYED_SND_VILLAIN);
   #else
     sound(SND_VILLAIN, rfPLAYED_SND_VILLAIN);
@@ -130,17 +130,17 @@ if (vDRAGON_STATE == DRAGONSTATE_NORMAL && !rfPLAYING_SND_VILLAIN) {
 }
 if (vDRAGON_STATE == DRAGONSTATE_NORMAL && rfPLAYED_SND_VILLAIN) {
   current.loop(oDRAGON, rvDRAGON_CURRENT_LOOP);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     current.cel(oDRAGON, rvTEMP_CEL);
   #endif
   if (rvDRAGON_CURRENT_LOOP == 0
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       && rvTEMP_CEL == 1 && fMISC_END_MARKER
     #endif
   ) {
     sound(SND_DRAGON, fMISC_END_MARKER);
   }
-  #if !VERSION_S
+  #if BUILD_TARGET != APPLE_IIGS
   else {
     stop.sound();
   }
@@ -149,7 +149,7 @@ if (vDRAGON_STATE == DRAGONSTATE_NORMAL && rfPLAYED_SND_VILLAIN) {
 if (rfDRAGON_GOT_YOU && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
   reset(rfDRAGON_GOT_YOU);
   set.view(oEGO, 82);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     wander(oDRAGON);
   #endif
   if (fCARRYING_SHIELD) {
@@ -302,7 +302,7 @@ if (!fCARRYING_MIRROR && !fTAKEN_MIRROR) {
         set(fCARRYING_MIRROR);
         set(fTAKEN_MIRROR);
         get("magic mirror");
-        #if VERSION_S
+        #if BUILD_TARGET == APPLE_IIGS
           sound(SND_TREASURE, fMISC_END_MARKER);
         #endif
         print("Carefully, you pick up the magic mirror.");
@@ -331,7 +331,7 @@ if (!fBUCKET_FILLED) {
   }
 }
 if (posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
   if (fCARRYING_DAGGER && said("throw", "dagger")) {
 #else
   if (fCARRYING_DAGGER && (said("throw", "dagger") || said("throw", "dagger", "dragon"))) {
@@ -359,7 +359,7 @@ if (!posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     || said("throw", "water", "dragon")
     || said("douse", "dragon")
   )) {
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       sound(SND_GIFT, fMISC_END_MARKER);
     #endif
     reset(fBUCKET_FILLED);
@@ -367,22 +367,22 @@ if (!posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     drop("water");
     vSCORE -= 2;
     vSCORE += 7;
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
     set.loop(oDRAGON, 1);
 #endif
     reset(fFILL_BUCKET_POINTS);
     move.obj(oDRAGON, 40, 137, 0, rfDRAGON_AT_BOULDER);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       ignore.objs(oDRAGON);
     #endif
     vDRAGON_STATE = DRAGONSTATE_ABSENT;
   }
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
   if (fCARRYING_DAGGER && said("throw", "dagger")) {
 #else
   if (fCARRYING_DAGGER && (said("throw", "dagger") || said("throw", "dagger", "dragon"))) {
 #endif
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       stop.sound();
       sound(SND_GIFT, fMISC_END_MARKER);
     #endif
@@ -405,7 +405,7 @@ if (!posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
 if (rfDRAGON_AT_BOULDER) {
   reset(rfDRAGON_AT_BOULDER);
   start.cycling(oBOULDER);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     sound(SND_MOVING_ROCK, fMISC_END_MARKER);
   #endif
   end.of.loop(oBOULDER, rfBOULDER_MOVED);

@@ -22,17 +22,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   prevent.input();
   rvCOUNTDOWN = 250;
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     rvNEXT_MSG_AT = 245;
     rvNEXT_MSG = 1;
     rvROW_COUNT = 1;
     rvMSG_Y = 12;
   #endif
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     rvBUSY_COUNTDOWN = 11;
   #endif
   set(fSOUND_ENABLED);
-  #if VERSION_C || VERSION_F
+  #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
     if (vVIDEO_MODE == 2) {
       display(24, 1, "(c) copyright SIERRA On-Line Inc.  1987");
     }
@@ -40,14 +40,14 @@ if (fROOM_SCRIPT_EXECUTED) {
       display(22, 1, "(c) copyright SIERRA On-Line Inc.  1987");
       display(24, 5, "Press any key to continue.");
     }
-  #elif VERSION_S
+  #elif BUILD_TARGET == APPLE_IIGS
     display(22, 1, "(C) Copyright 1987 Sierra On-Line Inc.");
     display(24, 5, "Press any key to continue.");
   #else
     display(22, 1, m19);
     display(24, 5, "Press any key to continue.");
   #endif
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
       set.key(KEY_ESC, 0, cSHOW_MENU);
     }
@@ -60,20 +60,20 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.key(KEY_CTRL_S, 0, cTOGGLESOUND);
   set.key(0, XKEY_F3, cPREVINPUT);
   set.key(KEY_CTRL_E, 0, cPREVINPUT);
-  #if VERSION_C || VERSION_F
+  #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
     set.key(0, XKEY_F4, cSEE_OBJECT);
-  #elif VERSION_S
+  #elif BUILD_TARGET == APPLE_IIGS
     set.key(0, XKEY_ALT_I, cSEE_OBJECT);
   #endif
   set.key(0, XKEY_F5, cSAVE);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     set.key(0, XKEY_ALT_P, cSHOWPRIORITY);
   #else
     set.key(0, XKEY_F6, cSHOWPRIORITY);
   #endif
   set.key(0, XKEY_F7, cRESTORE);
   set.key(0, XKEY_F9, cRESTART);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     set.key(0, XKEY_ALT_M, cSHOWMEM);
   #else
     set.key(0, XKEY_F10, cSHOWMEM);
@@ -83,12 +83,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.key(KEY_CTRL_J, 0, cINITJOYSTICK);
   set.key(KEY_CTRL_C, 0, cCLEARINPUT);
   set.key(KEY_CTRL_Y, 0, cCLEARINPUT);
-  #if !VERSION_S && !VERSION_F
-    #if VERSION_C
-      set.key(KEY_ESC, 0, cSHOW_MENU);
-    #else
-      set.key(KEY_ESC, 0, cPAUSE);
-    #endif
+  #if BUILD_TARGET == MACINTOSH
+    set.key(KEY_ESC, 0, cSHOW_MENU);
+  #elif BUILD_TARGET == AMIGA || BUILD_TARGET == ATARI_ST
+    set.key(KEY_ESC, 0, cPAUSE);
   #endif
   set.key(KEY_CTRL_R, 0, cTOGGLEGFX);
   set.key(0, XKEY_ALT_Z, cQUIT);
@@ -108,12 +106,12 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.key(KEY_7, 0, cRESTORE);
     set.key(KEY_9, 0, cRESTART);
   }
-#if !VERSION_S && !VERSION_F
+#if BUILD_TARGET != DOS && BUILD_TARGET != APPLE_IIGS
   set.key(1, 1, c0);
   set.key(1, 2, cSWIM);
   set.key(1, 4, cINVENTORY);
 #endif
-#if VERSION_U
+#if BUILD_TARGET == AMIGA
   set.menu("Info");
   set.menu.item("About King's Quest", cABOUT);
   set.menu.item("Help              ", cHELP);
@@ -142,7 +140,7 @@ if (!rfPLAYING_SND_TITLE_MUSIC) {
   sound(SND_TITLE_MUSIC, rfPLAYED_SND_TITLE_MUSIC);
 }
 rvCOUNTDOWN--;
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
 if (rvCOUNTDOWN == 245) {
   display(18, 12, "Designed and    ");
 }
@@ -411,16 +409,16 @@ if (rvCOUNTDOWN == 135) {
   display(18, 12, "    Scott Murphy ");
 }
 #endif
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if (rfPLAYED_SND_TITLE_MUSIC) {
     goto(JUMP);
   }
 #endif
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
   if (rvCOUNTDOWN == rvNEXT_MSG_AT) {
     rvMSG = rvNEXT_MSG;
     rvROW_INDEX = rvROW_COUNT;
-  #if VERSION_C || VERSION_F
+  #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
     if (vVIDEO_MODE == 2) {
       rvMSG_X = 19;
     }
@@ -430,7 +428,7 @@ if (rvCOUNTDOWN == 135) {
       rvMSG_X = 18;
     }
     LOOP:
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     do {
       rvBUSY_COUNTDOWN--;
     } while (rvBUSY_COUNTDOWN != 1);
@@ -449,7 +447,7 @@ if (rvCOUNTDOWN == 135) {
       rvROW_COUNT++;
     }
   }
-  #if VERSION_C || VERSION_F
+  #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
     if (rvCOUNTDOWN == 135) {
       rvNEXT_MSG_AT = 255;
       if (vVIDEO_MODE == 2) {
@@ -467,7 +465,7 @@ if (rvCOUNTDOWN == 135) {
     }
   #endif
 #endif
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   JUMP:
   if (have.key() || rfPLAYED_SND_TITLE_MUSIC) {
     stop.sound();
@@ -492,7 +490,7 @@ if (rvCOUNTDOWN == 135) {
   }
 #else
   if (have.key()) {
-    #if VERSION_C || VERSION_F
+    #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
     if (vVIDEO_MODE != 2)
     #endif
     {
@@ -500,7 +498,7 @@ if (rvCOUNTDOWN == 135) {
     }
     stop.sound();
     rvCOUNTDOWN = 0;
-    #if VERSION_F
+    #if BUILD_TARGET == DOS
       set.key(KEY_ESC, 0, cSHOW_MENU);
       if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST) {
         set.key(1, 1, cSHOW_MENU);
@@ -521,7 +519,7 @@ return;
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
   #message 1 "                "
   #message 2 "Designed and    "
   #message 3 "    Written by: "
@@ -561,7 +559,7 @@ LOGIC__FOOTER
   #message 16 "  Sol Ackerman  "
   #message 17 "   Chris Iden   "
   #message 18 "                "
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     #message 19 "IIGS Version by:"
     #message 20 " Carlos Escobar  "
     #message 21 "                "
@@ -600,11 +598,11 @@ LOGIC__FOOTER
     #message 25 "Press any key to continue."
   #endif  
 #endif
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
   #message 21 " Linda Ackerman  "
   #message 22 "KQ1"
 #endif
-#if VERSION_U
+#if BUILD_TARGET == AMIGA
   #message 25 "Game"
   #message 26 "Inventory     <Tab>"
   #message 27 "Pause         <Esc>"

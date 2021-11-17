@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_POINTS);
   #endif
   load.sound(SND_FALLING);
@@ -31,7 +31,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.priority(oEGO, 6);
   position(oEGO, 35, 164);
   observe.blocks(oEGO);
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   vEGO_DIR = 0;
 #endif
   if (rfSHOW_GOLDEN_EGG) {
@@ -71,7 +71,7 @@ if (!fTAKEN_GOLDEN_EGG) {
       get("gold egg");
       set(fTAKEN_GOLDEN_EGG);
       vSCORE += 6;
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         sound(SND_POINTS, fMISC_END_MARKER);
       #endif
       print("The golden egg is so heavy you almost drop it.");
@@ -121,7 +121,7 @@ if (posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT_OF_THE_TREE) {
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, fMISC_END_MARKER);
   }
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (fSOUND_END_MARKER) {
 #else
 if (fMISC_END_MARKER) {

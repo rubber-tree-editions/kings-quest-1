@@ -5,7 +5,7 @@ LOGIC__HEADER
 #define rvCOUNTDOWN_TO_SND_IN_WELL rv0
 #define rvGAME_OVER_COUNTDOWN rv1
 
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
   #define rfDEAD_AND_SUNK rf0
   #define rfDEAD rf1
 #else
@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_IN_WELL);
   #endif
   ignore.horizon(oEGO);
@@ -38,7 +38,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   }
   vCOUNTDOWN_LO = 250;
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
   vCOUNTDOWN_HI = 3;
 #else
   vCOUNTDOWN_HI = 2;
@@ -64,11 +64,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     vINVISIBLE_COUNTDOWN_LO = 0;
     vINVISIBLE_COUNTDOWN_HI = 0;
   }
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     rvCOUNTDOWN_TO_SND_IN_WELL = 30;
   #endif
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   rvCOUNTDOWN_TO_SND_IN_WELL--;
   if (rvCOUNTDOWN_TO_SND_IN_WELL == 1 && !rfDEAD) {
     rvCOUNTDOWN_TO_SND_IN_WELL = 30;
@@ -84,7 +84,7 @@ if (vCOUNTDOWN_LO == 0) {
 }
 if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI == 0 && !rfDEAD) {
   set(rfDEAD);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     rvGAME_OVER_COUNTDOWN = 20;
   #endif
   set.view(oEGO, 114);
@@ -98,7 +98,7 @@ if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI == 0 && !rfDEAD) {
     set(rfDEAD_AND_SUNK);
   }
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   rvGAME_OVER_COUNTDOWN--;
   if (rvGAME_OVER_COUNTDOWN == 1 || rfDEAD_AND_SUNK) {
     rvGAME_OVER_COUNTDOWN = 0;
@@ -153,7 +153,7 @@ LOGIC__FOOTER
 #message 2 "This looks like typical well water."
 #message 3 "It looks like this bottle has been here for a very long time."
 #message 4 "This is just an old, junky bottle.  You don't want it."
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
   #message 5 "You are at the bottom of th well.  Through the plants you spy what seems to be a hole in the side of the well."
 #else
   #message 5 "You are at the bottom of the well.  Through the plants you spy what seems to be a hole in the side of the well."
@@ -163,7 +163,7 @@ LOGIC__FOOTER
 #message 8 "The rusty old can has been here awhile."
 #message 9 "You have no use for this old can."
 #message 10 "Thrashing around in the water has caused you to lose the magic ring and become visible again."
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   #message 99 "BREAK"
 #endif
 #endif

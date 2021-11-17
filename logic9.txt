@@ -16,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-#ifdef VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   load.sound(SND_FRIEND);
 #endif
   rvFAIRY_GODMOTHER_SOUND_COUNTDOWN = 4;
@@ -42,19 +42,19 @@ rvFAIRY_GODMOTHER_SPEAKS_COUNTDOWN--;
 if (rvFAIRY_GODMOTHER_SPEAKS_COUNTDOWN == 1) {
   position(oFAIRY_GODMOTHER, 50, 80);
   draw(oFAIRY_GODMOTHER);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   sound(SND_FRIEND, fMISC_END_MARKER);
 #endif
   print("\"Gentle Sir Graham, I am your fairy godmother.  Your quest is indeed noble.  My small part to aid you can be no bigger than this magic spell, protective but for a little while.\"");
   follow.ego(oFAIRY_GODMOTHER, 25, rfFAIRY_GODMOTHER_CAUGHT_YOU);
   set(rfFAIRY_GODMOTHER_IS_HERE);
   set(fPROTECTED_BY_SPELL);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   rvFAIRY_GODMOTHER_LEAVING_COUNTDOWN = 200;
 #else
   rvFAIRY_GODMOTHER_LEAVING_COUNTDOWN = 250;
 #endif
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
   vSPELL_COUNTDOWN_HI = 100;
 #else
   vSPELL_COUNTDOWN_HI = 10;

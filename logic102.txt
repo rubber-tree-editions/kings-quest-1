@@ -315,7 +315,7 @@ if (!fCARRYING_MIRROR) {
     print("You do not have it.");
   }
 }
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
   if (fCARRYING_FIDDLE) if (said("play", "fiddle")) {
     print("You can't do that--at least not now!");
   }
@@ -340,7 +340,7 @@ if (said("anyword", "woman")) {
 if (said("examine")) {
   print(m13 /* "You need to be more specific." */);
 }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   if (said("examine", "river")) {
     print("The stream may not be safe to cross.");
   }
@@ -399,7 +399,7 @@ if (said("examine")) {
 #endif
 if (
   said("examine", "anyword")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
   || said("look around")
 #endif
 ) {
@@ -525,7 +525,7 @@ LOGIC__FOOTER
 #message 33 "You have better things to do than to play all day."
 #message 34 "What would you like to climb?"
 #message 35 "Well.  Go look for it."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 36 "This is a very beautiful tree."
   #message 37 "This is just a normal tree, but very pretty."
   #message 38 "You admire the beauty of the tree."

@@ -12,6 +12,31 @@
 
 #endif
 
+#define AMIGA 1
+#define ATARI_ST 2
+#define DOS 3
+#define MACINTOSH 4
+#define APPLE_IIGS 5
+
+#define BUILD_TARGET__FIRST 1
+#define BUILD_TARGET__LAST 5
+
+#ifdef BUILD_TARGET
+  #if !((BUILD_TARGET) >= BUILD_TARGET__FIRST && (BUILD_TARGET) <= BUILD_TARGET__LAST)
+    #error BUILD_TARGET must be one of AMIGA, ATARI_ST, DOS, MACINTOSH or APPLE_IIGS
+  #endif
+#else
+  #define BUILD_TARGET DOS
+#endif
+
+#ifndef VERSION_MAJOR
+  #if (BUILD_TARGET)==AMIGA || (BUILD_TARGET)==ATARI_ST
+    #define VERSION_MAJOR 1
+  #else
+    #define VERSION_MAJOR 2
+  #endif
+#endif
+
 #ifndef RUBBER_TREE
   #define RUBBER_TREE 1
 #endif
@@ -19,7 +44,7 @@
 #include "items.txt"
 #include "words.txt"
 
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
 #define iRING "ring"
 #else
 #define iRING "magic ring"
@@ -667,7 +692,7 @@
 #define ROOM80_IN_MID_AIR 80
 #define ROOM83_TITLE_SCREEN 83
 
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   #define GOAT_MOVE_CHECK (!fSCRIPTED_GOAT_MOVEMENT)
 #else
   #define GOAT_MOVE_CHECK 1

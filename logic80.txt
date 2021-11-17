@@ -14,14 +14,14 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   if (fCARRIED_BY_WITCH) {
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       load.sound(SND_CARRIED_BY_WITCH);
     #endif
     load.view(91);
     set.view(oEGO, 91);
     position(oEGO, 1, 60);
     move.obj(oEGO, 130, 60, 0, rfTO_WITCHS_HOUSE);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       rvCOUNTDOWN_TO_WITCH_SOUND = 35;
     #endif
   }
@@ -30,7 +30,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oEGO, 89);
     position(oEGO, 1, 60);
     move.obj(oEGO, 135, 60, 0, rfTO_LEPRECHAUN_HOLE);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       rvCOUNTDOWN_TO_BIRD_SOUND = 12;
       set(rfPLAYED_SND_BIRD);
       load.sound(SND_BIRD);
@@ -39,7 +39,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if (!fCARRIED_BY_WITCH && rfPLAYED_SND_BIRD) {
     rvCOUNTDOWN_TO_BIRD_SOUND--;
     if (rvCOUNTDOWN_TO_BIRD_SOUND == 1) {

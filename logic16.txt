@@ -8,13 +8,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   load.sound(SND_POINTS);
 #endif
   set.horizon(46);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y == 61) {
       vTEMP_Y = 60;
@@ -35,7 +35,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   if (said("examine", "room")) {
     print("You see an old stone wall surrounding a well kept garden.");
   }
@@ -47,21 +47,21 @@ if (said("examine", "garden")
 ) {
   print("This is a neat little carrot patch.  The plump carrots  look tempting.");
 }
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
 if (said("examine", "fence")) {
 #else
 if (said("examine", "fence") || said("examine", "wall")) {
 #endif
   print("It is a relatively low, native stone and masonry fence to the right and rear of a garden.");
 }
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
 if (said("climb", "fence")) {
 #else
 if (said("climb", "fence") || said("climb", "wall")) {
 #endif
   print("There is no reason to climb the fence.");
 }
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
 if (said("jump", "fence")) {
 #else
 if (said("jump", "fence") || said("jump", "wall")) {
@@ -74,7 +74,7 @@ if (posn(oEGO, 0, 57, 97, 78) || posn(oEGO, 0, 79, 117, 102) || posn(oEGO, 0, 10
 else {
   reset(rfON_CARROT_PATCH);
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y < 60) {
     reset(rfON_CARROT_PATCH);
@@ -92,7 +92,7 @@ if (rfON_CARROT_PATCH) {
     print("There are many large, plump carrots in the garden.");
   }
   if (!fCARRYING_CARROT && said("get", "carrot")) {
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
     sound(SND_POINTS, fMISC_END_MARKER);
 #endif
     print("You pluck a delicious looking carrot from the fertile soil.");
@@ -147,7 +147,7 @@ LOGIC__FOOTER
 #message 7 "They are buried in the ground.  You must get closer to see them."
 #message 8 "You cannot do that from here."
 #message 9 "You do not have a carrot to eat."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 10 "You see an old stone wall surrounding a well kept garden."
 #endif
 #endif

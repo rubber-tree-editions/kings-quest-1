@@ -24,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_DYING_KING);
     load.sound(SND_TITLE_MUSIC);
   #endif
@@ -39,9 +39,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(85);
   load.view(98);
   load.view(142);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_KING);
-  #elif VERSION_C || VERSION_F
+  #elif BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
     load.sound(SND_TITLE_MUSIC);
   #endif
   animate.obj(oKING);
@@ -51,7 +51,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   stop.cycling(oKING);
   draw(oEGO);
   show.pic();
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     if (!fSPOKEN_TO_KING) {
       sound(SND_KING, rfPLAYED_SOUND);
     }
@@ -69,7 +69,7 @@ if (rfKING_EDWARD_DEAD) {
 if (fYOU_WON) {
   goto RETURN;
 }
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
 if (said("examine", "man")) {
   print("That man is the King.");
 }
@@ -106,7 +106,7 @@ if (rvCOUNTDOWN > 0) {
       move.obj(oEGO, 67, 82, 0, rfFINISHED_MOVING_ASIDE);
     }
     else {
-      #if VERSION_S || VERSION_C || VERSION_F
+      #if VERSION_MAJOR >= 2
         move.obj(oEGO, 50, 110, 0, rfFINISHED_MOVING_ASIDE2);
       #else
         move.obj(oEGO, 60, 105, 0, rfFINISHED_MOVING_ASIDE2);
@@ -116,7 +116,7 @@ if (rvCOUNTDOWN > 0) {
   }
   if (rfFINISHED_MOVING_ASIDE) {
     reset(rfFINISHED_MOVING_ASIDE);
-    #if VERSION_S || VERSION_C || VERSION_F
+    #if VERSION_MAJOR >= 2
       move.obj(oEGO, 50, 110, 0, rfFINISHED_MOVING_ASIDE2);
     #else
       move.obj(oEGO, 60, 105, 0, rfFINISHED_MOVING_ASIDE2);
@@ -152,7 +152,7 @@ if (rvCOUNTDOWN > 0) {
       draw(oKING);
       end.of.loop(oKING, rfKING_EDWARD_DEAD);
       print("\"Oh!... Oh!!\"  the King proclaims in pain!");
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         sound(SND_DYING_KING, fMISC_END_MARKER);
       #endif
       if (said("examine", "king")) {
@@ -172,7 +172,7 @@ if (rvCOUNTDOWN > 0) {
     if (rvCOUNTDOWN == 105) {
       program.control();
       print("The experiences of your quest will be invaluable to you as you begin your reign as King of Daventry!!");
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         stop.sound();
       #endif
       reset(fSCRIPTED_MOTION);
@@ -189,12 +189,12 @@ if (rfEGO_ON_THE_THRONE) {
   position(oEGO, 30, 85);
   set.view(oEGO, 142);
   draw(oEGO);
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     erase(oKING);
   #endif
   stop.motion(oEGO);
   prevent.input();
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     sound(SND_TITLE_MUSIC, rfPLAYED_SOUND);
   #endif
   print(m57);
@@ -371,7 +371,7 @@ if (rfEGO_FINISHED_BOWING) {
     vTEMP_RESULT_3 = 0;
   }
 }
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
 if (rfKING_ANIMATION_FINISHED) {
   reset(rfKING_ANIMATION_FINISHED);
   reverse.loop(oKING, fMISC_END_MARKER);
@@ -382,7 +382,7 @@ if (rfWAIT_FOR_KEY) {
   while (!have.key()) { }
   reset(rfWAIT_FOR_KEY);
   graphics();
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     end.of.loop(oKING, rfKING_ANIMATION_FINISHED);
   #endif
 }
@@ -448,9 +448,9 @@ LOGIC__FOOTER
 #message 54 "Press any key to continue."
 #message 55 "There is no need to bow again."
 #message 56 "Your concern for the old king won't allow you to move."
-#if VERSION_U || VERSION_V
+#if VERSION_MAJOR < 2
   #message 57 "    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stevenson                 Mark Crowe            Bob Ballew   Mikel Knight             Susan Lee          "
-#elif VERSION_S
+#elif BUILD_TARGET == APPLE_IIGS
   #message 57 "    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stephenson                 Mark Crowe            Bob Ballew   Carlos Escobar     Susan Lee    Russ Truelove         Dale Carlson        "
 #else
   #message 57 "    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stephenson                 Mark Crowe            Bob Ballew   Mikel Knight     Susan Lee    Russ Truelove         Larry Weissenborn   "
@@ -458,7 +458,7 @@ LOGIC__FOOTER
 #message 58 "The king cannot talk right now."
 #message 59 "That is no way to try and address King Edward."
 #message 60 "The spell to make you invisible has expired and you are once again visible."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 61 "That man is the King."
 #endif
 #endif

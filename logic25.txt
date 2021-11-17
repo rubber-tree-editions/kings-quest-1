@@ -27,12 +27,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_RUSHING_WATER);
   #endif
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       load.sound(SND_IMPACT);
     #endif
   }
@@ -47,11 +47,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     observe.blocks(oTROLL);
     set(rfTROLL_NEARBY);
     load.sound(SND_VILLAIN);
-    #if !VERSION_S
+    #if BUILD_TARGET != APPLE_IIGS
       load.sound(SND_TROLL);
     #endif
   }
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     if (vPREV_ROOM_NO == ROOM32_EAST_OF_FREE_BOWL) {
       get.posn(oEGO, vTEMP_X, vTEMP_Y);
       if (vTEMP_Y > 83 && vTEMP_Y < 101) {
@@ -60,12 +60,12 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   #endif
   draw(oEGO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     set(rfPLAYED_SND_RUSHING_WATER);
   #endif
   show.pic();
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   if (!rfSTUCK_IN_RIVER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
     sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
   }
@@ -73,7 +73,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 if (rfTROLL_IS_HERE && fSOUND_END_MARKER) {
   if (!rfTROLL_SOUND_PLAYING) {
     set(rfTROLL_SOUND_PLAYING);
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       set(rfTROLL_SOUND_PLAYED);
     #else
       sound(SND_TROLL, rfTROLL_SOUND_PLAYED);
@@ -118,21 +118,21 @@ if (!rfTROLL_IS_HERE) {
   if (said("give", "treasure")) {
     print("Why?  To what?");
   }
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
   if (fCARRYING_DIAMONDS) if (said("give", "pouch of diamonds")) {
   #else
   if (said("give", "pouch of diamonds") && fCARRYING_DIAMONDS) {
   #endif
     print("Why?  To what?");
   }
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
   if (fCARRYING_GOLDEN_EGG) if (said("give", "golden egg")) {
   #else
   if (said("give", "golden egg") && fCARRYING_GOLDEN_EGG) {
   #endif
     print("Why?  To what?");
   }
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
   if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) if (said("give", "walnut")) {
   #else
   if (said("give", "walnut")) if (fCARRYING_WALNUT || fCARRYING_GOLD_WALNUT) {
@@ -155,10 +155,10 @@ if (rfTROLL_NEARBY && fEGO_TOUCHED_TRIGGER_LINE) {
   }
 }
 if (rfTROLL_IS_HERE && fGOAT_COMPANION && !rfGOAT_APPROACHING_TROLL) {
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     prevent.input();
   #endif
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     normal.cycle(oGOAT);
   #endif
   distance(oEGO, oGOAT, rvDISTANCE_FROM_EGO_TO_GOAT);
@@ -168,7 +168,7 @@ if (rfTROLL_IS_HERE && fGOAT_COMPANION && !rfGOAT_APPROACHING_TROLL) {
   print("It is a well known fact that goats hate trolls intensely. You should move aside and let the goat take care of this nasty troll.");
   set(rfGOAT_APPROACHING_TROLL);
   set(fSCRIPTED_GOAT_MOVEMENT);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     reset(fGOAT_COMPANION);
     start.cycling(oGOAT);
   #endif
@@ -176,7 +176,7 @@ if (rfTROLL_IS_HERE && fGOAT_COMPANION && !rfGOAT_APPROACHING_TROLL) {
 }
 if (rfGOAT_AT_BRIDGE) {
   ignore.objs(oGOAT);
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
     ignore.blocks(oGOAT);
   #endif
   reset(rfGOAT_AT_BRIDGE);
@@ -186,18 +186,18 @@ if (rfGOAT_AT_BRIDGE) {
   move.obj.v(oGOAT, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfGOAT_AT_TROLL);
 }
 distance(oTROLL, oGOAT, vTEMP_RESULT);
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
 if (vTEMP_RESULT < 25 && !fGOAT_KILLED_TROLL) {
 #else
 if (vTEMP_RESULT < 20 && !fGOAT_KILLED_TROLL) {
 #endif
   print("The goat butts the troll right off the bridge, never to be seen in these parts again.");
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     sound(SND_IMPACT, fMISC_END_MARKER);
   #endif
   set(fGOAT_KILLED_TROLL);
   reset(rfTROLL_IS_HERE);
-  #if !VERSION_S
+  #if BUILD_TARGET != APPLE_IIGS
     reset(fGOAT_COMPANION);
   #endif
   erase(oTROLL);
@@ -210,7 +210,7 @@ if (vTEMP_RESULT < 20 && !fGOAT_KILLED_TROLL) {
 if (rfHIDE_GOAT) {
   reset(rfHIDE_GOAT);
   erase(oGOAT);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     accept.input();
   #endif
 }
@@ -286,7 +286,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
   ) {
     print("What type of treasure would you like to give the old troll?");
   }
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
   if (fCARRYING_DIAMONDS && GOAT_MOVE_CHECK)
   if (said("give", "pouch of diamonds")
     || said("give", "troll", "pouch of diamonds")
@@ -313,7 +313,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
       print("If you want to try that, you should get a little closer.");
     }
   }
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
   if (fCARRYING_SCEPTRE && GOAT_MOVE_CHECK)
   if (said("give", "sceptre")
     || said("give", "troll", "sceptre")
@@ -340,7 +340,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
       print("If you want to try that, you should get a little closer.");
     }
   }
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
   if (fCARRYING_GOLDEN_EGG && GOAT_MOVE_CHECK)
   if (said("give", "golden egg")
     || said("give", "troll", "golden egg")
@@ -367,7 +367,7 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
       print("If you want to try that, you should get a little closer.");
     }
   }
-  #if VERSION_S || VERSION_C || VERSION_F
+  #if VERSION_MAJOR >= 2
   if (fCARRYING_WALNUT)
   if (said("give", "walnut")
     || said("give", "troll", "walnut")

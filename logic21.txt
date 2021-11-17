@@ -34,7 +34,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   random(0, 250, vTEMP_RESULT);
   if (vTEMP_RESULT < 185 && vWITCH_STATE != WITCHSTATE_DEAD) {
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     rvWITCH_STEP_SIZE = 6;
 #else
     rvWITCH_STEP_SIZE = 4;
@@ -48,7 +48,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oWITCH, 3);
     ignore.horizon(oWITCH);
     ignore.blocks(oWITCH);
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     set.priority(oWITCH, 15);
 #endif
     set.loop(oWITCH, 1);
@@ -58,7 +58,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       random(0, 250, vTEMP_RESULT_2);
     } while (vTEMP_RESULT_2 > 90);
   }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vPREV_ROOM_NO == ROOM28_OUTSIDE_GINGERBREAD_HOUSE) {
     vTEMP_Y = 52;
@@ -71,11 +71,11 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 vTEMP_RESULT_2--;
 if (vTEMP_RESULT_2 == 1) {
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
   vTEMP_RESULT_2 = 0;
 #endif
   set(rfWITCH_IS_HERE);
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
   position(oWITCH, 80, 48);
 #else
   position(oWITCH, 80, 40);
@@ -85,7 +85,7 @@ if (vTEMP_RESULT_2 == 1) {
   sound(SND_VILLAIN, fSOUND_END_MARKER);
   if (!fGOAT_COMPANION) {
     print("It's a witch swooping through the sky... She's trying to catch you!  Look out!");
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
     follow.ego(oWITCH, 10, rfWITCH_GOT_YOU);
 #else
     follow.ego(oWITCH, 20, rfWITCH_GOT_YOU);
@@ -126,7 +126,7 @@ if (rfWITCH_GOT_YOU) {
   }
   else if (fEGO_DUCKING) {
     print("The witch missed you, this time.");
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     random(SWOOPDIR__FIRST, SWOOPDIR__LAST, rvWITCH_SWOOP_DIR);
 #else
     wander(oWITCH);
@@ -142,20 +142,20 @@ if (rfWITCH_GOT_YOU) {
     ignore.blocks(oEGO);
     ignore.horizon(oEGO);
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     if (vTEMP_Y > 120) {
       vTEMP_Y -= 50;
     }
 #endif
     vTEMP_X = 130;
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     set.priority(oEGO, 15);
 #endif
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, rvWITCH_STEP_SIZE, rfCARRIED_OFF);
     set(fCYCLE_EGO_ANIMATION);
   }
 }
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
   if (rvWITCH_SWOOP_DIR == SWOOPDIR_LEFT) {
     move.obj(oWITCH, 1, 24, 6, rfWITCH_REFOLLOW_EGO);
     rvWITCH_SWOOP_DIR = 0;
@@ -276,7 +276,7 @@ LOGIC__FOOTER
 #message 15 "Lucky for you that you are invisible, the witch can't find you."
 #message 16 "There is no way you can now."
 #message 17 "There is no reason to jump now."
-#if !VERSION_U && !VERSION_V
+#if VERSION_MAJOR >= 2
   #message 18 "Oh NO!!  She's back!!!"
 #endif
 #endif

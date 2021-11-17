@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(46);
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   load.sound(SND_RUSHING_WATER);
 #endif
   if (fGOAT_COMPANION) {
@@ -32,11 +32,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   set(rfPLAYED_SND_RUSHING_WATER);
 #endif
 }
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
 if (!rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
   sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
 }

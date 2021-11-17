@@ -42,7 +42,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_POINTS);
     load.sound(SND_FRIEND);
   #endif
@@ -50,7 +50,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(58);
   load.sound(SND_FALLING);
   load.sound(SND_FIDDLE_TUNE);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     load.sound(SND_GIFT);
   #endif
   if (fCARRYING_BOWL || fGIVEN_BOWL_TO_WOODCUTTER) {
@@ -72,7 +72,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.view(oWIFE, 58);
   position(oWIFE, 89, 115);
   stop.cycling(oWIFE);
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     sound(SND_FRIEND, fMISC_END_MARKER);
   #endif
   draw(oWOODCUTTER);
@@ -125,7 +125,7 @@ if (said("examine", "woodcutter")) {
 if (said("examine", "wife")) {
   print("The woodcutter's wife is skinny and poorly dressed.");
 }
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
 if (said("examine", "people")) {
   print("The woodcutter is thin and dressed in rags.");
   print("The woodcutter's wife is skinny and poorly dressed.");
@@ -184,7 +184,7 @@ if (said("help", "woodcutter") || said("help", "wife") || said("help", "people")
 }
 if (
   said("murder", "woodcutter") || said("murder", "wife") || said("murder", "people")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
   || said("attack", "anyword")
 #endif
 ) {
@@ -241,7 +241,7 @@ if (fCARRYING_DIAMONDS || fCARRYING_GOLDEN_EGG || fCARRYING_GOLD_WALNUT || fCARR
 if (
   fCARRYING_DIAMONDS && (
     said("give", "pouch of diamonds")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     || said("give", "pouch")
 #endif
   )
@@ -306,7 +306,7 @@ if (fCARRYING_CARROT && said("give", "carrot")) {
   vSCORE -= 2;
 }
 if (fCARRYING_MAGIC_BEANS && said("give", "magic beans")) {
-  #if VERSION_S
+  #if BUILD_TARGET == APPLE_IIGS
     sound(SND_GIFT, fMISC_END_MARKER);
   #endif
   print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
@@ -329,7 +329,7 @@ if (fCARRYING_BOWL) {
       || said("give", "bowl", "wife")
       || said("drop", "bowl", "table")
     ) {
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         sound(SND_GIFT, fMISC_END_MARKER);
       #endif
       set(fGIVEN_BOWL_TO_WOODCUTTER);
@@ -364,7 +364,7 @@ if (fCARRYING_BOWL) {
       || said("give", "stew", "wife")
       || said("drop", "stew", "table")
     ) {
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         sound(SND_GIFT, fMISC_END_MARKER);
       #endif
       set(fGIVEN_BOWL_TO_WOODCUTTER);
@@ -400,11 +400,11 @@ if (fGIVEN_BOWL_TO_WOODCUTTER) {
 if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_EMPTY) {
   if (
     said("fill") || said("say", "fill")
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
     || said("fill", "bowl")
 #endif
   ) {
-    #if VERSION_S
+    #if BUILD_TARGET == APPLE_IIGS
       sound(SND_GIFT, fMISC_END_MARKER);
     #endif
     erase(oBOWL);
@@ -447,7 +447,7 @@ if (!fFIDDLE_TAKEN) {
   }
   if (said("get", "fiddle")) {
     if (
-#if !VERSION_S && !VERSION_C && !VERSION_F
+#if VERSION_MAJOR < 2
       posn(oEGO, 120, 140, 158, 166) &&
 #endif
       !fWOODCUTTER_GIVEN_STEW) {
@@ -457,7 +457,7 @@ if (!fFIDDLE_TAKEN) {
       erase(oFIDDLE);
       set(fCARRYING_FIDDLE);
       set(fFIDDLE_TAKEN);
-      #if VERSION_S
+      #if BUILD_TARGET == APPLE_IIGS
         sound(SND_POINTS, fMISC_END_MARKER);
       #endif
       print("The polished wood feels like satin -- it seems to still vibrate from the last song it played.");
@@ -466,7 +466,7 @@ if (!fFIDDLE_TAKEN) {
     }
     if (
       !posn(oEGO, 120, 140, 158, 166)
-#if VERSION_S || VERSION_C || VERSION_F
+#if VERSION_MAJOR >= 2
       && fWOODCUTTER_GIVEN_STEW
 #endif
     ) {
@@ -478,7 +478,7 @@ if (fEGO_ON_WATER && !fFALLING) {
 #if RUBBER_TREE
   get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
 #endif
-#if VERSION_S
+#if BUILD_TARGET == APPLE_IIGS
   set(fEGO_PREOCCUPIED);
 #endif
   ignore.blocks(oEGO);
