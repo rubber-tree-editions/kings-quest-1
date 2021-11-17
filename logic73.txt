@@ -9,6 +9,7 @@ LOGIC__HEADER
 #define rfBECAME_FULL_SIZE_DURING_FALL rf4
 
 #define rvCOUNTDOWN rv0
+#define rvOUCH_COUNTDOWN rv1
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -52,7 +53,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
   #if VERSION_S
-    rv1 = 12;
+    rvOUCH_COUNTDOWN = 12;
   #endif
 }
 if (!rfFELL_INTO_CAVE && !rfPLAYING_SND_FALLING && vPREV_ROOM_NO == ROOM48_LEPRECHAUN_HOLE) {
@@ -91,7 +92,7 @@ if (rfFELL_INTO_CAVE) {
   rvCOUNTDOWN = 36;
   #if VERSION_S
     set(fSOUND_END_MARKER);
-    rv1 = 5;
+    rvOUCH_COUNTDOWN = 5;
   #else
     sound(SND_OUCH, fSOUND_END_MARKER);
   #endif
@@ -99,9 +100,9 @@ if (rfFELL_INTO_CAVE) {
 if (fSOUND_END_MARKER) {
   if (rvCOUNTDOWN > 0) {
     #if VERSION_S
-      rv1--;
-      if (rv1 == 1) {
-        rv1 = 5;
+      rvOUCH_COUNTDOWN--;
+      if (rvOUCH_COUNTDOWN == 1) {
+        rvOUCH_COUNTDOWN = 5;
         sound(SND_OUCH, fSOUND_END_MARKER);
       }
     #else

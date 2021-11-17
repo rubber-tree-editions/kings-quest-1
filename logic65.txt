@@ -23,6 +23,7 @@ LOGIC__HEADER
 #define rvCOUNTDOWN2 rv2
 #define rvCOUNTDOWN3 rv3
 #define rvDISTANCE_TO_WITCH rv4
+#define rvSTOP_SOUND_COUNTDOWN rv5
 
 #define oNOTE o1
 #define oCUPBOARD o2
@@ -164,8 +165,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
 }
 #if VERSION_S
-rv5--;
-if (rv5 == 1) {
+rvSTOP_SOUND_COUNTDOWN--;
+if (rvSTOP_SOUND_COUNTDOWN == 1) {
   stop.sound();
 }
 #endif
@@ -335,7 +336,7 @@ if (rfWITCH_AT_OVEN) {
 #endif
       print("Courageously, you manage to push the witch into the oven where she flashes and melts away into a harmless blob. Congratulations!");
 #if VERSION_S
-      rv5 = 7;
+      rvSTOP_SOUND_COUNTDOWN = 7;
 #endif
       vWITCH_STATE = WITCHSTATE_DEAD;
       rvCOUNTDOWN_LO = 0;

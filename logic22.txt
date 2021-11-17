@@ -13,11 +13,14 @@ LOGIC__HEADER
 #define rfFELL_FROM_SKY rf8
 #define rfPLAYING_SND_FALLING rf9
 #define rfPLAYED_SND_BEANSTALK rf10
+#define rfPLAYED_SND_BIRD rf11
 
 #define rvCOUNTDOWN rv0
 #define rvBIRD_STEP_SIZE rv1
 #define rvBIRD_X rv2
 #define rvBIRD_Y rv3
+#define rvCOUNTDOWN_TO_SND_BIRD rv4
+#define rvCOUNTDOWN_TO_SND_OUCH rv5
 
 #define oBIRD o1
 
@@ -29,7 +32,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   #if VERSION_S
     load.sound(SND_BIRD);
-    set(rf11);
+    set(rfPLAYED_SND_BIRD);
     if (vBEANSTALK_ROOM == ROOM22_CONDOR_AND_CAVE) {
       load.sound(SND_FALLING);
     }
@@ -130,16 +133,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   #endif
   show.pic();
   #if VERSION_S
-    rv4 = 25;
+    rvCOUNTDOWN_TO_SND_BIRD = 25;
   #endif
 }
 #if VERSION_S
-if (rfBIRD_IS_HERE && rf11) {
-  rv4--;
-  if (rv4 == 1) {
-    rv4 = 35;
+if (rfBIRD_IS_HERE && rfPLAYED_SND_BIRD) {
+  rvCOUNTDOWN_TO_SND_BIRD--;
+  if (rvCOUNTDOWN_TO_SND_BIRD == 1) {
+    rvCOUNTDOWN_TO_SND_BIRD = 35;
     if (!fTENSE_SITUATION && !fEGO_PLAYING_FIDDLE) {
-      sound(SND_BIRD, rf11);
+      sound(SND_BIRD, rfPLAYED_SND_BIRD);
     }
   }
 }
@@ -365,16 +368,16 @@ if (rfFELL_OFF_BEANSTALK_LOW) {
   }
   set(f135_UNKNOWN);
   #if VERSION_S
-    rv5 = 5;
+    rvCOUNTDOWN_TO_SND_OUCH = 5;
   #else
     sound(SND_OUCH, fSOUND_END_MARKER);
   #endif
 }
 #if VERSION_S
   if (rvCOUNTDOWN > 0) {
-    rv5--;
-    if (rv5 == 1) {
-      rv5 = 5;
+    rvCOUNTDOWN_TO_SND_OUCH--;
+    if (rvCOUNTDOWN_TO_SND_OUCH == 1) {
+      rvCOUNTDOWN_TO_SND_OUCH = 5;
       sound(SND_OUCH, fSOUND_END_MARKER);
     }
   }

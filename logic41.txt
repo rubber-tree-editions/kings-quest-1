@@ -16,6 +16,7 @@ LOGIC__HEADER
 #define rfGOAT_LEAVING rf11
 #define rfTROLL_SOUND_PLAYING rf12
 #define rfTROLL_SOUND_PLAYED rf13
+#define rfPLAYED_SND_RUSHING_WATER rf14
 
 #define rvTROLL_STEP_SIZE rv0
 #define rvDISTANCE_FROM_EGO_TO_GOAT rv1
@@ -54,13 +55,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(oEGO);
   #if VERSION_S
-    set(rf14);
+    set(rfPLAYED_SND_RUSHING_WATER);
   #endif
   show.pic();
 }
 #if VERSION_S
-  if (!rfSTUCK_IN_RIVER && rf14 && !fEGO_PLAYING_FIDDLE) {
-    sound(SND_RUSHING_WATER, rf14);
+  if (!rfSTUCK_IN_RIVER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
+    sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
   }
 #endif
 if (rfTROLL_IS_HERE && fSOUND_END_MARKER) {

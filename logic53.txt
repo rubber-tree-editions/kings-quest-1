@@ -11,6 +11,7 @@ LOGIC__HEADER
 #define rfKING_EDWARD_DEAD rf6
 #define rfEGO_ON_THE_THRONE rf7
 #define rfFINISHED_MOVING_ASIDE rf8
+#define rfKING_ANIMATION_FINISHED rf9
 #define rfPLAYED_SOUND rf10
 
 #define rvCOUNTDOWN rv0
@@ -371,8 +372,8 @@ if (rfEGO_FINISHED_BOWING) {
   }
 }
 #if VERSION_S || VERSION_C || VERSION_F
-if (rf9) {
-  reset(rf9);
+if (rfKING_ANIMATION_FINISHED) {
+  reset(rfKING_ANIMATION_FINISHED);
   reverse.loop(oKING, fMISC_END_MARKER);
 }
 #endif
@@ -382,7 +383,7 @@ if (rfWAIT_FOR_KEY) {
   reset(rfWAIT_FOR_KEY);
   graphics();
   #if VERSION_S || VERSION_C || VERSION_F
-    end.of.loop(oKING, rf9);
+    end.of.loop(oKING, rfKING_ANIMATION_FINISHED);
   #endif
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {

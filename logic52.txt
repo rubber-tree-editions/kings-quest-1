@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define rvCOUNTDOWN_TO_SND_IN_WELL rv0
+#define rvGAME_OVER_COUNTDOWN rv1
+
 #if VERSION_U || VERSION_V
   #define rfDEAD_AND_SUNK rf0
   #define rfDEAD rf1
@@ -62,13 +65,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     vINVISIBLE_COUNTDOWN_HI = 0;
   }
   #if VERSION_S
-    rv0 = 30;
+    rvCOUNTDOWN_TO_SND_IN_WELL = 30;
   #endif
 }
 #if VERSION_S
-  rv0--;
-  if (rv0 == 1 && !rfDEAD) {
-    rv0 = 30;
+  rvCOUNTDOWN_TO_SND_IN_WELL--;
+  if (rvCOUNTDOWN_TO_SND_IN_WELL == 1 && !rfDEAD) {
+    rvCOUNTDOWN_TO_SND_IN_WELL = 30;
     sound(SND_IN_WELL, fMISC_END_MARKER);
   }
 #endif
@@ -82,7 +85,7 @@ if (vCOUNTDOWN_LO == 0) {
 if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI == 0 && !rfDEAD) {
   set(rfDEAD);
   #if VERSION_S
-    rv1 = 20;
+    rvGAME_OVER_COUNTDOWN = 20;
   #endif
   set.view(oEGO, 114);
   print("Not even you can hold your breath forever.  The well bottom has become your eternal resting place.");
@@ -96,9 +99,9 @@ if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI == 0 && !rfDEAD) {
   }
 }
 #if VERSION_S
-  rv1--;
-  if (rv1 == 1 || rfDEAD_AND_SUNK) {
-    rv1 = 0;
+  rvGAME_OVER_COUNTDOWN--;
+  if (rvGAME_OVER_COUNTDOWN == 1 || rfDEAD_AND_SUNK) {
+    rvGAME_OVER_COUNTDOWN = 0;
     reset(rfDEAD_AND_SUNK);
     set(fGAME_OVER);
   }

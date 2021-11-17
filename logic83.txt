@@ -6,6 +6,14 @@ LOGIC__HEADER
 #define rfPLAYING_SND_TITLE_MUSIC rf1
 
 #define rvCOUNTDOWN rv0
+#define rvNEXT_MSG_AT rv1
+#define rvMSG rv2
+#define rvNEXT_MSG rv3
+#define rvROW_INDEX rv4
+#define rvROW_COUNT rv5
+#define rvMSG_X rv6
+#define rvMSG_Y rv7
+#define rvBUSY_COUNTDOWN rv8
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -15,13 +23,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   prevent.input();
   rvCOUNTDOWN = 250;
   #if VERSION_S || VERSION_C || VERSION_F
-    rv1 = 245;
-    rv3 = 1;
-    rv5 = 1;
-    rv7 = 12;
+    rvNEXT_MSG_AT = 245;
+    rvNEXT_MSG = 1;
+    rvROW_COUNT = 1;
+    rvMSG_Y = 12;
   #endif
   #if VERSION_S
-    rv8 = 11;
+    rvBUSY_COUNTDOWN = 11;
   #endif
   set(fSOUND_ENABLED);
   #if VERSION_C || VERSION_F
@@ -404,46 +412,46 @@ if (rvCOUNTDOWN == 135) {
 }
 #endif
 #if VERSION_S
-  if (rf0) {
+  if (rfPLAYED_SND_TITLE_MUSIC) {
     goto(JUMP);
   }
 #endif
 #if VERSION_S || VERSION_C || VERSION_F
-  if (rvCOUNTDOWN == rv1) {
-    rv2 = rv3;
-    rv4 = rv5;
+  if (rvCOUNTDOWN == rvNEXT_MSG_AT) {
+    rvMSG = rvNEXT_MSG;
+    rvROW_INDEX = rvROW_COUNT;
   #if VERSION_C || VERSION_F
     if (vVIDEO_MODE == 2) {
-      rv6 = 19;
+      rvMSG_X = 19;
     }
     else
   #endif
     {
-      rv6 = 18;
+      rvMSG_X = 18;
     }
     LOOP:
   #if VERSION_S
     do {
-      rv8--;
-    } while (rv8 != 1);
-    rv8 = 11;
+      rvBUSY_COUNTDOWN--;
+    } while (rvBUSY_COUNTDOWN != 1);
+    rvBUSY_COUNTDOWN = 11;
   #endif
-    display.v(rv6, rv7, rv2);
-    rv4--;
-    if (rv4 > 0) {
-      rv6--;
-      rv2--;
+    display.v(rvMSG_X, rvMSG_Y, rvMSG);
+    rvROW_INDEX--;
+    if (rvROW_INDEX > 0) {
+      rvMSG_X--;
+      rvMSG--;
       goto(LOOP);
     }
-    rv1 -= 5;
-    rv3++;
-    if (rv5 < 13) {
-      rv5++;
+    rvNEXT_MSG_AT -= 5;
+    rvNEXT_MSG++;
+    if (rvROW_COUNT < 13) {
+      rvROW_COUNT++;
     }
   }
   #if VERSION_C || VERSION_F
     if (rvCOUNTDOWN == 135) {
-      rv1 = 255;
+      rvNEXT_MSG_AT = 255;
       if (vVIDEO_MODE == 2) {
         clear.lines(24, 24, "");
         display(24, 5, "Press any key to continue.");
@@ -452,16 +460,16 @@ if (rvCOUNTDOWN == 135) {
   #else
     if (rvCOUNTDOWN == 40) {
       rvCOUNTDOWN = 250;
-      rv1 = 245;
-      rv3 = 1;
-      rv5 = 1;
-      rv7 = 12;
+      rvNEXT_MSG_AT = 245;
+      rvNEXT_MSG = 1;
+      rvROW_COUNT = 1;
+      rvMSG_Y = 12;
     }
   #endif
 #endif
 #if VERSION_S
   JUMP:
-  if (have.key() || rf0) {
+  if (have.key() || rfPLAYED_SND_TITLE_MUSIC) {
     stop.sound();
     rvCOUNTDOWN = 0;
     set.key(KEY_ESC, 0, cSHOW_MENU);

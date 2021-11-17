@@ -10,6 +10,7 @@ LOGIC__HEADER
 
 #define rvCOUNTDOWN rv0
 #define rvOGRE_STEP_SIZE rv1
+#define rvRANDOM_CHANCE_OF_SND_OGRE rv2
 
 #define oOGRE o1
 
@@ -18,7 +19,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(SND_DWARF);
+    load.sound(SND_OGRE);
     load.view(114);
   #endif
   if (fGOAT_COMPANION) {
@@ -52,9 +53,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (fGAME_OVER) {
     goto(RETURN);
   }
-  random(1, 11, rv2);
-  if (rv2 == 2 && rfOGRE_IS_HERE && fSOUND_END_MARKER) {
-    sound(SND_DWARF, fSOUND_END_MARKER);
+  random(1, 11, rvRANDOM_CHANCE_OF_SND_OGRE);
+  if (rvRANDOM_CHANCE_OF_SND_OGRE == 2 && rfOGRE_IS_HERE && fSOUND_END_MARKER) {
+    sound(SND_OGRE, fSOUND_END_MARKER);
   }
 #endif
 vTEMP_RESULT_2--;

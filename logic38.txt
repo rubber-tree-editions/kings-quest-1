@@ -10,6 +10,7 @@ LOGIC__HEADER
 #define rfPLAYED_SND_BEANSTALK rf5
 
 #define rvCOUNTDOWN rv0
+#define rvOUCH_COUNTDOWN rv1
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -245,16 +246,16 @@ if (rfFELL_FROM_BEANSTALK_LOW) {
   #endif
   set(f135_UNKNOWN);
   #if VERSION_S
-    rv1 = 5;
+    rvOUCH_COUNTDOWN = 5;
   #else
     sound(SND_OUCH, fSOUND_END_MARKER);
   #endif
 }
 #if VERSION_S
   if (rvCOUNTDOWN > 0) {
-    rv1--;
-    if (rv1 == 1) {
-      rv1 = 5;
+    rvOUCH_COUNTDOWN--;
+    if (rvOUCH_COUNTDOWN == 1) {
+      rvOUCH_COUNTDOWN = 5;
       sound(SND_OUCH, fSOUND_END_MARKER);
     }
   }

@@ -8,6 +8,7 @@ LOGIC__HEADER
 #define rfSWIMMING rf3
 #define rfPLAYING_SND_FALLING rf4
 #define rfFELL_FROM_ROPE rf5
+#define rfPLAYED_SND_FALLING rf7
 
 #define rvCOUNTDOWN rv0
 
@@ -135,7 +136,7 @@ if (fON_WELL_ROPE) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y > 115 && fBUCKET_LOWERED) {
     #if VERSION_S
-      sound(SND_FALLING, rf7);
+      sound(SND_FALLING, rfPLAYED_SND_FALLING);
     #endif
     reset(fON_WELL_ROPE);
     set(fFALLING_DOWN_WELL);
@@ -150,7 +151,7 @@ if (fON_WELL_ROPE) {
   }
   if (vTEMP_Y > 115 && fROPE_DANGLING_IN_WELL) {
     #if VERSION_S
-      sound(SND_FALLING, rf7);
+      sound(SND_FALLING, rfPLAYED_SND_FALLING);
     #endif
     reset(fON_WELL_ROPE);
     set(fFALLING_DOWN_WELL);
@@ -166,7 +167,7 @@ if (fON_WELL_ROPE) {
   if (vTEMP_X < 79 || vTEMP_X > 83) {
     if (vTEMP_Y > 70) {
       #if VERSION_S
-        sound(SND_FALLING, rf7);
+        sound(SND_FALLING, rfPLAYED_SND_FALLING);
       #endif
       reset(fON_WELL_ROPE);
       set(fFALLING_DOWN_WELL);
@@ -181,7 +182,7 @@ if (fON_WELL_ROPE) {
     }
     else {
       #if VERSION_S
-        sound(SND_FALLING, rf7);
+        sound(SND_FALLING, rfPLAYED_SND_FALLING);
       #endif
       reset(fON_WELL_ROPE);
       set(fFALLING_DOWN_WELL);

@@ -41,7 +41,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       stop.cycling(oGOAT);
       ignore.horizon(oGOAT);
       ignore.blocks(oGOAT);
-      set(rf20);
+      set(rfAPPROACHING_WATERFALL_LAKE_EDGE);
       draw(oGOAT);
       goto(ATRIVER);
     }

@@ -4,6 +4,7 @@ LOGIC__HEADER
 
 #define rfSHOW_MUSHROOM rf0
 #define rfPULLED_UNDERWATER rf1
+#define rfPLAYED_SND_RUSHING_WATER rf2
 
 #define oMUSHROOM o1
 
@@ -55,12 +56,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
   #if VERSION_S
-    set(rf2);
+    set(rfPLAYED_SND_RUSHING_WATER);
   #endif
 }
 #if VERSION_S
-  if (!rfPULLED_UNDERWATER && rf2 && !fEGO_PLAYING_FIDDLE) {
-    sound(SND_RUSHING_WATER, rf2);
+  if (!rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
+    sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
   }
 #endif
 if (fEGO_ON_WATER && !rfPULLED_UNDERWATER) {

@@ -3,6 +3,7 @@
 LOGIC__HEADER
 
 #define rfPULLED_UNDERWATER rf0
+#define rfPLAYED_SND_RUSHING_WATER rf1
 
 #define oPEBBLES o1
 
@@ -43,12 +44,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 #if VERSION_S
-  set(rf1);
+  set(rfPLAYED_SND_RUSHING_WATER);
 #endif
 }
 #if VERSION_S
-  if (!rfPULLED_UNDERWATER && rf1 && !fEGO_PLAYING_FIDDLE) {
-    sound(SND_RUSHING_WATER, rf1);
+  if (!rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
+    sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
   }
 #endif
 #if !VERSION_U && !VERSION_V

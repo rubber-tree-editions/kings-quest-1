@@ -11,6 +11,7 @@ LOGIC__HEADER
 
 #define rvDRAGON_STEP_SIZE rv0
 #define rvDRAGON_CURRENT_LOOP rv1
+#define rvTEMP_CEL rv2
 
 #define oMAGIC_MIRROR o1
 #define oBOULDER o2
@@ -130,11 +131,11 @@ if (vDRAGON_STATE == DRAGONSTATE_NORMAL && !rfPLAYING_SND_VILLAIN) {
 if (vDRAGON_STATE == DRAGONSTATE_NORMAL && rfPLAYED_SND_VILLAIN) {
   current.loop(oDRAGON, rvDRAGON_CURRENT_LOOP);
   #if VERSION_S
-    current.cel(oDRAGON, rv2);
+    current.cel(oDRAGON, rvTEMP_CEL);
   #endif
   if (rvDRAGON_CURRENT_LOOP == 0
     #if VERSION_S
-      && rv2 == 1 && fMISC_END_MARKER
+      && rvTEMP_CEL == 1 && fMISC_END_MARKER
     #endif
   ) {
     sound(SND_DRAGON, fMISC_END_MARKER);

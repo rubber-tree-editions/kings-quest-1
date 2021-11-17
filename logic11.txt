@@ -7,8 +7,11 @@ LOGIC__HEADER
 // unused: rf2
 #define rfPLAYING_SND_GOAT rf3
 #define rfPLAYED_SND_GOAT rf4
+#define rfGOAT_FREE rf5
+#define rfOPENED_OR_CLOSED_GATE rf6
 
 #define rvCOUNTDOWN rv0
+#define rvRANDOM_CHANCE_OF_SND_GOAT rv2
 
 #define oGATE o1
 #define oGOAT o13
@@ -100,9 +103,9 @@ if (fROOM_SCRIPT_EXECUTED) {
       print("You do not want to carry around a dead goat.");
     }
   }
-  random(1, 11, rf12);
+  random(1, 11, rvRANDOM_CHANCE_OF_SND_GOAT);
   if (rfGOAT_IS_HERE && !fGOAT_COMPANION && rfPLAYED_SND_GOAT && rv3 <= 0 && vROOM_YOU_KILLED_THE_GOAT_IN != vROOM_NO) {
-    if (rv2 == 2) {
+    if (rvRANDOM_CHANCE_OF_SND_GOAT == 2) {
       sound(SND_GOAT, rfPLAYED_SND_GOAT);
     }
   }
@@ -126,10 +129,10 @@ if (posn(oEGO, 16, 156, 44, 158)) {
 }
 #if VERSION_S || VERSION_C || VERSION_F
   if (posn(oGOAT, 16, 153, 44, 155)) {
-    reset(rf5);
+    reset(rfGOAT_FREE);
   }
   if (posn(oGOAT, 16, 156, 44, 158)) {
-    set(rf5);
+    set(rfGOAT_FREE);
   }
 #endif
 if (said("examine", "gate")) {
@@ -147,7 +150,7 @@ if (said("open", "gate")) {
       reset(rfGATE_CLOSED);
       print("The gate is rather heavy, but you manage to open it.");
       #if VERSION_S
-        set(rf6);
+        set(rfOPENED_OR_CLOSED_GATE);
       #endif
     }
     else {
@@ -172,7 +175,7 @@ if (said("close", "gate")) {
       move.obj(oGATE, 17, 156, 0, rfGATE_CLOSED);
       reset(fGOAT_GATE_OPEN);
       #if VERSION_S
-        set(rf6);
+        set(rfOPENED_OR_CLOSED_GATE);
       #endif
     }
     else {
@@ -282,7 +285,7 @@ if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
     }
   }
   #if VERSION_S || VERSION_C || VERSION_F
-    if (vOBJECT_EDGE_CODE == EDGE_LEFT && !rf5) {
+    if (vOBJECT_EDGE_CODE == EDGE_LEFT && !rfGOAT_FREE) {
       erase(oGOAT);
       reset(rfGOAT_IS_HERE);
       vGOAT_ROOM = ROOM10_GOAT_PEN_WEST;
@@ -411,7 +414,7 @@ if (fEGO_INVISIBLE) {
   }
 }
 #if VERSION_S || VERSION_C || VERSION_F
-if (rf5)
+if (rfGOAT_FREE)
 #endif
 {
   #if VERSION_S || VERSION_C || VERSION_F

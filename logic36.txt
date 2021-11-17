@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define rfEGO_ESCAPED rf0
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -23,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oEGO, 60);
     position(oEGO, 110, 131);
 #if !VERSION_U && !VERSION_V
-    move.obj(oEGO, 88, 131, 0, rf0);
+    move.obj(oEGO, 88, 131, 0, rfEGO_ESCAPED);
 #endif
   }
   draw(oEGO);
@@ -36,11 +36,11 @@ else {
   observe.blocks(oEGO);
 }
 #if !VERSION_U && !VERSION_V
-  if (rf0) {
+  if (rfEGO_ESCAPED) {
     set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
     reset(fEGO_TINY);
-    reset(rf0);
+    reset(rfEGO_ESCAPED);
   }
 #else
   if (vTINY_COUNTDOWN == 1 && fEGO_TINY) {

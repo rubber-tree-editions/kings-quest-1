@@ -8,6 +8,7 @@ LOGIC__HEADER
 #define rfINIT_GATOR_DEATH rf3
 
 #define rvCOUNTDOWN rv4
+#define rvGATOR_SOUND_COUNTDOWN rv5
 
 #define oBANNERS o1
 #define oGATOR1 o11
@@ -80,7 +81,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   status.line.on();
   accept.input();
 #if VERSION_S
-  rv5 = 2;
+  rvGATOR_SOUND_COUNTDOWN = 2;
 #endif
 }
 #if !VERSION_U && !VERSION_V
@@ -222,9 +223,9 @@ if (rfGATOR2_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
 #if VERSION_S
 if (rfEATEN_BY_GATORS && rvCOUNTDOWN > 1) {
   if (rfGATOR1_CAUGHT_YOU || rfGATOR2_CAUGHT_YOU) {
-    rv5--;
-    if (rv5 == 1) {
-      rv5 = 8;
+    rvGATOR_SOUND_COUNTDOWN--;
+    if (rvGATOR_SOUND_COUNTDOWN == 1) {
+      rvGATOR_SOUND_COUNTDOWN = 8;
       sound(SND_EATEN_BY_GATORS, fMISC_END_MARKER);
     }
   }

@@ -7,8 +7,11 @@ LOGIC__HEADER
 #define rfWARNED_RAT_CAN_SMELL_YOU rf2
 #define rfDOOR_OPEN rf3
 #define rfRAT_LEFT rf4
+#define rfPLAYED_SND_VILLAIN rf5
+#define rfPLAYED_SND_RAT rf6
 
 #define rvRAT_STEP_SIZE rv0
+#define rvCOUNTDOWN_TO_SND_RAT rv1
 
 #define oRAT o1
 #define oDOOR o2
@@ -85,8 +88,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (!fRAT_IS_GONE) {
       load.sound(SND_VILLAIN);
       load.sound(SND_RAT);
-      rv1 = 9;
-      set(rf6);
+      rvCOUNTDOWN_TO_SND_RAT = 9;
+      set(rfPLAYED_SND_RAT);
     }
     show.pic();
   #endif
@@ -99,13 +102,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     set(fGAME_OVER);
     goto RETURN;
   }
-  if (!fRAT_IS_GONE && rf5) {
-    rv1--;
-    if (rv1 == 1) {
-      random(5, 10, rv1);
+  if (!fRAT_IS_GONE && rfPLAYED_SND_VILLAIN) {
+    rvCOUNTDOWN_TO_SND_RAT--;
+    if (rvCOUNTDOWN_TO_SND_RAT == 1) {
+      random(5, 10, rvCOUNTDOWN_TO_SND_RAT);
       random(1, 8, vTEMP_RESULT);
-      if (vTEMP_RESULT == 2 && rf6) {
-        sound(SND_RAT, rf6);
+      if (vTEMP_RESULT == 2 && rfPLAYED_SND_RAT) {
+        sound(SND_RAT, rfPLAYED_SND_RAT);
       }
     }
   }
@@ -122,7 +125,7 @@ if (fMISC_END_MARKER_2) {
 if (rfRAT_IS_HERE) {
   reset(rfRAT_IS_HERE);
   #if VERSION_S
-    sound(SND_VILLAIN, rf5);
+    sound(SND_VILLAIN, rfPLAYED_SND_VILLAIN);
   #else
     sound(SND_VILLAIN, fMISC_END_MARKER);
   #endif

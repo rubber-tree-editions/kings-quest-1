@@ -3,6 +3,7 @@
 LOGIC__HEADER
 
 #define rfPULLED_UNDERWATER rf0
+#define rfPLAYED_SND_RUNNING_WATER rf1
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -52,12 +53,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
   #if VERSION_S
-    set(rf1);
+    set(rfPLAYED_SND_RUNNING_WATER);
   #endif
 }
 #if VERSION_S
-  if (!fEGO_ON_WATER && rf1 && !fEGO_PLAYING_FIDDLE) {
-    sound(SND_RUSHING_WATER, rf1);
+  if (!fEGO_ON_WATER && rfPLAYED_SND_RUNNING_WATER && !fEGO_PLAYING_FIDDLE) {
+    sound(SND_RUSHING_WATER, rfPLAYED_SND_RUNNING_WATER);
   }
 #endif
 #if !VERSION_U && !VERSION_V

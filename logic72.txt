@@ -80,7 +80,7 @@ if (said("examine", "clouds") || said("examine", "room")) {
   print("You are in the Land of the Clouds.  It is rumored a giant lives up here.");
 }
 if (fEGO_TOUCHED_TRIGGER_LINE
-  && !rf1
+  && !rfFALLING
   && !posn(oEGO, 65, 100, 82, 120)
   && !fEGO_CLIMBING_BEANSTALK
 ) {

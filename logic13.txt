@@ -6,8 +6,12 @@ LOGIC__HEADER
 // unused: rf1
 #define rfPROTECTED rf2
 #define rfINIT_RANDOMIZER rf3
+#define rfPLAYED_SND_WOLF2 rf5
+#define rfWOLF_WANDERING rf6
 
 #define rvWOLF_STEP_SIZE rv0
+#define rvRANDOM_CHANCE_OF_SND_WOLF rv1
+#define rvCOUNTDOWN rv2
 
 #define oWOLF o1
 
@@ -54,20 +58,20 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 #if VERSION_S
-  rv2--;
-  if (rf5 && rv2 > 1) {
-    sound(SND_WOLF2, rf5);
+  rvCOUNTDOWN--;
+  if (rfPLAYED_SND_WOLF2 && rvCOUNTDOWN > 1) {
+    sound(SND_WOLF2, rfPLAYED_SND_WOLF2);
   }
-  if (rv2 == 1) {
+  if (rvCOUNTDOWN == 1) {
     draw(oWOLF);
     wander(oWOLF);
-    set(rf6);
+    set(rfWOLF_WANDERING);
     erase(oEGO);
     set.view(oEGO, 114);
     stop.cycling(oEGO);
     draw(oEGO);
     set(fGAME_OVER);
-    reset(rf5);
+    reset(rfPLAYED_SND_WOLF2);
   }
 #endif
 vTEMP_RESULT_2--;
@@ -93,8 +97,8 @@ if (vTEMP_RESULT_2 == 1) {
   }
 }
 #if VERSION_S
-  random(1, 9, rv1);
-  if (rfWOLF_IS_HERE && rv1 == 2 && fSOUND_END_MARKER && rv2 <= 0) {
+  random(1, 9, rvRANDOM_CHANCE_OF_SND_WOLF);
+  if (rfWOLF_IS_HERE && rvRANDOM_CHANCE_OF_SND_WOLF == 2 && fSOUND_END_MARKER && rvCOUNTDOWN <= 0) {
     sound(SND_WOLF, fSOUND_END_MARKER);
   }
 #else
@@ -145,7 +149,7 @@ if (fVILLAIN_GOT_YOU) {
     #endif
     program.control();
     #if VERSION_S
-      rv2 = 15;
+      rvCOUNTDOWN = 15;
     #endif
     print("It seems the wolf caught up with you and is discussing dinner arrangements.");
     erase(oWOLF);
@@ -156,7 +160,7 @@ if (fVILLAIN_GOT_YOU) {
     #endif
     set(fCYCLE_EGO_ANIMATION);
     #if VERSION_S
-      sound(SND_WOLF2, rf5);
+      sound(SND_WOLF2, rfPLAYED_SND_WOLF2);
     #else
       set(fGAME_OVER);
     #endif
@@ -168,7 +172,7 @@ if (rfPROTECTED && vOBJECT_EDGE_CODE != 0) {
   erase(oWOLF);
 }
 #if VERSION_S
-if (fGAME_OVER || rv2 > 0) {
+if (fGAME_OVER || rvCOUNTDOWN > 0) {
 #else
 if (fGAME_OVER) {
 #endif
@@ -191,13 +195,13 @@ if (fGOAT_COMPANION) {
 }
 RETURN:
   #if VERSION_S
-    if (rf5 && rv2 > 1) {
-      sound(SND_WOLF2, rf5);
+    if (rfPLAYED_SND_WOLF2 && rvCOUNTDOWN > 1) {
+      sound(SND_WOLF2, rfPLAYED_SND_WOLF2);
     }
-    if (fGAME_OVER && rf6) {
+    if (fGAME_OVER && rfWOLF_WANDERING) {
       if (vOBJECT_TOUCHING_EDGE > 0 || vOBJECT_EDGE_CODE > 0) {
         reset(rfWOLF_IS_HERE);
-        reset(rf6);
+        reset(rfWOLF_WANDERING);
         erase(oWOLF);
       }
     }

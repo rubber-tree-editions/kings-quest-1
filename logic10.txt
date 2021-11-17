@@ -8,6 +8,7 @@ LOGIC__HEADER
 #define rfPLAYED_SND_GOAT rf3
 
 #define rvCOUNTDOWN rv0
+#define rvGOAT_SOUND_COUNTDOWN rv1
 
 #define oGOAT o13
 
@@ -20,7 +21,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   #endif
   set.horizon(41);
   #if VERSION_S
-    rv1 = 20;
+    rvGOAT_SOUND_COUNTDOWN = 20;
   #endif
   load.view(67);
   #if VERSION_S || VERSION_C || VERSION_F
@@ -81,9 +82,9 @@ if (rfGOAT_IS_HERE && !fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN != vROOM_
 if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
 #endif
   #if VERSION_S
-    rv1--;
-    if (rv1 == 1) {
-      rv1 = 20;
+    rvGOAT_SOUND_COUNTDOWN--;
+    if (rvGOAT_SOUND_COUNTDOWN == 1) {
+      rvGOAT_SOUND_COUNTDOWN = 20;
       sound(SND_GOAT, rfPLAYED_SND_GOAT);
     }
   #endif

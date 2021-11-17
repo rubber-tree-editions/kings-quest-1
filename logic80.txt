@@ -4,6 +4,10 @@ LOGIC__HEADER
 
 #define rfTO_WITCHS_HOUSE rf0
 #define rfTO_LEPRECHAUN_HOLE rf1
+#define rfPLAYED_SND_BIRD rf2
+
+#define rvCOUNTDOWN_TO_BIRD_SOUND rv0
+#define rvCOUNTDOWN_TO_WITCH_SOUND rv1
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -18,7 +22,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oEGO, 1, 60);
     move.obj(oEGO, 130, 60, 0, rfTO_WITCHS_HOUSE);
     #if VERSION_S
-      rv1 = 35;
+      rvCOUNTDOWN_TO_WITCH_SOUND = 35;
     #endif
   }
   else {
@@ -27,8 +31,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     position(oEGO, 1, 60);
     move.obj(oEGO, 135, 60, 0, rfTO_LEPRECHAUN_HOLE);
     #if VERSION_S
-      rv0 = 12;
-      set(rf2);
+      rvCOUNTDOWN_TO_BIRD_SOUND = 12;
+      set(rfPLAYED_SND_BIRD);
       load.sound(SND_BIRD);
     #endif
   }
@@ -36,17 +40,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
 }
 #if VERSION_S
-  if (!fCARRIED_BY_WITCH && rf2) {
-    rv0--;
-    if (rv0 == 1) {
-      rv0 = 35;
-      sound(SND_BIRD, rf2);
+  if (!fCARRIED_BY_WITCH && rfPLAYED_SND_BIRD) {
+    rvCOUNTDOWN_TO_BIRD_SOUND--;
+    if (rvCOUNTDOWN_TO_BIRD_SOUND == 1) {
+      rvCOUNTDOWN_TO_BIRD_SOUND = 35;
+      sound(SND_BIRD, rfPLAYED_SND_BIRD);
     }
   }
   else {
-    rv1--;
-    if (rv1 == 1) {
-      rv1 = 35;
+    rvCOUNTDOWN_TO_WITCH_SOUND--;
+    if (rvCOUNTDOWN_TO_WITCH_SOUND == 1) {
+      rvCOUNTDOWN_TO_WITCH_SOUND = 35;
       sound(SND_CARRIED_BY_WITCH, fMISC_END_MARKER);
     }
   }

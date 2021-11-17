@@ -7,10 +7,19 @@ LOGIC__HEADER
 #define rfPROTECTED rf2
 #define rfCARRIED_OFF rf3
 #define rfWITCH_GOT_YOU rf4
+#define rfWITCH_REFOLLOW_EGO rf8
 
 #define rvWITCH_STEP_SIZE rv0
+#define rvWITCH_SWOOP_DIR rv1
+#define rvWITCH_X rv2
+#define rvWITCH_Y rv3
 
 #define oWITCH o1
+
+#define SWOOPDIR__FIRST 1
+#define SWOOPDIR_LEFT 1
+#define SWOOPDIR_RIGHT 2
+#define SWOOPDIR__LAST 2
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -118,7 +127,7 @@ if (rfWITCH_GOT_YOU) {
   else if (fEGO_DUCKING) {
     print("The witch missed you, this time.");
 #if VERSION_S || VERSION_C || VERSION_F
-    random(1, 2, rv1);
+    random(SWOOPDIR__FIRST, SWOOPDIR__LAST, rvWITCH_SWOOP_DIR);
 #else
     wander(oWITCH);
     set(rfPROTECTED);
@@ -147,22 +156,22 @@ if (rfWITCH_GOT_YOU) {
   }
 }
 #if VERSION_S || VERSION_C || VERSION_F
-  if (rv1 == 1) {
-    move.obj(oWITCH, 1, 24, 6, rf8);
-    rv1 = 0;
+  if (rvWITCH_SWOOP_DIR == SWOOPDIR_LEFT) {
+    move.obj(oWITCH, 1, 24, 6, rfWITCH_REFOLLOW_EGO);
+    rvWITCH_SWOOP_DIR = 0;
   }
-  if (rv1 == 2) {
-    move.obj(oWITCH, 130, 24, 6, rf8);
-    rv1 = 0;
+  if (rvWITCH_SWOOP_DIR == SWOOPDIR_RIGHT) {
+    move.obj(oWITCH, 130, 24, 6, rfWITCH_REFOLLOW_EGO);
+    rvWITCH_SWOOP_DIR = 0;
   }
-  if (rf8) {
-    reset(rf8);
+  if (rfWITCH_REFOLLOW_EGO) {
+    reset(rfWITCH_REFOLLOW_EGO);
     follow.ego(oWITCH, 20, rfWITCH_GOT_YOU);
   }
   if (rfPROTECTED) {
     if (vOBJECT_EDGE_CODE == EDGE_RIGHT || vOBJECT_EDGE_CODE == EDGE_LEFT || vOBJECT_EDGE_CODE == EDGE_HORIZON) {
-      get.posn(oWITCH, rv2, rv3);
-      if (rv3 < 80) {
+      get.posn(oWITCH, rvWITCH_X, rvWITCH_Y);
+      if (rvWITCH_Y < 80) {
         normal.cycle(oWITCH);
         reset(rfPROTECTED);
         reset(rfWITCH_IS_HERE);

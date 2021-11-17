@@ -10,8 +10,11 @@ LOGIC__HEADER
 #define rfEGO_STOPPED_ANIMATING rf5
 // unused: rf6
 #define rfFALLEN_TO_EARTH rf7
+#define rfARRIVING_FROM_MIDAIR rf8
 
 #define rvCOUNTDOWN rv0
+#define rvCOUNTDOWN_TO_NOTHING rv1 // a deleted sound effect?
+#define rvCOUNTDOWN_TO_SND_OUCH rv2
 
 #define oBIRD o1
 
@@ -38,25 +41,25 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.priority(oBIRD, 14);
     set.priority(oEGO, 15);
     #if VERSION_S
-      rv1 = 12;
-      set(rf8);
+      rvCOUNTDOWN_TO_NOTHING = 12;
+      set(rfARRIVING_FROM_MIDAIR);
     #endif
   }
   draw(oEGO);
   show.pic();
 }
 #if VERSION_S
-if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR && rf8) {
-  rv1--;
-  if (rv1 == 1) {
-    rv1 = 35;
+if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR && rfARRIVING_FROM_MIDAIR) {
+  rvCOUNTDOWN_TO_NOTHING--;
+  if (rvCOUNTDOWN_TO_NOTHING == 1) {
+    rvCOUNTDOWN_TO_NOTHING = 35;
   }
 }
 #endif
 if (rfBIRD_DROPPED_YOU) {
   #if VERSION_S
     stop.sound();
-    reset(rf8);
+    reset(rfARRIVING_FROM_MIDAIR);
   #endif
   reset(rfBIRD_DROPPED_YOU);
   erase(oEGO);
@@ -81,7 +84,7 @@ if (rfBIRD_LEFT) {
   reset(rfBIRD_LEFT);
   erase(oBIRD);
   #if VERSION_S
-    rv1 = 0;
+    rvCOUNTDOWN_TO_NOTHING = 0;
   #endif
 }
 #if !VERSION_S
@@ -101,9 +104,9 @@ if (rfBIRD_LEFT) {
 rvCOUNTDOWN--;
 #if VERSION_S
   if (rvCOUNTDOWN > 0 && fSOUND_END_MARKER) {
-    rv2--;
-    if (rv2 == 1) {
-      rv2 = 5;
+    rvCOUNTDOWN_TO_SND_OUCH--;
+    if (rvCOUNTDOWN_TO_SND_OUCH == 1) {
+      rvCOUNTDOWN_TO_SND_OUCH = 5;
       sound(SND_OUCH, fSOUND_END_MARKER);
     }
   }
@@ -127,7 +130,7 @@ rvCOUNTDOWN--;
     if (!fSOUND_ENABLED) {
       print("OUCH");
     }
-    rv2 = 5;
+    rvCOUNTDOWN_TO_SND_OUCH = 5;
     rvCOUNTDOWN = 18;
   }
 #endif
