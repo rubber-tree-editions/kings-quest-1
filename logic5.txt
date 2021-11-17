@@ -19,20 +19,19 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (posn(oEGO, 145, 55, 159, 80)) {
       position(oEGO, 140, 75);
     }
-    #if VERSION_MAJOR >= 2
-      if (posn(oEGO, 145, 160, 159, 167)) {
-        position(oEGO, 150, 164);
-      }
-    #endif
+    if (VERSION_MAJOR >= 2 && posn(oEGO, 145, 160, 159, 167)) {
+      position(oEGO, 150, 164);
+    }
   }
   if (vPREV_ROOM_NO == ROOM12_TOP_OF_WELL) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_X > 105) {
-      #if VERSION_MAJOR >= 2
+      if (VERSION_MAJOR >= 2) {
         position(oEGO, 90, 56);
-      #else
+      }
+      else {
         position(oEGO, 108, 56);
-      #endif
+      }
     }
   }
   if (vPREV_ROOM_NO == ROOM44_OUTSIDE_WOODCUTTER_COTTAGE_FRONT) {
@@ -46,12 +45,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if VERSION_MAJOR >= 2
-  if (fSHOW_GOAT_LEFT_MESSAGE) {
-    reset(fSHOW_GOAT_LEFT_MESSAGE);
-    print("It seems the old goat has wandered off by himself and is no longer following you.");
-  }
-#endif
+if (VERSION_MAJOR >= 2 && fSHOW_GOAT_LEFT_MESSAGE) {
+  reset(fSHOW_GOAT_LEFT_MESSAGE);
+  print("It seems the old goat has wandered off by himself and is no longer following you.");
+}
 if (said("examine", "lake")) {
   print("This is a serene mountain lake.");
 }
@@ -135,9 +132,9 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
-    #if VERSION_MAJOR >= 2
+    if (VERSION_MAJOR >= 2) {
       set(fSHOW_GOAT_LEFT_MESSAGE);
-    #endif
+    }
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
@@ -156,7 +153,7 @@ if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
 call(LOGIC101_SWIMMING);
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   if (posn(oEGO, 50, 41, 154, 167)) {
     set(fTHREAT_OF_SORCERER_OR_OGRE);
     set(fTENSE_SITUATION);
@@ -167,7 +164,7 @@ call(LOGIC101_SWIMMING);
     reset(fTHREAT_OF_SORCERER_OR_OGRE);
     reset(fFALL_DANGER);
   }
-#endif
+}
 return;
 
 LOGIC__FOOTER

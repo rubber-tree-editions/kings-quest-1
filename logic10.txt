@@ -16,40 +16,41 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_FRIEND);
-  #endif
+  }
   set.horizon(41);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     rvGOAT_SOUND_COUNTDOWN = 20;
-  #endif
+  }
   load.view(67);
   #if VERSION_MAJOR >= 2
   if (!fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN <= ROOM_NULL && !fGOAT_IS_GONE && vGOAT_ROOM != ROOM11_GOAT_PEN_EAST) {
   #else
   if (!fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN <= ROOM_NULL && !fGOAT_IS_GONE) {
   #endif
-    #if VERSION_MAJOR >= 2
+    if (VERSION_MAJOR >= 2) {
       vGOAT_ROOM = ROOM10_GOAT_PEN_WEST;
-    #endif
+    }
     load.sound(SND_GOAT);
     load.view(14);
     load.view(62);
-    #if VERSION_MAJOR >= 2
+    if (VERSION_MAJOR >= 2) {
       set(rfGOAT_IS_HERE);
-    #else
+    }
+    else {
       rvCOUNTDOWN = 27;
-    #endif
+    }
     animate.obj(oGOAT);
     set.view(oGOAT, 14);
-    #if VERSION_MAJOR >= 2
+    if (VERSION_MAJOR >= 2) {
       position(oGOAT, 95, 97);
-      #if BUILD_TARGET == APPLE_IIGS
+      if (BUILD_TARGET == APPLE_IIGS) {
         sound(SND_FRIEND, fMISC_END_MARKER);
-      #endif
+      }
       draw(oGOAT);
       wander(oGOAT);
-    #endif
+    }
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 140, 80, 0, 0);
@@ -66,8 +67,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if BUILD_TARGET == APPLE_IIGS
-if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
+if (BUILD_TARGET == APPLE_IIGS && vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
   if (said("examine", "goat")) {
     print("Lying lifeless on the ground you see a useless dead  goat.");
   }
@@ -75,24 +75,23 @@ if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     print("You do not want to carry around a dead goat.");
   }
 }
-#endif
 #if BUILD_TARGET == APPLE_IIGS
 if (rfGOAT_IS_HERE && !fGOAT_COMPANION && vROOM_YOU_KILLED_THE_GOAT_IN != vROOM_NO) {
 #else
 if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
 #endif
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     rvGOAT_SOUND_COUNTDOWN--;
     if (rvGOAT_SOUND_COUNTDOWN == 1) {
       rvGOAT_SOUND_COUNTDOWN = 20;
       sound(SND_GOAT, rfPLAYED_SND_GOAT);
     }
-  #endif
+  }
   if (!rfPLAYING_SND_GOAT) {
     set(rfPLAYING_SND_GOAT);
-    #if BUILD_TARGET != APPLE_IIGS
+    if (BUILD_TARGET != APPLE_IIGS) {
       sound(SND_GOAT, rfPLAYED_SND_GOAT);
-    #endif
+    }
   }
   if (rfPLAYED_SND_GOAT) {
     reset(rfPLAYING_SND_GOAT);
@@ -108,7 +107,7 @@ if (!rfGOAT_IS_HERE) {
     print("There is no goat in the immediate area.");
   }
 }
-#if VERSION_MAJOR < 2
+if (VERSION_MAJOR < 2) {
   rvCOUNTDOWN--;
   if (rvCOUNTDOWN == 1) {
     set(rfGOAT_IS_HERE);
@@ -117,7 +116,7 @@ if (!rfGOAT_IS_HERE) {
     wander(oGOAT);
     rvCOUNTDOWN = 0;
   }
-#endif
+}
 if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
   if (said("hello")
     || said("hello", "goat")
@@ -158,9 +157,9 @@ if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
         print("From here it will be difficult to do such a terrible  thing.");
       }
       else {
-        #if BUILD_TARGET == APPLE_IIGS
+        if (BUILD_TARGET == APPLE_IIGS) {
           reset(rfGOAT_IS_HERE);
-        #endif
+        }
         erase(oGOAT);
         set.view(oGOAT, 62);
         draw(oGOAT);
@@ -194,24 +193,20 @@ if (rfGOAT_IS_HERE && !fGOAT_COMPANION) {
       print("You cannot do that from outside the fence.");
     }
   }
-  #if VERSION_MAJOR >= 2
-    if (vOBJECT_EDGE_CODE == EDGE_RIGHT) {
-      erase(oGOAT);
-      reset(rfGOAT_IS_HERE);
-      vGOAT_ROOM = ROOM11_GOAT_PEN_EAST;
-    }
-  #endif
-}
-#if BUILD_TARGET != APPLE_IIGS
-  if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    if (said("examine", "goat")) {
-      print("Lying lifeless on the ground you see a useless dead  goat.");
-    }
-    if (said("get", "goat")) {
-      print("You do not want to carry around a dead goat.");
-    }
+  if (VERSION_MAJOR >= 2 && vOBJECT_EDGE_CODE == EDGE_RIGHT) {
+    erase(oGOAT);
+    reset(rfGOAT_IS_HERE);
+    vGOAT_ROOM = ROOM11_GOAT_PEN_EAST;
   }
-#endif
+}
+if (BUILD_TARGET != APPLE_IIGS && vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
+  if (said("examine", "goat")) {
+    print("Lying lifeless on the ground you see a useless dead  goat.");
+  }
+  if (said("get", "goat")) {
+    print("You do not want to carry around a dead goat.");
+  }
+}
 if (said("examine", "goat pen")) {
   if (fINSIDE_GOAT_FENCE) {
     print("It is high enough to keep the old goat from jumping over it.");

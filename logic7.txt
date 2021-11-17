@@ -10,9 +10,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(46);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_RUSHING_WATER);
-  #endif
+  }
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
   if (fGOAT_COMPANION) {
@@ -31,18 +31,16 @@ if (fROOM_SCRIPT_EXECUTED) {
       move.obj(oEGO, 2, 47, 1, fMISC_END_MARKER);
     }
   }
-  #if VERSION_MAJOR >= 2
-    if (vPREV_ROOM_NO == ROOM10_GOAT_PEN_WEST) {
-      get.posn(oEGO, vTEMP_X, vTEMP_Y);
-      if (vTEMP_X > 19) {
-        position(oEGO, 34, 47);
-      }
-      if (vTEMP_X < 20) {
-        position(oEGO, 2, 47);
-        move.obj(oEGO, 2, 47, 1, fMISC_END_MARKER);
-      }
+  if (VERSION_MAJOR >= 2 && vPREV_ROOM_NO == ROOM10_GOAT_PEN_WEST) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_X > 19) {
+      position(oEGO, 34, 47);
     }
-  #endif
+    if (vTEMP_X < 20) {
+      position(oEGO, 2, 47);
+      move.obj(oEGO, 2, 47, 1, fMISC_END_MARKER);
+    }
+  }
   if (vPREV_ROOM_NO == ROOM42_STONE_BRIDGE && fEGO_ON_WATER) {
     set.view(oEGO, 0);
     reset(fCYCLE_EGO_ANIMATION);
@@ -52,24 +50,20 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     set(rfPLAYED_SND_RUNNING_WATER);
-  #endif
+  }
 }
-#if BUILD_TARGET == APPLE_IIGS
-  if (!fEGO_ON_WATER && rfPLAYED_SND_RUNNING_WATER && !fEGO_PLAYING_FIDDLE) {
-    sound(SND_RUSHING_WATER, rfPLAYED_SND_RUNNING_WATER);
-  }
-#endif
-#if VERSION_MAJOR >= 2
-  if (said("examine", "room")) {
-    print("A rapidly flowing stream is pouring into this lake.");
-  }
-  if (fSHOW_GOAT_LEFT_MESSAGE) {
-    reset(fSHOW_GOAT_LEFT_MESSAGE);
-    print("It seems the old goat has wandered off by himself and is no longer following you.");
-  }
-#endif
+if (BUILD_TARGET == APPLE_IIGS && !fEGO_ON_WATER && rfPLAYED_SND_RUNNING_WATER && !fEGO_PLAYING_FIDDLE) {
+  sound(SND_RUSHING_WATER, rfPLAYED_SND_RUNNING_WATER);
+}
+if (VERSION_MAJOR >= 2 && said("examine", "room")) {
+  print("A rapidly flowing stream is pouring into this lake.");
+}
+if (VERSION_MAJOR >= 2 && fSHOW_GOAT_LEFT_MESSAGE) {
+  reset(fSHOW_GOAT_LEFT_MESSAGE);
+  print("It seems the old goat has wandered off by himself and is no longer following you.");
+}
 if (posn(oEGO, 0, 45, 31, 78)) {
   set(fSWIMMING_IMPOSSIBLE_HERE);
 }
@@ -141,9 +135,9 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
-    #if VERSION_MAJOR >= 2
+    if (VERSION_MAJOR >= 2) {
       set(fSHOW_GOAT_LEFT_MESSAGE);
-    #endif
+    }
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
@@ -162,7 +156,7 @@ if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
 call(LOGIC101_SWIMMING);
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   if (posn(oEGO, 0, 65, 77, 167)) {
     set(fTHREAT_OF_SORCERER_OR_OGRE);
     set(fTENSE_SITUATION);
@@ -173,7 +167,7 @@ call(LOGIC101_SWIMMING);
     reset(fTHREAT_OF_SORCERER_OR_OGRE);
     reset(fFALL_DANGER);
   }
-#endif
+}
 return;
 
 LOGIC__FOOTER

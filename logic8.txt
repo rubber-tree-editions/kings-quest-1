@@ -24,15 +24,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if VERSION_MAJOR >= 2
-  if (said("examine", "room")) {
-    print("A rapidly moving stream is flowing out of this lake.");
-  }
-  if (fSHOW_GOAT_LEFT_MESSAGE) {
-    reset(fSHOW_GOAT_LEFT_MESSAGE);
-    print("It seems the old goat has wandered off by himself and is no longer following you.");
-  }
-#endif
+if (VERSION_MAJOR >= 2 && said("examine", "room")) {
+  print("A rapidly moving stream is flowing out of this lake.");
+}
+if (VERSION_MAJOR >= 2 && fSHOW_GOAT_LEFT_MESSAGE) {
+  reset(fSHOW_GOAT_LEFT_MESSAGE);
+  print("It seems the old goat has wandered off by himself and is no longer following you.");
+}
 if (posn(oEGO, 79, 135, 132, 167) || posn(oEGO, 133, 146, 159, 167)) {
   set(fSWIMMING_IMPOSSIBLE_HERE);
 }
@@ -42,11 +40,9 @@ else {
 if (said("examine", "lake")) {
   print("This is a beautiful little lake.");
 }
-#if VERSION_MAJOR >= 2
-  if (said("examine", "flowers")) {
-    print("The flowers are very beautiful.");
-  }
-#endif
+if (VERSION_MAJOR >= 2 && said("examine", "flowers")) {
+  print("The flowers are very beautiful.");
+}
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 84, 59, 113, 78)
     || posn(oEGO, 102, 79, 113, 94)
@@ -137,9 +133,9 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
     reset(f66_UNKNOWN);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
-    #if VERSION_MAJOR >= 2
+    if (VERSION_MAJOR >= 2) {
       set(fSHOW_GOAT_LEFT_MESSAGE);
-    #endif
+    }
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
@@ -158,7 +154,7 @@ if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
 call(LOGIC101_SWIMMING);
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   if (posn(oEGO, 76, 49, 154, 167)) {
     set(fTHREAT_OF_SORCERER_OR_OGRE);
     set(fTENSE_SITUATION);
@@ -169,7 +165,7 @@ call(LOGIC101_SWIMMING);
     reset(fTHREAT_OF_SORCERER_OR_OGRE);
     reset(fFALL_DANGER);
   }
-#endif
+}
 return;
 
 LOGIC__FOOTER

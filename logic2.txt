@@ -24,14 +24,14 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-#if BUILD_TARGET == APPLE_IIGS
-  load.sound(SND_DOOR_OPENING);
-#endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    load.sound(SND_DOOR_OPENING);
+  }
   load.logics(LOGIC101_SWIMMING);
   set.horizon(50);
-#if BUILD_TARGET != APPLE_IIGS
-  load.sound(SND_CASTLE_DOOR_FANFARE);
-#endif
+  if (BUILD_TARGET != APPLE_IIGS) {
+    load.sound(SND_CASTLE_DOOR_FANFARE);
+  }
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
     load.view(9);
@@ -89,22 +89,20 @@ if (fROOM_SCRIPT_EXECUTED) {
   wander(oGATOR1);
   wander(oGATOR2);
   show.pic();
-#if BUILD_TARGET == APPLE_IIGS
-  rvGATOR_SOUND_COUNTDOWN = 2;
-#endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    rvGATOR_SOUND_COUNTDOWN = 2;
+  }
 }
-#if VERSION_MAJOR >= 2
-if (said("examine", "room")) {
+if (VERSION_MAJOR >= 2 && said("examine", "room")) {
   print("You are standing outside a castle surrounded by an alligator filled moat.");
 }
-#endif
 if (rfINIT_LEAVING_CASTLE) {
   reset(rfINIT_LEAVING_CASTLE);
   start.update(oCASTLE_DOORS);
   reverse.loop(oCASTLE_DOORS, rfDOOR_FINISHED_CLOSING);
-#if BUILD_TARGET == APPLE_IIGS
-  sound(SND_DOOR_OPENING, fMISC_END_MARKER);
-#endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    sound(SND_DOOR_OPENING, fMISC_END_MARKER);
+  }
 }
 if (rfDOOR_FINISHED_CLOSING && !rfDOORS_OPENING) {
   stop.update(oCASTLE_DOORS);
@@ -200,20 +198,21 @@ if (!fGOAT_COMPANION && !fNO_BUSINESS_WITH_KING) {
     if (posn(oEGO, 105, 120, 121, 128)) {
       set(rfDOORS_OPENING);
       start.update(oCASTLE_DOORS);
-#if BUILD_TARGET == APPLE_IIGS
-      set(rfFANFARE_FINISHED);
-#else
-      sound(SND_CASTLE_DOOR_FANFARE, rfFANFARE_FINISHED);
-#endif
+      if (BUILD_TARGET == APPLE_IIGS) {
+        set(rfFANFARE_FINISHED);
+      }
+      else {
+        sound(SND_CASTLE_DOOR_FANFARE, rfFANFARE_FINISHED);
+      }
       end.of.loop(oCASTLE_DOORS, rfDOORS_FINISHED_OPENING);
-      #if BUILD_TARGET != AMIGA
+      if (BUILD_TARGET != AMIGA) {
         stop.motion(oEGO);
-      #endif
+      }
       set.priority(oEGO, 15);
       print("The huge doors swing open slowly.");
-#if BUILD_TARGET == APPLE_IIGS
-      sound(SND_DOOR_OPENING, fMISC_END_MARKER);
-#endif
+      if (BUILD_TARGET == APPLE_IIGS) {
+        sound(SND_DOOR_OPENING, fMISC_END_MARKER);
+      }
       if (!fPOINTS_FOR_ENTERING_CASTLE) {
         set(fPOINTS_FOR_ENTERING_CASTLE);
         vSCORE += 1;
@@ -310,13 +309,14 @@ if (fEGO_ON_WATER) {
 if (fEGO_ON_WATER && !rfINIT_GATOR_DEATH) {
   program.control();
   stop.motion(oEGO);
-#if BUILD_TARGET == APPLE_IIGS
-  follow.ego(oGATOR1, 10, rfGATOR1_CAUGHT_YOU);
-  follow.ego(oGATOR2, 10, rfGATOR2_CAUGHT_YOU);
-#else
-  follow.ego(oGATOR1, 18, rfGATOR1_CAUGHT_YOU);
-  follow.ego(oGATOR2, 18, rfGATOR2_CAUGHT_YOU);
-#endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    follow.ego(oGATOR1, 10, rfGATOR1_CAUGHT_YOU);
+    follow.ego(oGATOR2, 10, rfGATOR2_CAUGHT_YOU);
+  }
+  else {
+    follow.ego(oGATOR1, 18, rfGATOR1_CAUGHT_YOU);
+    follow.ego(oGATOR2, 18, rfGATOR2_CAUGHT_YOU);
+  }
   set(rfINIT_GATOR_DEATH);
 }
 if (posn(oEGO, 61, 135, 63, 137) && !rfEATEN_BY_GATORS) {
@@ -325,38 +325,38 @@ if (posn(oEGO, 61, 135, 63, 137) && !rfEATEN_BY_GATORS) {
   rvCOUNTDOWN = 45;
 }
 if (rfGATOR1_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
-#if BUILD_TARGET == APPLE_IIGS
-  load.sound(SND_EATEN_BY_GATORS);
-#endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    load.sound(SND_EATEN_BY_GATORS);
+  }
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
   set(rfEATEN_BY_GATORS);
   rvCOUNTDOWN = 45;
-#if BUILD_TARGET == APPLE_IIGS
-  set(fEATEN_BY_GATORS);
-#endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    set(fEATEN_BY_GATORS);
+  }
 }
 if (rfGATOR2_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
-#if BUILD_TARGET == APPLE_IIGS
-  load.sound(SND_EATEN_BY_GATORS);
-#endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    load.sound(SND_EATEN_BY_GATORS);
+  }
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
   set(rfEATEN_BY_GATORS);
   rvCOUNTDOWN = 45;
-#if BUILD_TARGET == APPLE_IIGS
-  set(fEATEN_BY_GATORS);
-#endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    set(fEATEN_BY_GATORS);
+  }
 }
-#if BUILD_TARGET == APPLE_IIGS
-if (rfEATEN_BY_GATORS && rvCOUNTDOWN > 1) {
-  if (rfGATOR1_CAUGHT_YOU || rfGATOR2_CAUGHT_YOU) {
-    rvGATOR_SOUND_COUNTDOWN--;
-    if (rvGATOR_SOUND_COUNTDOWN == 1) {
-      rvGATOR_SOUND_COUNTDOWN = 8;
-      sound(SND_EATEN_BY_GATORS, fMISC_END_MARKER);
+if (BUILD_TARGET == APPLE_IIGS) {
+  if (rfEATEN_BY_GATORS && rvCOUNTDOWN > 1) {
+    if (rfGATOR1_CAUGHT_YOU || rfGATOR2_CAUGHT_YOU) {
+      rvGATOR_SOUND_COUNTDOWN--;
+      if (rvGATOR_SOUND_COUNTDOWN == 1) {
+        rvGATOR_SOUND_COUNTDOWN = 8;
+        sound(SND_EATEN_BY_GATORS, fMISC_END_MARKER);
+      }
     }
   }
 }
-#endif
 #if BUILD_TARGET == APPLE_IIGS
 if (rfEATEN_BY_GATORS && rvCOUNTDOWN == 1) {
 #else
