@@ -38,7 +38,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(23);
+    load.sound(SND_POINTS);
   #endif
   set.horizon(45);
   load.sound(SND_FALLING);
@@ -91,7 +91,7 @@ if (!fSLINGSHOT_TAKEN) {
   if (said("get", "slingshot")) {
     if (posn(oEGO, 117, 100, 144, 117)) {
       #if VERSION_S
-        sound(23, fMISC_END_MARKER);
+        sound(SND_POINTS, fMISC_END_MARKER);
       #endif
       print("You reach into the hole and pull out the leather sling.");
       set(fSLINGSHOT_TAKEN);

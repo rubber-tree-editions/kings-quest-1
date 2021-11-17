@@ -47,7 +47,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
 #if VERSION_S
-  load.sound(42);
+  load.sound(SND_MOVING_ROCK);
 #endif
   set.horizon(46);
   if (fGOAT_COMPANION) {
@@ -57,7 +57,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, 32, 75, 0, 0);
   }
 #if VERSION_S
-  load.sound(23);
+  load.sound(SND_POINTS);
 #endif
   load.view(10);
   animate.obj(oROCK);
@@ -130,7 +130,7 @@ if (said("shove", "rocks")) {
       move.obj(oROCK, 118, 145, 0, fMOVED_ROCK);
       print("With a heave and a ho, you manage to move the rock... revealing a dark hole underneath it.");
 #if VERSION_S
-      sound(42, fMISC_END_MARKER);
+      sound(SND_MOVING_ROCK, fMISC_END_MARKER);
 #endif
       vSCORE += 2;
       set(rfROCK_MOVING_SAFE);
@@ -149,7 +149,7 @@ if (said("shove", "rocks")) {
       move.obj(oROCK, 118, 145, 0, fMOVED_ROCK);
       print("This moving rock rolls downhill and you, unfortunately,  are in the way.");
 #if VERSION_S
-      sound(42, fMISC_END_MARKER);
+      sound(SND_MOVING_ROCK, fMISC_END_MARKER);
 #endif
       program.control();
       set(fGAME_OVER);
@@ -192,7 +192,7 @@ if (said("get", "dagger")) {
   if (fMOVED_ROCK && !fTAKEN_DAGGER) {
     if (posn(oEGO, 112, 108, 134, 133)) {
 #if VERSION_S
-      sound(23, fMISC_END_MARKER);
+      sound(SND_POINTS, fMISC_END_MARKER);
 #endif
       print("You reach into the hole and grasp the dagger, being careful not to cut yourself.");
       get("dagger");

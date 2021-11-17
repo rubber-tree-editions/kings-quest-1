@@ -28,7 +28,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
 #if VERSION_S
   clear.lines(22, 24, "");
-  load.sound(33);
+  load.sound(SND_EATEN_BY_GATORS);
 #endif
   load.logics(LOGIC101_SWIMMING);
   set.horizon(50);
@@ -225,7 +225,7 @@ if (rfEATEN_BY_GATORS && rvCOUNTDOWN > 1) {
     rv5--;
     if (rv5 == 1) {
       rv5 = 8;
-      sound(33, fMISC_END_MARKER);
+      sound(SND_EATEN_BY_GATORS, fMISC_END_MARKER);
     }
   }
 }

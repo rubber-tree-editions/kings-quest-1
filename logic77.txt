@@ -24,8 +24,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(23);
-    load.sound(24);
+    load.sound(SND_POINTS);
+    load.sound(SND_TREASURE);
   #endif
   if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
     position(oEGO, 87, 67);
@@ -306,7 +306,7 @@ if (!fSHIELD_TAKEN) {
       #endif
       erase(oSHIELD);
       #if VERSION_S
-        sound(24, fMISC_END_MARKER);
+        sound(SND_TREASURE, fMISC_END_MARKER);
       #endif
       if (fDANCING_LEPRECHAUNS) {
         print("You take the magic shield and carefully put it in your pocket.");
@@ -344,7 +344,7 @@ if (!fSCEPTRE_TAKEN) {
         set(fSCEPTRE_TAKEN);
         set(fCARRYING_SCEPTRE);
         #if VERSION_S
-          sound(23, fMISC_END_MARKER);
+          sound(SND_POINTS, fMISC_END_MARKER);
         #endif
         print("Eagerly, you pick up the sceptre.");
         get("sceptre");

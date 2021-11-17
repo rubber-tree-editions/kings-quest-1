@@ -27,7 +27,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
     #if VERSION_S
-      load.sound(29);
+      load.sound(SND_DOOR_CLOSED);
     #endif
     position(oEGO, 34, 125);
   }
@@ -84,7 +84,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   #if VERSION_S
     if (!fRAT_IS_GONE) {
       load.sound(SND_VILLAIN);
-      load.sound(27);
+      load.sound(SND_RAT);
       rv1 = 9;
       set(rf6);
     }
@@ -105,7 +105,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       random(5, 10, rv1);
       random(1, 8, vTEMP_RESULT);
       if (vTEMP_RESULT == 2 && rf6) {
-        sound(27, rf6);
+        sound(SND_RAT, rf6);
       }
     }
   }
@@ -115,7 +115,7 @@ if (fMISC_END_MARKER_2) {
   stop.update(oDOOR);
   #if VERSION_S
     if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
-      sound(29, fMISC_END_MARKER);
+      sound(SND_DOOR_CLOSED, fMISC_END_MARKER);
     }
   #endif
 }

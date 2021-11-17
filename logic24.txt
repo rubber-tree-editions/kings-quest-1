@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
 #if VERSION_S
-  load.sound(23);
+  load.sound(SND_POINTS);
 #endif
   set.horizon(46);
   if (fGOAT_COMPANION) {
@@ -66,7 +66,7 @@ if (said("get", "four leaf clover")) {
   if (!fCLOVER_TAKEN) {
     if (vTEMP_RESULT < 25) {
 #if VERSION_S
-      sound(23, fMISC_END_MARKER);
+      sound(SND_POINTS, fMISC_END_MARKER);
 #endif
       print("The clover is soft, yet you sense a strange strength in it.");
       get("fourleaf clover");

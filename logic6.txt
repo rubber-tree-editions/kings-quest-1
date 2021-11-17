@@ -16,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(23);
+    load.sound(SND_POINTS);
     load.sound(SND_OUCH);
   #else
     load.sound(SND_OUCH);
@@ -164,7 +164,7 @@ if (said("get", "bag of jewels") && !fCARRYING_POUCH) {
   if (posn(oEGO, 0, 103, 35, 146)) {
     if (!fPOUCH_TAKEN) {
       #if VERSION_S
-        sound(23, fMISC_END_MARKER);
+        sound(SND_POINTS, fMISC_END_MARKER);
       #endif
       print("You notice the pouch feels aged and tattered.");
       get("pouch");

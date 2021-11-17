@@ -12,8 +12,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(47);
-    load.sound(23);
+    load.sound(SND_RUSHING_WATER);
+    load.sound(SND_POINTS);
   #endif
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
@@ -60,7 +60,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 #if VERSION_S
   if (!rfPULLED_UNDERWATER && rf2 && !fEGO_PLAYING_FIDDLE) {
-    sound(47, rf2);
+    sound(SND_RUSHING_WATER, rf2);
   }
 #endif
 if (fEGO_ON_WATER && !rfPULLED_UNDERWATER) {
@@ -129,7 +129,7 @@ if (!fMUSHROOM_TAKEN) {
     else if (posn(oEGO, 74, 70, 94, 90)) {
       erase(oMUSHROOM);
       #if VERSION_S
-        sound(23, fMISC_END_MARKER);
+        sound(SND_POINTS, fMISC_END_MARKER);
       #endif
       print("You reach down and pick a fat mushroom.");
       set(fMUSHROOM_TAKEN);

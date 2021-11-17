@@ -10,7 +10,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   set.horizon(46);
   #if VERSION_S
-    load.sound(47);
+    load.sound(SND_RUSHING_WATER);
   #endif
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
@@ -57,7 +57,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 #if VERSION_S
   if (!fEGO_ON_WATER && rf1 && !fEGO_PLAYING_FIDDLE) {
-    sound(47, rf1);
+    sound(SND_RUSHING_WATER, rf1);
   }
 #endif
 #if !VERSION_U && !VERSION_V

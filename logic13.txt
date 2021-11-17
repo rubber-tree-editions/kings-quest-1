@@ -16,8 +16,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(3);
-    load.sound(38);
+    load.sound(SND_WOLF);
+    load.sound(SND_WOLF2);
     load.view(114);
   #endif
   set.horizon(46);
@@ -56,7 +56,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 #if VERSION_S
   rv2--;
   if (rf5 && rv2 > 1) {
-    sound(38, rf5);
+    sound(SND_WOLF2, rf5);
   }
   if (rv2 == 1) {
     draw(oWOLF);
@@ -95,7 +95,7 @@ if (vTEMP_RESULT_2 == 1) {
 #if VERSION_S
   random(1, 9, rv1);
   if (rfWOLF_IS_HERE && rv1 == 2 && fSOUND_END_MARKER && rv2 <= 0) {
-    sound(3, fSOUND_END_MARKER);
+    sound(SND_WOLF, fSOUND_END_MARKER);
   }
 #else
   if (fSOUND_END_MARKER) {
@@ -156,7 +156,7 @@ if (fVILLAIN_GOT_YOU) {
     #endif
     set(fCYCLE_EGO_ANIMATION);
     #if VERSION_S
-      sound(38, rf5);
+      sound(SND_WOLF2, rf5);
     #else
       set(fGAME_OVER);
     #endif
@@ -192,7 +192,7 @@ if (fGOAT_COMPANION) {
 RETURN:
   #if VERSION_S
     if (rf5 && rv2 > 1) {
-      sound(38, rf5);
+      sound(SND_WOLF2, rf5);
     }
     if (fGAME_OVER && rf6) {
       if (vOBJECT_TOUCHING_EDGE > 0 || vOBJECT_EDGE_CODE > 0) {

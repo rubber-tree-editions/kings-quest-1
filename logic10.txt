@@ -16,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(25);
+    load.sound(SND_FRIEND);
   #endif
   set.horizon(41);
   #if VERSION_S
@@ -44,7 +44,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     #if VERSION_S || VERSION_C || VERSION_F
       position(oGOAT, 95, 97);
       #if VERSION_S
-        sound(25, fMISC_END_MARKER);
+        sound(SND_FRIEND, fMISC_END_MARKER);
       #endif
       draw(oGOAT);
       wander(oGOAT);

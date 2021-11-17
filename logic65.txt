@@ -34,7 +34,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(23);
+    load.sound(SND_POINTS);
     load.sound(SND_VILLAIN);
   #else
     load.sound(SND_VILLAIN);
@@ -323,15 +323,15 @@ if (rfWITCH_AT_OVEN) {
   if (vTEMP_RESULT_2 < 15) {
     if (said("shove", "witch") || said("murder", "witch")) {
 #if VERSION_S
-      load.sound(40);
-      sound(40, fMISC_END_MARKER);
+      load.sound(SND_KILLING_WITCH);
+      sound(SND_KILLING_WITCH, fMISC_END_MARKER);
       do { } while (!fMISC_END_MARKER);
       set.simple(40);
 #endif
       erase(oWITCH);
 #if VERSION_S
-      load.sound(30);
-      sound(30, fMISC_END_MARKER);
+      load.sound(SND_KILLED_WITCH);
+      sound(SND_KILLED_WITCH, fMISC_END_MARKER);
 #endif
       print("Courageously, you manage to push the witch into the oven where she flashes and melts away into a harmless blob. Congratulations!");
 #if VERSION_S
@@ -468,7 +468,7 @@ if (posn(oEGO, 23, 89, 55, 100)) {
         set(fCARRYING_SWISS_CHEESE);
         vSCORE += 2;
         #if VERSION_S
-          sound(23, fMISC_END_MARKER);
+          sound(SND_POINTS, fMISC_END_MARKER);
         #endif
         print("You pluck the Swiss cheese from the shelf.");
         vCUPBOARD_STATE = 3;
@@ -616,7 +616,7 @@ if (!fCARRYING_NOTE) {
       set(fCARRYING_NOTE);
       get("note");
 #if VERSION_S
-      sound(23, fMISC_END_MARKER);
+      sound(SND_POINTS, fMISC_END_MARKER);
 #endif
       print("You grab the note from the table.");
       vSCORE += 2;

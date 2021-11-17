@@ -17,7 +17,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
 #ifdef VERSION_S
-  load.sound(25);
+  load.sound(SND_FRIEND);
 #endif
   rvFAIRY_GODMOTHER_SOUND_COUNTDOWN = 4;
   set.horizon(46);
@@ -43,7 +43,7 @@ if (rvFAIRY_GODMOTHER_SPEAKS_COUNTDOWN == 1) {
   position(oFAIRY_GODMOTHER, 50, 80);
   draw(oFAIRY_GODMOTHER);
 #if VERSION_S
-  sound(25, fMISC_END_MARKER);
+  sound(SND_FRIEND, fMISC_END_MARKER);
 #endif
   print("\"Gentle Sir Graham, I am your fairy godmother.  Your quest is indeed noble.  My small part to aid you can be no bigger than this magic spell, protective but for a little while.\"");
   follow.ego(oFAIRY_GODMOTHER, 25, rfFAIRY_GODMOTHER_CAUGHT_YOU);

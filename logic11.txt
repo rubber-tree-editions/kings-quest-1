@@ -18,8 +18,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(25);
-    load.sound(43);
+    load.sound(SND_FRIEND);
+    load.sound(SND_GIFT);
   #endif
   set.horizon(41);
   #if VERSION_S
@@ -55,7 +55,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     #if VERSION_S || VERSION_C || VERSION_F
       position(oGOAT, 43, 97);
       #if VERSION_S
-        sound(25, fMISC_END_MARKER);
+        sound(SND_FRIEND, fMISC_END_MARKER);
       #endif
       draw(oGOAT);
       wander(oGOAT);
@@ -349,7 +349,7 @@ if (fINSIDE_GOAT_FENCE && rfGOAT_IS_HERE) {
       if (vTEMP_RESULT_2 < 50) {
         if (!fTROLL_TOOK_TREASURE) {
           #if VERSION_S
-            sound(43, fMISC_END_MARKER);
+            sound(SND_GIFT, fMISC_END_MARKER);
           #endif
           print("When you tempt the old goat with the carrot, he starts to follow you.");
           set(fGOAT_COMPANION);

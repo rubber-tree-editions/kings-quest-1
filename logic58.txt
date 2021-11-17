@@ -54,7 +54,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.view(114);
   #if VERSION_S
-    load.sound(43);
+    load.sound(SND_GIFT);
   #else
     load.sound(SND_VILLAIN);
     load.sound(SND_FALLING);
@@ -258,14 +258,14 @@ if (!fCARRYING_CHEST) {
       }
       else {
         #if VERSION_S
-          load.sound(24);
+          load.sound(SND_TREASURE);
         #endif
         erase(oGIANT);
         set.view(oGIANT, 68);
         stop.motion(oGIANT);
         draw(oGIANT);
         #if VERSION_S
-          sound(24, fMISC_END_MARKER);
+          sound(SND_TREASURE, fMISC_END_MARKER);
         #endif
         print("Very carefully, you slip the magic chest from the sleeping giant's arms.");
         set(fCARRYING_CHEST);
@@ -283,11 +283,11 @@ if (!fCARRYING_CHEST) {
       }
       else {
         #if VERSION_S
-          load.sound(24);
+          load.sound(SND_TREASURE);
         #endif
         erase(oCHEST);
         #if VERSION_S
-          sound(24, fMISC_END_MARKER);
+          sound(SND_TREASURE, fMISC_END_MARKER);
         #endif
         print("It's easy to take a magic chest from a dead giant.");
         set(fCARRYING_CHEST);
@@ -447,7 +447,7 @@ if (rvCOUNTDOWN_LO == 1 && rvCOUNTDOWN_HI == 0) {
   vGIANT_STATE = GIANTSTATE_ASLEEP_WITH_CHEST;
   if (!fPOINTS_FOR_TIRING_OUT_GIANT) {
     #if VERSION_S
-      sound(43, fMISC_END_MARKER);
+      sound(SND_GIFT, fMISC_END_MARKER);
     #endif
     set(fPOINTS_FOR_TIRING_OUT_GIANT);
     vSCORE += 7;

@@ -29,12 +29,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   set.horizon(42);
   #if VERSION_S
-    load.sound(47);
+    load.sound(SND_RUSHING_WATER);
   #endif
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
     #if VERSION_S
-      load.sound(44);
+      load.sound(SND_IMPACT);
     #endif
   }
   load.logics(LOGIC101_SWIMMING);
@@ -60,7 +60,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 #if VERSION_S
   if (!rfSTUCK_IN_RIVER && rf14 && !fEGO_PLAYING_FIDDLE) {
-    sound(47, rf14);
+    sound(SND_RUSHING_WATER, rf14);
   }
 #endif
 if (rfTROLL_IS_HERE && fSOUND_END_MARKER) {
@@ -174,7 +174,7 @@ distance(oTROLL, oGOAT, vTEMP_RESULT);
 if (vTEMP_RESULT < 15 && !fGOAT_KILLED_TROLL) {
   print("The old goat seeing the troll, the archenemy of all goats, charges the troll and butts him into oblivion!  The bridge is now yours.");
   #if VERSION_S
-    sound(44, fMISC_END_MARKER);
+    sound(SND_IMPACT, fMISC_END_MARKER);
   #endif
   set(fGOAT_KILLED_TROLL);
   reset(rfTROLL_IS_HERE);

@@ -43,15 +43,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(23);
-    load.sound(25);
+    load.sound(SND_POINTS);
+    load.sound(SND_FRIEND);
   #endif
   load.view(57);
   load.view(58);
   load.sound(SND_FALLING);
   load.sound(SND_FIDDLE_TUNE);
   #if VERSION_S
-    load.sound(43);
+    load.sound(SND_GIFT);
   #endif
   if (fCARRYING_BOWL || fGIVEN_BOWL_TO_WOODCUTTER) {
     load.view(25);
@@ -73,7 +73,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   position(oWIFE, 89, 115);
   stop.cycling(oWIFE);
   #if VERSION_S
-    sound(25, fMISC_END_MARKER);
+    sound(SND_FRIEND, fMISC_END_MARKER);
   #endif
   draw(oWOODCUTTER);
   draw(oWIFE);
@@ -307,7 +307,7 @@ if (fCARRYING_CARROT && said("give", "carrot")) {
 }
 if (fCARRYING_MAGIC_BEANS && said("give", "magic beans")) {
   #if VERSION_S
-    sound(43, fMISC_END_MARKER);
+    sound(SND_GIFT, fMISC_END_MARKER);
   #endif
   print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
   if (!rfBOTH_GESTICULATING) {
@@ -330,7 +330,7 @@ if (fCARRYING_BOWL) {
       || said("drop", "bowl", "table")
     ) {
       #if VERSION_S
-        sound(43, fMISC_END_MARKER);
+        sound(SND_GIFT, fMISC_END_MARKER);
       #endif
       set(fGIVEN_BOWL_TO_WOODCUTTER);
       reset(fCARRYING_BOWL);
@@ -365,7 +365,7 @@ if (fCARRYING_BOWL) {
       || said("drop", "stew", "table")
     ) {
       #if VERSION_S
-        sound(43, fMISC_END_MARKER);
+        sound(SND_GIFT, fMISC_END_MARKER);
       #endif
       set(fGIVEN_BOWL_TO_WOODCUTTER);
       reset(fCARRYING_BOWL);
@@ -405,7 +405,7 @@ if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_EMPTY) {
 #endif
   ) {
     #if VERSION_S
-      sound(43, fMISC_END_MARKER);
+      sound(SND_GIFT, fMISC_END_MARKER);
     #endif
     erase(oBOWL);
     set.view(oBOWL, 83);
@@ -458,7 +458,7 @@ if (!fFIDDLE_TAKEN) {
       set(fCARRYING_FIDDLE);
       set(fFIDDLE_TAKEN);
       #if VERSION_S
-        sound(23, fMISC_END_MARKER);
+        sound(SND_POINTS, fMISC_END_MARKER);
       #endif
       print("The polished wood feels like satin -- it seems to still vibrate from the last song it played.");
       get("fiddle");

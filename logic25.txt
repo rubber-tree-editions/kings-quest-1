@@ -27,12 +27,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(47);
+    load.sound(SND_RUSHING_WATER);
   #endif
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
     #if VERSION_S
-      load.sound(44);
+      load.sound(SND_IMPACT);
     #endif
   }
   load.logics(LOGIC101_SWIMMING);
@@ -66,7 +66,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 #if VERSION_S
   if (!rfSTUCK_IN_RIVER && rf13 && !fEGO_PLAYING_FIDDLE) {
-    sound(47, rf13);
+    sound(SND_RUSHING_WATER, rf13);
   }
 #endif
 if (rfTROLL_IS_HERE && fSOUND_END_MARKER) {
@@ -192,7 +192,7 @@ if (vTEMP_RESULT < 20 && !fGOAT_KILLED_TROLL) {
 #endif
   print("The goat butts the troll right off the bridge, never to be seen in these parts again.");
   #if VERSION_S
-    sound(44, fMISC_END_MARKER);
+    sound(SND_IMPACT, fMISC_END_MARKER);
   #endif
   set(fGOAT_KILLED_TROLL);
   reset(rfTROLL_IS_HERE);

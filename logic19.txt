@@ -12,7 +12,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(29);
+    load.sound(SND_DOOR_CLOSED);
   #endif
   set.horizon(41);
   if (fGOAT_COMPANION) {
@@ -174,7 +174,7 @@ if (rfDOOR_OPENED) {
 }
 if (rfDOOR_CLOSED) {
   #if VERSION_S
-    sound(29, fMISC_END_MARKER);
+    sound(SND_DOOR_CLOSED, fMISC_END_MARKER);
   #endif
   reset(rfDOOR_CLOSED);
   observe.objs(oDOOR);

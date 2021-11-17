@@ -11,6 +11,7 @@ LOGIC__HEADER
 #define rfKING_EDWARD_DEAD rf6
 #define rfEGO_ON_THE_THRONE rf7
 #define rfFINISHED_MOVING_ASIDE rf8
+#define rfPLAYED_SOUND rf10
 
 #define rvCOUNTDOWN rv0
 #define rvEGO_CYCLE_TIME rv1
@@ -23,7 +24,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(26);
+    load.sound(SND_DYING_KING);
     load.sound(SND_TITLE_MUSIC);
   #endif
   vTEMP_RESULT_2 = 0;
@@ -38,7 +39,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(98);
   load.view(142);
   #if VERSION_S
-    load.sound(15);
+    load.sound(SND_KING);
   #elif VERSION_C || VERSION_F
     load.sound(SND_TITLE_MUSIC);
   #endif
@@ -51,7 +52,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   show.pic();
   #if VERSION_S
     if (!fSPOKEN_TO_KING) {
-      sound(15, rf10);
+      sound(SND_KING, rfPLAYED_SOUND);
     }
   #endif
   if (vTREASURE_COUNT == 3) {
@@ -151,7 +152,7 @@ if (rvCOUNTDOWN > 0) {
       end.of.loop(oKING, rfKING_EDWARD_DEAD);
       print("\"Oh!... Oh!!\"  the King proclaims in pain!");
       #if VERSION_S
-        sound(26, fMISC_END_MARKER);
+        sound(SND_DYING_KING, fMISC_END_MARKER);
       #endif
       if (said("examine", "king")) {
         print("Your heart also aches with pain as you watch the King.");
@@ -193,7 +194,7 @@ if (rfEGO_ON_THE_THRONE) {
   stop.motion(oEGO);
   prevent.input();
   #if VERSION_S || VERSION_C || VERSION_F
-    sound(SND_TITLE_MUSIC, rf10);
+    sound(SND_TITLE_MUSIC, rfPLAYED_SOUND);
   #endif
   print(m57);
   set(fYOU_WON);

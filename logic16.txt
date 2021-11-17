@@ -9,7 +9,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
 #if VERSION_S
-  load.sound(23);
+  load.sound(SND_POINTS);
 #endif
   set.horizon(46);
   if (fGOAT_COMPANION) {
@@ -93,7 +93,7 @@ if (rfON_CARROT_PATCH) {
   }
   if (!fCARRYING_CARROT && said("get", "carrot")) {
 #if VERSION_S
-    sound(23, fMISC_END_MARKER);
+    sound(SND_POINTS, fMISC_END_MARKER);
 #endif
     print("You pluck a delicious looking carrot from the fertile soil.");
     set(fCARRYING_CARROT);

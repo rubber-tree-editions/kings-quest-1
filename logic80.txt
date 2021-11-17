@@ -11,7 +11,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   if (fCARRIED_BY_WITCH) {
     #if VERSION_S
-      load.sound(37);
+      load.sound(SND_CARRIED_BY_WITCH);
     #endif
     load.view(91);
     set.view(oEGO, 91);
@@ -29,7 +29,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     #if VERSION_S
       rv0 = 12;
       set(rf2);
-      load.sound(35);
+      load.sound(SND_BIRD);
     #endif
   }
   draw(oEGO);
@@ -40,14 +40,14 @@ if (fROOM_SCRIPT_EXECUTED) {
     rv0--;
     if (rv0 == 1) {
       rv0 = 35;
-      sound(35, rf2);
+      sound(SND_BIRD, rf2);
     }
   }
   else {
     rv1--;
     if (rv1 == 1) {
       rv1 = 35;
-      sound(37, fMISC_END_MARKER);
+      sound(SND_CARRIED_BY_WITCH, fMISC_END_MARKER);
     }
   }
 #endif

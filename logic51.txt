@@ -22,7 +22,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   if (!fTAKEN_MIRROR) {
     #if VERSION_S
-      load.sound(24);
+      load.sound(SND_TREASURE);
     #endif
     load.view(34);
   }
@@ -34,10 +34,10 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(61);
     load.view(82);
     #if VERSION_S
-      load.sound(22);
+      load.sound(SND_DRAGON2);
       load.sound(SND_DRAGON);
-      load.sound(42);
-      load.sound(43);
+      load.sound(SND_MOVING_ROCK);
+      load.sound(SND_GIFT);
     #else
       load.sound(SND_VILLAIN);
       load.sound(SND_DRAGON);
@@ -122,7 +122,7 @@ if (vTEMP_X < 16) {
 if (vDRAGON_STATE == DRAGONSTATE_NORMAL && !rfPLAYING_SND_VILLAIN) {
   set(rfPLAYING_SND_VILLAIN);
   #if VERSION_S
-    sound(22, rfPLAYED_SND_VILLAIN);
+    sound(SND_DRAGON2, rfPLAYED_SND_VILLAIN);
   #else
     sound(SND_VILLAIN, rfPLAYED_SND_VILLAIN);
   #endif
@@ -302,7 +302,7 @@ if (!fCARRYING_MIRROR && !fTAKEN_MIRROR) {
         set(fTAKEN_MIRROR);
         get("magic mirror");
         #if VERSION_S
-          sound(24, fMISC_END_MARKER);
+          sound(SND_TREASURE, fMISC_END_MARKER);
         #endif
         print("Carefully, you pick up the magic mirror.");
         vTREASURE_COUNT++;
@@ -359,7 +359,7 @@ if (!posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
     || said("douse", "dragon")
   )) {
     #if VERSION_S
-      sound(43, fMISC_END_MARKER);
+      sound(SND_GIFT, fMISC_END_MARKER);
     #endif
     reset(fBUCKET_FILLED);
     print("The water hits the dragon squarely in the mouth, extinguishing its roaring flames.  No fire!  How mortified and embarrassed the dragon is!  Moving a huge boulder in leaving, the dragon creeps off to sulk.");
@@ -383,7 +383,7 @@ if (!posn(oEGO, 105, 96, 145, 166) && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
 #endif
     #if VERSION_S
       stop.sound();
-      sound(43, fMISC_END_MARKER);
+      sound(SND_GIFT, fMISC_END_MARKER);
     #endif
     ignore.blocks(oDRAGON);
     reset(fCARRYING_DAGGER);
@@ -405,7 +405,7 @@ if (rfDRAGON_AT_BOULDER) {
   reset(rfDRAGON_AT_BOULDER);
   start.cycling(oBOULDER);
   #if VERSION_S
-    sound(42, fMISC_END_MARKER);
+    sound(SND_MOVING_ROCK, fMISC_END_MARKER);
   #endif
   end.of.loop(oBOULDER, rfBOULDER_MOVED);
 }

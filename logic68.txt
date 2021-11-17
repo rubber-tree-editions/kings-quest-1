@@ -30,7 +30,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   #endif
     #if VERSION_S
       load.sound(SND_VILLAIN);
-      load.sound(32);
+      load.sound(SND_ROBBED);
     #else
       load.sound(SND_DWARF);
     #endif
@@ -266,7 +266,7 @@ if (fVILLAIN_GOT_YOU) {
       goto(END_OF_DWARF_LOGIC);
     }
     #if VERSION_S
-      sound(32, fMISC_END_MARKER);
+      sound(SND_ROBBED, fMISC_END_MARKER);
     #endif
     set.view(oDWARF, 115);
     reset(rfDWARF_IS_HERE);

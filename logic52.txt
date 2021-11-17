@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(36);
+    load.sound(SND_IN_WELL);
   #endif
   ignore.horizon(oEGO);
   load.view(73);
@@ -69,7 +69,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   rv0--;
   if (rv0 == 1 && !rfDEAD) {
     rv0 = 30;
-    sound(36, fMISC_END_MARKER);
+    sound(SND_IN_WELL, fMISC_END_MARKER);
   }
 #endif
 vCOUNTDOWN_LO--;

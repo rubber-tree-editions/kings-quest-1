@@ -13,8 +13,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(25);
-    load.sound(23);
+    load.sound(SND_FRIEND);
+    load.sound(SND_POINTS);
   #endif
   set.horizon(46);
   if (fGOAT_COMPANION) {
@@ -71,7 +71,7 @@ vTEMP_RESULT_3--;
 if (vTEMP_RESULT_3 == 1) {
   reset(rfINIT_RANDOMIZER);
   #if VERSION_S
-    sound(25, fMISC_END_MARKER);
+    sound(SND_FRIEND, fMISC_END_MARKER);
   #endif
   draw(oELF);
   set(rfELF_IS_HERE);
@@ -125,7 +125,7 @@ if (rfELF_IS_HERE) {
   if (!rfELF_LEFT && (said("talk", "elf") || said("hello") || said("say", "hello"))) {
     if (vTEMP_RESULT_2 < 40) {
       #if VERSION_S
-        sound(23, fMISC_END_MARKER);
+        sound(SND_POINTS, fMISC_END_MARKER);
       #endif
       print("The elf, impressed by your friendliness, gives you a magic ring.  \"Kind person, know that once, only once, this ring will make you invisible,\" he says and then disappears.");
       get(iRING);

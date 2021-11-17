@@ -325,7 +325,7 @@ if (posn(oEGO, 61, 135, 63, 137) && !rfEATEN_BY_GATORS) {
 }
 if (rfGATOR1_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
 #if VERSION_S
-  load.sound(33);
+  load.sound(SND_EATEN_BY_GATORS);
 #endif
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
   set(rfEATEN_BY_GATORS);
@@ -336,7 +336,7 @@ if (rfGATOR1_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
 }
 if (rfGATOR2_CAUGHT_YOU && !rfEATEN_BY_GATORS) {
 #if VERSION_S
-  load.sound(33);
+  load.sound(SND_EATEN_BY_GATORS);
 #endif
   print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.");
   set(rfEATEN_BY_GATORS);
@@ -351,7 +351,7 @@ if (rfEATEN_BY_GATORS && rvCOUNTDOWN > 1) {
     rv2--;
     if (rv2 == 1) {
       rv2 = 8;
-      sound(33, fMISC_END_MARKER);
+      sound(SND_EATEN_BY_GATORS, fMISC_END_MARKER);
     }
   }
 }

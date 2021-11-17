@@ -18,7 +18,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(16);
+    load.sound(SND_DWARF);
     load.view(114);
   #endif
   if (fGOAT_COMPANION) {
@@ -54,7 +54,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   random(1, 11, rv2);
   if (rv2 == 2 && rfOGRE_IS_HERE && fSOUND_END_MARKER) {
-    sound(16, fSOUND_END_MARKER);
+    sound(SND_DWARF, fSOUND_END_MARKER);
   }
 #endif
 vTEMP_RESULT_2--;

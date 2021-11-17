@@ -18,7 +18,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(23);
+    load.sound(SND_POINTS);
     load.sound(SND_OUCH);
   #else
     load.sound(SND_OUCH);
@@ -150,7 +150,7 @@ if (!fBOWL_TAKEN) {
 if (!fBOWL_TAKEN && said("get", "bowl")) {
   if (posn(oEGO, 116, 128, 136, 148)) {
     #if VERSION_S
-      sound(23, fMISC_END_MARKER);
+      sound(SND_POINTS, fMISC_END_MARKER);
     #endif
     print("You pick up the ceramic bowl.");
     start.update(oBOWL);

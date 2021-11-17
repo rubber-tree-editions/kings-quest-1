@@ -28,13 +28,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(35);
+    load.sound(SND_BIRD);
     set(rf11);
     if (vBEANSTALK_ROOM == ROOM22_CONDOR_AND_CAVE) {
       load.sound(SND_FALLING);
     }
-    load.sound(25);
-    load.sound(43);
+    load.sound(SND_FRIEND);
+    load.sound(SND_GIFT);
     load.sound(SND_OUCH);
   #else
     load.sound(SND_OUCH);
@@ -139,7 +139,7 @@ if (rfBIRD_IS_HERE && rf11) {
   if (rv4 == 1) {
     rv4 = 35;
     if (!fTENSE_SITUATION && !fEGO_PLAYING_FIDDLE) {
-      sound(35, rf11);
+      sound(SND_BIRD, rf11);
     }
   }
 }
@@ -182,7 +182,7 @@ if (vTEMP_RESULT_2 == 1 && !fFALLING_TO_EARTH && !fEGO_CLIMBING_BEANSTALK) {
   vCOUNTDOWN_LO = 250;
   vCOUNTDOWN_HI = 3;
   #if VERSION_S
-    sound(25, fMISC_END_MARKER);
+    sound(SND_FRIEND, fMISC_END_MARKER);
   #endif
   draw(oBIRD);
   if (!fGOAT_COMPANION) {
@@ -231,7 +231,7 @@ if (vTEMP_RESULT_3 > 20 && vTEMP_RESULT_3 < 35 && vTEMP_Y_2 > rvBIRD_Y && fJUMPI
 if (vTEMP_RESULT_3 > 20 && vTEMP_RESULT_3 < 30 && vTEMP_Y_2 > rvBIRD_Y && fJUMPING && !rfBIRD_AFRAID_OF_GOAT) {
 #endif
   #if VERSION_S
-    sound(43, fMISC_END_MARKER);
+    sound(SND_GIFT, fMISC_END_MARKER);
   #endif
   reset(fJUMPING);
   set(fTENSE_SITUATION);

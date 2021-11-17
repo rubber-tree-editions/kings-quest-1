@@ -14,7 +14,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       load.sound(SND_SPLASHING);
     }
     if (vROOM_NO < 3) {
-      load.sound(34);
+      load.sound(SND_MOAT);
     }
   #else
     load.view(70);
@@ -28,7 +28,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 #if VERSION_S
 if (fEATEN_BY_GATORS) {
-  load.sound(34);
+  load.sound(SND_MOAT);
 }
 #endif
 if (f174_UNKNOWN || fGAME_OVER) {
@@ -61,7 +61,7 @@ if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING) {
           sound(SND_SPLASHING, fPLAYED_SND_SPLASHING);
         }
         else {
-          sound(34, fPLAYED_SND_SPLASHING);
+          sound(SND_MOAT, fPLAYED_SND_SPLASHING);
         }
       }
     #else

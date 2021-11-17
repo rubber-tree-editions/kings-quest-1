@@ -12,7 +12,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   #if VERSION_S
-    load.sound(23);
+    load.sound(SND_POINTS);
   #endif
   load.sound(SND_FALLING);
   load.view(105);
@@ -72,7 +72,7 @@ if (!fTAKEN_GOLDEN_EGG) {
       set(fTAKEN_GOLDEN_EGG);
       vSCORE += 6;
       #if VERSION_S
-        sound(23, fMISC_END_MARKER);
+        sound(SND_POINTS, fMISC_END_MARKER);
       #endif
       print("The golden egg is so heavy you almost drop it.");
     }

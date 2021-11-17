@@ -11,8 +11,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
 #if VERSION_S
-  load.sound(47);
-  load.sound(23);
+  load.sound(SND_RUSHING_WATER);
+  load.sound(SND_POINTS);
 #endif
   set.horizon(45);
   if (vPREV_ROOM_NO == ROOM47_MUSHROOM) {
@@ -48,7 +48,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 #if VERSION_S
   if (!rfPULLED_UNDERWATER && rf1 && !fEGO_PLAYING_FIDDLE) {
-    sound(47, rf1);
+    sound(SND_RUSHING_WATER, rf1);
   }
 #endif
 #if !VERSION_U && !VERSION_V
@@ -126,7 +126,7 @@ if (said("get", "pebbles")) {
     if (posn(oEGO, 68, 83, 109, 124)) {
 #if VERSION_S
       stop.sound();
-      sound(23, fMISC_END_MARKER);
+      sound(SND_POINTS, fMISC_END_MARKER);
 #endif
       print("You grab a handful of pebbles.");
       start.update(oPEBBLES);
