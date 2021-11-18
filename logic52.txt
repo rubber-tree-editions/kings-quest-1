@@ -2,24 +2,27 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_HOLE 1, 75, 65, 166
+#define BX_HOLE_EXIT_ZONE 31, 111, 32, 130
+
 #define rvCOUNTDOWN_TO_SND_IN_WELL rv0
 #define rvGAME_OVER_COUNTDOWN rv1
 
-#if VERSION_MAJOR < 2
-  #define rfDEAD_AND_SUNK rf0
-  #define rfDEAD rf1
-#else
+#if VERSION_MAJOR >= 2
   #define rfDEAD_AND_SUNK rf1
   #define rfDEAD rf2
+#else
+  #define rfDEAD_AND_SUNK rf0
+  #define rfDEAD rf1
 #endif
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_IN_WELL);
-  #endif
+  }
   ignore.horizon(oEGO);
   load.view(73);
   set.view(oEGO, 73);
@@ -38,11 +41,12 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   }
   vCOUNTDOWN_LO = 250;
-#if VERSION_MAJOR < 2
-  vCOUNTDOWN_HI = 3;
-#else
-  vCOUNTDOWN_HI = 2;
-#endif
+  if (VERSION_MAJOR >= 2) {
+    vCOUNTDOWN_HI = 2;
+  }
+  else {
+    vCOUNTDOWN_HI = 3;
+  }
   if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
     set(fBUCKET_FILLED);
     get("water");
@@ -64,17 +68,17 @@ if (fROOM_SCRIPT_EXECUTED) {
     vINVISIBLE_COUNTDOWN_LO = 0;
     vINVISIBLE_COUNTDOWN_HI = 0;
   }
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     rvCOUNTDOWN_TO_SND_IN_WELL = 30;
-  #endif
+  }
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   rvCOUNTDOWN_TO_SND_IN_WELL--;
   if (rvCOUNTDOWN_TO_SND_IN_WELL == 1 && !rfDEAD) {
     rvCOUNTDOWN_TO_SND_IN_WELL = 30;
     sound(SND_IN_WELL, fMISC_END_MARKER);
   }
-#endif
+}
 vCOUNTDOWN_LO--;
 if (vCOUNTDOWN_LO == 0) {
   vCOUNTDOWN_HI--;
@@ -84,9 +88,9 @@ if (vCOUNTDOWN_LO == 0) {
 }
 if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI == 0 && !rfDEAD) {
   set(rfDEAD);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     rvGAME_OVER_COUNTDOWN = 20;
-  #endif
+  }
   set.view(oEGO, 114);
   print("Not even you can hold your breath forever.  The well bottom has become your eternal resting place.");
   ignore.blocks(oEGO);
@@ -98,19 +102,18 @@ if (vCOUNTDOWN_LO == 0 && vCOUNTDOWN_HI == 0 && !rfDEAD) {
     set(rfDEAD_AND_SUNK);
   }
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   rvGAME_OVER_COUNTDOWN--;
   if (rvGAME_OVER_COUNTDOWN == 1 || rfDEAD_AND_SUNK) {
     rvGAME_OVER_COUNTDOWN = 0;
     reset(rfDEAD_AND_SUNK);
     set(fGAME_OVER);
   }
-#else
-  if (rfDEAD_AND_SUNK) {
-    reset(rfDEAD_AND_SUNK);
-    set(fGAME_OVER);
-  }
-#endif
+}
+else if (rfDEAD_AND_SUNK) {
+  reset(rfDEAD_AND_SUNK);
+  set(fGAME_OVER);
+}
 if (said("examine", "water")) {
   print("This looks like typical well water.");
 }
@@ -124,7 +127,7 @@ if (said("examine", "well")) {
   print(m5);
 }
 if (said("examine", "hole")) {
-  if (posn(oEGO, 1, 75, 65, 166)) {
+  if (posn(oEGO, BX_NEAR_HOLE)) {
     print("It is very difficult to tell where the hole might lead.");
   }
   else {
@@ -137,7 +140,7 @@ if (said("examine", "can")) {
 if (said("get", "can")) {
   print("You have no use for this old can.");
 }
-if (posn(oEGO, 31, 111, 32, 130)) {
+if (posn(oEGO, BX_HOLE_EXIT_ZONE)) {
   reset(fEGO_ON_WATER);
   new.room(ROOM51_DRAGONS_LAIR);
 }
@@ -153,10 +156,10 @@ LOGIC__FOOTER
 #message 2 "This looks like typical well water."
 #message 3 "It looks like this bottle has been here for a very long time."
 #message 4 "This is just an old, junky bottle.  You don't want it."
-#if VERSION_MAJOR < 2
-  #message 5 "You are at the bottom of th well.  Through the plants you spy what seems to be a hole in the side of the well."
-#else
+#if VERSION_MAJOR >= 2
   #message 5 "You are at the bottom of the well.  Through the plants you spy what seems to be a hole in the side of the well."
+#else
+  #message 5 "You are at the bottom of th well.  Through the plants you spy what seems to be a hole in the side of the well."
 #endif
 #message 6 "It is very difficult to tell where the hole might lead."
 #message 7 "You are too far away to see clearly."

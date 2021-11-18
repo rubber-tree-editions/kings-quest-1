@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_FLOWERS 22, 86, 114, 167
+
 #define rfINIT_RANDOMIZER rf0
 #define rfOGRE_IS_HERE rf1
 // unused: rf2
@@ -194,7 +196,7 @@ AFTERCOUNTDOWN:
       print("The delightful wild flowers brighten up your day.");
     }
     if (said("smell", "flowers")) {
-      if (posn(oEGO, 22, 86, 114, 167)) {
+      if (posn(oEGO, BX_NEAR_FLOWERS)) {
         print("Their perfume is joyful, sweet, and light.");
       }
       else {

@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_FLOWERS 60, 61, 117, 113
+
 #define rfFELL_FROM_BEANSTALK_LOW rf0
 #define rfEGO_STOPPED_ANIMATING rf1
 #define rfFELL_FROM_SKY rf2
@@ -118,7 +120,7 @@ if (said("examine", "flowers")) {
   print("What a pretty bed of wild flowers.");
 }
 if (said("smell", "flowers")) {
-  if (posn(oEGO, 60, 61, 117, 113)) {
+  if (posn(oEGO, BX_NEAR_FLOWERS)) {
     print("The flowers' fragrance is enticing.");
   }
   else {
@@ -126,7 +128,7 @@ if (said("smell", "flowers")) {
   }
 }
 if (said("get", "flowers")) {
-  if (posn(oEGO, 60, 61, 117, 113)) {
+  if (posn(oEGO, BX_NEAR_FLOWERS)) {
     print("It would be a shame to pick the lovely wild flowers.");
   }
   else {

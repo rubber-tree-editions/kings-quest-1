@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_STUMP 66, 134, 159, 167
+#define BX_NEAR_RIVER 0, 27, 95, 95
+
 #define rfPULLED_UNDERWATER rf0
 #define rfPLAYED_SND_RUSHING_WATER rf1
 
@@ -10,9 +13,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(46);
-#if BUILD_TARGET == APPLE_IIGS
-  load.sound(SND_RUSHING_WATER);
-#endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    load.sound(SND_RUSHING_WATER);
+  }
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
   }
@@ -32,17 +35,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
-#if BUILD_TARGET == APPLE_IIGS
-  set(rfPLAYED_SND_RUSHING_WATER);
-#endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    set(rfPLAYED_SND_RUSHING_WATER);
+  }
 }
-#if BUILD_TARGET == APPLE_IIGS
-if (!rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
-  sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
+if (BUILD_TARGET == APPLE_IIGS) {
+  if (!rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
+    sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
+  }
 }
-#endif
 if (said("examine", "hole") || said("look inside", "hole") || said("look inside", "stumps")) {
-  if (posn(oEGO, 66, 134, 159, 167)) {
+  if (posn(oEGO, BX_NEAR_STUMP)) {
     print("It is just a hole in an empty, old stump.");
   }
   else {
@@ -60,7 +63,7 @@ if (said("examine", "anyword")) {
 }
 if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
   if (said("get", "water") || said("drink", "water")) {
-    if (posn(oEGO, 0, 27, 95, 95)) {
+    if (posn(oEGO, BX_NEAR_RIVER)) {
       print("The bank is too steep to allow access to the river's edge.");
     }
     else {

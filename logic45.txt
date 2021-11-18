@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_HOUSE 11, 119, 45, 146
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -23,7 +25,7 @@ if (said("examine", "stumps")) {
   print("The trees were cut from these stumps long ago.");
 }
 if (said("talk", "woodcutter") || said("talk", "wife")) {
-  if (posn(oEGO, 11, 119, 45, 146)) {
+  if (posn(oEGO, BX_NEAR_HOUSE)) {
     print("You need to go inside to do that.");
   }
   else {
@@ -32,7 +34,7 @@ if (said("talk", "woodcutter") || said("talk", "wife")) {
 }
 #if VERSION_MAJOR >= 2
 if (said("examine", "woodcutter") || said("examine", "wife")) {
-  if (posn(oEGO, 11, 119, 45, 146)) {
+  if (posn(oEGO, BX_NEAR_HOUSE)) {
     print("Perhaps you should go inside the house for a better look.");
   }
   else {
@@ -41,7 +43,7 @@ if (said("examine", "woodcutter") || said("examine", "wife")) {
 }
 #endif
 if (said("examine", "window") || said("look inside", "window")) {
-  if (posn(oEGO, 11, 119, 45, 146)) {
+  if (posn(oEGO, BX_NEAR_HOUSE)) {
     print("When you look in the window, you see a poor, starving woodcutter and his wife.");
   }
   else {
@@ -49,7 +51,7 @@ if (said("examine", "window") || said("look inside", "window")) {
   }
 }
 if (said("break", "window")) {
-  if (posn(oEGO, 11, 119, 45, 146)) {
+  if (posn(oEGO, BX_NEAR_HOUSE)) {
     print("There isn't a glass pane in this window.");
   }
   else {
@@ -57,7 +59,7 @@ if (said("break", "window")) {
   }
 }
 if (said("climb", "window")) {
-  if (posn(oEGO, 11, 119, 45, 146)) {
+  if (posn(oEGO, BX_NEAR_HOUSE)) {
     print("You should really try to find the door.");
   }
   else {
