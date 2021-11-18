@@ -7,6 +7,12 @@
 #define PT_ENTER_FROM_SOUTHWEST 2, 150
 #define PT_ENTER_FROM_CASTLE 110, 122
 
+#define BX_NEAR_DOORS 105, 120, 121, 128
+#define BX_DOORS_VISIBLE 0, 120, 159, 167
+#define BX_LIONS_VISIBLE 0, 128, 159, 167
+#define BX_NEAR_WATER1 0, 143, 159, 167
+#define BX_NEAR_WATER2 40, 108, 74, 142
+
 #define rfGATOR1_CAUGHT_YOU rf0
 #define rfGATOR2_CAUGHT_YOU rf1
 #define rfEATEN_BY_GATORS rf2
@@ -150,7 +156,7 @@ if (said("close", "doors")) {
   print("The door is already closed.");
 }
 if (said("examine", "doors")) {
-  if (posn(oEGO, 0, 120, 159, 167)) {
+  if (posn(oEGO, BX_DOORS_VISIBLE)) {
     print("These doors are strongly built to keep out unwanted visitors.");
   }
   else {
@@ -158,7 +164,7 @@ if (said("examine", "doors")) {
   }
 }
 if (said("anyword", "lions")) {
-  if (posn(oEGO, 0, 128, 159, 167)) {
+  if (posn(oEGO, BX_LIONS_VISIBLE)) {
     print("They pose as immovable guards for King Edward's castle, and have frightened off numerous intruders.");
   }
   else {
@@ -167,7 +173,7 @@ if (said("anyword", "lions")) {
 }
 if (fGOAT_COMPANION) {
   if (said("open", "doors")) {
-    if (posn(oEGO, 105, 120, 121, 128)) {
+    if (posn(oEGO, BX_NEAR_DOORS)) {
       print("Since the goat is with you, permission to enter the  castle is denied.");
     }
     else {
@@ -178,7 +184,7 @@ if (fGOAT_COMPANION) {
 }
 if (fNO_BUSINESS_WITH_KING) {
   if (said("open", "doors")) {
-    if (posn(oEGO, 105, 120, 121, 128)) {
+    if (posn(oEGO, BX_NEAR_DOORS)) {
       if (vTREASURE_COUNT == 3) {
         print("You have been to the castle once since your quest and  are not allowed to return again.");
       }
@@ -193,7 +199,7 @@ if (fNO_BUSINESS_WITH_KING) {
   }
 }
 if (said("knock", "doors")) {
-  if (posn(oEGO, 105, 120, 121, 128)) {
+  if (posn(oEGO, BX_NEAR_DOORS)) {
     print("Your knock echos within the castle.  Unfortunately, no one answers.");
   }
   else {
@@ -202,7 +208,7 @@ if (said("knock", "doors")) {
 }
 if (!fGOAT_COMPANION && !fNO_BUSINESS_WITH_KING) {
   if (said("open", "doors")) {
-    if (posn(oEGO, 105, 120, 121, 128)) {
+    if (posn(oEGO, BX_NEAR_DOORS)) {
       set(rfDOORS_OPENING);
       start.update(oCASTLE_DOORS);
       if (BUILD_TARGET == APPLE_IIGS) {
@@ -243,7 +249,7 @@ if (rfDOORS_FINISHED_OPENING && rfFANFARE_FINISHED) {
   new.room(ROOM55_CASTLE_HALL);
 }
 if (said("drink", "water") && !fBUCKET_FILLED && !fDRANK_WATER) {
-  if (posn(oEGO, 0, 143, 159, 167) || posn(oEGO, 40, 108, 74, 142)) {
+  if (posn(oEGO, BX_NEAR_WATER1) || posn(oEGO, BX_NEAR_WATER2)) {
     print("As you kneel by the edge of the moat and see just how filthy the water is, your thirst strangely leaves you.");
   }
   else {
@@ -252,7 +258,7 @@ if (said("drink", "water") && !fBUCKET_FILLED && !fDRANK_WATER) {
 }
 if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
   if (said("get", "water")) {
-    if (posn(oEGO, 0, 143, 159, 167) || posn(oEGO, 40, 108, 74, 142)) {
+    if (posn(oEGO, BX_NEAR_WATER1) || posn(oEGO, BX_NEAR_WATER2)) {
       reset(fDRANK_WATER);
       print("Although you notice the water is unclean, you fill the bucket.");
       get("water");

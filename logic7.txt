@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_LAKE 0, 36, 84, 167
+
 #define rfPULLED_UNDERWATER rf0
 #define rfPLAYED_SND_RUNNING_WATER rf1
 
@@ -78,7 +80,7 @@ if (said("examine", "waterfall")) {
 }
 if (!fBUCKET_FILLED && !fEGO_ON_WATER && !fDRANK_WATER) {
   if (said("drink", "water") || said("get", "drink")) {
-    if (posn(oEGO, 0, 36, 84, 167)) {
+    if (posn(oEGO, BX_NEAR_LAKE)) {
       print("The clear water quenches your thirst.");
     }
     else {
@@ -87,7 +89,7 @@ if (!fBUCKET_FILLED && !fEGO_ON_WATER && !fDRANK_WATER) {
   }
 }
 if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water")) {
-  if (posn(oEGO, 0, 36, 84, 167)) {
+  if (posn(oEGO, BX_NEAR_LAKE)) {
     reset(fDRANK_WATER);
     print("The lake's waters pour into the bucket.");
     get("water");

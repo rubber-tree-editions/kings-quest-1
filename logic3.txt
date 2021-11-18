@@ -7,6 +7,10 @@ LOGIC__HEADER
 #define PT_HOLE 122, 124
 #define PT_EGO_CRUSHED 115, 140
 
+#define BX_BEHIND_ROCK 115, 114, 133, 133
+#define BX_IN_FRONT_OF_ROCK 118, 134, 133, 148
+#define BX_NEAR_HOLE 112, 108, 134, 133
+
 #define rfROCK_MOVING_SAFE rf0
 #define rfROCK_MOVING_DEADLY rf1
 
@@ -124,10 +128,10 @@ if (!fSAID_ACCEPTED_USER_INPUT) {
 }
 if (said("shove", "rocks")) {
   if (!fMOVED_ROCK && !rfROCK_MOVING_SAFE) {
-    if (!posn(oEGO, 115, 114, 133, 133) && !posn(oEGO, 118, 134, 133, 148)) {
+    if (!posn(oEGO, BX_BEHIND_ROCK) && !posn(oEGO, BX_IN_FRONT_OF_ROCK)) {
       print("It will be very difficult to move the rock from here.");
     }
-    if (posn(oEGO, 115, 114, 133, 133)) {
+    if (posn(oEGO, BX_BEHIND_ROCK)) {
       draw(oHOLE);
       stop.update(oHOLE);
       move.obj(oROCK, 118, 145, 0, fMOVED_ROCK);
@@ -138,7 +142,7 @@ if (said("shove", "rocks")) {
       vSCORE += 2;
       set(rfROCK_MOVING_SAFE);
     }
-    if (posn(oEGO, 118, 134, 133, 148)) {
+    if (posn(oEGO, BX_IN_FRONT_OF_ROCK)) {
       #if RUBBER_TREE
         get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
         rvRESTORE_EGO_DIR = vEGO_DIR;
@@ -193,7 +197,7 @@ if (said("examine", "dagger")) {
 }
 if (said("get", "dagger")) {
   if (fMOVED_ROCK && !fTAKEN_DAGGER) {
-    if (posn(oEGO, 112, 108, 134, 133)) {
+    if (posn(oEGO, BX_NEAR_HOLE)) {
       if (BUILD_TARGET == APPLE_IIGS) {
         sound(SND_POINTS, fMISC_END_MARKER);
       }

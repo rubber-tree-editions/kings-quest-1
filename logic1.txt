@@ -8,6 +8,9 @@ LOGIC__HEADER
 #define PT_BANNERS 5, 17
 #define PT_ENTER_FROM_SOUTHEAST 148, 150
 
+#define BX_NEAR_WATER1 0, 146, 159, 167
+#define BX_NEAR_WATER2 87, 110, 117, 145
+
 #define rfGATOR1_CAUGHT_YOU rf0
 #define rfGATOR2_CAUGHT_YOU rf1
 #define rfEATEN_BY_GATORS rf2
@@ -120,7 +123,7 @@ if (said("examine", "alligators")) {
   print("The alligators are swimming in the moat.");
 }
 if (said("drink", "water") && !fBUCKET_FILLED && !fDRANK_WATER) {
-  if (posn(oEGO, 0, 146, 159, 167) || posn(oEGO, 87, 110, 117, 145)) {
+  if (posn(oEGO, BX_NEAR_WATER1) || posn(oEGO, BX_NEAR_WATER2)) {
     print("There are alligators in this water.  I don't think you want to try drinking it.");
   }
   else {
@@ -129,7 +132,7 @@ if (said("drink", "water") && !fBUCKET_FILLED && !fDRANK_WATER) {
 }
 if (fCARRYING_BUCKET && !fBUCKET_FILLED) {
   if (said("get", "water")) {
-    if (posn(oEGO, 0, 146, 159, 167) || posn(oEGO, 87, 110, 117, 145)) {
+    if (posn(oEGO, BX_NEAR_WATER1) || posn(oEGO, BX_NEAR_WATER2)) {
       reset(fDRANK_WATER);
       print("You fill the bucket with the murky water from the moat.");
       get("water");

@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define BX_NEAR_STUMP 0, 103, 35, 146
+#define BX_NEAR_BEANSTALK 52, 76, 103, 97
+
 #define rfFELL_OFF_BEANSTALK_LOW rf0
 #define rfFELL_FROM_SKY rf1
 #define rfEGO_STOPPED_ANIMATING rf2
@@ -140,7 +143,7 @@ if (said("get", "wood")) {
   print("There is no reason to take this old log with you.");
 }
 if (said("look inside", "stumps")) {
-  if (posn(oEGO, 0, 103, 35, 146)) {
+  if (posn(oEGO, BX_NEAR_STUMP)) {
     if (!fPOUCH_TAKEN) {
       print("Inside the old, rotted stump you notice a small, canvas pouch.");
       if (!fPOINTS_FOR_FINDING_POUCH) {
@@ -157,7 +160,7 @@ if (said("look inside", "stumps")) {
   }
 }
 if (said("get", "bag of jewels") && !fCARRYING_POUCH) {
-  if (posn(oEGO, 0, 103, 35, 146)) {
+  if (posn(oEGO, BX_NEAR_STUMP)) {
     if (!fPOUCH_TAKEN) {
       if (BUILD_TARGET == APPLE_IIGS) {
         sound(SND_POINTS, fMISC_END_MARKER);
@@ -172,7 +175,7 @@ if (said("get", "bag of jewels") && !fCARRYING_POUCH) {
       print("There's no pouch here.");
     }
   }
-  if (!posn(oEGO, 0, 103, 35, 146)) {
+  if (!posn(oEGO, BX_NEAR_STUMP)) {
     print("You have to find it first.");
   }
 }
@@ -198,7 +201,7 @@ if (fCARRYING_MAGIC_BEANS && fINIT_BEANSTALK) {
 }
 if (vBEANSTALK_ROOM == ROOM6_POUCH_STUMP && !fEGO_INVISIBLE) {
   if (said("climb", "beanstalk") && !fEGO_CLIMBING_BEANSTALK) {
-    if (posn(oEGO, 52, 76, 103, 97)) {
+    if (posn(oEGO, BX_NEAR_BEANSTALK)) {
       if (BUILD_TARGET == APPLE_IIGS) {
         set(fTENSE_SITUATION);
         set(fTHREAT_OF_SORCERER_OR_OGRE);
