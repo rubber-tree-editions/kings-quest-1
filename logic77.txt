@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PRI_LEPRECHAUN_KING 10
+
 #define rfDANCING_LEPRECHAUNS rf0
 #define rfLEPRECHAUN_AFTER_YOU rf1
 #define rfLEPRECHAUN_CAUGHT_YOU rf2
@@ -69,7 +71,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oLEPRECHAUN_KING);
     set.view(oLEPRECHAUN_KING, 54);
     position(oLEPRECHAUN_KING, 121, 98);
-    set.priority(oLEPRECHAUN_KING, 10);
+    set.priority(oLEPRECHAUN_KING, PRI_LEPRECHAUN_KING);
     ignore.blocks(oLEPRECHAUN_KING);
     draw(oLEPRECHAUN_KING);
     if (fDANCING_LEPRECHAUNS) {

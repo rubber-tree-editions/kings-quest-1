@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PRI_GOLDEN_EGG 6
+
 #define rfSHOW_GOLDEN_EGG rf0
 #define rfFALLING_OUT_OF_THE_TREE rf1
 
@@ -26,7 +28,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oGOLDEN_EGG);
     set.view(oGOLDEN_EGG, 39);
     position(oGOLDEN_EGG, 70, 85);
-    set.priority(oGOLDEN_EGG, 6);
+    set.priority(oGOLDEN_EGG, PRI_GOLDEN_EGG);
   }
   set.priority(oEGO, 6);
   position(oEGO, 35, 164);

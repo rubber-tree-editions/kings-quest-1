@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PRI_EGO_WHILE_FALLING 12
+
 #define rfFELL_OUT_OF_TREE rf0
 #define rfEGO_STOPPED_ANIMATING rf1
 #define rfPLAYING_SND_FALLING rf2
@@ -29,7 +31,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       set.view(oEGO, 105);
       ignore.blocks(oEGO);
       position(oEGO, 84, 41);
-      set.priority(oEGO, 12);
+      set.priority(oEGO, PRI_EGO_WHILE_FALLING);
       program.control();
       move.obj(oEGO, 84, 132, 4, rfFELL_OUT_OF_TREE);
       set(fPLAYER_NOT_IN_CONTROL);

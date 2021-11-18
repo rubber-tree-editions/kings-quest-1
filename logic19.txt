@@ -5,6 +5,8 @@ LOGIC__HEADER
 #define BX_NEAR_DOOR 90, 93, 125, 114
 #define BX_MOUNTAIN_ENTRY_ZONE 99, 93, 114, 94
 
+#define PRI_DOOR 8
+
 #define rfDOOR_OPENED rf0
 #define rfDOOR_CLOSED rf1
 
@@ -27,7 +29,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(20);
   animate.obj(oDOOR);
   set.view(oDOOR, 20);
-  set.priority(oDOOR, 8);
+  set.priority(oDOOR, PRI_DOOR);
   position(oDOOR, 101, 92);
   load.sound(SND_DOOR_OPENING);
   if (vPREV_ROOM_NO == ROOM66_MOUNTAIN_STAIRWAY_BOTTOM) {

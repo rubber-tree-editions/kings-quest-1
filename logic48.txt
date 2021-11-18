@@ -4,6 +4,10 @@ LOGIC__HEADER
 
 #define BX_NEAR_HOLE 55, 105, 100, 142
 
+#define PRI_BIRD 14
+#define PRI_EGO_WHILE_FALLING_FROM_MIDAIR 15
+#define PRI_EGO_WHILE_FALLING_INTO_HOLE 5
+
 #define rfBIRD_DROPPED_YOU rf0
 #define rfBIRD_LEFT rf1
 #define rfHITTING_THE_GROUND rf2
@@ -40,8 +44,8 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oBIRD, 8);
     position(oEGO, 2, 50);
     move.obj(oEGO, 100, 50, 0, rfBIRD_DROPPED_YOU);
-    set.priority(oBIRD, 14);
-    set.priority(oEGO, 15);
+    set.priority(oBIRD, PRI_BIRD);
+    set.priority(oEGO, PRI_EGO_WHILE_FALLING_FROM_MIDAIR);
     #if BUILD_TARGET == APPLE_IIGS
       rvCOUNTDOWN_TO_NOTHING = 12;
       set(rfARRIVING_FROM_MIDAIR);
@@ -163,7 +167,7 @@ if (fEGO_ON_WATER && !fFALLING) {
   set(fSCRIPTED_MOTION);
   stop.cycling(oEGO);
   set(fFALLING);
-  set.priority(oEGO, 5);
+  set.priority(oEGO, PRI_EGO_WHILE_FALLING_INTO_HOLE);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_Y += 35;
   vTEMP_STEP = 8;

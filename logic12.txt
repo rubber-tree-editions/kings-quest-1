@@ -7,6 +7,8 @@ LOGIC__HEADER
 #define BX_NEAR_HANDLE 60, 108, 77, 140
 #define BX_NEAR_ROPE 60, 108, 77, 129
 
+#define PRI_WELL 11
+
 #define rfFALLEN_INTO_WELL rf0
 #define rfBUCKET_DESCENDED rf1
 #define rfBUCKET_ASCENDED rf2
@@ -48,7 +50,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.view(oHANDLE, 18);
   position(oHANDLE, 66, 96);
   ignore.objs(oHANDLE);
-  set.priority(oHANDLE, 11);
+  set.priority(oHANDLE, PRI_WELL);
   set.cel(oHANDLE, 4);
   if (!fBUCKET_ROPE_CUT) {
     load.view(72);
@@ -57,7 +59,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oBUCKET, 16);
     ignore.blocks(oBUCKET);
     position(oBUCKET, 37, 120);
-    set.priority(oBUCKET, 11);
+    set.priority(oBUCKET, PRI_WELL);
     if (!fBUCKET_LOWERED) {
       set.cel(oBUCKET, 0);
     }
@@ -74,7 +76,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       ignore.objs(oROPE);
     #endif
     position(oROPE, 43, 147);
-    set.priority(oROPE, 11);
+    set.priority(oROPE, PRI_WELL);
     if (!fROPE_DANGLING_IN_WELL) {
       set.cel(oROPE, 0);
     }
@@ -91,7 +93,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
     set(fON_WELL_ROPE);
     position(oEGO, 38, 140);
-    set.priority(oEGO, 11);
+    set.priority(oEGO, PRI_WELL);
     ignore.blocks(oEGO);
     move.obj(oEGO, 38, 140, 0, fMISC_END_MARKER);
   }
@@ -150,7 +152,7 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         position(oEGO, 39, 131);
         draw(oEGO);
         set(fON_WELL_ROPE);
-        set.priority(oEGO, 11);
+        set.priority(oEGO, PRI_WELL);
         ignore.blocks(oEGO);
         move.obj(oEGO, 39, 132, 0, fMISC_END_MARKER);
       }
@@ -175,7 +177,7 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         erase(oEGO);
         set.view(oBUCKET, 72);
         position(oBUCKET, 38, 145);
-        set.priority(oBUCKET, 11);
+        set.priority(oBUCKET, PRI_WELL);
         ignore.blocks(oBUCKET);
         set.cel(oBUCKET, 0);
         start.update(oBUCKET);
@@ -335,7 +337,7 @@ if (rfENTERED_WELL) {
   reset(rfENTERED_WELL);
   erase(oEGO);
   position(oEGO, 38, 125);
-  set.priority(oEGO, 11);
+  set.priority(oEGO, PRI_WELL);
   ignore.blocks(oEGO);
   draw(oEGO);
   move.obj(oEGO, 38, 145, 3, rfFALLEN_INTO_WELL);

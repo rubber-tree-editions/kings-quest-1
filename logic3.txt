@@ -11,6 +11,8 @@ LOGIC__HEADER
 #define BX_IN_FRONT_OF_ROCK 118, 134, 133, 148
 #define BX_NEAR_HOLE 112, 108, 134, 133
 
+#define PRI_ROLLING_ROCK 15
+
 #define rfROCK_MOVING_SAFE rf0
 #define rfROCK_MOVING_DEADLY rf1
 
@@ -152,7 +154,7 @@ if (said("shove", "rocks")) {
       draw(oHOLE);
       stop.update(oHOLE);
       set(rfROCK_MOVING_DEADLY);
-      set.priority(oROCK, 15);
+      set.priority(oROCK, PRI_ROLLING_ROCK);
       move.obj(oROCK, 118, 145, 0, fMOVED_ROCK);
       print("This moving rock rolls downhill and you, unfortunately,  are in the way.");
       if (BUILD_TARGET == APPLE_IIGS) {

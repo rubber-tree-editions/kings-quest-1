@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PRI_DOOR 9
+
 #define rfRAT_IS_HERE rf0
 #define rfRAT_CAUGHT_YOU rf1
 #define rfWARNED_RAT_CAN_SMELL_YOU rf2
@@ -67,7 +69,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.cel(oDOOR, 0);
   }
   ignore.blocks(oDOOR);
-  set.priority(oDOOR, 9);
+  set.priority(oDOOR, PRI_DOOR);
   position(oDOOR, 25, 119);
   draw(oDOOR);
   if (rfRAT_IS_HERE) {

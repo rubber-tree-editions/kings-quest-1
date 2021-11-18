@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PRI_WITCH 15
+
 #define rfINIT_RANDOMIZER rf0
 #define rfWITCH_IS_HERE rf1
 #define rfPROTECTED rf2
@@ -49,7 +51,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     ignore.horizon(oWITCH);
     ignore.blocks(oWITCH);
 #if VERSION_MAJOR >= 2
-    set.priority(oWITCH, 15);
+    set.priority(oWITCH, PRI_WITCH);
 #endif
     set.loop(oWITCH, 1);
   }
@@ -149,7 +151,7 @@ if (rfWITCH_GOT_YOU) {
 #endif
     vTEMP_X = 130;
 #if VERSION_MAJOR >= 2
-    set.priority(oEGO, 15);
+    set.priority(oEGO, PRI_WITCH);
 #endif
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, rvWITCH_STEP_SIZE, rfCARRIED_OFF);
     set(fCYCLE_EGO_ANIMATION);

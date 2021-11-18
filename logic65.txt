@@ -12,6 +12,9 @@ LOGIC__HEADER
 #define PT_IN_CAGE 80, 80
 #define PT_WITCH_AT_HOME 26, 120
 
+#define PRI_NOTE 14
+#define PRI_SWISS_CHEESE 8
+
 #define rfFALLEN_TO_EARTH rf0
 #define rfWITCH_AT_OVEN rf1
 #define rfEGO_FINISHED_ANIM rf2
@@ -57,7 +60,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oNOTE);
     set.view(oNOTE, 42);
     position(oNOTE, PT_NOTE);
-    set.priority(oNOTE, 14);
+    set.priority(oNOTE, PRI_NOTE);
   }
   if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_NO_CHEESE) {
     load.view(40);
@@ -78,7 +81,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oSWISS_CHEESE);
     set.view(oSWISS_CHEESE, 41);
     position(oSWISS_CHEESE, PT_SWISS_CHEESE);
-    set.priority(oSWISS_CHEESE, 8);
+    set.priority(oSWISS_CHEESE, PRI_SWISS_CHEESE);
   }
   if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_NO_CHEESE) {
     load.view(40);
@@ -99,7 +102,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oSWISS_CHEESE);
     set.view(oSWISS_CHEESE, 41);
     position(oSWISS_CHEESE, PT_SWISS_CHEESE);
-    set.priority(oSWISS_CHEESE, 8);
+    set.priority(oSWISS_CHEESE, PRI_SWISS_CHEESE);
   }
   if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
     #if BUILD_TARGET == APPLE_IIGS

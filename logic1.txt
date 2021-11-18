@@ -11,6 +11,8 @@ LOGIC__HEADER
 #define BX_NEAR_WATER1 0, 146, 159, 167
 #define BX_NEAR_WATER2 87, 110, 117, 145
 
+#define PRI_BANNERS 15
+
 #define rfGATOR1_CAUGHT_YOU rf0
 #define rfGATOR2_CAUGHT_YOU rf1
 #define rfEATEN_BY_GATORS rf2
@@ -61,7 +63,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   position(oGATOR2, PT_GATOR2_START);
   ignore.horizon(oBANNERS);
   position(oBANNERS, PT_BANNERS);
-  set.priority(oBANNERS, 15);
+  set.priority(oBANNERS, PRI_BANNERS);
   set(fSWIMMING_IMPOSSIBLE_HERE);
   object.on.water(oGATOR1);
   object.on.water(oGATOR2);

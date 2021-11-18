@@ -13,6 +13,9 @@
 #define BX_NEAR_WATER1 0, 143, 159, 167
 #define BX_NEAR_WATER2 40, 108, 74, 142
 
+#define PRI_BANNERS 15
+#define PRI_EGO_DURING_DOOR_ANIM 15
+
 #define rfGATOR1_CAUGHT_YOU rf0
 #define rfGATOR2_CAUGHT_YOU rf1
 #define rfEATEN_BY_GATORS rf2
@@ -79,7 +82,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   position(oGATOR2, PT_GATOR2_START);
   ignore.horizon(oBANNERS);
   position(oBANNERS, PT_BANNERS);
-  set.priority(oBANNERS, 15);
+  set.priority(oBANNERS, PRI_BANNERS);
   set(fSWIMMING_IMPOSSIBLE_HERE);
   object.on.water(oGATOR1);
   object.on.water(oGATOR2);
@@ -221,7 +224,7 @@ if (!fGOAT_COMPANION && !fNO_BUSINESS_WITH_KING) {
       if (BUILD_TARGET != AMIGA) {
         stop.motion(oEGO);
       }
-      set.priority(oEGO, 15);
+      set.priority(oEGO, PRI_EGO_DURING_DOOR_ANIM);
       print("The huge doors swing open slowly.");
       if (BUILD_TARGET == APPLE_IIGS) {
         sound(SND_DOOR_OPENING, fMISC_END_MARKER);

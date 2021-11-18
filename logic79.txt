@@ -2,6 +2,9 @@
 
 LOGIC__HEADER
 
+#define PRI_BOWL 14
+#define PRI_EGO_WHILE_FALLING_INTO_HOLE 5
+
 #define PT_FIDDLE 128, 155
 #define PT_WOODCUTTER 45, 116
 #define PT_WIFE 89, 115
@@ -97,7 +100,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       set.view(oBOWL, 83);
     }
     position(oBOWL, PT_BOWL);
-    set.priority(oBOWL, 14);
+    set.priority(oBOWL, PRI_BOWL);
     draw(oBOWL);
     stop.update(oBOWL);
   }
@@ -346,7 +349,7 @@ if (fCARRYING_BOWL) {
       vSCORE -= 3;
       vSCORE += 6;
       position(oBOWL, PT_BOWL);
-      set.priority(oBOWL, 14);
+      set.priority(oBOWL, PRI_BOWL);
       set.view(oBOWL, 25);
       draw(oBOWL);
       print("Puzzled, the couple wonders why you have given them a bowl.");
@@ -381,7 +384,7 @@ if (fCARRYING_BOWL) {
       vSCORE -= 3;
       vSCORE += 6;
       position(oBOWL, PT_BOWL);
-      set.priority(oBOWL, 14);
+      set.priority(oBOWL, PRI_BOWL);
       set.view(oBOWL, 83);
       draw(oBOWL);
       print("The woodcutter family is very grateful that you have given them a bowl of stew.  Now they will have at least one last meal.  As a token of their gratitude, they offer their last earthly possession, the woodcutter's fiddle.");
@@ -493,7 +496,7 @@ if (fEGO_ON_WATER && !fFALLING) {
   set(fSCRIPTED_MOTION);
   stop.cycling(oEGO);
   set(fFALLING);
-  set.priority(oEGO, 5);
+  set.priority(oEGO, PRI_EGO_WHILE_FALLING_INTO_HOLE);
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   vTEMP_Y = 166;
   vTEMP_STEP = 6;
