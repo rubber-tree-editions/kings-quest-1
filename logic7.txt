@@ -133,8 +133,8 @@ if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
   reset(fSWIMMING_IMPOSSIBLE_HERE);
-  if (f66_UNKNOWN) {
-    reset(f66_UNKNOWN);
+  if (fGOAT_WONT_SWIM_V2) {
+    reset(fGOAT_WONT_SWIM_V2);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
     if (VERSION_MAJOR >= 2) {

@@ -8,9 +8,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-#if BUILD_TARGET == APPLE_IIGS
-  load.sound(SND_POINTS);
-#endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    load.sound(SND_POINTS);
+  }
   set.horizon(46);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
@@ -28,11 +28,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if VERSION_MAJOR >= 2
-if (said("examine", "room")) {
+if (VERSION_MAJOR >= 2 && said("examine", "room")) {
   print("You see an old stone wall surrounding a well kept garden.");
 }
-#endif
 if (said("examine", "garden")
   || said("examine", "ground")
   || said("examine", "plant")
@@ -40,24 +38,24 @@ if (said("examine", "garden")
 ) {
   print("This is a well-tended carrot patch.  The carrots look tempting to a hungry traveler.");
 }
-#if VERSION_MAJOR < 2
-if (said("examine", "fence")) {
-#else
+#if VERSION_MAJOR >= 2
 if (said("examine", "fence") || said("examine", "wall")) {
+#else
+if (said("examine", "fence")) {
 #endif
   print("This is a relatively low, rustic stone fence which runs along the left and rear sides of the garden.");
 }
-#if VERSION_MAJOR < 2
-if (said("climb", "fence")) {
-#else
+#if VERSION_MAJOR >= 2
 if (said("climb", "fence") || said("climb", "wall")) {
+#else
+if (said("climb", "fence")) {
 #endif
   print("There is no reason to climb the fence.");
 }
-#if VERSION_MAJOR < 2
-if (said("jump", "fence")) {
-#else
+#if VERSION_MAJOR >= 2
 if (said("jump", "fence") || said("jump", "wall")) {
+#else
+if (said("jump", "fence")) {
 #endif
   print("You can go around the fence.");
 }
@@ -72,20 +70,20 @@ if (posn(oEGO, 87, 54, 159, 65)
 else {
   reset(rfON_CARROT_PATCH);
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y < 60) {
     reset(rfON_CARROT_PATCH);
   }
-#endif
+}
 if (rfON_CARROT_PATCH) {
   if (!fCARRYING_CARROT && said("examine", "carrot")) {
     print("There are many large, plump carrots in the garden.");
   }
   if (!fCARRYING_CARROT && said("get", "carrot")) {
-#if BUILD_TARGET == APPLE_IIGS
-    sound(SND_POINTS, fMISC_END_MARKER);
-#endif
+    if (BUILD_TARGET == APPLE_IIGS) {
+      sound(SND_POINTS, fMISC_END_MARKER);
+    }
     print("You pluck a plump, orange carrot from the ground.");
     set(fCARRYING_CARROT);
     reset(fCARROT_EATEN);

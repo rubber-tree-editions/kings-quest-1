@@ -38,23 +38,19 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if VERSION_MAJOR >= 2
-  if (fSHOW_GOAT_LEFT_MESSAGE) {
-    reset(fSHOW_GOAT_LEFT_MESSAGE);
-    print("It seems the old goat has wandered off by himself and is no longer following you.");
-  }
-#endif
+if (VERSION_MAJOR >= 2 && fSHOW_GOAT_LEFT_MESSAGE) {
+  reset(fSHOW_GOAT_LEFT_MESSAGE);
+  print("It seems the old goat has wandered off by himself and is no longer following you.");
+}
 if (said("examine", "lake")) {
   print("This is a small alpine lake.");
 }
 if (said("examine", "stumps")) {
   print(m5);
 }
-#if VERSION_MAJOR >= 2
-if (said("anyword", "beavers")) {
+if (VERSION_MAJOR >= 2 && said("anyword", "beavers")) {
   print("There are no beavers here now.");
 }
-#endif
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 100, 109, 115, 135)) {
     set(fEGO_ON_WATER);
@@ -103,13 +99,13 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water"
   }
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
-  if (f66_UNKNOWN) {
-    reset(f66_UNKNOWN);
+  if (fGOAT_WONT_SWIM_V2) {
+    reset(fGOAT_WONT_SWIM_V2);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
-#if VERSION_MAJOR >= 2
-    set(fSHOW_GOAT_LEFT_MESSAGE);
-#endif
+    if (VERSION_MAJOR >= 2) {
+      set(fSHOW_GOAT_LEFT_MESSAGE);
+    }
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
@@ -127,7 +123,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_X > 13 && vTEMP_X <  133) {
     set(fTENSE_SITUATION);
@@ -139,7 +135,7 @@ if (fGOAT_COMPANION) {
     reset(fTHREAT_OF_SORCERER_OR_OGRE);
     reset(fFALL_DANGER);
   }
-#endif
+}
 call(LOGIC101_SWIMMING);
 return;
 
@@ -150,10 +146,10 @@ LOGIC__FOOTER
 #message 2 "The clear water quenches your thirst."
 #message 3 "You are not close enough to the water."
 #message 4 "You have no container for water."
-#if VERSION_MAJOR < 2
-  #message 5 "There seem to be beavers around here."
-#else
+#if VERSION_MAJOR >= 2
   #message 5 "It looks as though there were beavers around here at one time."
+#else
+  #message 5 "There seem to be beavers around here."
 #endif
 #message 6 "This is a small alpine lake."
 #if VERSION_MAJOR >= 2

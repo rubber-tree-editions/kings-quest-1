@@ -96,8 +96,8 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && said("get", "water")) {
   set(fFILL_BUCKET_POINTS);
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
-  if (f66_UNKNOWN) {
-    reset(f66_UNKNOWN);
+  if (fGOAT_WONT_SWIM_V2) {
+    reset(fGOAT_WONT_SWIM_V2);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
 #if VERSION_MAJOR >= 2

@@ -43,22 +43,18 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if VERSION_MAJOR >= 2
-if (said("examine", "room")) {
+if (VERSION_MAJOR >= 2 && said("examine", "room")) {
   print("There is a very large oak tree here with branches stretching to the sky.");
 }
-#endif
 if (fFALLING_OUT_OF_TREE && !rfPLAYING_SND_FALLING) {
   set(rfPLAYING_SND_FALLING);
   set(f135_UNKNOWN);
   sound(SND_FALLING, fSOUND_END_MARKER_2);
 }
-#if VERSION_MAJOR < 2
-if (!rfFELL_OUT_OF_TREE && fSOUND_END_MARKER_2) {
+if (VERSION_MAJOR < 2 && !rfFELL_OUT_OF_TREE && fSOUND_END_MARKER_2) {
   reset(fSOUND_END_MARKER_2);
   reset(rfPLAYING_SND_FALLING);
 }
-#endif
 rvCOUNTDOWN--;
 if (rfFELL_OUT_OF_TREE) {
   reset(rfFELL_OUT_OF_TREE);

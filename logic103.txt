@@ -13,9 +13,9 @@ LOGIC__HEADER
 #define oGOAT o13
 
 #if VERSION_MAJOR >= 2
-  #define fNO_GOAT_SWIM f66
+  #define fGOAT_WONT_SWIM fGOAT_WONT_SWIM_V2
 #else
-  #define fNO_GOAT_SWIM fGOAT_WONT_SWIM
+  #define fGOAT_WONT_SWIM fGOAT_WONT_SWIM_V1
 #endif
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -135,7 +135,7 @@ if (fGOAT_NEAR_YOU) {
   stop.motion(oGOAT);
   stop.cycling(oGOAT);
 }
-if (rvDISTANCE_FROM_EGO_TO_GOAT > 20 && vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE && !fNO_GOAT_SWIM) {
+if (rvDISTANCE_FROM_EGO_TO_GOAT > 20 && vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
   if (
 #if VERSION_MAJOR >= 2
     !fSWIMMING_IMPOSSIBLE_HERE &&
@@ -152,12 +152,12 @@ if (rvDISTANCE_FROM_EGO_TO_GOAT > 20 && vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE
   ) {
     print("The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water.");
   }
-  set(fNO_GOAT_SWIM);
+  set(fGOAT_WONT_SWIM);
   start.cycling(oGOAT);
   wander(oGOAT);
 }
-if (fNO_GOAT_SWIM && rvDISTANCE_FROM_EGO_TO_GOAT < 25 && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE) {
-  reset(fNO_GOAT_SWIM);
+if (fGOAT_WONT_SWIM && rvDISTANCE_FROM_EGO_TO_GOAT < 25 && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE) {
+  reset(fGOAT_WONT_SWIM);
   follow.ego(oGOAT, 10, fGOAT_NEAR_YOU);
 }
 if (fEGO_INVISIBLE && !rfGOAT_WANDERING_OFF) {
@@ -172,12 +172,12 @@ if (fEGO_INVISIBLE && !rfGOAT_WANDERING_OFF) {
 goto RETURN;
 ATRIVER:
   distance(oEGO, oGOAT, rvDISTANCE_FROM_EGO_TO_GOAT);
-  if (rfAPPROACHING_CLIFFS_LAKE_EDGE && vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE && !fNO_GOAT_SWIM) {
-    set(fNO_GOAT_SWIM);
+  if (rfAPPROACHING_CLIFFS_LAKE_EDGE && vAQUATIC_ACTIVITY > AQUATICACTIVITY_NONE && !fGOAT_WONT_SWIM) {
+    set(fGOAT_WONT_SWIM);
     print("The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water.");
   }
-  if (rfAPPROACHING_CLIFFS_LAKE_EDGE && fNO_GOAT_SWIM && rvDISTANCE_FROM_EGO_TO_GOAT < 25 && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE) {
-    reset(fNO_GOAT_SWIM);
+  if (rfAPPROACHING_CLIFFS_LAKE_EDGE && fGOAT_WONT_SWIM && rvDISTANCE_FROM_EGO_TO_GOAT < 25 && vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE) {
+    reset(fGOAT_WONT_SWIM);
   }
 RETURN:
   return;

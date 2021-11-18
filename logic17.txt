@@ -41,12 +41,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if VERSION_MAJOR >= 2
-  if (fSHOW_GOAT_LEFT_MESSAGE) {
-    reset(fSHOW_GOAT_LEFT_MESSAGE);
-    print("It seems the old goat has wandered off by himself and is no longer following you.");
-  }
-#endif
+if (VERSION_MAJOR >= 2 && fSHOW_GOAT_LEFT_MESSAGE) {
+  reset(fSHOW_GOAT_LEFT_MESSAGE);
+  print("It seems the old goat has wandered off by himself and is no longer following you.");
+}
 if (!fEGO_ON_WATER) {
   if (
     #if VERSION_MAJOR >= 2
@@ -150,13 +148,13 @@ if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER && !fEGO_TOUCHED_
   }
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
-  if (f66_UNKNOWN) {
-    reset(f66_UNKNOWN);
+  if (fGOAT_WONT_SWIM_V2) {
+    reset(fGOAT_WONT_SWIM_V2);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
-    #if VERSION_MAJOR >= 2
+    if (VERSION_MAJOR >= 2) {
       set(fSHOW_GOAT_LEFT_MESSAGE);
-    #endif
+    }
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
@@ -174,7 +172,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_X < 113) {
     set(fTENSE_SITUATION);
@@ -186,7 +184,7 @@ if (fGOAT_COMPANION) {
     reset(fFALL_DANGER);
     reset(fTHREAT_OF_SORCERER_OR_OGRE);
   }
-#endif
+}
 call(LOGIC101_SWIMMING);
 return;
 

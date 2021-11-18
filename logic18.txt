@@ -12,10 +12,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_FRIEND);
     load.sound(SND_POINTS);
-  #endif
+  }
   set.horizon(46);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
@@ -44,14 +44,12 @@ if (fROOM_SCRIPT_EXECUTED) {
       random(0, 250, vTEMP_RESULT_3);
     } while (vTEMP_RESULT_3 > 90);
   }
-  #if VERSION_MAJOR >= 2
-    if (vPREV_ROOM_NO == ROOM15_CARROT_PATCH_WEST) {
-      get.posn(oEGO, vTEMP_X, vTEMP_Y);
-      if (vTEMP_X > 100) {
-        position(oEGO, 100, 165);
-      }
+  if (VERSION_MAJOR >= 2 && vPREV_ROOM_NO == ROOM15_CARROT_PATCH_WEST) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_X > 100) {
+      position(oEGO, 100, 165);
     }
-  #endif
+  }
   if (vPREV_ROOM_NO == ROOM17_CLIFFS_LAKE_EAST && fEGO_ON_WATER) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_Y < 111) {
@@ -61,18 +59,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if VERSION_MAJOR >= 2
-  if (fSHOW_GOAT_LEFT_MESSAGE) {
-    reset(fSHOW_GOAT_LEFT_MESSAGE);
-    print("It seems the old goat has wandered off by himself and is no longer following you.");
-  }
-#endif
+if (VERSION_MAJOR >= 2 && fSHOW_GOAT_LEFT_MESSAGE) {
+  reset(fSHOW_GOAT_LEFT_MESSAGE);
+  print("It seems the old goat has wandered off by himself and is no longer following you.");
+}
 vTEMP_RESULT_3--;
 if (vTEMP_RESULT_3 == 1) {
   reset(rfINIT_RANDOMIZER);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     sound(SND_FRIEND, fMISC_END_MARKER);
-  #endif
+  }
   draw(oELF);
   set(rfELF_IS_HERE);
   wander(oELF);
@@ -124,9 +120,9 @@ if (rfELF_IS_HERE) {
   }
   if (!rfELF_LEFT && (said("talk", "elf") || said("hello") || said("say", "hello"))) {
     if (vTEMP_RESULT_2 < 40) {
-      #if BUILD_TARGET == APPLE_IIGS
+      if (BUILD_TARGET == APPLE_IIGS) {
         sound(SND_POINTS, fMISC_END_MARKER);
-      #endif
+      }
       print("The elf, impressed by your friendliness, gives you a magic ring.  \"Kind person, know that once, only once, this ring will make you invisible,\" he says and then disappears.");
       get(iRING);
       set(fCARRYING_RING);
@@ -146,9 +142,9 @@ if (!fEGO_ON_WATER) {
 else {
   observe.blocks(oEGO);
 }
-#if VERSION_MAJOR >= 2
+if (VERSION_MAJOR >= 2) {
   block(100, 95, 139, 100);
-#endif
+}
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 129, 95, 159, 105) || posn(oEGO, 133, 80, 145, 94)) {
     set(fEGO_ON_WATER);
@@ -218,13 +214,13 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water"
   }
 }
 if (vEGO_EDGE_CODE != EDGE_NONE) {
-  if (f66_UNKNOWN) {
-    reset(f66_UNKNOWN);
+  if (fGOAT_WONT_SWIM_V2) {
+    reset(fGOAT_WONT_SWIM_V2);
     reset(fGOAT_COMPANION);
     set(fGOAT_IS_GONE);
-    #if VERSION_MAJOR >= 2
+    if (VERSION_MAJOR >= 2) {
       set(fSHOW_GOAT_LEFT_MESSAGE);
-    #endif
+    }
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
@@ -242,7 +238,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   if (posn(oEGO, 79, 60, 146, 167)) {
     set(fFALL_DANGER);
     set(fTENSE_SITUATION);
@@ -253,7 +249,7 @@ if (fGOAT_COMPANION) {
     reset(fTHREAT_OF_SORCERER_OR_OGRE);
     reset(fFALL_DANGER);
   }
-#endif
+}
 call(LOGIC101_SWIMMING);
 return;
 

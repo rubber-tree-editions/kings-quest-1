@@ -29,13 +29,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_POINTS);
-  #endif
+  }
   set.horizon(46);
-  #if BUILD_TARGET != APPLE_IIGS
+  if (BUILD_TARGET != APPLE_IIGS) {
     load.sound(SND_FALLING);
-  #endif
+  }
   load.sound(SND_WELL_HANDLE_TURNING);
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
@@ -72,9 +72,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oROPE);
     set.view(oROPE, 17);
     ignore.blocks(oROPE);
-    #if VERSION_MAJOR >= 2
+    if (VERSION_MAJOR >= 2) {
       ignore.objs(oROPE);
-    #endif
+    }
     position(oROPE, 43, 147);
     set.priority(oROPE, PRI_WELL);
     if (!fROPE_DANGLING_IN_WELL) {
@@ -146,9 +146,9 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         else {
           set.view(oEGO, 74);
         }
-        #if VERSION_MAJOR >= 2
+        if (VERSION_MAJOR >= 2) {
           vEGO_DIR = DIR_NONE;
-        #endif
+        }
         position(oEGO, 39, 131);
         draw(oEGO);
         set(fON_WELL_ROPE);
@@ -185,16 +185,16 @@ if (!fGOAT_COMPANION && !fEGO_INVISIBLE) {
         stop.cycling(oBUCKET);
         draw(oBUCKET);
         set(fIN_WELL_BUCKET);
-        #if BUILD_TARGET != APPLE_IIGS
+        if (BUILD_TARGET != APPLE_IIGS) {
           sound(SND_WELL_HANDLE_TURNING, rfPLAYED_SND_WELL_HANDLE_TURNING);
-        #endif
+        }
         end.of.loop(oBUCKET, rfBUCKET_DESCENDED_WITH_YOU_IN_IT);
         start.update(oHANDLE);
         start.cycling(oHANDLE);
         print("After you are in the old bucket, your weight causes it to slowly descend.");
-        #if BUILD_TARGET == APPLE_IIGS
+        if (BUILD_TARGET == APPLE_IIGS) {
           sound(SND_WELL_HANDLE_TURNING, rfPLAYED_SND_WELL_HANDLE_TURNING);
-        #endif
+        }
       }
     }
     if (fBUCKET_LOWERED && !fBUCKET_ROPE_CUT) {
@@ -318,11 +318,12 @@ if (fON_WELL_ROPE) {
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_OFF_ROPE);
     print("You should be more careful the next time you try  climbing ropes.");
     set(f135_UNKNOWN);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       set(fSOUND_END_MARKER);
-    #else
+    }
+    else {
       sound(SND_FALLING, fSOUND_END_MARKER);
-    #endif
+    }
     reset(fON_WELL_ROPE);
   }
 }
@@ -348,11 +349,12 @@ if (rfENTERED_WELL) {
     print("What a mistake you made!  This well is too deep to jump into.");
   }
   set(f135_UNKNOWN);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     set(fSOUND_END_MARKER);
-  #else
+  }
+  else {
     sound(SND_FALLING, fSOUND_END_MARKER);
-  #endif
+  }
 }
 if (fBUCKET_ROPE_CUT || fBUCKET_LOWERED) {
   if (!fCARRYING_BUCKET && (said("get", "bucket") || said("examine", "bucket"))) {
@@ -540,9 +542,9 @@ if (said("cut", "rope") || said("cut", "rope", "dagger")) {
       }
       set(fBUCKET_ROPE_CUT);
       get("water bucket");
-      #if BUILD_TARGET == APPLE_IIGS
+      if (BUILD_TARGET == APPLE_IIGS) {
         sound(SND_POINTS, fMISC_END_MARKER);
-      #endif
+      }
       print("With the rope cut, you are able to take the bucket.");
       vSCORE += 2;
     }
