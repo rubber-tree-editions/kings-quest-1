@@ -94,7 +94,7 @@ if (!rfTROLL_IS_HERE) {
 }
 if (rfTROLL_IS_HERE && !rfTROLL_IS_AFTER_YOU) {
   set(rfTROLL_IS_AFTER_YOU);
-  follow.ego(oTROLL, 1, rfTROLL_CAUGHT_YOU);
+  follow.ego(oTROLL, TROLL_REACH_DISTANCE, rfTROLL_CAUGHT_YOU);
 }
 if (!rfTROLL_IS_HERE) {
   if (said("anyword", "troll")) {
@@ -140,7 +140,7 @@ if (!rfTROLL_IS_HERE) {
 if (rfTROLL_NEARBY && fEGO_TOUCHED_TRIGGER_LINE) {
   reset(rfTROLL_NEARBY);
   set(rfTROLL_IS_HERE);
-  rvTROLL_STEP_SIZE = 2;
+  rvTROLL_STEP_SIZE = TROLL_STEP_SIZE;
   step.size(oTROLL, rvTROLL_STEP_SIZE);
   sound(SND_VILLAIN, fSOUND_END_MARKER);
   draw(oTROLL);

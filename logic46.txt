@@ -32,7 +32,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   random(0, 250, vTEMP_RESULT);
   if (vTEMP_RESULT < 175) {
     load.sound(SND_VILLAIN);
-    rvOGRE_STEP_SIZE = 2;
+    rvOGRE_STEP_SIZE = OGRE_STEP_SIZE;
     step.size(oOGRE, rvOGRE_STEP_SIZE);
     load.view(94);
     load.view(95);
@@ -73,10 +73,8 @@ if (vTEMP_RESULT_2 == 1) {
     print("Watch out!!!  There is an ogre nearby!  He will crush you in his strong arms if he catches you.");
     #if BUILD_TARGET == APPLE_IIGS
       draw(oOGRE);
-      follow.ego(oOGRE, 4, fVILLAIN_GOT_YOU);
-    #else
-      follow.ego(oOGRE, 7, fVILLAIN_GOT_YOU);
     #endif
+    follow.ego(oOGRE, OGRE_REACH_DISTANCE, fVILLAIN_GOT_YOU);
   }
   if (fGOAT_COMPANION) {
     #if BUILD_TARGET == APPLE_IIGS

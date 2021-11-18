@@ -98,11 +98,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       step.size(oDRAGON, rvDRAGON_STEP_SIZE);
       draw(oDRAGON);
       observe.blocks(oDRAGON);
-      #if BUILD_TARGET == APPLE_IIGS
-        follow.ego(oDRAGON, 13, rfDRAGON_GOT_YOU);
-      #else
-        follow.ego(oDRAGON, 20, rfDRAGON_GOT_YOU);
-      #endif
+      follow.ego(oDRAGON, DRAGON_REACH_DISTANCE, rfDRAGON_GOT_YOU);
     }
   }
   draw(oEGO);

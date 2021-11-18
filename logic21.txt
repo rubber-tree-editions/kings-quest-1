@@ -36,11 +36,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   random(0, 250, vTEMP_RESULT);
   if (vTEMP_RESULT < 185 && vWITCH_STATE != WITCHSTATE_DEAD) {
-#if VERSION_MAJOR >= 2
-    rvWITCH_STEP_SIZE = 6;
-#else
-    rvWITCH_STEP_SIZE = 4;
-#endif
+    rvWITCH_STEP_SIZE = WITCH_STEP_SIZE;
     step.size(oWITCH, rvWITCH_STEP_SIZE);
     set(rfINIT_RANDOMIZER);
     load.view(3);

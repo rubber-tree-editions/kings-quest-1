@@ -98,7 +98,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   #else
   if (vTEMP_RESULT < 125 && !fTAKEN_BY_GIANT_BIRD) {
   #endif
-    rvBIRD_STEP_SIZE = 4;
+    rvBIRD_STEP_SIZE = BIRD_STEP_SIZE;
     step.size(oBIRD, rvBIRD_STEP_SIZE);
     set(rfINIT_RANDOMIZER);
     load.view(8);

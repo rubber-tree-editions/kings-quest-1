@@ -35,7 +35,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   random(0, 250, vTEMP_RESULT);
   if (vTEMP_RESULT < 185) {
-    rvSORCERER_STEP_SIZE = 2;
+    rvSORCERER_STEP_SIZE = SORCERER_STEP_SIZE;
     step.size(oSORCERER, rvSORCERER_STEP_SIZE);
     load.view(5);
     load.view(116);
@@ -73,7 +73,7 @@ if (vTEMP_RESULT_2 == 1) {
   draw(oSORCERER);
   if (!fGOAT_COMPANION) {
     print("Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!");
-    follow.ego(oSORCERER, 7, fVILLAIN_GOT_YOU);
+    follow.ego(oSORCERER, SORCERER_REACH_DISTANCE, fVILLAIN_GOT_YOU);
   }
   if (fGOAT_COMPANION) {
     wander(oSORCERER);

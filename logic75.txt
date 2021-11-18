@@ -47,11 +47,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oRAT, 45);
     position(oRAT, 36, 127);
     set(rfRAT_IS_HERE);
-    #if BUILD_TARGET == APPLE_IIGS
-      follow.ego(oRAT, 14, rfRAT_CAUGHT_YOU);
-    #else
-      follow.ego(oRAT, 15, rfRAT_CAUGHT_YOU);
-    #endif
+    follow.ego(oRAT, RAT_REACH_DISTANCE, rfRAT_CAUGHT_YOU);
     observe.blocks(oRAT);
     rvRAT_STEP_SIZE = 3;
     step.size(oRAT, rvRAT_STEP_SIZE);

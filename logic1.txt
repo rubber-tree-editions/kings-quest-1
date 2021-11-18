@@ -198,14 +198,8 @@ if (fEGO_ON_WATER) {
 if (fEGO_ON_WATER && !rfINIT_GATOR_DEATH) {
   program.control();
   stop.motion(oEGO);
-  if (BUILD_TARGET == APPLE_IIGS) {
-    follow.ego(oGATOR1, 10, rfGATOR1_CAUGHT_YOU);
-    follow.ego(oGATOR2, 10, rfGATOR2_CAUGHT_YOU);
-  }
-  else {
-    follow.ego(oGATOR1, 18, rfGATOR1_CAUGHT_YOU);
-    follow.ego(oGATOR2, 18, rfGATOR2_CAUGHT_YOU);
-  }
+  follow.ego(oGATOR1, GATOR_REACH_DISTANCE, rfGATOR1_CAUGHT_YOU);
+  follow.ego(oGATOR2, GATOR_REACH_DISTANCE, rfGATOR2_CAUGHT_YOU);
   set(rfINIT_GATOR_DEATH);
 }
 if (posn(oEGO, 89, 132, 91, 134) && !rfEATEN_BY_GATORS) {

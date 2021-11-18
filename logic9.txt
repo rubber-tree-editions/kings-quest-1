@@ -46,7 +46,10 @@ if (rvFAIRY_GODMOTHER_SPEAKS_COUNTDOWN == 1) {
     sound(SND_FRIEND, fMISC_END_MARKER);
   }
   print("\"Gentle Sir Graham, I am your fairy godmother.  Your quest is indeed noble.  My small part to aid you can be no bigger than this magic spell, protective but for a little while.\"");
-  follow.ego(oFAIRY_GODMOTHER, 25, rfFAIRY_GODMOTHER_CAUGHT_YOU);
+  follow.ego(
+    oFAIRY_GODMOTHER,
+    FAIRY_GODMOTHER_REACH_DISTANCE,
+    rfFAIRY_GODMOTHER_CAUGHT_YOU);
   set(rfFAIRY_GODMOTHER_IS_HERE);
   set(fPROTECTED_BY_SPELL);
   if (BUILD_TARGET == APPLE_IIGS) {
