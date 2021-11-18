@@ -34,19 +34,26 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oGOAT);
     goto(ATRIVER);
   }
-  #if VERSION_MAJOR >= 2
-    if (vROOM_NO == ROOM7_WATERFALL_LAKE_EAST && vPREV_ROOM_NO == ROOM10_GOAT_PEN_WEST && vTEMP_X < 20) {
-      position(oGOAT, 1, 42);
-      stop.motion(oGOAT);
-      stop.cycling(oGOAT);
-      ignore.horizon(oGOAT);
-      ignore.blocks(oGOAT);
-      set(rfAPPROACHING_WATERFALL_LAKE_EDGE);
-      draw(oGOAT);
-      goto(ATRIVER);
-    }
-  #endif
-  if (vROOM_NO == ROOM17_CLIFFS_LAKE_EAST && vPREV_ROOM_NO == ROOM18_CLIFFS_LAKE_WEST && vTEMP_Y < 65) {
+  if (
+    VERSION_MAJOR >= 2
+    && vROOM_NO == ROOM7_WATERFALL_LAKE_EAST
+    && vPREV_ROOM_NO == ROOM10_GOAT_PEN_WEST
+    && vTEMP_X < 20
+  ) {
+    position(oGOAT, 1, 42);
+    stop.motion(oGOAT);
+    stop.cycling(oGOAT);
+    ignore.horizon(oGOAT);
+    ignore.blocks(oGOAT);
+    set(rfAPPROACHING_WATERFALL_LAKE_EDGE);
+    draw(oGOAT);
+    goto(ATRIVER);
+  }
+  if (
+    vROOM_NO == ROOM17_CLIFFS_LAKE_EAST
+    && vPREV_ROOM_NO == ROOM18_CLIFFS_LAKE_WEST
+    && vTEMP_Y < 65
+  ) {
     position(oGOAT, 1, 45);
     stop.motion(oGOAT);
     stop.cycling(oGOAT);
@@ -72,11 +79,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   else {
     vTEMP_Y -= 1;
   }
-  #if BUILD_TARGET == APPLE_IIGS
-    if (vROOM_NO == ROOM16_CARROT_PATCH_EAST && vTEMP_Y == 59) {
-      vTEMP_Y = 55;
-    }
-  #endif
+  if (
+    BUILD_TARGET == APPLE_IIGS
+    && vROOM_NO == ROOM16_CARROT_PATCH_EAST
+    && vTEMP_Y == 59
+  ) {
+    vTEMP_Y = 55;
+  }
   position.v(oGOAT, vTEMP_X, vTEMP_Y);
   vTEMP_STEP_SIZE_2 = 1;
   step.size(oGOAT, vTEMP_STEP_SIZE_2);
@@ -85,11 +94,12 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 distance(oEGO, oGOAT, rvDISTANCE_FROM_EGO_TO_GOAT);
 if (rvDISTANCE_FROM_EGO_TO_GOAT > 35) {
-  #if VERSION_MAJOR >= 2
+  if (VERSION_MAJOR >= 2) {
     vTEMP_STEP_SIZE_2 = 1;
-  #else
+  }
+  else {
     vTEMP_STEP_SIZE_2 = 2;
-  #endif
+  }
   step.size(oGOAT, vTEMP_STEP_SIZE_2);
 }
 else {

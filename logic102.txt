@@ -315,11 +315,9 @@ if (!fCARRYING_MIRROR) {
     print("You do not have it.");
   }
 }
-#if VERSION_MAJOR >= 2
-  if (fCARRYING_FIDDLE) if (said("play", "fiddle")) {
-    print("You can't do that--at least not now!");
-  }
-#endif
+if (VERSION_MAJOR >= 2 && fCARRYING_FIDDLE) if (said("play", "fiddle")) {
+  print("You can't do that--at least not now!");
+}
 if (said("play", "anyword")) {
   print("You have better things to do than to play all day.");
 }
@@ -340,7 +338,7 @@ if (said("anyword", "woman")) {
 if (said("examine")) {
   print(m13 /* "You need to be more specific." */);
 }
-#if VERSION_MAJOR >= 2
+if (VERSION_MAJOR >= 2) {
   if (said("examine", "river")) {
     print("The stream may not be safe to cross.");
   }
@@ -396,7 +394,7 @@ if (said("examine")) {
       print("There is no \"%w2\" here to look at.");
     }
   }
-#endif
+}
 if (
   said("examine", "anyword")
 #if VERSION_MAJOR >= 2

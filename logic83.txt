@@ -22,17 +22,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   prevent.input();
   rvCOUNTDOWN = 250;
-  #if VERSION_MAJOR >= 2
+  if (VERSION_MAJOR >= 2) {
     rvNEXT_MSG_AT = 245;
     rvNEXT_MSG = 1;
     rvROW_COUNT = 1;
     rvMSG_Y = 12;
-  #endif
-  #if BUILD_TARGET == APPLE_IIGS
+  }
+  if (BUILD_TARGET == APPLE_IIGS) {
     rvBUSY_COUNTDOWN = 11;
-  #endif
+  }
   set(fSOUND_ENABLED);
-  #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
+  if (BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH) {
     if (vVIDEO_MODE == 2) {
       display(24, 1, "(c) copyright SIERRA On-Line Inc.  1987");
     }
@@ -40,54 +40,60 @@ if (fROOM_SCRIPT_EXECUTED) {
       display(22, 1, "(c) copyright SIERRA On-Line Inc.  1987");
       display(24, 5, "Press any key to continue.");
     }
-  #elif BUILD_TARGET == APPLE_IIGS
+  }
+  else if (BUILD_TARGET == APPLE_IIGS) {
     display(22, 1, "(C) Copyright 1987 Sierra On-Line Inc.");
     display(24, 5, "Press any key to continue.");
-  #else
+  }
+  else {
     display(22, 1, m19);
     display(24, 5, "Press any key to continue.");
-  #endif
-  #if BUILD_TARGET == APPLE_IIGS
+  }
+  if (BUILD_TARGET == APPLE_IIGS) {
     if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
       set.key(KEY_ESC, 0, cSHOW_MENU);
     }
     else {
       set.key(KEY_ESC, 0, cPAUSE);
     }
-  #endif
+  }
   set.key(0, XKEY_F1, cHELP);
   set.key(0, XKEY_F2, cTOGGLESOUND);
   set.key(KEY_CTRL_S, 0, cTOGGLESOUND);
   set.key(0, XKEY_F3, cPREVINPUT);
   set.key(KEY_CTRL_E, 0, cPREVINPUT);
-  #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
+  if (BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH) {
     set.key(0, XKEY_F4, cSEE_OBJECT);
-  #elif BUILD_TARGET == APPLE_IIGS
+  }
+  else if (BUILD_TARGET == APPLE_IIGS) {
     set.key(0, XKEY_ALT_I, cSEE_OBJECT);
-  #endif
+  }
   set.key(0, XKEY_F5, cSAVE);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     set.key(0, XKEY_ALT_P, cSHOWPRIORITY);
-  #else
+  }
+  else {
     set.key(0, XKEY_F6, cSHOWPRIORITY);
-  #endif
+  }
   set.key(0, XKEY_F7, cRESTORE);
   set.key(0, XKEY_F9, cRESTART);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     set.key(0, XKEY_ALT_M, cSHOWMEM);
-  #else
+  }
+  else {
     set.key(0, XKEY_F10, cSHOWMEM);
-  #endif
+  }
   set.key(KEY_TAB, 0, cINVENTORY);
   set.key(0, XKEY_ALT_D, cDEBUG);
   set.key(KEY_CTRL_J, 0, cINITJOYSTICK);
   set.key(KEY_CTRL_C, 0, cCLEARINPUT);
   set.key(KEY_CTRL_Y, 0, cCLEARINPUT);
-  #if BUILD_TARGET == MACINTOSH
+  if (BUILD_TARGET == MACINTOSH) {
     set.key(KEY_ESC, 0, cSHOW_MENU);
-  #elif BUILD_TARGET == AMIGA || BUILD_TARGET == ATARI_ST
+  }
+  else if (BUILD_TARGET == AMIGA || BUILD_TARGET == ATARI_ST) {
     set.key(KEY_ESC, 0, cPAUSE);
-  #endif
+  }
   set.key(KEY_CTRL_R, 0, cTOGGLEGFX);
   set.key(0, XKEY_ALT_Z, cQUIT);
   set.key(KEY_EQUALS, 0, cSWIM);
@@ -95,7 +101,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.key(KEY_0, 0, cJUMP);
 
   #if RUBBER_TREE
-  set.key(KEY_CTRL_Z, 0, cUNDO);
+    set.key(KEY_CTRL_Z, 0, cUNDO);
   #endif
 
   if (vCOMPUTER_TYPE == 1) {
@@ -106,33 +112,33 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.key(KEY_7, 0, cRESTORE);
     set.key(KEY_9, 0, cRESTART);
   }
-#if BUILD_TARGET != DOS && BUILD_TARGET != APPLE_IIGS
-  set.key(1, 1, c0);
-  set.key(1, 2, cSWIM);
-  set.key(1, 4, cINVENTORY);
-#endif
-#if BUILD_TARGET == AMIGA
-  set.menu("Info");
-  set.menu.item("About King's Quest", cABOUT);
-  set.menu.item("Help              ", cHELP);
-  set.menu("File");
-  set.menu.item("Save Game      <F5>", cSAVE);
-  set.menu.item("Restore Game   <F7>", cRESTORE);
-  set.menu("Game");
-  set.menu.item("Inventory     <Tab>", cINVENTORY);
-  set.menu.item("Pause         <Esc>", cPAUSE);
-  set.menu.item("Restart Game   <F9>", cRESTART);
-#if RUBBER_TREE
-  set.menu.item("Undo               ", cUNDO);
-#endif
-  set.menu.item("Quit               ", cQUIT);
-  set.menu("Actions");
-  set.menu.item("Swim    =", cSWIM);
-  set.menu.item("Jump    0", cJUMP);
-  set.menu.item("Duck    -", cDUCK);
-  set.menu("Sound");
-  set.menu.item("Toggle Sound   <F2>", cTOGGLESOUND);
-#endif
+  if (BUILD_TARGET != DOS && BUILD_TARGET != APPLE_IIGS) {
+    set.key(1, 1, c0);
+    set.key(1, 2, cSWIM);
+    set.key(1, 4, cINVENTORY);
+  }
+  if (BUILD_TARGET == AMIGA) {
+    set.menu("Info");
+    set.menu.item("About King's Quest", cABOUT);
+    set.menu.item("Help              ", cHELP);
+    set.menu("File");
+    set.menu.item("Save Game      <F5>", cSAVE);
+    set.menu.item("Restore Game   <F7>", cRESTORE);
+    set.menu("Game");
+    set.menu.item("Inventory     <Tab>", cINVENTORY);
+    set.menu.item("Pause         <Esc>", cPAUSE);
+    set.menu.item("Restart Game   <F9>", cRESTART);
+    #if RUBBER_TREE
+      set.menu.item("Undo               ", cUNDO);
+    #endif
+    set.menu.item("Quit               ", cQUIT);
+    set.menu("Actions");
+    set.menu.item("Swim    =", cSWIM);
+    set.menu.item("Jump    0", cJUMP);
+    set.menu.item("Duck    -", cDUCK);
+    set.menu("Sound");
+    set.menu.item("Toggle Sound   <F2>", cTOGGLESOUND);
+  }
   show.pic();
 }
 if (!rfPLAYING_SND_TITLE_MUSIC) {
@@ -140,281 +146,10 @@ if (!rfPLAYING_SND_TITLE_MUSIC) {
   sound(SND_TITLE_MUSIC, rfPLAYED_SND_TITLE_MUSIC);
 }
 rvCOUNTDOWN--;
-#if VERSION_MAJOR < 2
-if (rvCOUNTDOWN == 245) {
-  display(18, 12, "Designed and    ");
-}
-if (rvCOUNTDOWN == 240) {
-  display(17, 12, "Designed and    ");
-  display(18, 12, "    Written by: ");
-}
-if (rvCOUNTDOWN == 235) {
-  display(16, 12, "Designed and    ");
-  display(17, 12, "    Written by: ");
-  display(18, 12, "Roberta Williams");
-}
-if (rvCOUNTDOWN == 230) {
-  display(15, 12, "Designed and    ");
-  display(16, 12, "    Written by: ");
-  display(17, 12, "Roberta Williams");
-  display(18, 12, "                ");
-}
-if (rvCOUNTDOWN == 225) {
-  display(14, 12, "Designed and    ");
-  display(15, 12, "    Written by: ");
-  display(16, 12, "Roberta Williams");
-  display(17, 12, "                ");
-  display(18, 12, "Orig. Version by");
-}
-if (rvCOUNTDOWN == 220) {
-  display(13, 12, "Designed and    ");
-  display(14, 12, "    Written by: ");
-  display(15, 12, "Roberta Williams");
-  display(16, 12, "                ");
-  display(17, 12, "Orig. Version by");
-  display(18, 12, " Charles Tingley");
-}
-if (rvCOUNTDOWN == 215) {
-  display(12, 12, "Designed and    ");
-  display(13, 12, "    Written by: ");
-  display(14, 12, "Roberta Williams");
-  display(15, 12, "                ");
-  display(16, 12, "Orig. Version by");
-  display(17, 12, " Charles Tingley");
-  display(18, 12, "  Ken MacNeill  ");
-}
-if (rvCOUNTDOWN == 210) {
-  display(11, 12, "Designed and    ");
-  display(12, 12, "    Written by: ");
-  display(13, 12, "Roberta Williams");
-  display(14, 12, "                ");
-  display(15, 12, "Orig. Version by");
-  display(16, 12, " Charles Tingley");
-  display(17, 12, "  Ken MacNeill  ");
-  display(18, 12, "   Chris Iden   ");
-}
-if (rvCOUNTDOWN == 205) {
-  display(10, 12, "Designed and    ");
-  display(11, 12, "    Written by: ");
-  display(12, 12, "Roberta Williams");
-  display(13, 12, "                ");
-  display(14, 12, "Orig. Version by");
-  display(15, 12, " Charles Tingley");
-  display(16, 12, "  Ken MacNeill  ");
-  display(17, 12, "   Chris Iden   ");
-  display(18, 12, "                ");
-}
-if (rvCOUNTDOWN == 200) {
-  display(9, 12, "Designed and    ");
-  display(10, 12, "    Written by: ");
-  display(11, 12, "Roberta Williams");
-  display(12, 12, "                ");
-  display(13, 12, "Orig. Version by");
-  display(14, 12, " Charles Tingley");
-  display(15, 12, "  Ken MacNeill  ");
-  display(16, 12, "   Chris Iden   ");
-  display(17, 12, "                ");
-  display(18, 12, "Graphics by:    ");
-}
-if (rvCOUNTDOWN == 195) {
-  display(8, 12, "Designed and    ");
-  display(9, 12, "    Written by: ");
-  display(10, 12, "Roberta Williams");
-  display(11, 12, "                ");
-  display(12, 12, "Orig. Version by");
-  display(13, 12, " Charles Tingley");
-  display(14, 12, "  Ken MacNeill  ");
-  display(15, 12, "   Chris Iden   ");
-  display(16, 12, "                ");
-  display(17, 12, "Graphics by:    ");
-  display(18, 12, " Doug MacNeill  ");
-}
-if (rvCOUNTDOWN == 190) {
-  display(7, 12, "Designed and    ");
-  display(8, 12, "    Written by: ");
-  display(9, 12, "Roberta Williams");
-  display(10, 12, "                ");
-  display(11, 12, "Orig. Version by");
-  display(12, 12, " Charles Tingley");
-  display(13, 12, "  Ken MacNeill  ");
-  display(14, 12, "   Chris Iden   ");
-  display(15, 12, "                ");
-  display(16, 12, "Graphics by:    ");
-  display(17, 12, " Doug MacNeill  ");
-  display(18, 12, "  Greg Rowland  ");
-}
-if (rvCOUNTDOWN == 185) {
-  display(6, 12, "Designed and    ");
-  display(7, 12, "    Written by: ");
-  display(8, 12, "Roberta Williams");
-  display(9, 12, "                ");
-  display(10, 12, "Orig. Version by");
-  display(11, 12, " Charles Tingley");
-  display(12, 12, "  Ken MacNeill  ");
-  display(13, 12, "   Chris Iden   ");
-  display(14, 12, "                ");
-  display(15, 12, "Graphics by:    ");
-  display(16, 12, " Doug MacNeill  ");
-  display(17, 12, "  Greg Rowland  ");
-  display(18, 12, "                ");
-}
-if (rvCOUNTDOWN == 180) {
-  display(6, 12, "    Written by: ");
-  display(7, 12, "Roberta Williams");
-  display(8, 12, "                ");
-  display(9, 12, "Orig. Version by");
-  display(10, 12, " Charles Tingley");
-  display(11, 12, "  Ken MacNeill  ");
-  display(12, 12, "   Chris Iden   ");
-  display(13, 12, "                ");
-  display(14, 12, "Graphics by:    ");
-  display(15, 12, " Doug MacNeill  ");
-  display(16, 12, "  Greg Rowland  ");
-  display(17, 12, "                ");
-  display(18, 12, "New Version by: ");
-}
-if (rvCOUNTDOWN == 175) {
-  display(6, 12, "Roberta Williams");
-  display(7, 12, "                ");
-  display(8, 12, "Orig. Version by");
-  display(9, 12, " Charles Tingley");
-  display(10, 12, "  Ken MacNeill  ");
-  display(11, 12, "   Chris Iden   ");
-  display(12, 12, "                ");
-  display(13, 12, "Graphics by:    ");
-  display(14, 12, " Doug MacNeill  ");
-  display(15, 12, "  Greg Rowland  ");
-  display(16, 12, "                ");
-  display(17, 12, "New Version by: ");
-  display(18, 12, " Jeff Stephenson");
-}
-if (rvCOUNTDOWN == 170) {
-  display(6, 12, "                ");
-  display(7, 12, "Orig. Version by");
-  display(8, 12, " Charles Tingley");
-  display(9, 12, "  Ken MacNeill  ");
-  display(10, 12, "   Chris Iden   ");
-  display(11, 12, "                ");
-  display(12, 12, "Graphics by:    ");
-  display(13, 12, " Doug MacNeill  ");
-  display(14, 12, "  Greg Rowland  ");
-  display(15, 12, "                ");
-  display(16, 12, "New Version by: ");
-  display(17, 12, " Jeff Stephenson");
-  display(18, 12, "  Sol Ackerman  ");
-}
-if (rvCOUNTDOWN == 165) {
-  display(6, 12, "Orig. Version by");
-  display(7, 12, " Charles Tingley");
-  display(8, 12, "  Ken MacNeill  ");
-  display(9, 12, "   Chris Iden   ");
-  display(10, 12, "                ");
-  display(11, 12, "Graphics by:    ");
-  display(12, 12, " Doug MacNeill  ");
-  display(13, 12, "  Greg Rowland  ");
-  display(14, 12, "                ");
-  display(15, 12, "New Version by: ");
-  display(16, 12, " Jeff Stephenson");
-  display(17, 12, "  Sol Ackerman  ");
-  display(18, 12, "   Chris Iden   ");
-}
-if (rvCOUNTDOWN == 160) {
-  display(6, 12, " Charles Tingley");
-  display(7, 12, "  Ken MacNeill  ");
-  display(8, 12, "   Chris Iden   ");
-  display(9, 12, "                ");
-  display(10, 12, "Graphics by:    ");
-  display(11, 12, " Doug MacNeill  ");
-  display(12, 12, "  Greg Rowland  ");
-  display(13, 12, "                ");
-  display(14, 12, "New Version by: ");
-  display(15, 12, " Jeff Stephenson");
-  display(16, 12, "  Sol Ackerman  ");
-  display(17, 12, "   Chris Iden   ");
-  display(18, 12, "                ");
-}
-if (rvCOUNTDOWN == 155) {
-  display(6, 12, "  Ken MacNeill  ");
-  display(7, 12, "   Chris Iden   ");
-  display(8, 12, "                ");
-  display(9, 12, "Graphics by:    ");
-  display(10, 12, " Doug MacNeill  ");
-  display(11, 12, "  Greg Rowland  ");
-  display(12, 12, "                ");
-  display(13, 12, "New Version by: ");
-  display(14, 12, " Jeff Stephenson");
-  display(15, 12, "  Sol Ackerman  ");
-  display(16, 12, "   Chris Iden   ");
-  display(17, 12, "                ");
-  display(18, 12, "Thanks to:      ");
-}
-if (rvCOUNTDOWN == 150) {
-  display(6, 12, "   Chris Iden   ");
-  display(7, 12, "                ");
-  display(8, 12, "Graphics by:    ");
-  display(9, 12, " Doug MacNeill  ");
-  display(10, 12, "  Greg Rowland  ");
-  display(11, 12, "                ");
-  display(12, 12, "New Version by: ");
-  display(13, 12, " Jeff Stephenson");
-  display(14, 12, "  Sol Ackerman  ");
-  display(15, 12, "   Chris Iden   ");
-  display(16, 12, "                ");
-  display(17, 12, "Thanks to:      ");
-  display(18, 12, " Linda Ackerman  ");
-}
-if (rvCOUNTDOWN == 145) {
-  display(6, 12, "                ");
-  display(7, 12, "Graphics by:    ");
-  display(8, 12, " Doug MacNeill  ");
-  display(9, 12, "  Greg Rowland  ");
-  display(10, 12, "                ");
-  display(11, 12, "New Version by: ");
-  display(12, 12, " Jeff Stephenson");
-  display(13, 12, "  Sol Ackerman  ");
-  display(14, 12, "   Chris Iden   ");
-  display(15, 12, "                ");
-  display(16, 12, "Thanks to:      ");
-  display(17, 12, " Linda Ackerman  ");
-  display(18, 12, "  Mark Crowe     ");
-}
-if (rvCOUNTDOWN == 140) {
-  display(6, 12, "Graphics by:    ");
-  display(7, 12, " Doug MacNeill  ");
-  display(8, 12, "  Greg Rowland  ");
-  display(9, 12, "                ");
-  display(10, 12, "New Version by: ");
-  display(11, 12, " Jeff Stephenson");
-  display(12, 12, "  Sol Ackerman  ");
-  display(13, 12, "   Chris Iden   ");
-  display(14, 12, "                ");
-  display(15, 12, "Thanks to:      ");
-  display(16, 12, " Linda Ackerman  ");
-  display(17, 12, "  Mark Crowe     ");
-  display(18, 12, "   Robert Heitman");
-}
-if (rvCOUNTDOWN == 135) {
-  display(6, 12, " Doug MacNeill  ");
-  display(7, 12, "  Greg Rowland  ");
-  display(8, 12, "                ");
-  display(9, 12, "New Version by: ");
-  display(10, 12, " Jeff Stephenson");
-  display(11, 12, "  Sol Ackerman  ");
-  display(12, 12, "   Chris Iden   ");
-  display(13, 12, "                ");
-  display(14, 12, "Thanks to:      ");
-  display(15, 12, " Linda Ackerman  ");
-  display(16, 12, "  Mark Crowe     ");
-  display(17, 12, "   Robert Heitman");
-  display(18, 12, "    Scott Murphy ");
-}
-#endif
-#if BUILD_TARGET == APPLE_IIGS
-  if (rfPLAYED_SND_TITLE_MUSIC) {
+if (VERSION_MAJOR >= 2) {
+  if (BUILD_TARGET == APPLE_IIGS && rfPLAYED_SND_TITLE_MUSIC) {
     goto(JUMP);
   }
-#endif
-#if VERSION_MAJOR >= 2
   if (rvCOUNTDOWN == rvNEXT_MSG_AT) {
     rvMSG = rvNEXT_MSG;
     rvROW_INDEX = rvROW_COUNT;
@@ -428,12 +163,12 @@ if (rvCOUNTDOWN == 135) {
       rvMSG_X = 18;
     }
     LOOP:
-  #if BUILD_TARGET == APPLE_IIGS
-    do {
-      rvBUSY_COUNTDOWN--;
-    } while (rvBUSY_COUNTDOWN != 1);
-    rvBUSY_COUNTDOWN = 11;
-  #endif
+    if (BUILD_TARGET == APPLE_IIGS) {
+      do {
+        rvBUSY_COUNTDOWN--;
+      } while (rvBUSY_COUNTDOWN != 1);
+      rvBUSY_COUNTDOWN = 11;
+    }
     display.v(rvMSG_X, rvMSG_Y, rvMSG);
     rvROW_INDEX--;
     if (rvROW_INDEX > 0) {
@@ -447,15 +182,7 @@ if (rvCOUNTDOWN == 135) {
       rvROW_COUNT++;
     }
   }
-  #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
-    if (rvCOUNTDOWN == 135) {
-      rvNEXT_MSG_AT = 255;
-      if (vVIDEO_MODE == 2) {
-        clear.lines(24, 24, "");
-        display(24, 5, "Press any key to continue.");
-      }
-    }
-  #else
+  if (BUILD_TARGET == APPLE_IIGS) {
     if (rvCOUNTDOWN == 40) {
       rvCOUNTDOWN = 250;
       rvNEXT_MSG_AT = 245;
@@ -463,10 +190,288 @@ if (rvCOUNTDOWN == 135) {
       rvROW_COUNT = 1;
       rvMSG_Y = 12;
     }
-  #endif
-#endif
-#if BUILD_TARGET == APPLE_IIGS
-  JUMP:
+  }
+  else {
+    if (rvCOUNTDOWN == 135) {
+      rvNEXT_MSG_AT = 255;
+      if (vVIDEO_MODE == 2) {
+        clear.lines(24, 24, "");
+        display(24, 5, "Press any key to continue.");
+      }
+    }
+  }
+}
+else {
+  if (rvCOUNTDOWN == 245) {
+    display(18, 12, "Designed and    ");
+  }
+  if (rvCOUNTDOWN == 240) {
+    display(17, 12, "Designed and    ");
+    display(18, 12, "    Written by: ");
+  }
+  if (rvCOUNTDOWN == 235) {
+    display(16, 12, "Designed and    ");
+    display(17, 12, "    Written by: ");
+    display(18, 12, "Roberta Williams");
+  }
+  if (rvCOUNTDOWN == 230) {
+    display(15, 12, "Designed and    ");
+    display(16, 12, "    Written by: ");
+    display(17, 12, "Roberta Williams");
+    display(18, 12, "                ");
+  }
+  if (rvCOUNTDOWN == 225) {
+    display(14, 12, "Designed and    ");
+    display(15, 12, "    Written by: ");
+    display(16, 12, "Roberta Williams");
+    display(17, 12, "                ");
+    display(18, 12, "Orig. Version by");
+  }
+  if (rvCOUNTDOWN == 220) {
+    display(13, 12, "Designed and    ");
+    display(14, 12, "    Written by: ");
+    display(15, 12, "Roberta Williams");
+    display(16, 12, "                ");
+    display(17, 12, "Orig. Version by");
+    display(18, 12, " Charles Tingley");
+  }
+  if (rvCOUNTDOWN == 215) {
+    display(12, 12, "Designed and    ");
+    display(13, 12, "    Written by: ");
+    display(14, 12, "Roberta Williams");
+    display(15, 12, "                ");
+    display(16, 12, "Orig. Version by");
+    display(17, 12, " Charles Tingley");
+    display(18, 12, "  Ken MacNeill  ");
+  }
+  if (rvCOUNTDOWN == 210) {
+    display(11, 12, "Designed and    ");
+    display(12, 12, "    Written by: ");
+    display(13, 12, "Roberta Williams");
+    display(14, 12, "                ");
+    display(15, 12, "Orig. Version by");
+    display(16, 12, " Charles Tingley");
+    display(17, 12, "  Ken MacNeill  ");
+    display(18, 12, "   Chris Iden   ");
+  }
+  if (rvCOUNTDOWN == 205) {
+    display(10, 12, "Designed and    ");
+    display(11, 12, "    Written by: ");
+    display(12, 12, "Roberta Williams");
+    display(13, 12, "                ");
+    display(14, 12, "Orig. Version by");
+    display(15, 12, " Charles Tingley");
+    display(16, 12, "  Ken MacNeill  ");
+    display(17, 12, "   Chris Iden   ");
+    display(18, 12, "                ");
+  }
+  if (rvCOUNTDOWN == 200) {
+    display(9, 12, "Designed and    ");
+    display(10, 12, "    Written by: ");
+    display(11, 12, "Roberta Williams");
+    display(12, 12, "                ");
+    display(13, 12, "Orig. Version by");
+    display(14, 12, " Charles Tingley");
+    display(15, 12, "  Ken MacNeill  ");
+    display(16, 12, "   Chris Iden   ");
+    display(17, 12, "                ");
+    display(18, 12, "Graphics by:    ");
+  }
+  if (rvCOUNTDOWN == 195) {
+    display(8, 12, "Designed and    ");
+    display(9, 12, "    Written by: ");
+    display(10, 12, "Roberta Williams");
+    display(11, 12, "                ");
+    display(12, 12, "Orig. Version by");
+    display(13, 12, " Charles Tingley");
+    display(14, 12, "  Ken MacNeill  ");
+    display(15, 12, "   Chris Iden   ");
+    display(16, 12, "                ");
+    display(17, 12, "Graphics by:    ");
+    display(18, 12, " Doug MacNeill  ");
+  }
+  if (rvCOUNTDOWN == 190) {
+    display(7, 12, "Designed and    ");
+    display(8, 12, "    Written by: ");
+    display(9, 12, "Roberta Williams");
+    display(10, 12, "                ");
+    display(11, 12, "Orig. Version by");
+    display(12, 12, " Charles Tingley");
+    display(13, 12, "  Ken MacNeill  ");
+    display(14, 12, "   Chris Iden   ");
+    display(15, 12, "                ");
+    display(16, 12, "Graphics by:    ");
+    display(17, 12, " Doug MacNeill  ");
+    display(18, 12, "  Greg Rowland  ");
+  }
+  if (rvCOUNTDOWN == 185) {
+    display(6, 12, "Designed and    ");
+    display(7, 12, "    Written by: ");
+    display(8, 12, "Roberta Williams");
+    display(9, 12, "                ");
+    display(10, 12, "Orig. Version by");
+    display(11, 12, " Charles Tingley");
+    display(12, 12, "  Ken MacNeill  ");
+    display(13, 12, "   Chris Iden   ");
+    display(14, 12, "                ");
+    display(15, 12, "Graphics by:    ");
+    display(16, 12, " Doug MacNeill  ");
+    display(17, 12, "  Greg Rowland  ");
+    display(18, 12, "                ");
+  }
+  if (rvCOUNTDOWN == 180) {
+    display(6, 12, "    Written by: ");
+    display(7, 12, "Roberta Williams");
+    display(8, 12, "                ");
+    display(9, 12, "Orig. Version by");
+    display(10, 12, " Charles Tingley");
+    display(11, 12, "  Ken MacNeill  ");
+    display(12, 12, "   Chris Iden   ");
+    display(13, 12, "                ");
+    display(14, 12, "Graphics by:    ");
+    display(15, 12, " Doug MacNeill  ");
+    display(16, 12, "  Greg Rowland  ");
+    display(17, 12, "                ");
+    display(18, 12, "New Version by: ");
+  }
+  if (rvCOUNTDOWN == 175) {
+    display(6, 12, "Roberta Williams");
+    display(7, 12, "                ");
+    display(8, 12, "Orig. Version by");
+    display(9, 12, " Charles Tingley");
+    display(10, 12, "  Ken MacNeill  ");
+    display(11, 12, "   Chris Iden   ");
+    display(12, 12, "                ");
+    display(13, 12, "Graphics by:    ");
+    display(14, 12, " Doug MacNeill  ");
+    display(15, 12, "  Greg Rowland  ");
+    display(16, 12, "                ");
+    display(17, 12, "New Version by: ");
+    display(18, 12, " Jeff Stephenson");
+  }
+  if (rvCOUNTDOWN == 170) {
+    display(6, 12, "                ");
+    display(7, 12, "Orig. Version by");
+    display(8, 12, " Charles Tingley");
+    display(9, 12, "  Ken MacNeill  ");
+    display(10, 12, "   Chris Iden   ");
+    display(11, 12, "                ");
+    display(12, 12, "Graphics by:    ");
+    display(13, 12, " Doug MacNeill  ");
+    display(14, 12, "  Greg Rowland  ");
+    display(15, 12, "                ");
+    display(16, 12, "New Version by: ");
+    display(17, 12, " Jeff Stephenson");
+    display(18, 12, "  Sol Ackerman  ");
+  }
+  if (rvCOUNTDOWN == 165) {
+    display(6, 12, "Orig. Version by");
+    display(7, 12, " Charles Tingley");
+    display(8, 12, "  Ken MacNeill  ");
+    display(9, 12, "   Chris Iden   ");
+    display(10, 12, "                ");
+    display(11, 12, "Graphics by:    ");
+    display(12, 12, " Doug MacNeill  ");
+    display(13, 12, "  Greg Rowland  ");
+    display(14, 12, "                ");
+    display(15, 12, "New Version by: ");
+    display(16, 12, " Jeff Stephenson");
+    display(17, 12, "  Sol Ackerman  ");
+    display(18, 12, "   Chris Iden   ");
+  }
+  if (rvCOUNTDOWN == 160) {
+    display(6, 12, " Charles Tingley");
+    display(7, 12, "  Ken MacNeill  ");
+    display(8, 12, "   Chris Iden   ");
+    display(9, 12, "                ");
+    display(10, 12, "Graphics by:    ");
+    display(11, 12, " Doug MacNeill  ");
+    display(12, 12, "  Greg Rowland  ");
+    display(13, 12, "                ");
+    display(14, 12, "New Version by: ");
+    display(15, 12, " Jeff Stephenson");
+    display(16, 12, "  Sol Ackerman  ");
+    display(17, 12, "   Chris Iden   ");
+    display(18, 12, "                ");
+  }
+  if (rvCOUNTDOWN == 155) {
+    display(6, 12, "  Ken MacNeill  ");
+    display(7, 12, "   Chris Iden   ");
+    display(8, 12, "                ");
+    display(9, 12, "Graphics by:    ");
+    display(10, 12, " Doug MacNeill  ");
+    display(11, 12, "  Greg Rowland  ");
+    display(12, 12, "                ");
+    display(13, 12, "New Version by: ");
+    display(14, 12, " Jeff Stephenson");
+    display(15, 12, "  Sol Ackerman  ");
+    display(16, 12, "   Chris Iden   ");
+    display(17, 12, "                ");
+    display(18, 12, "Thanks to:      ");
+  }
+  if (rvCOUNTDOWN == 150) {
+    display(6, 12, "   Chris Iden   ");
+    display(7, 12, "                ");
+    display(8, 12, "Graphics by:    ");
+    display(9, 12, " Doug MacNeill  ");
+    display(10, 12, "  Greg Rowland  ");
+    display(11, 12, "                ");
+    display(12, 12, "New Version by: ");
+    display(13, 12, " Jeff Stephenson");
+    display(14, 12, "  Sol Ackerman  ");
+    display(15, 12, "   Chris Iden   ");
+    display(16, 12, "                ");
+    display(17, 12, "Thanks to:      ");
+    display(18, 12, " Linda Ackerman  ");
+  }
+  if (rvCOUNTDOWN == 145) {
+    display(6, 12, "                ");
+    display(7, 12, "Graphics by:    ");
+    display(8, 12, " Doug MacNeill  ");
+    display(9, 12, "  Greg Rowland  ");
+    display(10, 12, "                ");
+    display(11, 12, "New Version by: ");
+    display(12, 12, " Jeff Stephenson");
+    display(13, 12, "  Sol Ackerman  ");
+    display(14, 12, "   Chris Iden   ");
+    display(15, 12, "                ");
+    display(16, 12, "Thanks to:      ");
+    display(17, 12, " Linda Ackerman  ");
+    display(18, 12, "  Mark Crowe     ");
+  }
+  if (rvCOUNTDOWN == 140) {
+    display(6, 12, "Graphics by:    ");
+    display(7, 12, " Doug MacNeill  ");
+    display(8, 12, "  Greg Rowland  ");
+    display(9, 12, "                ");
+    display(10, 12, "New Version by: ");
+    display(11, 12, " Jeff Stephenson");
+    display(12, 12, "  Sol Ackerman  ");
+    display(13, 12, "   Chris Iden   ");
+    display(14, 12, "                ");
+    display(15, 12, "Thanks to:      ");
+    display(16, 12, " Linda Ackerman  ");
+    display(17, 12, "  Mark Crowe     ");
+    display(18, 12, "   Robert Heitman");
+  }
+  if (rvCOUNTDOWN == 135) {
+    display(6, 12, " Doug MacNeill  ");
+    display(7, 12, "  Greg Rowland  ");
+    display(8, 12, "                ");
+    display(9, 12, "New Version by: ");
+    display(10, 12, " Jeff Stephenson");
+    display(11, 12, "  Sol Ackerman  ");
+    display(12, 12, "   Chris Iden   ");
+    display(13, 12, "                ");
+    display(14, 12, "Thanks to:      ");
+    display(15, 12, " Linda Ackerman  ");
+    display(16, 12, "  Mark Crowe     ");
+    display(17, 12, "   Robert Heitman");
+    display(18, 12, "    Scott Murphy ");
+  }
+}
+JUMP:
+if (BUILD_TARGET == APPLE_IIGS) {
   if (have.key() || rfPLAYED_SND_TITLE_MUSIC) {
     stop.sound();
     rvCOUNTDOWN = 0;
@@ -488,7 +493,8 @@ if (rvCOUNTDOWN == 135) {
     show.pic();
     new.room(ROOM1_CASTLE_EAST);
   }
-#else
+}
+else {
   if (have.key()) {
     #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
     if (vVIDEO_MODE != 2)
@@ -498,7 +504,7 @@ if (rvCOUNTDOWN == 135) {
     }
     stop.sound();
     rvCOUNTDOWN = 0;
-    #if BUILD_TARGET == DOS
+    if (BUILD_TARGET == DOS) {
       set.key(KEY_ESC, 0, cSHOW_MENU);
       if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST) {
         set.key(1, 1, cSHOW_MENU);
@@ -510,37 +516,16 @@ if (rvCOUNTDOWN == 135) {
         set.key(1, 2, cSWIM);
         set.key(1, 4, cINVENTORY);
       }
-    #endif
+    }
     new.room(ROOM1_CASTLE_EAST);
   }
-#endif
+}
 return;
 
 LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
-#if VERSION_MAJOR < 2
-  #message 1 "                "
-  #message 2 "Designed and    "
-  #message 3 "    Written by: "
-  #message 4 "Roberta Williams"
-  #message 5 "Orig. Version by"
-  #message 6 " Charles Tingley"
-  #message 7 "  Ken MacNeill  "
-  #message 8 "   Chris Iden   "
-  #message 9 "Graphics by:    "
-  #message 10 " Doug MacNeill  "
-  #message 11 "  Greg Rowland  "
-  #message 12 "New Version by: "
-  #message 13 " Jeff Stephenson"
-  #message 14 "  Sol Ackerman  "
-  #message 15 "Thanks to:      "
-  #message 16 "  Mark Crowe     "
-  #message 17 "   Robert Heitman"
-  #message 18 "    Scott Murphy "
-  #message 19 "(c) copyright SIERRA On-Line Inc.  1986"
-  #message 20 "Press any key to continue."
-#else
+#if VERSION_MAJOR >= 2
   #message 1 "Designed and    "
   #message 2 "    Written by: "
   #message 3 "Roberta Williams"
@@ -597,31 +582,50 @@ LOGIC__FOOTER
     #message 24 "(c) copyright SIERRA On-Line Inc.  1987"
     #message 25 "Press any key to continue."
   #endif  
-#endif
-#if VERSION_MAJOR < 2
+#else
+  #message 1 "                "
+  #message 2 "Designed and    "
+  #message 3 "    Written by: "
+  #message 4 "Roberta Williams"
+  #message 5 "Orig. Version by"
+  #message 6 " Charles Tingley"
+  #message 7 "  Ken MacNeill  "
+  #message 8 "   Chris Iden   "
+  #message 9 "Graphics by:    "
+  #message 10 " Doug MacNeill  "
+  #message 11 "  Greg Rowland  "
+  #message 12 "New Version by: "
+  #message 13 " Jeff Stephenson"
+  #message 14 "  Sol Ackerman  "
+  #message 15 "Thanks to:      "
+  #message 16 "  Mark Crowe     "
+  #message 17 "   Robert Heitman"
+  #message 18 "    Scott Murphy "
+  #message 19 "(c) copyright SIERRA On-Line Inc.  1986"
+  #message 20 "Press any key to continue."
   #message 21 " Linda Ackerman  "
   #message 22 "KQ1"
-#endif
-#if BUILD_TARGET == AMIGA
-  #message 25 "Game"
-  #message 26 "Inventory     <Tab>"
-  #message 27 "Pause         <Esc>"
-  #message 28 "Restart Game   <F9>"
-  #message 29 "Quit               "
-  #message 30 "Sound"
-  #message 31 "Toggle Sound   <F2>"
-  #message 35 "Info"
-  #message 36 "About King's Quest"
-  #message 37 "Help              "
-  #message 40 "File"
-  #message 41 "Save Game      <F5>"
-  #message 42 "Restore Game   <F7>"
-  #message 45 "Actions"
-  #message 46 "Swim    ="
-  #message 47 "Jump    0"
-  #message 48 "Duck    -"
-  #if RUBBER_TREE
-    #message 49 "Undo               "
+  #if BUILD_TARGET == AMIGA
+    #message 25 "Game"
+    #message 26 "Inventory     <Tab>"
+    #message 27 "Pause         <Esc>"
+    #message 28 "Restart Game   <F9>"
+    #message 29 "Quit               "
+    #message 30 "Sound"
+    #message 31 "Toggle Sound   <F2>"
+    #message 35 "Info"
+    #message 36 "About King's Quest"
+    #message 37 "Help              "
+    #message 40 "File"
+    #message 41 "Save Game      <F5>"
+    #message 42 "Restore Game   <F7>"
+    #message 45 "Actions"
+    #message 46 "Swim    ="
+    #message 47 "Jump    0"
+    #message 48 "Duck    -"
   #endif
+#endif
+#if RUBBER_TREE
+  #message 49 "Undo               "
 #endif
 #endif

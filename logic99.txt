@@ -3,7 +3,7 @@
 LOGIC__HEADER
 
 
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   vDEBUG_VAR_VALUE = vTEMP_X_2;
   vDEBUG_VAR_OR_FLAG_ID = vTEMP_Y_2;
   display(24, 16, "%v72|3/%v73|3");
@@ -17,12 +17,11 @@ LOGIC__HEADER
   if (controller(cSHOWMEM)) {
     show.mem();
   }
-#else
-  if (said("quit")) {
-    stop.sound();
-    quit(0);
-  }
-#endif
+}
+else if (said("quit")) {
+  stop.sound();
+  quit(0);
+}
 if (said("tp")) {
   get.num("new room: ", vTEMP_INPUT_NUM1);
   new.room.v(vTEMP_INPUT_NUM1);
@@ -55,9 +54,9 @@ if (controller(cSHOWPRIORITY)) {
   show.pri.screen();
 }
 if (said("show", "var")) {
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     vDEBUG_VAR_OR_FLAG_ID = 0;
-  #endif
+  }
   get.num("var number: ", vDEBUG_VAR_OR_FLAG_ID);
   rindirect(vDEBUG_VAR_VALUE, vDEBUG_VAR_OR_FLAG_ID);
   print("var %v73: %v72");
@@ -79,11 +78,9 @@ if (said("set", "flags")) {
   get.num("flag number: ", vDEBUG_VAR_OR_FLAG_ID);
   set.v(vDEBUG_VAR_OR_FLAG_ID);
 }
-#if BUILD_TARGET != APPLE_IIGS
-  if (controller(cSHOWMEM)) {
-    show.mem();
-  }
-#endif
+if (BUILD_TARGET != APPLE_IIGS && controller(cSHOWMEM)) {
+  show.mem();
+}
 if (vUNKNOWN_WORD_NO == 1) {
   log("%m12%w1");
 }

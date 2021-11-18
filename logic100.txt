@@ -8,15 +8,15 @@ vGAME_OVER_MESSAGE_COUNTDOWN--;
 if (vGAME_OVER_MESSAGE_COUNTDOWN == 1) {
   vGAME_OVER_MESSAGE_COUNTDOWN = 0;
   sound(SND_GAME_OVER, fMISC_END_MARKER);
-#if BUILD_TARGET == APPLE_IIGS
-  if ((vROOM_NO == ROOM46_OGRE_STOMPING_GROUND) || (vROOM_NO == ROOM77_LEPRECHAUN_KING_THRONE_ROOM)) {
-    load.view(114);
-    erase(oEGO);
-    set.view(oEGO, 114);
-    stop.cycling(oEGO);
-    draw(oEGO);
+  if (BUILD_TARGET == APPLE_IIGS) {
+    if ((vROOM_NO == ROOM46_OGRE_STOMPING_GROUND) || (vROOM_NO == ROOM77_LEPRECHAUN_KING_THRONE_ROOM)) {
+      load.view(114);
+      erase(oEGO);
+      set.view(oEGO, 114);
+      stop.cycling(oEGO);
+      draw(oEGO);
+    }
   }
-#endif
   if (vSCORE < 50) {
     print("We, at Sierra, wish to thank you for playing King's Quest. We are very sorry that you did not succeed and hope you will fare better next time. Good luck.");
   }
@@ -32,7 +32,7 @@ if (fGOAT_COMPANION) {
   stop.motion(oGOAT);
   stop.cycling(oGOAT);
 }
-#if VERSION_MAJOR < 2
+if (VERSION_MAJOR < 2) {
   if (said("quit") || controller(cQUIT)) {
     stop.sound();
     quit(0);
@@ -54,8 +54,8 @@ if (fGOAT_COMPANION) {
     stop.sound();
     status();
   }
-#endif
-#if BUILD_TARGET == AMIGA
+}
+if (BUILD_TARGET == AMIGA) {
   if (controller(cHELP)) {
     call(LOGIC92_HELP);
   }
@@ -74,7 +74,7 @@ if (fGOAT_COMPANION) {
   if (controller(cPAUSE)) {
     pause();
   }
-#endif
+}
 if (!fSAID_ACCEPTED_USER_INPUT) {
   if (said("anyword", "anyword") || said("anyword") || said("anyword", "anyword", "anyword")) {
     stop.sound();
@@ -118,17 +118,17 @@ LOGIC__FOOTER
 
 #ifndef LOGIC_AS_C
 #message 1 "We, at Sierra, wish to thank you for playing King's Quest. We are very sorry that you did not succeed and hope you will fare better next time. Good luck."
-#if VERSION_MAJOR < 2
-  #if RUBBER_TREE
-    #message 2 "As you are dead, I can only permit you to: Restore Game,  Restart Game, Undo or Take Inventory. Sorry."
-  #else
-    #message 2 "As you are dead, I can only permit you to: Restore Game,  Restart Game or Take Inventory. Sorry."
-  #endif
-#else
+#if VERSION_MAJOR >= 2
   #if RUBBER_TREE
     #message 2 "As you can no longer continue, I can only permit you to: Restore Game,  Restart Game, Undo or Take Inventory. Sorry."
   #else
     #message 2 "As you can no longer continue, I can only permit you to: Restore Game,  Restart Game or Take Inventory. Sorry."
+  #endif
+#else
+  #if RUBBER_TREE
+    #message 2 "As you are dead, I can only permit you to: Restore Game,  Restart Game, Undo or Take Inventory. Sorry."
+  #else
+    #message 2 "As you are dead, I can only permit you to: Restore Game,  Restart Game or Take Inventory. Sorry."
   #endif
 #endif
 #message 3 "We, at Sierra, wish to thank you for playing King's Quest. We are pleased to see that you are doing so well and hope that your score will keep improving."
