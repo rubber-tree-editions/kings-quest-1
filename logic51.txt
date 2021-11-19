@@ -46,7 +46,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     else {
       load.sound(SND_VILLAIN);
       load.sound(SND_DRAGON);
-    ~
+    }
   }
   load.view(35);
   if (vPREV_ROOM_NO == ROOM52_IN_WELL_UNDERWATER) {

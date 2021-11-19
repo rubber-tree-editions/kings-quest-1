@@ -48,9 +48,12 @@ if (said("examine", "lake")) {
 if (said("examine", "stumps")) {
   print(m5);
 }
-if (VERSION_MAJOR >= 2 && said("anyword", "beavers")) {
+// "beavers" is not in the dictionary in V1
+#if VERSION_MAJOR >= 2
+if (said("anyword", "beavers")) {
   print("There are no beavers here now.");
 }
+#endif
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 100, 109, 115, 135)) {
     set(fEGO_ON_WATER);
