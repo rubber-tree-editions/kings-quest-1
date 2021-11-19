@@ -53,17 +53,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_POINTS);
     load.sound(SND_FRIEND);
-  #endif
+  }
   load.view(57);
   load.view(58);
   load.sound(SND_FALLING);
   load.sound(SND_FIDDLE_TUNE);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_GIFT);
-  #endif
+  }
   if (fCARRYING_BOWL || fGIVEN_BOWL_TO_WOODCUTTER) {
     load.view(25);
     load.view(83);
@@ -83,9 +83,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   set.view(oWIFE, 58);
   position(oWIFE, PT_WIFE);
   stop.cycling(oWIFE);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     sound(SND_FRIEND, fMISC_END_MARKER);
-  #endif
+  }
   draw(oWOODCUTTER);
   draw(oWIFE);
   if (!fFIDDLE_TAKEN) {
@@ -136,12 +136,10 @@ if (said("examine", "woodcutter")) {
 if (said("examine", "wife")) {
   print("The woodcutter's wife is skinny and poorly dressed.");
 }
-#if VERSION_MAJOR >= 2
-if (said("examine", "people")) {
+if (VERSION_MAJOR >= 2 && said("examine", "people")) {
   print("The woodcutter is thin and dressed in rags.");
   print("The woodcutter's wife is skinny and poorly dressed.");
 }
-#endif
 if (said("examine", "table")) {
   if (!fGIVEN_BOWL_TO_WOODCUTTER) {
     print("The woodcutter and his wife are sitting at the old oak table.");
@@ -317,9 +315,9 @@ if (fCARRYING_CARROT && said("give", "carrot")) {
   vSCORE -= 2;
 }
 if (fCARRYING_MAGIC_BEANS && said("give", "magic beans")) {
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     sound(SND_GIFT, fMISC_END_MARKER);
-  #endif
+  }
   print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"");
   if (!rfBOTH_GESTICULATING) {
     set(rfBOTH_GESTICULATING);
@@ -340,9 +338,9 @@ if (fCARRYING_BOWL) {
       || said("give", "bowl", "wife")
       || said("drop", "bowl", "table")
     ) {
-      #if BUILD_TARGET == APPLE_IIGS
+      if (BUILD_TARGET == APPLE_IIGS) {
         sound(SND_GIFT, fMISC_END_MARKER);
-      #endif
+      }
       set(fGIVEN_BOWL_TO_WOODCUTTER);
       reset(fCARRYING_BOWL);
       drop("ceramic bowl");
@@ -375,9 +373,9 @@ if (fCARRYING_BOWL) {
       || said("give", "stew", "wife")
       || said("drop", "stew", "table")
     ) {
-      #if BUILD_TARGET == APPLE_IIGS
+      if (BUILD_TARGET == APPLE_IIGS) {
         sound(SND_GIFT, fMISC_END_MARKER);
-      #endif
+      }
       set(fGIVEN_BOWL_TO_WOODCUTTER);
       reset(fCARRYING_BOWL);
       drop("ceramic bowl");
@@ -415,9 +413,9 @@ if (fGIVEN_BOWL_TO_WOODCUTTER && vBOWL_STATE == BOWLSTATE_EMPTY) {
     || said("fill", "bowl")
 #endif
   ) {
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       sound(SND_GIFT, fMISC_END_MARKER);
-    #endif
+    }
     erase(oBOWL);
     set.view(oBOWL, 83);
     draw(oBOWL);
@@ -468,9 +466,9 @@ if (!fFIDDLE_TAKEN) {
       erase(oFIDDLE);
       set(fCARRYING_FIDDLE);
       set(fFIDDLE_TAKEN);
-      #if BUILD_TARGET == APPLE_IIGS
+      if (BUILD_TARGET == APPLE_IIGS) {
         sound(SND_POINTS, fMISC_END_MARKER);
-      #endif
+      }
       print("The polished wood feels like satin -- it seems to still vibrate from the last song it played.");
       get("fiddle");
       vSCORE += 3;
@@ -486,12 +484,12 @@ if (!fFIDDLE_TAKEN) {
   }
 }
 if (fEGO_ON_WATER && !fFALLING) {
-#if RUBBER_TREE
-  get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
-#endif
-#if BUILD_TARGET == APPLE_IIGS
-  set(fEGO_PREOCCUPIED);
-#endif
+  #if RUBBER_TREE
+    get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+  #endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    set(fEGO_PREOCCUPIED);
+  }
   ignore.blocks(oEGO);
   set(fSCRIPTED_MOTION);
   stop.cycling(oEGO);

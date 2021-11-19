@@ -44,14 +44,12 @@ if (fFALLING_TO_EARTH && !rfFALLEN_OFF_SCREEN && !rfFALLING_SOUND_PLAYING) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   set(rfFALLING_SOUND_PLAYING);
 }
-#if VERSION_MAJOR < 2
-if (fSOUND_END_MARKER) {
+if (VERSION_MAJOR < 2 && fSOUND_END_MARKER) {
   if (!rfFALLEN_OFF_SCREEN) {
     reset(rfFALLING_SOUND_PLAYING);
     reset(fSOUND_END_MARKER);
   }
 }
-#endif
 if (fGOAT_COMPANION) {
   print("The goat was quite hesitant about climbing that huge beanstalk!  You may have lost the goat.");
   reset(fGOAT_COMPANION);

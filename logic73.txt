@@ -15,18 +15,18 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_IMPACT);
-  #endif
+  }
   load.sound(SND_OUCH);
   load.sound(SND_FALLING);
   load.view(105);
   load.view(103);
   load.view(104);
   if (vPREV_ROOM_NO == ROOM48_LEPRECHAUN_HOLE) {
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       set(fEGO_PREOCCUPIED);
-    #endif
+    }
     position(oEGO, 90, 63);
     set.view(oEGO, 105);
     ignore.blocks(oEGO);
@@ -52,14 +52,14 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(oEGO);
   show.pic();
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     rvOUCH_COUNTDOWN = 12;
-  #endif
+  }
 }
 if (!rfFELL_INTO_CAVE && !rfPLAYING_SND_FALLING && vPREV_ROOM_NO == ROOM48_LEPRECHAUN_HOLE) {
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     set(fSOUND_END_MARKER);
-  #endif
+  }
   sound(SND_FALLING, fSOUND_END_MARKER);
   set(rfPLAYING_SND_FALLING);
 }
@@ -72,14 +72,14 @@ if (said("examine", "cave")) {
 if (rfFELL_INTO_CAVE) {
   reset(rfFELL_INTO_CAVE);
   stop.sound();
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     sound(SND_IMPACT, fMISC_END_MARKER);
-  #endif
+  }
   observe.blocks(oEGO);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     vTEMP_RESULT = 1;
     cycle.time(oEGO, vTEMP_RESULT);
-  #endif
+  }
   set.view(oEGO, 103);
   program.control();
   shake.screen(1);
@@ -90,25 +90,27 @@ if (rfFELL_INTO_CAVE) {
     print("OUCH!");
   }
   rvCOUNTDOWN = 36;
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     set(fSOUND_END_MARKER);
     rvOUCH_COUNTDOWN = 5;
-  #else
+  }
+  else {
     sound(SND_OUCH, fSOUND_END_MARKER);
-  #endif
+  }
 }
 if (fSOUND_END_MARKER) {
   if (rvCOUNTDOWN > 0) {
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       rvOUCH_COUNTDOWN--;
       if (rvOUCH_COUNTDOWN == 1) {
         rvOUCH_COUNTDOWN = 5;
         sound(SND_OUCH, fSOUND_END_MARKER);
       }
-    #else
+    }
+    else {
       reset(fSOUND_END_MARKER);
       sound(SND_OUCH, fSOUND_END_MARKER);
-    #endif
+    }
   }
 }
 if (rvCOUNTDOWN == 1) {
@@ -120,20 +122,21 @@ if (rfEGO_FINISHED_ANIMATING) {
   set.view(oEGO, 0);
   reset(fCYCLE_EGO_ANIMATION);
   player.control();
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     reset(fEGO_PREOCCUPIED);
-  #endif
+  }
   if (rfLOST_INVISIBILITY_DURING_FALL) {
     reset(rfLOST_INVISIBILITY_DURING_FALL);
     print("While falling through the hole, the magic ring fell off your finger.  Dangerous creatures can see you now!");
   }
   if (rfBECAME_FULL_SIZE_DURING_FALL) {
     reset(rfBECAME_FULL_SIZE_DURING_FALL);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       print("When you fell through the hole, you felt a stretching sensation and are back to your normal size.");
-    #else
+    }
+    else {
       print("When you fell through the hole, you felt a streching sensation and are back to your normal size.");
-    #endif
+    }
   }
 }
 rvCOUNTDOWN--;

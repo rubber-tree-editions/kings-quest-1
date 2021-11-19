@@ -26,24 +26,22 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   draw(oEGO);
   show.pic();
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     set(fTENSE_SITUATION);
     set(fTHREAT_OF_SORCERER_OR_OGRE);
     set(fFALL_DANGER);
-  #endif
+  }
 }
 if (fFALLING_TO_EARTH && !rfFELL_OFF_BEANSTALK && !rfPLAYING_SND_FALLING) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   set(rfPLAYING_SND_FALLING);
 }
-#if VERSION_MAJOR < 2
-if (fSOUND_END_MARKER) {
+if (VERSION_MAJOR < 2 && fSOUND_END_MARKER) {
   if (!rfFELL_OFF_BEANSTALK) {
     reset(rfPLAYING_SND_FALLING);
     reset(fSOUND_END_MARKER);
   }
 }
-#endif
 if (!posn(oEGO, 65, 100, 84, 120) && !fEGO_CLIMBING_BEANSTALK && !fEGO_INVISIBLE) {
   if (said("climb", "beanstalk")) {
     print("You need to be closer to do that.");

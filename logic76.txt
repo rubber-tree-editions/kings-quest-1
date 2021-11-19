@@ -28,27 +28,29 @@ if (fROOM_SCRIPT_EXECUTED) {
     animate.obj(oOTHER_LEPRECHAUNS);
     set.view(oOTHER_LEPRECHAUNS, 50);
     position(oOTHER_LEPRECHAUNS, 96, 78);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       load.sound(SND_FIDDLE_TUNE2);
-    #else
+    }
+    else {
       load.sound(SND_FIDDLE_TUNE);
-    #endif
+    }
   }
   if (!fDANCING_LEPRECHAUNS) {
-    #if VERSION_MAJOR >= 2
+    if (VERSION_MAJOR >= 2) {
       load.view(47);
-    #endif
+    }
     load.view(78);
     load.view(79);
     load.view(80);
     animate.obj(oLEPRECHAUN1);
     animate.obj(oLEPRECHAUN2);
     set.view(oLEPRECHAUN1, 79);
-    #if VERSION_MAJOR >= 2
+    if (VERSION_MAJOR >= 2) {
       set.view(oLEPRECHAUN2, 47);
-    #else
+    }
+    else {
       set.view(oLEPRECHAUN2, 80);
-    #endif
+    }
     position(oLEPRECHAUN1, 60, 136);
     position(oLEPRECHAUN2, 45, 119);
     stop.cycling(oLEPRECHAUN2);
@@ -98,29 +100,31 @@ if (rvCOUNTDOWN > 0) {
 }
 if (!fDANCING_LEPRECHAUNS && !rfPLAYING_FIDDLE) {
   if (fCARRYING_FIDDLE && said("play", "fiddle")) {
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       stop.motion(oEGO);
-    #endif
+    }
     set(rfLEPRECHAUNS_DANCING_AWAY);
     set(rfPLAYING_FIDDLE);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       rvCOUNTDOWN = 145;
-    #else
+    }
+    else {
       rvCOUNTDOWN = 45;
-    #endif
-    #if BUILD_TARGET != APPLE_IIGS
+    }
+    if (BUILD_TARGET != APPLE_IIGS) {
       draw(oOTHER_LEPRECHAUNS);
-    #endif
-    #if BUILD_TARGET == APPLE_IIGS
+    }
+    if (BUILD_TARGET == APPLE_IIGS) {
       sound(SND_FIDDLE_TUNE2, rfPLAYED_SND_FIDDLE_TUNE);
-    #else
+    }
+    else {
       sound(SND_FIDDLE_TUNE, rfPLAYED_SND_FIDDLE_TUNE);
-    #endif
-    #if VERSION_MAJOR >= 2
+    }
+    if (VERSION_MAJOR >= 2) {
       erase(oLEPRECHAUN2);
       set.view(oLEPRECHAUN2, 80);
       draw(oLEPRECHAUN2);
-    #endif
+    }
     start.cycling(oLEPRECHAUN2);
     wander(oLEPRECHAUN2);
     erase(oLEPRECHAUN1);
@@ -134,11 +138,12 @@ if (!fDANCING_LEPRECHAUNS && !rfPLAYING_FIDDLE) {
 }
 if (rvCOUNTDOWN > 1 && rfPLAYED_SND_FIDDLE_TUNE) {
   reset(rfPLAYED_SND_FIDDLE_TUNE);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     sound(SND_FIDDLE_TUNE2, rfPLAYED_SND_FIDDLE_TUNE);
-  #else
+  }
+  else {
     sound(SND_FIDDLE_TUNE, rfPLAYED_SND_FIDDLE_TUNE);
-  #endif
+  }
 }
 if (rvCOUNTDOWN == 1) {
   rvCOUNTDOWN = 0;
@@ -147,13 +152,14 @@ if (rvCOUNTDOWN == 1) {
   reset(rfPLAYING_FIDDLE);
   erase(oLEPRECHAUN2);
   erase(oLEPRECHAUN1);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     print("Totally involved in the music, they dance right out of the room.");
     start.motion(oEGO);
-  #else
+  }
+  else {
     erase(oOTHER_LEPRECHAUNS);
     print("Totally involved in the music, they dance right out of the room.");
-  #endif
+  }
 }
 if (rfLEPRECHAUNS_DANCING_AWAY) {
   if (vOBJECT_TOUCHING_EDGE == 13) {
@@ -207,10 +213,10 @@ LOGIC__FOOTER
 #message 4 "Leprechauns love fiddle music!  Have you ever seen such frenzied dancing?"
 #message 5 "Totally involved in the music, they dance right out of the room."
 #message 6 "The leprechaun catches you and holds you with his small,  but strong arms.  I don't think the leprechaun will ever let go."
-#if VERSION_MAJOR < 2
-  #message 7 "You are in the antechamber of the Hall of the Leprechaun King.  There is a leprechaun in the room with you."
-#else
+#if VERSION_MAJOR >= 2
   #message 7 "You are in the antechamber of the Hall of the Leprechaun King.  There are leprechauns in the room with you."
+#else
+  #message 7 "You are in the antechamber of the Hall of the Leprechaun King.  There is a leprechaun in the room with you."
 #endif
 #message 8 "You are in the antechamber of the Hall of the Leprechaun King."
 #message 9 "I can think of no good reason to close the door."

@@ -19,32 +19,32 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   if (fCARRIED_BY_WITCH) {
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       load.sound(SND_CARRIED_BY_WITCH);
-    #endif
+    }
     load.view(91);
     set.view(oEGO, 91);
     position(oEGO, PT_WITCH_START);
     move.obj(oEGO, PT_WITCH_END, 0, rfTO_WITCHS_HOUSE);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       rvCOUNTDOWN_TO_WITCH_SOUND = 35;
-    #endif
+    }
   }
   else {
     load.view(89);
     set.view(oEGO, 89);
     position(oEGO, PT_BIRD_START);
     move.obj(oEGO, PT_BIRD_END, 0, rfTO_LEPRECHAUN_HOLE);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       rvCOUNTDOWN_TO_BIRD_SOUND = 12;
       set(rfPLAYED_SND_BIRD);
       load.sound(SND_BIRD);
-    #endif
+    }
   }
   draw(oEGO);
   show.pic();
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   if (!fCARRIED_BY_WITCH && rfPLAYED_SND_BIRD) {
     rvCOUNTDOWN_TO_BIRD_SOUND--;
     if (rvCOUNTDOWN_TO_BIRD_SOUND == 1) {
@@ -59,7 +59,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       sound(SND_CARRIED_BY_WITCH, fMISC_END_MARKER);
     }
   }
-#endif
+}
 if (said("examine", "view") || said("examine", "clouds") || said("examine", "room")) {
   print("The view is magnificent.");
 }

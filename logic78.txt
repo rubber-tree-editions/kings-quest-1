@@ -2,10 +2,8 @@
 
 LOGIC__HEADER
 
-#if VERSION_MAJOR >= 2
 #define rvCOUNTDOWN_LO rv0
 #define rvCOUNTDOWN_HI rv1
-#endif
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -17,22 +15,21 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (vPREV_ROOM_NO == ROOM77_LEPRECHAUN_KING_THRONE_ROOM) {
     position(oEGO, 146, 131);
-#if VERSION_MAJOR < 2
-    move.obj(oEGO, 146, 131, 0, fMISC_END_MARKER);
-#else
-    move.obj(oEGO, 145, 130, 0, fMISC_END_MARKER);
-#endif
+    if (VERSION_MAJOR >= 2) {
+      move.obj(oEGO, 145, 130, 0, fMISC_END_MARKER);
+    }
+    else {
+      move.obj(oEGO, 146, 131, 0, fMISC_END_MARKER);
+    }
   }
-#if VERSION_MAJOR >= 2
-  if (!fCARRYING_MUSHROOM) {
+  if (VERSION_MAJOR >= 2 && !fCARRYING_MUSHROOM) {
     rvCOUNTDOWN_LO = 250;
     rvCOUNTDOWN_HI = 4;
   }
-#endif
   draw(oEGO);
   show.pic();
 }
-#if VERSION_MAJOR >= 2
+if (VERSION_MAJOR >= 2) {
   if (!fCARRYING_MUSHROOM) {
     rvCOUNTDOWN_LO--;
     if (rvCOUNTDOWN_LO == 0) {
@@ -47,7 +44,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     print("You seem to be stuck in these underground caverns.  As you have no way of leaving, it looks like you'll spend the rest of your life here." );
     set(fGAME_OVER);
   }
-#endif
+}
 if (fEGO_TINY) {
   ignore.blocks(oEGO);
 }
@@ -63,9 +60,9 @@ if (vTINY_COUNTDOWN == 1 && fEGO_TINY) {
   else {
     set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
-#if BUILD_TARGET == APPLE_IIGS
-    rvCOUNTDOWN_LO = 40;
-#endif
+    if (BUILD_TARGET == APPLE_IIGS) {
+      rvCOUNTDOWN_LO = 40;
+    }
     reset(fEGO_TINY);
   }
 }

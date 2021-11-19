@@ -22,26 +22,26 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_DOOR_OPENING);
-  #endif
+  }
   if (vPREV_ROOM_NO == ROOM74_CAVE_CORNER) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_X += 150;
     position.v(oEGO, vTEMP_X, vTEMP_Y);
   }
   if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       load.sound(SND_DOOR_CLOSED);
-    #endif
+    }
     position(oEGO, 34, 125);
   }
   ignore.objs(oEGO);
   load.view(95);
   if (!fRAT_IS_GONE) {
-    #if BUILD_TARGET != APPLE_IIGS
+    if (BUILD_TARGET != APPLE_IIGS) {
       load.sound(SND_VILLAIN);
-    #endif
+    }
     load.view(45);
     animate.obj(oRAT);
     set.view(oRAT, 45);
@@ -52,9 +52,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     rvRAT_STEP_SIZE = 3;
     step.size(oRAT, rvRAT_STEP_SIZE);
   }
-  #if BUILD_TARGET != APPLE_IIGS
+  if (BUILD_TARGET != APPLE_IIGS) {
     load.sound(SND_DOOR_OPENING);
-  #endif
+  }
   load.view(46);
   animate.obj(oDOOR);
   set.view(oDOOR, 46);
@@ -72,9 +72,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     draw(oRAT);
   }
   draw(oEGO);
-  #if BUILD_TARGET != APPLE_IIGS
+  if (BUILD_TARGET != APPLE_IIGS) {
     show.pic();
-  #endif
+  }
   if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
     reverse.loop(oDOOR, fMISC_END_MARKER_2);
     sound(SND_DOOR_OPENING, fMISC_END_MARKER);
@@ -82,7 +82,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   else {
     stop.update(oDOOR);
   }
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     if (!fRAT_IS_GONE) {
       load.sound(SND_VILLAIN);
       load.sound(SND_RAT);
@@ -90,9 +90,9 @@ if (fROOM_SCRIPT_EXECUTED) {
       set(rfPLAYED_SND_RAT);
     }
     show.pic();
-  #endif
+  }
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   if (rfRAT_CAUGHT_YOU) {
     set.view(oEGO, 95);
     print("Be careful around this rat next time!  He's dangerous!!");
@@ -110,7 +110,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       }
     }
   }
-#endif
+}
 if (fMISC_END_MARKER_2) {
   reset(fMISC_END_MARKER_2);
   stop.update(oDOOR);
@@ -122,11 +122,12 @@ if (fMISC_END_MARKER_2) {
 }
 if (rfRAT_IS_HERE) {
   reset(rfRAT_IS_HERE);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     sound(SND_VILLAIN, rfPLAYED_SND_VILLAIN);
-  #else
+  }
+  else {
     sound(SND_VILLAIN, fMISC_END_MARKER);
-  #endif
+  }
 }
 if (posn(oEGO, 0, 0, 54, 167)) {
   observe.blocks(oEGO);
@@ -344,29 +345,28 @@ if (rfRAT_LEFT) {
 if (said("count", "fingers") || said("examine", "fingers")) {
   print("You count your fingers and are relieved to see you still have all of them.");
 }
-#if BUILD_TARGET != APPLE_IIGS
-if (rfRAT_CAUGHT_YOU) {
+if (BUILD_TARGET != APPLE_IIGS && rfRAT_CAUGHT_YOU) {
   set.view(oEGO, 95);
   print("Be careful around this rat next time!  He's dangerous!!");
   wander(oRAT);
   set(fGAME_OVER);
 }
-#endif
 distance(oEGO, oDOOR, vTEMP_RESULT_3);
 if (said("open", "doors")) {
   if (vTEMP_RESULT_3 < 25) {
     start.update(oDOOR);
-    #if BUILD_TARGET == APPLE_IIGS
-    if (!fSOUND_ENABLED) {
-      print("The door slowly opens.");
+    if (BUILD_TARGET == APPLE_IIGS) {
+      if (!fSOUND_ENABLED) {
+        print("The door slowly opens.");
+      }
+      end.of.loop(oDOOR, rfDOOR_OPEN);
+      sound(SND_DOOR_OPENING, fMISC_END_MARKER);
     }
-    end.of.loop(oDOOR, rfDOOR_OPEN);
-    sound(SND_DOOR_OPENING, fMISC_END_MARKER);
-    #else
-    sound(SND_DOOR_OPENING, fMISC_END_MARKER);
-    print("The door slowly opens.");
-    end.of.loop(oDOOR, rfDOOR_OPEN);
-    #endif
+    else {
+      sound(SND_DOOR_OPENING, fMISC_END_MARKER);
+      print("The door slowly opens.");
+      end.of.loop(oDOOR, rfDOOR_OPEN);
+    }
   }
   else {
     print("Get closer if you want to try.");
