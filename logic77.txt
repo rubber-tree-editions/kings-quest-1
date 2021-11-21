@@ -46,6 +46,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(47);
     load.view(79);
   }
+  // setting this to else if (...) left a residual else { }
   #if BUILD_TARGET == APPLE_IIGS
   else {
     load.sound(SND_FIDDLE_TUNE);
