@@ -46,9 +46,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oWITCH, 3);
     ignore.horizon(oWITCH);
     ignore.blocks(oWITCH);
-#if VERSION_MAJOR >= 2
-    set.priority(oWITCH, PRI_WITCH);
-#endif
+    if (VERSION_MAJOR >= 2) {
+      set.priority(oWITCH, PRI_WITCH);
+    }
     set.loop(oWITCH, 1);
   }
   if (rfINIT_RANDOMIZER) {
@@ -56,38 +56,40 @@ if (fROOM_SCRIPT_EXECUTED) {
       random(0, 250, vTEMP_RESULT_2);
     } while (vTEMP_RESULT_2 > 90);
   }
-#if BUILD_TARGET == APPLE_IIGS
-  get.posn(oEGO, vTEMP_X, vTEMP_Y);
-  if (vPREV_ROOM_NO == ROOM28_OUTSIDE_GINGERBREAD_HOUSE) {
-    vTEMP_Y = 52;
-    position.v(oEGO, vTEMP_X, vTEMP_Y);
+  if (BUILD_TARGET == APPLE_IIGS) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vPREV_ROOM_NO == ROOM28_OUTSIDE_GINGERBREAD_HOUSE) {
+      vTEMP_Y = 52;
+      position.v(oEGO, vTEMP_X, vTEMP_Y);
+    }
   }
-#endif
   observe.blocks(oEGO);
   draw(oEGO);
   show.pic();
 }
 vTEMP_RESULT_2--;
 if (vTEMP_RESULT_2 == 1) {
-#if VERSION_MAJOR >= 2
-  vTEMP_RESULT_2 = 0;
-#endif
+  if (VERSION_MAJOR >= 2) {
+    vTEMP_RESULT_2 = 0;
+  }
   set(rfWITCH_IS_HERE);
-#if VERSION_MAJOR >= 2
-  position(oWITCH, 80, 48);
-#else
-  position(oWITCH, 80, 40);
-#endif
+  if (VERSION_MAJOR >= 2) {
+    position(oWITCH, 80, 48);
+  }
+  else {
+    position(oWITCH, 80, 40);
+  }
   draw(oWITCH);
   set(f135_UNKNOWN);
   sound(SND_VILLAIN, fSOUND_END_MARKER);
   if (!fGOAT_COMPANION) {
     print("It's a witch swooping through the sky... She's trying to catch you!  Look out!");
-#if BUILD_TARGET == APPLE_IIGS
-    follow.ego(oWITCH, 10, rfWITCH_GOT_YOU);
-#else
-    follow.ego(oWITCH, 20, rfWITCH_GOT_YOU);
-#endif
+    if (BUILD_TARGET == APPLE_IIGS) {
+      follow.ego(oWITCH, 10, rfWITCH_GOT_YOU);
+    }
+    else {
+      follow.ego(oWITCH, 20, rfWITCH_GOT_YOU);
+    }
   }
   if (fGOAT_COMPANION) {
     wander(oWITCH);
@@ -124,12 +126,13 @@ if (rfWITCH_GOT_YOU) {
   }
   else if (fEGO_DUCKING) {
     print("The witch missed you, this time.");
-#if VERSION_MAJOR >= 2
-    random(SWOOPDIR__FIRST, SWOOPDIR__LAST, rvWITCH_SWOOP_DIR);
-#else
-    wander(oWITCH);
-    set(rfPROTECTED);
-#endif
+    if (VERSION_MAJOR >= 2) {
+      random(SWOOPDIR__FIRST, SWOOPDIR__LAST, rvWITCH_SWOOP_DIR);
+    }
+    else
+      wander(oWITCH);
+      set(rfPROTECTED);
+    }
   }
   else {
     print("The witch swoops down, grabs you by the neck, and carries you off to a fate worse than death.");
@@ -140,20 +143,18 @@ if (rfWITCH_GOT_YOU) {
     ignore.blocks(oEGO);
     ignore.horizon(oEGO);
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
-#if VERSION_MAJOR >= 2
-    if (vTEMP_Y > 120) {
+    if (VERSION_MAJOR >= 2 && vTEMP_Y > 120) {
       vTEMP_Y -= 50;
     }
-#endif
     vTEMP_X = 130;
-#if VERSION_MAJOR >= 2
-    set.priority(oEGO, PRI_WITCH);
-#endif
+    if (VERSION_MAJOR >= 2) {
+      set.priority(oEGO, PRI_WITCH);
+    }
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, rvWITCH_STEP_SIZE, rfCARRIED_OFF);
     set(fCYCLE_EGO_ANIMATION);
   }
 }
-#if VERSION_MAJOR >= 2
+if (VERSION_MAJOR >= 2) {
   if (rvWITCH_SWOOP_DIR == SWOOPDIR_LEFT) {
     move.obj(oWITCH, 1, 24, 6, rfWITCH_REFOLLOW_EGO);
     rvWITCH_SWOOP_DIR = 0;
@@ -177,13 +178,14 @@ if (rfWITCH_GOT_YOU) {
       }
     }
   }
-#else
+}
+else {
   if (rfPROTECTED && vOBJECT_EDGE_CODE != 0) {
     reset(rfPROTECTED);
     reset(rfWITCH_IS_HERE);
     erase(oWITCH);
   }
-#endif
+}
 if (!rfWITCH_IS_HERE) {
   if (said("anyword", "witch")) {
     print("There's no witch here.");

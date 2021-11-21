@@ -60,11 +60,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if VERSION_MAJOR >= 2
-  if (said("examine", "room")) {
-    print("You are near a little gingerbread house in a forest clearing.");
-  }
-#endif
+if (VERSION_MAJOR >= 2 && said("examine", "room")) {
+  print("You are near a little gingerbread house in a forest clearing.");
+}
 if (said("examine", "witch")) {
   print("You must be getting nervous!  I see no witch here!");
 }
@@ -148,11 +146,9 @@ if (rfDOOR_OPENED) {
 #endif
   new.room(ROOM65_IN_GINGERBREAD_HOUSE);
 }
-#if VERSION_MAJOR >= 2
-  if (said("examine", "path")) {
-    print("The path leads to the door.");
-  }
-#endif
+if (VERSION_MAJOR >= 2 && said("examine", "path")) {
+  print("The path leads to the door.");
+}
 if (said("examine", "doors")) {
   if (posn(oEGO, BX_DOOR_VISIBLE)) {
     print("The door is made from graham crackers held together  with chocolate drop nails.");

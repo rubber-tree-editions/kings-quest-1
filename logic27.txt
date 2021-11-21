@@ -16,10 +16,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if VERSION_MAJOR < 2
-if (said("examine", "anyword")) {
-#else
+#if VERSION_MAJOR >= 2
 if (said("look around")) {
+#else
+if (said("examine", "anyword")) {
 #endif
   print("What are you doing that for?  There's nothing here.");
 }

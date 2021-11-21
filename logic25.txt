@@ -30,14 +30,14 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_RUSHING_WATER);
-  #endif
+  }
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       load.sound(SND_IMPACT);
-    #endif
+    }
   }
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
@@ -50,37 +50,34 @@ if (fROOM_SCRIPT_EXECUTED) {
     observe.blocks(oTROLL);
     set(rfTROLL_NEARBY);
     load.sound(SND_VILLAIN);
-    #if BUILD_TARGET != APPLE_IIGS
+    if (BUILD_TARGET != APPLE_IIGS) {
       load.sound(SND_TROLL);
-    #endif
-  }
-  #if VERSION_MAJOR >= 2
-    if (vPREV_ROOM_NO == ROOM32_EAST_OF_FREE_BOWL) {
-      get.posn(oEGO, vTEMP_X, vTEMP_Y);
-      if (vTEMP_Y > 83 && vTEMP_Y < 101) {
-        position(oEGO, 1, 100);
-      }
     }
-  #endif
+  }
+  if (VERSION_MAJOR >= 2 && vPREV_ROOM_NO == ROOM32_EAST_OF_FREE_BOWL) {
+    get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    if (vTEMP_Y > 83 && vTEMP_Y < 101) {
+      position(oEGO, 1, 100);
+    }
+  }
   draw(oEGO);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     set(rfPLAYED_SND_RUSHING_WATER);
-  #endif
+  }
   show.pic();
 }
-#if BUILD_TARGET == APPLE_IIGS
-  if (!rfSTUCK_IN_RIVER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
-    sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
-  }
-#endif
+if (BUILD_TARGET == APPLE_IIGS && !rfSTUCK_IN_RIVER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
+  sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
+}
 if (rfTROLL_IS_HERE && fSOUND_END_MARKER) {
   if (!rfTROLL_SOUND_PLAYING) {
     set(rfTROLL_SOUND_PLAYING);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       set(rfTROLL_SOUND_PLAYED);
-    #else
+    }
+    else {
       sound(SND_TROLL, rfTROLL_SOUND_PLAYED);
-    #endif
+    }
   }
   if (rfTROLL_SOUND_PLAYED) {
     reset(rfTROLL_SOUND_PLAYING);
@@ -158,12 +155,12 @@ if (rfTROLL_NEARBY && fEGO_TOUCHED_TRIGGER_LINE) {
   }
 }
 if (rfTROLL_IS_HERE && fGOAT_COMPANION && !rfGOAT_APPROACHING_TROLL) {
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     prevent.input();
-  #endif
-  #if VERSION_MAJOR >= 2
+  }
+  if (VERSION_MAJOR >= 2) {
     normal.cycle(oGOAT);
-  #endif
+  }
   distance(oEGO, oGOAT, rvDISTANCE_FROM_EGO_TO_GOAT);
   if (rvDISTANCE_FROM_EGO_TO_GOAT > 25) {
     reposition.to(oGOAT, 41, 103);
@@ -171,17 +168,17 @@ if (rfTROLL_IS_HERE && fGOAT_COMPANION && !rfGOAT_APPROACHING_TROLL) {
   print("It is a well known fact that goats hate trolls intensely. You should move aside and let the goat take care of this nasty troll.");
   set(rfGOAT_APPROACHING_TROLL);
   set(fSCRIPTED_GOAT_MOVEMENT);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     reset(fGOAT_COMPANION);
     start.cycling(oGOAT);
-  #endif
+  }
   move.obj(oGOAT, 41, 98, 0, rfGOAT_AT_BRIDGE);
 }
 if (rfGOAT_AT_BRIDGE) {
   ignore.objs(oGOAT);
-  #if VERSION_MAJOR >= 2
+  if (VERSION_MAJOR >= 2) {
     ignore.blocks(oGOAT);
-  #endif
+  }
   reset(rfGOAT_AT_BRIDGE);
   stop.motion(oTROLL);
   get.posn(oTROLL, vTEMP_X, vTEMP_Y);
@@ -195,14 +192,14 @@ if (vTEMP_RESULT < 25 && !fGOAT_KILLED_TROLL) {
 if (vTEMP_RESULT < 20 && !fGOAT_KILLED_TROLL) {
 #endif
   print("The goat butts the troll right off the bridge, never to be seen in these parts again.");
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     sound(SND_IMPACT, fMISC_END_MARKER);
-  #endif
+  }
   set(fGOAT_KILLED_TROLL);
   reset(rfTROLL_IS_HERE);
-  #if BUILD_TARGET != APPLE_IIGS
+  if (BUILD_TARGET != APPLE_IIGS) {
     reset(fGOAT_COMPANION);
-  #endif
+  }
   erase(oTROLL);
   set(fGOAT_IS_GONE);
   get.posn(oGOAT, vTEMP_X, vTEMP_Y);
@@ -213,9 +210,9 @@ if (vTEMP_RESULT < 20 && !fGOAT_KILLED_TROLL) {
 if (rfHIDE_GOAT) {
   reset(rfHIDE_GOAT);
   erase(oGOAT);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     accept.input();
-  #endif
+  }
 }
 if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
   if (said("examine", "troll")) {
@@ -370,41 +367,19 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
       print("If you want to try that, you should get a little closer.");
     }
   }
-  #if VERSION_MAJOR >= 2
-  if (fCARRYING_WALNUT)
-  if (said("give", "walnut")
-    || said("give", "troll", "walnut")
-    || said("give", "walnut", "troll")
-  ) {
-    print("The troll doesn't want just a plain walnut.");
-  }
-  if (fCARRYING_GOLD_WALNUT && GOAT_MOVE_CHECK)
-  if (said("give", "walnut")
-    || said("give", "troll", "walnut")
-    || said("give", "walnut", "troll")
-  ) {
-    if (posn(oEGO, BX_NEAR_TROLL)) {
-      print("OK");
-      drop("gold walnut");
-      reset(fCARRYING_GOLD_WALNUT);
-      set(fTROLL_TOOK_TREASURE);
-      set(fDWARF_OR_TROLL_HAS_WALNUT);
-      vSCORE -= 6;
-      set(rfTROLL_TOOK_A_TREASURE);
-    }
-    else {
-      print("If you want to try that, you should get a little closer.");
-    }
-  }
-  #else
-  if (said("give", "walnut")
-    || said("give", "troll", "walnut")
-    || said("give", "walnut", "troll")
-  ) {
-    if (fCARRYING_WALNUT) {
+  if (VERSION_MAJOR >= 2) {
+    if (fCARRYING_WALNUT)
+    if (said("give", "walnut")
+      || said("give", "troll", "walnut")
+      || said("give", "walnut", "troll")
+    ) {
       print("The troll doesn't want just a plain walnut.");
     }
-    else if (fCARRYING_GOLD_WALNUT && GOAT_MOVE_CHECK) {
+    if (fCARRYING_GOLD_WALNUT && GOAT_MOVE_CHECK)
+    if (said("give", "walnut")
+      || said("give", "troll", "walnut")
+      || said("give", "walnut", "troll")
+    ) {
       if (posn(oEGO, BX_NEAR_TROLL)) {
         print("OK");
         drop("gold walnut");
@@ -419,7 +394,30 @@ if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
       }
     }
   }
-  #endif
+  else {
+    if (said("give", "walnut")
+      || said("give", "troll", "walnut")
+      || said("give", "walnut", "troll")
+    ) {
+      if (fCARRYING_WALNUT) {
+        print("The troll doesn't want just a plain walnut.");
+      }
+      else if (fCARRYING_GOLD_WALNUT && GOAT_MOVE_CHECK) {
+        if (posn(oEGO, BX_NEAR_TROLL)) {
+          print("OK");
+          drop("gold walnut");
+          reset(fCARRYING_GOLD_WALNUT);
+          set(fTROLL_TOOK_TREASURE);
+          set(fDWARF_OR_TROLL_HAS_WALNUT);
+          vSCORE -= 6;
+          set(rfTROLL_TOOK_A_TREASURE);
+        }
+        else {
+          print("If you want to try that, you should get a little closer.");
+        }
+      }
+    }
+  }
 }
 if (rfTROLL_TOOK_A_TREASURE) {
   print("The troll greedily grabs the treasure and disappears  under the bridge.");
