@@ -47,14 +47,15 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_POINTS);
     load.sound(SND_VILLAIN);
-  #else
+  }
+  else {
     load.sound(SND_VILLAIN);
     load.sound(SND_OUCH);
     load.sound(SND_FALLING);
-  #endif
+  }
   if (!fCARRYING_NOTE) {
     load.view(42);
     animate.obj(oNOTE);
@@ -105,10 +106,10 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.priority(oSWISS_CHEESE, PRI_SWISS_CHEESE);
   }
   if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       load.sound(SND_FALLING);
       load.sound(SND_OUCH);
-    #endif
+    }
     load.view(105);
     load.view(103);
     load.view(104);
@@ -169,20 +170,20 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (rfUNPROTECTED_BY_MAGIC) {
     draw(oWITCH);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       set(rfPLAYED_SND_VILLAIN);
       sound(SND_VILLAIN, fMISC_END_MARKER);
-    #endif
+    }
     follow.ego(oWITCH, 10, rfWITCH_CAUGHT_YOU);
     print("Surprise!  Surprise!  The wicked witch is home and now she's after you!");
   }
 }
-#if BUILD_TARGET == APPLE_IIGS
-rvSTOP_SOUND_COUNTDOWN--;
-if (rvSTOP_SOUND_COUNTDOWN == 1) {
-  stop.sound();
+if (BUILD_TARGET == APPLE_IIGS) {
+  rvSTOP_SOUND_COUNTDOWN--;
+  if (rvSTOP_SOUND_COUNTDOWN == 1) {
+    stop.sound();
+  }
 }
-#endif
 if (rfUNPROTECTED_BY_MAGIC && !rfPLAYED_SND_VILLAIN) {
   set(rfPLAYED_SND_VILLAIN);
   sound(SND_VILLAIN, fMISC_END_MARKER);
@@ -204,14 +205,12 @@ if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
     set(rfPLAYING_SND_FALLING);
   }
 }
-#if VERSION_MAJOR < 2
-if (fSOUND_END_MARKER_2) {
+if (VERSION_MAJOR < 2 && fSOUND_END_MARKER_2) {
   if (!rfFALLEN_TO_EARTH && !rfSAID_OUCH) {
     reset(fSOUND_END_MARKER_2);
     reset(rfPLAYING_SND_FALLING);
   }
 }
-#endif
 rvCOUNTDOWN2--;
 if (rfFALLEN_TO_EARTH) {
   stop.sound();
@@ -336,21 +335,21 @@ if (rfWITCH_AT_OVEN) {
   distance(oEGO, oWITCH, vTEMP_RESULT_2);
   if (vTEMP_RESULT_2 < 15) {
     if (said("shove", "witch") || said("murder", "witch")) {
-#if BUILD_TARGET == APPLE_IIGS
-      load.sound(SND_KILLING_WITCH);
-      sound(SND_KILLING_WITCH, fMISC_END_MARKER);
-      do { } while (!fMISC_END_MARKER);
-      set.simple(40);
-#endif
+      if (BUILD_TARGET == APPLE_IIGS) {
+        load.sound(SND_KILLING_WITCH);
+        sound(SND_KILLING_WITCH, fMISC_END_MARKER);
+        do { } while (!fMISC_END_MARKER);
+        set.simple(40);
+      }
       erase(oWITCH);
-#if BUILD_TARGET == APPLE_IIGS
-      load.sound(SND_KILLED_WITCH);
-      sound(SND_KILLED_WITCH, fMISC_END_MARKER);
-#endif
+      if (BUILD_TARGET == APPLE_IIGS) {
+        load.sound(SND_KILLED_WITCH);
+        sound(SND_KILLED_WITCH, fMISC_END_MARKER);
+      }
       print("Courageously, you manage to push the witch into the oven where she flashes and melts away into a harmless blob. Congratulations!");
-#if BUILD_TARGET == APPLE_IIGS
-      rvSTOP_SOUND_COUNTDOWN = 7;
-#endif
+      if (BUILD_TARGET == APPLE_IIGS) {
+        rvSTOP_SOUND_COUNTDOWN = 7;
+      }
       vWITCH_STATE = WITCHSTATE_DEAD;
       rvCOUNTDOWN_LO = 0;
       rvCOUNTDOWN_HI = 0;
@@ -415,11 +414,9 @@ if (said("open", "cage")) {
 if (said("examine", "building")) {
   print("The little house is surprisingly neat considering a wicked witch lives here.");
 }
-#if VERSION_MAJOR >= 2
-  if (said("examine", "room")) {
-    print("You need to be more specific.");
-  }
-#endif
+if (VERSION_MAJOR >= 2 && said("examine", "room")) {
+  print("You need to be more specific.");
+}
 if (posn(oEGO, 23, 89, 55, 100)) {
   if (said("examine", "cupboard") || said("look inside", "cupboard")) {
     if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_NO_CHEESE) {
@@ -446,9 +443,9 @@ if (posn(oEGO, 23, 89, 55, 100)) {
       vCUPBOARD_STATE = CUPBOARDSTATE_OPEN_NO_CHEESE;
     }
     if (vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE) {
-      #if VERSION_MAJOR >= 2
+      if (VERSION_MAJOR >= 2) {
         prevent.input();
-      #endif
+      }
       start.cycling(oCUPBOARD);
       end.of.loop(oCUPBOARD, rfCUPBOARD_FINISHED_OPENING);
       vCUPBOARD_STATE = CUPBOARDSTATE_OPEN_WITH_CHEESE;
@@ -481,9 +478,9 @@ if (posn(oEGO, 23, 89, 55, 100)) {
         get("cheese");
         set(fCARRYING_SWISS_CHEESE);
         vSCORE += 2;
-        #if BUILD_TARGET == APPLE_IIGS
+        if (BUILD_TARGET == APPLE_IIGS) {
           sound(SND_POINTS, fMISC_END_MARKER);
-        #endif
+        }
         print("You pluck the Swiss cheese from the shelf.");
         vCUPBOARD_STATE = 3;
       }
@@ -521,9 +518,9 @@ if (!posn(oEGO, 23, 89, 55, 100)) {
   }
 }
 if (rfCUPBOARD_FINISHED_OPENING) {
-  #if VERSION_MAJOR >= 2
+  if (VERSION_MAJOR >= 2) {
     accept.input();
-  #endif
+  }
   reset(rfCUPBOARD_FINISHED_OPENING);
   draw(oSWISS_CHEESE);
 }
@@ -570,11 +567,9 @@ if (said("open", "stove")) {
   }
 }
 if (posn(oEGO, 105, 88, 158, 160)) {
-  #if VERSION_MAJOR >= 2
-    if (said("examine", "bedroom")) {
-      print("It looks like an ordinary bedroom.");
-    }
-  #endif
+  if (VERSION_MAJOR >= 2 && said("examine", "bedroom")) {
+    print("It looks like an ordinary bedroom.");
+  }
   if (said("examine", "table")) {
     if (fCARRYING_NOTE) {
       print("It is just a plain, wooden bedside table.");
@@ -591,11 +586,9 @@ if (posn(oEGO, 105, 88, 158, 160)) {
   }
 }
 if (!posn(oEGO, 105, 88, 158, 160)) {
-  #if VERSION_MAJOR >= 2
-    if (said("examine", "bedroom")) {
-      print(m34 /* "You cannot see it from here." */);
-    }
-  #endif
+  if (VERSION_MAJOR >= 2 && said("examine", "bedroom")) {
+    print(m34 /* "You cannot see it from here." */);
+  }
   if (said("examine", "table")) {
     print("That is the table where she eats her (gulp) food.");
   }
@@ -629,9 +622,9 @@ if (!fCARRYING_NOTE) {
       erase(oNOTE);
       set(fCARRYING_NOTE);
       get("note");
-#if BUILD_TARGET == APPLE_IIGS
-      sound(SND_POINTS, fMISC_END_MARKER);
-#endif
+      if (BUILD_TARGET == APPLE_IIGS) {
+        sound(SND_POINTS, fMISC_END_MARKER);
+      }
       print("You grab the note from the table.");
       vSCORE += 2;
     }

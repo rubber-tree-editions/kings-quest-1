@@ -58,11 +58,11 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
     }
     rvRESTORE_EGO_DIR = vEGO_DIR;
   #endif
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     prevent.input();
     set(fEGO_PREOCCUPIED);
     set(fFALLING);
-  #endif
+  }
   set(fSCRIPTED_MOTION);
   program.control();
   stop.cycling(oEGO);
@@ -86,9 +86,9 @@ if (rfFALLING_SOUND_PLAYED) {
   reset(rfFALLING_SOUND_PLAYED);
   print("You should know that it is not possible to walk on clouds!");
   set(fGAME_OVER);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     accept.input();
-  #endif
+  }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM57_CLOUDLANDS_NORTHWEST);
@@ -96,7 +96,7 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   new.room(ROOM61_CLOUDLANDS_SOUTH);
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y > 150 || vTEMP_X < 11 || posn(oEGO, 0, 80, 40, 167)) {
     set(fFALL_DANGER);
@@ -104,7 +104,7 @@ if (vEGO_EDGE_CODE == EDGE_RIGHT) {
   else {
     reset(fFALL_DANGER);
   }
-#endif
+}
 return;
 
 LOGIC__FOOTER

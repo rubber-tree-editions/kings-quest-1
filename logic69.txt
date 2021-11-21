@@ -19,11 +19,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM68_MOUNTAIN_STAIRWAY_NEAR_TOP) {
     position(oEGO, 144, 155);
     set.loop(oEGO, 1);
-#if VERSION_MAJOR < 2
-    move.obj(oEGO, 144, 155, 0, fMISC_END_MARKER);
-#else
-    move.obj(oEGO, 143, 154, 0, fMISC_END_MARKER);
-#endif
+    if (VERSION_MAJOR >= 2) {
+      move.obj(oEGO, 143, 154, 0, fMISC_END_MARKER);
+    }
+    else {
+      move.obj(oEGO, 144, 155, 0, fMISC_END_MARKER);
+    }
   }
   draw(oEGO);
   show.pic();
@@ -39,19 +40,20 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !fFALLING) {
 #else
 if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING_OFF_STEPS) {
 #endif
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     prevent.input();
     set(fEGO_PREOCCUPIED);
-  #endif
-  #if VERSION_MAJOR >= 2
+  }
+  if (VERSION_MAJOR >= 2) {
     set(fTENSE_SITUATION);
     set(fTHREAT_OF_SORCERER_OR_OGRE);
-  #endif
-  #if BUILD_TARGET == APPLE_IIGS
+  }
+  if (BUILD_TARGET == APPLE_IIGS) {
     set(fFALLING);
-  #else
+  }
+  else {
     set(rfFALLING_OFF_STEPS);
-  #endif
+  }
   if (!fEGO_INVISIBLE) {
     set.view(oEGO, 105);
   }
@@ -70,9 +72,9 @@ if (rfFALLEN_OFF_STEPS) {
   reset(rfFALLEN_OFF_STEPS);
   erase(oEGO);
   set(fGAME_OVER);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     accept.input();
-  #endif
+  }
 }
 if (posn(oEGO, 0, 0, 1, 167)) {
   new.room(ROOM59_CLOUDS_MOUNTAIN_CAVE);
@@ -80,9 +82,9 @@ if (posn(oEGO, 0, 0, 1, 167)) {
 if (posn(oEGO, 138, 156, 155, 157)) {
   new.room(ROOM68_MOUNTAIN_STAIRWAY_NEAR_TOP);
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   set(fFALL_DANGER);
-#endif
+}
 return;
 
 LOGIC__FOOTER
