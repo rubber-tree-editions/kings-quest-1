@@ -325,9 +325,9 @@ if (!fCARRYING_BUCKET) {
     }
   }
   #if VERSION_MAJOR >= 2
-  if (said("go", "bucket") || said("get in", "bucket")) if (fBUCKET_LOWERED && !fIN_WELL_BUCKET) {
+  if (said("go", "bucket") || said("get in", "bucket")) if (fBUCKET_LOWERED && !fIN_WELL_BUCKET)
   #else
-  if (said("go", "bucket") && fBUCKET_LOWERED && !fIN_WELL_BUCKET) {
+  if (said("go", "bucket") && fBUCKET_LOWERED && !fIN_WELL_BUCKET)
   #endif
   {
     print("I don't think that getting in the bucket right now will do you very much good.");

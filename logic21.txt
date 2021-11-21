@@ -129,7 +129,7 @@ if (rfWITCH_GOT_YOU) {
     if (VERSION_MAJOR >= 2) {
       random(SWOOPDIR__FIRST, SWOOPDIR__LAST, rvWITCH_SWOOP_DIR);
     }
-    else
+    else {
       wander(oWITCH);
       set(rfPROTECTED);
     }

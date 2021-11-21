@@ -146,9 +146,12 @@ if (rfDOOR_OPENED) {
 #endif
   new.room(ROOM65_IN_GINGERBREAD_HOUSE);
 }
-if (VERSION_MAJOR >= 2 && said("examine", "path")) {
+// "path" in dictionary from V2
+#if VERSION_MAJOR >= 2
+if (said("examine", "path")) {
   print("The path leads to the door.");
 }
+#endif
 if (said("examine", "doors")) {
   if (posn(oEGO, BX_DOOR_VISIBLE)) {
     print("The door is made from graham crackers held together  with chocolate drop nails.");
