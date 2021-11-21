@@ -48,6 +48,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       do {
         random(0, 150, vTEMP_RESULT_2);
       } while (vTEMP_RESULT_2 > 45);
+    }
     else {
       do {
         random(0, 250, vTEMP_RESULT_2);

@@ -567,9 +567,12 @@ if (said("open", "stove")) {
   }
 }
 if (posn(oEGO, 105, 88, 158, 160)) {
-  if (VERSION_MAJOR >= 2 && said("examine", "bedroom")) {
-    print("It looks like an ordinary bedroom.");
-  }
+  // "bedroom" not in dictionary before V2
+  #if VERSION_MAJOR >= 2
+    if (said("examine", "bedroom")) {
+      print("It looks like an ordinary bedroom.");
+    }
+  #endif
   if (said("examine", "table")) {
     if (fCARRYING_NOTE) {
       print("It is just a plain, wooden bedside table.");
@@ -586,9 +589,12 @@ if (posn(oEGO, 105, 88, 158, 160)) {
   }
 }
 if (!posn(oEGO, 105, 88, 158, 160)) {
-  if (VERSION_MAJOR >= 2 && said("examine", "bedroom")) {
-    print(m34 /* "You cannot see it from here." */);
-  }
+  // "bedroom" not in dictionary before V2
+  #if VERSION_MAJOR >= 2
+    if (said("examine", "bedroom")) {
+      print(m34 /* "You cannot see it from here." */);
+    }
+  #endif
   if (said("examine", "table")) {
     print("That is the table where she eats her (gulp) food.");
   }
