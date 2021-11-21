@@ -28,11 +28,9 @@ if (said("examine", "knight")) {
 if (said("get", "knight")) {
   print("The armor is firmly mounted to the wall.");
 }
-#if VERSION_MAJOR >= 2
-if (said("examine", "hall") || said("examine", "room") || said("examine", "castle")) {
+if (VERSION_MAJOR >= 2 && (said("examine", "hall") || said("examine", "room") || said("examine", "castle"))) {
   print("The long marble hall has a cold, dreary feeling.");
 }
-#endif
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM54_CASTLE_HALL_CORNER);
 }

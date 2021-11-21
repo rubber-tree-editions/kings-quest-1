@@ -10,9 +10,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(50);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_RUSHING_WATER);
-  #endif
+  }
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
   if (fGOAT_COMPANION) {
@@ -47,16 +47,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   ignore.blocks(oEGO);
   draw(oEGO);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     set(rfPLAYED_SND_RUSHING_WATER);
-  #endif
+  }
   show.pic();
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   if (!rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
     sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
   }
-#endif
+}
 if (posn(oEGO, 0, 83, 159, 167)) {
   set(fSWIMMING_IMPOSSIBLE_HERE);
 }

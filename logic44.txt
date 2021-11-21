@@ -81,8 +81,7 @@ if (said("examine", "doors") || said("examine", "doorway") || said("look inside"
     print("You are not close enough.");
   }
 }
-#if VERSION_MAJOR >= 2
-if (said("examine", "woodcutter") || said("examine", "wife")) {
+if (VERSION_MAJOR >= 2 && (said("examine", "woodcutter") || said("examine", "wife"))) {
   if (posn(oEGO, BX_NEAR_DOORWAY)) {
     print("Perhaps you should go inside the house for a better look.");
   }
@@ -90,7 +89,6 @@ if (said("examine", "woodcutter") || said("examine", "wife")) {
     print("You are not close enough.");
   }
 }
-#endif
 if (posn(oEGO, BX_COTTAGE_ENTRY_ZONE)) {
   new.room(ROOM79_IN_WOODCUTTER_COTTAGE);
 }
