@@ -97,12 +97,7 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
 }
 if (BUILD_TARGET == APPLE_IIGS) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
-  if (vTEMP_Y > 150) {
-    set(fFALL_DANGER);
-  }
-  else {
-    reset(fFALL_DANGER);
-  }
+  fFALL_DANGER = (vTEMP_Y > 150);
 }
 return;
 
