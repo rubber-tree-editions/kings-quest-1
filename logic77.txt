@@ -46,9 +46,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(47);
     load.view(79);
   }
-  else if (BUILD_TARGET == APPLE_IIGS) {
+  #if BUILD_TARGET == APPLE_IIGS
+  else {
     load.sound(SND_FIDDLE_TUNE);
   }
+  #endif
   if (!fLEPRECHAUN_KING_GONE) {
     load.view(81);
     load.view(54);
