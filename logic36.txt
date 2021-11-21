@@ -122,11 +122,12 @@ if (said("examine", "rocks")) {
   }
 }
 if (said("examine", "room")) {
-#if VERSION_MAJOR < 2
-  print("There are several pretty trees in the area and a few rocks.  One rock has a small hole in its base.");
-#else
-  print("You notice a hole in the base of a large moss covered rock.");
-#endif
+  if (VERSION_MAJOR >= 2) {
+    print("You notice a hole in the base of a large moss covered rock.");
+  }
+  else {
+    print("There are several pretty trees in the area and a few rocks.  One rock has a small hole in its base.");
+  }
 }
 FINALCHECKS:
   if (posn(oEGO, BX_CAVE_ENTRY_ZONE)) {

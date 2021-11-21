@@ -44,10 +44,10 @@
 #include "items.txt"
 #include "words.txt"
 
-#if VERSION_MAJOR < 2
-#define iRING "ring"
+#if VERSION_MAJOR >= 2
+  #define iRING "magic ring"
 #else
-#define iRING "magic ring"
+  #define iRING "ring"
 #endif
 
 // built-in vars

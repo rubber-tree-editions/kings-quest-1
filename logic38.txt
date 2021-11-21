@@ -98,12 +98,10 @@ if (fFALLING_TO_EARTH && !rfPLAYING_SND_FALLING) {
   #endif
   sound(SND_FALLING, rfPLAYED_SND_FALLING);
 }
-#if VERSION_MAJOR < 2
-if (!rfFELL_FROM_SKY && rfPLAYED_SND_FALLING) {
+if (VERSION_MAJOR < 2 && !rfFELL_FROM_SKY && rfPLAYED_SND_FALLING) {
   reset(rfPLAYING_SND_FALLING);
   reset(rfPLAYED_SND_FALLING);
 }
-#endif
 if (rfFELL_FROM_SKY) {
   stop.sound();
   set(rfPLAYING_SND_FALLING);

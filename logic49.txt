@@ -124,14 +124,12 @@ if (fFALLING_DOWN_WELL && !rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE && !rfPLAYIN
   #endif
   set(rfPLAYING_SND_FALLING);
 }
-#if VERSION_MAJOR < 2
-  if (fSOUND_END_MARKER) {
-    if (!rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE) {
-      reset(rfPLAYING_SND_FALLING);
-      reset(fSOUND_END_MARKER);
-    }
+if (VERSION_MAJOR < 2 && fSOUND_END_MARKER) {
+  if (!rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE) {
+    reset(rfPLAYING_SND_FALLING);
+    reset(fSOUND_END_MARKER);
   }
-#endif
+}
 if (fON_WELL_ROPE) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y > 115 && fBUCKET_LOWERED) {

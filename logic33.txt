@@ -9,11 +9,12 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-#if VERSION_MAJOR < 2
-  set.horizon(40);
-#else
-  set.horizon(43);
-#endif
+  if (VERSION_MAJOR >= 2) {
+    set.horizon(43);
+  }
+  else {
+    set.horizon(40);
+  }
 #if BUILD_TARGET == APPLE_IIGS
   load.sound(SND_RUSHING_WATER);
 #endif

@@ -1,5 +1,35 @@
 
-#if VERSION_MAJOR < 2
+#if VERSION_MAJOR >= 2
+
+#item 0 "?"
+#item 1 "dagger"
+#item 2 "chest"
+#item 3 "carrot"
+#item 4 "gold walnut"
+#item 5 "key"
+#item 6 "note"
+#item 7 "magic ring"
+#item 8 "fourleaf clover"
+#item 9 "ceramic bowl"
+#item 10 "full bowl"
+#item 11 "water bucket"
+#item 12 "full bucket"
+#item 13 "pebbles"
+#item 14 "leather slingshot"
+#item 15 "pouch of diamonds"
+#item 16 "pouch"
+#item 17 "sceptre"
+#item 18 "cheese"
+#item 19 "magic mirror"
+#item 20 "gold egg"
+#item 21 "shield"
+#item 22 "fiddle"
+#item 23 "walnut"
+#item 24 "mushroom"
+#item 25 "beans"
+#item 26 "water"
+
+#else
 
 #item 0 "dagger"
 #item 1 "chest"
@@ -29,35 +59,5 @@
 #item 25 "walnut"
 #item 26 "mushroom"
 #item 27 "beans"
-
-#else
-
-#item 0 "?"
-#item 1 "dagger"
-#item 2 "chest"
-#item 3 "carrot"
-#item 4 "gold walnut"
-#item 5 "key"
-#item 6 "note"
-#item 7 "magic ring"
-#item 8 "fourleaf clover"
-#item 9 "ceramic bowl"
-#item 10 "full bowl"
-#item 11 "water bucket"
-#item 12 "full bucket"
-#item 13 "pebbles"
-#item 14 "leather slingshot"
-#item 15 "pouch of diamonds"
-#item 16 "pouch"
-#item 17 "sceptre"
-#item 18 "cheese"
-#item 19 "magic mirror"
-#item 20 "gold egg"
-#item 21 "shield"
-#item 22 "fiddle"
-#item 23 "walnut"
-#item 24 "mushroom"
-#item 25 "beans"
-#item 26 "water"
 
 #endif

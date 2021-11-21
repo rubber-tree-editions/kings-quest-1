@@ -1280,11 +1280,11 @@ if (fCARRYING_BOWL) {
     }
     if (
       said("fill")
-#if VERSION_MAJOR < 2
-      || said("fill", "bowl")
-#endif
 #if VERSION_MAJOR >= 2
       || said("say", "fill")
+#endif
+#if VERSION_MAJOR < 2
+      || said("fill", "bowl")
 #endif
     ) {
       if (vROOM_NO == ROOM79_IN_WOODCUTTER_COTTAGE) {
@@ -1728,10 +1728,10 @@ LOGIC__FOOTER
 #message 48 "You don't have any way to kill the old goat."
 #message 49 "There is no goat here."
 #message 50 "You've already killed the goat."
-#if VERSION_MAJOR < 2
-  #message 51 "The old goat is trotting briskly by your side."
-#else
+#if VERSION_MAJOR >= 2
   #message 51 "The old goat, trotting briskly, seems happy to be with you."
+#else
+  #message 51 "The old goat is trotting briskly by your side."
 #endif
 #message 52 "Seeing how much the goat likes that carrot, eating it may be hazardous to your health."
 #message 53 "You have already opened the walnut."

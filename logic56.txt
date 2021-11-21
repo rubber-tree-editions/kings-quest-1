@@ -92,14 +92,12 @@ if (!rfFELL_THROUGH_CLOUDS && fFALLING && !rfPLAYING_SND_FALLING) {
   sound(SND_FALLING, fSOUND_END_MARKER);
   set(rfPLAYING_SND_FALLING);
 }
-#if VERSION_MAJOR < 2
-if (fSOUND_END_MARKER) {
+if (VERSION_MAJOR < 2 && fSOUND_END_MARKER) {
   if (!rfFELL_THROUGH_CLOUDS) {
     reset(fSOUND_END_MARKER);
     reset(rfPLAYING_SND_FALLING);
   }
 }
-#endif
 if (rfFELL_THROUGH_CLOUDS) {
   erase(oEGO);
   reset(fFALLING);
