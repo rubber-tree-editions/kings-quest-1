@@ -12,19 +12,19 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_RUSHING_WATER);
     load.sound(SND_POINTS);
-  #endif
+  }
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       get.posn(oEGO, vTEMP_X, vTEMP_Y);
       if (vTEMP_Y < 100) {
         vTEMP_Y = 101;
         position.v(oEGO, vTEMP_X, vTEMP_Y);
       }
-    #endif
+    }
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 14, 144, 0, 0);
@@ -55,15 +55,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     set(rfPLAYED_SND_RUSHING_WATER);
-  #endif
-}
-#if BUILD_TARGET == APPLE_IIGS
-  if (!rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
-    sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
   }
-#endif
+}
+if (BUILD_TARGET == APPLE_IIGS && !rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
+  sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
+}
 if (fEGO_ON_WATER && !rfPULLED_UNDERWATER) {
   set(rfPULLED_UNDERWATER);
   print("This is sad.  You are not the first to fail your quest in the Raging River... I hope you may be the last.");
@@ -129,9 +127,9 @@ if (!fMUSHROOM_TAKEN) {
     }
     else if (posn(oEGO, 74, 70, 94, 90)) {
       erase(oMUSHROOM);
-      #if BUILD_TARGET == APPLE_IIGS
+      if (BUILD_TARGET == APPLE_IIGS) {
         sound(SND_POINTS, fMISC_END_MARKER);
-      #endif
+      }
       print("You reach down and pick a fat mushroom.");
       set(fMUSHROOM_TAKEN);
       set(fCARRYING_MUSHROOM);

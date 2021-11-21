@@ -11,10 +11,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-#if BUILD_TARGET == APPLE_IIGS
-  load.sound(SND_RUSHING_WATER);
-  load.sound(SND_POINTS);
-#endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    load.sound(SND_RUSHING_WATER);
+    load.sound(SND_POINTS);
+  }
   set.horizon(45);
   if (vPREV_ROOM_NO == ROOM47_MUSHROOM) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
@@ -43,20 +43,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
-#if BUILD_TARGET == APPLE_IIGS
-  set(rfPLAYED_SND_RUSHING_WATER);
-#endif
-}
-#if BUILD_TARGET == APPLE_IIGS
-  if (!rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
-    sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
+  if (BUILD_TARGET == APPLE_IIGS) {
+    set(rfPLAYED_SND_RUSHING_WATER);
   }
-#endif
-#if VERSION_MAJOR >= 2
-if (said("examine", "room")) {
+}
+if (BUILD_TARGET == APPLE_IIGS && !rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
+  sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
+}
+if (VERSION_MAJOR >= 2 && said("examine", "room")) {
   print("There are many smooth pebbles next to the river.");
 }
-#endif
 if (said("examine", "stream") || said("examine", "beach")) {
   print("The river is dangerous and powerful.  There is a delta of pebbles on its edge.");
 }
@@ -125,10 +121,10 @@ if (said("get", "pebbles")) {
   }
   if (!fPEBBLES_TAKEN) {
     if (posn(oEGO, 68, 83, 109, 124)) {
-#if BUILD_TARGET == APPLE_IIGS
-      stop.sound();
-      sound(SND_POINTS, fMISC_END_MARKER);
-#endif
+      if (BUILD_TARGET == APPLE_IIGS) {
+        stop.sound();
+        sound(SND_POINTS, fMISC_END_MARKER);
+      }
       print("You grab a handful of pebbles.");
       start.update(oPEBBLES);
       erase(oPEBBLES);

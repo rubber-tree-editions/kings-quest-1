@@ -47,15 +47,16 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
     rvRESTORE_EGO_Y++;
     rvRESTORE_EGO_DIR = vEGO_DIR;
   #endif
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     prevent.input();
     set(fEGO_PREOCCUPIED);
     set(fFALLING);
     ignore.blocks(oEGO);
-  #else
+  }
+  else {
     ignore.blocks(oEGO);
     set(fFALLING);
-  #endif
+  }
   reset(fEGO_TOUCHED_TRIGGER_LINE);
   program.control();
   if (!fEGO_INVISIBLE) {
@@ -87,9 +88,9 @@ if (rfFELL_THROUGH_CLOUDS) {
   stop.sound();
   print("You'll have to keep yourself out of the clouds!");
   set(fGAME_OVER);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     accept.input();
-  #endif
+  }
 }
 if (said("examine", "tree")) {
   print("These are very unusual looking trees.");
@@ -106,7 +107,7 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
 if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   new.room(ROOM60_CLOUDLANDS_SOUTHWEST);
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y < 60) {
     set(fFALL_DANGER);
@@ -114,7 +115,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
   else {
     reset(fFALL_DANGER);
   }
-#endif
+}
 return;
 
 LOGIC__FOOTER

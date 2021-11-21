@@ -52,10 +52,10 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
     rvRESTORE_EGO_Y++;
     rvRESTORE_EGO_DIR = vEGO_DIR;
   #endif
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     prevent.input();
     set(fEGO_PREOCCUPIED);
-  #endif
+  }
   set(fFALLING);
   reset(fEGO_TOUCHED_TRIGGER_LINE);
   program.control();
@@ -105,9 +105,9 @@ if (rfFELL_THROUGH_CLOUDS) {
   stop.sound();
   print("You should know you can't walk on clouds.");
   set(fGAME_OVER);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     accept.input();
-  #endif
+  }
 }
 if (said("examine", "flowers")) {
   print("These flowers look different than any you have ever seen before.");
@@ -126,7 +126,7 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
     new.room(ROOM64_CLOUDS_LEFTMOST_NO_BEANSTALK);
   }
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y > 148 || vTEMP_Y < 50 || vTEMP_X < 70) {
     set(fFALL_DANGER);
@@ -134,7 +134,7 @@ if (vEGO_EDGE_CODE == EDGE_LEFT) {
   else {
     reset(fFALL_DANGER);
   }
-#endif
+}
 return;
 
 LOGIC__FOOTER

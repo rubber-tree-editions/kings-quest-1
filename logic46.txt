@@ -20,10 +20,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_OGRE);
     load.view(114);
-  #endif
+  }
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
   }
@@ -51,7 +51,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw(oEGO);
   show.pic();
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   if (fGAME_OVER) {
     goto(RETURN);
   }
@@ -59,7 +59,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (rvRANDOM_CHANCE_OF_SND_OGRE == 2 && rfOGRE_IS_HERE && fSOUND_END_MARKER) {
     sound(SND_OGRE, fSOUND_END_MARKER);
   }
-#endif
+}
 vTEMP_RESULT_2--;
 if (vTEMP_RESULT_2 == 1) {
   set(fTENSE_SITUATION);
@@ -68,20 +68,20 @@ if (vTEMP_RESULT_2 == 1) {
   set(rfOGRE_IS_HERE);
   set(f135_UNKNOWN);
   sound(SND_VILLAIN, fSOUND_END_MARKER);
-  #if BUILD_TARGET != APPLE_IIGS
+  if (BUILD_TARGET != APPLE_IIGS) {
     draw(oOGRE);
-  #endif
+  }
   if (!fGOAT_COMPANION) {
     print("Watch out!!!  There is an ogre nearby!  He will crush you in his strong arms if he catches you.");
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       draw(oOGRE);
-    #endif
+    }
     follow.ego(oOGRE, OGRE_REACH_DISTANCE, fVILLAIN_GOT_YOU);
   }
   if (fGOAT_COMPANION) {
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       draw(oOGRE);
-    #endif
+    }
     wander(oOGRE);
     set(rfPROTECTED);
     print("Watch out!!!  There is an ogre nearby!  He will crush you in his strong arms if he catches you.");
@@ -89,9 +89,9 @@ if (vTEMP_RESULT_2 == 1) {
   }
 }
 if (fSOUND_END_MARKER) {
-  #if BUILD_TARGET != APPLE_IIGS
-  reset(fSOUND_END_MARKER);
-  #endif
+  if (BUILD_TARGET != APPLE_IIGS) {
+    reset(fSOUND_END_MARKER);
+  }
   reset(f135_UNKNOWN);
 }
 if (!rfOGRE_IS_HERE) {
@@ -135,18 +135,19 @@ if (fVILLAIN_GOT_YOU) {
     goto(AFTERCOUNTDOWN);
   }
   set(rfNO_ESCAPE);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     rvCOUNTDOWN = 20;
-  #else
+  }
+  else {
     rvCOUNTDOWN = 10;
-  #endif
+  }
   program.control();
   stop.motion(oEGO);
   erase(oOGRE);
   set.view(oEGO, 94);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     draw(oEGO);
-  #endif
+  }
 }
 rvCOUNTDOWN--;
 AFTERCOUNTDOWN:
@@ -159,24 +160,26 @@ AFTERCOUNTDOWN:
     print("You were warned to be careful around this fierce creature!  Maybe next time you will be able to elude the beast.");
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     erase(oEGO);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       set.view(oEGO, 114);
-    #else
+    }
+    else {
       set.view(oEGO, 95);
-    #endif
+    }
     set.view(oOGRE, 2);
     position.v(oEGO, vTEMP_X, vTEMP_Y);
     position.v(oOGRE, vTEMP_X, vTEMP_Y);
     draw(oOGRE);
     draw(oEGO);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       start.motion(oOGRE);
       start.cycling(oOGRE);
       wander(oOGRE);
-    #else
+    }
+    else {
       stop.motion(oOGRE);
       stop.cycling(oOGRE);
-    #endif
+    }
     set(fGAME_OVER);
   }
   if (rfOGRE_IS_HERE) {
@@ -233,15 +236,13 @@ AFTERCOUNTDOWN:
     call(LOGIC103_GOAT);
   }
   RETURN:
-    #if BUILD_TARGET == APPLE_IIGS
-      if (fGAME_OVER && rfOGRE_IS_HERE) {
-        get.posn(oOGRE, vTEMP_X, vTEMP_Y);
-        if (vTEMP_X < 4 || vTEMP_X > 150 || vTEMP_Y < 49 || vTEMP_Y > 160) {
-          reset(rfOGRE_IS_HERE);
-          erase(oOGRE);
-        }
+    if (BUILD_TARGET == APPLE_IIGS && fGAME_OVER && rfOGRE_IS_HERE) {
+      get.posn(oOGRE, vTEMP_X, vTEMP_Y);
+      if (vTEMP_X < 4 || vTEMP_X > 150 || vTEMP_Y < 49 || vTEMP_Y > 160) {
+        reset(rfOGRE_IS_HERE);
+        erase(oOGRE);
       }
-    #endif
+    }
     return;
 
 LOGIC__FOOTER

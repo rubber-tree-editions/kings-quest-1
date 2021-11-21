@@ -18,28 +18,29 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  #if BUILD_TARGET != APPLE_IIGS
+  if (BUILD_TARGET != APPLE_IIGS) {
     load.sound(SND_FALLING);
-  #endif
+  }
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.view(99);
     load.view(105);
     load.view(74);
     load.view(70);
     load.view(16);
     load.view(72);
-  #else
+  }
+  else {
     load.view(72);
     load.view(16);
     load.view(74);
     load.view(105);
     load.view(99);
-  #endif
-  #if BUILD_TARGET == APPLE_IIGS
+  }
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_FALLING);
-  #endif
+  }
   if (fFALLING_DOWN_WELL) {
     set.view(oEGO, 105);
     position(oEGO, 81, 48);
@@ -48,9 +49,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.priority(oEGO, 15);
     set(fCYCLE_EGO_ANIMATION);
     set(rfFALLING_DOWN_WELL);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       sound(SND_FALLING, fMISC_END_MARKER);
-    #endif
+    }
     move.obj(oEGO, 81, 164, 3, rfFALLEN_DOWN_WELL);
   }
   if (vPREV_ROOM_NO == ROOM12_TOP_OF_WELL && !fFALLING_DOWN_WELL) {
@@ -66,9 +67,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (vPREV_ROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       start.motion(oEGO);
-    #endif
+    }
     set.view(oEGO, 70);
     set(rfSWIMMING);
     rvCOUNTDOWN = 250;
@@ -76,9 +77,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (fROPE_DANGLING_IN_WELL) {
     add.to.pic(99, 0, 0, 84, 119, 4, 4);
-    #if BUILD_TARGET != APPLE_IIGS
+    if (BUILD_TARGET != APPLE_IIGS) {
       discard.view(99);
-    #endif
+    }
   }
   if (fBUCKET_LOWERED) {
     if (fIN_WELL_BUCKET) {
@@ -105,13 +106,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   SHOWPIC:
     show.pic();
 }
-#if VERSION_MAJOR >= 2
+if (VERSION_MAJOR >= 2) {
   if (fROPE_DANGLING_IN_WELL || fBUCKET_LOWERED) {
     if (said("examine", "rope")) {
       print("It is a very long, sturdy rope.");
     }
   }
-#endif
+}
 if (fEGO_ON_WATER) {
   observe.blocks(oEGO);
 }
@@ -119,9 +120,9 @@ else {
   ignore.blocks(oEGO);
 }
 if (fFALLING_DOWN_WELL && !rfFALLEN_DOWN_WELL && !rfFALLEN_OFF_ROPE && !rfPLAYING_SND_FALLING) {
-  #if BUILD_TARGET != APPLE_IIGS
+  if (BUILD_TARGET != APPLE_IIGS) {
     sound(SND_FALLING, fSOUND_END_MARKER);
-  #endif
+  }
   set(rfPLAYING_SND_FALLING);
 }
 if (VERSION_MAJOR < 2 && fSOUND_END_MARKER) {
@@ -133,9 +134,9 @@ if (VERSION_MAJOR < 2 && fSOUND_END_MARKER) {
 if (fON_WELL_ROPE) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_Y > 115 && fBUCKET_LOWERED) {
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       sound(SND_FALLING, rfPLAYED_SND_FALLING);
-    #endif
+    }
     reset(fON_WELL_ROPE);
     set(fFALLING_DOWN_WELL);
     set.view(oEGO, 105);
@@ -148,9 +149,9 @@ if (fON_WELL_ROPE) {
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_OFF_ROPE);
   }
   if (vTEMP_Y > 115 && fROPE_DANGLING_IN_WELL) {
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       sound(SND_FALLING, rfPLAYED_SND_FALLING);
-    #endif
+    }
     reset(fON_WELL_ROPE);
     set(fFALLING_DOWN_WELL);
     set.view(oEGO, 105);
@@ -164,9 +165,9 @@ if (fON_WELL_ROPE) {
   }
   if (vTEMP_X < 79 || vTEMP_X > 83) {
     if (vTEMP_Y > 70) {
-      #if BUILD_TARGET == APPLE_IIGS
+      if (BUILD_TARGET == APPLE_IIGS) {
         sound(SND_FALLING, rfPLAYED_SND_FALLING);
-      #endif
+      }
       reset(fON_WELL_ROPE);
       set(fFALLING_DOWN_WELL);
       set.view(oEGO, 105);
@@ -179,9 +180,9 @@ if (fON_WELL_ROPE) {
       move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_OFF_ROPE);
     }
     else {
-      #if BUILD_TARGET == APPLE_IIGS
+      if (BUILD_TARGET == APPLE_IIGS) {
         sound(SND_FALLING, rfPLAYED_SND_FALLING);
-      #endif
+      }
       reset(fON_WELL_ROPE);
       set(fFALLING_DOWN_WELL);
       set(rfFELL_FROM_ROPE);
@@ -324,14 +325,13 @@ if (!fCARRYING_BUCKET) {
     }
   }
   #if VERSION_MAJOR >= 2
-    if (said("go", "bucket") || said("get in", "bucket")) if (fBUCKET_LOWERED && !fIN_WELL_BUCKET) {
-      print("I don't think that getting in the bucket right now will do you very much good.");
-    }
+  if (said("go", "bucket") || said("get in", "bucket")) if (fBUCKET_LOWERED && !fIN_WELL_BUCKET) {
   #else
-    if (said("go", "bucket") && fBUCKET_LOWERED && !fIN_WELL_BUCKET) {
-      print("I don't think that getting in the bucket right now will do you very much good.");
-    }
+  if (said("go", "bucket") && fBUCKET_LOWERED && !fIN_WELL_BUCKET) {
   #endif
+  {
+    print("I don't think that getting in the bucket right now will do you very much good.");
+  }
 }
 if (
   said("untie", "rope")

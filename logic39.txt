@@ -31,14 +31,14 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(41);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_RUSHING_WATER);
-  #endif
+  }
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       load.sound(SND_IMPACT);
-    #endif
+    }
   }
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
@@ -51,29 +51,30 @@ if (fROOM_SCRIPT_EXECUTED) {
     observe.blocks(oTROLL);
     set(rfTROLL_NEARBY);
     load.sound(SND_VILLAIN);
-    #if BUILD_TARGET != APPLE_IIGS
+    if (BUILD_TARGET != APPLE_IIGS) {
       load.sound(SND_TROLL);
-    #endif
+    }
   }
   draw(oEGO);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     set(rfPLAYED_SND_RUSHING_WATER);
-  #endif
+  }
   show.pic();
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   if (!rfSTUCK_IN_RIVER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
     sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
   }
-#endif
+}
 if (rfTROLL_IS_HERE && fSOUND_END_MARKER) {
   if (!rfTROLL_SOUND_PLAYING) {
     set(rfTROLL_SOUND_PLAYING);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       set(rfTROLL_SOUND_PLAYED);
-    #else
+    }
+    else {
       sound(SND_TROLL, rfTROLL_SOUND_PLAYED);
-    #endif
+    }
   }
   if (rfTROLL_SOUND_PLAYED) {
     reset(rfTROLL_SOUND_PLAYING);
@@ -151,9 +152,9 @@ if (rfTROLL_NEARBY && fEGO_TOUCHED_TRIGGER_LINE) {
   }
 }
 if (rfTROLL_IS_HERE && fGOAT_COMPANION && !rfGOAT_APPROACHING_TROLL) {
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     prevent.input();
-  #endif
+  }
   distance(oEGO, oGOAT, rvDISTANCE_FROM_EGO_TO_GOAT);
   if (rvDISTANCE_FROM_EGO_TO_GOAT > 25) {
     reposition.to(oGOAT, 85, 71);
@@ -161,16 +162,16 @@ if (rfTROLL_IS_HERE && fGOAT_COMPANION && !rfGOAT_APPROACHING_TROLL) {
   print("It is a well known fact that goats hate trolls intensely.   You should move aside and let the goat take care of this nasty troll.");
   set(rfGOAT_APPROACHING_TROLL);
   set(fSCRIPTED_GOAT_MOVEMENT);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     reset(fGOAT_COMPANION);
     start.cycling(oGOAT);
-  #endif
+  }
   move.obj(oGOAT, 80, 71, 0, rfGOAT_AT_BRIDGE);
 }
 if (rfGOAT_AT_BRIDGE) {
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     ignore.blocks(oGOAT);
-  #endif
+  }
   ignore.objs(oGOAT);
   reset(rfGOAT_AT_BRIDGE);
   normal.motion(oTROLL);
@@ -182,9 +183,9 @@ if (rfGOAT_AT_BRIDGE) {
 distance(oTROLL, oGOAT, vTEMP_RESULT);
 if (vTEMP_RESULT < 17 && !fGOAT_KILLED_TROLL) {
   print("The goat butts the troll right off the bridge, never to be seen in these parts again.");
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     sound(SND_IMPACT, fMISC_END_MARKER);
-  #endif
+  }
   set(fGOAT_KILLED_TROLL);
   reset(rfTROLL_IS_HERE);
   reset(fGOAT_COMPANION);
@@ -201,9 +202,9 @@ if (vTEMP_RESULT < 17 && !fGOAT_KILLED_TROLL) {
 if (rfHIDE_GOAT) {
   reset(rfHIDE_GOAT);
   erase(oGOAT);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     accept.input();
-  #endif
+  }
 }
 if (rfTROLL_IS_HERE && !fGOAT_COMPANION) {
   if (said("examine", "troll")) {

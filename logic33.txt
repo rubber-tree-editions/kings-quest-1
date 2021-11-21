@@ -15,9 +15,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   else {
     set.horizon(40);
   }
-#if BUILD_TARGET == APPLE_IIGS
-  load.sound(SND_RUSHING_WATER);
-#endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    load.sound(SND_RUSHING_WATER);
+  }
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
   if (fGOAT_COMPANION) {
@@ -36,15 +36,13 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
-#if BUILD_TARGET == APPLE_IIGS
-  set(rfPLAYED_SND_RUSHING_WATER);
-#endif
-}
-#if BUILD_TARGET == APPLE_IIGS
-  if (!rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_ON_WATER && !fEGO_PLAYING_FIDDLE && !posn(oEGO, 132, 59, 149, 69)) {
-    sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
+  if (BUILD_TARGET == APPLE_IIGS) {
+    set(rfPLAYED_SND_RUSHING_WATER);
   }
-#endif
+}
+if (BUILD_TARGET == APPLE_IIGS && !rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_ON_WATER && !fEGO_PLAYING_FIDDLE && !posn(oEGO, 132, 59, 149, 69)) {
+  sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
+}
 if (fEGO_ON_WATER && !rfPULLED_UNDERWATER) {
   set(rfPULLED_UNDERWATER);
   print("Your swimming attempt proved fatal!  The raging current drags you under....");
@@ -89,13 +87,11 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && said("get", "water")) {
     print("You are not close enough to the Raging River.");
   }
 }
-#if BUILD_TARGET == APPLE_IIGS
-if (posn(oEGO, 118, 50, 154, 80)) {
+if (BUILD_TARGET == APPLE_IIGS && posn(oEGO, 118, 50, 154, 80)) {
   set(fTENSE_SITUATION);
   set(fTHREAT_OF_SORCERER_OR_OGRE);
   set(fFALL_DANGER);
 }
-#endif
 if (!fEGO_ON_WATER) {
   if (posn(oEGO, 14, 66, 54, 107)
     || posn(oEGO, 99, 64, 145, 82)

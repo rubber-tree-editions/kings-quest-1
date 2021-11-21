@@ -120,7 +120,7 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
   if (vTEMP_X > 5 && vTEMP_X < 150) {
     set(fTENSE_SITUATION);
@@ -135,7 +135,7 @@ if (fGOAT_COMPANION) {
   if (posn(oEGO, 21, 71, 91, 122)) {
     set(fEGO_ON_WATER);
   }
-#endif
+}
 call(LOGIC101_SWIMMING);
 return;
 

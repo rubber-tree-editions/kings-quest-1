@@ -30,9 +30,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   discard.pic(vROOM_NO);
   load.sound(SND_OUCH);
   load.sound(SND_FALLING);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_IMPACT);
-  #endif
+  }
   load.view(8);
   load.view(89);
   load.view(105);
@@ -46,27 +46,25 @@ if (fROOM_SCRIPT_EXECUTED) {
     move.obj(oEGO, 100, 50, 0, rfBIRD_DROPPED_YOU);
     set.priority(oBIRD, PRI_BIRD);
     set.priority(oEGO, PRI_EGO_WHILE_FALLING_FROM_MIDAIR);
-    #if BUILD_TARGET == APPLE_IIGS
+    if (BUILD_TARGET == APPLE_IIGS) {
       rvCOUNTDOWN_TO_NOTHING = 12;
       set(rfARRIVING_FROM_MIDAIR);
-    #endif
+    }
   }
   draw(oEGO);
   show.pic();
 }
-#if BUILD_TARGET == APPLE_IIGS
-if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR && rfARRIVING_FROM_MIDAIR) {
+if (BUILD_TARGET == APPLE_IIGS && vPREV_ROOM_NO == ROOM80_IN_MID_AIR && rfARRIVING_FROM_MIDAIR) {
   rvCOUNTDOWN_TO_NOTHING--;
   if (rvCOUNTDOWN_TO_NOTHING == 1) {
     rvCOUNTDOWN_TO_NOTHING = 35;
   }
 }
-#endif
 if (rfBIRD_DROPPED_YOU) {
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     stop.sound();
     reset(rfARRIVING_FROM_MIDAIR);
-  #endif
+  }
   reset(rfBIRD_DROPPED_YOU);
   erase(oEGO);
   position(oEGO, 108, 53);
@@ -87,26 +85,24 @@ if (VERSION_MAJOR < 2 && !rfHITTING_THE_GROUND && fSOUND_END_MARKER_2 && !rfFALL
 if (rfBIRD_LEFT) {
   reset(rfBIRD_LEFT);
   erase(oBIRD);
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     rvCOUNTDOWN_TO_NOTHING = 0;
-  #endif
-}
-#if BUILD_TARGET != APPLE_IIGS
-  if (rfHITTING_THE_GROUND) {
-    stop.sound();
-    set(rfFALLEN_TO_EARTH);
-    reset(rfHITTING_THE_GROUND);
-    program.control();
-    release.priority(oEGO);
-    set.view(oEGO, 103);
-    shake.screen(1);
-    print("OUCH");
-    sound(SND_OUCH, fSOUND_END_MARKER);
-    rvCOUNTDOWN = 18;
   }
-#endif
+}
+if (BUILD_TARGET != APPLE_IIGS && rfHITTING_THE_GROUND) {
+  stop.sound();
+  set(rfFALLEN_TO_EARTH);
+  reset(rfHITTING_THE_GROUND);
+  program.control();
+  release.priority(oEGO);
+  set.view(oEGO, 103);
+  shake.screen(1);
+  print("OUCH");
+  sound(SND_OUCH, fSOUND_END_MARKER);
+  rvCOUNTDOWN = 18;
+}
 rvCOUNTDOWN--;
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   if (rvCOUNTDOWN > 0 && fSOUND_END_MARKER) {
     rvCOUNTDOWN_TO_SND_OUCH--;
     if (rvCOUNTDOWN_TO_SND_OUCH == 1) {
@@ -114,30 +110,27 @@ rvCOUNTDOWN--;
       sound(SND_OUCH, fSOUND_END_MARKER);
     }
   }
-#else
-  if (fSOUND_END_MARKER) {
-    if (rvCOUNTDOWN > 0) {
-      reset(fSOUND_END_MARKER);
-      sound(SND_OUCH, fSOUND_END_MARKER);
-    }
+}
+else if (fSOUND_END_MARKER) {
+  if (rvCOUNTDOWN > 0) {
+    reset(fSOUND_END_MARKER);
+    sound(SND_OUCH, fSOUND_END_MARKER);
   }
-#endif
-#if BUILD_TARGET == APPLE_IIGS
-  if (rfHITTING_THE_GROUND) {
-    sound(SND_IMPACT, fSOUND_END_MARKER);
-    set(rfFALLEN_TO_EARTH);
-    reset(rfHITTING_THE_GROUND);
-    program.control();
-    release.priority(oEGO);
-    set.view(oEGO, 103);
-    shake.screen(1);
-    if (!fSOUND_ENABLED) {
-      print("OUCH");
-    }
-    rvCOUNTDOWN_TO_SND_OUCH = 5;
-    rvCOUNTDOWN = 18;
+}
+if (BUILD_TARGET == APPLE_IIGS && rfHITTING_THE_GROUND) {
+  sound(SND_IMPACT, fSOUND_END_MARKER);
+  set(rfFALLEN_TO_EARTH);
+  reset(rfHITTING_THE_GROUND);
+  program.control();
+  release.priority(oEGO);
+  set.view(oEGO, 103);
+  shake.screen(1);
+  if (!fSOUND_ENABLED) {
+    print("OUCH");
   }
-#endif
+  rvCOUNTDOWN_TO_SND_OUCH = 5;
+  rvCOUNTDOWN = 18;
+}
 if (rvCOUNTDOWN == 1) {
   set.view(oEGO, 104);
   end.of.loop(oEGO, rfEGO_STOPPED_ANIMATING);
@@ -159,9 +152,9 @@ if (said("examine", "hole") || said("look inside", "hole")) {
   }
 }
 if (fEGO_ON_WATER && !fFALLING) {
-  #if BUILD_TARGET == APPLE_IIGS
+  if (BUILD_TARGET == APPLE_IIGS) {
     set(fEGO_PREOCCUPIED);
-  #endif
+  }
   set(fSCRIPTED_MOTION);
   stop.cycling(oEGO);
   set(fFALLING);
@@ -172,18 +165,17 @@ if (fEGO_ON_WATER && !fFALLING) {
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFALLEN_IN_HOLE);
   sound(SND_FALLING, fMISC_END_MARKER);
 }
-#if BUILD_TARGET == APPLE_IIGS
+if (BUILD_TARGET == APPLE_IIGS) {
   if (fMISC_END_MARKER && fFALLING && rfFALLEN_IN_HOLE) {
     new.room(ROOM73_CAVE_CEILING_HOLE);
   }
-#else
-  if (rfFALLEN_IN_HOLE) {
-    reset(rfFALLEN_IN_HOLE);
-    reset(fSCRIPTED_MOTION);
-    erase(oEGO);
-    new.room(ROOM73_CAVE_CEILING_HOLE);
-  }
-#endif
+}
+else if (rfFALLEN_IN_HOLE) {
+  reset(rfFALLEN_IN_HOLE);
+  reset(fSCRIPTED_MOTION);
+  erase(oEGO);
+  new.room(ROOM73_CAVE_CEILING_HOLE);
+}
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM47_MUSHROOM);
 }

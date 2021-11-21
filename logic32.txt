@@ -10,17 +10,16 @@ if (fROOM_SCRIPT_EXECUTED) {
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
   set.horizon(40);
-#if BUILD_TARGET == APPLE_IIGS
-  load.sound(SND_RUSHING_WATER);
-#endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    load.sound(SND_RUSHING_WATER);
+  }
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, 101, 137, 0, 0);
   }
-#if VERSION_MAJOR >= 2
-  if (vPREV_ROOM_NO == ROOM33_RAGING_RIVER_SPLIT_BY_BOULDER) {
+  if (VERSION_MAJOR >= 2 && vPREV_ROOM_NO == ROOM33_RAGING_RIVER_SPLIT_BY_BOULDER) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vTEMP_X > 130) {
       position(oEGO, 140, 41);
@@ -29,22 +28,19 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 88, 41);
     }
   }
-#endif
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
   set(fSWIMMING_IMPOSSIBLE_HERE);
   ignore.blocks(oEGO);
   draw(oEGO);
-#if BUILD_TARGET == APPLE_IIGS
-  set(rfPLAYED_SND_RUSHING_WATER);
-#endif
+  if (BUILD_TARGET == APPLE_IIGS) {
+    set(rfPLAYED_SND_RUSHING_WATER);
+  }
   show.pic();
 }
-#if BUILD_TARGET == APPLE_IIGS
-  if (!rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
-    sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
-  }
-#endif
+if (BUILD_TARGET == APPLE_IIGS && !rfPULLED_UNDERWATER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
+  sound(SND_RUSHING_WATER, rfPLAYED_SND_RUSHING_WATER);
+}
 if (fEGO_ON_WATER && !rfPULLED_UNDERWATER) {
   set(rfPULLED_UNDERWATER);
   print("Oh No!  That's such a dangerous river... the current is too strong... you won't be able to escape!");
