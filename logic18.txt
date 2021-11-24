@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PT_DEAD_GOAT 26, 138
+
 #define rfELF_IS_HERE rf0
 #define rfELF_LEFT rf1
 #define rfINIT_RANDOMIZER rf2
@@ -21,7 +23,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 26, 138, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);

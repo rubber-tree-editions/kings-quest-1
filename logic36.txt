@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PT_DEAD_GOAT 56, 83
+
 #define BX_NEAR_ROCK 75, 125, 109, 158
 #define BX_NEAR_HOLE 90, 124, 106, 140
 #define BX_HOLE_VISIBLE 50, 80, 158, 166
@@ -19,7 +21,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 56, 83, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   if (vPREV_ROOM_NO == ROOM78_IN_CAVE_WITH_TINY_HOLE) {
     if (VERSION_MAJOR >= 2) {

@@ -6,6 +6,7 @@
 #define PT_BANNERS 115, 17
 #define PT_ENTER_FROM_SOUTHWEST 2, 150
 #define PT_ENTER_FROM_CASTLE 110, 122
+#define PT_DEAD_GOAT 36, 86
 
 #define BX_NEAR_DOORS 105, 120, 121, 128
 #define BX_DOORS_VISIBLE 0, 120, 159, 167
@@ -51,10 +52,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (fGOAT_COMPANION) {
     load.logics(LOGIC103_GOAT);
     load.view(9);
-    add.to.pic(9, 0, 0, 105, 120, 0, 0);
+    add.to.pic(9, 0, 0, PT_CASTLE_DOORS, 0, 0);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 36, 86, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   if (!fGOAT_COMPANION) {
     load.view(9);

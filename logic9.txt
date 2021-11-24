@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PT_DEAD_GOAT 27, 131
+
 #define rfFAIRY_GODMOTHER_IS_HERE rf0
 #define rfFAIRY_GODMOTHER_CAUGHT_YOU rf1
 #define rfFAIRY_GODMOTHER_SOUND_PLAYED rf2
@@ -25,7 +27,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 27, 131, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   random(0, 250, vTEMP_RESULT);
   if (vTEMP_RESULT < 125 && vSPELL_COUNTDOWN_LO == 0) {

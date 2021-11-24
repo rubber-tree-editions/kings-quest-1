@@ -7,6 +7,7 @@ LOGIC__HEADER
 #define PT_GATOR2_START 73, 166
 #define PT_BANNERS 5, 17
 #define PT_ENTER_FROM_SOUTHEAST 148, 150
+#define PT_DEAD_GOAT 95, 72
 
 #define BX_NEAR_WATER1 0, 146, 159, 167
 #define BX_NEAR_WATER2 87, 110, 117, 145
@@ -49,7 +50,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 95, 72, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   load.view(107);
   load.view(97);

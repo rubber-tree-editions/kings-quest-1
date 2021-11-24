@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PT_DEAD_GOAT 60, 71
+
 #define BX_NEAR_FLOWERS 22, 86, 114, 167
 
 #define rfINIT_RANDOMIZER rf0
@@ -28,7 +30,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 60, 71, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   set.horizon(42);
   random(0, 250, vTEMP_RESULT);

@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define PT_DEAD_GOAT 105, 58
 
 if (fROOM_SCRIPT_EXECUTED) {
   if (BUILD_TARGET == APPLE_IIGS) {
@@ -20,7 +20,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 105, 58, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   if (vPREV_ROOM_NO == ROOM6_POUCH_STUMP) {
     position(oEGO, 121, 47);

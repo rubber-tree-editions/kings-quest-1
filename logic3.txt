@@ -6,6 +6,7 @@ LOGIC__HEADER
 #define PT_ROCK_MOVED 118, 145
 #define PT_HOLE 122, 124
 #define PT_EGO_CRUSHED 115, 140
+#define PT_DEAD_GOAT 32, 75
 
 #define BX_BEHIND_ROCK 115, 114, 133, 133
 #define BX_IN_FRONT_OF_ROCK 118, 134, 133, 148
@@ -65,7 +66,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 32, 75, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   if (BUILD_TARGET == APPLE_IIGS) {
     load.sound(SND_POINTS);

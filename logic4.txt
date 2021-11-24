@@ -3,6 +3,7 @@
 LOGIC__HEADER
 
 #define PT_ENTER_FROM_NORTHWEST 70, 56
+#define PT_DEAD_GOAT 74, 66
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -15,7 +16,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 74, 66, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   if (vPREV_ROOM_NO == ROOM13_WOLF_STOMPING_GROUND) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);

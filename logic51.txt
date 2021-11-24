@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PT_DEAD_DRAGON 40, 152
+
 #define BX_NEAR_MIRROR 26, 104, 59, 127
 #define BX_PAST_BOULDER 0, 0, 1, 167
 
@@ -86,7 +88,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     stop.cycling(oBOULDER);
     animate.obj(oDRAGON);
     if (vDRAGON_STATE == DRAGONSTATE_DEAD) {
-      add.to.pic(61, 0, 0, 40, 152, 0, 0);
+      add.to.pic(61, 0, 0, PT_DEAD_DRAGON, 0, 0);
     }
     if (vDRAGON_STATE == DRAGONSTATE_NORMAL) {
       set.view(oDRAGON, 33);

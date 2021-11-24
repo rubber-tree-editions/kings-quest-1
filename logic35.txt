@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PT_DEAD_GOAT 24, 110
+
 #define rfINIT_RANDOMIZER rf0
 #define rfDWARF_IS_HERE rf1
 // unused: rf2
@@ -37,7 +39,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 24, 110, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == ROOM35_DWARF_MEADOW) {
     vTEMP_PIC = 84;

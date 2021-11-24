@@ -2,6 +2,17 @@
 
 LOGIC__HEADER
 
+#define PT_LEPRECHAUN1 94, 156
+#define PT_LEPRECHAUN2 120, 156
+#define PT_LEPRECHAUN3 106, 144
+#define PT_LEPRECHAUN4 128, 156
+#define PT_LEPRECHAUN5 111, 78
+#define PT_LEPRECHAUN6 57, 72
+#define PT_LEPRECHAUN7 45, 77
+#define PT_LEPRECHAUN8 36, 88
+#define PT_LEPRECHAUN9 16, 140
+#define PT_LEPRECHAUN10 30, 150
+
 #define PRI_LEPRECHAUN_KING 10
 
 #define rfDANCING_LEPRECHAUNS rf0
@@ -57,16 +68,16 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.view(54);
   }
   if (!fDANCING_LEPRECHAUNS) {
-    add.to.pic(79, 1, 0, 94, 156, 14, 0);
-    add.to.pic(79, 1, 0, 120, 156, 14, 0);
-    add.to.pic(79, 1, 0, 106, 144, 13, 0);
-    add.to.pic(79, 1, 0, 128, 156, 14, 0);
-    add.to.pic(79, 1, 0, 111, 78, 7, 0);
-    add.to.pic(79, 0, 0, 57, 72, 7, 0);
-    add.to.pic(79, 0, 0, 45, 77, 7, 0);
-    add.to.pic(79, 0, 0, 36, 88, 8, 0);
-    add.to.pic(79, 0, 0, 16, 140, 12, 0);
-    add.to.pic(79, 0, 0, 30, 150, 13, 0);
+    add.to.pic(79, 1, 0, PT_LEPRECHAUN1, 14, 0);
+    add.to.pic(79, 1, 0, PT_LEPRECHAUN2, 14, 0);
+    add.to.pic(79, 1, 0, PT_LEPRECHAUN3, 13, 0);
+    add.to.pic(79, 1, 0, PT_LEPRECHAUN4, 14, 0);
+    add.to.pic(79, 1, 0, PT_LEPRECHAUN5, 7, 0);
+    add.to.pic(79, 0, 0, PT_LEPRECHAUN6, 7, 0);
+    add.to.pic(79, 0, 0, PT_LEPRECHAUN7, 7, 0);
+    add.to.pic(79, 0, 0, PT_LEPRECHAUN8, 8, 0);
+    add.to.pic(79, 0, 0, PT_LEPRECHAUN9, 12, 0);
+    add.to.pic(79, 0, 0, PT_LEPRECHAUN10, 13, 0);
   }
   if (!fLEPRECHAUN_KING_GONE) {
     animate.obj(oLEPRECHAUN_KING);

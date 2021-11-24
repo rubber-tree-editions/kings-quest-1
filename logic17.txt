@@ -2,7 +2,7 @@
 
 LOGIC__HEADER
 
-
+#define PT_DEAD_GOAT 109, 141
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -15,7 +15,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 109, 141, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   if (vPREV_ROOM_NO == ROOM18_CLIFFS_LAKE_WEST && fEGO_ON_WATER) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);

@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PT_DEAD_GOAT 83, 142
+
 #define rfWOLF_IS_HERE rf0
 // unused: rf1
 #define rfPROTECTED rf2
@@ -29,7 +31,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 83, 142, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   random(0, 250, vTEMP_RESULT);
   if (vTEMP_RESULT < 185) {

@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PT_DEAD_GOAT 80, 66
+
 #define rfINIT_RANDOMIZER rf0
 #define rfSORCERER_IS_HERE rf1
 #define rfPROTECTED rf2
@@ -25,7 +27,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 80, 66, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   if (vPREV_ROOM_NO == ROOM20_ALPINE_LAKE) {
     if (!fEGO_INVISIBLE) {

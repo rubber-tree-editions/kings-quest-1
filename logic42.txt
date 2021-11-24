@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PT_DEAD_GOAT 20, 87
+
 #define rfPULLED_UNDERWATER rf0
 #define rfPLAYED_SND_RUSHING_WATER rf1
 
@@ -19,7 +21,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 20, 87, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   if (vPREV_ROOM_NO == ROOM7_WATERFALL_LAKE_EAST) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);

@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PT_DEAD_GOAT 79, 68
+
 #define BX_NEAR_WALNUTS 9, 112, 98, 167
 #define BX_WALNUTS_VISIBLE 0, 75, 159, 167
 
@@ -18,7 +20,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 79, 68, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   draw(oEGO);
   show.pic();

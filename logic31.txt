@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PT_DEAD_GOAT 39, 96
+
 #define BX_NEAR_BOWL 116, 128, 136, 148
 #define BX_BOWL_CLEARLY_VISIBLE 106, 103, 159, 167
 #define BX_NEAR_BEANSTALK 52, 76, 103, 97
@@ -34,7 +36,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 39, 96, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   if (fCARRYING_MAGIC_BEANS || vBEANSTALK_ROOM == ROOM31_FREE_BOWL) {
     vTEMP_PIC = 84;

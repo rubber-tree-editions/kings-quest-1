@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PT_DEAD_GOAT 56, 122
+
 #define BX_NEAR_CLOSED_GATE 6, 139, 55, 167
 #define BX_NEAR_OPEN_GATE 33, 139, 75, 167
 #define BX_PEN_ENTRY_ZONE 16, 153, 44, 155
@@ -71,7 +73,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 56, 122, 9, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 9, 0);
   }
   if (!fGOAT_GATE_OPEN) {
     position(oGATE, 17, 156);

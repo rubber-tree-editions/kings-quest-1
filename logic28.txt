@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PT_DEAD_GOAT 102, 142
+
 #define BX_NEAR_HOUSE 20, 120, 110, 135
 #define BX_NEAR_DOOR 40, 127, 70, 135
 #define BX_HOUSE_VISIBLE 1, 105, 158, 166
@@ -31,7 +33,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 102, 142, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   load.view(23);
   animate.obj(oDOOR);

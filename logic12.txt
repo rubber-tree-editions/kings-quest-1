@@ -2,6 +2,8 @@
 
 LOGIC__HEADER
 
+#define PT_DEAD_GOAT 107, 81
+
 #define BX_NEAR_WELL 10, 100, 75, 150
 #define BX_NEAR_BUCKET 10, 109, 71, 153
 #define BX_NEAR_HANDLE 60, 108, 77, 140
@@ -41,7 +43,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     load.logics(LOGIC103_GOAT);
   }
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
-    add.to.pic(62, 0, 0, 107, 81, 0, 0);
+    add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   load.view(74);
   load.view(143);
