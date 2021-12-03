@@ -1,0 +1,19 @@
+{
+  "name": "@rubber-tree-editions/kings-quest-1",
+  "version": "1.0.0",
+  "description": "Unofficial mod of the classic adventure game intended to ease the necessity to save quite so often.",
+  "main": "js/main.js",
+  "repository": "https://github.com/rubber-tree-editions/kings-quest-1",
+  "author": "Duncan Cross <duncan.cross@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "typescript": "^4.5.2"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@types/node": "^16.11.11"
+  }
+}
