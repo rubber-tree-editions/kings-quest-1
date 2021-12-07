@@ -14,6 +14,7 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@rubber-tree-editions/agi-tools": "^1.0.0",
     "@types/node": "^16.11.11"
   }
 }
