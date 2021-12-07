@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 26, 64
 
 #define BX_NEAR_DOORWAY 100, 111, 133, 136
@@ -111,9 +109,6 @@ if (fGOAT_COMPANION) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "It is an ancient, rusty water pump.  It probably doesn't even work."
 #message 2 "The rusty pump doesn't work."
 #message 3 "The handle has been broken and repaired.  The head shows the signs of many sharpenings."
@@ -126,5 +121,4 @@ LOGIC__FOOTER
 #message 10 "How are you going to use the ax when you can't even get it out of this stump?"
 #if VERSION_MAJOR >= 2
   #message 11 "Perhaps you should go inside the house for a better look."
-#endif
 #endif

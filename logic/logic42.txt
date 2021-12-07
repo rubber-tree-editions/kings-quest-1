@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 20, 87
 
 #define rfPULLED_UNDERWATER rf0
@@ -190,9 +188,6 @@ if (fGOAT_COMPANION) {
 call(LOGIC101_SWIMMING);
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "You have fallen in the raging current and are swept under.  I'm afraid your end has come."
 #message 2 "It is an old stone bridge dating to ancient times."
 #message 3 "The river gets to be rather rough around these parts."
@@ -203,4 +198,3 @@ LOGIC__FOOTER
 #message 8 "It tastes very refreshing to a thirsty wanderer."
 #message 9 "The crystal clear water fills up the bucket."
 #message 10 "You glance under the old bridge, but see nothing unusual."
-#endif

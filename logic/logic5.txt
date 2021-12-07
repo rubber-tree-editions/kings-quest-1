@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 36, 59
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -169,9 +167,6 @@ if (BUILD_TARGET == APPLE_IIGS) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "You kneel down and fill the bucket with the cool water."
 #message 2 "You drink of the clear lake water."
 #message 3 "You are not close enough to the water."
@@ -180,5 +175,4 @@ LOGIC__FOOTER
 #message 6 "These cattails are fuzzy and soft."
 #if VERSION_MAJOR >= 2
   #message 7 "It seems the old goat has wandered off by himself and is no longer following you."
-#endif
 #endif

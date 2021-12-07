@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 56, 83
 
 #define BX_NEAR_ROCK 75, 125, 109, 158
@@ -151,9 +149,6 @@ FINALCHECKS:
   }
   return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "When looking in this small hole, you see a faint green glow."
 #message 2 "You would need to be much smaller to fit through that hole."
 #message 3 "This rock is firmly stuck in the ground."
@@ -169,5 +164,4 @@ LOGIC__FOOTER
 #message 13 "You feel a stretching sensation... Oh, you're back to your original size."
 #if VERSION_MAJOR >= 2
   #message 14 "You notice a hole in the base of a large moss covered rock."
-#endif
 #endif

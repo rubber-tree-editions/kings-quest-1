@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 prevent.input();
 status.line.off();
 text.screen();
@@ -125,9 +123,6 @@ graphics();
 set(fSAID_ACCEPTED_USER_INPUT);
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #if BUILD_TARGET == AMIGA
   #message 1 "          KING'S QUEST"
   #message 2 "             Help"
@@ -207,5 +202,4 @@ LOGIC__FOOTER
   #message 42 "Put mouse cursor where you want Sir"
   #message 43 "Graham to go, then click the button."
   #message 98 " For a hint book, call (209) 683-6858"
-#endif
 #endif

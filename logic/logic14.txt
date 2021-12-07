@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 21, 90
 
 #define PRI_EGO_WHILE_FALLING 12
@@ -139,9 +137,6 @@ if (fGOAT_COMPANION) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "This is a very pretty maple tree."
 #message 2 "This is a very large oak tree with branches stretching to the sky."
 #message 3 "You can't climb a tree here!"
@@ -152,5 +147,4 @@ LOGIC__FOOTER
 #message 8 "OUCH!"
 #if VERSION_MAJOR >= 2
   #message 9 "There is a very large oak tree here with branches stretching to the sky."
-#endif
 #endif

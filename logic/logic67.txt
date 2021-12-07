@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define rfFALLEN_OFF_STEPS rf0
 #define rfFALLING_OFF_STEPS rf1
 
@@ -92,9 +90,5 @@ if (BUILD_TARGET == APPLE_IIGS) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "The stairs are moss-covered and slippery."
 #message 2 "Darn!  You slipped on the steep stairs."
-#endif

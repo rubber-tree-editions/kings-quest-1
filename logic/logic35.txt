@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 24, 110
 
 #define rfINIT_RANDOMIZER rf0
@@ -464,9 +462,6 @@ if (vBEANSTALK_ROOM == ROOM35_DWARF_MEADOW) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "There is a small dwarf close by.  It would be a good idea to be careful."
 #message 2 "That little dwarf caught you by surprise.  Is your treasure still OK?"
 #message 3 "The quick, little dwarf came by to see what you had -- nothing interested him."
@@ -481,4 +476,3 @@ LOGIC__FOOTER
 #message 12 "Ouch!"
 #message 13 "The dwarf sees the goat and decides to leave."
 #message 14 "Being invisible has protected you from the dwarf."
-#endif

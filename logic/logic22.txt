@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 18, 140
 
 #define rfINIT_RANDOMIZER rf0
@@ -431,9 +429,6 @@ if (vBEANSTALK_ROOM == ROOM22_CONDOR_AND_CAVE) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "High up in the sky you see a very large, friendly bird."
 #message 2 "The opening to the cave is dark and ominous."
 #message 3 "You vaguely see the outline of a cave entrance."
@@ -451,5 +446,4 @@ LOGIC__FOOTER
 #message 15 "This bird doesn't talk much."
 #if VERSION_MAJOR >= 2
   #message 16 "A large cave is at the edge of this meadow."
-#endif
 #endif

@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 if (vBEANSTALK_ROOM == vROOM_NO) {
   if (said("climb", "beanstalk")) {
     if (fEGO_CLIMBING_BEANSTALK) {
@@ -17,10 +15,6 @@ if (vBEANSTALK_ROOM == vROOM_NO) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "You are already climbing the beanstalk."
 #message 2 "You can't do that when you are invisible!"
 #message 3 "It is a mighty beanstalk that stretches to the sky."
-#endif

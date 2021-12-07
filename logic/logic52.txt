@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define BX_NEAR_HOLE 1, 75, 65, 166
 #define BX_HOLE_EXIT_ZONE 31, 111, 32, 130
 
@@ -149,9 +147,6 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "Not even you can hold your breath forever.  The well bottom has become your eternal resting place."
 #message 2 "This looks like typical well water."
 #message 3 "It looks like this bottle has been here for a very long time."
@@ -168,5 +163,4 @@ LOGIC__FOOTER
 #message 10 "Thrashing around in the water has caused you to lose the magic ring and become visible again."
 #if BUILD_TARGET == APPLE_IIGS
   #message 99 "BREAK"
-#endif
 #endif

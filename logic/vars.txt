@@ -1,17 +1,4 @@
 
-#ifdef LOGIC_AS_C
-
-  #define LOGIC__HEADER void func() {
-  #define LOGIC__FOOTER }
-  #include "logic_as_c.h"
-
-#else
-
-  #define LOGIC__HEADER
-  #define LOGIC__FOOTER
-
-#endif
-
 #define AMIGA 1
 #define ATARI_ST 2
 #define DOS 3

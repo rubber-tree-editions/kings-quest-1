@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define rfAPPROACHING_WATERFALL_LAKE_EDGE rf20
 // unused: rf21
 #define rfGOAT_WANDERING_OFF rf22
@@ -192,12 +190,8 @@ ATRIVER:
 RETURN:
   return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water."
 #message 2 "The goat, not being able to see you, wanders off."
 #if BUILD_TARGET == APPLE_IIGS
   #message 90 "BREAK0"
-#endif
 #endif

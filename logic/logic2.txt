@@ -30,8 +30,6 @@
 #define rvCOUNTDOWN rv1
 #define rvGATOR_SOUND_COUNTDOWN rv2
 
-LOGIC__HEADER
-
 #define oBANNERS o1
 #define oCASTLE_DOORS o2
 #define oGATOR1 o11
@@ -402,9 +400,6 @@ FINALCHECKS:
   call(LOGIC101_SWIMMING);
   return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "High above the castle, the flags are waving in the wind."
 #message 2 "King Edward the Benevolent, the mighty ruler of Daventry, lives in this castle."
 #message 3 "You must enter the castle through the door, and the  door is closed."
@@ -433,5 +428,4 @@ LOGIC__FOOTER
 #message 28 "Your knock echos within the castle.  Unfortunately, no one answers."
 #if VERSION_MAJOR >= 2
   #message 29 "You are standing outside a castle surrounded by an alligator filled moat."
-#endif
 #endif

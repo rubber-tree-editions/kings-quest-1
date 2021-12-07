@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -33,9 +31,5 @@ if (posn(oEGO, 0, 166, 159, 167)) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "The light from the oil lamp is rather dim in the dark interior of the castle."
 #message 2 "The long marble hall has a cold, dreary feeling."
-#endif

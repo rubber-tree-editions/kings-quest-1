@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define BX_NEAR_TROLL 78, 90, 148, 166
 #define BX_NEAR_RIVER 1, 84, 158, 166
 
@@ -494,9 +492,6 @@ if (fGOAT_COMPANION) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "As you approach the bridge, a mean, ugly troll appears.  He will not let you cross his bridge."
 #message 2 "The old goat seeing the troll, the archenemy of all goats, charges the troll and butts him into oblivion!  The bridge is now yours."
 #message 3 "This bridge is the only way to cross the river here."
@@ -526,4 +521,3 @@ LOGIC__FOOTER
 #message 27 "You could never win a fight with a troll."
 #message 28 "You glance under the old bridge, but see nothing unusual."
 #message 29 "As you start to cross the bridge, a wretched troll appears.  Even though you are invisible, he will not let you cross his bridge."
-#endif

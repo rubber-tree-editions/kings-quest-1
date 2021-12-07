@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 if (!fPLAYER_ENTERED_COMMAND) {
   goto RETURN;
 }
@@ -485,9 +483,6 @@ print("You can't do that--at least not now!");
 RETURN:
   return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "You see nothing special."
 #message 2 "You cannot get the \"%w2\". At least not now!"
 #message 3 "There is no reason to do that."
@@ -535,5 +530,4 @@ LOGIC__FOOTER
   #message 44 "You do not have any water."
   #message 45 "There is no door here."
   #message 46 "The stream may not be safe to cross."
-#endif
 #endif

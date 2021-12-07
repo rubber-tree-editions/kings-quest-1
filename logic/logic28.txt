@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 102, 142
 
 #define BX_NEAR_HOUSE 20, 120, 110, 135
@@ -198,9 +196,6 @@ if (fGOAT_COMPANION) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "You must be getting nervous!  I see no witch here!"
 #message 2 "The windows are made from translucent, hardened sugar.  It's difficult to see through them."
 #message 3 "The windows are hard to break."
@@ -223,5 +218,4 @@ LOGIC__FOOTER
   #message 19 "The path leads to the door."
   #message 20 "The path is around the corner."
   #message 21 "You are near a little gingerbread house in a forest clearing."
-#endif
 #endif

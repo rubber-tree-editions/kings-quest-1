@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 60, 71
 
 #define BX_NEAR_FLOWERS 22, 86, 114, 167
@@ -247,9 +245,6 @@ AFTERCOUNTDOWN:
     }
     return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "Watch out!!!  There is an ogre nearby!  He will crush you in his strong arms if he catches you."
 #message 2 "You are very fortunate that your protective spell is still working."
 #message 3 "With the magic shield, no harm will come to you."
@@ -271,5 +266,4 @@ LOGIC__FOOTER
 #message 19 "You need to be a little closer to smell the flowers."
 #if BUILD_TARGET == APPLE_IIGS
   #message 99 "BREAK"
-#endif
 #endif

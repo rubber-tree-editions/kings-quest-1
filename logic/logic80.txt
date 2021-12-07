@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_WITCH_START 1, 60
 #define PT_WITCH_END 130, 60
 #define PT_BIRD_START 1, 60
@@ -77,10 +75,6 @@ if (rfTO_LEPRECHAUN_HOLE) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "The view is magnificent."
 #message 2 "Now is not the time to irritate the witch."
 #message 3 "Now is not a good time to bother the bird."
-#endif

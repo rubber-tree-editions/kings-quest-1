@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define rfFALLING_SOUND_PLAYED rf0
 #define rfHIDE_EGO rf1
 
@@ -101,10 +99,6 @@ if (BUILD_TARGET == APPLE_IIGS) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "You are in the Land of the Clouds.  It is rumored that a giant lives up here."
 #message 2 "Oops!  You've missed the edge and fallen through the clouds."
 #message 3 "This is very strange vegetation."
-#endif

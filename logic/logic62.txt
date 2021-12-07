@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define rfFALLING_SOUND_PLAYED rf0
 #define rfHIDE_EGO rf1
 
@@ -165,9 +163,6 @@ if (BUILD_TARGET == APPLE_IIGS) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "Its trunk has a large hole in the base."
 #message 2 "You notice a sling in the hole in the tree."
 #message 3 "It is empty."
@@ -179,4 +174,3 @@ LOGIC__FOOTER
 #message 9 "You've fallen through the clouds!  Cloud walking is for the birds."
 #message 10 "These are strange looking trees."
 #message 11 "You need to be closer to try."
-#endif

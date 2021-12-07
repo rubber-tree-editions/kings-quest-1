@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define rvCOUNTDOWN_LO rv0
 #define rvCOUNTDOWN_HI rv1
 
@@ -91,9 +89,6 @@ if (posn(oEGO, 0, 0, 1, 167)) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "You feel a stretching sensation... Oh, you're back to your original size.  You can't get out of the small cave!"
 #message 2 "The stairs are very steep and narrow."
 #message 3 "The small hole leads to the outside world."
@@ -103,5 +98,4 @@ LOGIC__FOOTER
 #message 7 "This is a small cave with stairs on one side and a very small hole on the other side."
 #if VERSION_MAJOR >= 2
   #message 8 "You seem to be stuck in these underground caverns.  As you have no way of leaving, it looks like you'll spend the rest of your life here." 
-#endif
 #endif

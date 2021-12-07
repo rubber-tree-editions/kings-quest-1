@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 36, 84
 
 #define BX_NEAR_FLOWERS 60, 61, 117, 113
@@ -313,9 +311,6 @@ if (vBEANSTALK_ROOM == ROOM38_WILD_FLOWER_BED) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "What a pretty bed of wild flowers."
 #message 2 "The flowers' fragrance is enticing."
 #message 3 "You will have to move closer to do that."
@@ -326,5 +321,4 @@ LOGIC__FOOTER
 #message 8 "Ouch!"
 #if VERSION_MAJOR >= 2
   #message 9 "Numerous flowers are growing in the fertile soil."
-#endif
 #endif

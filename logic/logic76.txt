@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define rfLEPRECHAUN_CAUGHT_YOU rf0
 #define rfLEPRECHAUNS_DANCING_AWAY rf1
 #define rfPLAYING_FIDDLE rf2
@@ -204,9 +202,6 @@ if (posn(oEGO, 0, 166, 159, 167)) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "The leprechauns' magic powers detect your unseen presence."
 #message 2 "The leprechauns do not like your invasion of their territory.  They may not let you get any further."
 #message 3 "The leprechauns revere the power of the fourleaf clover. With it in your possession they will leave you absolutely alone."
@@ -225,4 +220,3 @@ LOGIC__FOOTER
 #message 12 "You would not get all of them before they got you."
 #message 13 "There are not any leprechauns here."
 #message 14 "You are already playing the fiddle."
-#endif

@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_NOTE 118, 140
 #define PT_CUPBOARD 33, 76
 #define PT_SWISS_CHEESE 41, 61
@@ -644,9 +642,6 @@ if (posn(oEGO, 39, 164, 56, 166)) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "As the wicked witch flew over her house, she dropped you... into her cage!  If you can't get out, you may become the secret ingredient in this witches' brew!"
 #message 2 "Surprise!  Surprise!  The wicked witch is home and now she's after you!"
 #message 3 "Be thankful that you have a protective spell or the witch may have stuck around to try and catch you!"
@@ -711,5 +706,4 @@ LOGIC__FOOTER
 #if VERSION_MAJOR >= 2
   #message 63 "You need to be more specific."
   #message 64 "It looks like an ordinary bedroom."
-#endif
 #endif

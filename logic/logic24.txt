@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 30, 75
 
 #define BX_NEAR_CLOVER 0, 77, 118, 167
@@ -100,9 +98,6 @@ if (fGOAT_COMPANION) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "There is a small patch of clover under the tree."
 #message 2 "Off in the distance you see a patch of clover."
 #if VERSION_MAJOR >= 2
@@ -120,5 +115,4 @@ LOGIC__FOOTER
 #endif
 #if VERSION_MAJOR >= 2
   #message 7 "There is a clover patch in this meadow."
-#endif
 #endif

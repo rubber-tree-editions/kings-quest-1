@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 26, 138
 
 #define rfELF_IS_HERE rf0
@@ -255,9 +253,6 @@ if (BUILD_TARGET == APPLE_IIGS) {
 call(LOGIC101_SWIMMING);
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "Wandering on the banks of the lake, you see a cute little elf."
 #message 2 "The cold water gushes into the old bucket."
 #message 3 "There is nothing to compare with that refreshing taste."
@@ -276,5 +271,4 @@ LOGIC__FOOTER
 #message 17 "You are too far away."
 #if VERSION_MAJOR >= 2
   #message 18 "It seems the old goat has wandered off by himself and is no longer following you."
-#endif
 #endif

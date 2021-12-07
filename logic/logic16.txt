@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 114, 71
 
 #define rfON_CARROT_PATCH rf0
@@ -137,9 +135,6 @@ if (fGOAT_COMPANION) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "This is a neat little carrot patch.  The plump carrots  look tempting."
 #message 2 "There is no reason to climb the fence."
 #message 3 "You can go around the fence."
@@ -151,5 +146,4 @@ LOGIC__FOOTER
 #message 9 "You do not have a carrot to eat."
 #if VERSION_MAJOR >= 2
   #message 10 "You see an old stone wall surrounding a well kept garden."
-#endif
 #endif

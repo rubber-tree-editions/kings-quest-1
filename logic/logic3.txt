@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_ROCK_START 118, 133
 #define PT_ROCK_MOVED 118, 145
 #define PT_HOLE 122, 124
@@ -235,9 +233,6 @@ if (fGOAT_COMPANION) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "There are numerous white birch trees reaching to the sky."
 #message 2 "After moving that rock once, even thinking about it should make you tired."
 #message 3 "There is no hole here."
@@ -263,5 +258,4 @@ LOGIC__FOOTER
 #message 20 "You are too far from the hole to see in it."
 #if VERSION_MAJOR >= 2
   #message 21 "You are in a forest clearing.  There is a large rock here."
-#endif
 #endif

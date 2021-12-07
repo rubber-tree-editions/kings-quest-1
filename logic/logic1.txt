@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_EGO_START 110, 100
 #define PT_GATOR1_START 121, 161
 #define PT_GATOR2_START 73, 166
@@ -268,9 +266,6 @@ if (fGOAT_COMPANION) {
 call(LOGIC101_SWIMMING);
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go."
 #message 2 "King Edward's banners are waving in the strong breeze."
 #message 3 "This is the castle of King Edward the Benevolent."
@@ -288,5 +283,4 @@ LOGIC__FOOTER
 #message 15 "What!  Are you crazy?"
 #if VERSION_MAJOR >= 2
   #message 16 "You are standing outside a castle surrounded by an alligator filled moat."
-#endif
 #endif

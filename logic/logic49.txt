@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define rfFALLING_DOWN_WELL rf0
 #define rfFALLEN_DOWN_WELL rf1
 #define rfFALLEN_OFF_ROPE rf2
@@ -471,9 +469,6 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
 call(LOGIC101_SWIMMING);
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "I can see you need a little practice climbing rope!"
 #message 2 "You should be more careful before trying that next time!"
 #message 3 "Your arms are like lead... from swimming.  You find it impossible... to swim any longer.  You sink to the bottom... of the well...."
@@ -502,5 +497,4 @@ LOGIC__FOOTER
 #message 26 "Now is not the time to try diving."
 #if VERSION_MAJOR >= 2
   #message 27 "It is a very long, sturdy rope."
-#endif
 #endif

@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 27, 131
 
 #define rfFAIRY_GODMOTHER_IS_HERE rf0
@@ -123,13 +121,9 @@ if (fGOAT_COMPANION) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "\"Gentle Sir Graham, I am your fairy godmother.  Your quest is indeed noble.  My small part to aid you can be no bigger than this magic spell, protective but for a little while.\""
 #message 2 "It is impossible to acquire a fairy godmother."
 #message 3 "She is your fairy godmother."
 #message 4 "There is no fairy here."
 #message 5 "\"I will be watching over you, Sir Graham.\""
 #message 6 "There is no need to say, or do, anything."
-#endif

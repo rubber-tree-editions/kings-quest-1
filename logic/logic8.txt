@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 47, 60
 
 #define rfPULLED_UNDERWATER rf0
@@ -170,9 +168,6 @@ if (BUILD_TARGET == APPLE_IIGS) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "The bucket is soon filled with clear water."
 #message 2 "The water is clear and refreshing."
 #message 3 "You are not close enough to the lake."
@@ -183,5 +178,4 @@ LOGIC__FOOTER
   #message 7 "The flowers are very beautiful."
   #message 8 "It seems the old goat has wandered off by himself and is no longer following you."
   #message 9 "A rapidly moving stream is flowing out of this lake."
-#endif
 #endif

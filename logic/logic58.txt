@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define rfFALLING_THROUGH_CLOUDS rf0
 // unused: rf1
 #define rfGIANT_CAUGHT_YOU rf2
@@ -504,9 +502,6 @@ RETURN:
   }
   return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "You are fortunate that you have the magic shield or this giant would cause problems for you."
 #message 2 "The giant cannot see you since you are invisible."
 #message 3 "The fairy godmother's spell is protecting you."
@@ -541,5 +536,4 @@ LOGIC__FOOTER
 #message 32 "The giant is to close for the slingshot to be effective.  I would suggest you RUN!"
 #if BUILD_TARGET == APPLE_IIGS
   #message 99 "BREAK"
-#endif
 #endif

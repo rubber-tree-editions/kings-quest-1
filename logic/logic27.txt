@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 107, 131
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -42,8 +40,4 @@ if (fGOAT_COMPANION) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "What are you doing that for?  There's nothing here."
-#endif

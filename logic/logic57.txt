@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define rfFELL_THROUGH_CLOUDS rf0
 #define rfPLAYING_SND_FALLING rf1
 
@@ -113,10 +111,6 @@ if (BUILD_TARGET == APPLE_IIGS) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "You'll have to keep yourself out of the clouds!"
 #message 2 "You are in the Land of the Clouds.  It is rumored that a giant lives up here."
 #message 3 "These are very unusual looking trees."
-#endif

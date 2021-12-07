@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 39, 96
 
 #define BX_NEAR_BOWL 116, 128, 136, 148
@@ -342,9 +340,6 @@ if (vBEANSTALK_ROOM == ROOM31_FREE_BOWL) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "This is a very colorful ceramic bowl."
 #message 2 "You pick up the ceramic bowl."
 #message 3 "It looks like an interesting, colorful bowl."
@@ -355,4 +350,3 @@ LOGIC__FOOTER
 #message 8 "There is no beanstalk here to climb."
 #message 9 "Ouch!"
 #message 10 "There appears to be some sort of bowl on the ground."
-#endif

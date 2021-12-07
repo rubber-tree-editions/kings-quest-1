@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 140, 80
 
 #define rfGOAT_IS_HERE rf0
@@ -342,9 +340,6 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "There is no reason to jump or duck here."
 #message 2 "The goat is wandering this way and that."
 #message 3 "There is no goat in the immediate area."
@@ -377,4 +372,3 @@ LOGIC__FOOTER
 #message 30 "You get no response from the goat."
 #message 31 "You see a grey billy goat inside the pen."
 #message 32 "This looks like an area in which to keep animals."
-#endif

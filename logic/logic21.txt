@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 110, 103
 
 #define PRI_WITCH 15
@@ -258,9 +256,6 @@ if (fGOAT_COMPANION) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "It's a witch swooping through the sky... She's trying to catch you!  Look out!"
 #message 2 "There is a witch in the area, but since you have that menacing goat with you, she will keep her distance."
 #message 3 "There is a witch in the area, but with the shield no harm will come to you."
@@ -280,5 +275,4 @@ LOGIC__FOOTER
 #message 17 "There is no reason to jump now."
 #if VERSION_MAJOR >= 2
   #message 18 "Oh NO!!  She's back!!!"
-#endif
 #endif

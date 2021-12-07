@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -28,8 +26,4 @@ if (posn(oEGO, 0, 0, 1, 167)) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "The further you get from the light, the darker and mustier it becomes."
-#endif

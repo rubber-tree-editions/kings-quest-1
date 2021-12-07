@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 56, 127
 
 #define rfPULLED_UNDERWATER rf0
@@ -169,9 +167,6 @@ if (fGOAT_COMPANION) {
 call(LOGIC101_SWIMMING);
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "This is a Raging River filled with boulders and rapids."
 #message 2 "You see a lovely green meadow on the other side of the river."
 #message 3 "It is a massive boulder that splits the river."
@@ -180,4 +175,3 @@ LOGIC__FOOTER
 #message 6 "You have no container for water."
 #message 7 "You are not close enough to the Raging River."
 #message 8 "Your swimming attempt proved fatal!  The raging current drags you under...."
-#endif

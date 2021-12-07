@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_DRAGON 40, 152
 
 #define BX_NEAR_MIRROR 26, 104, 59, 127
@@ -427,9 +425,6 @@ if (posn(oEGO, BX_PAST_BOULDER)) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "The ferocious fire-breathing dragon is protecting the magic mirror."
 #message 2 "There is a dead dragon, a large boulder, and a seemingly ordinary mirror in the cave."
 #message 3 "There is a large granite boulder and a magic mirror!! in the cave."
@@ -470,4 +465,3 @@ LOGIC__FOOTER
 #message 38 "You should know about these fire-breathing dragons!  Maybe next time you will be a little more careful!"
 #message 39 "Your shield melted from the intensity of the dragon's flames!  You should know about these fire-breathing dragons!  Maybe next time you will be a little more careful!"
 #message 40 "I think you found the dragon!"
-#endif

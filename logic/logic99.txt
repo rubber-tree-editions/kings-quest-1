@@ -1,8 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
-
 if (BUILD_TARGET == APPLE_IIGS) {
   vDEBUG_VAR_VALUE = vTEMP_X_2;
   vDEBUG_VAR_OR_FLAG_ID = vTEMP_Y_2;
@@ -95,7 +92,6 @@ if (vUNKNOWN_WORD_NO == 0 && fPLAYER_ENTERED_COMMAND && !fSAID_ACCEPTED_USER_INP
 }
 return;
 
-#ifndef LOGIC_AS_C
 #message 1 "new room: "
 #message 2 "x: "
 #message 3 "y: "
@@ -118,6 +114,3 @@ return;
   #message 98 "W "
   #message 99 " W"
 #endif
-#endif
-
-LOGIC__FOOTER

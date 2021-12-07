@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 96, 137
 
 #define BX_NEAR_LAKE 0, 36, 84, 167
@@ -174,9 +172,6 @@ if (BUILD_TARGET == APPLE_IIGS) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "The lake's waters pour into the bucket."
 #message 2 "The clear water quenches your thirst."
 #message 3 "You are not close enough to the lake."
@@ -188,5 +183,4 @@ LOGIC__FOOTER
 #if VERSION_MAJOR >= 2
   #message 9 "It seems the old goat has wandered off by himself and is no longer following you."
   #message 10 "A rapidly flowing stream is pouring into this lake."
-#endif
 #endif

@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 // Note: Even though this is a global script, all code that refers to oGOAT
 //   is designed to be run in a room where object 13 refers to the goat.
 // In reality, object 13 may not always be the goat (e.g. Room 76).
@@ -1667,9 +1665,6 @@ if (BUILD_TARGET != AMIGA) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "You splash around in the water for a while but seem  to have forgotten how to swim. Unfortunately, you drown."
 #message 2 "Where do you think it could be?"
 #message 3 "The goat is not much for conversation."
@@ -1842,5 +1837,4 @@ LOGIC__FOOTER
   #message 197 "You already have the beans."
   #message 198 "PQ"
   #message 199 "KQ"
-#endif
 #endif

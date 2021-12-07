@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PRI_BOWL 14
 #define PRI_EGO_WHILE_FALLING_INTO_HOLE 5
 
@@ -515,9 +513,6 @@ if (fEGO_TOUCHED_TRIGGER_LINE) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "You dare not jump here or you would go through the floor!"
 #message 2 "The cottage is run-down and sparsely furnished.  The only nice possession seems to be a fiddle in the corner."
 #message 3 "The cottage is run-down and sparsely furnished."
@@ -559,4 +554,3 @@ LOGIC__FOOTER
 #message 46 "\"Hello\""
 #message 47 "There is an empty bowl sitting on the old oak table."
 #message 48 "There is a bowl of stew sitting on the old oak table."
-#endif

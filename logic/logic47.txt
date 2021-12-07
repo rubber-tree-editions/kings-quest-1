@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 14, 144
 
 #define rfSHOW_MUSHROOM rf0
@@ -242,9 +240,6 @@ if (fGOAT_COMPANION) {
 call(LOGIC101_SWIMMING);
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "This is sad.  You are not the first to fail your quest in the Raging River... I hope you may be the last."
 #message 2 "This is the wild Raging River filled with boulders and rapids."
 #message 3 "It would be dangerous to try and jump across the river on the boulders."
@@ -264,4 +259,3 @@ LOGIC__FOOTER
 #message 18 "This lovely meadow is split by the Raging River."
 #message 19 "There is no mushroom here."
 #message 20 "You already have it."
-#endif

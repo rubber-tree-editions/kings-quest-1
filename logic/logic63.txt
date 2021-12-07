@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PRI_GOLDEN_EGG 6
 
 #define rfSHOW_GOLDEN_EGG rf0
@@ -135,9 +133,6 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "There is a rather large bird's nest here."
 #message 2 "There is a pure golden egg lying in the nest!"
 #message 3 "The nest is empty."
@@ -147,4 +142,3 @@ LOGIC__FOOTER
 #message 7 "The golden egg is so heavy you almost drop it."
 #message 8 "You can't get the egg from here!"
 #message 9 "Apparently you lost your grip while climbing this tree and you fall to the hard earth below."
-#endif

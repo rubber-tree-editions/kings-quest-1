@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define oBOULDER o1
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -81,9 +79,6 @@ if (posn(oEGO, 0, 0, 1, 167)) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "When the goat saw how dark it was in here, it decided not to stay around."
 #message 2 "It is empty except for a huge boulder opposite the opening."
 #message 3 "It is a rather large, vacant cave."
@@ -95,4 +90,3 @@ LOGIC__FOOTER
 #message 9 "It leads to another portion of the cave."
 #message 10 "It is on the far side of the cave."
 #message 11 "There is nothing of interest on top of the boulder."
-#endif

@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 27, 96
 
 #define rfPULLED_UNDERWATER rf0
@@ -166,9 +164,6 @@ if (fGOAT_COMPANION) {
 call(LOGIC101_SWIMMING);
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "You notice an enchanting meadow."
 #message 2 "The river is dangerous and powerful.  There is a delta of pebbles on its edge."
 #message 3 "Your pockets cannot hold any more pebbles."
@@ -183,5 +178,4 @@ LOGIC__FOOTER
 #message 12 "Your swimming attempt proved fatal!  The raging current drags you under... you are lost...."
 #if VERSION_MAJOR >= 2
   #message 13 "There are many smooth pebbles next to the river."
-#endif
 #endif

@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 77, 83
 
 #define BX_NEAR_HOUSE 11, 119, 45, 146
@@ -83,9 +81,6 @@ if (fGOAT_COMPANION) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "This old cottage is sagging and in great need of repair."
 #message 2 "The trees were cut from these stumps long ago."
 #message 3 "When you look in the window, you see a poor, starving woodcutter and his wife."
@@ -97,5 +92,4 @@ LOGIC__FOOTER
 #message 9 "You can't do that now."
 #if VERSION_MAJOR >= 2
   #message 10 "Perhaps you should go inside the house for a better look."
-#endif
 #endif

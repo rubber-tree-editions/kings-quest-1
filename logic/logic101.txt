@@ -2,8 +2,6 @@
 
 #define rfDROWNING f44
 
-LOGIC__HEADER
-
 if (fROOM_SCRIPT_EXECUTED) {
   load.view(93);
   if (BUILD_TARGET == APPLE_IIGS) {
@@ -195,9 +193,6 @@ if (vDROWN_GAME_OVER_COUNTDOWN == 1) {
 RETURN:
   return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "You splash around in the water for a while but seem  to have forgotten how to swim. Unfortunately, you drown."
 #if BUILD_TARGET == APPLE_IIGS
   #message 2 "Unfortunately, with the moat's population of alligators, swimming is not possible."
@@ -209,4 +204,3 @@ LOGIC__FOOTER
 #message 5 "The swift current does not allow for swimming."
 #message 6 "Thrashing around in the water has caused you to lose the magic ring and become visible again."
 #message 7 "It appears you have become normal size again."
-#endif

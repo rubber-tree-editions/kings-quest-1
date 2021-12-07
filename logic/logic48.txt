@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define BX_NEAR_HOLE 55, 105, 100, 142
 
 #define PRI_BIRD 14
@@ -184,10 +182,6 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "In the depths of the large hole you seem to sense a faint, green glow."
 #message 2 "Don't be afraid... get closer."
 #message 3 "OUCH"
-#endif

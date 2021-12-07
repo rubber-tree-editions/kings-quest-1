@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 105, 58
 
 if (fROOM_SCRIPT_EXECUTED) {
@@ -115,13 +113,9 @@ if (fGOAT_COMPANION) {
 call(LOGIC101_SWIMMING);
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "The crystal clear water fills up the bucket."
 #message 2 "It tastes very refreshing to a thirsty wanderer."
 #message 3 "The clear blue lake is surrounded by a pretty meadow."
 #if VERSION_MAJOR >= 2
   #message 4 "It seems the old goat has wandered off by himself and is no longer following you."
-#endif
 #endif

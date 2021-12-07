@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 56, 122
 
 #define BX_NEAR_CLOSED_GATE 6, 139, 55, 167
@@ -460,9 +458,6 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "There is no reason to jump or duck here."
 #message 2 "It's not nice to tease the goat.  You're not leaving without him."
 #message 3 "The gate is already open."
@@ -506,4 +501,3 @@ LOGIC__FOOTER
 #message 41 "This looks like an area in which to keep animals."
 #message 42 "You will have to move out of the way so the gate can close all the way."
 #message 43 "There is no need to close the gate now."
-#endif

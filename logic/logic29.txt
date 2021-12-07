@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 80, 66
 
 #define rfINIT_RANDOMIZER rf0
@@ -187,9 +185,6 @@ if (fGOAT_COMPANION) {
 RETURN:
   return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!"
 #message 2 "The magic shield will protect you from this dangerous  sorcerer."
 #message 3 "You're so afraid of the sorcerer that your knees are locked."
@@ -203,4 +198,3 @@ LOGIC__FOOTER
 #message 11 "This sorcerer's magic is no match for your fairy godmother's."
 #message 12 "The sorcerer sees the goat and decides to leave."
 #message 13 "Being invisible has protected you from this sorcerer."
-#endif

@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define oGOAT o13
 
 vGAME_OVER_MESSAGE_COUNTDOWN--;
@@ -114,9 +112,6 @@ if (fUNDO) {
 #endif
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "We, at Sierra, wish to thank you for playing King's Quest. We are very sorry that you did not succeed and hope you will fare better next time. Good luck."
 #if VERSION_MAJOR >= 2
   #if RUBBER_TREE
@@ -140,5 +135,4 @@ LOGIC__FOOTER
 #endif
 #if BUILD_TARGET == AMIGA
   #message 6 "        King's Quest\n             by\n      Roberta Williams\n\n    Original version by\nArthur Abraham, Chuck Tingley\n        Ken McNeill\n\n        Graphics by\n Doug McNeill, Greg Rowland\n\n      This version by\n       Sol Ackerman\n\n(C) 1986 Sierra On-Line, Inc."
-#endif
 #endif

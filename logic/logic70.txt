@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define rfFALLEN_OFF_SCREEN rf0
 #define rfFALLING_SOUND_PLAYING rf1
 
@@ -104,11 +102,7 @@ if (rfFALLEN_OFF_SCREEN || posn(oEGO, 0, 166, 159, 167)) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "If you were to jump or duck here you might fall."
 #message 2 "The beanstalk disappears up into the clouds."
 #message 3 "With a wrong move, you fall dizzyingly to the ground."
 #message 4 "The goat was quite hesitant about climbing that huge beanstalk!  You may have lost the goat."
-#endif

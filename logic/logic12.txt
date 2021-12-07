@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 107, 81
 
 #define BX_NEAR_WELL 10, 100, 75, 150
@@ -669,9 +667,6 @@ if (fGOAT_COMPANION) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "The rope is securely fastened to the well."
 #message 2 "You cut a piece of rope and it falls into the well."
 #message 3 "With the rope cut, you are able to take the bucket."
@@ -729,4 +724,3 @@ LOGIC__FOOTER
 #message 55 "There is no useful rope to get."
 #message 56 "You should be more careful the next time you try  climbing ropes."
 #message 57 "There is not enough rope left to lower."
-#endif

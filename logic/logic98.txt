@@ -1,12 +1,9 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 print.v(vERROR_CODE);
 quit(0);
 return;
 
-#ifndef LOGIC_AS_C
 #message 1 "discard.view(%v18):%m30"
 #message 2 "set.view(%v18,_):%m26"
 #message 3 "set.view(_,%v18):%m30"
@@ -39,7 +36,3 @@ return;
 #message 30 "%m29loaded.%m25"
 #message 31 "%m29set.%m25"
 #message 32 "Picture not loaded.%m25"
-#endif
-
-LOGIC__FOOTER
-

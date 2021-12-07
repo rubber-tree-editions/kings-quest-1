@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 83, 142
 
 #define rfWOLF_IS_HERE rf0
@@ -206,9 +204,6 @@ RETURN:
   }
   return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "Look out for that wolf -- he can run very fast!   Don't let him catch you!"
 #message 2 "You are very fortunate that your protective spell is still working."
 #message 3 "Fortunately, you are invisible and the wolf can't see you."
@@ -221,4 +216,3 @@ LOGIC__FOOTER
 #message 10 "There's no wolf here."
 #message 11 "Now that the goat is gone, you'll have to take care of yourself!"
 #message 12 "The wolf is in no mood for conversion."
-#endif

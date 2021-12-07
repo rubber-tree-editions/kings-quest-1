@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PRI_DOOR 9
 
 #define rfRAT_IS_HERE rf0
@@ -389,9 +387,6 @@ if (vEGO_EDGE_CODE == EDGE_RIGHT) {
 RETURN:
   return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "Being invisible won't hide you from this rat's keen sense of smell."
 #message 2 "There is no rat here."
 #message 3 "It is a big rat with dripping teeth and small, greedy eyes."
@@ -421,5 +416,4 @@ LOGIC__FOOTER
 #message 27 "You count your fingers and are relieved to see you still have all of them."
 #if BUILD_TARGET == APPLE_IIGS
   #message 99 "BREAK"
-#endif
 #endif

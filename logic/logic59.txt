@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define rfFALLEN_THROUGH_THE_CLOUDS rf0
 #define rfHIDE_EGO rf1
 
@@ -149,9 +147,6 @@ if (BUILD_TARGET == APPLE_IIGS) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "The dark cave burrows its way into a steep mountain."
 #message 2 "The mountain is too steep to climb."
 #message 3 "You are near the top of a very high mountain.  It steeply descends toward a valley floor."
@@ -159,4 +154,3 @@ LOGIC__FOOTER
 #message 5 "Oops, you've missed the edge and fallen through the  clouds."
 #message 6 "These are the most unusual looking trees."
 #message 7 "These are unusual looking flowers."
-#endif

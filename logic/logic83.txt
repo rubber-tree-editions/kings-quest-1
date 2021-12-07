@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define rfPLAYED_SND_TITLE_MUSIC rf0
 #define rfPLAYING_SND_TITLE_MUSIC rf1
 
@@ -522,9 +520,6 @@ else {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #if VERSION_MAJOR >= 2
   #message 1 "Designed and    "
   #message 2 "    Written by: "
@@ -627,5 +622,4 @@ LOGIC__FOOTER
 #endif
 #if RUBBER_TREE
   #message 49 "Undo               "
-#endif
 #endif

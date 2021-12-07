@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define PT_DEAD_GOAT 27, 127
 
 #define BX_NEAR_DOOR 90, 93, 125, 114
@@ -229,9 +227,6 @@ if (fGOAT_COMPANION) {
 }
 return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "The mountain is much too steep and rocky for you to climb."
 #message 2 "It is a huge wooden door built right into the bottom of a small mountain!  It has a large keyhole."
 #message 3 "How do you want to use the key?"
@@ -255,5 +250,4 @@ LOGIC__FOOTER
 #message 21 "The door is already closed."
 #if VERSION_MAJOR >= 2
 #message 22 "The only response you get is the echo of your pounding."
-#endif
 #endif

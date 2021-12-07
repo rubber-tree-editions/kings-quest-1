@@ -1,7 +1,5 @@
 #include "vars.txt"
 
-LOGIC__HEADER
-
 #define rfSHOW_BEANS rf0
 #define rfSHOW_KEY rf1
 #define rfGUESSING_GNOMES_NAME rf2
@@ -317,9 +315,6 @@ FINALCHECKS:
   call(LOGIC101_SWIMMING);
   return;
 
-LOGIC__FOOTER
-
-#ifndef LOGIC_AS_C
 #message 1 "You see a crotchety old gnome pacing around his lean-to."
 #message 2 "That is very close but not quite right!"
 #message 3 "You have the right idea, but your thinking is just a little bit off."
@@ -347,4 +342,3 @@ LOGIC__FOOTER
 #message 25 "You slip down the bank into the river far below.  Your cries for help are not heard."
 #message 26 "The gnome's lean-to doesn't look very sturdy."
 #message 27 "What do you think I am, a car?  This also won't get you a raise.  Nice try."
-#endif
