@@ -6,7 +6,7 @@
   "repository": "https://github.com/rubber-tree-editions/kings-quest-1",
   "author": "Duncan Cross <duncan.cross@gmail.com>",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "devDependencies": {
     "typescript": "^4.5.2"
   },
