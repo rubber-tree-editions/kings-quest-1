@@ -13,18 +13,17 @@ if (vROOM_NO == ROOM_NULL) {
     set.game.id("KQ1");
   }
   script.size(100);
-  if (BUILD_TARGET == AMIGA) {
+  #if BUILD_TARGET == AMIGA
     set(fJOYSTICK_SENSITIVITY_ENABLED);
     vJOYSTICK_SENSITIVITY = 3;
-  }
-  else if (BUILD_TARGET == APPLE_IIGS) {
+  #elif BUILD_TARGET == APPLE_IIGS
     if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
       set.game.id("PQ");
     }
     else {
       set.game.id("KQ");
     }
-  }
+  #endif
   vMAX_SCORE = 158;
   if (BUILD_TARGET == APPLE_IIGS) {
     vCYCLE_DELAY = 0;
@@ -39,65 +38,58 @@ if (vROOM_NO == ROOM_NULL) {
   else {
     if (VERSION_MAJOR >= 2) {
       set.menu("Info");
-      if (BUILD_TARGET == MACINTOSH) {
+      #if BUILD_TARGET == MACINTOSH
         set.menu.item("Help     ", cHELP);
         set.menu.item("About KQ", cABOUT);
-      }
-      else {
+      #else
         set.menu.item("About KQ", cABOUT);
         set.menu.item("Help    ", cHELP);
-      }
+      #endif
       set.menu("File");
-      if (BUILD_TARGET == APPLE_IIGS) {
+      #if BUILD_TARGET == APPLE_IIGS
         set.menu.item("Save Game      <Shift-5>", cSAVE);
         set.menu.item("Restore Game   <Shift-7>", cRESTORE);
-      }
-      else {
+      #else
         set.menu.item("Save Game      <F5>", cSAVE);
         set.menu.item("Restore Game   <F7>", cRESTORE);
-      }
+      #endif
       set.menu.item("-------------------", cNOTHING);
-      if (BUILD_TARGET == APPLE_IIGS) {
+      #if BUILD_TARGET == APPLE_IIGS
         set.menu.item("Restart Game   <Shift-9>", cRESTART);
-      }
-      else {
+      #else
         set.menu.item("Restart Game   <F9>", cRESTART);
-      }
-      if (BUILD_TARGET == MACINTOSH) {
+      #endif
+      #if BUILD_TARGET == MACINTOSH
         set.menu.item("Pause         <Esc>", cPAUSE);
-      }
+      #endif
       set.menu.item("-------------------", cNOTHING);
-      if (BUILD_TARGET == APPLE_IIGS) {
+      #if BUILD_TARGET == APPLE_IIGS
         set.menu.item("Quit        <Option-Z>", cQUIT);
-      }
-      else {
+      #else
         set.menu.item("Quit        <Alt Z>", cQUIT);
-      }
+      #endif
       set.menu("Game");
-      if (BUILD_TARGET == DOS) {
+      #if BUILD_TARGET == DOS
         set.menu.item("See Object     <F4>", cSEE_OBJECT);
         set.menu.item("Inventory     <Tab>", cINVENTORY);
-      }
-      else if (BUILD_TARGET == APPLE_IIGS) {
+      #elif BUILD_TARGET == APPLE_IIGS
         set.menu.item("See Object     <Shift-4>", cSEE_OBJECT);
         set.menu.item("Inventory     <Tab>", cINVENTORY);
-      }
-      else {
+      #else
         set.menu.item("Inventory     <Tab>", cINVENTORY);
         set.menu.item("See Object     <F4>", cSEE_OBJECT);
         set.menu.item("Toggle Sound   <F2>", cTOGGLESOUND);
-      }
-      if (BUILD_TARGET == MACINTOSH) {
+      #endif
+      #if BUILD_TARGET == MACINTOSH
         set.menu("Action");
-      }
-      else {
+      #else
         set.menu("Action ");
-      }
+      #endif
       set.menu.item("Swim  =", cSWIM);
       set.menu.item("Jump  0", cJUMP);
       set.menu.item("Duck  -", cDUCK);
       set.menu("Special");
-      if (BUILD_TARGET == DOS) {
+      #if BUILD_TARGET == DOS
         set.menu.item("Sound On/Off       <F2>", cTOGGLESOUND);
         if (vCOMPUTER_TYPE != COMPUTERTYPE_AMIGA) {
           if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST) {
@@ -111,29 +103,32 @@ if (vROOM_NO == ROOM_NULL) {
           }
         }
         set.menu.item("Pause             <Esc>", cPAUSE);
-      }
-      else {
-        if (BUILD_TARGET == MACINTOSH) {
+      #else
+        #if BUILD_TARGET == MACINTOSH
           if (vCOMPUTER_TYPE == COMPUTERTYPE_PC && vVIDEO_MODE != 3 && vVIDEO_MODE != 2) {
             set.menu.item("Toggle RGB     <Ctrl R>", cTOGGLEGFX);
           }
         }
-        else if (BUILD_TARGET == APPLE_IIGS) {
+        #elif BUILD_TARGET == APPLE_IIGS
           set.menu.item("Sound On/Off   <Shift-2>", cTOGGLESOUND);
-        }
+        #endif
         set.menu.item("Reset Joystick <Ctrl J>", cINITJOYSTICK);
-      }
-      if (BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH) {
-        if (BUILD_TARGET != MACINTOSH || vCOMPUTER_TYPE != COMPUTERTYPE_AMIGA) {
+      #endif
+      #if BUILD_TARGET == DOS
+        set.menu("Speed");
+        set.menu.item("Normal", cSPEED_NORMAL);
+        set.menu.item("Fast  ", cSPEED_FAST);
+        set.menu.item("Slow  ", cSPEED_SLOW);
+      #elif BUILD_TARGET == MACINTOSH
+        if (vCOMPUTER_TYPE != COMPUTERTYPE_AMIGA) {
           set.menu("Speed");
           set.menu.item("Normal", cSPEED_NORMAL);
           set.menu.item("Fast  ", cSPEED_FAST);
           set.menu.item("Slow  ", cSPEED_SLOW);
         }
-      }
-      else {
+      #else
         set.menu.item("Pause           <Esc>", cPAUSE);
-      }
+      #endif
       submit.menu();
     }
     new.room(ROOM83_TITLE_SCREEN);
@@ -144,9 +139,11 @@ if (vROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
 }
 if (BUILD_TARGET == DOS || BUILD_TARGET == APPLE_IIGS) {
   if (fROOM_SCRIPT_EXECUTED || fRESTORE_GAME_EXECUTED) {
-    if (BUILD_TARGET == APPLE_IIGS) if (vROOM_NO != ROOM1_CASTLE_EAST) {
-      clear.lines(24, 24, "");
-    }
+    #if BUILD_TARGET == APPLE_IIGS
+      if (vROOM_NO != ROOM1_CASTLE_EAST) {
+        clear.lines(24, 24, "");
+      }
+    #endif
     if (vROOM_NO != ROOM83_TITLE_SCREEN) {
       set(fJOYSTICK_SENSITIVITY_ENABLED);
       disable.item(cNOTHING);
@@ -287,20 +284,18 @@ if (VERSION_MAJOR >= 2) {
     menu.input();
   }
 }
-if (BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH) {
+#if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
   if (controller(cDEBUG)) {
     load.logics(LOGIC99_DEBUG);
     set(fDEBUG_MODE);
-    if (BUILD_TARGET == DOS) {
+    #if BUILD_TARGET == DOS
       print("VERSION 2.0F");
-    }
-    else {
+    #else
       print("VERSION 2.0C");
-    }
+    #endif
     version();
   }
-}
-else if (BUILD_TARGET == APPLE_IIGS) {
+#elif BUILD_TARGET == APPLE_IIGS
   if (controller(cDEBUG)) {
     if (fDEBUG_MODE) {
       clear.lines(24, 24, "");
@@ -309,7 +304,7 @@ else if (BUILD_TARGET == APPLE_IIGS) {
     print("  King's Quest \n\nApple IIgs Version \n\n    1.0S-88223 \n");
     version();
   }
-}
+#endif
 // using #if because "kqdbg" is not in other dictionaries
 #if BUILD_TARGET == APPLE_IIGS
   if (said("kqdbg")) {
@@ -394,12 +389,11 @@ if (VERSION_MAJOR >= 2) {
     reset(fSTATUS_TO_SELECT_ITEMS);
   }
   if (controller(cABOUT)) {
-    if (BUILD_TARGET == APPLE_IIGS) {
+    #if BUILD_TARGET == APPLE_IIGS
       print("   King's Quest\n\nby Roberta Williams.\n");
-    }
-    else {
+    #else
       print("King's Quest was designed by Roberta Williams.");
-    }
+    #endif
   }
   if (
     #if BUILD_TARGET == APPLE_IIGS
@@ -434,25 +428,27 @@ if (controller(cINITJOYSTICK)) {
 if (controller(cCLEARINPUT)) {
   cancel.line();
 }
-if (BUILD_TARGET == AMIGA && controller(cABOUT)) {
-  print(
-    "        King's Quest" "\n"
-    "             by" "\n"
-    "      Roberta Williams" "\n"
-    "" "\n"
-    "    Original version by" "\n"
-    "Arthur Abraham, Chuck Tingley" "\n"
-    "        Ken McNeill" "\n"
-    "" "\n"
-    "        Graphics by" "\n"
-    " Doug McNeill, Greg Rowland" "\n"
-    "" "\n"
-    "      This version by" "\n"
-    "       Sol Ackerman" "\n"
-    "" "\n"
-    "(C) 1986 Sierra On-Line, Inc."
-  );
-}
+#if BUILD_TARGET == AMIGA
+  if (controller(cABOUT)) {
+    print(
+      "        King's Quest" "\n"
+      "             by" "\n"
+      "      Roberta Williams" "\n"
+      "" "\n"
+      "    Original version by" "\n"
+      "Arthur Abraham, Chuck Tingley" "\n"
+      "        Ken McNeill" "\n"
+      "" "\n"
+      "        Graphics by" "\n"
+      " Doug McNeill, Greg Rowland" "\n"
+      "" "\n"
+      "      This version by" "\n"
+      "       Sol Ackerman" "\n"
+      "" "\n"
+      "(C) 1986 Sierra On-Line, Inc."
+    );
+  }
+#endif
 if (BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH) {
   if (fGAME_OVER) {
     if (!fGAME_OVER_PREPARATION) {
@@ -1198,11 +1194,11 @@ if (vINVISIBLE_COUNTDOWN_LO == 1 && vINVISIBLE_COUNTDOWN_HI == 0) {
   }
 }
 if (fCARRYING_MAGIC_BEANS) {
-  if (BUILD_TARGET == APPLE_IIGS) {
+  #if BUILD_TARGET == APPLE_IIGS
     if (said("take", "magic beans")) {
       print("You already have the beans.");
     }
-  }
+  #endif
   if (said("examine", "magic beans")) {
     show.obj(INV_MAGIC_BEANS);
   }

@@ -1,6 +1,6 @@
 #include "vars.txt"
 
-if (BUILD_TARGET == APPLE_IIGS) {
+#if BUILD_TARGET == APPLE_IIGS
   vDEBUG_VAR_VALUE = vTEMP_X_2;
   vDEBUG_VAR_OR_FLAG_ID = vTEMP_Y_2;
   display(24, 16, "%v72|3/%v73|3");
@@ -14,11 +14,12 @@ if (BUILD_TARGET == APPLE_IIGS) {
   if (controller(cSHOWMEM)) {
     show.mem();
   }
-}
-else if (said("quit")) {
-  stop.sound();
-  quit(0);
-}
+#else
+  if (said("quit")) {
+    stop.sound();
+    quit(0);
+  }
+#endif
 if (said("tp")) {
   get.num("new room: ", vTEMP_INPUT_NUM1);
   new.room.v(vTEMP_INPUT_NUM1);

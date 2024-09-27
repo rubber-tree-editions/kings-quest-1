@@ -53,7 +53,7 @@ if (VERSION_MAJOR < 2) {
     status();
   }
 }
-if (BUILD_TARGET == AMIGA) {
+#if BUILD_TARGET == AMIGA
   if (controller(cHELP)) {
     call(LOGIC92_HELP);
   }
@@ -72,7 +72,7 @@ if (BUILD_TARGET == AMIGA) {
   if (controller(cPAUSE)) {
     pause();
   }
-}
+#endif
 if (!fSAID_ACCEPTED_USER_INPUT) {
   if (said("anyword", "anyword") || said("anyword") || said("anyword", "anyword", "anyword")) {
     stop.sound();

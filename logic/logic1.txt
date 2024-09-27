@@ -38,10 +38,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
-  if (BUILD_TARGET == APPLE_IIGS) {
+  #if BUILD_TARGET == APPLE_IIGS
     clear.lines(22, 24, "");
     load.sound(SND_EATEN_BY_GATORS);
-  }
+  #endif
   load.logics(LOGIC101_SWIMMING);
   set.horizon(50);
   if (fGOAT_COMPANION) {

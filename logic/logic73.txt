@@ -129,12 +129,11 @@ if (rfEGO_FINISHED_ANIMATING) {
   }
   if (rfBECAME_FULL_SIZE_DURING_FALL) {
     reset(rfBECAME_FULL_SIZE_DURING_FALL);
-    if (BUILD_TARGET == APPLE_IIGS) {
+    #if BUILD_TARGET == APPLE_IIGS
       print("When you fell through the hole, you felt a stretching sensation and are back to your normal size.");
-    }
-    else {
+    #else
       print("When you fell through the hole, you felt a streching sensation and are back to your normal size.");
-    }
+    #endif
   }
 }
 rvCOUNTDOWN--;

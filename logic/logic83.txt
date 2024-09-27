@@ -30,7 +30,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     rvBUSY_COUNTDOWN = 11;
   }
   set(fSOUND_ENABLED);
-  if (BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH) {
+  #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
     if (vVIDEO_MODE == 2) {
       display(24, 1, "(c) copyright SIERRA On-Line Inc.  1987");
     }
@@ -38,15 +38,13 @@ if (fROOM_SCRIPT_EXECUTED) {
       display(22, 1, "(c) copyright SIERRA On-Line Inc.  1987");
       display(24, 5, "Press any key to continue.");
     }
-  }
-  else if (BUILD_TARGET == APPLE_IIGS) {
+  #elif BUILD_TARGET == APPLE_IIGS
     display(22, 1, "(C) Copyright 1987 Sierra On-Line Inc.");
     display(24, 5, "Press any key to continue.");
-  }
-  else {
+  #else
     display(22, 1, m19);
     display(24, 5, "Press any key to continue.");
-  }
+  #endif
   if (BUILD_TARGET == APPLE_IIGS) {
     if (vCOMPUTER_TYPE == COMPUTERTYPE_PC) {
       set.key(KEY_ESC, 0, cSHOW_MENU);
@@ -115,7 +113,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.key(1, 2, cSWIM);
     set.key(1, 4, cINVENTORY);
   }
-  if (BUILD_TARGET == AMIGA) {
+  #if BUILD_TARGET == AMIGA
     set.menu("Info");
     set.menu.item("About King's Quest", cABOUT);
     set.menu.item("Help              ", cHELP);
@@ -136,7 +134,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.menu.item("Duck    -", cDUCK);
     set.menu("Sound");
     set.menu.item("Toggle Sound   <F2>", cTOGGLESOUND);
-  }
+  #endif
   show.pic();
 }
 if (!rfPLAYING_SND_TITLE_MUSIC) {
@@ -144,7 +142,7 @@ if (!rfPLAYING_SND_TITLE_MUSIC) {
   sound(SND_TITLE_MUSIC, rfPLAYED_SND_TITLE_MUSIC);
 }
 rvCOUNTDOWN--;
-if (VERSION_MAJOR >= 2) {
+#if VERSION_MAJOR >= 2
   if (BUILD_TARGET == APPLE_IIGS && rfPLAYED_SND_TITLE_MUSIC) {
     goto(JUMP);
   }
@@ -180,7 +178,7 @@ if (VERSION_MAJOR >= 2) {
       rvROW_COUNT++;
     }
   }
-  if (BUILD_TARGET == APPLE_IIGS) {
+  #if BUILD_TARGET == APPLE_IIGS
     if (rvCOUNTDOWN == 40) {
       rvCOUNTDOWN = 250;
       rvNEXT_MSG_AT = 245;
@@ -188,18 +186,16 @@ if (VERSION_MAJOR >= 2) {
       rvROW_COUNT = 1;
       rvMSG_Y = 12;
     }
-  }
-  else {
+  #else
     if (rvCOUNTDOWN == 135) {
       rvNEXT_MSG_AT = 255;
       if (vVIDEO_MODE == 2) {
-        clear.lines(24, 24, "");
+        clear.lines(24, 24, m0);
         display(24, 5, "Press any key to continue.");
       }
     }
-  }
-}
-else {
+  #endif
+#else
   if (rvCOUNTDOWN == 245) {
     display(18, 12, "Designed and    ");
   }
@@ -467,9 +463,9 @@ else {
     display(17, 12, "   Robert Heitman");
     display(18, 12, "    Scott Murphy ");
   }
-}
+#endif
 JUMP:
-if (BUILD_TARGET == APPLE_IIGS) {
+#if BUILD_TARGET == APPLE_IIGS
   if (have.key() || rfPLAYED_SND_TITLE_MUSIC) {
     stop.sound();
     rvCOUNTDOWN = 0;
@@ -487,12 +483,11 @@ if (BUILD_TARGET == APPLE_IIGS) {
     vTEMP_RESULT = 97;
     load.pic(vTEMP_RESULT);
     draw.pic(vTEMP_RESULT);
-    clear.lines(22, 24, "");
+    clear.lines(22, 24, m0);
     show.pic();
     new.room(ROOM1_CASTLE_EAST);
   }
-}
-else {
+#else
   if (have.key()) {
     #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
     if (vVIDEO_MODE != 2)
@@ -517,7 +512,7 @@ else {
     }
     new.room(ROOM1_CASTLE_EAST);
   }
-}
+#endif
 return;
 
 #if VERSION_MAJOR >= 2

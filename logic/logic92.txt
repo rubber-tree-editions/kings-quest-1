@@ -5,7 +5,7 @@ status.line.off();
 text.screen();
 vKEY_PRESSED = 0;
 reset(fSAID_ACCEPTED_USER_INPUT);
-if (BUILD_TARGET == AMIGA) {
+#if BUILD_TARGET == AMIGA
   display(2, 1, m1);
   display(3, 1, m2);
   if (vCOMPUTER_TYPE == COMPUTERTYPE_ATARI_ST || vCOMPUTER_TYPE == COMPUTERTYPE_AMIGA) {
@@ -36,8 +36,7 @@ if (BUILD_TARGET == AMIGA) {
   display(20, 1, "0 for jumping");
   display(21, 1, "- for ducking");
   display(22, 1, "= for swimming");
-}
-else {
+#else
   display(1, 1, m1);
   display(2, 1, m2);
   if (BUILD_TARGET == APPLE_IIGS) {
@@ -115,7 +114,7 @@ else {
       display(15, 1, m16);
     }
   }
-}
+#endif
 while (!have.key()) { }
 accept.input();
 status.line.on();
