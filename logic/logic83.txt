@@ -615,6 +615,6 @@ return;
     #message 48 "Duck    -"
   #endif
 #endif
-#if RUBBER_TREE
+#if RUBBER_TREE && BUILD_TARGET == AMIGA
   #message 49 "Undo               "
 #endif
