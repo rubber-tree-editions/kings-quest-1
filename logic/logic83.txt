@@ -2,6 +2,10 @@
 
 #define rfPLAYED_SND_TITLE_MUSIC rf0
 #define rfPLAYING_SND_TITLE_MUSIC rf1
+#if RUBBER_TREE
+  #define rfSHOWED_RUBBER_TREE_MESSAGE rf2
+  #define rfRUBBER_TREE_MESSAGE_SKIPPED rf3
+#endif
 
 #define rvCOUNTDOWN rv0
 #define rvNEXT_MSG_AT rv1
@@ -14,6 +18,38 @@
 #define rvBUSY_COUNTDOWN rv8
 
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+  if (!rfSHOWED_RUBBER_TREE_MESSAGE) {
+    set.text.attribute(2, 0);
+    text.screen();
+    display( 1, 0, "  Let it be Known that this Edition of");
+
+    display( 3, 0, "           \"KING'S QUEST\"");
+
+    display( 5, 0, "    is an Unsanctioned MODIFICATION,");
+    display( 6, 0, "              concocted by");
+
+    display( 8, 0, "     THE ORDER OF THE RUBBER TREE");
+
+    display(10, 0, " Disciples of this shadowy Sect believe");
+    display(11, 0, "  they can overrule Death itself with");
+    display(12, 0, "    the arcane incantation \"UNDO\";");
+    display(13, 0, "  Moreover, their Agents do Conspire");
+    display(14, 0, "   to prevent UNWINNABLE SITUATIONS.");
+
+    display(16, 0, "        Those who Abide by this");
+    display(17, 0, "         Sacrilegious \"NERFING\"");
+    display(18, 0, "           do so at the Risk");
+    display(19, 0, "          to their very Souls.");
+
+    display(22, 0, " \[Rubber Tree Edition v1.0 2024/09/30]");
+    while (!have.key()) { }
+    graphics();
+    set.text.attribute(15, 0);
+    set(rfSHOWED_RUBBER_TREE_MESSAGE);
+  }
+  #endif
+
   load.pic(vROOM_NO);
   load.sound(SND_TITLE_MUSIC);
   configure.screen(0, 21, 0);
@@ -488,6 +524,12 @@ JUMP:
     new.room(ROOM1_CASTLE_EAST);
   }
 #else
+  #if RUBBER_TREE
+  if (!rfRUBBER_TREE_MESSAGE_SKIPPED) {
+    if (!have.key()) set(rfRUBBER_TREE_MESSAGE_SKIPPED);
+  }
+  else
+  #endif
   if (have.key()) {
     #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
     if (vVIDEO_MODE != 2)
