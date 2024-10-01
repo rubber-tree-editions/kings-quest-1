@@ -41,6 +41,7 @@ if (fUNDO && fFALLING) {
   reset(fSCRIPTED_MOTION);
   reset(rfFELL_THROUGH_FLOOR);
   stop.sound();
+  player.control();
   if (fGAME_OVER) {
     reset(fGAME_OVER);
     return;
