@@ -31,7 +31,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 
     display( 8, 0, "     THE ORDER OF THE RUBBER TREE");
 
-    display(10, 0, " Disciples of this shadowy Sect believe");
+    display(10, 0, " Acolytes of this elusive Sect believe");
     display(11, 0, "  they can overrule Death itself with");
     display(12, 0, "    the arcane incantation \"UNDO\";");
     display(13, 0, "  Moreover, their Agents do Conspire");
