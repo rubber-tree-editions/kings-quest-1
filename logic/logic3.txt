@@ -36,6 +36,7 @@ if (fGAME_OVER) {
     release.priority(oROCK);
     position.v(oROCK, rvRESTORE_ROCK_X, rvRESTORE_ROCK_Y);
     draw(oROCK);
+    stop.motion(oROCK);
 
     erase(oEGO);
     position.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
