@@ -41,7 +41,7 @@ if (fGAME_OVER) {
     erase(oEGO);
     position.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
     set.view(oEGO, 0);
-    set.dir(oEGO, rvRESTORE_EGO_DIR);
+    set.loop(oEGO, 3);
     draw(oEGO);
 
     reset(fUNDO);
