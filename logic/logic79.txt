@@ -21,6 +21,7 @@
 #if RUBBER_TREE
 #define rvRESTORE_EGO_X rv1
 #define rvRESTORE_EGO_Y rv2
+#define rvRESTORE_EGO_DIR rv3
 #endif
 
 #define oBOWL o1
@@ -31,10 +32,34 @@
 #if RUBBER_TREE
 if (fUNDO && fFALLING) {
   erase(oEGO);
+  if (rvRESTORE_EGO_DIR == DIR_NORTH || rvRESTORE_EGO_DIR == DIR_NORTHEAST || rvRESTORE_EGO_DIR == DIR_NORTHWEST) {
+    rvRESTORE_EGO_Y += 8;
+  }
+  else if (rvRESTORE_EGO_DIR == DIR_SOUTH || rvRESTORE_EGO_DIR == DIR_SOUTHEAST || rvRESTORE_EGO_DIR == DIR_SOUTHWEST) {
+    rvRESTORE_EGO_Y -= 3;
+  }
+  if (rvRESTORE_EGO_DIR == DIR_EAST || rvRESTORE_EGO_DIR == DIR_NORTHEAST || rvRESTORE_EGO_DIR == DIR_SOUTHEAST) {
+    rvRESTORE_EGO_X -= 3;
+  }
+  else if (rvRESTORE_EGO_DIR == DIR_WEST || rvRESTORE_EGO_DIR == DIR_NORTHWEST || rvRESTORE_EGO_DIR == DIR_SOUTHWEST) {
+    rvRESTORE_EGO_X += 3;
+  }
   reposition.to.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
   object.on.land(oEGO);
   release.priority(oEGO);
   observe.blocks(oEGO);
+  if (rvRESTORE_EGO_DIR == DIR_SOUTH) {
+    set.loop(oEGO, 2);
+  }
+  else if (rvRESTORE_EGO_DIR == DIR_NORTH) {
+    set.loop(oEGO, 3);
+  }
+  else if (rvRESTORE_EGO_DIR == DIR_EAST || rvRESTORE_EGO_DIR == DIR_NORTHEAST || rvRESTORE_EGO_DIR == DIR_SOUTHEAST) {
+    set.loop(oEGO, 0);
+  }
+  else {
+    set.loop(oEGO, 1);
+  }
   draw(oEGO);
   reset(fUNDO);
   reset(fFALLING);
@@ -485,6 +510,7 @@ if (!fFIDDLE_TAKEN) {
 if (fEGO_ON_WATER && !fFALLING) {
   #if RUBBER_TREE
     get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+    rvRESTORE_EGO_DIR = vEGO_DIR;
   #endif
   if (BUILD_TARGET == APPLE_IIGS) {
     set(fEGO_PREOCCUPIED);
