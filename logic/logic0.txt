@@ -366,6 +366,11 @@ if (VERSION_MAJOR >= 2) {
   if (controller(cINVENTORY)) {
     status();
   }
+  #if RUBBER_TREE
+    if (said("undo") || controller(cUNDO)) {
+      set(fUNDO);
+    }
+  #endif
   if (controller(cSEE_OBJECT)) {
     set(fSTATUS_TO_SELECT_ITEMS);
     status();
@@ -1654,6 +1659,12 @@ if (BUILD_TARGET == APPLE_IIGS) {
   }
 }
 call.v(vROOM_NO);
+#if RUBBER_TREE
+  if (fUNDO) {
+    print("Sorry! UNDO is not available here.");
+    reset(fUNDO);
+  }
+#endif
 call(LOGIC102_DEFAULT_RESPONSES);
 if (BUILD_TARGET != AMIGA) {
   get.posn(oEGO, vSAVED_EGO_X, vSAVED_EGO_Y);
