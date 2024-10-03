@@ -19,12 +19,31 @@
 
 #define rvCOUNTDOWN rv4
 #define rvGATOR_SOUND_COUNTDOWN rv5
+#if RUBBER_TREE
+  #define rvLAST_SAFE_X vRESTORE_X
+  #define rvLAST_SAFE_Y vRESTORE_Y
+  #define rvLAST_LOOP vTEMP_LOOP
+  #define rvLAST_CEL vTEMP_CEL
+  #define rvLAST_GATOR1_X vRESTORE_X_2
+  #define rvLAST_GATOR1_Y vRESTORE_Y_2
+  #define rvLAST_GATOR2_X vRESTORE_X_3
+  #define rvLAST_GATOR2_Y vRESTORE_Y_3
+  #define rvLAST_GATOR1_LOOP vTEMP_LOOP_2
+  #define rvLAST_GATOR1_CEL vTEMP_CEL_2
+  #define rvLAST_GATOR2_LOOP vTEMP_LOOP_3
+  #define rvLAST_GATOR2_CEL vTEMP_CEL_3
+#endif
 
 #define oBANNERS o1
 #define oGATOR1 o11
 #define oGATOR2 o12
 
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+    get.posn(oEGO, rvLAST_SAFE_X, rvLAST_SAFE_Y);
+    current.loop(oEGO, rvLAST_LOOP);
+    current.cel(oEGO, rvLAST_CEL);
+  #endif
   if (BUILD_TARGET == ATARI_ST) {
     set(fJOYSTICK_SENSITIVITY_ENABLED);
     vJOYSTICK_SENSITIVITY = 3;
@@ -195,6 +214,15 @@ if (fEGO_ON_WATER) {
   }
 }
 if (fEGO_ON_WATER && !rfINIT_GATOR_DEATH) {
+  #if RUBBER_TREE
+    vRESTORE_DIR = vEGO_DIR;
+    get.posn(oGATOR1, rvLAST_GATOR1_X, rvLAST_GATOR1_Y);
+    get.posn(oGATOR2, rvLAST_GATOR2_X, rvLAST_GATOR2_Y);
+    current.loop(oGATOR1, rvLAST_GATOR1_LOOP);
+    current.cel(oGATOR1, rvLAST_GATOR1_CEL);
+    current.loop(oGATOR1, rvLAST_GATOR2_LOOP);
+    current.cel(oGATOR1, rvLAST_GATOR2_CEL);
+  #endif
   program.control();
   stop.motion(oEGO);
   follow.ego(oGATOR1, GATOR_REACH_DISTANCE, rfGATOR1_CAUGHT_YOU);
@@ -264,6 +292,94 @@ if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
 call(LOGIC101_SWIMMING);
+#if RUBBER_TREE
+  if (fEGO_ON_WATER || rfEATEN_BY_GATORS || rfINIT_GATOR_DEATH) {
+    if (fUNDO) {
+      stop.sound();
+      vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
+      vDROWN_GAME_OVER_COUNTDOWN = 0;
+      reset(fEGO_PREOCCUPIED);
+      reset(fSWIMMING);
+      reset(fCYCLE_EGO_ANIMATION);
+      erase(oEGO);
+      object.on.anything(oEGO);
+      if (vRESTORE_DIR == DIR_NORTH || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_NORTHWEST) {
+        rvLAST_SAFE_Y += 8;
+      }
+      else if (vRESTORE_DIR == DIR_SOUTH || vRESTORE_DIR == DIR_SOUTHEAST || vRESTORE_DIR == DIR_SOUTHWEST) {
+        rvLAST_SAFE_Y -= 3;
+      }
+      if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+        rvLAST_SAFE_X -= 8;
+      }
+      else if (vRESTORE_DIR == DIR_WEST || vRESTORE_DIR == DIR_NORTHWEST || vRESTORE_DIR == DIR_SOUTHWEST) {
+        rvLAST_SAFE_X += 8;
+      }
+      if (rvLAST_SAFE_X < 105 && rvLAST_SAFE_Y <= 142) {
+        if (vRESTORE_DIR == DIR_NORTH || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_NORTHWEST) {
+          rvLAST_SAFE_Y = 143;
+        }
+      }
+      if (rvLAST_SAFE_Y >= 157) {
+        vRESTORE_DIR = DIR_SOUTH;
+        if (rvLAST_SAFE_X >= 110 && rvLAST_SAFE_X <= 140) {
+          rvLAST_SAFE_Y = 138;
+        }
+        else {
+          rvLAST_SAFE_Y = 140;
+        }
+      }
+      if (rvLAST_SAFE_X >= 148) {
+        rvLAST_SAFE_Y = 150;
+      }
+      position.v(oEGO, rvLAST_SAFE_X, rvLAST_SAFE_Y);
+      reposition.to.v(oGATOR1, rvLAST_GATOR1_X, rvLAST_GATOR1_Y);
+      reposition.to.v(oGATOR2, rvLAST_GATOR2_X, rvLAST_GATOR2_Y);
+      object.on.land(oEGO);
+      reset(fUNDO);
+      reset(fEGO_ON_WATER);
+      reset(fMANUAL_EGO_WATER_POS);
+      reset(rfINIT_GATOR_DEATH);
+      reset(rfGATOR1_CAUGHT_YOU);
+      reset(rfGATOR2_CAUGHT_YOU);
+      reset(rfEATEN_BY_GATORS);
+      reset(fEGO_TOUCHED_TRIGGER_LINE);
+      reset(fGAME_OVER);
+      reset(fGAME_OVER_PREPARATION);
+      wander(oGATOR1);
+      wander(oGATOR2);
+      observe.objs(oEGO);
+      set.view(oEGO, 0);
+      if (vRESTORE_DIR == DIR_SOUTH) {
+        set.loop(oEGO, 2);
+      }
+      else if (vRESTORE_DIR == DIR_NORTH) {
+        set.loop(oEGO, 3);
+      }
+      else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+        set.loop(oEGO, 0);
+      }
+      else {
+        set.loop(oEGO, 1);
+      }
+      set.cel.v(oEGO, 0);
+      set.loop.v(oGATOR1, rvLAST_GATOR1_LOOP);
+      set.cel.v(oGATOR1, rvLAST_GATOR1_CEL);
+      set.loop.v(oGATOR2, rvLAST_GATOR1_LOOP);
+      set.cel.v(oGATOR2, rvLAST_GATOR1_CEL);
+      release.priority(oEGO);
+      draw(oEGO);
+      draw(oGATOR1);
+      draw(oGATOR2);
+      player.control();
+    }
+  }
+  else {
+    get.posn(oEGO, rvLAST_SAFE_X, rvLAST_SAFE_Y);
+    current.loop(oEGO, rvLAST_LOOP);
+    current.cel(oEGO, rvLAST_CEL);
+  }
+#endif
 return;
 
 #message 1 "Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go."

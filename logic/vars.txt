@@ -170,6 +170,22 @@
 #define vRANDOM_TREE_MESSAGE v112
 #define vRANDOM_ROCK_MESSAGE v113
 
+#ifdef RUBBER_TREE
+  #define vTEMP_LOOP v150
+  #define vTEMP_CEL v151
+  #define vTEMP_LOOP_2 v152
+  #define vTEMP_CEL_2 v153
+  #define vTEMP_LOOP_3 v154
+  #define vTEMP_CEL_3 v155
+  #define vRESTORE_X v156
+  #define vRESTORE_Y v157
+  #define vRESTORE_X_2 v158
+  #define vRESTORE_Y_2 v159
+  #define vRESTORE_X_3 v160
+  #define vRESTORE_Y_3 v161
+  #define vRESTORE_DIR v162
+#endif
+
 // built-in flags
 #define fEGO_ON_WATER f0
 #define fEGO_OBSCURED f1
