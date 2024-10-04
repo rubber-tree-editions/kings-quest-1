@@ -7,6 +7,66 @@
 
 #define oPEBBLES o1
 
+#if RUBBER_TREE
+if (fUNDO) {
+  if (fEGO_ON_WATER || rfPULLED_UNDERWATER || fGAME_OVER) {
+    stop.sound();
+    erase(oEGO);
+    reset(fUNDO);
+    reset(fEGO_PREOCCUPIED);
+    reset(rfPULLED_UNDERWATER);
+    reset(f44);
+    object.on.anything(oEGO);
+    vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
+    if (vRESTORE_DIR == DIR_NORTH || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_NORTHWEST) {
+      vRESTORE_Y += 3;
+    }
+    else if (vRESTORE_DIR == DIR_SOUTH || vRESTORE_DIR == DIR_SOUTHEAST || vRESTORE_DIR == DIR_SOUTHWEST) {
+      vRESTORE_Y -= 3;
+    }
+    if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+      vRESTORE_X -= 3;
+    }
+    else if (vRESTORE_DIR == DIR_WEST || vRESTORE_DIR == DIR_NORTHWEST || vRESTORE_DIR == DIR_SOUTHWEST) {
+      vRESTORE_X += 3;
+    }
+    if (vRESTORE_X > 105 && vRESTORE_Y < 90) {
+      if (vRESTORE_Y > 63) {
+        vRESTORE_Y = 63;
+        if (vRESTORE_X < 130) {
+          vRESTORE_X = 130;
+        }
+      }
+    }
+    reposition.to.v(oEGO, vRESTORE_X, vRESTORE_Y);
+    object.on.land(oEGO);
+    reset(fEGO_ON_WATER);
+    reset(fCYCLE_EGO_ANIMATION);
+    set.view(oEGO, 0);
+    if (vRESTORE_DIR == DIR_SOUTH) {
+      set.loop(oEGO, 2);
+    }
+    else if (vRESTORE_DIR == DIR_NORTH) {
+      set.loop(oEGO, 3);
+    }
+    else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+      set.loop(oEGO, 0);
+    }
+    else {
+      set.loop(oEGO, 1);
+    }
+    vDROWN_GAME_OVER_COUNTDOWN = 0;
+    draw(oEGO);
+    player.control();
+
+    if (fGAME_OVER) {
+      reset(fGAME_OVER);
+      //return;
+    }
+  }
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -161,6 +221,12 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
+#if RUBBER_TREE
+if (!fEGO_ON_WATER) {
+  get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+  vRESTORE_DIR = vEGO_DIR;
+}
+#endif
 call(LOGIC101_SWIMMING);
 return;
 
