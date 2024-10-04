@@ -4,6 +4,73 @@
 
 #define rfPULLED_UNDERWATER rf0
 
+#define rfDROWNING f44
+
+#if RUBBER_TREE
+#define rfRESTORE_SWIMMING rf1
+#endif
+
+#if RUBBER_TREE
+if (fUNDO) {
+  if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING || fSWIMMING_IMPOSSIBLE_HERE || rfPULLED_UNDERWATER) {
+    stop.sound();
+    erase(oEGO);
+    reset(fUNDO);
+    reset(fSWIMMING_IMPOSSIBLE_HERE);
+    reset(rfPULLED_UNDERWATER);
+    reset(fEGO_PREOCCUPIED);
+    reset(rfDROWNING);
+    reset(fGAME_OVER);
+    object.on.anything(oEGO);
+    if (vRESTORE_DIR == DIR_NORTH || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_NORTHWEST) {
+      vRESTORE_Y += 3;
+    }
+    else if (vRESTORE_DIR == DIR_SOUTH || vRESTORE_DIR == DIR_SOUTHEAST || vRESTORE_DIR == DIR_SOUTHWEST) {
+      vRESTORE_Y -= 3;
+    }
+    if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+      vRESTORE_X -= 3;
+    }
+    else if (vRESTORE_DIR == DIR_WEST || vRESTORE_DIR == DIR_NORTHWEST || vRESTORE_DIR == DIR_SOUTHWEST) {
+      vRESTORE_X += 3;
+    }
+    reposition.to.v(oEGO, vRESTORE_X, vRESTORE_Y);
+    start.motion(oEGO);
+    if (rfRESTORE_SWIMMING) {
+      object.on.water(oEGO);
+      vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
+      set(fSWIMMING);
+      set.view(oEGO, 70);
+      set(fCYCLE_EGO_ANIMATION);
+    }
+    else {
+      object.on.land(oEGO);
+      vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
+      reset(fEGO_ON_WATER);
+      reset(fSWIMMING);
+      set.view(oEGO, 0);
+      reset(fCYCLE_EGO_ANIMATION);
+    }
+    if (vRESTORE_DIR == DIR_SOUTH) {
+      set.loop(oEGO, 2);
+    }
+    else if (vRESTORE_DIR == DIR_NORTH) {
+      set.loop(oEGO, 3);
+    }
+    else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+      set.loop(oEGO, 0);
+    }
+    else {
+      set.loop(oEGO, 1);
+    }
+    vDROWN_GAME_OVER_COUNTDOWN = 0;
+    draw(oEGO);
+    player.control();
+  }
+  return;
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -153,6 +220,18 @@ if (vEGO_EDGE_CODE == EDGE_BOTTOM) {
 if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
+#if RUBBER_TREE
+  if (!fEGO_ON_WATER || vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING) {
+    get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+    vRESTORE_DIR = vEGO_DIR;
+    if (fEGO_ON_WATER) {
+      set(rfRESTORE_SWIMMING);
+    }
+    else {
+      reset(rfRESTORE_SWIMMING);
+    }
+  }
+#endif
 call(LOGIC101_SWIMMING);
 if (BUILD_TARGET == APPLE_IIGS) {
   if (posn(oEGO, 76, 49, 154, 167)) {
