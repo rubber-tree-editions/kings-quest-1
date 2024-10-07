@@ -12,6 +12,11 @@
 #define oGOLD_KEY o3
 
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+  if (vTAKEN_GNOME_GIFT == GNOMEGIFT_BEANS && vBEANSTALK_ROOM == 0 && !fCARRYING_MAGIC_BEANS) {
+    vTAKEN_GNOME_GIFT = GNOMEGIFT_BEANS_REPLENISHED;
+  }
+  #endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
@@ -221,6 +226,11 @@ if (!rfGNOME_IS_HERE) {
           sound(SND_POINTS, fMISC_END_MARKER);
         }
         print("Being careful that you get every one of them, you place the beans in your pocket.");
+        #if RUBBER_TREE
+          if (vTAKEN_GNOME_GIFT == GNOMEGIFT_BEANS_REPLENISHED) {
+            print("A small card reads:[[ c/o:[      The Order of[    the Rubber Tree[[      Crucial Item[ Replenishment Service ");
+          }
+        #endif
         reset(rfSHOW_BEANS);
         start.update(oMAGIC_BEANS);
         erase(oMAGIC_BEANS);
