@@ -16,6 +16,52 @@
 
 #define oOGRE o1
 
+#if RUBBER_TREE
+if (fUNDO) {
+  if (rfOGRE_IS_HERE && !rfPROTECTED) {
+    reset(fUNDO);
+    erase(oEGO);
+    stop.sound();
+    reset(rfOGRE_IS_HERE);
+    erase(oOGRE);
+    stop.motion(oOGRE);
+    set.view(oOGRE, 2);
+    start.cycling(oOGRE);
+    vTEMP_RESULT_2 = 90;
+    reset(rfNO_ESCAPE);
+    reset(f135_UNKNOWN);
+    reset(fSOUND_END_MARKER);
+    reset(fVILLAIN_GOT_YOU);
+
+    reposition.to.v(oEGO, vRESTORE_X, vRESTORE_Y);
+    reset(fCYCLE_EGO_ANIMATION);
+    stop.cycling(oEGO);
+
+    set.view(oEGO, 0);
+    if (vRESTORE_DIR == DIR_SOUTH) {
+      set.loop(oEGO, 2);
+    }
+    else if (vRESTORE_DIR == DIR_NORTH) {
+      set.loop(oEGO, 3);
+    }
+    else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+      set.loop(oEGO, 0);
+    }
+    else {
+      set.loop(oEGO, 1);
+    }
+    
+    draw(oEGO);
+    player.control();
+    vEGO_DIR = vRESTORE_DIR;
+    if (fGAME_OVER) {
+      reset(fGAME_OVER);
+      return;
+    }
+  }
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -30,6 +76,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vROOM_YOU_KILLED_THE_GOAT_IN == vROOM_NO) {
     add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
+  #if RUBBER_TREE
+    get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+    vRESTORE_DIR = vEGO_DIR;
+  #endif
   set.horizon(42);
   random(0, 250, vTEMP_RESULT);
   if (vTEMP_RESULT < 175) {
