@@ -14,6 +14,44 @@
   #define rfDEAD rf1
 #endif
 
+#if RUBBER_TREE
+if (fUNDO) {
+  if (rfDEAD || rfDEAD_AND_SUNK || fGAME_OVER) {
+    reset(fUNDO);
+    erase(oEGO);
+    stop.sound();
+    reset(rfDEAD);
+    observe.blocks(oEGO);
+    reset(rfDEAD_AND_SUNK);
+    rvGAME_OVER_COUNTDOWN = 0;
+    set.view(oEGO, 73);
+    load.view(114);
+    set(fEGO_ON_WATER);
+    vCOUNTDOWN_LO = 250;
+    if (VERSION_MAJOR >= 2) {
+      vCOUNTDOWN_HI = 2;
+    }
+    else {
+      vCOUNTDOWN_HI = 3;
+    }
+    if (vPREV_ROOM_NO == ROOM49_INSIDE_WELL) {
+      position(oEGO, 75, 26);
+      stop.motion(oEGO);
+    }
+    else {
+      position(oEGO, 38, 116);
+      vEGO_DIR = DIR_EAST;
+    }
+    draw(oEGO);
+    player.control();
+    if (fGAME_OVER) {
+      reset(fGAME_OVER);
+      return;
+    }
+  }
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
