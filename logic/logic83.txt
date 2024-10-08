@@ -22,7 +22,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (!rfSHOWED_RUBBER_TREE_MESSAGE) {
     set.text.attribute(2, 0);
     text.screen();
-    display( 1, 0, "  Let it be Known that this Edition of");
+    display( 1, 0, " Let it be Known that this Rendition of");
 
     display( 3, 0, "           \"KING'S QUEST\"");
 
@@ -31,18 +31,21 @@ if (fROOM_SCRIPT_EXECUTED) {
 
     display( 8, 0, "     THE ORDER OF THE RUBBER TREE");
 
-    display(10, 0, " Acolytes of this elusive Sect believe");
-    display(11, 0, "  they can overrule Death itself with");
-    display(12, 0, "    the arcane incantation \"UNDO\";");
-    display(13, 0, "  Moreover, their Agents do Conspire");
-    display(14, 0, "   to prevent UNWINNABLE SITUATIONS.");
+    display(10, 0, "     Acolytes of this elusive Sect");
+    display(11, 0, "        do Work from the Shadows,");
+    display(12, 0, "manipulating Events in order to prevent");
+    display(13, 0, "    so-called UNWINNABLE SITUATIONS;");
+    display(14, 0, "  Furthermore, they believe they can");
+    display(15, 0, "   overrule DEATH ITSELF via the use");
+    display(16, 0, "   of the arcane incantation \"UNDO\".");
 
-    display(16, 0, "        Those who Abide by this");
-    display(17, 0, "         Sacrilegious \"NERFING\"");
-    display(18, 0, "           do so at the Risk");
-    display(19, 0, "          to their very Souls.");
+    display(18, 0, "        Those who Abide by this");
+    display(19, 0, "         Sacrilegious \"NERFING\"");
+    display(20, 0, "           do so at the Risk");
+    display(21, 0, "          to their very Souls.");
 
-    display(22, 0, " \[Rubber Tree Edition v1.0 2024/09/30]");
+    set.text.attribute(15, 0);
+    display(23, 0, " \[Rubber Tree Edition v1.0 2024/09/30]");
     while (!have.key()) { }
     graphics();
     set.text.attribute(15, 0);
