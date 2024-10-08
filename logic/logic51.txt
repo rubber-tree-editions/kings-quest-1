@@ -20,6 +20,30 @@
 #define oBOULDER o2
 #define oDRAGON o3
 
+#if RUBBER_TREE
+if (fUNDO) {
+  if (fGAME_OVER) {
+    stop.sound();
+    reset(fUNDO);
+    reset(fGAME_OVER);
+    erase(oEGO);
+    erase(oDRAGON);
+    set.view(oEGO, 0);
+    position(oEGO, 133, 136);
+    vEGO_DIR = DIR_WEST;
+    set.view(oDRAGON, 33);
+    position(oDRAGON, 40, 120);
+    draw(oEGO);
+    draw(oDRAGON);
+    reset(rfPLAYING_SND_VILLAIN);
+    follow.ego(oDRAGON, DRAGON_REACH_DISTANCE, rfDRAGON_GOT_YOU);
+    reset(fGAME_OVER);
+    player.control();
+    return;
+  }
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
