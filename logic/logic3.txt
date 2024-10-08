@@ -54,6 +54,13 @@ if (fGAME_OVER) {
 }
 #endif
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+    if (fTAKEN_DAGGER && !fCARRYING_DAGGER && !fCARRYING_BUCKET && vDRAGON_STATE == DRAGONSTATE_NORMAL) {
+      reset(fTAKEN_DAGGER);
+      reset(fDAGGER_LOST);
+      set(fDAGGER_REPLENISHED);
+    }
+  #endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
@@ -204,6 +211,12 @@ if (said("get", "dagger")) {
         sound(SND_POINTS, fMISC_END_MARKER);
       }
       print("You reach into the hole and grasp the dagger, being careful not to cut yourself.");
+      #if RUBBER_TREE
+      if (fDAGGER_REPLENISHED) {
+        vROOM_YOU_KILLED_THE_GOAT_IN = ROOM_NULL;
+        print("A small card reads:[[ c/o:[      The Order of[    the Rubber Tree[[      Crucial Item[ Replenishment Service ");
+      }
+      #endif
       get("dagger");
       vSCORE += 5;
       set(fTAKEN_DAGGER);

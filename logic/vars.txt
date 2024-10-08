@@ -393,7 +393,9 @@
 #define fEATEN_BY_GATORS f214
 #define fEGO_PREOCCUPIED f215
 #define fFALL_DANGER f216
-// unused: f211-f255
+// unused: f217-f255
+
+#define fDAGGER_REPLENISHED f220 // rubber tree use only
 
 // controls
 #define cSAVE c1
