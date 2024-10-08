@@ -11,13 +11,42 @@
 #define rfPLAYED_SND_SORCERER rf6
 #define rfINVISIBLE rf7
 
+#if RUBBER_TREE
+  #define rfCAN_UNDO rf8
+#endif
+
 #define rvCOUNTDOWN_LO rv0
 #define rvCOUNTDOWN_HI rv1
 #define rvSORCERER_STEP_SIZE rv2
 
 #define oSORCERER o1
 
+#if RUBBER_TREE
+if (isset(rfCAN_UNDO)) {
+  if (fUNDO) {
+    reset(fUNDO);
+    reset(rfCAN_UNDO);
+    reset(rfSORCERER_IS_HERE);
+    reset(rfUNDER_SORCERERS_SPELL);
+    reset(fTENSE_SITUATION);
+    reset(fTHREAT_OF_SORCERER_OR_OGRE);
+    stop.sound();
+    erase(oSORCERER);
+    erase(oEGO);
+    reposition.to.v(oEGO, vRESTORE_X, vRESTORE_Y);
+    vEGO_DIR = vRESTORE_DIR;
+    draw(oEGO);
+    vTEMP_RESULT_2 = 90;
+    player.control();
+  }
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+    get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+    vRESTORE_DIR = vEGO_DIR;
+  #endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
@@ -72,6 +101,7 @@ if (vTEMP_RESULT_2 == 1) {
   if (!fGOAT_COMPANION) {
     print("Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!");
     follow.ego(oSORCERER, SORCERER_REACH_DISTANCE, fVILLAIN_GOT_YOU);
+    set(rfCAN_UNDO);
   }
   if (fGOAT_COMPANION) {
     wander(oSORCERER);
@@ -106,15 +136,18 @@ if (fVILLAIN_GOT_YOU) {
     print("This sorcerer's magic is no match for your fairy godmother's.");
     wander(oSORCERER);
     set(rfPROTECTED);
+    reset(rfCAN_UNDO);
   }
   else if (fEGO_INVISIBLE) {
     print("Being invisible has protected you from this sorcerer.");
     set(rfINVISIBLE);
+    reset(rfCAN_UNDO);
   }
   else if (fCARRYING_SHIELD) {
     print("The magic shield will protect you from this dangerous  sorcerer.");
     wander(oSORCERER);
     set(rfPROTECTED);
+    reset(rfCAN_UNDO);
   }
   else {
     set(rfUNDER_SORCERERS_SPELL);
