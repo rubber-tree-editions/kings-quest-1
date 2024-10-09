@@ -26,6 +26,16 @@
 #define oROPE o3
 
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+    if (fROPE_GONE && !fCARRYING_MIRROR && vDRAGON_STATE != DRAGONSTATE_ABSENT) {
+      reset(fROPE_GONE);
+      set(fROPE_DANGLING_IN_WELL);
+      if (!fCARRYING_BUCKET) {
+        reset(fBUCKET_ROPE_CUT);
+        set(fBUCKET_LOWERED);
+      }
+    }
+  #endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
