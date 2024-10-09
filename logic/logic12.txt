@@ -25,6 +25,43 @@
 #define oBUCKET o2
 #define oROPE o3
 
+#if RUBBER_TREE
+if (fUNDO) {
+  if (vWELL_MODE != WELLMODE_NONE) {
+    stop.sound();
+    reset(fUNDO);
+    erase(oEGO);
+    stop.motion(oEGO);
+    if (vWELL_MODE == WELLMODE_JUMP_OR_FALL_IN) {
+      position(oEGO, 48, 111);
+      set.view(oEGO, 0);
+      set.loop(oEGO, 2);
+      release.priority(oEGO);
+      observe.blocks(oEGO);
+      reset(rfFALLEN_INTO_WELL);
+      reset(rfENTERED_WELL);
+      reset(rfJUMPED_INTO_WELL);
+    }
+    else {
+      if (fBUCKET_ROPE_CUT) {
+        set.view(oEGO, 143);
+      }
+      else {
+        set.view(oEGO, 74);
+      }
+      set(fON_WELL_ROPE);
+      position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+      //position(oEGO, 38, 140);
+      set.priority(oEGO, PRI_WELL);
+      ignore.blocks(oEGO);
+    }
+    draw(oEGO);
+    player.control();
+    vWELL_MODE = WELLMODE_NONE;
+  }
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   #if RUBBER_TREE
     if (fROPE_GONE && !fCARRYING_MIRROR && vDRAGON_STATE != DRAGONSTATE_ABSENT) {
@@ -97,17 +134,50 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   }
   if (vPREV_ROOM_NO == ROOM49_INSIDE_WELL) {
-    if (fBUCKET_ROPE_CUT) {
-      set.view(oEGO, 143);
+    #if RUBBER_TREE
+    if (vWELL_MODE == WELLMODE_JUMP_OR_FALL_IN) {
+      position(oEGO, 48, 111);
+      set.view(oEGO, 0);
+      set.loop(oEGO, 2);
+      release.priority(oEGO);
+      observe.blocks(oEGO);
+      vWELL_MODE = WELLMODE_NONE;
+      reset(fGAME_OVER);
+      player.control();
     }
-    else {
-      set.view(oEGO, 74);
+    else
+    #endif
+    {
+      if (fBUCKET_ROPE_CUT) {
+        set.view(oEGO, 143);
+      }
+      else {
+        set.view(oEGO, 74);
+      }
+      set(fON_WELL_ROPE);
+      #if RUBBER_TREE
+        if (vWELL_MODE == WELLMODE_FALL_FROM_ROPE_TOP) {
+          position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+          vWELL_MODE = WELLMODE_NONE;
+          reset(fGAME_OVER);
+          stop.motion(oEGO);
+          set.priority(oEGO, PRI_WELL);
+          ignore.blocks(oEGO);
+          player.control();
+        }
+        else {
+          position(oEGO, 38, 140);
+          set.priority(oEGO, PRI_WELL);
+          ignore.blocks(oEGO);
+          move.obj(oEGO, 38, 140, 0, fMISC_END_MARKER);
+        }
+      #else
+        position(oEGO, 38, 140);
+        set.priority(oEGO, PRI_WELL);
+        ignore.blocks(oEGO);
+        move.obj(oEGO, 38, 140, 0, fMISC_END_MARKER);
+      #endif
     }
-    set(fON_WELL_ROPE);
-    position(oEGO, 38, 140);
-    set.priority(oEGO, PRI_WELL);
-    ignore.blocks(oEGO);
-    move.obj(oEGO, 38, 140, 0, fMISC_END_MARKER);
   }
   if (vPREV_ROOM_NO == ROOM5_SERENE_LAKE_WEST) {
     if (fEGO_ON_WATER) {
@@ -325,6 +395,14 @@ if (fON_WELL_ROPE) {
   }
   if (vTEMP_X < 35 || vTEMP_X > 44) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
+    #if RUBBER_TREE
+      vRESTORE_X = 40;
+      vRESTORE_Y = vTEMP_Y;
+      if (vRESTORE_Y > 145) {
+        vRESTORE_Y = 145;
+      }
+      vWELL_MODE = WELLMODE_FALL_FROM_ROPE_TOP;
+    #endif
     vTEMP_Y = 145;
     vTEMP_STEP = 3;
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_OFF_ROPE);
@@ -347,6 +425,9 @@ if (rfFELL_OFF_ROPE || rfFALLEN_INTO_WELL) {
   new.room(ROOM49_INSIDE_WELL);
 }
 if (rfENTERED_WELL) {
+  #if RUBBER_TREE
+    vWELL_MODE = WELLMODE_JUMP_OR_FALL_IN;
+  #endif
   reset(rfENTERED_WELL);
   erase(oEGO);
   position(oEGO, 38, 125);

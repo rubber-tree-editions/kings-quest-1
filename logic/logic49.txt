@@ -12,6 +12,82 @@
 
 #define oROPE_AND_BUCKET o1
 
+#if RUBBER_TREE
+if (fUNDO) {
+  if (vWELL_MODE != WELLMODE_NONE) {
+    reset(fUNDO);
+    stop.sound();
+    if (vWELL_MODE == WELLMODE_JUMP_OR_FALL_IN || vWELL_MODE == WELLMODE_FALL_FROM_ROPE_TOP) {
+      vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
+      reset(fFALLING_DOWN_WELL);
+      reset(fCYCLE_EGO_ANIMATION);
+      reset(fGAME_OVER);
+      new.room(ROOM12_TOP_OF_WELL);
+      return;
+    }
+    else {
+      erase(oEGO);
+      vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
+      reset(f44);
+      reset(fFALLING_DOWN_WELL);
+      reset(fCYCLE_EGO_ANIMATION);
+      reset(rfFELL_FROM_ROPE);
+      reset(rfFALLEN_OFF_ROPE);
+      reset(rfFALLING_DOWN_WELL);
+      reset(rfFALLEN_DOWN_WELL);
+      reset(fEGO_PREOCCUPIED);
+      if (vWELL_MODE == WELLMODE_FALL_FROM_BUCKET) {
+        set(fIN_WELL_BUCKET);
+        reset(fCYCLE_EGO_ANIMATION);
+        reset(fON_WELL_ROPE);
+        start.update(oROPE_AND_BUCKET);
+        erase(oROPE_AND_BUCKET);
+        set.view(oROPE_AND_BUCKET, 72);
+        position(oROPE_AND_BUCKET, 79, 150);
+        set.cel(oROPE_AND_BUCKET, 4);
+        draw(oROPE_AND_BUCKET);
+        stop.update(oROPE_AND_BUCKET);
+      }
+      else {
+        set(fON_WELL_ROPE);
+        position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+        set.view(oEGO, 74);
+        draw(oEGO);
+      }
+      stop.motion(oEGO);
+      reset(fEGO_ON_WATER);
+      set.priority(oEGO, 15);
+      reset(fCYCLE_EGO_ANIMATION);
+      player.control();
+      vWELL_MODE = WELLMODE_NONE;
+      if (fGAME_OVER) {
+        reset(fGAME_OVER);
+        return;
+      }
+    }
+  }
+  else if (fGAME_OVER) {
+    erase(oEGO);
+    vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
+    if (BUILD_TARGET == APPLE_IIGS) {
+      start.motion(oEGO);
+    }
+    set.view(oEGO, 70);
+    set.loop(oEGO, 0);
+    set(rfSWIMMING);
+    reset(fEGO_PREOCCUPIED);
+    rvCOUNTDOWN = 250;
+    set(fCYCLE_EGO_ANIMATION);
+    position(oEGO, 75, 163);
+    draw(oEGO);
+    reset(fUNDO);
+    reset(fGAME_OVER);
+    player.control();
+    return;
+  }
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -62,6 +138,9 @@ if (fROOM_SCRIPT_EXECUTED) {
       position(oEGO, 81, 48);
       set.priority(oEGO, 15);
     }
+    #if RUBBER_TREE
+      vWELL_MODE = WELLMODE_NONE;
+    #endif
   }
   if (vPREV_ROOM_NO == ROOM52_IN_WELL_UNDERWATER) {
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
@@ -72,6 +151,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     set(rfSWIMMING);
     rvCOUNTDOWN = 250;
     position(oEGO, 75, 163);
+    #if RUBBER_TREE
+      vWELL_MODE = WELLMODE_NONE;
+    #endif
   }
   if (fROPE_DANGLING_IN_WELL) {
     add.to.pic(99, 0, 0, 84, 119, 4, 4);
@@ -138,6 +220,13 @@ if (fON_WELL_ROPE) {
     reset(fON_WELL_ROPE);
     set(fFALLING_DOWN_WELL);
     set.view(oEGO, 105);
+    #if RUBBER_TREE
+      if (vWELL_MODE != WELLMODE_FALL_FROM_BUCKET) {
+        vRESTORE_X = 81;
+        vRESTORE_Y = 115;
+        vWELL_MODE = WELLMODE_FALL_FROM_ROPE_LOW;
+      }
+    #endif
     vTEMP_Y = 164;
     ignore.objs(oEGO);
     set.priority(oEGO, 15);
@@ -153,6 +242,11 @@ if (fON_WELL_ROPE) {
     reset(fON_WELL_ROPE);
     set(fFALLING_DOWN_WELL);
     set.view(oEGO, 105);
+    #if RUBBER_TREE
+      vRESTORE_X = 81;
+      vRESTORE_Y = 115;
+      vWELL_MODE = WELLMODE_FALL_FROM_ROPE_LOW;
+    #endif
     vTEMP_Y = 164;
     ignore.objs(oEGO);
     set.priority(oEGO, 15);
@@ -169,6 +263,11 @@ if (fON_WELL_ROPE) {
       reset(fON_WELL_ROPE);
       set(fFALLING_DOWN_WELL);
       set.view(oEGO, 105);
+      #if RUBBER_TREE
+        vRESTORE_X = 81;
+        vRESTORE_Y = vTEMP_Y;
+        vWELL_MODE = WELLMODE_FALL_FROM_ROPE_LOW;
+      #endif
       vTEMP_Y = 164;
       ignore.objs(oEGO);
       set.priority(oEGO, 15);
@@ -185,6 +284,11 @@ if (fON_WELL_ROPE) {
       set(fFALLING_DOWN_WELL);
       set(rfFELL_FROM_ROPE);
       set.view(oEGO, 105);
+      #if RUBBER_TREE
+        vRESTORE_X = 81;
+        vRESTORE_Y = vTEMP_Y;
+        vWELL_MODE = WELLMODE_FALL_FROM_ROPE_MID;
+      #endif
       vTEMP_Y = 164;
       ignore.objs(oEGO);
       set.priority(oEGO, 15);
@@ -217,6 +321,9 @@ if (rfFALLEN_OFF_ROPE) {
   set.view(oEGO, 93);
 }
 if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING && !rfSWIMMING) {
+  #if RUBBER_TREE
+    vWELL_MODE = WELLMODE_NONE;
+  #endif
   set(rfSWIMMING);
   rvCOUNTDOWN = 250;
 }
@@ -242,6 +349,9 @@ if (!fON_WELL_ROPE && !rfFALLING_DOWN_WELL) {
       move.obj(oEGO, 81, 113, 0, fMISC_END_MARKER);
       set(fON_WELL_ROPE);
       reset(rfSWIMMING);
+      #if RUBBER_TREE
+        vWELL_MODE = WELLMODE_NONE;
+      #endif
     }
     if (fBUCKET_LOWERED && !fIN_WELL_BUCKET) {
       erase(oEGO);
@@ -254,6 +364,9 @@ if (!fON_WELL_ROPE && !rfFALLING_DOWN_WELL) {
       move.obj(oEGO, 81, 113, 0, fMISC_END_MARKER);
       set(fON_WELL_ROPE);
       reset(rfSWIMMING);
+      #if RUBBER_TREE
+        vWELL_MODE = WELLMODE_NONE;
+      #endif
     }
     if (fIN_WELL_BUCKET) {
       start.update(oROPE_AND_BUCKET);
@@ -270,6 +383,9 @@ if (!fON_WELL_ROPE && !rfFALLING_DOWN_WELL) {
       move.obj(oEGO, 81, 113, 0, fMISC_END_MARKER);
       set(fON_WELL_ROPE);
       reset(fIN_WELL_BUCKET);
+      #if RUBBER_TREE
+        vWELL_MODE = WELLMODE_NONE;
+      #endif
     }
   }
   if (fIN_WELL_BUCKET) {
@@ -296,6 +412,9 @@ if (!fON_WELL_ROPE && !rfFALLING_DOWN_WELL) {
       draw(oEGO);
       set(fON_WELL_ROPE);
       reset(fIN_WELL_BUCKET);
+      #if RUBBER_TREE
+        vWELL_MODE = WELLMODE_FALL_FROM_BUCKET;
+      #endif
     }
   }
 }
