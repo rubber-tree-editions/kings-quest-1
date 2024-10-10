@@ -185,6 +185,14 @@
   #define vRESTORE_X_3 v160
   #define vRESTORE_Y_3 v161
   #define vRESTORE_DIR v162
+
+  #define vWELL_MODE v163
+  #define WELLMODE_NONE 0
+  #define WELLMODE_JUMP_OR_FALL_IN 1
+  #define WELLMODE_FALL_FROM_ROPE_TOP 2
+  #define WELLMODE_FALL_FROM_ROPE_MID 3
+  #define WELLMODE_FALL_FROM_ROPE_LOW 4
+  #define WELLMODE_FALL_FROM_BUCKET 5
 #endif
 
 // built-in flags
