@@ -7,6 +7,37 @@
 
 #define oGOLDEN_EGG o1
 
+#if RUBBER_TREE
+if (fUNDO && rfFALLING_OUT_OF_THE_TREE) {
+  erase(oEGO);
+  vTEMP_STEP_SIZE = EGO_STEP_SIZE;
+  step.size(oEGO, vTEMP_STEP_SIZE);
+  set.priority(oEGO, 6);
+  reset(fUNDO);
+  reset(rfFALLING_OUT_OF_THE_TREE);
+  reset(fFALLING_OUT_OF_TREE);
+  reset(fCYCLE_EGO_ANIMATION);
+  observe.blocks(oEGO);
+  stop.motion(oEGO);
+  position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+  set.view(oEGO, 0);
+  if (vRESTORE_DIR == DIR_SOUTH) {
+    set.loop(oEGO, 2);
+  }
+  else if (vRESTORE_DIR == DIR_NORTH) {
+    set.loop(oEGO, 3);
+  }
+  else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+    set.loop(oEGO, 0);
+  }
+  else {
+    set.loop(oEGO, 1);
+  }
+  draw(oEGO);
+  player.control();
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -29,11 +60,44 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.priority(oGOLDEN_EGG, PRI_GOLDEN_EGG);
   }
   set.priority(oEGO, 6);
-  position(oEGO, 35, 164);
-  observe.blocks(oEGO);
-  if (VERSION_MAJOR >= 2) {
-    vEGO_DIR = 0;
-  }
+  #if RUBBER_TREE
+    if (fPLAYER_NOT_IN_CONTROL) {
+      position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+      reset(fPLAYER_NOT_IN_CONTROL);
+      reset(fFALLING_OUT_OF_TREE);
+      reset(fCYCLE_EGO_ANIMATION);
+      vEGO_DIR = 0;
+      set.view(oEGO, 0);
+      if (vRESTORE_DIR == DIR_SOUTH) {
+        set.loop(oEGO, 2);
+      }
+      else if (vRESTORE_DIR == DIR_NORTH) {
+        set.loop(oEGO, 3);
+      }
+      else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+        set.loop(oEGO, 0);
+      }
+      else {
+        set.loop(oEGO, 1);
+      }
+    }
+    else {
+      position(oEGO, 35, 164);
+      vRESTORE_X = 35;
+      vRESTORE_Y = 164;
+      vRESTORE_DIR = vEGO_DIR;
+      if (VERSION_MAJOR >= 2) {
+        vEGO_DIR = 0;
+      }
+    }
+    observe.blocks(oEGO);
+  #else
+    position(oEGO, 35, 164);
+    observe.blocks(oEGO);
+    if (VERSION_MAJOR >= 2) {
+      vEGO_DIR = 0;
+    }
+  #endif
   if (rfSHOW_GOLDEN_EGG) {
     draw(oGOLDEN_EGG);
     stop.update(oGOLDEN_EGG);
@@ -121,6 +185,12 @@ if (posn(oEGO, 12, 106, 57, 166) && !rfFALLING_OUT_OF_THE_TREE) {
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, fMISC_END_MARKER);
   }
 }
+#if RUBBER_TREE
+if (!rfFALLING_OUT_OF_THE_TREE) {
+  get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+  vRESTORE_DIR = vEGO_DIR;
+}
+#endif
 #if BUILD_TARGET == APPLE_IIGS
 if (fSOUND_END_MARKER) {
 #else
