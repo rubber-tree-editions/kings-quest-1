@@ -61,6 +61,7 @@ if (fUNDO) {
 
     if (fGAME_OVER) {
       reset(fGAME_OVER);
+      reset(fGAME_OVER_PREPARATION);
       //return;
     }
   }

@@ -143,6 +143,7 @@ if (fROOM_SCRIPT_EXECUTED) {
       observe.blocks(oEGO);
       vWELL_MODE = WELLMODE_NONE;
       reset(fGAME_OVER);
+      reset(fGAME_OVER_PREPARATION);
       player.control();
     }
     else
@@ -160,6 +161,7 @@ if (fROOM_SCRIPT_EXECUTED) {
           position.v(oEGO, vRESTORE_X, vRESTORE_Y);
           vWELL_MODE = WELLMODE_NONE;
           reset(fGAME_OVER);
+          reset(fGAME_OVER_PREPARATION);
           stop.motion(oEGO);
           set.priority(oEGO, PRI_WELL);
           ignore.blocks(oEGO);

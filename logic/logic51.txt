@@ -26,6 +26,7 @@ if (fUNDO) {
     stop.sound();
     reset(fUNDO);
     reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
     erase(oEGO);
     erase(oDRAGON);
     set.view(oEGO, 0);
@@ -37,7 +38,6 @@ if (fUNDO) {
     draw(oDRAGON);
     reset(rfPLAYING_SND_VILLAIN);
     follow.ego(oDRAGON, DRAGON_REACH_DISTANCE, rfDRAGON_GOT_YOU);
-    reset(fGAME_OVER);
     player.control();
     return;
   }

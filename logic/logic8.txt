@@ -21,6 +21,7 @@ if (fUNDO) {
     reset(fEGO_PREOCCUPIED);
     reset(rfDROWNING);
     reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
     object.on.anything(oEGO);
     if (vRESTORE_DIR == DIR_NORTH || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_NORTHWEST) {
       vRESTORE_Y += 3;

@@ -24,6 +24,7 @@ if (fUNDO) {
       reset(fFALLING_DOWN_WELL);
       reset(fCYCLE_EGO_ANIMATION);
       reset(fGAME_OVER);
+      reset(fGAME_OVER_PREPARATION);
       new.room(ROOM12_TOP_OF_WELL);
       return;
     }
@@ -64,6 +65,7 @@ if (fUNDO) {
       vWELL_MODE = WELLMODE_NONE;
       if (fGAME_OVER) {
         reset(fGAME_OVER);
+        reset(fGAME_OVER_PREPARATION);
         return;
       }
     }
@@ -84,6 +86,7 @@ if (fUNDO) {
     draw(oEGO);
     reset(fUNDO);
     reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
     player.control();
     return;
   }

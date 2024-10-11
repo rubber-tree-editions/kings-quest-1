@@ -69,6 +69,7 @@ if (fUNDO && fFALLING) {
   player.control();
   if (fGAME_OVER) {
     reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
     return;
   }
 }

@@ -54,6 +54,7 @@ if (fUNDO) {
     vEGO_DIR = vRESTORE_DIR;
     if (fGAME_OVER) {
       reset(fGAME_OVER);
+      reset(fGAME_OVER_PREPARATION);
       return;
     }
   }

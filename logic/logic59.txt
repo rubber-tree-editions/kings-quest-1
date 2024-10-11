@@ -23,6 +23,7 @@ if (fUNDO && fGAME_OVER) {
   draw(oEGO);
   reset(fUNDO);
   reset(fGAME_OVER);
+  reset(fGAME_OVER_PREPARATION);
   reset(fFALLING);
   player.control();
   return;
