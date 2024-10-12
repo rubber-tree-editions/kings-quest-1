@@ -4,29 +4,43 @@
 #define rfHIDE_EGO rf1
 
 #if RUBBER_TREE
-#define rvRESTORE_EGO_X rv0
-#define rvRESTORE_EGO_Y rv1
-#define rvRESTORE_EGO_DIR rv2
-#endif
-
-#if RUBBER_TREE
-if (fUNDO && fGAME_OVER) {
+if (fUNDO && (fGAME_OVER || fSCRIPTED_MOTION)) {
   reset(fSCRIPTED_MOTION);
   stop.sound();
   erase(oEGO);
-  position.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+  position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+  stop.motion(oEGO);  
   reset(fCYCLE_EGO_ANIMATION);
+  reset(rfFALLEN_THROUGH_THE_CLOUDS);
+  reset(rfHIDE_EGO);
+  reset(fSOUND_END_MARKER);
   stop.cycling(oEGO);
   set.view(oEGO, 0);
-  set.dir(oEGO, rvRESTORE_EGO_DIR);
+  vEGO_DIR = DIR_NONE;
+  vTEMP_STEP_SIZE = EGO_STEP_SIZE;
+  step.size(oEGO, vTEMP_STEP_SIZE);
+  if (vRESTORE_DIR == DIR_SOUTH) {
+    set.loop(oEGO, 2);
+  }
+  else if (vRESTORE_DIR == DIR_NORTH) {
+    set.loop(oEGO, 3);
+  }
+  else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+    set.loop(oEGO, 0);
+  }
+  else {
+    set.loop(oEGO, 1);
+  }
   release.priority(oEGO);
   draw(oEGO);
   reset(fUNDO);
-  reset(fGAME_OVER);
-  reset(fGAME_OVER_PREPARATION);
   reset(fFALLING);
   player.control();
-  return;
+  if (fGAME_OVER) {
+    reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
+    return;
+  }
 }
 #endif
 
@@ -69,9 +83,9 @@ if (said("examine", "flowers")) {
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !fSCRIPTED_MOTION && posn(oEGO, 0, 84, 159, 167)) {
   #if RUBBER_TREE
-    get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
-    rvRESTORE_EGO_X -= 5;
-    rvRESTORE_EGO_DIR = vEGO_DIR;
+    get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+    vRESTORE_X -= 5;
+    vRESTORE_DIR = vEGO_DIR;
   #endif
   if (BUILD_TARGET == APPLE_IIGS) {
     prevent.input();
@@ -85,14 +99,15 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !fSCRIPTED_MOTION && posn(oEGO, 0, 84, 159, 167
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
   #if RUBBER_TREE
-    get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
-    if (rvRESTORE_EGO_X >= 113) {
-      rvRESTORE_EGO_X -= 5;
+    get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+    if (vRESTORE_X > 100) {
+      vRESTORE_X = 100;
     }
-    else {
-      rvRESTORE_EGO_Y += 5;
+    if (vRESTORE_Y < 43) {
+      vRESTORE_Y = 43;
     }
-    rvRESTORE_EGO_DIR = vEGO_DIR;
+    vRESTORE_DIR = vEGO_DIR;
+    set(fSCRIPTED_MOTION);
   #endif
   if (BUILD_TARGET == APPLE_IIGS) {
     prevent.input();
@@ -111,7 +126,12 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
 }
 if (rfHIDE_EGO) {
   reset(rfHIDE_EGO);
-  erase(oEGO);
+  #if RUBBER_TREE
+  if (fSCRIPTED_MOTION)
+  #endif
+  {
+    erase(oEGO);
+  }
 }
 if (fSOUND_END_MARKER) {
   reset(fSOUND_END_MARKER);
@@ -119,10 +139,15 @@ if (fSOUND_END_MARKER) {
 }
 if (rfFALLEN_THROUGH_THE_CLOUDS) {
   reset(rfFALLEN_THROUGH_THE_CLOUDS);
+  #if RUBBER_TREE
+  if (fSCRIPTED_MOTION)
+  #endif
+  {
   print("Oops, you've missed the edge and fallen through the  clouds.");
   set(fGAME_OVER);
   if (BUILD_TARGET == APPLE_IIGS) {
     accept.input();
+  }
   }
 }
 if (posn(oEGO, 135, 94, 136, 120)) {

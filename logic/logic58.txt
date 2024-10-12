@@ -17,38 +17,72 @@
 // unused: rv2
 #define rvZERO rv3
 #define rvCOUNTDOWN_TO_SND_GIANT rv4
-#if RUBBER_TREE
-#define rvRESTORE_EGO_X rv5
-#define rvRESTORE_EGO_Y rv6
-#define rvRESTORE_EGO_DIR rv7
-#endif
 
 #define oGIANT o1
 #define oCHEST o2
 #define oFLUNG_PEBBLE o15
 
 #if RUBBER_TREE
-if (fUNDO && fGAME_OVER) {
+if (fUNDO && (fFALLING || fGAME_OVER)) {
+  reset(fUNDO);
+  stop.sound();
+  erase(oEGO);
   if (fFALLING) {
-    stop.sound();
-    erase(oEGO);
-    position.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
-    reset(fCYCLE_EGO_ANIMATION);
-    stop.cycling(oEGO);
-    set.view(oEGO, 0);
-    set.dir(oEGO, rvRESTORE_EGO_DIR);
-    release.priority(oEGO);
-    draw(oEGO);
-    reset(fUNDO);
+    reset(fFALLING);
+    position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+    vTEMP_STEP_SIZE = EGO_STEP_SIZE;
+    step.size(oEGO, vTEMP_STEP_SIZE);
+    reposition.to.v(oGIANT, vRESTORE_X_3, vRESTORE_Y_3);
+    vEGO_DIR = DIR_NONE;
+  }
+  else {
+    position.v(oEGO, vRESTORE_X_2, vRESTORE_Y_2);
+    vRESTORE_DIR = vRESTORE_DIR_2;
+    vEGO_DIR = vRESTORE_DIR_2;
+    reposition.to(oGIANT, 91, 71);
+    set.dir(oGIANT, DIR_EAST);
+    reset(rfVILLAIN_SOUND_PLAYED);
+    set(rfGIANT_IS_AFTER_YOU);
+    if (BUILD_TARGET == APPLE_IIGS && vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
+      follow.ego(oGIANT, 6, rfGIANT_CAUGHT_YOU);
+    }
+    else {
+      follow.ego(oGIANT, 10, rfGIANT_CAUGHT_YOU);
+    }
+    if (vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
+      rvCOUNTDOWN_LO = 250;
+      rvCOUNTDOWN_HI = 2;
+    }
+  }
+  set.view(oEGO, 0);
+  if (vRESTORE_DIR == DIR_SOUTH) {
+    set.loop(oEGO, 2);
+  }
+  else if (vRESTORE_DIR == DIR_NORTH) {
+    set.loop(oEGO, 3);
+  }
+  else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+    set.loop(oEGO, 0);
+  }
+  else {
+    set.loop(oEGO, 1);
+  }
+  stop.cycling(oEGO);
+  reset(fCYCLE_EGO_ANIMATION);
+  draw(oEGO);
+  player.control();
+  if (fGAME_OVER) {
     reset(fGAME_OVER);
     reset(fGAME_OVER_PREPARATION);
-    reset(fFALLING);
-    player.control();
+    return;
   }
-  return;
 }
 #endif
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+    get.posn(oEGO, vRESTORE_X_2, vRESTORE_Y_2);
+    vRESTORE_DIR_2 = vEGO_DIR;
+  #endif
   ignore.horizon(oEGO);
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -181,9 +215,10 @@ if (rfGIANT_CAUGHT_YOU && rfGIANT_IS_AFTER_YOU) {
 }
 if (fEGO_TOUCHED_TRIGGER_LINE) {
   #if RUBBER_TREE
-    get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
-    rvRESTORE_EGO_Y += 5;
-    rvRESTORE_EGO_DIR = vEGO_DIR;
+    get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+    vRESTORE_Y += 6;
+    vRESTORE_DIR = vEGO_DIR;
+    get.posn(oGIANT, vRESTORE_X_3, vRESTORE_Y_3);
   #endif
   if (BUILD_TARGET == APPLE_IIGS) {
     stop.sound();
@@ -209,8 +244,13 @@ if (fSOUND_END_MARKER) {
 }
 if (rfFALLING_THROUGH_CLOUDS) {
   reset(rfFALLING_THROUGH_CLOUDS);
-  print("You know you can't walk on clouds.");
-  set(fGAME_OVER);
+  #if RUBBER_TREE
+  if (fFALLING)
+  #endif
+  {
+    print("You know you can't walk on clouds.");
+    set(fGAME_OVER);
+  }
 }
 if (said("examine", "giant")) {
   if (vGIANT_STATE == GIANTSTATE_AWAKE_NO_CHEST) {

@@ -6,21 +6,29 @@
 #define rvTEMP_PRIORITY rv0
 
 #if RUBBER_TREE
-#define rvRESTORE_EGO_X rv1
-#define rvRESTORE_EGO_Y rv2
-#define rvRESTORE_EGO_DIR rv3
-#endif
-
-#if RUBBER_TREE
-if (fUNDO && fGAME_OVER) {
+if (fUNDO && (fSCRIPTED_MOTION || fGAME_OVER)) {
   reset(fSCRIPTED_MOTION);
   stop.sound();
   erase(oEGO);
-  position.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+  position.v(oEGO, vRESTORE_X, vRESTORE_Y);
   reset(fCYCLE_EGO_ANIMATION);
   stop.cycling(oEGO);
   set.view(oEGO, 0);
-  set.dir(oEGO, rvRESTORE_EGO_DIR);
+  vEGO_DIR = DIR_NONE;
+  vTEMP_STEP_SIZE = EGO_STEP_SIZE;
+  step.size(oEGO, vTEMP_STEP_SIZE);
+  if (vRESTORE_DIR == DIR_SOUTH) {
+    set.loop(oEGO, 2);
+  }
+  else if (vRESTORE_DIR == DIR_NORTH) {
+    set.loop(oEGO, 3);
+  }
+  else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+    set.loop(oEGO, 0);
+  }
+  else {
+    set.loop(oEGO, 1);
+  }
   release.priority(oEGO);
   draw(oEGO);
   reset(fUNDO);
@@ -103,16 +111,20 @@ if (!fSLINGSHOT_TAKEN) {
     }
   }
 }
-if (fEGO_TOUCHED_TRIGGER_LINE) {
+if (fEGO_TOUCHED_TRIGGER_LINE
   #if RUBBER_TREE
-    get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
-    if (rvRESTORE_EGO_X < 148) {
-      rvRESTORE_EGO_Y -= 5;
+    && !fSCRIPTED_MOTION
+  #endif
+) {
+  #if RUBBER_TREE
+    get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+    if (vRESTORE_X < 151) {
+      vRESTORE_Y -= 3;
     }
     else {
-      rvRESTORE_EGO_X -= 5;
+      vRESTORE_X -= 5;
     }
-    rvRESTORE_EGO_DIR = vEGO_DIR;
+    vRESTORE_DIR = vEGO_DIR;
   #endif
   if (BUILD_TARGET == APPLE_IIGS) {
     prevent.input();
@@ -140,11 +152,16 @@ if (fSOUND_END_MARKER) {
 }
 if (rfFALLING_SOUND_PLAYED) {
   reset(rfFALLING_SOUND_PLAYED);
-  print("You've fallen through the clouds!  Cloud walking is for the birds.");
-  erase(oEGO);
-  set(fGAME_OVER);
-  if (BUILD_TARGET == APPLE_IIGS) {
-    accept.input();
+  #if RUBBER_TREE
+  if (fSCRIPTED_MOTION)
+  #endif
+  {
+    print("You've fallen through the clouds!  Cloud walking is for the birds.");
+    erase(oEGO);
+    set(fGAME_OVER);
+    if (BUILD_TARGET == APPLE_IIGS) {
+      accept.input();
+    }
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {

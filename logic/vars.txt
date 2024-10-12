@@ -195,6 +195,7 @@
   #define WELLMODE_FALL_FROM_BUCKET 5
 
   #define vRESTORE_ROOM v164
+  #define vRESTORE_DIR_2 v165
 #endif
 
 // built-in flags

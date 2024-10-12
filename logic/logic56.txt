@@ -4,29 +4,42 @@
 #define rfPLAYING_SND_FALLING rf1
 
 #define rvLOCK_PRIORITY rv0
-#if RUBBER_TREE
-#define rvRESTORE_EGO_X rv1
-#define rvRESTORE_EGO_Y rv2
-#define rvRESTORE_EGO_DIR rv3
-#endif
 
 #if RUBBER_TREE
-if (fUNDO && fGAME_OVER) {
+if (fUNDO && (fFALLING || fGAME_OVER)) {
   stop.sound();
   erase(oEGO);
-  position.v(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
+  position.v(oEGO, vRESTORE_X, vRESTORE_Y);
   reset(fCYCLE_EGO_ANIMATION);
+  reset(rfPLAYING_SND_FALLING);
   stop.cycling(oEGO);
   set.view(oEGO, 0);
-  set.dir(oEGO, rvRESTORE_EGO_DIR);
+  vEGO_DIR = DIR_NONE;
+  vTEMP_STEP_SIZE = EGO_STEP_SIZE;
+  step.size(oEGO, vTEMP_STEP_SIZE);
+  if (vRESTORE_DIR == DIR_SOUTH) {
+    set.loop(oEGO, 2);
+  }
+  else if (vRESTORE_DIR == DIR_NORTH) {
+    set.loop(oEGO, 3);
+  }
+  else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+    set.loop(oEGO, 0);
+  }
+  else {
+    set.loop(oEGO, 1);
+  }
   release.priority(oEGO);
   draw(oEGO);
   reset(fUNDO);
-  reset(fGAME_OVER);
-  reset(fGAME_OVER_PREPARATION);
   reset(fFALLING);
+  reset(fSCRIPTED_MOTION);
   player.control();
-  return;
+  if (fGAME_OVER) {
+    reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
+    return;
+  }
 }
 #endif
 if (fROOM_SCRIPT_EXECUTED) {
@@ -47,9 +60,9 @@ if (fROOM_SCRIPT_EXECUTED) {
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
   #if RUBBER_TREE
-    get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
-    rvRESTORE_EGO_Y++;
-    rvRESTORE_EGO_DIR = vEGO_DIR;
+    get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+    vRESTORE_Y += 2;
+    vRESTORE_DIR = vEGO_DIR;
   #endif
   if (BUILD_TARGET == APPLE_IIGS) {
     prevent.input();
@@ -71,11 +84,11 @@ if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 0, 159, 83)) {
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_THROUGH_CLOUDS);
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 0, 84, 159, 167)) {
-#if RUBBER_TREE
-  get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
-  rvRESTORE_EGO_Y--;
-  rvRESTORE_EGO_DIR = vEGO_DIR;
-#endif
+  #if RUBBER_TREE
+    get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+    vRESTORE_Y -= 2;
+    vRESTORE_DIR = vEGO_DIR;
+  #endif
   set(fFALLING);
   set(fSCRIPTED_MOTION);
   program.control();
