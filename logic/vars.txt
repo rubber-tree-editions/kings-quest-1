@@ -193,6 +193,8 @@
   #define WELLMODE_FALL_FROM_ROPE_MID 3
   #define WELLMODE_FALL_FROM_ROPE_LOW 4
   #define WELLMODE_FALL_FROM_BUCKET 5
+
+  #define vRESTORE_ROOM v164
 #endif
 
 // built-in flags

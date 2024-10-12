@@ -4,8 +4,58 @@
 #define rfFALLING rf1
 #define rfFELL_OFF_BEANSTALK rf2
 #define rfPLAYING_SND_FALLING rf3
+#if RUBBER_TREE
+  #define rfFALLING_FROM_CLOUDS rf4
+#endif
 
 #define rvLOCK_PRIORITY rv0
+
+#if RUBBER_TREE
+if (fUNDO && (rfFALLING || fFALLING_TO_EARTH)) {
+  stop.sound();
+  reset(fUNDO);
+  erase(oEGO);
+  vRESTORE_ROOM = 0;
+  reset(fFALLING_TO_EARTH);
+  reset(rfFALLING);
+  reset(rfPLAYING_SND_FALLING);
+  release.priority(oEGO);
+  if (rfFALLING_FROM_CLOUDS) {
+    reset(fEGO_CLIMBING_BEANSTALK);
+    reset(rfFALLING_FROM_CLOUDS);
+    set.view(oEGO, 0);
+    vEGO_DIR = 0;
+    if (vRESTORE_DIR == DIR_SOUTH) {
+      set.loop(oEGO, 2);
+    }
+    else if (vRESTORE_DIR == DIR_NORTH) {
+      set.loop(oEGO, 3);
+    }
+    else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+      set.loop(oEGO, 0);
+    }
+    else {
+      set.loop(oEGO, 1);
+    }
+  }
+  else {
+    set(fEGO_CLIMBING_BEANSTALK);
+    set.view(oEGO, 74);
+    vEGO_DIR = 0;
+  }
+  position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+  vTEMP_STEP_SIZE = EGO_STEP_SIZE;
+  step.size(oEGO, vTEMP_STEP_SIZE);
+  reset(fCYCLE_EGO_ANIMATION);
+  player.control();
+  draw(oEGO);
+  if (fGAME_OVER) {
+    reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
+    return;
+  }
+}
+#endif
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -14,6 +64,26 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.view(74);
   load.sound(SND_FALLING);
+  #if RUBBER_TREE
+  if (vRESTORE_ROOM == vROOM_NO)
+  {
+    reset(fUNDO);
+    vRESTORE_ROOM = 0;
+    reset(fFALLING_TO_EARTH);
+    set(fEGO_CLIMBING_BEANSTALK);
+    set.view(oEGO, 74);
+    vEGO_DIR = 0;
+    reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
+    position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+    vTEMP_STEP_SIZE = EGO_STEP_SIZE;
+    step.size(oEGO, vTEMP_STEP_SIZE);
+    reset(fCYCLE_EGO_ANIMATION);
+    player.control();
+  }
+  else
+  #endif
+  {
   if (vPREV_ROOM_NO == ROOM56_CLOUDS_GRASS_EDGE) {
     position(oEGO, 145, 109);
   }
@@ -21,6 +91,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oEGO, 74);
     position(oEGO, 66, 165);
     move.obj(oEGO, 66, 165, 0, fMISC_END_MARKER);
+  }
   }
   draw(oEGO);
   show.pic();
@@ -80,6 +151,10 @@ if (fEGO_TOUCHED_TRIGGER_LINE
   && !posn(oEGO, 65, 100, 82, 120)
   && !fEGO_CLIMBING_BEANSTALK
 ) {
+  #if RUBBER_TREE
+    set(rfFALLING_FROM_CLOUDS);
+    vRESTORE_DIR = vEGO_DIR;
+  #endif
   set(rfFALLING);
   if (!fEGO_INVISIBLE) {
     set.view(oEGO, 105);
@@ -95,6 +170,10 @@ if (fEGO_TOUCHED_TRIGGER_LINE
   sound(SND_FALLING, fSOUND_END_MARKER_2);
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING && posn(oEGO, 65, 100, 82, 120) && fEGO_INVISIBLE) {
+  #if RUBBER_TREE
+    set(rfFALLING_FROM_CLOUDS);
+    vRESTORE_DIR = vEGO_DIR;
+  #endif
   set(rfFALLING);
   if (!fEGO_INVISIBLE) {
     set.view(oEGO, 105);
@@ -111,9 +190,14 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING && posn(oEGO, 65, 100, 82, 120) && f
 }
 if (rfFELL_THROUGH_CLOUDS) {
   reset(rfFELL_THROUGH_CLOUDS);
+  #if RUBBER_TREE
+  if (rfFALLING_FROM_CLOUDS)
+  #endif
+  {
   erase(oEGO);
   print("Whoops!  You fall toward a distant earth.");
   set(fGAME_OVER);
+  }
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && posn(oEGO, 65, 100, 82, 120) && !fEGO_INVISIBLE) {
   if (fEGO_CLIMBING_BEANSTALK) {
@@ -138,6 +222,9 @@ if (fEGO_TOUCHED_TRIGGER_LINE && fEGO_CLIMBING_BEANSTALK) {
   program.control();
   print("Whoops!  You fall toward a distant earth.");
   get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  #if RUBBER_TREE
+    vRESTORE_ROOM = vROOM_NO;
+  #endif
   reset(fEGO_CLIMBING_BEANSTALK);
   set(fFALLING_TO_EARTH);
   erase(oEGO);
@@ -159,6 +246,11 @@ if (fEGO_TOUCHED_TRIGGER_LINE && fEGO_CLIMBING_BEANSTALK) {
   move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_OFF_BEANSTALK);
 }
 FINALCHECKS:
+  #if RUBBER_TREE
+    if (!rfFALLING && !fFALLING_TO_EARTH) {
+      get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+    }
+  #endif
   if (rfFELL_OFF_BEANSTALK || posn(oEGO, 0, 166, 159, 167)) {
     new.room(ROOM71_BEANSTALK_NEAR_TOP);
   }

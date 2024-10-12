@@ -14,6 +14,46 @@
 
 #define rvCOUNTDOWN rv0
 
+#if RUBBER_TREE
+if (fUNDO && vRESTORE_ROOM != 0) {
+  reset(fUNDO);
+  stop.sound();
+  if (vRESTORE_ROOM != vROOM_NO) {
+    reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
+    vGAME_OVER_MESSAGE_COUNTDOWN = 40;
+    new.room.v(vRESTORE_ROOM);
+    return;
+  }
+  reset(rfFELL_OFF_BEANSTALK_LOW);
+  end.of.loop(oEGO, fMISC_END_MARKER);
+  vRESTORE_ROOM = 0;
+  rvCOUNTDOWN = 0;
+  erase(oEGO);
+  reset(fCYCLE_EGO_ANIMATION);
+  stop.cycling(oEGO);
+  vTEMP_STEP_SIZE = EGO_STEP_SIZE;
+  step.size(oEGO, vTEMP_STEP_SIZE);
+  position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+  vEGO_DIR = 0;
+  set.view(oEGO, 74);
+  set.priority(oEGO, 8);
+  set(fEGO_CLIMBING_BEANSTALK);
+  if (BUILD_TARGET == APPLE_IIGS) {
+    set(fTENSE_SITUATION);
+    set(fTHREAT_OF_SORCERER_OR_OGRE);
+    set(fFALL_DANGER);
+  }
+  draw(oEGO);
+  player.control();
+  if (fGAME_OVER) {
+    reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
+    return;
+  }
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -60,6 +100,10 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oEGO, 74);
     position(oEGO, 64, 41);
     move.obj(oEGO, 64, 41, 0, fMISC_END_MARKER);
+    #if RUBBER_TREE
+      vRESTORE_X = 64;
+      vRESTORE_Y = 41;
+    #endif
     set.priority(oEGO, 8);
   }
   if (vPREV_ROOM_NO == ROOM70_BEANSTALK_NEAR_BOTTOM && fFALLING_TO_EARTH) {
@@ -249,6 +293,9 @@ if (fEGO_CLIMBING_BEANSTALK) {
   }
   if (fEGO_TOUCHED_TRIGGER_LINE && !posn(oEGO, 60, 78, 93, 80)) {
     program.control();
+    #if RUBBER_TREE
+      vRESTORE_ROOM = vROOM_NO;
+    #endif
     if (BUILD_TARGET == APPLE_IIGS) {
       prevent.input();
       set(fFALLING);
@@ -306,6 +353,9 @@ if (rfEGO_STOPPED_ANIMATING) {
   set.view(oEGO, 0);
   release.priority(oEGO);
   player.control();
+  #if RUBBER_TREE
+    vRESTORE_ROOM = 0;
+  #endif
   if (BUILD_TARGET == APPLE_IIGS) {
     accept.input();
     reset(fTENSE_SITUATION);
@@ -341,6 +391,11 @@ if (fGOAT_COMPANION) {
 if (vBEANSTALK_ROOM == ROOM6_POUCH_STUMP) {
   call(LOGIC104_BEANSTALK);
 }
+#if RUBBER_TREE
+  if (fEGO_CLIMBING_BEANSTALK && vRESTORE_ROOM == 0) {
+    get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+  }
+#endif
 return;
 
 #message 1 "Inside the old, rotted stump you notice a small, canvas pouch."
