@@ -5,6 +5,40 @@
 
 #define rvTEMP_PRIORITY rv0
 
+#if BUILD_TARGET == APPLE_IIGS
+  #define _fFALLING fFALLING
+#else
+  #define _fFALLING rfFALLING_OFF_STEPS
+#endif
+
+#if RUBBER_TREE
+if (fUNDO && (_fFALLING || fGAME_OVER)) {
+  reset(fUNDO);
+  stop.sound();
+  erase(oEGO);
+  position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+  vEGO_DIR = DIR_NONE;
+  set.view(oEGO, 0);
+  reset(fCYCLE_EGO_ANIMATION);
+  reset(_fFALLING);
+  release.priority(oEGO);
+  vTEMP_STEP_SIZE = EGO_STEP_SIZE;
+  step.size(oEGO, vTEMP_STEP_SIZE);
+  if (vPREV_ROOM_NO == ROOM19_BASE_MOUNTAIN_DOOR) {
+    set.loop(oEGO, 0);
+  }
+  else {
+    set.loop(oEGO, 1);
+  }
+  draw(oEGO);
+  player.control();
+  if (fGAME_OVER) {
+    reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
+    return;
+  }
+}
+#endif
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -37,11 +71,16 @@ if (fGOAT_COMPANION) {
 if (said("examine", "stairway") || said("examine", "room")) {
   print("The stairs go up into the heart of the mountain.");
 }
-#if BUILD_TARGET == APPLE_IIGS
-if (fEGO_TOUCHED_TRIGGER_LINE && !fFALLING) {
-#else
-if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING_OFF_STEPS) {
-#endif
+if (fEGO_TOUCHED_TRIGGER_LINE && !_fFALLING) {
+  #if RUBBER_TREE
+    get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+    if (vRESTORE_X < 58) {
+      vRESTORE_Y = 128;
+    }
+    else {
+      vRESTORE_Y -= 8;
+    }
+  #endif
   if (BUILD_TARGET == APPLE_IIGS) {
     set(fEGO_PREOCCUPIED);
     prevent.input();
@@ -51,12 +90,7 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !rfFALLING_OFF_STEPS) {
     set(fTENSE_SITUATION);
     set(fTHREAT_OF_SORCERER_OR_OGRE);
   }
-  if (BUILD_TARGET == APPLE_IIGS) {
-    set(fFALLING);
-  }
-  else {
-    set(rfFALLING_OFF_STEPS);
-  }
+  set(_fFALLING);
   if (!fEGO_INVISIBLE) {
     set.view(oEGO, 105);
   }
