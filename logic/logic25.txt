@@ -24,6 +24,45 @@
 #define oTROLL o1
 #define oGOAT o13
 
+#if RUBBER_TREE
+if (fUNDO && rfSTUCK_IN_RIVER) {
+  reset(fUNDO);
+  reset(rfSTUCK_IN_RIVER);
+  vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
+  vDROWN_GAME_OVER_COUNTDOWN = 0;
+  stop.sound();
+  erase(oEGO);
+  set.view(oEGO, 0);
+  position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+  if (vRESTORE_DIR == DIR_SOUTH) {
+    set.loop(oEGO, 2);
+  }
+  else if (vRESTORE_DIR == DIR_NORTH) {
+    set.loop(oEGO, 3);
+  }
+  else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+    set.loop(oEGO, 0);
+  }
+  else {
+    set.loop(oEGO, 1);
+  }
+  draw(oEGO);
+  reset(fCYCLE_EGO_ANIMATION);
+  if (rfTROLL_IS_HERE) {
+    erase(oTROLL);
+    position.v(oTROLL, vRESTORE_X_2, vRESTORE_Y_2);
+    draw(oTROLL);
+    reset(rfTROLL_IS_AFTER_YOU);
+  }
+  player.control();
+  if (fGAME_OVER) {
+    reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
+    return;
+  }
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -141,6 +180,10 @@ if (!rfTROLL_IS_HERE) {
 if (rfTROLL_NEARBY && fEGO_TOUCHED_TRIGGER_LINE) {
   reset(rfTROLL_NEARBY);
   set(rfTROLL_IS_HERE);
+  #if RUBBER_TREE
+    vRESTORE_X_2 = 34;
+    vRESTORE_Y_2 = 54;
+  #endif
   rvTROLL_STEP_SIZE = TROLL_STEP_SIZE;
   step.size(oTROLL, rvTROLL_STEP_SIZE);
   sound(SND_VILLAIN, fSOUND_END_MARKER);
@@ -152,6 +195,11 @@ if (rfTROLL_NEARBY && fEGO_TOUCHED_TRIGGER_LINE) {
     print("As you start to cross the bridge, a wretched troll appears.");
   }
 }
+#if RUBBER_TREE
+if (rfTROLL_IS_HERE && !rfSTUCK_IN_RIVER) {
+  get.posn(oTROLL, vRESTORE_X_2, vRESTORE_Y_2);
+}
+#endif
 if (rfTROLL_IS_HERE && fGOAT_COMPANION && !rfGOAT_APPROACHING_TROLL) {
   if (BUILD_TARGET == APPLE_IIGS) {
     prevent.input();
@@ -516,6 +564,17 @@ if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
 call(LOGIC101_SWIMMING);
+#if RUBBER_TREE
+  if (!fEGO_ON_WATER && !rfSTUCK_IN_RIVER) {
+    get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+    if (vRESTORE_Y < 70) {
+      vRESTORE_Y -= 5;
+      if (vRESTORE_X < 77) vRESTORE_X = 77;
+    }
+    else vRESTORE_Y += 5;
+    vRESTORE_DIR = vEGO_DIR;
+  }
+#endif
 return;
 
 #message 1 "As you start to cross the bridge, a wretched troll appears."
