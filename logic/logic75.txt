@@ -16,6 +16,36 @@
 #define oRAT o1
 #define oDOOR o2
 
+#if RUBBER_TREE
+if (fUNDO && fGAME_OVER) {
+  reset(fGAME_OVER);
+  reset(fGAME_OVER_PREPARATION);
+  reset(fUNDO);
+  if (vBIG_UNDO == BIGUNDO_CONDOR) {
+    new.room(ROOM22_CONDOR_AND_CAVE);
+    return;
+  }
+  else if (vBIG_UNDO == BIGUNDO_HOLE) {
+    new.room(ROOM48_LEPRECHAUN_HOLE);
+    return;
+  }
+  erase(oEGO);
+  erase(oRAT);
+  set.view(oEGO, 0);
+  set.loop(oEGO, 1);
+  stop.motion(oEGO);
+  position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+  position(oRAT, 36, 127);
+  vEGO_DIR = DIR_WEST;
+  set(rfRAT_IS_HERE);
+  follow.ego(oRAT, RAT_REACH_DISTANCE, rfRAT_CAUGHT_YOU);
+  draw(oEGO);
+  draw(oRAT);
+  player.control();
+  return;
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -26,6 +56,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   if (vPREV_ROOM_NO == ROOM74_CAVE_CORNER) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     vTEMP_X += 150;
+    #if RUBBER_TREE
+      vRESTORE_X = vTEMP_X;
+      vRESTORE_Y = vTEMP_Y;
+    #endif
     position.v(oEGO, vTEMP_X, vTEMP_Y);
   }
   if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
@@ -33,6 +67,10 @@ if (fROOM_SCRIPT_EXECUTED) {
       load.sound(SND_DOOR_CLOSED);
     }
     position(oEGO, 34, 125);
+    #if RUBBER_TREE
+      vRESTORE_X = 34;
+      vRESTORE_Y = 125;
+    #endif
   }
   ignore.objs(oEGO);
   load.view(95);
@@ -209,6 +247,9 @@ if (!fRAT_IS_GONE) {
         reset(fCARRYING_DIAMONDS);
         set(fDWARF_OR_TROLL_HAS_DIAMONDS);
         vSCORE -= 6;
+        #if RUBBER_TREE
+          vRAT_TOOK_ITEM = INV_POUCH_OF_DIAMONDS;
+        #endif
       }
       else {
         print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
@@ -233,6 +274,9 @@ if (!fRAT_IS_GONE) {
       reset(fCARRYING_GOLDEN_EGG);
       set(fDWARF_OR_TROLL_HAS_EGG);
       vSCORE -= 6;
+      #if RUBBER_TREE
+        vRAT_TOOK_ITEM = INV_GOLDEN_EGG;
+      #endif
     }
     else {
       print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
@@ -269,6 +313,9 @@ if (!fRAT_IS_GONE) {
         reset(fCARRYING_GOLD_WALNUT);
         set(fDWARF_OR_TROLL_HAS_WALNUT);
         vSCORE -= 6;
+        #if RUBBER_TREE
+          vRAT_TOOK_ITEM = INV_GOLDEN_WALNUT;
+        #endif
       }
       else {
         print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
@@ -294,6 +341,9 @@ if (!fRAT_IS_GONE) {
       reset(fCARRYING_SCEPTRE);
       set(fDWARF_OR_TROLL_HAS_SCEPTRE);
       vSCORE -= 6;
+      #if RUBBER_TREE
+        vRAT_TOOK_ITEM = INV_SCEPTRE;
+      #endif
     }
     else {
       print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");
@@ -325,6 +375,9 @@ if (!fRAT_IS_GONE) {
         set(fRAT_ATE_CHEESE);
         vSCORE -= 2;
         vSCORE += 4;
+        #if RUBBER_TREE
+          vRAT_TOOK_ITEM = INV_SWISS_CHEESE;
+        #endif
       }
       else {
         print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!");

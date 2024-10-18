@@ -29,6 +29,44 @@
 #define oSCEPTRE o3
 #define oLEPRECHAUN_KING o16
 
+#if RUBBER_TREE
+if (fUNDO && fGAME_OVER) {
+  reset(fSCRIPTED_MOTION);
+  reset(fGAME_OVER);
+  reset(fGAME_OVER_PREPARATION);
+  reset(fUNDO);
+  if (vBIG_UNDO == BIGUNDO_CONDOR) {
+    new.room(ROOM22_CONDOR_AND_CAVE);
+    return;
+  }
+  else if (vBIG_UNDO == BIGUNDO_HOLE) {
+    new.room(ROOM48_LEPRECHAUN_HOLE);
+    return;
+  }
+  stop.sound();
+  erase(oEGO);
+  erase(oLEPRECHAUN);
+  set.view(oEGO, 0);
+  stop.motion(oEGO);
+  if (vPREV_ROOM_NO == ROOM76_LEPRECHAUN_ANTECHAMBER) {
+    position(oEGO, 87, 67);
+    vEGO_DIR = DIR_SOUTH;
+  }
+  if (vPREV_ROOM_NO == ROOM78_IN_CAVE_WITH_TINY_HOLE) {
+    position(oEGO, 9, 95);
+    vEGO_DIR = DIR_EAST;
+  }
+  position(oLEPRECHAUN, 56, 108);
+  follow.ego(oLEPRECHAUN, 5, rfLEPRECHAUN_CAUGHT_YOU);
+  start.cycling(oLEPRECHAUN);
+  set(rfLEPRECHAUN_AFTER_YOU);
+  draw(oEGO);
+  draw(oLEPRECHAUN);
+  player.control();
+  return;
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   set.horizon(58);
   load.pic(vROOM_NO);

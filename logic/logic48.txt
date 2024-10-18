@@ -36,6 +36,74 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.view(103);
   load.view(104);
+  #if RUBBER_TREE
+  if (vBIG_UNDO == BIGUNDO_HOLE) {
+    stop.motion(oEGO);
+    position(oEGO, 77, 110);
+    set.view(oEGO, 0);
+    set.loop(oEGO, 2);
+    vBIG_UNDO = BIGUNDO_NONE;
+    reset(fEGO_ON_WATER);
+    reset(fFALLING);
+    reset(fEGO_PREOCCUPIED);
+    reset(fSCRIPTED_MOTION);
+
+    reset(fDANCING_LEPRECHAUNS);
+    reset(fLEPRECHAUN_KING_GONE);
+    reset(fRAT_IS_GONE);
+    if (vRAT_TOOK_ITEM > 0) {
+      if (vRAT_TOOK_ITEM == INV_SWISS_CHEESE) {
+        reset(fRAT_ATE_CHEESE);
+        get("cheese");
+        set(fCARRYING_SWISS_CHEESE);
+        vSCORE -= 2;
+      }
+      else {
+        if (vRAT_TOOK_ITEM == INV_POUCH_OF_DIAMONDS) {
+          reset(fDWARF_OR_TROLL_HAS_DIAMONDS);
+          get("pouch of diamonds");
+          set(fCARRYING_DIAMONDS);
+        }
+        else if (vRAT_TOOK_ITEM == INV_GOLDEN_EGG) {
+          reset(fDWARF_OR_TROLL_HAS_EGG);
+          get("gold egg");
+          set(fCARRYING_GOLDEN_EGG);
+        }
+        else if (vRAT_TOOK_ITEM == INV_GOLDEN_WALNUT) {
+          reset(fDWARF_OR_TROLL_HAS_WALNUT);
+          get("gold walnut");
+          set(fCARRYING_GOLD_WALNUT);
+        }
+        else if (vRAT_TOOK_ITEM == INV_SCEPTRE) {
+          reset(fDWARF_OR_TROLL_HAS_SCEPTRE);
+          get("sceptre");
+          set(fCARRYING_SCEPTRE);
+        }
+        vSCORE += 6;
+      }
+      vRAT_TOOK_ITEM = 0;
+    }
+    if (fSHIELD_TAKEN) {
+      reset(fSHIELD_TAKEN);
+      reset(fCARRYING_SHIELD);
+      drop("shield");
+      vSCORE -= 8;
+      vTREASURE_COUNT--;
+    }
+    if (fSCEPTRE_TAKEN) {
+      reset(fSCEPTRE_TAKEN);
+      reset(fCARRYING_SCEPTRE);
+      drop("sceptre");
+      vSCORE -= 6;
+    }
+    if (fEATEN_MUSHROOM) {
+      reset(fEATEN_MUSHROOM);
+      reset(fEGO_TINY);
+      reset(fMUSHROOM_TAKEN);
+    }
+    player.control();
+  }
+  #endif
   if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
     set.view(oEGO, 89);
     animate.obj(oBIRD);
@@ -172,6 +240,11 @@ else if (rfFALLEN_IN_HOLE) {
   reset(rfFALLEN_IN_HOLE);
   reset(fSCRIPTED_MOTION);
   erase(oEGO);
+  #if RUBBER_TREE
+    if (vBIG_UNDO == BIGUNDO_NONE && !fCARRYING_MUSHROOM) {
+      vBIG_UNDO = BIGUNDO_HOLE;
+    }
+  #endif
   new.room(ROOM73_CAVE_CEILING_HOLE);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {

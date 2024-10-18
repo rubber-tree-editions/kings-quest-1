@@ -14,6 +14,9 @@
 #define rfPLAYING_SND_FALLING rf9
 #define rfPLAYED_SND_BEANSTALK rf10
 #define rfPLAYED_SND_BIRD rf11
+#ifdef RUBBER_TREE
+  #define rfSUPPRESS_BIRD_MSG rf12
+#endif
 
 #define rvCOUNTDOWN rv0
 #define rvBIRD_STEP_SIZE rv1
@@ -136,6 +139,66 @@ if (fROOM_SCRIPT_EXECUTED) {
     move.obj.v(oEGO, vTEMP_X, vTEMP_Y, vTEMP_STEP, rfFELL_FROM_SKY);
   }
   random(0, 250, vTEMP_RESULT);
+  #if RUBBER_TREE
+    if (vBIG_UNDO == BIGUNDO_CONDOR) {
+      vTEMP_RESULT = 0;
+      reset(fTAKEN_BY_GIANT_BIRD);
+      vSCORE -= 3;
+      reset(fDANCING_LEPRECHAUNS);
+      reset(fLEPRECHAUN_KING_GONE);
+      reset(fRAT_IS_GONE);
+      if (vRAT_TOOK_ITEM > 0) {
+        if (vRAT_TOOK_ITEM == INV_SWISS_CHEESE) {
+          reset(fRAT_ATE_CHEESE);
+          get("cheese");
+          set(fCARRYING_SWISS_CHEESE);
+          vSCORE -= 2;
+        }
+        else {
+          if (vRAT_TOOK_ITEM == INV_POUCH_OF_DIAMONDS) {
+            reset(fDWARF_OR_TROLL_HAS_DIAMONDS);
+            get("pouch of diamonds");
+            set(fCARRYING_DIAMONDS);
+          }
+          else if (vRAT_TOOK_ITEM == INV_GOLDEN_EGG) {
+            reset(fDWARF_OR_TROLL_HAS_EGG);
+            get("gold egg");
+            set(fCARRYING_GOLDEN_EGG);
+          }
+          else if (vRAT_TOOK_ITEM == INV_GOLDEN_WALNUT) {
+            reset(fDWARF_OR_TROLL_HAS_WALNUT);
+            get("gold walnut");
+            set(fCARRYING_GOLD_WALNUT);
+          }
+          else if (vRAT_TOOK_ITEM == INV_SCEPTRE) {
+            reset(fDWARF_OR_TROLL_HAS_SCEPTRE);
+            get("sceptre");
+            set(fCARRYING_SCEPTRE);
+          }
+          vSCORE += 6;
+        }
+        vRAT_TOOK_ITEM = 0;
+      }
+      if (fSHIELD_TAKEN) {
+        reset(fSHIELD_TAKEN);
+        reset(fCARRYING_SHIELD);
+        drop("shield");
+        vSCORE -= 8;
+        vTREASURE_COUNT--;
+      }
+      if (fSCEPTRE_TAKEN) {
+        reset(fSCEPTRE_TAKEN);
+        reset(fCARRYING_SCEPTRE);
+        drop("sceptre");
+        vSCORE -= 6;
+      }
+      if (fEATEN_MUSHROOM) {
+        reset(fEATEN_MUSHROOM);
+        reset(fEGO_TINY);
+        reset(fMUSHROOM_TAKEN);
+      }
+    }
+  #endif
   #if BUILD_TARGET == APPLE_IIGS
   if (vTEMP_RESULT < 150 && !fTAKEN_BY_GIANT_BIRD) {
   #else
@@ -155,6 +218,18 @@ if (fROOM_SCRIPT_EXECUTED) {
       random(0, 250, vTEMP_RESULT_2);
     } while (vTEMP_RESULT_2 > 90);
   }
+  #if RUBBER_TREE
+    if (vBIG_UNDO == BIGUNDO_CONDOR) {
+      vTEMP_RESULT_2 = 2;
+      position(oEGO, 80, 120);
+      set.view(oEGO, 0);
+      set.loop(oEGO, 1);
+      stop.motion(oEGO);
+      vBIG_UNDO = BIGUNDO_NONE;
+      set(rfSUPPRESS_BIRD_MSG);
+      player.control();
+    }
+  #endif
   if (vPREV_ROOM_NO == ROOM50_CAVE_ADJOINING_DRAGONS_LAIR) {
     position(oEGO, 142, 83);
   }
@@ -226,7 +301,12 @@ if (vTEMP_RESULT_2 == 1 && !fFALLING_TO_EARTH && !fEGO_CLIMBING_BEANSTALK) {
   }
   draw(oBIRD);
   if (!fGOAT_COMPANION) {
-    print("High up in the sky you see a very large, friendly bird.");
+    #if RUBBER_TREE
+    if (!rfSUPPRESS_BIRD_MSG)
+    #endif
+    {
+      print("High up in the sky you see a very large, friendly bird.");
+    }
     wander(oBIRD);
   }
   if (fGOAT_COMPANION) {
@@ -450,6 +530,14 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
 }
 if (rfTAKEN_BY_BIRD) {
   print("Where could this giant bird be taking you?");
+  #if RUBBER_TREE
+    vBIG_UNDO = BIGUNDO_CONDOR;
+    if (fCARRYING_FIDDLE || fCARRYING_CLOVER) {
+      if (fCARRYING_DIAMONDS || fCARRYING_GOLDEN_EGG || fCARRYING_GOLD_WALNUT || fCARRYING_WALNUT || fCARRYING_POUCH || fCARRYING_SCEPTRE || fCARRYING_SWISS_CHEESE) {
+        vBIG_UNDO = BIGUNDO_NONE;
+      }
+    }
+  #endif
   new.room(ROOM80_IN_MID_AIR);
   reset(fINIT_BEANSTALK);
 }

@@ -3,6 +3,17 @@
 #define rvCOUNTDOWN_LO rv0
 #define rvCOUNTDOWN_HI rv1
 
+#if RUBBER_TREE
+if (fUNDO && fGAME_OVER) {
+  reset(fUNDO);
+  reset(fGAME_OVER);
+  reset(fGAME_OVER_PREPARATION);
+  vBIG_UNDO = BIGUNDO_HOLE;
+  new.room(ROOM48_LEPRECHAUN_HOLE);
+  return;
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -76,6 +87,13 @@ if (said("go", "hole") || said("go", "hole")) {
   }
   else {
     print("You are much too big to fit through that small hole.");
+    #if RUBBER_TREE
+    if (!fCARRYING_MUSHROOM) {
+      stop.cycling(oEGO);
+      print("You seem to be stuck in these underground caverns.  As you have no way of leaving, it looks like you'll spend the rest of your life here." );
+      set(fGAME_OVER);
+    }
+    #endif
   }
 }
 if (said("examine", "cave") || said("examine", "room")) {

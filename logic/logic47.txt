@@ -6,11 +6,6 @@
 #define rfPULLED_UNDERWATER rf1
 #define rfPLAYED_SND_RUSHING_WATER rf2
 
-#if RUBBER_TREE
-  #define rfSEEN_FIGURE_MESSAGE rf3
-  #define rfSEEN_FIGURE_MESSAGE2 rf4
-#endif
-
 #define oMUSHROOM o1
 
 #if RUBBER_TREE
@@ -284,24 +279,7 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water"
   }
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
-  #if RUBBER_TREE
-    if (!fMUSHROOM_TAKEN) {
-      set(rfSEEN_FIGURE_MESSAGE);
-      print("An imposing hooded figure blocks your path, and gestures wordlessly behind you. It seems you still have business in this area.");
-      get.posn(oEGO, vTEMP_X, vTEMP_Y);
-      vTEMP_X -= 5;
-      move.obj.v(oEGO, vTEMP_X, vTEMP_Y, 4, fMISC_END_MARKER);
-    }
-    else {
-      if (rfSEEN_FIGURE_MESSAGE && !rfSEEN_FIGURE_MESSAGE2) {
-        set(rfSEEN_FIGURE_MESSAGE2);
-        print("The hooded figure is nowhere to be seen.");
-      }
-      new.room(ROOM48_LEPRECHAUN_HOLE);
-    }
-  #else
-    new.room(ROOM48_LEPRECHAUN_HOLE);
-  #endif
+  new.room(ROOM48_LEPRECHAUN_HOLE);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {
   new.room(ROOM46_OGRE_STOMPING_GROUND);

@@ -196,6 +196,14 @@
 
   #define vRESTORE_ROOM v164
   #define vRESTORE_DIR_2 v165
+
+  #define vBIG_UNDO v166
+    #define BIGUNDO_NONE 0
+    #define BIGUNDO_CONDOR 1
+    #define BIGUNDO_HOLE 2
+  #define vBIG_UNDO_SCORE v167
+
+  #define vRAT_TOOK_ITEM v168
 #endif
 
 // built-in flags
