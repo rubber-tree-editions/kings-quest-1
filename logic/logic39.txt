@@ -24,6 +24,70 @@
 #define oTROLL o1
 #define oGOAT o13
 
+#if RUBBER_TREE
+if (fUNDO && rfSTUCK_IN_RIVER) {
+
+  stop.sound();
+  reset(fUNDO);
+  vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
+  vDROWN_GAME_OVER_COUNTDOWN = 0;
+  reset(fCYCLE_EGO_ANIMATION);
+  player.control();
+  erase(oEGO);
+  reset(rfSTUCK_IN_RIVER);
+  set.view(oEGO, 0);
+  if (vRESTORE_Y == 0) {
+    if (vPREV_ROOM_NO == ROOM42_STONE_BRIDGE) {
+      vRESTORE_Y = 42;
+      if (vRESTORE_X < 50) {
+        vRESTORE_X = 20;
+        vRESTORE_DIR = DIR_EAST;
+      }
+      else {
+        vRESTORE_X = 74;
+        vRESTORE_DIR = DIR_WEST;
+      }
+    }
+    else {
+      vRESTORE_Y = 150;
+      if (vRESTORE_X < 50) {
+        vRESTORE_X = 3;
+        vRESTORE_DIR = DIR_EAST;
+      }
+      else {
+        vRESTORE_X = 97;
+        vRESTORE_DIR = DIR_WEST;
+      }
+    }
+  }
+  position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+  if (vRESTORE_DIR == DIR_SOUTH) {
+    set.loop(oEGO, 2);
+  }
+  else if (vRESTORE_DIR == DIR_NORTH) {
+    set.loop(oEGO, 3);
+  }
+  else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+    set.loop(oEGO, 0);
+  }
+  else {
+    set.loop(oEGO, 1);
+  }
+  draw(oEGO);
+  if (rfTROLL_IS_HERE) {
+    erase(oTROLL);
+    position.v(oTROLL, vRESTORE_X_2, vRESTORE_Y_2);
+    draw(oTROLL);
+    reset(rfTROLL_IS_AFTER_YOU);
+  }
+  if (fGAME_OVER) {
+    reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
+    return;
+  }
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -58,6 +122,10 @@ if (fROOM_SCRIPT_EXECUTED) {
     set(rfPLAYED_SND_RUSHING_WATER);
   }
   show.pic();
+  #if RUBBER_TREE
+    get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+    vRESTORE_Y = 0;
+  #endif
 }
 if (BUILD_TARGET == APPLE_IIGS) {
   if (!rfSTUCK_IN_RIVER && rfPLAYED_SND_RUSHING_WATER && !fEGO_PLAYING_FIDDLE) {
@@ -136,6 +204,10 @@ if (!rfTROLL_IS_HERE) {
   }
 }
 if (rfTROLL_NEARBY && fEGO_TOUCHED_TRIGGER_LINE) {
+  #if RUBBER_TREE
+    vRESTORE_X_2 = 21;
+    vRESTORE_Y_2 = 69;
+  #endif
   reset(rfTROLL_NEARBY);
   set(rfTROLL_IS_HERE);
   rvTROLL_STEP_SIZE = TROLL_STEP_SIZE;
@@ -149,6 +221,11 @@ if (rfTROLL_NEARBY && fEGO_TOUCHED_TRIGGER_LINE) {
     print("As you approach the bridge, a mean, ugly troll appears and refuses to let you cross his bridge.");
   }
 }
+#if RUBBER_TREE
+if (rfTROLL_IS_HERE && !rfSTUCK_IN_RIVER) {
+  get.posn(oTROLL, vRESTORE_X_2, vRESTORE_Y_2);
+}
+#endif
 if (rfTROLL_IS_HERE && fGOAT_COMPANION && !rfGOAT_APPROACHING_TROLL) {
   if (BUILD_TARGET == APPLE_IIGS) {
     prevent.input();
@@ -501,6 +578,23 @@ if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
 call(LOGIC101_SWIMMING);
+#if RUBBER_TREE
+if (!rfSTUCK_IN_RIVER) {
+  get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+  if (vRESTORE_Y >= 166) {
+    vRESTORE_Y = 0;
+  }
+  else if (vRESTORE_X < 50) {
+    if (vRESTORE_X > 8) {
+      vRESTORE_X -= 5;
+    }
+  }
+  else {
+    vRESTORE_X += 5;
+  }
+  vRESTORE_DIR = vEGO_DIR;
+}
+#endif
 return;
 
 #message 1 "As you approach the bridge, a mean, ugly troll appears and refuses to let you cross his bridge."

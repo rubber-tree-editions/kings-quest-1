@@ -8,6 +8,39 @@
 #define rfPULLED_UNDERWATER rf0
 #define rfPLAYED_SND_RUSHING_WATER rf1
 
+#if RUBBER_TREE
+if (fUNDO && rfPULLED_UNDERWATER) {
+  reset(fUNDO);
+  reset(rfPULLED_UNDERWATER);
+  vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
+  vDROWN_GAME_OVER_COUNTDOWN = 0;
+  stop.sound();
+  erase(oEGO);
+  set.view(oEGO, 0);
+  position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+  if (vRESTORE_DIR == DIR_SOUTH) {
+    set.loop(oEGO, 2);
+  }
+  else if (vRESTORE_DIR == DIR_NORTH) {
+    set.loop(oEGO, 3);
+  }
+  else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+    set.loop(oEGO, 0);
+  }
+  else {
+    set.loop(oEGO, 1);
+  }
+  draw(oEGO);
+  reset(fCYCLE_EGO_ANIMATION);
+  player.control();
+  if (fGAME_OVER) {
+    reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
+    return;
+  }
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
@@ -94,6 +127,25 @@ if (fGOAT_COMPANION) {
   call(LOGIC103_GOAT);
 }
 call(LOGIC101_SWIMMING);
+#if RUBBER_TREE
+  if (!fEGO_ON_WATER && !rfPULLED_UNDERWATER) {
+    get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+    if (vRESTORE_Y >= 61) {
+      vRESTORE_Y += 5;
+    }
+    else if (vRESTORE_X < 25) {
+      vRESTORE_Y -= 4;
+    }
+    else if (vRESTORE_X >= 72) {
+      vRESTORE_X += 5;
+    }
+    else if (vRESTORE_X < 55) {
+      vRESTORE_X -= 2;
+      vRESTORE_Y -= 2;
+    }
+    vRESTORE_DIR = vEGO_DIR;
+  }
+#endif
 return;
 
 #message 1 "This placid looking stream is actually quite dangerous.... the current is stronger than it looks.  You can't keep your head above water."
