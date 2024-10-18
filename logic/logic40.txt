@@ -11,6 +11,48 @@
 #define oMAGIC_BEANS o2
 #define oGOLD_KEY o3
 
+#if RUBBER_TREE
+if (fUNDO && (rfFALLEN_IN_RIVER || fEGO_ON_WATER || vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE)) {
+  reset(fUNDO);
+  reset(fEGO_ON_WATER);
+  reset(rfFALLEN_IN_RIVER);
+  reset(fMANUAL_EGO_WATER_POS);
+  erase(oEGO);
+  vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
+  vDROWN_GAME_OVER_COUNTDOWN = 0;
+  reset(fCYCLE_EGO_ANIMATION);
+  stop.cycling(oEGO);
+  stop.sound();
+  set.view(oEGO, 0);
+  position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+  if (vRESTORE_DIR == DIR_SOUTH) {
+    set.loop(oEGO, 2);
+  }
+  else if (vRESTORE_DIR == DIR_NORTH) {
+    set.loop(oEGO, 3);
+  }
+  else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+    set.loop(oEGO, 0);
+  }
+  else {
+    set.loop(oEGO, 1);
+  }
+  draw(oEGO);
+  if (rfGNOME_IS_HERE) {
+    erase(oGNOME);
+    position.v(oGNOME, vRESTORE_X_2, vRESTORE_Y_2);
+    draw(oGNOME);
+    wander(oGNOME);
+  }
+  player.control();
+  if (fGAME_OVER) {
+    reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
+    return;
+  }
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   #if RUBBER_TREE
   if (vTAKEN_GNOME_GIFT == GNOMEGIFT_BEANS && vBEANSTALK_ROOM == 0 && !fCARRYING_MAGIC_BEANS) {
@@ -28,6 +70,10 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.logics(LOGIC101_SWIMMING);
   call(LOGIC101_SWIMMING);
   ignore.blocks(oEGO);
+  #if RUBBER_TREE
+    vRESTORE_X_2 = 34;
+    vRESTORE_Y_2 = 104;
+  #endif
   if (vGNOME_STATE <= GNOMESTATE_PRESENT) {
     if (BUILD_TARGET == APPLE_IIGS) {
       load.sound(SND_GIFT);
@@ -323,6 +369,15 @@ FINALCHECKS:
     new.room(ROOM25_RICKETY_BRIDGE);
   }
   call(LOGIC101_SWIMMING);
+  #if RUBBER_TREE
+    if (!fEGO_ON_WATER && !rfFALLEN_IN_RIVER && vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
+      get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+      vRESTORE_DIR = vEGO_DIR;
+      if (rfGNOME_IS_HERE) {
+        get.posn(oGNOME, vRESTORE_X_2, vRESTORE_Y_2);
+      }
+    }
+  #endif
   return;
 
 #message 1 "You see a crotchety old gnome pacing around his lean-to."
