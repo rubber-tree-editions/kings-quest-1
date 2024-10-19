@@ -36,6 +36,15 @@
 #define rvDISTANCE_TO_WITCH rv4
 #define rvSTOP_SOUND_COUNTDOWN rv5
 
+#if RUBBER_TREE
+  #define rvRESTORE_FLAGS rv6
+  #define RESTOREFLAGS_CUPBOARD_OPEN 1
+  #define RESTOREFLAGS_CHEESE_PRESENT 2
+  #define RESTOREFLAGS_NOTE_PRESENT 4
+  #define RESTOREFLAGS_CHEESE_POINTS 8
+  #define rvFLAGS_COPY rv7
+#endif
+
 #define oNOTE o1
 #define oCUPBOARD o2
 #define oSWISS_CHEESE o3
@@ -84,12 +93,70 @@ if (fUNDO) {
       rvCOUNTDOWN_HI = 3;
       reset(rfWITCH_IS_HERE);
     }
+    normal.motion(oWITCH);
     reset(rfWITCH_AT_OVEN);
     reset(rfWITCH_MOVING_TO_OVEN);
     reset(rfWITCH_CAST_SPELL);
+    reset(rfWITCH_IS_AFTER_YOU);
     reset(rfIN_CAGE);
     rvCOUNTDOWN3 = 0;
     draw(oEGO);
+    rvFLAGS_COPY = rvRESTORE_FLAGS;
+    if (rvRESTORE_FLAGS >= RESTOREFLAGS_CHEESE_POINTS) {
+      rvRESTORE_FLAGS -= RESTOREFLAGS_CHEESE_POINTS;
+    }
+    else if (fPOINTS_FOR_FINDING_CHEESE) {
+      reset(fPOINTS_FOR_FINDING_CHEESE);
+      vSCORE -= 2;
+    }
+    if (rvRESTORE_FLAGS >= RESTOREFLAGS_NOTE_PRESENT) {
+      rvRESTORE_FLAGS -= RESTOREFLAGS_NOTE_PRESENT;
+      if (fCARRYING_NOTE) {
+        drop("note");
+        reset(fCARRYING_NOTE);
+        draw(oNOTE);
+        vSCORE -= 2;
+      }
+    }
+    if (rvRESTORE_FLAGS >= RESTOREFLAGS_CHEESE_PRESENT) {
+      rvRESTORE_FLAGS -= RESTOREFLAGS_CHEESE_PRESENT;
+      if (fCARRYING_SWISS_CHEESE) {
+        drop("cheese");
+        reset(fCARRYING_SWISS_CHEESE);
+        vSCORE -= 2;
+      }
+      if (rvRESTORE_FLAGS >= RESTOREFLAGS_CUPBOARD_OPEN) {
+        rvRESTORE_FLAGS -= RESTOREFLAGS_CUPBOARD_OPEN;
+        vCUPBOARD_STATE = CUPBOARDSTATE_OPEN_WITH_CHEESE;
+        set.cel(oCUPBOARD, 5);
+        draw(oSWISS_CHEESE);
+        animate.obj(oSWISS_CHEESE);
+        set.view(oSWISS_CHEESE, 41);
+        position(oSWISS_CHEESE, PT_SWISS_CHEESE);
+        set.priority(oSWISS_CHEESE, PRI_SWISS_CHEESE);
+      }
+      else {
+        vCUPBOARD_STATE = CUPBOARDSTATE_CLOSED_WITH_CHEESE;
+        set.cel(oCUPBOARD, 0);
+        erase(oSWISS_CHEESE);
+      }
+    }
+    else {
+      if (rvRESTORE_FLAGS >= RESTOREFLAGS_CUPBOARD_OPEN) {
+        rvRESTORE_FLAGS -= RESTOREFLAGS_CUPBOARD_OPEN;
+        vCUPBOARD_STATE = CUPBOARDSTATE_OPEN_NO_CHEESE;
+        set.cel(oCUPBOARD, 5);
+        erase(oSWISS_CHEESE);
+      }
+      else {
+        vCUPBOARD_STATE = CUPBOARDSTATE_CLOSED_NO_CHEESE;
+        set.cel(oCUPBOARD, 0);
+        erase(oSWISS_CHEESE);
+      }
+    }
+    rvRESTORE_FLAGS = rvFLAGS_COPY;
+    animate.obj(oCUPBOARD);
+    stop.cycling(oCUPBOARD);
     player.control();
     if (fGAME_OVER) {
       reset(fGAME_OVER);
@@ -101,6 +168,20 @@ if (fUNDO) {
 #endif
 
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+    if (!fCARRYING_NOTE) {
+      rvRESTORE_FLAGS += RESTOREFLAGS_NOTE_PRESENT;
+    }
+    if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_NO_CHEESE || vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_WITH_CHEESE) {
+      rvRESTORE_FLAGS += RESTOREFLAGS_CUPBOARD_OPEN;
+    }
+    if (vCUPBOARD_STATE == CUPBOARDSTATE_OPEN_WITH_CHEESE || vCUPBOARD_STATE == CUPBOARDSTATE_CLOSED_WITH_CHEESE) {
+      rvRESTORE_FLAGS += RESTOREFLAGS_CHEESE_PRESENT;
+    }
+    if (fPOINTS_FOR_FINDING_CHEESE) {
+      rvRESTORE_FLAGS += RESTOREFLAGS_CHEESE_POINTS;
+    }
+  #endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
