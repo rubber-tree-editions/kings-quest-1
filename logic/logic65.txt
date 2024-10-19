@@ -41,6 +41,22 @@
 #define oSWISS_CHEESE o3
 #define oWITCH o4
 
+#if RUBBER_TREE
+if (fUNDO) {
+  if (fCARRIED_BY_WITCH) {
+    stop.sound();
+    reset(fUNDO);
+    reset(fSCRIPTED_MOTION);
+    if (fGAME_OVER) {
+      reset(fGAME_OVER);
+      reset(fGAME_OVER_PREPARATION);
+    }
+    new.room(ROOM21_WITCH_STOMPING_GROUND);
+    return;
+  }
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);

@@ -23,7 +23,48 @@
 #define SWOOPDIR_RIGHT 2
 #define SWOOPDIR__LAST 2
 
+#if RUBBER_TREE
+if (fUNDO && fCARRIED_BY_WITCH) {
+  stop.sound();
+  reset(fUNDO);
+  reset(fCARRIED_BY_WITCH);
+  reset(fCYCLE_EGO_ANIMATION);
+  reset(f135_UNKNOWN);
+  erase(oEGO);
+  erase(oWITCH);
+  position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+  stop.motion(oEGO);
+  vEGO_DIR = vRESTORE_DIR;
+  set.view(oEGO, 0);
+  observe.blocks(oEGO);
+  observe.horizon(oEGO);
+  release.priority(oEGO);
+  draw(oEGO);
+  vTEMP_STEP_SIZE = EGO_STEP_SIZE;
+  step.size(oEGO, vTEMP_STEP_SIZE);
+  player.control();
+  vTEMP_RESULT_2 = 90;
+  reset(rfWITCH_IS_HERE);
+  reset(rfPROTECTED);
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+    if (fCARRIED_BY_WITCH) {
+      reset(fCYCLE_EGO_ANIMATION);
+      reset(f135_UNKNOWN);
+      position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+      stop.motion(oEGO);
+      vEGO_DIR = vRESTORE_DIR;
+      set.view(oEGO, 0);
+      player.control();
+    }
+    else {
+      get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+      vRESTORE_DIR = vEGO_DIR;
+    }
+  #endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
@@ -56,6 +97,12 @@ if (fROOM_SCRIPT_EXECUTED) {
       random(0, 250, vTEMP_RESULT_2);
     } while (vTEMP_RESULT_2 > 90);
   }
+  #if RUBBER_TREE
+  if (fCARRIED_BY_WITCH) {
+    reset(fCARRIED_BY_WITCH);
+    vTEMP_RESULT_2 = 90;
+  }
+  #endif
   if (BUILD_TARGET == APPLE_IIGS) {
     get.posn(oEGO, vTEMP_X, vTEMP_Y);
     if (vPREV_ROOM_NO == ROOM28_OUTSIDE_GINGERBREAD_HOUSE) {

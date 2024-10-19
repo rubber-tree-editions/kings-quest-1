@@ -12,6 +12,15 @@
 #define rvCOUNTDOWN_TO_BIRD_SOUND rv0
 #define rvCOUNTDOWN_TO_WITCH_SOUND rv1
 
+#if RUBBER_TREE
+if (fUNDO && fCARRIED_BY_WITCH) {
+  stop.sound();
+  reset(fUNDO);
+  new.room(ROOM21_WITCH_STOMPING_GROUND);
+  return;
+}
+#endif
+
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
