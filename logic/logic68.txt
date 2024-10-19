@@ -67,6 +67,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.sound(SND_FALLING);
   random(0, 250, vTEMP_RESULT);
+  #if RUBBER_TREE
+    if (vTREASURE_COUNT > 0 && !fCARRYING_DIAMONDS && !fCARRYING_GOLD_WALNUT && !fCARRYING_GOLDEN_EGG && !fCARRYING_POUCH && !fCARRYING_SCEPTRE) {
+      vTEMP_RESULT = 250;
+    }
+  #endif
   #if VERSION_MAJOR >= 2
   if (vTEMP_RESULT < 150 && vPREV_ROOM_NO == ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM) {
   #else
@@ -247,6 +252,7 @@ if (fVILLAIN_GOT_YOU) {
     end.of.loop(oDWARF, rfDWARF_FINISHED_ANIMATING);
   }
   else {
+    #if !RUBBER_TREE
     if (fCARRYING_MIRROR) {
       reset(fCARRYING_MIRROR);
       set(fDWARF_STOLE_MIRROR);
@@ -274,7 +280,9 @@ if (fVILLAIN_GOT_YOU) {
       reset(fNO_BUSINESS_WITH_KING);
       vTREASURE_COUNT--;
     }
-    else if (fCARRYING_DIAMONDS) {
+    else
+    #endif
+    if (fCARRYING_DIAMONDS) {
       reset(fCARRYING_DIAMONDS);
       set(fDWARF_OR_TROLL_HAS_DIAMONDS);
       vSCORE -= 6;
