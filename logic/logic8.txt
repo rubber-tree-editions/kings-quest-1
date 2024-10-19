@@ -1,10 +1,9 @@
 #include "vars.txt"
+#include "swimming-defs.txt"
 
 #define PT_DEAD_GOAT 47, 60
 
 #define rfPULLED_UNDERWATER rf0
-
-#define rfDROWNING f44
 
 #if RUBBER_TREE
 #define rfRESTORE_SWIMMING rf1

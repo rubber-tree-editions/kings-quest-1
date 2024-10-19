@@ -1,6 +1,5 @@
 #include "vars.txt"
-
-#define rfDROWNING f44
+#include "swimming-defs.txt"
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.view(93);

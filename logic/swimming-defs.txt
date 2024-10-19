@@ -1,0 +1,6 @@
+#ifndef SWIMMING_DEFS
+#define SWIMMING_DEFS
+
+#define rfDROWNING rf24
+
+#endif
