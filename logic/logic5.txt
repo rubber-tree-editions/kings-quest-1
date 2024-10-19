@@ -1,6 +1,42 @@
 #include "vars.txt"
+#include "swimming-defs.txt"
 
 #define PT_DEAD_GOAT 36, 59
+
+#if RUBBER_TREE
+if (fUNDO && (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING || fGAME_OVER)) {
+  stop.sound();
+  reset(fUNDO);
+  reset(rfDROWNING);
+  vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
+  reset(fEGO_PREOCCUPIED);
+  reset(fCYCLE_EGO_ANIMATION);
+  reset(fEGO_ON_WATER);
+  reset(fSWIMMING);
+  erase(oEGO);
+  set.view(oEGO, 0);
+  position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+  if (vRESTORE_DIR == DIR_SOUTH) {
+    set.loop(oEGO, 2);
+  }
+  else if (vRESTORE_DIR == DIR_NORTH) {
+    set.loop(oEGO, 3);
+  }
+  else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+    set.loop(oEGO, 0);
+  }
+  else {
+    set.loop(oEGO, 1);
+  }
+  draw(oEGO);
+  player.control();
+  if (fGAME_OVER) {
+    reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
+    return;
+  }
+}
+#endif
 
 if (fROOM_SCRIPT_EXECUTED) {
   load.pic(vROOM_NO);
@@ -44,6 +80,11 @@ if (fROOM_SCRIPT_EXECUTED) {
   ignore.blocks(oEGO);
   draw(oEGO);
   show.pic();
+  #if RUBBER_TREE
+    vRESTORE_X = 140;
+    vRESTORE_Y = 165;
+    vRESTORE_DIR = DIR_NORTH;
+  #endif
 }
 if (VERSION_MAJOR >= 2 && fSHOW_GOAT_LEFT_MESSAGE) {
   reset(fSHOW_GOAT_LEFT_MESSAGE);
@@ -165,6 +206,12 @@ if (BUILD_TARGET == APPLE_IIGS) {
     reset(fFALL_DANGER);
   }
 }
+#if RUBBER_TREE
+  if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_NONE) {
+    get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+    vRESTORE_DIR = vEGO_DIR;
+  }
+#endif
 return;
 
 #message 1 "You kneel down and fill the bucket with the cool water."
