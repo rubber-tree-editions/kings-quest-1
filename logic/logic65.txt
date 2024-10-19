@@ -54,6 +54,49 @@ if (fUNDO) {
     new.room(ROOM21_WITCH_STOMPING_GROUND);
     return;
   }
+  else if (rfIN_CAGE || rfWITCH_CAST_SPELL) {
+    stop.sound();
+    reset(fUNDO);
+    reset(fSCRIPTED_MOTION);
+    erase(oEGO);
+    erase(oWITCH);
+    position(oEGO, PT_EGO_ENTER_FROM_DOOR);
+    reset(rfPLAYED_SND_VILLAIN);
+    vEGO_DIR = DIR_NORTH;
+    if (vWITCH_STATE == WITCHSTATE_AT_HOME) {
+      animate.obj(oWITCH);
+      set.view(oWITCH, 43);
+      position(oWITCH, PT_WITCH_AT_HOME);
+      draw(oWITCH);
+      set(rfUNPROTECTED_BY_MAGIC);
+      if (BUILD_TARGET == APPLE_IIGS) {
+        set(rfPLAYED_SND_VILLAIN);
+        sound(SND_VILLAIN, fMISC_END_MARKER);
+      }
+      follow.ego(oWITCH, 10, rfWITCH_CAUGHT_YOU);
+      print("Surprise!  Surprise!  The wicked witch is home and now she's after you!");
+      set(rfWITCH_IS_HERE);
+      rvCOUNTDOWN_LO = 0;
+      rvCOUNTDOWN_HI = 0;
+    }
+    else {
+      rvCOUNTDOWN_LO = 250;
+      rvCOUNTDOWN_HI = 3;
+      reset(rfWITCH_IS_HERE);
+    }
+    reset(rfWITCH_AT_OVEN);
+    reset(rfWITCH_MOVING_TO_OVEN);
+    reset(rfWITCH_CAST_SPELL);
+    reset(rfIN_CAGE);
+    rvCOUNTDOWN3 = 0;
+    draw(oEGO);
+    player.control();
+    if (fGAME_OVER) {
+      reset(fGAME_OVER);
+      reset(fGAME_OVER_PREPARATION);
+      return;
+    }
+  }
 }
 #endif
 
