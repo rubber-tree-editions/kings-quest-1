@@ -537,6 +537,7 @@ if (rfTAKEN_BY_BIRD) {
         vBIG_UNDO = BIGUNDO_NONE;
       }
     }
+    set(fSTORE_STATE);
   #endif
   new.room(ROOM80_IN_MID_AIR);
   reset(fINIT_BEANSTALK);

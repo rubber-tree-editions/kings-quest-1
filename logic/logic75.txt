@@ -18,6 +18,7 @@
 
 #if RUBBER_TREE
 if (fUNDO && fGAME_OVER) {
+  set(fRESTORE_STATE);
   reset(fGAME_OVER);
   reset(fGAME_OVER_PREPARATION);
   reset(fUNDO);
@@ -47,6 +48,11 @@ if (fUNDO && fGAME_OVER) {
 #endif
 
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+  if (vBIG_UNDO == BIGUNDO_NONE) {
+    set(fSTORE_STATE);
+  }
+  #endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);

@@ -244,6 +244,7 @@ else if (rfFALLEN_IN_HOLE) {
     if (vBIG_UNDO == BIGUNDO_NONE && !fCARRYING_MUSHROOM) {
       vBIG_UNDO = BIGUNDO_HOLE;
     }
+    set(fSTORE_STATE);
   #endif
   new.room(ROOM73_CAVE_CEILING_HOLE);
 }

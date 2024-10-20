@@ -204,6 +204,15 @@
   #define vBIG_UNDO_SCORE v167
 
   #define vRAT_TOOK_ITEM v168
+
+  #define vSTATE_FLAGS v169
+    #define STATEFLAGS_UNDRUNK_WATER 64
+    #define STATEFLAGS_UNEATEN_CARROT 32
+    #define STATEFLAGS_UNEATEN_BEANS 16
+    #define STATEFLAGS_UNEATEN_CHEESE 8
+    #define STATEFLAGS_UNREAD_NOTE 4
+    #define STATEFLAGS_CLOSED_POUCH 2
+    #define STATEFLAGS_CLOSED_WALNUT 1
 #endif
 
 // built-in flags
@@ -414,7 +423,11 @@
 #define fFALL_DANGER f216
 // unused: f217-f255
 
-#define fDAGGER_REPLENISHED f220 // rubber tree use only
+#if RUBBER_TREE
+  #define fDAGGER_REPLENISHED f220
+  #define fSTORE_STATE f212
+  #define fRESTORE_STATE f213
+#endif
 
 // controls
 #define cSAVE c1

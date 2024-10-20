@@ -52,6 +52,7 @@ if (fUNDO && fCARRIED_BY_WITCH) {
 if (fROOM_SCRIPT_EXECUTED) {
   #if RUBBER_TREE
     if (fCARRIED_BY_WITCH) {
+      set(fRESTORE_STATE);
       reset(fCYCLE_EGO_ANIMATION);
       reset(f135_UNKNOWN);
       position.v(oEGO, vRESTORE_X, vRESTORE_Y);
@@ -63,6 +64,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     else {
       get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
       vRESTORE_DIR = vEGO_DIR;
+      set(fSTORE_STATE);
     }
   #endif
   load.pic(vROOM_NO);

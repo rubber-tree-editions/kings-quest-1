@@ -36,6 +36,7 @@ if (fUNDO && (fFALLING || fGAME_OVER)) {
     vEGO_DIR = DIR_NONE;
   }
   else {
+    set(fRESTORE_STATE);
     position.v(oEGO, vRESTORE_X_2, vRESTORE_Y_2);
     vRESTORE_DIR = vRESTORE_DIR_2;
     vEGO_DIR = vRESTORE_DIR_2;
@@ -82,6 +83,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   #if RUBBER_TREE
     get.posn(oEGO, vRESTORE_X_2, vRESTORE_Y_2);
     vRESTORE_DIR_2 = vEGO_DIR;
+    set(fSTORE_STATE);
   #endif
   ignore.horizon(oEGO);
   load.pic(vROOM_NO);

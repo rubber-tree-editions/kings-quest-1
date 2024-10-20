@@ -18,6 +18,7 @@
 #if RUBBER_TREE
 if (fUNDO) {
   if (rfWOLF_IS_HERE && !rfPROTECTED) {
+    set(fRESTORE_STATE);
     reset(fUNDO);
     erase(oEGO);
     stop.sound();
@@ -80,6 +81,7 @@ if (fROOM_SCRIPT_EXECUTED) {
   #if RUBBER_TREE
     get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
     vRESTORE_DIR = vEGO_DIR;
+    set(fSTORE_STATE);
   #endif
   random(0, 250, vTEMP_RESULT);
   if (vTEMP_RESULT < 185) {

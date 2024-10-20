@@ -1670,6 +1670,84 @@ if (BUILD_TARGET != AMIGA) {
   get.posn(oEGO, vSAVED_EGO_X, vSAVED_EGO_Y);
   vSAVED_EGO_DIR = vEGO_DIR;
 }
+if (fSTORE_STATE) {
+  reset(fSTORE_STATE);
+  vSTATE_FLAGS = 0;
+  if (fCARRYING_WALNUT) vSTATE_FLAGS += STATEFLAGS_CLOSED_WALNUT;
+  if (fCARRYING_POUCH) vSTATE_FLAGS += STATEFLAGS_CLOSED_POUCH;
+  if (!fPOINTS_FOR_READING_NOTE) vSTATE_FLAGS += STATEFLAGS_UNREAD_NOTE;
+  if (fCARRYING_SWISS_CHEESE) vSTATE_FLAGS += STATEFLAGS_UNEATEN_CHEESE;
+  if (fCARRYING_MAGIC_BEANS) vSTATE_FLAGS += STATEFLAGS_UNEATEN_BEANS;
+  if (fCARRYING_CARROT) vSTATE_FLAGS += STATEFLAGS_UNEATEN_CARROT;
+  if (fBUCKET_FILLED) vSTATE_FLAGS += STATEFLAGS_UNDRUNK_WATER;
+}
+if (fRESTORE_STATE) {
+  reset(fRESTORE_STATE);
+  vTEMP_RESULT = vSTATE_FLAGS;
+  if (vSTATE_FLAGS >= STATEFLAGS_UNDRUNK_WATER) {
+    vSTATE_FLAGS -= STATEFLAGS_UNDRUNK_WATER;
+    if (!fBUCKET_FILLED) {
+      set(fBUCKET_FILLED);
+      vSCORE += 2;
+      get("water");
+    }
+  }
+  if (vSTATE_FLAGS >= STATEFLAGS_UNEATEN_CARROT) {
+    vSTATE_FLAGS -= STATEFLAGS_UNEATEN_CARROT;
+    if (!fCARRYING_CARROT) {
+      set(fCARRYING_CARROT);
+      get("carrot");
+      if (!fPOINTS_FOR_CARROT) {
+        set(fPOINTS_FOR_CARROT);
+        vSCORE += 2;
+      }
+    }
+  }
+  if (vSTATE_FLAGS >= STATEFLAGS_UNEATEN_BEANS) {
+    vSTATE_FLAGS -= STATEFLAGS_UNEATEN_BEANS;
+    if (!fCARRYING_MAGIC_BEANS) {
+      set(fCARRYING_MAGIC_BEANS);
+      get("beans");
+      vSCORE += 5;
+    }
+  }
+  if (vSTATE_FLAGS >= STATEFLAGS_UNEATEN_CHEESE) {
+    vSTATE_FLAGS -= STATEFLAGS_UNEATEN_CHEESE;
+    if (!fCARRYING_SWISS_CHEESE) {
+      set(fCARRYING_SWISS_CHEESE);
+      get("cheese");
+      vSCORE -= 2;
+    }
+  }
+  if (vSTATE_FLAGS >= STATEFLAGS_UNREAD_NOTE) {
+    vSTATE_FLAGS -= STATEFLAGS_UNREAD_NOTE;
+    if (fPOINTS_FOR_READING_NOTE) {
+      reset(fPOINTS_FOR_READING_NOTE);
+      vSCORE -= 1;
+    }
+  }
+  if (vSTATE_FLAGS >= STATEFLAGS_CLOSED_POUCH) {
+    vSTATE_FLAGS -= STATEFLAGS_CLOSED_POUCH;
+    if (fCARRYING_DIAMONDS) {
+      reset(fCARRYING_DIAMONDS);
+      set(fCARRYING_POUCH);
+      drop("pouch of diamonds");
+      get("pouch");
+      vSCORE -= 3;
+    }
+  }
+  if (vSTATE_FLAGS >= STATEFLAGS_CLOSED_WALNUT) {
+    vSTATE_FLAGS -= STATEFLAGS_CLOSED_WALNUT;
+    if (fCARRYING_GOLD_WALNUT) {
+      reset(fCARRYING_GOLD_WALNUT);
+      set(fCARRYING_WALNUT);
+      drop("gold walnut");
+      get("walnut");
+      vSCORE -= 3;
+    }
+  }
+  vSTATE_FLAGS = vTEMP_RESULT;
+}
 return;
 
 #message 1 "You splash around in the water for a while but seem  to have forgotten how to swim. Unfortunately, you drown."

@@ -23,6 +23,7 @@
 #if RUBBER_TREE
 if (fUNDO) {
   if (fGAME_OVER) {
+    set(fRESTORE_STATE);
     stop.sound();
     reset(fUNDO);
     reset(fGAME_OVER);
@@ -45,6 +46,9 @@ if (fUNDO) {
 #endif
 
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+    set(fSTORE_STATE);
+  #endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
