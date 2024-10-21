@@ -1728,7 +1728,7 @@ if (fRESTORE_STATE) {
       if (!fCARRYING_SWISS_CHEESE) {
         set(fCARRYING_SWISS_CHEESE);
         get("cheese");
-        vSCORE -= 2;
+        vSCORE += 2;
       }
     }
     if (vSTATE_FLAGS >= STATEFLAGS_UNREAD_NOTE) {

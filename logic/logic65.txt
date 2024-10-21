@@ -124,7 +124,6 @@ if (fUNDO) {
       if (fCARRYING_SWISS_CHEESE) {
         drop("cheese");
         reset(fCARRYING_SWISS_CHEESE);
-        vSCORE -= 2;
       }
       if (rvRESTORE_FLAGS >= RESTOREFLAGS_CUPBOARD_OPEN) {
         rvRESTORE_FLAGS -= RESTOREFLAGS_CUPBOARD_OPEN;
