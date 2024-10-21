@@ -64,6 +64,7 @@ if (fUNDO) {
     return;
   }
   else if (rfIN_CAGE || rfWITCH_CAST_SPELL) {
+    set(fRESTORE_STATE);
     stop.sound();
     reset(fUNDO);
     reset(fSCRIPTED_MOTION);
@@ -169,6 +170,7 @@ if (fUNDO) {
 
 if (fROOM_SCRIPT_EXECUTED) {
   #if RUBBER_TREE
+    set(fSTORE_STATE);
     if (!fCARRYING_NOTE) {
       rvRESTORE_FLAGS += RESTOREFLAGS_NOTE_PRESENT;
     }
