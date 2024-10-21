@@ -429,6 +429,7 @@
   #define fSTORE_STATE f212
   #define fRESTORE_STATE f213
   #define fSTATE_BOWL_FULL f214
+  #define fREPLENISH_MINOR_TREASURE f215
 #endif
 
 // controls
