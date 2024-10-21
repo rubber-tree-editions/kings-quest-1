@@ -22,6 +22,11 @@
 #define rfPLAYING_SND_LEPRECHAUN_KING rf6
 #define rfPLAYED_SND_LEPRECHAUN_KING rf7
 
+#if RUBBER_TREE
+#define rfREPELLING rf8
+#define rfREPELLED rf9
+#endif
+
 #define rvCOUNTDOWN rv0
 
 #define oSHIELD o1
@@ -426,9 +431,25 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
   new.room(ROOM76_LEPRECHAUN_ANTECHAMBER);
 }
+#if RUBBER_TREE
+if (!fCARRYING_SHIELD) {
+  if (!rfREPELLING && posn(oEGO, 0, 0, 10, 167)) {
+    set(rfREPELLING);
+    print("A mystical, unseen force repels you from the stairway.[[You get the strong feeling there is something vital here.");
+    move.obj(oEGO, 30, 104, 0, rfREPELLED);
+  }
+}
+else
+#endif
 if (posn(oEGO, 0, 0, 1, 167)) {
   new.room(ROOM78_IN_CAVE_WITH_TINY_HOLE);
 }
+#if RUBBER_TREE
+if (rfREPELLED) {
+  reset(rfREPELLED);
+  reset(rfREPELLING);
+}
+#endif
 return;
 
 #message 1 "You find playing the fiddle here very fun, but the dance floor is in the other room."
