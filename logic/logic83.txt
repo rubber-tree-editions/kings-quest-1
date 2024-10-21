@@ -32,10 +32,10 @@ if (fROOM_SCRIPT_EXECUTED) {
     display( 8, 0, "     THE ORDER OF THE RUBBER TREE");
 
     display(10, 0, "     Acolytes of this elusive Sect");
-    display(11, 0, "        do Work from the Shadows,");
-    display(12, 0, "manipulating Events in order to prevent");
+    display(11, 0, "      do Conspire from the Shadows,");
+    display(12, 0, "      manipulating Events to avert");
     display(13, 0, "    so-called UNWINNABLE SITUATIONS;");
-    display(14, 0, "  Furthermore, they believe they can");
+    display(14, 0, "  Furthermore, they claim the right to");
     display(15, 0, "   overrule DEATH ITSELF via the use");
     display(16, 0, "   of the arcane incantation \"UNDO\".");
 
@@ -45,7 +45,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     display(21, 0, "          to their very Souls.");
 
     set.text.attribute(15, 0);
-    display(23, 0, " \[Rubber Tree Edition v1.0 2024/09/30]");
+    display(23, 0, " \[Rubber Tree Edition v1.0 ---BETA---]");
     while (!have.key()) { }
     graphics();
     set.text.attribute(15, 0);
