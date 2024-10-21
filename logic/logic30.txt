@@ -44,10 +44,18 @@ if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
     }
   }
   if (said("get", "walnut")) {
-    if (fWALNUT_TAKEN) {
+    if (fWALNUT_TAKEN
+      #if RUBBER_TREE
+      && !fREPLENISH_MINOR_TREASURE
+      #endif
+    ) {
       print("You look around and decide these plain walnuts won't do. You want a gold walnut!");
     }
-    if (!fWALNUT_TAKEN) {
+    if (!fWALNUT_TAKEN
+      #if RUBBER_TREE
+      || fREPLENISH_MINOR_TREASURE
+      #endif
+    ) {
       if (posn(oEGO, BX_NEAR_WALNUTS)) {
         if (BUILD_TARGET == APPLE_IIGS) {
           sound(SND_POINTS, fMISC_END_MARKER);
@@ -55,6 +63,10 @@ if (!fCARRYING_WALNUT && !fCARRYING_GOLD_WALNUT) {
         print("You pluck a nice walnut from the tree.");
         set(fCARRYING_WALNUT);
         set(fWALNUT_TAKEN);
+        #if RUBBER_TREE
+        reset(fREPLENISH_MINOR_TREASURE);
+        reset(fDWARF_OR_TROLL_HAS_WALNUT);
+        #endif
         vSCORE += 3;
         get("walnut");
       }

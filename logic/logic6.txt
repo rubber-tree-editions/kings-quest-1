@@ -188,7 +188,11 @@ if (said("get", "wood")) {
 }
 if (said("look inside", "stumps")) {
   if (posn(oEGO, BX_NEAR_STUMP)) {
-    if (!fPOUCH_TAKEN) {
+    if (!fPOUCH_TAKEN
+      #if RUBBER_TREE
+      || fREPLENISH_MINOR_TREASURE
+      #endif
+    ) {
       print("Inside the old, rotted stump you notice a small, canvas pouch.");
       if (!fPOINTS_FOR_FINDING_POUCH) {
         set(fPOINTS_FOR_FINDING_POUCH);
@@ -205,7 +209,11 @@ if (said("look inside", "stumps")) {
 }
 if (said("get", "bag of jewels") && !fCARRYING_POUCH) {
   if (posn(oEGO, BX_NEAR_STUMP)) {
-    if (!fPOUCH_TAKEN) {
+    if (!fPOUCH_TAKEN
+      #if RUBBER_TREE
+      || fREPLENISH_MINOR_TREASURE
+      #endif
+    ) {
       if (BUILD_TARGET == APPLE_IIGS) {
         sound(SND_POINTS, fMISC_END_MARKER);
       }
@@ -213,6 +221,10 @@ if (said("get", "bag of jewels") && !fCARRYING_POUCH) {
       get("pouch");
       set(fPOUCH_TAKEN);
       set(fCARRYING_POUCH);
+      #if RUBBER_TREE
+      reset(fREPLENISH_MINOR_TREASURE);
+      reset(fDWARF_OR_TROLL_HAS_DIAMONDS);
+      #endif
       vSCORE += 3;
     }
     else {

@@ -39,6 +39,13 @@ if (fUNDO && rfFALLING_OUT_OF_THE_TREE) {
 #endif
 
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+  if (fREPLENISH_MINOR_TREASURE) {
+    reset(fTAKEN_GOLDEN_EGG);
+    reset(fDWARF_OR_TROLL_HAS_EGG);
+    reset(fREPLENISH_MINOR_TREASURE);
+  }
+  #endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
