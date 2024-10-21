@@ -213,6 +213,7 @@
     #define STATEFLAGS_UNREAD_NOTE 4
     #define STATEFLAGS_CLOSED_POUCH 2
     #define STATEFLAGS_CLOSED_WALNUT 1
+  #define vSTEW_PTS_PLUS_2 v170
 #endif
 
 // built-in flags
@@ -427,6 +428,7 @@
   #define fDAGGER_REPLENISHED f220
   #define fSTORE_STATE f212
   #define fRESTORE_STATE f213
+  #define fSTATE_BOWL_FULL f214
 #endif
 
 // controls
