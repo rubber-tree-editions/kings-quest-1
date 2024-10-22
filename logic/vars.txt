@@ -214,6 +214,11 @@
     #define STATEFLAGS_CLOSED_POUCH 2
     #define STATEFLAGS_CLOSED_WALNUT 1
   #define vSTEW_PTS_PLUS_2 v170
+  #define vSTATE_INVISCD_HI v171
+  #define vSTATE_INVISCD_LO v172
+  #define vSTATE_PROTECTCD_HI v173
+  #define vSTATE_PROTECTCD_LO v174
+  #define vSTATE_TINYCD v175
 #endif
 
 // built-in flags
