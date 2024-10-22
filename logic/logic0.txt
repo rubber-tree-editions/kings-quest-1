@@ -1709,6 +1709,35 @@ if (fSTORE_STATE) {
   if (fBUCKET_FILLED) vSTATE_FLAGS += STATEFLAGS_UNDRUNK_WATER;
   if (vBOWL_STATE == BOWLSTATE_FULL_OF_STEW) set(fSTATE_BOWL_FULL); else reset(fSTATE_BOWL_FULL);
   vSTEW_PTS_PLUS_2 = 2;
+  if (fEGO_INVISIBLE) {
+    vSTATE_INVISCD_HI = vINVISIBLE_COUNTDOWN_HI;
+    vSTATE_INVISCD_LO = vINVISIBLE_COUNTDOWN_LO;
+  }
+  else if (fWEARING_RING) {
+    vSTATE_INVISCD_HI = 102;
+  }
+  else if (fCARRYING_RING) {
+    vSTATE_INVISCD_HI = 103;
+  }
+  else {
+    vSTATE_INVISCD_HI = 101;
+  }
+  if (fPROTECTED_BY_SPELL) {
+    vSTATE_PROTECTCD_HI = vSPELL_COUNTDOWN_HI;
+    vSTATE_PROTECTCD_LO = vSPELL_COUNTDOWN_LO;
+  }
+  else {
+    vSTATE_PROTECTCD_HI = 101;
+  }
+  if (fEGO_TINY) {
+    vSTATE_TINYCD = vTINY_COUNTDOWN;
+  }
+  else if (fCARRYING_MUSHROOM) {
+    vSTATE_TINYCD = 202;
+  }
+  else {
+    vSTATE_TINYCD = 201;
+  }
 }
 if (fRESTORE_STATE) {
   reset(fRESTORE_STATE);
@@ -1787,6 +1816,55 @@ if (fRESTORE_STATE) {
   vSCORE += vSTEW_PTS_PLUS_2;
   vSCORE -= 2;
   vSTEW_PTS_PLUS_2 = 2;
+  if (vSTATE_PROTECTCD_HI != 101) {
+    vSPELL_COUNTDOWN_HI = vSTATE_PROTECTCD_HI;
+    vSPELL_COUNTDOWN_LO = vSTATE_PROTECTCD_LO;
+    set(fPROTECTED_BY_SPELL);
+  }
+  if (vSTATE_INVISCD_HI != 101) {
+    if (!fCARRYING_RING) {
+      set(fCARRYING_RING);
+      get(iRING);
+      vSCORE += 3;
+      reset(fLOST_RING);
+    }
+    if (vSTATE_INVISCD_HI == 102) {
+      reset(fWEARING_RING);
+      reset(fEGO_INVISIBLE);
+    }
+    else {
+      set(fWEARING_RING);
+      if (vSTATE_INVISCD_HI == 103) {
+        reset(fEGO_INVISIBLE);
+      }
+      else {
+        set(fEGO_INVISIBLE);
+        vINVISIBLE_COUNTDOWN_HI = vSTATE_INVISCD_HI;
+        vINVISIBLE_COUNTDOWN_LO = vSTATE_INVISCD_LO;
+        set.view(oEGO, 110);
+      }
+    }
+  }
+  if (vSTATE_TINYCD != 201) {
+    if (vSTATE_TINYCD == 202) {
+      if (fEGO_TINY) {
+        reset(fEGO_TINY);
+        set.view(oEGO, 0);
+      }
+      if (!fCARRYING_MUSHROOM) {
+        set(fCARRYING_MUSHROOM);
+        get("mushroom");
+        vSCORE += 1;
+      }
+    }
+    else {
+      if (!fEGO_TINY) {
+        set(fEGO_TINY);
+        set.view(oEGO, 60);
+      }
+      vTINY_COUNTDOWN = vSTATE_TINYCD;
+    }
+  }
 }
 return;
 
