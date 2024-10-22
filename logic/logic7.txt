@@ -1,4 +1,5 @@
 #include "vars.txt"
+#include "swimming-defs.txt"
 
 #define PT_DEAD_GOAT 96, 137
 
@@ -6,8 +7,73 @@
 
 #define rfPULLED_UNDERWATER rf0
 #define rfPLAYED_SND_RUNNING_WATER rf1
+#if RUBBER_TREE
+  #define rfRESTORE_SWIMMING rf2
+#endif
+
+#if RUBBER_TREE
+if (fUNDO && (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING || fGAME_OVER)) {
+  stop.sound();
+  erase(oEGO);
+  reset(fUNDO);
+  reset(fSWIMMING_IMPOSSIBLE_HERE);
+  reset(fEGO_PREOCCUPIED);
+  if (vRESTORE_Y == 0) {
+    vRESTORE_ROOM = ROOM8_WATERFALL_LAKE_WEST;
+    vDROWN_GAME_OVER_COUNTDOWN = 0;
+    vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
+    set(fSWIMMING);
+    reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
+    new.room(ROOM8_WATERFALL_LAKE_WEST);
+    return;
+  }  
+  reset(rfPULLED_UNDERWATER);
+  reset(rfDROWNING);
+  position.v(oEGO, vRESTORE_X, vRESTORE_Y);
+  start.motion(oEGO);
+  if (rfRESTORE_SWIMMING) {
+    vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
+    set(fEGO_ON_WATER);
+    set(fSWIMMING);
+    set.view(oEGO, 70);
+    set(fCYCLE_EGO_ANIMATION);
+  }
+  else {
+    vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
+    reset(fEGO_ON_WATER);
+    reset(fSWIMMING);
+    set.view(oEGO, 0);
+    reset(fCYCLE_EGO_ANIMATION);
+  }
+  if (vRESTORE_DIR == DIR_SOUTH) {
+    set.loop(oEGO, 2);
+  }
+  else if (vRESTORE_DIR == DIR_NORTH) {
+    set.loop(oEGO, 3);
+  }
+  else if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
+    set.loop(oEGO, 0);
+  }
+  else {
+    set.loop(oEGO, 1);
+  }
+  vDROWN_GAME_OVER_COUNTDOWN = 0;
+  draw(oEGO);
+  player.control();
+
+  if (fGAME_OVER) {
+    reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
+    return;
+  }
+}
+#endif
 
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+    vRESTORE_Y = 0;
+  #endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
@@ -24,13 +90,33 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   if (vPREV_ROOM_NO == ROOM8_WATERFALL_LAKE_WEST) {
-    get.posn(oEGO, vTEMP_X, vTEMP_Y);
-    if (fEGO_ON_WATER && vTEMP_Y < 70) {
-      position(oEGO, 2, 75);
+    #if RUBBER_TREE
+    if (vRESTORE_ROOM == ROOM7_WATERFALL_LAKE_EAST) {
+      vRESTORE_ROOM = ROOM_NULL;
+      position(oEGO, 3, 155);
+      set.loop(oEGO, 1);
+      vAQUATIC_ACTIVITY = AQUATICACTIVITY_SWIMMING;
+      set(fEGO_ON_WATER);
+      set(fSWIMMING);
+      set.view(oEGO, 70);
+      set(fCYCLE_EGO_ANIMATION);
     }
-    if (!fEGO_ON_WATER && vTEMP_Y < 70) {
-      position(oEGO, 2, 47);
-      move.obj(oEGO, 2, 47, 1, fMISC_END_MARKER);
+    else
+    #endif
+    {
+      get.posn(oEGO, vTEMP_X, vTEMP_Y);
+      if (fEGO_ON_WATER && vTEMP_Y < 70) {
+        position(oEGO, 2, 75);
+      }
+      if (!fEGO_ON_WATER && vTEMP_Y < 70) {
+        position(oEGO, 2, 47);
+        move.obj(oEGO, 2, 47, 1, fMISC_END_MARKER);
+        #if RUBBER_TREE
+          vRESTORE_X = 2;
+          vRESTORE_Y = 47;
+          vRESTORE_DIR = DIR_EAST;
+        #endif
+      }
     }
   }
   if (VERSION_MAJOR >= 2 && vPREV_ROOM_NO == ROOM10_GOAT_PEN_WEST) {
@@ -41,6 +127,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     if (vTEMP_X < 20) {
       position(oEGO, 2, 47);
       move.obj(oEGO, 2, 47, 1, fMISC_END_MARKER);
+      #if RUBBER_TREE
+        vRESTORE_X = 2;
+        vRESTORE_Y = 47;
+        vRESTORE_DIR = DIR_SOUTH;
+      #endif
     }
   }
   if (vPREV_ROOM_NO == ROOM42_STONE_BRIDGE && fEGO_ON_WATER) {
@@ -170,6 +261,18 @@ if (BUILD_TARGET == APPLE_IIGS) {
     reset(fFALL_DANGER);
   }
 }
+#if RUBBER_TREE
+if (vAQUATIC_ACTIVITY != AQUATICACTIVITY_DROWNING && !fSWIMMING_IMPOSSIBLE_HERE) {
+  get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
+  vRESTORE_DIR = vEGO_DIR;
+  if (vAQUATIC_ACTIVITY == AQUATICACTIVITY_SWIMMING) {
+    set(rfRESTORE_SWIMMING);
+  }
+  else {
+    reset(rfRESTORE_SWIMMING);
+  }
+}
+#endif
 return;
 
 #message 1 "The lake's waters pour into the bucket."
