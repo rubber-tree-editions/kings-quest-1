@@ -242,6 +242,13 @@ if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
     set(fMANUAL_EGO_WATER_POS);
   }
 }
+#if RUBBER_TREE
+if (posn(oEGO, 86, 166, 125, 168)) {
+  get.posn(oEGO, vTEMP_X, vTEMP_Y);
+  vTEMP_Y = 165;
+  reposition.to.v(oEGO, vTEMP_X, vTEMP_Y);
+}
+#endif
 if (!fBUCKET_FILLED && !fEGO_ON_WATER && !fDRANK_WATER) {
   if (said("drink", "water") || said("get", "drink")) {
     if (posn(oEGO, 0, 40, 32, 111)
