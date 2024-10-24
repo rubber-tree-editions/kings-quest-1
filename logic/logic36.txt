@@ -22,6 +22,9 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   if (vPREV_ROOM_NO == ROOM78_IN_CAVE_WITH_TINY_HOLE) {
+    #if RUBBER_TREE
+      vRESTORE_ROOM = ROOM_NULL;
+    #endif
     if (VERSION_MAJOR >= 2) {
       vTINY_COUNTDOWN = 0;
     }

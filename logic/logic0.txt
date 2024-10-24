@@ -1860,6 +1860,7 @@ if (fRESTORE_STATE) {
     else {
       if (!fEGO_TINY) {
         set(fEGO_TINY);
+        load.view(60);
         set.view(oEGO, 60);
       }
       vTINY_COUNTDOWN = vSTATE_TINYCD;

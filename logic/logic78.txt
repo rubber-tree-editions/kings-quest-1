@@ -8,13 +8,31 @@ if (fUNDO && fGAME_OVER) {
   reset(fUNDO);
   reset(fGAME_OVER);
   reset(fGAME_OVER_PREPARATION);
-  vBIG_UNDO = BIGUNDO_HOLE;
-  new.room(ROOM48_LEPRECHAUN_HOLE);
+  if (vRESTORE_ROOM != ROOM78_IN_CAVE_WITH_TINY_HOLE) {
+    new.room.v(vRESTORE_ROOM);
+    return;
+  }
+  set(fRESTORE_STATE);
+  erase(oEGO);
+  position(oEGO, 146, 131);
+  if (VERSION_MAJOR >= 2) {
+    move.obj(oEGO, 145, 130, 0, fMISC_END_MARKER);
+  }
+  else {
+    move.obj(oEGO, 146, 131, 0, fMISC_END_MARKER);
+  }
+  draw(oEGO);
   return;
 }
 #endif
 
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+  if (vRESTORE_ROOM != ROOM22_CONDOR_AND_CAVE && fCARRYING_MUSHROOM) {
+    vRESTORE_ROOM = ROOM78_IN_CAVE_WITH_TINY_HOLE;
+    set(fSTORE_STATE);
+  }
+  #endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
@@ -62,7 +80,9 @@ else {
 }
 if (vTINY_COUNTDOWN == 1 && fEGO_TINY) {
   if (posn(oEGO, 1, 75, 12, 82)) {
+    #if !RUBBER_TREE
     reset(fEGO_TINY);
+    #endif
     print("You feel a stretching sensation... Oh, you're back to your original size.  You can't get out of the small cave!");
     set(fGAME_OVER);
   }

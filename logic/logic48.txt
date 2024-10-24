@@ -15,6 +15,9 @@
 // unused: rf6
 #define rfFALLEN_TO_EARTH rf7
 #define rfARRIVING_FROM_MIDAIR rf8
+#if RUBBER_TREE
+  #define rfSHORTENED_FLIGHT rf9
+#endif
 
 #define rvCOUNTDOWN rv0
 #define rvCOUNTDOWN_TO_NOTHING rv1 // a deleted sound effect?
@@ -37,26 +40,28 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(103);
   load.view(104);
   #if RUBBER_TREE
-  if (vBIG_UNDO == BIGUNDO_HOLE) {
-    stop.motion(oEGO);
-    position(oEGO, 77, 110);
-    set.view(oEGO, 0);
-    set.loop(oEGO, 2);
-    vBIG_UNDO = BIGUNDO_NONE;
+  if (vPREV_ROOM_NO == ROOM80_IN_MID_AIR) {
+    set(fSTORE_STATE);
+  }
+  else if (vRESTORE_ROOM == ROOM48_LEPRECHAUN_HOLE && vPREV_ROOM_NO != ROOM47_MUSHROOM) {
+    set(rfSHORTENED_FLIGHT);
+    vPREV_ROOM_NO = ROOM80_IN_MID_AIR;
+    set(fRESTORE_STATE);
     reset(fEGO_ON_WATER);
     reset(fFALLING);
     reset(fEGO_PREOCCUPIED);
     reset(fSCRIPTED_MOTION);
 
+    reset(fMUSHROOM_TAKEN);
     reset(fDANCING_LEPRECHAUNS);
     reset(fLEPRECHAUN_KING_GONE);
     reset(fRAT_IS_GONE);
     if (vRAT_TOOK_ITEM > 0) {
       if (vRAT_TOOK_ITEM == INV_SWISS_CHEESE) {
+        // fRESTORE_STATE should take care of replacing the item
+        // as if you had eaten it
         reset(fRAT_ATE_CHEESE);
-        get("cheese");
-        set(fCARRYING_SWISS_CHEESE);
-        vSCORE -= 2;
+        vSCORE -= 4;
       }
       else {
         if (vRAT_TOOK_ITEM == INV_POUCH_OF_DIAMONDS) {
@@ -96,11 +101,6 @@ if (fROOM_SCRIPT_EXECUTED) {
       drop("sceptre");
       vSCORE -= 6;
     }
-    if (fEATEN_MUSHROOM) {
-      reset(fEATEN_MUSHROOM);
-      reset(fEGO_TINY);
-      reset(fMUSHROOM_TAKEN);
-    }
     player.control();
   }
   #endif
@@ -108,7 +108,16 @@ if (fROOM_SCRIPT_EXECUTED) {
     set.view(oEGO, 89);
     animate.obj(oBIRD);
     set.view(oBIRD, 8);
+    #if RUBBER_TREE
+    if (rfSHORTENED_FLIGHT) {
+      position(oEGO, 95, 50);
+    }
+    else {
+      position(oEGO, 2, 50);
+    }
+    #else
     position(oEGO, 2, 50);
+    #endif
     move.obj(oEGO, 100, 50, 0, rfBIRD_DROPPED_YOU);
     set.priority(oBIRD, PRI_BIRD);
     set.priority(oEGO, PRI_EGO_WHILE_FALLING_FROM_MIDAIR);
@@ -241,10 +250,9 @@ else if (rfFALLEN_IN_HOLE) {
   reset(fSCRIPTED_MOTION);
   erase(oEGO);
   #if RUBBER_TREE
-    if (vBIG_UNDO == BIGUNDO_NONE && !fCARRYING_MUSHROOM) {
-      vBIG_UNDO = BIGUNDO_HOLE;
+    if (vRESTORE_ROOM == ROOM48_LEPRECHAUN_HOLE && fCARRYING_MUSHROOM) {
+      vRESTORE_ROOM = ROOM73_CAVE_CEILING_HOLE;
     }
-    set(fSTORE_STATE);
   #endif
   new.room(ROOM73_CAVE_CEILING_HOLE);
 }

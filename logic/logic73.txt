@@ -21,6 +21,17 @@ if (fROOM_SCRIPT_EXECUTED) {
   load.view(105);
   load.view(103);
   load.view(104);
+  #if RUBBER_TREE
+  if (vRESTORE_ROOM == ROOM73_CAVE_CEILING_HOLE) {
+    if (vPREV_ROOM_NO == ROOM48_LEPRECHAUN_HOLE) {
+      set(fSTORE_STATE);
+    }
+    else {
+      vPREV_ROOM_NO = ROOM48_LEPRECHAUN_HOLE;
+      set(fRESTORE_STATE);
+    }
+  }
+  #endif
   if (vPREV_ROOM_NO == ROOM48_LEPRECHAUN_HOLE) {
     if (BUILD_TARGET == APPLE_IIGS) {
       set(fEGO_PREOCCUPIED);

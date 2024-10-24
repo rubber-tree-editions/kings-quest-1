@@ -4,6 +4,9 @@
 #define rfLEPRECHAUNS_DANCING_AWAY rf1
 #define rfPLAYING_FIDDLE rf2
 #define rfPLAYED_SND_FIDDLE_TUNE rf3
+#if RUBBER_TREE
+  #define rvINTRO_MESSAGE_COUNTDOWN rv1
+#endif
 
 #define rvCOUNTDOWN rv0
 
@@ -13,19 +16,15 @@
 
 #if RUBBER_TREE
 if (fUNDO && fGAME_OVER) {
-  set(fRESTORE_STATE);
   reset(fSCRIPTED_MOTION);
   reset(fGAME_OVER);
   reset(fGAME_OVER_PREPARATION);
   reset(fUNDO);
-  if (vBIG_UNDO == BIGUNDO_CONDOR) {
-    new.room(ROOM22_CONDOR_AND_CAVE);
+  if (vRESTORE_ROOM != ROOM76_LEPRECHAUN_ANTECHAMBER) {
+    new.room.v(vRESTORE_ROOM);
     return;
   }
-  else if (vBIG_UNDO == BIGUNDO_HOLE) {
-    new.room(ROOM48_LEPRECHAUN_HOLE);
-    return;
-  }
+  set(fRESTORE_STATE);
   erase(oEGO);
   erase(oLEPRECHAUN1);
   erase(oLEPRECHAUN2);
@@ -48,16 +47,36 @@ if (fUNDO && fGAME_OVER) {
   draw(oLEPRECHAUN1);
   draw(oLEPRECHAUN2);
   player.control();
+  rvINTRO_MESSAGE_COUNTDOWN = 3;
   return;
 }
 #endif
 
 if (fROOM_SCRIPT_EXECUTED) {
   #if RUBBER_TREE
-  if (vBIG_UNDO == BIGUNDO_NONE) {
+  if (vRESTORE_ROOM == ROOM76_LEPRECHAUN_ANTECHAMBER) {
+    set(fRESTORE_STATE);
+    reset(fDANCING_LEPRECHAUNS);
+    vPREV_ROOM_NO = ROOM75_RAT_STOMPING_GROUND;
+    reset(fLEPRECHAUN_KING_GONE);
+    if (fCARRYING_SCEPTRE) {
+      reset(fSCEPTRE_TAKEN);
+      reset(fCARRYING_SCEPTRE);
+      drop("sceptre");
+      vSCORE -= 6;
+    }
+    if (fCARRYING_SHIELD) {
+      reset(fSHIELD_TAKEN);
+      reset(fCARRYING_SHIELD);
+      drop("shield");
+      vSCORE -= 8;
+    }
+  }
+  else if (vRESTORE_ROOM != ROOM22_CONDOR_AND_CAVE && fCARRYING_MUSHROOM) {
+    vRESTORE_ROOM = ROOM76_LEPRECHAUN_ANTECHAMBER;
     set(fSTORE_STATE);
   }
-  #endif  
+  #endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
@@ -124,6 +143,22 @@ if (fROOM_SCRIPT_EXECUTED) {
     }
   }
 }
+#if RUBBER_TREE
+rvINTRO_MESSAGE_COUNTDOWN--;
+if (rvINTRO_MESSAGE_COUNTDOWN == 1) {
+  if (!fDANCING_LEPRECHAUNS) {
+    if (!fCARRYING_CLOVER && fEGO_INVISIBLE) {
+      print("The leprechauns' magic powers detect your unseen presence.");
+    }
+    if (!fCARRYING_CLOVER && !fEGO_INVISIBLE) {
+      print("The leprechauns do not like your invasion of their territory.  They may not let you get any further.");
+    }
+    if (fCARRYING_CLOVER) {
+      print("The leprechauns revere the power of the fourleaf clover. With it in your possession they will leave you absolutely alone.");
+    }
+  }
+}
+#endif
 if (rfLEPRECHAUN_CAUGHT_YOU) {
   reset(rfLEPRECHAUN_CAUGHT_YOU);
   print("The leprechaun catches you and holds you with his small,  but strong arms.  I don't think the leprechaun will ever let go.");

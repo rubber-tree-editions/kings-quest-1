@@ -140,7 +140,8 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   random(0, 250, vTEMP_RESULT);
   #if RUBBER_TREE
-    if (vBIG_UNDO == BIGUNDO_CONDOR) {
+    if (vRESTORE_ROOM == ROOM22_CONDOR_AND_CAVE) {
+      set(fRESTORE_STATE);
       vTEMP_RESULT = 0;
       reset(fTAKEN_BY_GIANT_BIRD);
       vSCORE -= 3;
@@ -149,10 +150,10 @@ if (fROOM_SCRIPT_EXECUTED) {
       reset(fRAT_IS_GONE);
       if (vRAT_TOOK_ITEM > 0) {
         if (vRAT_TOOK_ITEM == INV_SWISS_CHEESE) {
+          // fRESTORE_STATE should take care of replacing the item
+          // as if you had eaten it
           reset(fRAT_ATE_CHEESE);
-          get("cheese");
-          set(fCARRYING_SWISS_CHEESE);
-          vSCORE -= 2;
+          vSCORE -= 4;
         }
         else {
           if (vRAT_TOOK_ITEM == INV_POUCH_OF_DIAMONDS) {
@@ -192,11 +193,6 @@ if (fROOM_SCRIPT_EXECUTED) {
         drop("sceptre");
         vSCORE -= 6;
       }
-      if (fEATEN_MUSHROOM) {
-        reset(fEATEN_MUSHROOM);
-        reset(fEGO_TINY);
-        reset(fMUSHROOM_TAKEN);
-      }
     }
   #endif
   #if BUILD_TARGET == APPLE_IIGS
@@ -219,13 +215,13 @@ if (fROOM_SCRIPT_EXECUTED) {
     } while (vTEMP_RESULT_2 > 90);
   }
   #if RUBBER_TREE
-    if (vBIG_UNDO == BIGUNDO_CONDOR) {
+    if (vRESTORE_ROOM == ROOM22_CONDOR_AND_CAVE) {
       vTEMP_RESULT_2 = 2;
       position(oEGO, 80, 120);
       set.view(oEGO, 0);
       set.loop(oEGO, 1);
       stop.motion(oEGO);
-      vBIG_UNDO = BIGUNDO_NONE;
+      vRESTORE_ROOM = ROOM_NULL;
       set(rfSUPPRESS_BIRD_MSG);
       player.control();
     }
@@ -531,13 +527,12 @@ if (vEGO_EDGE_CODE != EDGE_NONE) {
 if (rfTAKEN_BY_BIRD) {
   print("Where could this giant bird be taking you?");
   #if RUBBER_TREE
-    vBIG_UNDO = BIGUNDO_CONDOR;
+    vRESTORE_ROOM = ROOM22_CONDOR_AND_CAVE;
     if (fCARRYING_FIDDLE || fCARRYING_CLOVER) {
       if (fCARRYING_DIAMONDS || fCARRYING_GOLDEN_EGG || fCARRYING_GOLD_WALNUT || fCARRYING_WALNUT || fCARRYING_POUCH || fCARRYING_SCEPTRE || fCARRYING_SWISS_CHEESE) {
-        vBIG_UNDO = BIGUNDO_NONE;
+        vRESTORE_ROOM = ROOM48_LEPRECHAUN_HOLE;
       }
     }
-    set(fSTORE_STATE);
   #endif
   new.room(ROOM80_IN_MID_AIR);
   reset(fINIT_BEANSTALK);

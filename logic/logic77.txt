@@ -41,12 +41,8 @@ if (fUNDO && fGAME_OVER) {
   reset(fGAME_OVER);
   reset(fGAME_OVER_PREPARATION);
   reset(fUNDO);
-  if (vBIG_UNDO == BIGUNDO_CONDOR) {
-    new.room(ROOM22_CONDOR_AND_CAVE);
-    return;
-  }
-  else if (vBIG_UNDO == BIGUNDO_HOLE) {
-    new.room(ROOM48_LEPRECHAUN_HOLE);
+  if (vRESTORE_ROOM != ROOM77_LEPRECHAUN_KING_THRONE_ROOM) {
+    new.room.v(vRESTORE_ROOM);
     return;
   }
   stop.sound();
@@ -75,7 +71,27 @@ if (fUNDO && fGAME_OVER) {
 
 if (fROOM_SCRIPT_EXECUTED) {
   #if RUBBER_TREE
-  if (vBIG_UNDO == BIGUNDO_NONE) {
+  if (vRESTORE_ROOM == ROOM77_LEPRECHAUN_KING_THRONE_ROOM) {
+    if (vPREV_ROOM_NO != ROOM76_LEPRECHAUN_ANTECHAMBER) {
+      set(fRESTORE_STATE);
+      vPREV_ROOM_NO = ROOM76_LEPRECHAUN_ANTECHAMBER;
+      reset(fLEPRECHAUN_KING_GONE);
+      if (fCARRYING_SCEPTRE) {
+        reset(fSCEPTRE_TAKEN);
+        reset(fCARRYING_SCEPTRE);
+        drop("sceptre");
+        vSCORE -= 6;
+      }
+      if (fCARRYING_SHIELD) {
+        reset(fSHIELD_TAKEN);
+        reset(fCARRYING_SHIELD);
+        drop("shield");
+        vSCORE -= 8;
+      }
+    }
+  }
+  else if (vRESTORE_ROOM != ROOM22_CONDOR_AND_CAVE && fCARRYING_MUSHROOM) {
+    vRESTORE_ROOM = ROOM77_LEPRECHAUN_KING_THRONE_ROOM;
     set(fSTORE_STATE);
   }
   #endif
