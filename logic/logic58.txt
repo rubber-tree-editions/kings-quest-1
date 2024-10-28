@@ -41,7 +41,8 @@ if (fUNDO && (fFALLING || fGAME_OVER)) {
     vRESTORE_DIR = vRESTORE_DIR_2;
     vEGO_DIR = vRESTORE_DIR_2;
     reposition.to(oGIANT, 91, 71);
-    set.dir(oGIANT, DIR_EAST);
+    vTEMP_DIR = DIR_EAST;
+    set.dir(oGIANT, vTEMP_DIR);
     reset(rfVILLAIN_SOUND_PLAYED);
     set(rfGIANT_IS_AFTER_YOU);
     if (BUILD_TARGET == APPLE_IIGS && vGIANT_STATE == GIANTSTATE_AWAKE_WITH_CHEST) {
