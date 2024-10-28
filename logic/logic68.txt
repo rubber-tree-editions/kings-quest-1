@@ -9,6 +9,10 @@
 #define rfDONT_CALCULATE_DISTANCE rf6
 #define rfPLAYING_SND_DWARF rf7
 #define rfPLAYED_SND_DWARF rf8
+#if RUBBER_TREE
+  #define rfRESTORE_DWARF rf9
+  #define rfRESTORE_DWARF_HALFWAY rf10
+#endif
 
 #if BUILD_TARGET == APPLE_IIGS
   #define _fFALLING fFALLING
@@ -24,6 +28,28 @@
 if (fUNDO && (_fFALLING || fGAME_OVER)) {
   reset(fUNDO);
   stop.sound();
+  erase(oDWARF);
+  reset(rfPLAYING_SND_DWARF);
+  reset(rfPLAYED_SND_DWARF);
+  if (rfRESTORE_DWARF) {
+    set(rfDWARF_IS_HERE);
+    reset(rfDWARF_MADE_ENTRANCE);
+    reset(rfDONT_CALCULATE_DISTANCE);
+    reset(fVILLAIN_GOT_YOU);
+    position.v(oDWARF, vRESTORE_X_2, vRESTORE_Y_2);
+    set.dir(oDWARF, vRESTORE_DIR_2);
+    draw(oDWARF);
+    if (rfRESTORE_DWARF_HALFWAY) {
+      follow.ego(oDWARF, 10, fVILLAIN_GOT_YOU);
+    }
+    else {
+      move.obj(oDWARF, 130, 127, 2, rfDWARF_MADE_ENTRANCE);
+    }
+  }
+  else {
+    reset(rfDWARF_IS_HERE);
+    reset(rfDWARF_MADE_ENTRANCE);
+  }
   erase(oEGO);
   position.v(oEGO, vRESTORE_X, vRESTORE_Y);
   vEGO_DIR = DIR_NONE;
@@ -162,6 +188,11 @@ if (!rfDONT_CALCULATE_DISTANCE) {
   distance(oEGO, oDWARF, vTEMP_RESULT_3);
 }
 if (rfDWARF_MADE_ENTRANCE) {
+  #if RUBBER_TREE
+    if (!_fFALLING && !fGAME_OVER) {
+      set(rfRESTORE_DWARF_HALFWAY);
+    }
+  #endif
   set(rfDONT_CALCULATE_DISTANCE);
   reset(rfDWARF_MADE_ENTRANCE);
   follow.ego(oDWARF, 10, fVILLAIN_GOT_YOU);
@@ -190,6 +221,14 @@ if (fEGO_TOUCHED_TRIGGER_LINE && !_fFALLING) {
     get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
     vRESTORE_Y -= 8;
     vRESTORE_DIR = vEGO_DIR;
+    if (rfDWARF_IS_HERE) {
+      set(rfRESTORE_DWARF);
+      get.posn(oDWARF, vRESTORE_X_2, vRESTORE_Y_2);
+      get.dir(oDWARF, vRESTORE_DIR_2);
+    }
+    else {
+      reset(rfRESTORE_DWARF);
+    }
   #endif
   if (BUILD_TARGET == APPLE_IIGS) {
     set(fEGO_PREOCCUPIED);
