@@ -7,16 +7,22 @@
 
 #if RUBBER_TREE
 if (fUNDO && (rfPULLED_UNDERWATER || fEGO_ON_WATER || vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE)) {
+  stop.sound();
   reset(fUNDO);
   reset(fEGO_ON_WATER);
-  reset(rfPULLED_UNDERWATER);
   reset(fMANUAL_EGO_WATER_POS);
-  erase(oEGO);
   vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
   vDROWN_GAME_OVER_COUNTDOWN = 0;
   reset(fCYCLE_EGO_ANIMATION);
+  erase(oEGO);
+  reset(rfPULLED_UNDERWATER);
   stop.cycling(oEGO);
-  stop.sound();
+  if (vRESTORE_ROOM != ROOM_NULL && vPREV_ROOM_NO == ROOM48_LEPRECHAUN_HOLE) {
+    reset(fGAME_OVER);
+    reset(fGAME_OVER_PREPARATION);
+    new.room.v(vRESTORE_ROOM);
+    return;
+  }
   set.view(oEGO, 0);
   position.v(oEGO, vRESTORE_X, vRESTORE_Y);
   if (vRESTORE_DIR == DIR_SOUTH) {
@@ -186,6 +192,9 @@ if (vAQUATIC_ACTIVITY <= AQUATICACTIVITY_NONE && fEGO_ON_WATER) {
   }
 }
 if (vEGO_EDGE_CODE == EDGE_HORIZON) {
+  #if RUBBER_TREE
+    set(fOVERRIDE_RESET_ENTRANCE);
+  #endif
   new.room(ROOM48_LEPRECHAUN_HOLE);
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {

@@ -340,7 +340,11 @@ if (VERSION_MAJOR >= 2) {
     || controller(cSPEED_FAST)
   #endif
   ) {
+#if RUBBER_TREE
+    vTEMP_CYCLE_DELAY = 1;
+#else
     vTEMP_CYCLE_DELAY = 0;
+#endif
     vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
   }
   if (
@@ -1845,8 +1849,14 @@ if (fRESTORE_STATE) {
       }
     }
   }
-  if (vSTATE_TINYCD != 201) {
-    if (vSTATE_TINYCD == 202) {
+  if (vSTATE_TINYCD == 201) {
+    if (fCARRYING_MUSHROOM) {
+      reset(fCARRYING_MUSHROOM);
+      drop("mushroom");
+      vSCORE -= 1;
+    }
+  }
+  else if (vSTATE_TINYCD == 202) {
       if (fEGO_TINY) {
         reset(fEGO_TINY);
         set.view(oEGO, 0);
@@ -1856,15 +1866,14 @@ if (fRESTORE_STATE) {
         get("mushroom");
         vSCORE += 1;
       }
+  }
+  else {
+    if (!fEGO_TINY) {
+      set(fEGO_TINY);
+      load.view(60);
+      set.view(oEGO, 60);
     }
-    else {
-      if (!fEGO_TINY) {
-        set(fEGO_TINY);
-        load.view(60);
-        set.view(oEGO, 60);
-      }
-      vTINY_COUNTDOWN = vSTATE_TINYCD;
-    }
+    vTINY_COUNTDOWN = vSTATE_TINYCD;
   }
 }
 return;

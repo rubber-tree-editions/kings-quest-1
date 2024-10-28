@@ -16,10 +16,20 @@ if (fUNDO) {
     erase(oEGO);
     reset(fUNDO);
     reset(fEGO_PREOCCUPIED);
+    vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
+    reset(fEGO_ON_WATER);
+    vDROWN_GAME_OVER_COUNTDOWN = 0;
+    reset(fCYCLE_EGO_ANIMATION);
+    set.view(oEGO, 0);
+    if (vRESTORE_ROOM != ROOM_NULL) {
+      reset(fGAME_OVER);
+      reset(fGAME_OVER_PREPARATION);
+      new.room.v(vRESTORE_ROOM);
+      return;
+    }
     reset(rfPULLED_UNDERWATER);
     reset(rfDROWNING);
     object.on.anything(oEGO);
-    vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
     if (vRESTORE_DIR == DIR_NORTH || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_NORTHWEST) {
       vRESTORE_Y += 3;
     }
@@ -34,9 +44,6 @@ if (fUNDO) {
     }
     reposition.to.v(oEGO, vRESTORE_X, vRESTORE_Y);
     object.on.land(oEGO);
-    reset(fEGO_ON_WATER);
-    reset(fCYCLE_EGO_ANIMATION);
-    set.view(oEGO, 0);
     if (vRESTORE_DIR == DIR_SOUTH) {
       set.loop(oEGO, 2);
     }
@@ -49,7 +56,6 @@ if (fUNDO) {
     else {
       set.loop(oEGO, 1);
     }
-    vDROWN_GAME_OVER_COUNTDOWN = 0;
     draw(oEGO);
     player.control();
 
@@ -287,6 +293,9 @@ if (!fBUCKET_FILLED && fCARRYING_BUCKET && !fEGO_ON_WATER && said("get", "water"
   }
 }
 if (vEGO_EDGE_CODE == EDGE_RIGHT) {
+  #if RUBBER_TREE
+    set(fOVERRIDE_RESET_ENTRANCE);
+  #endif
   new.room(ROOM48_LEPRECHAUN_HOLE);
 }
 if (vEGO_EDGE_CODE == EDGE_LEFT) {

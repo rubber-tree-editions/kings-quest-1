@@ -429,6 +429,7 @@
   #define fRESTORE_STATE f213
   #define fSTATE_BOWL_FULL f214
   #define fREPLENISH_MINOR_TREASURE f215
+  #define fOVERRIDE_RESET_ENTRANCE f216
 #endif
 
 // controls
