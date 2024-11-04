@@ -4,6 +4,9 @@
 
 #define rfPULLED_UNDERWATER rf0
 #define rfPLAYED_SND_RUSHING_WATER rf1
+#if RUBBER_TREE
+#define rfUSE_RESTORE_ROOM rf2
+#endif
 
 #if RUBBER_TREE
 if (fUNDO && (rfPULLED_UNDERWATER || fEGO_ON_WATER || vAQUATIC_ACTIVITY != AQUATICACTIVITY_NONE)) {
@@ -17,7 +20,18 @@ if (fUNDO && (rfPULLED_UNDERWATER || fEGO_ON_WATER || vAQUATIC_ACTIVITY != AQUAT
   erase(oEGO);
   reset(rfPULLED_UNDERWATER);
   stop.cycling(oEGO);
-  if (vRESTORE_ROOM != ROOM_NULL && vPREV_ROOM_NO == ROOM48_LEPRECHAUN_HOLE) {
+  if (vRESTORE_ROOM == ROOM22_CONDOR_AND_CAVE) {
+    set(rfUSE_RESTORE_ROOM);
+  }
+  else if (vRESTORE_ROOM == ROOM48_LEPRECHAUN_HOLE) {
+    if (fMUSHROOM_TAKEN && !fCARRYING_MUSHROOM) {
+      set(rfUSE_RESTORE_ROOM);
+    }
+    else if (fCHEESE_IS_VITAL && !fCARRYING_SWISS_CHEESE) {
+      set(rfUSE_RESTORE_ROOM);
+    }
+  }
+  if (rfUSE_RESTORE_ROOM) {
     reset(fGAME_OVER);
     reset(fGAME_OVER_PREPARATION);
     new.room.v(vRESTORE_ROOM);

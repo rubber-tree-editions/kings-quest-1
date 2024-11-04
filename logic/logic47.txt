@@ -6,6 +6,9 @@
 #define rfSHOW_MUSHROOM rf0
 #define rfPULLED_UNDERWATER rf1
 #define rfPLAYED_SND_RUSHING_WATER rf2
+#if RUBBER_TREE
+#define rfUSE_RESTORE_ROOM rf3
+#endif
 
 #define oMUSHROOM o1
 
@@ -21,7 +24,18 @@ if (fUNDO) {
     vDROWN_GAME_OVER_COUNTDOWN = 0;
     reset(fCYCLE_EGO_ANIMATION);
     set.view(oEGO, 0);
-    if (vRESTORE_ROOM != ROOM_NULL) {
+    if (vRESTORE_ROOM == ROOM22_CONDOR_AND_CAVE) {
+      set(rfUSE_RESTORE_ROOM);
+    }
+    else if (vRESTORE_ROOM == ROOM48_LEPRECHAUN_HOLE) {
+      if (fMUSHROOM_TAKEN && !fCARRYING_MUSHROOM) {
+        set(rfUSE_RESTORE_ROOM);
+      }
+      else if (fCHEESE_IS_VITAL && !fCARRYING_SWISS_CHEESE) {
+        set(rfUSE_RESTORE_ROOM);
+      }
+    }
+    if (rfUSE_RESTORE_ROOM) {
       reset(fGAME_OVER);
       reset(fGAME_OVER_PREPARATION);
       new.room.v(vRESTORE_ROOM);

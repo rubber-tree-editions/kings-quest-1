@@ -415,6 +415,7 @@ if (!fRAT_IS_GONE) {
         vSCORE += 4;
         #if RUBBER_TREE
           vRAT_TOOK_ITEM = INV_SWISS_CHEESE;
+          reset(fCHEESE_IS_VITAL);
         #endif
       }
       else {
