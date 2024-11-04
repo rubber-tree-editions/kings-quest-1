@@ -30,14 +30,8 @@ if (fUNDO && fGAME_OVER) {
   erase(oLEPRECHAUN2);
   set.view(oEGO, 0);
   stop.motion(oEGO);
-  if (vPREV_ROOM_NO == ROOM77_LEPRECHAUN_KING_THRONE_ROOM) {
-    position(oEGO, 73, 163);
-    vEGO_DIR = DIR_NORTH;
-  }
-  else /* if (vPREV_ROOM_NO == ROOM75_RAT_STOMPING_GROUND) */ {
-    position(oEGO, 113, 146);
-    vEGO_DIR = DIR_WEST;
-  }
+  position(oEGO, 113, 146);
+  vEGO_DIR = DIR_WEST;
   position(oLEPRECHAUN1, 60, 136);
   position(oLEPRECHAUN2, 45, 119);
   follow.ego(oLEPRECHAUN1, 5, rfLEPRECHAUN_CAUGHT_YOU);
@@ -54,10 +48,14 @@ if (fUNDO && fGAME_OVER) {
 
 if (fROOM_SCRIPT_EXECUTED) {
   #if RUBBER_TREE
-  if (vRESTORE_ROOM == ROOM76_LEPRECHAUN_ANTECHAMBER) {
+  if (fOVERRIDE_RESET_ENTRANCE) {
+    reset(fOVERRIDE_RESET_ENTRANCE);
+  }
+  else if (vRESTORE_ROOM == ROOM76_LEPRECHAUN_ANTECHAMBER) {
     set(fRESTORE_STATE);
     reset(fDANCING_LEPRECHAUNS);
     vPREV_ROOM_NO = ROOM75_RAT_STOMPING_GROUND;
+    vEGO_DIR = DIR_WEST;
     reset(fLEPRECHAUN_KING_GONE);
     if (fCARRYING_SCEPTRE) {
       reset(fSCEPTRE_TAKEN);
