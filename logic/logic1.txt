@@ -298,6 +298,7 @@ call(LOGIC101_SWIMMING);
       stop.sound();
       vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
       vDROWN_GAME_OVER_COUNTDOWN = 0;
+      set(fRESTORE_DROWN);
       reset(fEGO_PREOCCUPIED);
       reset(fSWIMMING);
       reset(fCYCLE_EGO_ANIMATION);

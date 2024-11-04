@@ -17,6 +17,7 @@ if (fUNDO && (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING || fGAME_OVER)) {
   erase(oEGO);
   reset(fUNDO);
   reset(fSWIMMING_IMPOSSIBLE_HERE);
+  set(fRESTORE_DROWN);
   reset(fEGO_PREOCCUPIED);
   if (vRESTORE_Y == 0) {
     vRESTORE_ROOM = ROOM8_WATERFALL_LAKE_WEST;
@@ -27,7 +28,7 @@ if (fUNDO && (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING || fGAME_OVER)) {
     reset(fGAME_OVER_PREPARATION);
     new.room(ROOM8_WATERFALL_LAKE_WEST);
     return;
-  }  
+  }
   reset(rfPULLED_UNDERWATER);
   reset(rfDROWNING);
   position.v(oEGO, vRESTORE_X, vRESTORE_Y);

@@ -75,6 +75,32 @@ if (fEGO_ON_WATER) {
     set(fCYCLE_EGO_ANIMATION);
     stop.motion(oEGO);
     vDROWN_MESSAGE_COUNTDOWN = 250;
+    #if RUBBER_TREE
+      if (fEGO_INVISIBLE) {
+        vDROWN_INVISCD_HI = vINVISIBLE_COUNTDOWN_HI;
+        vDROWN_INVISCD_LO = vINVISIBLE_COUNTDOWN_LO;
+      }
+      else if (fWEARING_RING) {
+        vDROWN_INVISCD_HI = 102;
+      }
+      else if (fCARRYING_RING) {
+        vDROWN_INVISCD_HI = 103;
+      }
+      else {
+        vDROWN_INVISCD_HI = 101;
+      }
+      if (fPROTECTED_BY_SPELL) {
+        vDROWN_PROTECTCD_HI = vSPELL_COUNTDOWN_HI;
+        vDROWN_PROTECTCD_LO = vSPELL_COUNTDOWN_LO;
+      }
+      else {
+        vDROWN_PROTECTCD_HI = 101;
+      }
+      if (fGOAT_COMPANION) {
+        get.posn(o13, vDROWN_GOAT_X, vDROWN_GOAT_Y);
+        get.dir(o13, vDROWN_GOAT_DIR);
+      }
+    #endif
     vAQUATIC_ACTIVITY = AQUATICACTIVITY_DROWNING;
     if (fMANUAL_EGO_WATER_POS) {
       reposition(oEGO, vEGO_WATER_X, vEGO_WATER_Y);

@@ -407,6 +407,7 @@ FINALCHECKS:
       if (fUNDO) {
         stop.sound();
         vAQUATIC_ACTIVITY = AQUATICACTIVITY_NONE;
+        set(fRESTORE_DROWN);
         vDROWN_GAME_OVER_COUNTDOWN = 0;
         reset(fEGO_PREOCCUPIED);
         reset(fSWIMMING);

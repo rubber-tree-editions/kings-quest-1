@@ -1876,6 +1876,44 @@ if (fRESTORE_STATE) {
     vTINY_COUNTDOWN = vSTATE_TINYCD;
   }
 }
+if (fRESTORE_DROWN) {
+  reset(fRESTORE_DROWN);
+  if (vDROWN_PROTECTCD_HI != 101) {
+    vSPELL_COUNTDOWN_HI = vDROWN_PROTECTCD_HI;
+    vSPELL_COUNTDOWN_LO = vDROWN_PROTECTCD_LO;
+    set(fPROTECTED_BY_SPELL);
+  }
+  if (vDROWN_INVISCD_HI != 101) {
+    if (!fCARRYING_RING) {
+      set(fCARRYING_RING);
+      get(iRING);
+      vSCORE += 3;
+      reset(fLOST_RING);
+    }
+    if (vDROWN_INVISCD_HI == 102) {
+      reset(fWEARING_RING);
+      reset(fEGO_INVISIBLE);
+    }
+    else {
+      set(fWEARING_RING);
+      if (vDROWN_INVISCD_HI == 103) {
+        reset(fEGO_INVISIBLE);
+      }
+      else {
+        set(fEGO_INVISIBLE);
+        vINVISIBLE_COUNTDOWN_HI = vDROWN_INVISCD_HI;
+        vINVISIBLE_COUNTDOWN_LO = vDROWN_INVISCD_LO;
+        set.view(oEGO, 110);
+      }
+    }
+  }
+  if (fGOAT_COMPANION) {
+    erase(oGOAT);
+    position.v(oGOAT, vDROWN_GOAT_X, vDROWN_GOAT_Y);
+    set.dir(oGOAT, vDROWN_GOAT_DIR);
+    draw(oGOAT);
+  }
+}
 return;
 
 #message 1 "You splash around in the water for a while but seem  to have forgotten how to swim. Unfortunately, you drown."

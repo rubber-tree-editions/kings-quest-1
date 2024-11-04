@@ -213,6 +213,14 @@
   #define vSTATE_PROTECTCD_HI v173
   #define vSTATE_PROTECTCD_LO v174
   #define vSTATE_TINYCD v175
+
+  #define vDROWN_GOAT_X v176
+  #define vDROWN_GOAT_Y v177
+  #define vDROWN_GOAT_DIR v178
+  #define vDROWN_INVISCD_HI v179
+  #define vDROWN_INVISCD_LO v180
+  #define vDROWN_PROTECTCD_HI v181
+  #define vDROWN_PROTECTCD_LO v182
 #endif
 
 // built-in flags
@@ -431,6 +439,7 @@
   #define fREPLENISH_MINOR_TREASURE f215
   #define fOVERRIDE_RESET_ENTRANCE f216
   #define fCHEESE_IS_VITAL f217
+  #define fRESTORE_DROWN f218
 #endif
 
 // controls

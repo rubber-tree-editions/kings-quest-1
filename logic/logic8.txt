@@ -15,6 +15,7 @@ if (fUNDO) {
     stop.sound();
     reset(fUNDO);
     reset(fSWIMMING_IMPOSSIBLE_HERE);
+    set(fRESTORE_DROWN);
     reset(fEGO_PREOCCUPIED);
     if (vRESTORE_Y == 0) {
       vRESTORE_ROOM = ROOM7_WATERFALL_LAKE_EAST;
