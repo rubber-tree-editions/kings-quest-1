@@ -1,3 +1,16 @@
+
+#ifndef RUBBER_TREE
+  #define RUBBER_TREE 1
+#endif
+
+#ifndef ENABLE_FASTER
+  #if RUBBER_TREE
+    #define ENABLE_FASTER 1
+  #else
+    #define ENABLE_FASTER 0
+  #endif
+#endif
+
 #word 0 a, all, an, another, antique, around, at, down, every, first, for, from, gingerbread, guess, i, in, into, is, little, me, now, of, off, old, on, out, over, please, second, sir, some, that, the, these, third, this, those, through, to, under, up, will, with, you, your
 #if VERSION_MAJOR >= 2
 #word 0 hollow
@@ -310,6 +323,9 @@
 #endif
 #if BUILD_TARGET == APPLE_IIGS
 #word 260 kqdbg
+#endif
+#if ENABLE_FASTER
+#word 290 faster
 #endif
 #if RUBBER_TREE
 #word 300 undo

@@ -28,6 +28,14 @@
   #define RUBBER_TREE 1
 #endif
 
+#ifndef ENABLE_FASTER
+  #if RUBBER_TREE
+    #define ENABLE_FASTER 1
+  #else
+    #define ENABLE_FASTER 0
+  #endif
+#endif
+
 #include "items.txt"
 #include "words.txt"
 
@@ -468,6 +476,10 @@
 #define cSPEED_NORMAL c23
 #define cSPEED_SLOW c24
 #define cSHOW_MENU c25
+
+#if ENABLE_FASTER
+  #define cSPEED_FASTER c26
+#endif
 
 #if RUBBER_TREE
   #define cUNDO c30

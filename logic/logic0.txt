@@ -118,12 +118,18 @@ if (vROOM_NO == ROOM_NULL) {
         set.menu("Speed");
         set.menu.item("Normal", cSPEED_NORMAL);
         set.menu.item("Fast  ", cSPEED_FAST);
+        #if ENABLE_FASTER
+          set.menu.item("Faster", cSPEED_FASTER);
+        #endif
         set.menu.item("Slow  ", cSPEED_SLOW);
       #elif BUILD_TARGET == MACINTOSH
         if (vCOMPUTER_TYPE != COMPUTERTYPE_AMIGA) {
           set.menu("Speed");
           set.menu.item("Normal", cSPEED_NORMAL);
           set.menu.item("Fast  ", cSPEED_FAST);
+          #if ENABLE_FASTER
+            set.menu.item("Faster", cSPEED_FASTER);
+          #endif
           set.menu.item("Slow  ", cSPEED_SLOW);
         }
       #else
@@ -334,13 +340,24 @@ if (VERSION_MAJOR >= 2) {
   }
 #endif
 if (VERSION_MAJOR >= 2) {
+  #if ENABLE_FASTER
+  if (
+    said("faster")
+  #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
+    || controller(cSPEED_FASTER)
+  #endif
+  ) {
+    vTEMP_CYCLE_DELAY = 0;
+    vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
+  }
+  #endif
   if (
     said("fast")
   #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
     || controller(cSPEED_FAST)
   #endif
   ) {
-#if RUBBER_TREE
+#if ENABLE_FASTER
     vTEMP_CYCLE_DELAY = 1;
 #else
     vTEMP_CYCLE_DELAY = 0;
@@ -594,8 +611,18 @@ else {
     print(m17);
     version();
   }
-  if (said("fast")) {
+  #if ENABLE_FASTER
+  if (said("faster")) {
     vTEMP_CYCLE_DELAY = 0;
+    vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
+  }
+  #endif
+  if (said("fast")) {
+    #if ENABLE_FASTER
+    vTEMP_CYCLE_DELAY = 1;
+    #else
+    vTEMP_CYCLE_DELAY = 0;
+    #endif
     vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
   }
   if (said("normal")) {
