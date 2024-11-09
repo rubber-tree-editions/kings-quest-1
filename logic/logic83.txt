@@ -2,7 +2,7 @@
 
 #define rfPLAYED_SND_TITLE_MUSIC rf0
 #define rfPLAYING_SND_TITLE_MUSIC rf1
-#if RUBBER_TREE
+#if RUBBER_TREE && RUBBER_TREE_TITLE_SCREEN
   #define rfSHOWED_RUBBER_TREE_MESSAGE rf2
   #define rfRUBBER_TREE_MESSAGE_SKIPPED rf3
 #endif
@@ -18,7 +18,7 @@
 #define rvBUSY_COUNTDOWN rv8
 
 if (fROOM_SCRIPT_EXECUTED) {
-  #if RUBBER_TREE
+  #if RUBBER_TREE && RUBBER_TREE_TITLE_SCREEN
   if (!rfSHOWED_RUBBER_TREE_MESSAGE) {
     set.text.attribute(2, 0);
     text.screen();
@@ -527,7 +527,7 @@ JUMP:
     new.room(ROOM1_CASTLE_EAST);
   }
 #else
-  #if RUBBER_TREE
+  #if RUBBER_TREE && RUBBER_TREE_TITLE_SCREEN
   if (!rfRUBBER_TREE_MESSAGE_SKIPPED) {
     if (!have.key()) set(rfRUBBER_TREE_MESSAGE_SKIPPED);
   }

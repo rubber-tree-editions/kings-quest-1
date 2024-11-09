@@ -194,6 +194,10 @@
   #define vRESTORE_Y_3 v161
   #define vRESTORE_DIR v162
 
+  #ifndef RUBBER_TREE_TITLE_SCREEN
+    #define RUBBER_TREE_TITLE_SCREEN 1
+  #endif
+
   #define vWELL_MODE v163
   #define WELLMODE_NONE 0
   #define WELLMODE_JUMP_OR_FALL_IN 1
