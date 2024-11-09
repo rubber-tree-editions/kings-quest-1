@@ -29,6 +29,7 @@
 #if RUBBER_TREE
 if (fGAME_OVER) {
   if (fUNDO && rfROCK_MOVING_DEADLY) {
+    set(fRESTORE_STATE);
     erase(oHOLE);
 
     erase(oROCK);
@@ -155,6 +156,7 @@ if (said("shove", "rocks")) {
     }
     if (posn(oEGO, BX_IN_FRONT_OF_ROCK)) {
       #if RUBBER_TREE
+        set(fSTORE_STATE);
         get.posn(oEGO, rvRESTORE_EGO_X, rvRESTORE_EGO_Y);
         rvRESTORE_EGO_DIR = vEGO_DIR;
         get.posn(oROCK, rvRESTORE_ROCK_X, rvRESTORE_ROCK_Y);

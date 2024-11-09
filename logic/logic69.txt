@@ -13,6 +13,7 @@
 
 #if RUBBER_TREE
 if (fUNDO && (_fFALLING || fGAME_OVER)) {
+  set(fRESTORE_STATE);
   reset(fUNDO);
   stop.sound();
   erase(oEGO);
@@ -69,6 +70,7 @@ if (said("examine", "opening")) {
 }
 if (fEGO_TOUCHED_TRIGGER_LINE && !_fFALLING) {
   #if RUBBER_TREE
+    set(fSTORE_STATE);
     get.posn(oEGO, vRESTORE_X, vRESTORE_Y);
     if (vRESTORE_X <= 81) {
       vRESTORE_X = 82;
