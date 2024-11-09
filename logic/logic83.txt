@@ -45,7 +45,7 @@ if (fROOM_SCRIPT_EXECUTED) {
     display(21, 0, "          to their very Souls.");
 
     set.text.attribute(15, 0);
-    display(23, 0, " \[Rubber Tree Edition v1.0 --BETA-2--]");
+    display(23, 0, " \[Rubber Tree Edition v1.0 --BETA-3--]");
     while (!have.key()) { }
     graphics();
     set.text.attribute(15, 0);
