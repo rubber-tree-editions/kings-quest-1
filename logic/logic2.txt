@@ -413,26 +413,55 @@ FINALCHECKS:
         reset(fSWIMMING);
         reset(fCYCLE_EGO_ANIMATION);
         erase(oEGO);
-
-        object.on.anything(oEGO);
-        if (vRESTORE_DIR == DIR_NORTH || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_NORTHWEST) {
-          vRESTORE_Y += 8;
+        if (vRESTORE_X > 73) {
+          vRESTORE_Y = 157;
         }
-        else if (vRESTORE_DIR == DIR_SOUTH || vRESTORE_DIR == DIR_SOUTHEAST || vRESTORE_DIR == DIR_SOUTHWEST) {
-          vRESTORE_Y -= 3;
+        else if (vRESTORE_X >= 53) {
+          if (vRESTORE_Y >= 152) {
+            vRESTORE_Y = 157;
+          }
+          else if (vRESTORE_Y >= 131) {
+            vRESTORE_Y = vRESTORE_X;
+            vRESTORE_Y += 80;
+          }
+          else {
+            vTEMP_RESULT = vRESTORE_X;
+            vTEMP_RESULT -= 53;
+            vTEMP_RESULT_2 = vTEMP_RESULT;
+            vTEMP_RESULT_2 /= 2;
+            vRESTORE_Y = 123;
+            vRESTORE_Y -= vTEMP_RESULT_2;
+          }
         }
-        if (vRESTORE_DIR == DIR_EAST || vRESTORE_DIR == DIR_NORTHEAST || vRESTORE_DIR == DIR_SOUTHEAST) {
-          vRESTORE_X -= 8;
+        else if (vRESTORE_X >= 46) {
+          vRESTORE_Y = 157;
         }
-        else if (vRESTORE_DIR == DIR_WEST || vRESTORE_DIR == DIR_NORTHWEST || vRESTORE_DIR == DIR_SOUTHWEST) {
-          vRESTORE_X += 8;
+        else if (vRESTORE_X >= 40) {
+          vTEMP_RESULT = vRESTORE_X;
+          vTEMP_RESULT -= 40;
+          vTEMP_RESULT *= 2;
+          vRESTORE_Y = 140;
+          vRESTORE_Y += vTEMP_RESULT;
         }
-        if (vRESTORE_X <= 13) {
+        else if (vRESTORE_X >= 34) {
+          vTEMP_RESULT = vRESTORE_X;
+          vTEMP_RESULT -= 34;
+          vTEMP_RESULT /= 2;
+          vRESTORE_Y = 137;
+          vRESTORE_Y += vTEMP_RESULT;
+        }
+        else if (vRESTORE_X >= 24) {
+          vRESTORE_Y = 137;
+        }
+        else if (vRESTORE_X >= 13) {
+          vTEMP_RESULT = vRESTORE_X;
+          vTEMP_RESULT -= 12;
+          vRESTORE_Y = 130;
+          vRESTORE_Y += 12;
+          vRESTORE_Y -= vTEMP_RESULT;
+        }
+        else {
           vRESTORE_Y = 147;
-        }
-        else if (vRESTORE_X <= 46) {
-          vRESTORE_Y = 136;
-          vRESTORE_DIR = DIR_SOUTH;
         }
         position.v(oEGO, vRESTORE_X, vRESTORE_Y);
         reposition.to.v(oGATOR1, vRESTORE_X_2, vRESTORE_Y_2);
