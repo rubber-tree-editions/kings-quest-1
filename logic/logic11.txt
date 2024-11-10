@@ -22,6 +22,12 @@
 #define oGOAT o13
 
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+    if (fGOAT_IS_GONE && vPREV_ROOM_NO != ROOM10_GOAT_PEN_WEST && !fGOAT_KILLED_TROLL && !fTROLL_TOOK_TREASURE) {
+      reset(fGOAT_IS_GONE);
+      reset(fGOAT_GATE_OPEN);
+    }
+  #endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);
