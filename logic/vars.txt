@@ -327,6 +327,7 @@
 
 #if RUBBER_TREE
   #define fUNDO f99
+  #define fPOINTS_FOR_GOAT_COMPANION f64
 #endif
 
 #define fCARRYING_MIRROR f100

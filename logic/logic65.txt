@@ -332,6 +332,9 @@ if (fGOAT_COMPANION) {
   set(fGOAT_IS_GONE);
   print("As soon as you entered the house the goat ran away.");
   vSCORE -= 5;
+  #if RUBBER_TREE
+  reset(fPOINTS_FOR_GOAT_COMPANION);
+  #endif
 }
 if (vWITCH_STATE == WITCHSTATE_DEAD) {
   if (said("anyword", "witch")) {

@@ -106,6 +106,9 @@ if (fGOAT_COMPANION) {
   reset(fGOAT_COMPANION);
   set(fGOAT_IS_GONE);
   vSCORE -= 5;
+  #if RUBBER_TREE
+  reset(fPOINTS_FOR_GOAT_COMPANION);
+  #endif
 }
 if (said("examine", "beanstalk")) {
   print("The beanstalk disappears up into the clouds.");

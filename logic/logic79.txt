@@ -141,6 +141,9 @@ if (fGOAT_COMPANION) {
   set(fGOAT_IS_GONE);
   print("As soon as you entered the house the old goat ran away.");
   vSCORE -= 5;
+  #if RUBBER_TREE
+  reset(fPOINTS_FOR_GOAT_COMPANION);
+  #endif
 }
 if (said("jump")) {
   print("You dare not jump here or you would go through the floor!");

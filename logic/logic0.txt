@@ -1427,6 +1427,9 @@ if (fGOAT_COMPANION) {
         step.size(oGOAT, vTEMP_STEP_SIZE);
         drop("dagger");
         vSCORE -= 5;
+        #if RUBBER_TREE
+        reset(fPOINTS_FOR_GOAT_COMPANION);
+        #endif
         reset(fCARRYING_DAGGER);
         reset(fGOAT_COMPANION);
         set(fDAGGER_LOST);
@@ -1441,6 +1444,9 @@ if (fGOAT_COMPANION) {
         step.size(oGOAT, vTEMP_STEP_SIZE);
         drop("dagger");
         vSCORE -= 5;
+        #if RUBBER_TREE
+        reset(fPOINTS_FOR_GOAT_COMPANION);
+        #endif
         reset(fCARRYING_DAGGER);
         reset(fGOAT_COMPANION);
         set(fDAGGER_LOST);
