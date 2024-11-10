@@ -306,6 +306,9 @@ if (fROOM_SCRIPT_EXECUTED) {
   }
   if (fEGO_INVISIBLE) {
     print("Be thankful that you are invisible or the witch may have stuck around to try and catch you!");
+    #if RUBBER_TREE
+    set(fUSED_INVISIBILITY);
+    #endif
   }
   if (rfUNPROTECTED_BY_MAGIC) {
     draw(oWITCH);

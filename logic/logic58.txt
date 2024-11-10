@@ -192,6 +192,9 @@ if (rfGIANT_CAUGHT_YOU && rfGIANT_IS_AFTER_YOU) {
     reset(rfGIANT_IS_AFTER_YOU);
     print("The giant cannot see you since you are invisible.");
     wander(oGIANT);
+    #if RUBBER_TREE
+    set(fUSED_INVISIBILITY);
+    #endif
   }
   else if (fCARRYING_SHIELD) {
     reset(rfGIANT_CAUGHT_YOU);

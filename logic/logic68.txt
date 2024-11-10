@@ -280,6 +280,9 @@ if (fVILLAIN_GOT_YOU) {
     set.view(oDWARF, 115);
     reset(rfDWARF_IS_HERE);
     end.of.loop(oDWARF, rfDWARF_FINISHED_ANIMATING);
+    #if RUBBER_TREE
+    set(fUSED_INVISIBILITY);
+    #endif
   }
   else {
     #if !RUBBER_TREE

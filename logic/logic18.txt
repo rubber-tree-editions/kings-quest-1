@@ -46,6 +46,11 @@ if (fUNDO && (vAQUATIC_ACTIVITY == AQUATICACTIVITY_DROWNING || fGAME_OVER)) {
 #endif
 
 if (fROOM_SCRIPT_EXECUTED) {
+  #if RUBBER_TREE
+  if (!fCARRYING_RING && !fUSED_INVISIBILITY) {
+    reset(fIMPRESSED_ELF);
+  }
+  #endif
   load.pic(vROOM_NO);
   draw.pic(vROOM_NO);
   discard.pic(vROOM_NO);

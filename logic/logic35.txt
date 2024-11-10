@@ -248,6 +248,9 @@ if (fVILLAIN_GOT_YOU) {
     print("Being invisible has protected you from the dwarf.");
     wander(oDWARF);
     set(rfHAD_DWARF_ENCOUNTER);
+    #if RUBBER_TREE
+    set(fUSED_INVISIBILITY);
+    #endif
   }
   else {
     #if !RUBBER_TREE

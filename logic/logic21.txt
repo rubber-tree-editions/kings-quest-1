@@ -149,6 +149,9 @@ if (vTEMP_RESULT_2 == 1) {
     wander(oWITCH);
     set(rfPROTECTED);
     print("Lucky for you that you are invisible, the witch can't find you.");
+    #if RUBBER_TREE
+    set(fUSED_INVISIBILITY);
+    #endif
   }
 }
 if (fSOUND_END_MARKER) {
@@ -167,6 +170,9 @@ if (rfWITCH_GOT_YOU) {
     print("Lucky for you that you are invisible, the witch can't find you.");
     wander(oWITCH);
     set(rfPROTECTED);
+    #if RUBBER_TREE
+    set(fUSED_INVISIBILITY);
+    #endif
   }
   else if (fCARRYING_SHIELD) {
     print("There is a witch in the area, but with the shield no harm will come to you.");

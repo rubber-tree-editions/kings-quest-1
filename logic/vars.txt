@@ -328,6 +328,7 @@
 #if RUBBER_TREE
   #define fUNDO f99
   #define fPOINTS_FOR_GOAT_COMPANION f64
+  #define fUSED_INVISIBILITY f50
 #endif
 
 #define fCARRYING_MIRROR f100

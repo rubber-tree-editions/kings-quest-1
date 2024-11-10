@@ -144,6 +144,9 @@ if (fVILLAIN_GOT_YOU) {
     print("Being invisible has protected you from this sorcerer.");
     set(rfINVISIBLE);
     reset(rfCAN_UNDO);
+    #if RUBBER_TREE
+    set(fUSED_INVISIBILITY);
+    #endif
   }
   else if (fCARRYING_SHIELD) {
     print("The magic shield will protect you from this dangerous  sorcerer.");

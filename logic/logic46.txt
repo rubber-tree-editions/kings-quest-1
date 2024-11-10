@@ -167,6 +167,9 @@ if (fVILLAIN_GOT_YOU) {
     print("Fortunately, you are invisible and the ogre can't see you.");
     wander(oOGRE);
     set(rfPROTECTED);
+    #if RUBBER_TREE
+    set(fUSED_INVISIBILITY);
+    #endif
     goto(AFTERCOUNTDOWN);
   }
   if (fPROTECTED_BY_SPELL) {
