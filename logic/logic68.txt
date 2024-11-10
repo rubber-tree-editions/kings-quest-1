@@ -22,6 +22,10 @@
 
 #define rvLOCK_PRIORITY rv0
 
+#if RUBBER_TREE
+  #define rvRESTORE_LOOP rv1
+#endif
+
 #define oDWARF o1
 
 #if RUBBER_TREE
@@ -61,22 +65,7 @@ if (fUNDO && (_fFALLING || fGAME_OVER)) {
   observe.blocks(oEGO);
   vTEMP_STEP_SIZE = EGO_STEP_SIZE;
   step.size(oEGO, vTEMP_STEP_SIZE);
-  if (vRESTORE_Y < 128) {
-    if (vPREV_ROOM_NO == ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM) {
-      set.loop(oEGO, 1);
-    }
-    else {
-      set.loop(oEGO, 0);
-    }
-  }
-  else {
-    if (vPREV_ROOM_NO == ROOM67_MOUNTAIN_STAIRWAY_NEAR_BOTTOM) {
-      set.loop(oEGO, 0);
-    }
-    else {
-      set.loop(oEGO, 1);
-    }
-  }
+  set.loop.v(oEGO, rvRESTORE_LOOP);
   draw(oEGO);
   player.control();
   if (fGAME_OVER) {
@@ -382,6 +371,14 @@ if (posn(oEGO, 0, 166, 159, 167)) {
 if (BUILD_TARGET == APPLE_IIGS) {
   set(fFALL_DANGER);
 }
+#if RUBBER_TREE
+if (vEGO_DIR == DIR_EAST || vEGO_DIR == DIR_NORTHEAST || vEGO_DIR == DIR_SOUTHEAST) {
+  rvRESTORE_LOOP = 0;
+}
+else if (vEGO_DIR == DIR_WEST || vEGO_DIR == DIR_NORTHWEST || vEGO_DIR == DIR_SOUTHWEST) {
+  rvRESTORE_LOOP = 1;
+}
+#endif
 return;
 
 #message 1 "The stairs seem to go on forever."
