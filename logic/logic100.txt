@@ -145,9 +145,11 @@ if (fUNDO) {
   if (!fGAME_OVER) {
     stop.sound();
     if (fGOAT_COMPANION) {
-      // normal.motion(oGOAT);
-      // stop.motion(oGOAT);
-      // stop.cycling(oGOAT);
+      vTEMP_STEP_SIZE_2 = 1;
+      step.size(oGOAT, vTEMP_STEP_SIZE_2);
+      draw(oGOAT);
+      follow.ego(oGOAT, 10, fGOAT_NEAR_YOU);
+      start.cycling(oGOAT);
     }
     enable.item(cSAVE);
     enable.item(cJUMP);
