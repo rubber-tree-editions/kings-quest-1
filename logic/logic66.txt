@@ -67,6 +67,9 @@ if (fGOAT_COMPANION) {
   set(fGOAT_IS_GONE);
   print("The old goat is afraid of the dark and decides to stay outside.");
   vSCORE -= 5;
+  #if RUBBER_TREE
+  reset(fPOINTS_FOR_GOAT_COMPANION);
+  #endif
 }
 if (said("examine", "stairway") || said("examine", "room")) {
   print("The stairs go up into the heart of the mountain.");
