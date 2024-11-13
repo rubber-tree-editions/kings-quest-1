@@ -118,8 +118,8 @@ if (vROOM_NO == ROOM_NULL) {
         set.menu("Speed");
         set.menu.item("Normal", cSPEED_NORMAL);
         set.menu.item("Fast  ", cSPEED_FAST);
-        #if ENABLE_FASTER
-          set.menu.item("Faster", cSPEED_FASTER);
+        #if ENABLE_FASTEST
+          set.menu.item("Fastest", cSPEED_FASTEST);
         #endif
         set.menu.item("Slow  ", cSPEED_SLOW);
       #elif BUILD_TARGET == MACINTOSH
@@ -127,8 +127,8 @@ if (vROOM_NO == ROOM_NULL) {
           set.menu("Speed");
           set.menu.item("Normal", cSPEED_NORMAL);
           set.menu.item("Fast  ", cSPEED_FAST);
-          #if ENABLE_FASTER
-            set.menu.item("Faster", cSPEED_FASTER);
+          #if ENABLE_FASTEST
+            set.menu.item("Fastest", cSPEED_FASTEST);
           #endif
           set.menu.item("Slow  ", cSPEED_SLOW);
         }
@@ -340,11 +340,11 @@ if (VERSION_MAJOR >= 2) {
   }
 #endif
 if (VERSION_MAJOR >= 2) {
-  #if ENABLE_FASTER
+  #if ENABLE_FASTEST
   if (
-    said("faster")
+    said("fastest")
   #if BUILD_TARGET == DOS || BUILD_TARGET == MACINTOSH
-    || controller(cSPEED_FASTER)
+    || controller(cSPEED_FASTEST)
   #endif
   ) {
     vTEMP_CYCLE_DELAY = 0;
@@ -357,7 +357,7 @@ if (VERSION_MAJOR >= 2) {
     || controller(cSPEED_FAST)
   #endif
   ) {
-#if ENABLE_FASTER
+#if ENABLE_FASTEST
     vTEMP_CYCLE_DELAY = 1;
 #else
     vTEMP_CYCLE_DELAY = 0;
@@ -611,14 +611,14 @@ else {
     print(m17);
     version();
   }
-  #if ENABLE_FASTER
-  if (said("faster")) {
+  #if ENABLE_FASTEST
+  if (said("fastest")) {
     vTEMP_CYCLE_DELAY = 0;
     vCYCLE_DELAY = vTEMP_CYCLE_DELAY;
   }
   #endif
   if (said("fast")) {
-    #if ENABLE_FASTER
+    #if ENABLE_FASTEST
     vTEMP_CYCLE_DELAY = 1;
     #else
     vTEMP_CYCLE_DELAY = 0;

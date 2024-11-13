@@ -3,11 +3,11 @@
   #define RUBBER_TREE 1
 #endif
 
-#ifndef ENABLE_FASTER
+#ifndef ENABLE_FASTEST
   #if RUBBER_TREE
-    #define ENABLE_FASTER 1
+    #define ENABLE_FASTEST 1
   #else
-    #define ENABLE_FASTER 0
+    #define ENABLE_FASTEST 0
   #endif
 #endif
 
@@ -324,8 +324,8 @@
 #if BUILD_TARGET == APPLE_IIGS
 #word 260 kqdbg
 #endif
-#if ENABLE_FASTER
-#word 290 faster
+#if ENABLE_FASTEST
+#word 290 fastest
 #endif
 #if RUBBER_TREE
 #word 300 undo
