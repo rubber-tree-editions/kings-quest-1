@@ -78,6 +78,11 @@ if (fROOM_SCRIPT_EXECUTED) {
     add.to.pic(62, 0, 0, PT_DEAD_GOAT, 0, 0);
   }
   random(0, 250, vTEMP_RESULT);
+  #if RUBBER_TREE
+  if (fCARRIED_BY_WITCH) {
+    vTEMP_RESULT = 100;
+  }
+  #endif
   if (vTEMP_RESULT < 185 && vWITCH_STATE != WITCHSTATE_DEAD) {
     rvWITCH_STEP_SIZE = WITCH_STEP_SIZE;
     step.size(oWITCH, rvWITCH_STEP_SIZE);
