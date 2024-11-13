@@ -9,6 +9,7 @@
 
 #if RUBBER_TREE
 if (fUNDO && rfFALLING_OUT_OF_THE_TREE) {
+  stop.sound();
   erase(oEGO);
   vTEMP_STEP_SIZE = EGO_STEP_SIZE;
   step.size(oEGO, vTEMP_STEP_SIZE);
