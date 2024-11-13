@@ -31,7 +31,7 @@ if (fROOM_SCRIPT_EXECUTED) {
 
     display( 8, 0, "     THE ORDER OF THE RUBBER TREE");
 
-    display(10, 0, "     Acolytes of this elusive Sect");
+    display(10, 0, "    Acolytes of this insidious Sect");
     display(11, 0, "      do Conspire from the Shadows,");
     display(12, 0, "      manipulating Events to avert");
     display(13, 0, "    so-called UNWINNABLE SITUATIONS;");
