@@ -454,7 +454,7 @@ if (vEGO_EDGE_CODE == EDGE_HORIZON) {
 if (!fCARRYING_SHIELD) {
   if (!rfREPELLING && posn(oEGO, 0, 0, 10, 167)) {
     set(rfREPELLING);
-    print("A mystical, unseen force repels you from the stairway.[[You get the strong feeling there is something vital here.");
+    print("You are suddenly repelled from the stairway by some powerful unseen force.[[It seems you have unfinished business in this chamber.");
     move.obj(oEGO, 30, 104, 0, rfREPELLED);
   }
 }
