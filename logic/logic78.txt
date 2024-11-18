@@ -89,6 +89,14 @@ if (vTINY_COUNTDOWN == 1 && fEGO_TINY) {
   else {
     set.view(oEGO, 0);
     print("You feel a stretching sensation... Oh, you're back to your original size.");
+    #if RUBBER_TREE
+    if (!fCARRYING_MUSHROOM) {
+      stop.cycling(oEGO);
+      print("You seem to be stuck in these underground caverns.  As you have no way of leaving, it looks like you'll spend the rest of your life here." );
+      set(fGAME_OVER);
+    }
+    else
+    #endif
     if (BUILD_TARGET == APPLE_IIGS) {
       rvCOUNTDOWN_LO = 40;
     }
