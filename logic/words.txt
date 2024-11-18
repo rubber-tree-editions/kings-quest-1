@@ -328,5 +328,5 @@
 #word 290 fastest
 #endif
 #if RUBBER_TREE
-#word 300 undo
+#word 300 undo, "rubber tree"
 #endif
